@@ -4,26 +4,14 @@
     "home": [
       {
         "id": "1",
-        "text": "VYBE",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "604",
-        "text": "•",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "605",
-        "text": "Engineered",
+        "text": "{brand}",
         "type": "text",
         "customized": false
       },
       {
         "id": "2",
-        "text": "The Story",
-        "type": "link",
+        "text": ".",
+        "type": "text",
         "customized": false
       },
       {
@@ -34,1147 +22,1111 @@
       },
       {
         "id": "4",
-        "text": "Reviews",
+        "text": "Story",
         "type": "link",
         "customized": false
       },
       {
         "id": "5",
+        "text": "Reviews",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "6",
         "text": "FAQ",
         "type": "link",
         "customized": false
       },
       {
-        "id": "304",
+        "id": "7",
+        "text": "Contact",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "10",
         "text": "Saved Items",
         "type": "heading",
         "customized": false
       },
       {
-        "id": "305",
+        "id": "11",
         "text": "Your Bag",
         "type": "heading",
         "customized": false
       },
       {
-        "id": "307",
+        "id": "13",
         "text": "Apply",
         "type": "button",
         "customized": false
       },
       {
-        "id": "308",
+        "id": "14",
         "text": "Subtotal",
         "type": "text",
         "customized": false
       },
       {
-        "id": "501",
-        "text": "Discount",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "309",
+        "id": "15",
         "text": "Total",
         "type": "text",
         "customized": false
       },
       {
-        "id": "310",
+        "id": "16",
         "text": "Proceed to Checkout",
         "type": "button",
         "customized": false
       },
       {
-        "id": "311",
-        "text": "View Bag",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "312",
-        "text": "Checkout",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "810",
+        "id": "800",
         "text": "Drop 04 // 2026",
         "type": "text",
         "customized": false
       },
       {
-        "id": "811",
-        "text": "Engineered for life, built for permanence",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "812",
+        "id": "801",
         "text": "The",
         "type": "text",
         "customized": false
       },
       {
-        "id": "813",
+        "id": "802",
         "text": "Heavyweight",
         "type": "text",
         "customized": false
       },
       {
-        "id": "814",
+        "id": "803",
         "text": "Hoodie.",
         "type": "text",
         "customized": false
       },
       {
-        "id": "815",
-        "text": "Every stitch, every fiber, every detail — engineered for a life well-lived. We spent 18 months perfecting the fabric, the fit, and the feel. This isn't just a hoodie. It's a legacy.",
+        "id": "804",
+        "text": "Engineered structural silhouettes crafted in dense 500GSM organic French Terry. Built thick, structured perfectly, designed timelessly.",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "816",
-        "text": "500",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "817",
-        "text": "GSM French Terry",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "818",
-        "text": "4.9",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "819",
-        "text": "Star Rating",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "820",
-        "text": "247",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "821",
-        "text": "Verified Reviews",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "822",
-        "text": "Explore The Hoodie",
+        "id": "805",
+        "text": "Explore Now",
         "type": "link",
         "customized": false
       },
       {
-        "id": "823",
-        "text": "Read Reviews",
+        "id": "806",
+        "text": "4.9★ Reviews",
         "type": "link",
         "customized": false
       },
       {
-        "id": "824",
-        "text": "Chapter One",
+        "id": "807",
+        "text": "500GSM French Terry",
         "type": "text",
         "customized": false
       },
       {
-        "id": "825",
-        "text": "Crafted for",
+        "id": "808",
+        "text": "Ethically Crafted",
         "type": "text",
         "customized": false
       },
       {
-        "id": "826",
-        "text": "The Long Haul",
+        "id": "809",
+        "text": "Limited Drop",
         "type": "text",
         "customized": false
       },
       {
-        "id": "827",
-        "text": "\"We don't create clothing for seasons. We create clothing for lives.\"— Our Founder",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "828",
-        "text": "— Our Founder",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "829",
-        "text": "We spent 18 months in development — testing fabric weights, refining the silhouette, perfecting the feel. The result is a hoodie that doesn't just look good on day one, but develops character with every wear.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "830",
-        "text": "500GSM organic French Terry",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "831",
-        "text": "Double-layered hood structure",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "832",
-        "text": "Reinforced seam integrity",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "833",
-        "text": "Every fiber selected for durability and comfort",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "834",
-        "text": "The",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "835",
-        "text": "Craft",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "836",
-        "text": "500GSM Density",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "837",
-        "text": "Substantial without being heavy — the perfect weight for year-round comfort and durability.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "838",
-        "text": "French Terry",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "839",
-        "text": "Luxuriously soft on the inside, structured on the outside. The best of both worlds.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "840",
-        "text": "Sustainable Cotton",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "841",
-        "text": "Combed organic cotton from certified mills. Better for you, better for the planet.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "842",
+        "id": "810",
         "text": "Best Seller",
         "type": "text",
         "customized": false
       },
       {
-        "id": "843",
+        "id": "811",
         "text": "The Heavyweight Hoodie",
         "type": "heading",
         "customized": false
       },
       {
-        "id": "844",
+        "id": "812",
         "text": "(247 reviews)",
         "type": "text",
         "customized": false
       },
       {
-        "id": "845",
-        "text": "$84.00",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "846",
-        "text": "$0.00",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "847",
+        "id": "813",
         "text": "Heavy loopback structured boxy silhouette hoodie accented with industrial tonal detailing. 500GSM French Terry — the heaviest in our collection.",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "849",
-        "text": "Choose Your Pack:",
+        "id": "814",
+        "text": "Color:",
         "type": "text",
         "customized": false
       },
       {
-        "id": "850",
-        "text": "Total Price:",
+        "id": "815",
+        "text": "Size:",
         "type": "text",
         "customized": false
       },
       {
-        "id": "851",
-        "text": "Packs:",
+        "id": "816",
+        "text": "Choose Your Tier:",
         "type": "text",
         "customized": false
       },
       {
-        "id": "852",
-        "text": "Add to Bag",
+        "id": "817",
+        "text": "Free Shipping30-Day GuaranteeSecure CheckoutLifetime Support",
         "type": "text",
         "customized": false
       },
       {
-        "id": "853",
-        "text": "Buy Now",
+        "id": "818",
+        "text": "01",
         "type": "text",
         "customized": false
       },
       {
-        "id": "854",
-        "text": "Free Shipping",
+        "id": "819",
+        "text": "The Philosophy",
         "type": "text",
         "customized": false
       },
       {
-        "id": "855",
-        "text": "Lifetime Guarantee",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "856",
-        "text": "Secure Checkout",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "857",
-        "text": "30-Day Returns",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "858",
-        "text": "Lifetime Guarantee",
+        "id": "820",
+        "text": "Built forPermanence",
         "type": "heading",
         "customized": false
       },
       {
-        "id": "859",
-        "text": "Built to last. If it ever fails, we'll replace it. No questions asked.",
+        "id": "821",
+        "text": "\"We do not create basic clothing — every loop stitch profile is calculation-driven.\"",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "822",
+        "text": "{brand} functions independently at the intersection of performance apparel design frameworks and clean industrial aesthetics. Our products are entirely manufactured from local sustainable mills utilizing bespoke combed organic cotton systems.",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "860",
-        "text": "Free Shipping",
+        "id": "823",
+        "text": "500GSM organic French Terry",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "824",
+        "text": "Double-lined structural hood",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "825",
+        "text": "Hidden kangaroo pocket matrix",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "826",
+        "text": "02",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "827",
+        "text": "The Materials",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "828",
+        "text": "RawIntegrity",
         "type": "heading",
         "customized": false
       },
       {
-        "id": "861",
-        "text": "Fast, reliable delivery on every order, worldwide.",
+        "id": "829",
+        "text": "\"Full-grain hides that retain their natural strength — no compromise.\"",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "830",
+        "text": "Our materials undergo deep processing in certified local facilities. The result is a fabric that maintains its structural signature under heavy use, developing rich character over time.",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "862",
-        "text": "30-Day Returns",
-        "type": "heading",
+        "id": "831",
+        "text": "100% Combed Organic Cotton",
+        "type": "text",
         "customized": false
       },
       {
-        "id": "863",
-        "text": "Not satisfied? Return it within 30 days. We'll handle everything.",
-        "type": "paragraph",
+        "id": "832",
+        "text": "Zero synthetic coatings",
+        "type": "text",
         "customized": false
       },
       {
-        "id": "864",
-        "text": "Secure Checkout",
-        "type": "heading",
+        "id": "833",
+        "text": "Low-emission processing",
+        "type": "text",
         "customized": false
       },
       {
-        "id": "865",
-        "text": "Your payment and data are always protected with industry-leading encryption.",
-        "type": "paragraph",
+        "id": "834",
+        "text": "Community",
+        "type": "text",
         "customized": false
       },
       {
-        "id": "866",
+        "id": "835",
+        "text": "Stories",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "836",
         "text": "4.9",
         "type": "text",
         "customized": false
       },
       {
-        "id": "867",
+        "id": "837",
         "text": "(247 verified reviews)",
         "type": "text",
         "customized": false
       },
       {
-        "id": "868",
+        "id": "838",
         "text": "Write a Review",
         "type": "button",
         "customized": false
       },
       {
-        "id": "869",
+        "id": "839",
         "text": "\"The heaviest hoodie I've ever owned. The quality is unmatched — you can feel the difference the moment you put it on.\"",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "870",
+        "id": "840",
         "text": "James M.",
         "type": "text",
         "customized": false
       },
       {
-        "id": "871",
+        "id": "841",
         "text": "Verified Buyer",
         "type": "text",
         "customized": false
       },
       {
-        "id": "872",
-        "text": "\"I've been looking for the perfect hoodie for years. This is it. The weight, the drape, the feel — everything is perfect.\"",
+        "id": "842",
+        "text": "\"Perfect oversized fit. The 500GSM fabric is substantial without being stiff. It drapes beautifully.\"",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "873",
+        "id": "843",
         "text": "Sarah K.",
         "type": "text",
         "customized": false
       },
       {
-        "id": "874",
+        "id": "844",
         "text": "Verified Buyer",
         "type": "text",
         "customized": false
       },
       {
-        "id": "875",
-        "text": "\"The attention to detail is incredible. From the stitching to the fabric quality, this hoodie is built to last a lifetime.\"",
+        "id": "845",
+        "text": "\"I've been searching for the perfect hoodie for years. This is it. Worth every penny.\"",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "876",
-        "text": "Alex R.",
+        "id": "846",
+        "text": "Thomas L.",
         "type": "text",
         "customized": false
       },
       {
-        "id": "877",
+        "id": "847",
         "text": "Verified Buyer",
         "type": "text",
         "customized": false
       },
       {
-        "id": "878",
-        "text": "Frequently",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "879",
-        "text": "Asked Questions",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "880",
-        "text": "What makes 500GSM French Terry unique?",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "881",
-        "text": "Grams Per Square Meter (GSM) quantifies fabric density. Traditional hoodies sit around 280GSM. Our 500GSM provides an incredibly structured, luxury drape while remaining highly breathable — the perfect balance of weight and comfort.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "882",
-        "text": "How do I care for my hoodie?",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "883",
-        "text": "Wash inside-out on gentle cold cycles with similar colors. Hang dry or lay flat. Avoid high-heat machine drying to preserve the fabric's structure and longevity. Simple care, lasting quality.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "884",
-        "text": "Are these limited drops?",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "885",
-        "text": "Yes. To avoid textile overproduction, our hoodies drop within verified numbered limits. Once a color variant sells out, it will not be reproduced. This ensures every piece is special.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "886",
-        "text": "What's your return policy?",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "887",
-        "text": "We stand behind every hoodie. If you're not completely satisfied, we offer 30-day returns. Items must be in original condition with tags attached. We provide free return shipping for domestic orders.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "888",
-        "text": "Ready to",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "889",
-        "text": "Elevate",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "890",
-        "text": "Your Everyday?",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "891",
-        "text": "Join thousands who've found their perfect hoodie. The Heavyweight Hoodie is engineered to be your most trusted piece.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "892",
-        "text": "Shop The Hoodie",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "893",
-        "text": "VYBE.",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "894",
-        "text": "Engineered for life, built for permanence. 500GSM French Terry — the heaviest in our collection.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "895",
-        "text": "Shop",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "896",
-        "text": "The Hoodie",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "897",
-        "text": "Reviews",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "898",
-        "text": "Guarantee",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "899",
-        "text": "Support",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "900",
-        "text": "FAQ",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "901",
-        "text": "Contact",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "902",
-        "text": "Shipping",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "903",
-        "text": "Returns",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "904",
-        "text": "Stay Updated",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "905",
-        "text": "Subscribe for exclusive drops, early access, and special offers.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "907",
-        "text": "Subscribe",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "908",
-        "text": "© 2026 VYBE CO. All rights reserved.",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "909",
-        "text": "Privacy Policy",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "910",
-        "text": "Terms",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "911",
-        "text": "The Heavyweight Hoodie",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "912",
-        "text": "Add to Bag",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "913",
-        "text": "Buy Now",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "heading-119",
-        "text": "Saved Items",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-120",
-        "text": "Your Bag",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-121",
-        "text": "TheHeavyweightHoodie.",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-122",
-        "text": "Crafted forThe Long Haul",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-123",
-        "text": "TheCraft",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-124",
-        "text": "500GSM Density",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-125",
-        "text": "French Terry",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-126",
-        "text": "Sustainable Cotton",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-127",
-        "text": "The Heavyweight Hoodie",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-128",
+        "id": "848",
         "text": "Lifetime Guarantee",
         "type": "heading",
         "customized": false
       },
       {
-        "id": "heading-129",
+        "id": "849",
+        "text": "Built to last. We stand behind every hoodie.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "850",
         "text": "Free Shipping",
         "type": "heading",
         "customized": false
       },
       {
-        "id": "heading-130",
+        "id": "851",
+        "text": "Worldwide delivery on all orders",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "852",
         "text": "30-Day Returns",
         "type": "heading",
         "customized": false
       },
       {
-        "id": "heading-131",
+        "id": "853",
+        "text": "Love it or return it — no questions",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "854",
         "text": "Secure Checkout",
         "type": "heading",
         "customized": false
       },
       {
-        "id": "heading-132",
-        "text": "FrequentlyAsked Questions",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-133",
-        "text": "Ready toElevateYour Everyday?",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-134",
-        "text": "VYBE.",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-135",
-        "text": "Shop",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-136",
-        "text": "Support",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-137",
-        "text": "Stay Updated",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-138",
-        "text": "Write a Review",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "paragraph-139",
-        "text": "Every stitch, every fiber, every detail — engineered for a life well-lived. We spent 18 months perfecting the fabric, the fit, and the feel. This isn't just a hoodie. It's a legacy.",
+        "id": "855",
+        "text": "Your payment is always protected",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "paragraph-140",
-        "text": "We spent 18 months in development — testing fabric weights, refining the silhouette, perfecting the feel. The result is a hoodie that doesn't just look good on day one, but develops character with every wear.",
-        "type": "paragraph",
+        "id": "856",
+        "text": "Drop",
+        "type": "text",
         "customized": false
       },
       {
-        "id": "paragraph-141",
-        "text": "Substantial without being heavy — the perfect weight for year-round comfort and durability.",
-        "type": "paragraph",
+        "id": "857",
+        "text": "Intel",
+        "type": "text",
         "customized": false
       },
       {
-        "id": "paragraph-142",
-        "text": "Luxuriously soft on the inside, structured on the outside. The best of both worlds.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-143",
-        "text": "Combed organic cotton from certified mills. Better for you, better for the planet.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-144",
-        "text": "Heavy loopback structured boxy silhouette hoodie accented with industrial tonal detailing. 500GSM French Terry — the heaviest in our collection.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-145",
-        "text": "Built to last. If it ever fails, we'll replace it. No questions asked.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-146",
-        "text": "Fast, reliable delivery on every order, worldwide.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-147",
-        "text": "Not satisfied? Return it within 30 days. We'll handle everything.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-148",
-        "text": "Your payment and data are always protected with industry-leading encryption.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-149",
-        "text": "\"The heaviest hoodie I've ever owned. The quality is unmatched — you can feel the difference the moment you put it on.\"",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-150",
-        "text": "\"I've been looking for the perfect hoodie for years. This is it. The weight, the drape, the feel — everything is perfect.\"",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-151",
-        "text": "\"The attention to detail is incredible. From the stitching to the fabric quality, this hoodie is built to last a lifetime.\"",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-152",
-        "text": "Grams Per Square Meter (GSM) quantifies fabric density. Traditional hoodies sit around 280GSM. Our 500GSM provides an incredibly structured, luxury drape while remaining highly breathable — the perfect balance of weight and comfort.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-153",
-        "text": "Wash inside-out on gentle cold cycles with similar colors. Hang dry or lay flat. Avoid high-heat machine drying to preserve the fabric's structure and longevity. Simple care, lasting quality.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-154",
-        "text": "Yes. To avoid textile overproduction, our hoodies drop within verified numbered limits. Once a color variant sells out, it will not be reproduced. This ensures every piece is special.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-155",
-        "text": "We stand behind every hoodie. If you're not completely satisfied, we offer 30-day returns. Items must be in original condition with tags attached. We provide free return shipping for domestic orders.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-156",
-        "text": "Join thousands who've found their perfect hoodie. The Heavyweight Hoodie is engineered to be your most trusted piece.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-157",
-        "text": "Engineered for life, built for permanence. 500GSM French Terry — the heaviest in our collection.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-158",
-        "text": "Subscribe for exclusive drops, early access, and special offers.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "button-159",
-        "text": "Apply",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "button-160",
-        "text": "Proceed to Checkout",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "button-161",
-        "text": "View Bag",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "button-162",
-        "text": "Checkout",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "add-to-cart-btn",
-        "text": "Add to Bag— $158.00",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "buy-now-btn",
-        "text": "Buy Now— $158.00",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "button-165",
-        "text": "Write a Review",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "button-166",
+        "id": "858",
         "text": "What makes 500GSM French Terry unique?",
-        "type": "button",
+        "type": "text",
         "customized": false
       },
       {
-        "id": "button-167",
-        "text": "How do I care for my hoodie?",
-        "type": "button",
+        "id": "859",
+        "text": "Grams Per Square Meter (GSM) quantifies structural material density. Traditional hoodies sit around 280GSM. Our 500GSM provides an incredibly structured, luxury drape while remaining highly breathable.",
+        "type": "paragraph",
         "customized": false
       },
       {
-        "id": "button-168",
+        "id": "860",
+        "text": "How do I wash my hoodie?",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "861",
+        "text": "Wash inside-out on gentle cold cycles with similar colors. Hang dry or lay flat. Avoid high-heat machine drying to preserve the fabric structure.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "862",
         "text": "Are these limited drops?",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "863",
+        "text": "Yes. To avoid textile overproduction, our hoodies drop within verified numbered limits. Once a color variant sells out, it will not be reproduced.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "864",
+        "text": "Get in",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "865",
+        "text": "Touch",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "866",
+        "text": "VYBE Node Hub",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "867",
+        "text": "Global Hub Matrix",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "868",
+        "text": "Grid Terminal 12, Industrial Sector BTech District, NY",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "869",
+        "text": "Support Pipeline",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "870",
+        "text": "terminal@vybeco.com",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "871",
+        "text": "Identity Handle",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "873",
+        "text": "Uplink Email Address",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "875",
+        "text": "Inquiry Log Data",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "877",
+        "text": "Transmit Uplink",
         "type": "button",
         "customized": false
       },
       {
-        "id": "button-169",
-        "text": "What's your return policy?",
-        "type": "button",
+        "id": "878",
+        "text": "Ready toLevel UpYour Wardrobe?",
+        "type": "heading",
         "customized": false
       },
       {
-        "id": "button-170",
-        "text": "Subscribe",
-        "type": "button",
+        "id": "879",
+        "text": "Join thousands of satisfied customers who've found their perfect hoodie.",
+        "type": "paragraph",
         "customized": false
       },
       {
-        "id": "button-171",
-        "text": "Add to Bag",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "button-172",
-        "text": "Buy Now",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "button-173",
-        "text": "Submit Review",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "button-174",
-        "text": "Cancel",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "link-175",
-        "text": "VYBE•Engineered",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-176",
-        "text": "The Story",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-177",
-        "text": "The Hoodie",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-178",
-        "text": "Reviews",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-179",
-        "text": "FAQ",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-180",
-        "text": "The Story",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-181",
-        "text": "The Hoodie",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-182",
-        "text": "Reviews",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-183",
-        "text": "FAQ",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-184",
-        "text": "Explore The Hoodie",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-185",
-        "text": "Read Reviews",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-186",
+        "id": "880",
         "text": "Shop The Hoodie",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-187",
+        "id": "881",
+        "text": "{brand}.",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "882",
+        "text": "Avant-garde engineered garments built for structural permanence. 500GSM French Terry — the heaviest in our collection.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "883",
+        "text": "Shop",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "884",
         "text": "The Hoodie",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-188",
+        "id": "885",
+        "text": "Community",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "886",
         "text": "Reviews",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-189",
+        "id": "887",
         "text": "Guarantee",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-190",
+        "id": "888",
+        "text": "Support",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "889",
         "text": "FAQ",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-191",
+        "id": "890",
         "text": "Contact",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-192",
-        "text": "Shipping",
+        "id": "891",
+        "text": "Shipping Policy",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-193",
+        "id": "892",
         "text": "Returns",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-194",
+        "id": "893",
+        "text": "Stay Updated",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "894",
+        "text": "Subscribe for exclusive drops, early access, and special offers.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "896",
+        "text": "Subscribe",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "897",
+        "text": "© 2026 {brand}. All rights reserved.",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "898",
         "text": "Privacy Policy",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-195",
+        "id": "899",
+        "text": "Terms",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "900",
+        "text": "The Heavyweight Hoodie",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "heading-111",
+        "text": "Saved Items",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-112",
+        "text": "Your Bag",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-113",
+        "text": "TheHeavyweightHoodie.",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-114",
+        "text": "The Heavyweight Hoodie",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-115",
+        "text": "Built forPermanence",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-116",
+        "text": "RawIntegrity",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-117",
+        "text": "CommunityStories",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-118",
+        "text": "Lifetime Guarantee",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-119",
+        "text": "Free Shipping",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-120",
+        "text": "30-Day Returns",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-121",
+        "text": "Secure Checkout",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-122",
+        "text": "DropIntel",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-123",
+        "text": "Get inTouch",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-124",
+        "text": "Global Hub Matrix",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-125",
+        "text": "Support Pipeline",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-126",
+        "text": "Ready toLevel UpYour Wardrobe?",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-127",
+        "text": "{brand}.",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-128",
+        "text": "Shop",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-129",
+        "text": "Support",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-130",
+        "text": "Stay Updated",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "paragraph-131",
+        "text": "Engineered structural silhouettes crafted in dense 500GSM organic French Terry. Built thick, structured perfectly, designed timelessly.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-132",
+        "text": "Heavy loopback structured boxy silhouette hoodie accented with industrial tonal detailing. 500GSM French Terry — the heaviest in our collection.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-133",
+        "text": "{brand} functions independently at the intersection of performance apparel design frameworks and clean industrial aesthetics. Our products are entirely manufactured from local sustainable mills utilizing bespoke combed organic cotton systems.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-134",
+        "text": "Our materials undergo deep processing in certified local facilities. The result is a fabric that maintains its structural signature under heavy use, developing rich character over time.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-135",
+        "text": "\"The heaviest hoodie I've ever owned. The quality is unmatched — you can feel the difference the moment you put it on.\"",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-136",
+        "text": "\"Perfect oversized fit. The 500GSM fabric is substantial without being stiff. It drapes beautifully.\"",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-137",
+        "text": "\"I've been searching for the perfect hoodie for years. This is it. Worth every penny.\"",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-138",
+        "text": "Built to last. We stand behind every hoodie.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-139",
+        "text": "Worldwide delivery on all orders",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-140",
+        "text": "Love it or return it — no questions",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-141",
+        "text": "Your payment is always protected",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-142",
+        "text": "Grams Per Square Meter (GSM) quantifies structural material density. Traditional hoodies sit around 280GSM. Our 500GSM provides an incredibly structured, luxury drape while remaining highly breathable.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-143",
+        "text": "Wash inside-out on gentle cold cycles with similar colors. Hang dry or lay flat. Avoid high-heat machine drying to preserve the fabric structure.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-144",
+        "text": "Yes. To avoid textile overproduction, our hoodies drop within verified numbered limits. Once a color variant sells out, it will not be reproduced.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-145",
+        "text": "Grid Terminal 12, Industrial Sector BTech District, NY",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-146",
+        "text": "terminal@vybeco.com",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-147",
+        "text": "Join thousands of satisfied customers who've found their perfect hoodie.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-148",
+        "text": "Avant-garde engineered garments built for structural permanence. 500GSM French Terry — the heaviest in our collection.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-149",
+        "text": "Subscribe for exclusive drops, early access, and special offers.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "button-150",
+        "text": "Apply",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-151",
+        "text": "Proceed to Checkout",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-152",
+        "text": "XL",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-153",
+        "text": "XXL",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "add-to-cart-btn",
+        "text": "Add to Bag — $84.00",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "buy-now-btn",
+        "text": "Buy Now",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-156",
+        "text": "Write a Review",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-157",
+        "text": "What makes 500GSM French Terry unique?",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-158",
+        "text": "How do I wash my hoodie?",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-159",
+        "text": "Are these limited drops?",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-160",
+        "text": "Transmit Uplink",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-161",
+        "text": "Subscribe",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-162",
+        "text": "Add",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-163",
+        "text": "Buy Now",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "link-164",
+        "text": "{brand}.",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-165",
+        "text": "The Hoodie",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-166",
+        "text": "Story",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-167",
+        "text": "Reviews",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-168",
+        "text": "FAQ",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-169",
+        "text": "Contact",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-170",
+        "text": "The Hoodie",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-171",
+        "text": "Story",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-172",
+        "text": "Reviews",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-173",
+        "text": "FAQ",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-174",
+        "text": "Contact",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-175",
+        "text": "Explore Now",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-176",
+        "text": "4.9★ Reviews",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-177",
+        "text": "Shop The Hoodie",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-178",
+        "text": "The Hoodie",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-179",
+        "text": "Community",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-180",
+        "text": "Reviews",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-181",
+        "text": "Guarantee",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-182",
+        "text": "FAQ",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-183",
+        "text": "Contact",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-184",
+        "text": "Shipping Policy",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-185",
+        "text": "Returns",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-186",
+        "text": "Privacy Policy",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-187",
         "text": "Terms",
         "type": "link",
         "customized": false
       },
       {
         "id": "page-title",
-        "text": "VYBE CO. | The Heavyweight Hoodie — Engineered for Life",
+        "text": "{brand}",
         "type": "title",
         "customized": false
       }
@@ -1183,26 +1135,14 @@
   "global_texts": [
     {
       "id": "1",
-      "text": "VYBE",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "604",
-      "text": "•",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "605",
-      "text": "Engineered",
+      "text": "{brand}",
       "type": "text",
       "customized": false
     },
     {
       "id": "2",
-      "text": "The Story",
-      "type": "link",
+      "text": ".",
+      "type": "text",
       "customized": false
     },
     {
@@ -1213,1153 +1153,1117 @@
     },
     {
       "id": "4",
-      "text": "Reviews",
+      "text": "Story",
       "type": "link",
       "customized": false
     },
     {
       "id": "5",
+      "text": "Reviews",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "6",
       "text": "FAQ",
       "type": "link",
       "customized": false
     },
     {
-      "id": "304",
+      "id": "7",
+      "text": "Contact",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "10",
       "text": "Saved Items",
       "type": "heading",
       "customized": false
     },
     {
-      "id": "305",
+      "id": "11",
       "text": "Your Bag",
       "type": "heading",
       "customized": false
     },
     {
-      "id": "307",
+      "id": "13",
       "text": "Apply",
       "type": "button",
       "customized": false
     },
     {
-      "id": "308",
+      "id": "14",
       "text": "Subtotal",
       "type": "text",
       "customized": false
     },
     {
-      "id": "501",
-      "text": "Discount",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "309",
+      "id": "15",
       "text": "Total",
       "type": "text",
       "customized": false
     },
     {
-      "id": "310",
+      "id": "16",
       "text": "Proceed to Checkout",
       "type": "button",
       "customized": false
     },
     {
-      "id": "311",
-      "text": "View Bag",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "312",
-      "text": "Checkout",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "810",
+      "id": "800",
       "text": "Drop 04 // 2026",
       "type": "text",
       "customized": false
     },
     {
-      "id": "811",
-      "text": "Engineered for life, built for permanence",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "812",
+      "id": "801",
       "text": "The",
       "type": "text",
       "customized": false
     },
     {
-      "id": "813",
+      "id": "802",
       "text": "Heavyweight",
       "type": "text",
       "customized": false
     },
     {
-      "id": "814",
+      "id": "803",
       "text": "Hoodie.",
       "type": "text",
       "customized": false
     },
     {
-      "id": "815",
-      "text": "Every stitch, every fiber, every detail — engineered for a life well-lived. We spent 18 months perfecting the fabric, the fit, and the feel. This isn't just a hoodie. It's a legacy.",
+      "id": "804",
+      "text": "Engineered structural silhouettes crafted in dense 500GSM organic French Terry. Built thick, structured perfectly, designed timelessly.",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "816",
-      "text": "500",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "817",
-      "text": "GSM French Terry",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "818",
-      "text": "4.9",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "819",
-      "text": "Star Rating",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "820",
-      "text": "247",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "821",
-      "text": "Verified Reviews",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "822",
-      "text": "Explore The Hoodie",
+      "id": "805",
+      "text": "Explore Now",
       "type": "link",
       "customized": false
     },
     {
-      "id": "823",
-      "text": "Read Reviews",
+      "id": "806",
+      "text": "4.9★ Reviews",
       "type": "link",
       "customized": false
     },
     {
-      "id": "824",
-      "text": "Chapter One",
+      "id": "807",
+      "text": "500GSM French Terry",
       "type": "text",
       "customized": false
     },
     {
-      "id": "825",
-      "text": "Crafted for",
+      "id": "808",
+      "text": "Ethically Crafted",
       "type": "text",
       "customized": false
     },
     {
-      "id": "826",
-      "text": "The Long Haul",
+      "id": "809",
+      "text": "Limited Drop",
       "type": "text",
       "customized": false
     },
     {
-      "id": "827",
-      "text": "\"We don't create clothing for seasons. We create clothing for lives.\"— Our Founder",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "828",
-      "text": "— Our Founder",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "829",
-      "text": "We spent 18 months in development — testing fabric weights, refining the silhouette, perfecting the feel. The result is a hoodie that doesn't just look good on day one, but develops character with every wear.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "830",
-      "text": "500GSM organic French Terry",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "831",
-      "text": "Double-layered hood structure",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "832",
-      "text": "Reinforced seam integrity",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "833",
-      "text": "Every fiber selected for durability and comfort",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "834",
-      "text": "The",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "835",
-      "text": "Craft",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "836",
-      "text": "500GSM Density",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "837",
-      "text": "Substantial without being heavy — the perfect weight for year-round comfort and durability.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "838",
-      "text": "French Terry",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "839",
-      "text": "Luxuriously soft on the inside, structured on the outside. The best of both worlds.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "840",
-      "text": "Sustainable Cotton",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "841",
-      "text": "Combed organic cotton from certified mills. Better for you, better for the planet.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "842",
+      "id": "810",
       "text": "Best Seller",
       "type": "text",
       "customized": false
     },
     {
-      "id": "843",
+      "id": "811",
       "text": "The Heavyweight Hoodie",
       "type": "heading",
       "customized": false
     },
     {
-      "id": "844",
+      "id": "812",
       "text": "(247 reviews)",
       "type": "text",
       "customized": false
     },
     {
-      "id": "845",
-      "text": "$84.00",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "846",
-      "text": "$0.00",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "847",
+      "id": "813",
       "text": "Heavy loopback structured boxy silhouette hoodie accented with industrial tonal detailing. 500GSM French Terry — the heaviest in our collection.",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "849",
-      "text": "Choose Your Pack:",
+      "id": "814",
+      "text": "Color:",
       "type": "text",
       "customized": false
     },
     {
-      "id": "850",
-      "text": "Total Price:",
+      "id": "815",
+      "text": "Size:",
       "type": "text",
       "customized": false
     },
     {
-      "id": "851",
-      "text": "Packs:",
+      "id": "816",
+      "text": "Choose Your Tier:",
       "type": "text",
       "customized": false
     },
     {
-      "id": "852",
-      "text": "Add to Bag",
+      "id": "817",
+      "text": "Free Shipping30-Day GuaranteeSecure CheckoutLifetime Support",
       "type": "text",
       "customized": false
     },
     {
-      "id": "853",
-      "text": "Buy Now",
+      "id": "818",
+      "text": "01",
       "type": "text",
       "customized": false
     },
     {
-      "id": "854",
-      "text": "Free Shipping",
+      "id": "819",
+      "text": "The Philosophy",
       "type": "text",
       "customized": false
     },
     {
-      "id": "855",
-      "text": "Lifetime Guarantee",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "856",
-      "text": "Secure Checkout",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "857",
-      "text": "30-Day Returns",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "858",
-      "text": "Lifetime Guarantee",
+      "id": "820",
+      "text": "Built forPermanence",
       "type": "heading",
       "customized": false
     },
     {
-      "id": "859",
-      "text": "Built to last. If it ever fails, we'll replace it. No questions asked.",
+      "id": "821",
+      "text": "\"We do not create basic clothing — every loop stitch profile is calculation-driven.\"",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "822",
+      "text": "{brand} functions independently at the intersection of performance apparel design frameworks and clean industrial aesthetics. Our products are entirely manufactured from local sustainable mills utilizing bespoke combed organic cotton systems.",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "860",
-      "text": "Free Shipping",
+      "id": "823",
+      "text": "500GSM organic French Terry",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "824",
+      "text": "Double-lined structural hood",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "825",
+      "text": "Hidden kangaroo pocket matrix",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "826",
+      "text": "02",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "827",
+      "text": "The Materials",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "828",
+      "text": "RawIntegrity",
       "type": "heading",
       "customized": false
     },
     {
-      "id": "861",
-      "text": "Fast, reliable delivery on every order, worldwide.",
+      "id": "829",
+      "text": "\"Full-grain hides that retain their natural strength — no compromise.\"",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "830",
+      "text": "Our materials undergo deep processing in certified local facilities. The result is a fabric that maintains its structural signature under heavy use, developing rich character over time.",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "862",
-      "text": "30-Day Returns",
-      "type": "heading",
+      "id": "831",
+      "text": "100% Combed Organic Cotton",
+      "type": "text",
       "customized": false
     },
     {
-      "id": "863",
-      "text": "Not satisfied? Return it within 30 days. We'll handle everything.",
-      "type": "paragraph",
+      "id": "832",
+      "text": "Zero synthetic coatings",
+      "type": "text",
       "customized": false
     },
     {
-      "id": "864",
-      "text": "Secure Checkout",
-      "type": "heading",
+      "id": "833",
+      "text": "Low-emission processing",
+      "type": "text",
       "customized": false
     },
     {
-      "id": "865",
-      "text": "Your payment and data are always protected with industry-leading encryption.",
-      "type": "paragraph",
+      "id": "834",
+      "text": "Community",
+      "type": "text",
       "customized": false
     },
     {
-      "id": "866",
+      "id": "835",
+      "text": "Stories",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "836",
       "text": "4.9",
       "type": "text",
       "customized": false
     },
     {
-      "id": "867",
+      "id": "837",
       "text": "(247 verified reviews)",
       "type": "text",
       "customized": false
     },
     {
-      "id": "868",
+      "id": "838",
       "text": "Write a Review",
       "type": "button",
       "customized": false
     },
     {
-      "id": "869",
+      "id": "839",
       "text": "\"The heaviest hoodie I've ever owned. The quality is unmatched — you can feel the difference the moment you put it on.\"",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "870",
+      "id": "840",
       "text": "James M.",
       "type": "text",
       "customized": false
     },
     {
-      "id": "871",
+      "id": "841",
       "text": "Verified Buyer",
       "type": "text",
       "customized": false
     },
     {
-      "id": "872",
-      "text": "\"I've been looking for the perfect hoodie for years. This is it. The weight, the drape, the feel — everything is perfect.\"",
+      "id": "842",
+      "text": "\"Perfect oversized fit. The 500GSM fabric is substantial without being stiff. It drapes beautifully.\"",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "873",
+      "id": "843",
       "text": "Sarah K.",
       "type": "text",
       "customized": false
     },
     {
-      "id": "874",
+      "id": "844",
       "text": "Verified Buyer",
       "type": "text",
       "customized": false
     },
     {
-      "id": "875",
-      "text": "\"The attention to detail is incredible. From the stitching to the fabric quality, this hoodie is built to last a lifetime.\"",
+      "id": "845",
+      "text": "\"I've been searching for the perfect hoodie for years. This is it. Worth every penny.\"",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "876",
-      "text": "Alex R.",
+      "id": "846",
+      "text": "Thomas L.",
       "type": "text",
       "customized": false
     },
     {
-      "id": "877",
+      "id": "847",
       "text": "Verified Buyer",
       "type": "text",
       "customized": false
     },
     {
-      "id": "878",
-      "text": "Frequently",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "879",
-      "text": "Asked Questions",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "880",
-      "text": "What makes 500GSM French Terry unique?",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "881",
-      "text": "Grams Per Square Meter (GSM) quantifies fabric density. Traditional hoodies sit around 280GSM. Our 500GSM provides an incredibly structured, luxury drape while remaining highly breathable — the perfect balance of weight and comfort.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "882",
-      "text": "How do I care for my hoodie?",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "883",
-      "text": "Wash inside-out on gentle cold cycles with similar colors. Hang dry or lay flat. Avoid high-heat machine drying to preserve the fabric's structure and longevity. Simple care, lasting quality.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "884",
-      "text": "Are these limited drops?",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "885",
-      "text": "Yes. To avoid textile overproduction, our hoodies drop within verified numbered limits. Once a color variant sells out, it will not be reproduced. This ensures every piece is special.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "886",
-      "text": "What's your return policy?",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "887",
-      "text": "We stand behind every hoodie. If you're not completely satisfied, we offer 30-day returns. Items must be in original condition with tags attached. We provide free return shipping for domestic orders.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "888",
-      "text": "Ready to",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "889",
-      "text": "Elevate",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "890",
-      "text": "Your Everyday?",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "891",
-      "text": "Join thousands who've found their perfect hoodie. The Heavyweight Hoodie is engineered to be your most trusted piece.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "892",
-      "text": "Shop The Hoodie",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "893",
-      "text": "VYBE.",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "894",
-      "text": "Engineered for life, built for permanence. 500GSM French Terry — the heaviest in our collection.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "895",
-      "text": "Shop",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "896",
-      "text": "The Hoodie",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "897",
-      "text": "Reviews",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "898",
-      "text": "Guarantee",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "899",
-      "text": "Support",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "900",
-      "text": "FAQ",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "901",
-      "text": "Contact",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "902",
-      "text": "Shipping",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "903",
-      "text": "Returns",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "904",
-      "text": "Stay Updated",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "905",
-      "text": "Subscribe for exclusive drops, early access, and special offers.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "907",
-      "text": "Subscribe",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "908",
-      "text": "© 2026 VYBE CO. All rights reserved.",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "909",
-      "text": "Privacy Policy",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "910",
-      "text": "Terms",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "911",
-      "text": "The Heavyweight Hoodie",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "912",
-      "text": "Add to Bag",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "913",
-      "text": "Buy Now",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "heading-119",
-      "text": "Saved Items",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-120",
-      "text": "Your Bag",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-121",
-      "text": "TheHeavyweightHoodie.",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-122",
-      "text": "Crafted forThe Long Haul",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-123",
-      "text": "TheCraft",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-124",
-      "text": "500GSM Density",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-125",
-      "text": "French Terry",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-126",
-      "text": "Sustainable Cotton",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-127",
-      "text": "The Heavyweight Hoodie",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-128",
+      "id": "848",
       "text": "Lifetime Guarantee",
       "type": "heading",
       "customized": false
     },
     {
-      "id": "heading-129",
+      "id": "849",
+      "text": "Built to last. We stand behind every hoodie.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "850",
       "text": "Free Shipping",
       "type": "heading",
       "customized": false
     },
     {
-      "id": "heading-130",
+      "id": "851",
+      "text": "Worldwide delivery on all orders",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "852",
       "text": "30-Day Returns",
       "type": "heading",
       "customized": false
     },
     {
-      "id": "heading-131",
+      "id": "853",
+      "text": "Love it or return it — no questions",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "854",
       "text": "Secure Checkout",
       "type": "heading",
       "customized": false
     },
     {
-      "id": "heading-132",
-      "text": "FrequentlyAsked Questions",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-133",
-      "text": "Ready toElevateYour Everyday?",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-134",
-      "text": "VYBE.",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-135",
-      "text": "Shop",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-136",
-      "text": "Support",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-137",
-      "text": "Stay Updated",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-138",
-      "text": "Write a Review",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "paragraph-139",
-      "text": "Every stitch, every fiber, every detail — engineered for a life well-lived. We spent 18 months perfecting the fabric, the fit, and the feel. This isn't just a hoodie. It's a legacy.",
+      "id": "855",
+      "text": "Your payment is always protected",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "paragraph-140",
-      "text": "We spent 18 months in development — testing fabric weights, refining the silhouette, perfecting the feel. The result is a hoodie that doesn't just look good on day one, but develops character with every wear.",
-      "type": "paragraph",
+      "id": "856",
+      "text": "Drop",
+      "type": "text",
       "customized": false
     },
     {
-      "id": "paragraph-141",
-      "text": "Substantial without being heavy — the perfect weight for year-round comfort and durability.",
-      "type": "paragraph",
+      "id": "857",
+      "text": "Intel",
+      "type": "text",
       "customized": false
     },
     {
-      "id": "paragraph-142",
-      "text": "Luxuriously soft on the inside, structured on the outside. The best of both worlds.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-143",
-      "text": "Combed organic cotton from certified mills. Better for you, better for the planet.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-144",
-      "text": "Heavy loopback structured boxy silhouette hoodie accented with industrial tonal detailing. 500GSM French Terry — the heaviest in our collection.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-145",
-      "text": "Built to last. If it ever fails, we'll replace it. No questions asked.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-146",
-      "text": "Fast, reliable delivery on every order, worldwide.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-147",
-      "text": "Not satisfied? Return it within 30 days. We'll handle everything.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-148",
-      "text": "Your payment and data are always protected with industry-leading encryption.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-149",
-      "text": "\"The heaviest hoodie I've ever owned. The quality is unmatched — you can feel the difference the moment you put it on.\"",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-150",
-      "text": "\"I've been looking for the perfect hoodie for years. This is it. The weight, the drape, the feel — everything is perfect.\"",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-151",
-      "text": "\"The attention to detail is incredible. From the stitching to the fabric quality, this hoodie is built to last a lifetime.\"",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-152",
-      "text": "Grams Per Square Meter (GSM) quantifies fabric density. Traditional hoodies sit around 280GSM. Our 500GSM provides an incredibly structured, luxury drape while remaining highly breathable — the perfect balance of weight and comfort.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-153",
-      "text": "Wash inside-out on gentle cold cycles with similar colors. Hang dry or lay flat. Avoid high-heat machine drying to preserve the fabric's structure and longevity. Simple care, lasting quality.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-154",
-      "text": "Yes. To avoid textile overproduction, our hoodies drop within verified numbered limits. Once a color variant sells out, it will not be reproduced. This ensures every piece is special.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-155",
-      "text": "We stand behind every hoodie. If you're not completely satisfied, we offer 30-day returns. Items must be in original condition with tags attached. We provide free return shipping for domestic orders.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-156",
-      "text": "Join thousands who've found their perfect hoodie. The Heavyweight Hoodie is engineered to be your most trusted piece.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-157",
-      "text": "Engineered for life, built for permanence. 500GSM French Terry — the heaviest in our collection.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-158",
-      "text": "Subscribe for exclusive drops, early access, and special offers.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "button-159",
-      "text": "Apply",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "button-160",
-      "text": "Proceed to Checkout",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "button-161",
-      "text": "View Bag",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "button-162",
-      "text": "Checkout",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "add-to-cart-btn",
-      "text": "Add to Bag— $158.00",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "buy-now-btn",
-      "text": "Buy Now— $158.00",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "button-165",
-      "text": "Write a Review",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "button-166",
+      "id": "858",
       "text": "What makes 500GSM French Terry unique?",
-      "type": "button",
+      "type": "text",
       "customized": false
     },
     {
-      "id": "button-167",
-      "text": "How do I care for my hoodie?",
-      "type": "button",
+      "id": "859",
+      "text": "Grams Per Square Meter (GSM) quantifies structural material density. Traditional hoodies sit around 280GSM. Our 500GSM provides an incredibly structured, luxury drape while remaining highly breathable.",
+      "type": "paragraph",
       "customized": false
     },
     {
-      "id": "button-168",
+      "id": "860",
+      "text": "How do I wash my hoodie?",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "861",
+      "text": "Wash inside-out on gentle cold cycles with similar colors. Hang dry or lay flat. Avoid high-heat machine drying to preserve the fabric structure.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "862",
       "text": "Are these limited drops?",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "863",
+      "text": "Yes. To avoid textile overproduction, our hoodies drop within verified numbered limits. Once a color variant sells out, it will not be reproduced.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "864",
+      "text": "Get in",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "865",
+      "text": "Touch",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "866",
+      "text": "VYBE Node Hub",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "867",
+      "text": "Global Hub Matrix",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "868",
+      "text": "Grid Terminal 12, Industrial Sector BTech District, NY",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "869",
+      "text": "Support Pipeline",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "870",
+      "text": "terminal@vybeco.com",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "871",
+      "text": "Identity Handle",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "873",
+      "text": "Uplink Email Address",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "875",
+      "text": "Inquiry Log Data",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "877",
+      "text": "Transmit Uplink",
       "type": "button",
       "customized": false
     },
     {
-      "id": "button-169",
-      "text": "What's your return policy?",
-      "type": "button",
+      "id": "878",
+      "text": "Ready toLevel UpYour Wardrobe?",
+      "type": "heading",
       "customized": false
     },
     {
-      "id": "button-170",
-      "text": "Subscribe",
-      "type": "button",
+      "id": "879",
+      "text": "Join thousands of satisfied customers who've found their perfect hoodie.",
+      "type": "paragraph",
       "customized": false
     },
     {
-      "id": "button-171",
-      "text": "Add to Bag",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "button-172",
-      "text": "Buy Now",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "button-173",
-      "text": "Submit Review",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "button-174",
-      "text": "Cancel",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "link-175",
-      "text": "VYBE•Engineered",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-176",
-      "text": "The Story",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-177",
-      "text": "The Hoodie",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-178",
-      "text": "Reviews",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-179",
-      "text": "FAQ",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-180",
-      "text": "The Story",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-181",
-      "text": "The Hoodie",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-182",
-      "text": "Reviews",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-183",
-      "text": "FAQ",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-184",
-      "text": "Explore The Hoodie",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-185",
-      "text": "Read Reviews",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-186",
+      "id": "880",
       "text": "Shop The Hoodie",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-187",
+      "id": "881",
+      "text": "{brand}.",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "882",
+      "text": "Avant-garde engineered garments built for structural permanence. 500GSM French Terry — the heaviest in our collection.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "883",
+      "text": "Shop",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "884",
       "text": "The Hoodie",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-188",
+      "id": "885",
+      "text": "Community",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "886",
       "text": "Reviews",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-189",
+      "id": "887",
       "text": "Guarantee",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-190",
+      "id": "888",
+      "text": "Support",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "889",
       "text": "FAQ",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-191",
+      "id": "890",
       "text": "Contact",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-192",
-      "text": "Shipping",
+      "id": "891",
+      "text": "Shipping Policy",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-193",
+      "id": "892",
       "text": "Returns",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-194",
+      "id": "893",
+      "text": "Stay Updated",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "894",
+      "text": "Subscribe for exclusive drops, early access, and special offers.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "896",
+      "text": "Subscribe",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "897",
+      "text": "© 2026 {brand}. All rights reserved.",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "898",
       "text": "Privacy Policy",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-195",
+      "id": "899",
+      "text": "Terms",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "900",
+      "text": "The Heavyweight Hoodie",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "heading-111",
+      "text": "Saved Items",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-112",
+      "text": "Your Bag",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-113",
+      "text": "TheHeavyweightHoodie.",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-114",
+      "text": "The Heavyweight Hoodie",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-115",
+      "text": "Built forPermanence",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-116",
+      "text": "RawIntegrity",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-117",
+      "text": "CommunityStories",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-118",
+      "text": "Lifetime Guarantee",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-119",
+      "text": "Free Shipping",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-120",
+      "text": "30-Day Returns",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-121",
+      "text": "Secure Checkout",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-122",
+      "text": "DropIntel",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-123",
+      "text": "Get inTouch",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-124",
+      "text": "Global Hub Matrix",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-125",
+      "text": "Support Pipeline",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-126",
+      "text": "Ready toLevel UpYour Wardrobe?",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-127",
+      "text": "{brand}.",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-128",
+      "text": "Shop",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-129",
+      "text": "Support",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-130",
+      "text": "Stay Updated",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "paragraph-131",
+      "text": "Engineered structural silhouettes crafted in dense 500GSM organic French Terry. Built thick, structured perfectly, designed timelessly.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-132",
+      "text": "Heavy loopback structured boxy silhouette hoodie accented with industrial tonal detailing. 500GSM French Terry — the heaviest in our collection.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-133",
+      "text": "{brand} functions independently at the intersection of performance apparel design frameworks and clean industrial aesthetics. Our products are entirely manufactured from local sustainable mills utilizing bespoke combed organic cotton systems.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-134",
+      "text": "Our materials undergo deep processing in certified local facilities. The result is a fabric that maintains its structural signature under heavy use, developing rich character over time.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-135",
+      "text": "\"The heaviest hoodie I've ever owned. The quality is unmatched — you can feel the difference the moment you put it on.\"",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-136",
+      "text": "\"Perfect oversized fit. The 500GSM fabric is substantial without being stiff. It drapes beautifully.\"",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-137",
+      "text": "\"I've been searching for the perfect hoodie for years. This is it. Worth every penny.\"",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-138",
+      "text": "Built to last. We stand behind every hoodie.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-139",
+      "text": "Worldwide delivery on all orders",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-140",
+      "text": "Love it or return it — no questions",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-141",
+      "text": "Your payment is always protected",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-142",
+      "text": "Grams Per Square Meter (GSM) quantifies structural material density. Traditional hoodies sit around 280GSM. Our 500GSM provides an incredibly structured, luxury drape while remaining highly breathable.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-143",
+      "text": "Wash inside-out on gentle cold cycles with similar colors. Hang dry or lay flat. Avoid high-heat machine drying to preserve the fabric structure.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-144",
+      "text": "Yes. To avoid textile overproduction, our hoodies drop within verified numbered limits. Once a color variant sells out, it will not be reproduced.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-145",
+      "text": "Grid Terminal 12, Industrial Sector BTech District, NY",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-146",
+      "text": "terminal@vybeco.com",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-147",
+      "text": "Join thousands of satisfied customers who've found their perfect hoodie.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-148",
+      "text": "Avant-garde engineered garments built for structural permanence. 500GSM French Terry — the heaviest in our collection.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-149",
+      "text": "Subscribe for exclusive drops, early access, and special offers.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "button-150",
+      "text": "Apply",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-151",
+      "text": "Proceed to Checkout",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-152",
+      "text": "XL",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-153",
+      "text": "XXL",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "add-to-cart-btn",
+      "text": "Add to Bag — $84.00",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "buy-now-btn",
+      "text": "Buy Now",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-156",
+      "text": "Write a Review",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-157",
+      "text": "What makes 500GSM French Terry unique?",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-158",
+      "text": "How do I wash my hoodie?",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-159",
+      "text": "Are these limited drops?",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-160",
+      "text": "Transmit Uplink",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-161",
+      "text": "Subscribe",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-162",
+      "text": "Add",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-163",
+      "text": "Buy Now",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "link-164",
+      "text": "{brand}.",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-165",
+      "text": "The Hoodie",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-166",
+      "text": "Story",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-167",
+      "text": "Reviews",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-168",
+      "text": "FAQ",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-169",
+      "text": "Contact",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-170",
+      "text": "The Hoodie",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-171",
+      "text": "Story",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-172",
+      "text": "Reviews",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-173",
+      "text": "FAQ",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-174",
+      "text": "Contact",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-175",
+      "text": "Explore Now",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-176",
+      "text": "4.9★ Reviews",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-177",
+      "text": "Shop The Hoodie",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-178",
+      "text": "The Hoodie",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-179",
+      "text": "Community",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-180",
+      "text": "Reviews",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-181",
+      "text": "Guarantee",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-182",
+      "text": "FAQ",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-183",
+      "text": "Contact",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-184",
+      "text": "Shipping Policy",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-185",
+      "text": "Returns",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-186",
+      "text": "Privacy Policy",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-187",
       "text": "Terms",
       "type": "link",
       "customized": false
     },
     {
       "id": "page-title",
-      "text": "VYBE CO. | The Heavyweight Hoodie — Engineered for Life",
+      "text": "{brand}",
       "type": "title",
       "customized": false
     }
   ],
   "metadata": {
-    "total_elements": 196,
+    "total_elements": 188,
     "pages_count": 1,
     "components_count": 0
   }

@@ -5,413 +5,1221 @@
 
 {% block extra_css %}
 <style>
-/* Management Layout */
+:root {
+    --n-0: #ffffff;
+    --n-50: #fafafa;
+    --n-100: #f4f4f5;
+    --n-200: #e4e4e7;
+    --n-300: #d4d4d8;
+    --n-400: #a1a1aa;
+    --n-500: #71717a;
+    --n-600: #52525b;
+    --n-700: #3f3f46;
+    --n-800: #27272a;
+    --n-900: #18181b;
+
+    --accent: var(--primary-color, #111827);
+    --accent-hover: #000000;
+
+    --success: #15803d;
+    --warning: #a16207;
+    --danger: #b91c1c;
+
+    --border: var(--n-200);
+    --border-strong: var(--n-300);
+    --text: var(--n-900);
+    --text-muted: var(--n-500);
+    --text-subtle: var(--n-400);
+
+    --radius-sm: 4px;
+    --radius: 6px;
+    --radius-lg: 10px;
+}
+
 .management-layout {
     display: flex;
-    min-height: calc(100vh - 200px);
+    min-height: calc(100vh - 120px);
+    background: var(--n-50);
 }
 
 .management-content {
     flex: 1;
-    padding: 1.5rem;
-    background: white;
+    padding: 2.5rem 2rem 4rem;
+    max-width: 1280px;
+    width: 100%;
 }
 
-/* Form Submissions Specific Styles */
-.submission-row {
-    transition: background-color 0.2s ease;
+/* ===== Context breadcrumb ===== */
+.catalog-context {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
 }
-.submission-row:hover {
-    background-color: #f8f9ff !important;
-}
-.message-preview {
-    color: #4a5568;
-    font-size: 0.9rem;
-    line-height: 1.5;
-}
-.table td {
-    vertical-align: middle;
-}
-.badge {
+
+.context-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.15s;
     font-weight: 500;
-    letter-spacing: 0.3px;
 }
-.pagination .page-link {
-    border: none;
-    margin: 0 3px;
-    border-radius: 8px;
-    color: #4a5568;
+
+.context-back:hover { color: var(--text); }
+.context-back svg { transition: transform 0.15s; }
+.context-back:hover svg { transform: translateX(-2px); }
+.context-sep { color: var(--n-300); }
+.context-current { color: var(--text); font-weight: 500; }
+
+/* ===== Title row ===== */
+.catalog-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
 }
-.pagination .page-item.active .page-link {
-    background-color: #4361ee;
+
+.catalog-title-block { min-width: 0; }
+
+.catalog-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    color: var(--text);
+    margin: 0 0 0.25rem 0;
+    line-height: 1.15;
+}
+
+.catalog-sub {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    margin: 0;
+    font-variant-numeric: tabular-nums;
+}
+
+.catalog-sub strong {
+    color: var(--text);
+    font-weight: 600;
+}
+
+.catalog-actions {
+    display: flex;
+    gap: 0.375rem;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* ===== Buttons ===== */
+.btn {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    border-radius: var(--radius);
+    padding: 0.5rem 0.875rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    line-height: 1.25;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: inherit;
+}
+
+.btn-ghost {
+    background: var(--n-0);
+    border-color: var(--border);
+    color: var(--n-700);
+}
+
+.btn-ghost:hover {
+    background: var(--n-50);
+    border-color: var(--border-strong);
+    color: var(--text);
+}
+
+.btn-accent {
+    background: var(--accent);
+    border-color: var(--accent);
     color: white;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .management-layout {
+.btn-accent:hover {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+    color: white;
+}
+
+.btn-icon {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    justify-content: center;
+}
+
+/* ===== Toolbar ===== */
+.catalog-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.toolbar-search {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 0.625rem;
+    background: var(--n-50);
+    border: 1px solid transparent;
+    border-radius: var(--radius);
+    transition: border-color 0.15s, background 0.15s;
+    min-width: 200px;
+}
+
+.toolbar-search:focus-within {
+    background: var(--n-0);
+    border-color: var(--border-strong);
+}
+
+.toolbar-search svg {
+    color: var(--n-400);
+    flex-shrink: 0;
+}
+
+.toolbar-search input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: 0.8125rem;
+    color: var(--text);
+    outline: none;
+    min-width: 0;
+    font-family: inherit;
+}
+
+.toolbar-search input::placeholder { color: var(--n-400); }
+
+.toolbar-divider {
+    width: 1px;
+    height: 20px;
+    background: var(--border);
+    flex-shrink: 0;
+}
+
+.toolbar-filter { flex-shrink: 0; }
+
+.filter-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.4375rem 0.625rem;
+    background: transparent;
+    border: none;
+    color: var(--n-600);
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    transition: background 0.15s, color 0.15s;
+    font-family: inherit;
+    line-height: 1.2;
+}
+
+.filter-trigger:hover {
+    background: var(--n-100);
+    color: var(--text);
+}
+
+.filter-trigger svg {
+    color: var(--n-400);
+    transition: transform 0.15s;
+}
+
+.filter-trigger[aria-expanded="true"] svg {
+    transform: rotate(180deg);
+}
+
+.filter-trigger .filter-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+    background: var(--n-900);
+    color: white;
+    border-radius: 8px;
+    font-size: 0.625rem;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.filter-panel {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.15);
+    padding: 0.75rem;
+    min-width: 240px;
+    font-size: 0.8125rem;
+}
+
+.filter-panel .filter-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+}
+
+.filter-panel label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ===== Active filter pills ===== */
+.active-filters {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.active-filters-label {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    margin-right: 0.25rem;
+}
+
+.filter-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.5rem 0.25rem 0.625rem;
+    background: var(--n-100);
+    border-radius: 4px;
+    font-size: 0.6875rem;
+    color: var(--n-700);
+    font-weight: 500;
+}
+
+.filter-pill .pill-key { color: var(--text-muted); }
+.filter-pill .pill-value { color: var(--text); font-weight: 600; }
+
+.filter-pill .pill-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    color: var(--n-500);
+    cursor: pointer;
+    padding: 0;
+    margin-left: 0.125rem;
+    transition: background 0.15s, color 0.15s;
+}
+
+.filter-pill .pill-close:hover {
+    background: var(--n-300);
+    color: var(--text);
+}
+
+/* ===== Stats bar ===== */
+.stats-bar {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0.875rem 1.125rem;
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    margin-bottom: 1.5rem;
+}
+
+.stats-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding-right: 1.5rem;
+    border-right: 1px solid var(--border);
+}
+
+.stats-grid {
+    flex: 1;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    min-width: 0;
+}
+
+.stat-value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+}
+
+.stat-label {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+}
+
+/* ===== Panel ===== */
+.panel {
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.panel-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.875rem 1.125rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.panel-title {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0;
+    letter-spacing: -0.005em;
+}
+
+.panel-meta {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+}
+
+/* ===== Submissions table ===== */
+.subs-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8125rem;
+}
+
+.subs-table th {
+    text-align: left;
+    font-weight: 500;
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.625rem 1.125rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--n-50);
+    white-space: nowrap;
+}
+
+.subs-table th:last-child { text-align: right; }
+
+.subs-table td {
+    padding: 0.875rem 1.125rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+}
+
+.subs-table td:last-child { text-align: right; }
+
+.subs-table tbody tr:last-child td { border-bottom: none; }
+.subs-table tbody tr { transition: background 0.1s; }
+.subs-table tbody tr:hover { background: var(--n-50); }
+
+/* Row num */
+.row-num {
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 0.6875rem;
+    color: var(--text-subtle);
+    font-variant-numeric: tabular-nums;
+}
+
+/* Form badge */
+.form-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3125rem;
+    padding: 0.1875rem 0.5rem;
+    background: var(--n-100);
+    border-radius: 4px;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--n-700);
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+.form-badge::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--n-400);
+}
+
+/* Contact cell */
+.contact-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    min-width: 0;
+    max-width: 220px;
+}
+
+.contact-name {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.contact-meta {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.contact-meta svg {
+    color: var(--text-subtle);
+    flex-shrink: 0;
+}
+
+/* Subject */
+.subject-cell {
+    font-size: 0.8125rem;
+    color: var(--text);
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 180px;
+}
+
+/* Message preview */
+.msg-cell {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    max-width: 240px;
+}
+
+/* Date */
+.date-cell {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}
+
+.date-cell .date-main {
+    color: var(--text);
+    font-weight: 500;
+    display: block;
+}
+
+/* Row actions */
+.row-actions {
+    display: inline-flex;
+    gap: 0.125rem;
+    justify-content: flex-end;
+}
+
+.row-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border: none;
+    background: transparent;
+    color: var(--n-500);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.1s, color 0.1s;
+    position: relative;
+}
+
+.row-action:hover {
+    background: var(--n-100);
+    color: var(--text);
+}
+
+.row-action.danger:hover {
+    background: #fef2f2;
+    color: var(--danger);
+}
+
+.row-action[data-tip]:hover::after {
+    content: attr(data-tip);
+    position: absolute;
+    bottom: calc(100% + 6px);
+    right: 0;
+    background: var(--n-900);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.6875rem;
+    white-space: nowrap;
+    font-weight: 500;
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* ===== Empty state ===== */
+.empty-state {
+    text-align: center;
+    padding: 5rem 2rem;
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+}
+
+.empty-state-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--n-100);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--n-500);
+    margin-bottom: 1.25rem;
+}
+
+.empty-state h5 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0 0 0.375rem 0;
+}
+
+.empty-state p {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin: 0 0 1.5rem 0;
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5;
+}
+
+/* ===== Pagination ===== */
+.pagination {
+    gap: 0.25rem;
+    margin: 0;
+    justify-content: center;
+    display: flex;
+    list-style: none;
+    padding: 0.875rem 1.125rem;
+    border-top: 1px solid var(--border);
+}
+
+.pagination .page-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 32px;
+    padding: 0 0.5rem;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.8125rem;
+    border-radius: var(--radius-sm);
+    background: var(--n-0);
+    text-decoration: none;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+    font-variant-numeric: tabular-nums;
+}
+
+.pagination .page-link:hover {
+    background: var(--n-100);
+    color: var(--text);
+    border-color: var(--border-strong);
+}
+
+.pagination .page-item.active .page-link {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+}
+
+/* ===== Modals ===== */
+.modal-content {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 1.25rem;
+}
+
+.modal-title { font-size: 0.9375rem; font-weight: 600; }
+.modal-body { padding: 1.25rem; }
+
+.modal-footer {
+    border-top: 1px solid var(--border);
+    padding: 0.875rem 1.25rem;
+    background: var(--n-50);
+}
+
+/* ===== Toast ===== */
+.toast-stack {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    pointer-events: none;
+}
+
+.toast {
+    background: var(--n-900);
+    color: white;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    max-width: 360px;
+    pointer-events: auto;
+    animation: toastIn 0.2s ease;
+}
+
+.toast.error { background: var(--danger); }
+.toast.success { background: var(--n-900); }
+
+@keyframes toastIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+    .management-content { padding: 1.5rem 1rem 3rem; }
+
+    .catalog-title-row {
         flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
     }
-    
-    .management-content {
+
+    .catalog-actions { justify-content: flex-start; flex-wrap: wrap; }
+
+    .stats-bar {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .stats-label {
+        border-right: none;
+        padding-right: 0;
         width: 100%;
-        padding: 1rem;
     }
-    
-    .container-fluid.py-5 {
-        padding-top: 1rem !important;
-        padding-bottom: 2rem !important;
-    }
-    
+
     .stats-grid {
-        grid-template-columns: 1fr;
+        width: 100%;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .catalog-toolbar {
+        flex-wrap: wrap;
+        padding: 0.5rem;
+    }
+
+    .toolbar-search { width: 100%; }
+    .toolbar-divider { display: none; }
+}
+
+@media (max-width: 640px) {
+    .catalog-title { font-size: 1.375rem; }
+
+    .subs-table th:nth-child(4),
+    .subs-table td:nth-child(4),
+    .subs-table th:nth-child(5),
+    .subs-table td:nth-child(5) {
+        display: none;
+    }
+
+    .subs-table th, .subs-table td {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
     }
 }
 </style>
 {% endblock %}
 
 {% block content %}
-<div class="container-fluid py-4">
-    <!-- Management Layout with Sidebar -->
-    <div class="management-layout">
-        <!-- Include Sidebar Snippet with active_menu='forms' -->
-        {% include 'builder/includes/sidebar.html' with active_menu='forms' %}
-        
-        <!-- Main Content -->
-        <div class="management-content">
-            <!-- Header -->
-            <div class="row mb-4">
-                <div class="col-12">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
-                            <li class="breadcrumb-item"><a href="{% url 'manage_products' page.subdomain %}">{{ page.brand_name }}</a></li>
-                            <li class="breadcrumb-item active">Form Submissions</li>
-                        </ol>
-                    </nav>
-                    
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <h1 class="display-6 fw-bold text-primary mb-2">
-                                <i class="fas fa-envelope me-3"></i>Form Submissions
-                            </h1>
-                            <p class="text-muted mb-0">
-                                {{ page.brand_name }} • {{ submissions_count }} total submissions
-                            </p>
-                        </div>
-                        <div class="btn-group">
-                            <button class="btn btn-outline-primary" id="exportBtn" onclick="exportSubmissions()">
-                                <i class="fas fa-download me-2"></i>Export CSV
-                            </button>
-                            <button class="btn btn-outline-secondary" onclick="window.location.reload()">
-                                <i class="fas fa-sync-alt me-2"></i>Refresh
-                            </button>
-                        </div>
-                    </div>
-                </div>
+
+<div class="toast-stack" id="toastStack"></div>
+
+<div class="management-layout">
+    {% include 'builder/includes/sidebar.html' with active_menu='forms' %}
+
+    <div class="management-content">
+
+        <!-- Context -->
+        <div class="catalog-context">
+            <a href="{% url 'dashboard' %}" class="context-back">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                <span>Dashboard</span>
+            </a>
+            <span class="context-sep">/</span>
+            <a href="{% url 'manage_products' page.subdomain %}" class="context-back">
+                <span>{{ page.brand_name }}</span>
+            </a>
+            <span class="context-sep">/</span>
+            <span class="context-current">Form submissions</span>
+        </div>
+
+        <!-- Title -->
+        <div class="catalog-title-row">
+            <div class="catalog-title-block">
+                <h1 class="catalog-title">Form submissions</h1>
+                <p class="catalog-sub">
+                    <strong>{{ submissions_count }}</strong> submission{{ submissions_count|pluralize }}
+                    · {{ monthly_count }} this month
+                </p>
             </div>
-            
-            <!-- Filters -->
-            <div class="row mb-4">
-                <div class="col-12">
-                    <div class="card border-0 shadow-sm">
-                        <div class="card-body">
-                            <form id="filterForm" method="get" class="row g-3 align-items-end">
-                                <div class="col-md-3">
-                                    <label class="form-label small fw-bold text-muted">Form Type</label>
-                                    <select name="form_name" class="form-select" onchange="this.form.submit()">
-                                        <option value="">All Forms</option>
-                                        {% for name in form_names %}
-                                        <option value="{{ name }}" {% if request.GET.form_name == name %}selected{% endif %}>
-                                            {{ name|title }}
-                                        </option>
-                                        {% endfor %}
-                                    </select>
-                                </div>
-                                <div class="col-md-3">
-                                    <label class="form-label small fw-bold text-muted">Date Range</label>
-                                    <select name="date_range" class="form-select" onchange="this.form.submit()">
-                                        <option value="">All Time</option>
-                                        <option value="today" {% if request.GET.date_range == 'today' %}selected{% endif %}>Today</option>
-                                        <option value="week" {% if request.GET.date_range == 'week' %}selected{% endif %}>This Week</option>
-                                        <option value="month" {% if request.GET.date_range == 'month' %}selected{% endif %}>This Month</option>
-                                        <option value="year" {% if request.GET.date_range == 'year' %}selected{% endif %}>This Year</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-4">
-                                    <label class="form-label small fw-bold text-muted">Search</label>
-                                    <div class="input-group">
-                                        <input type="text" name="search" class="form-control" placeholder="Search by email or name..." value="{{ request.GET.search }}">
-                                        <button class="btn btn-primary" type="submit">
-                                            <i class="fas fa-search"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="col-md-2 text-end">
-                                    <a href="?" class="btn btn-outline-secondary">Clear Filters</a>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+            <div class="catalog-actions">
+                <button class="btn btn-ghost" onclick="window.location.reload()">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/>
+                        <path d="M21 3v5h-5"/>
+                    </svg>
+                    <span>Refresh</span>
+                </button>
+                <button class="btn btn-accent" id="exportBtn" onclick="exportSubmissions()">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="7 10 12 15 17 10"/>
+                        <line x1="12" y1="15" x2="12" y2="3"/>
+                    </svg>
+                    <span>Export CSV</span>
+                </button>
             </div>
-            
-            <!-- Submissions Stats Cards -->
-            <div class="row mb-4 g-4">
-                <div class="col-md-3">
-                    <div class="card border-0 shadow-sm bg-primary text-white">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <h6 class="text-white-50 mb-2">Total Submissions</h6>
-                                    <h2 class="mb-0">{{ submissions_count }}</h2>
-                                </div>
-                                <div class="bg-white bg-opacity-25 rounded-circle p-3">
-                                    <i class="fas fa-envelope fa-2x"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        </div>
+
+        <!-- Stats bar -->
+        <div class="stats-bar">
+            <span class="stats-label">Overview</span>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value">{{ submissions_count }}</div>
+                    <div class="stat-label">Total</div>
                 </div>
-                
-                <div class="col-md-3">
-                    <div class="card border-0 shadow-sm bg-success text-white">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <h6 class="text-white-50 mb-2">This Month</h6>
-                                    <h2 class="mb-0">{{ monthly_count }}</h2>
-                                </div>
-                                <div class="bg-white bg-opacity-25 rounded-circle p-3">
-                                    <i class="fas fa-calendar-alt fa-2x"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="stat-item">
+                    <div class="stat-value">{{ monthly_count }}</div>
+                    <div class="stat-label">This month</div>
                 </div>
-                
-                <div class="col-md-3">
-                    <div class="card border-0 shadow-sm bg-info text-white">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <h6 class="text-white-50 mb-2">Unique Contacts</h6>
-                                    <h2 class="mb-0">{{ unique_contacts }}</h2>
-                                </div>
-                                <div class="bg-white bg-opacity-25 rounded-circle p-3">
-                                    <i class="fas fa-users fa-2x"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="stat-item">
+                    <div class="stat-value">{{ unique_contacts }}</div>
+                    <div class="stat-label">Unique contacts</div>
                 </div>
-                
-                <div class="col-md-3">
-                    <div class="card border-0 shadow-sm bg-warning text-white">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <h6 class="text-white-50 mb-2">Response Rate</h6>
-                                    <h2 class="mb-0">{{ response_rate }}%</h2>
-                                </div>
-                                <div class="bg-white bg-opacity-25 rounded-circle p-3">
-                                    <i class="fas fa-chart-line fa-2x"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Submissions Table -->
-            <div class="row">
-                <div class="col-12">
-                    <div class="card border-0 shadow-sm">
-                        <div class="card-header bg-white py-3">
-                            <h5 class="mb-0 fw-bold">Recent Submissions</h5>
-                        </div>
-                        
-                        <div class="card-body p-0">
-                            {% if submissions %}
-                            <div class="table-responsive">
-                                <table class="table table-hover align-middle mb-0">
-                                    <thead class="bg-light">
-                                        <tr>
-                                            <th class="py-3 px-4">#</th>
-                                            <th class="py-3">Form</th>
-                                            <th class="py-3">Contact Info</th>
-                                            <th class="py-3">Subject</th>
-                                            <th class="py-3">Message Preview</th>
-                                            <th class="py-3">Date</th>
-                                            <th class="py-3 text-end px-4">Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {% for submission in submissions %}
-                                        <tr class="submission-row" data-id="{{ submission.id }}">
-                                            <td class="px-4 fw-medium">{{ forloop.counter }}</td>
-                                            <td>
-                                                <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2">
-                                                    {{ submission.form_name|title }}
-                                                </span>
-                                            </td>
-                                            <td>
-                                                <div class="d-flex flex-column">
-                                                    <span class="fw-medium">{{ submission.submitted_data.first_name }} {{ submission.submitted_data.last_name }}</span>
-                                                    <small class="text-muted">
-                                                        <i class="fas fa-envelope fa-xs me-1"></i>{{ submission.submitted_data.email }}
-                                                    </small>
-                                                    {% if submission.submitted_data.phone %}
-                                                    <small class="text-muted">
-                                                        <i class="fas fa-phone fa-xs me-1"></i>{{ submission.submitted_data.phone }}
-                                                    </small>
-                                                    {% endif %}
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <span class="fw-medium">{{ submission.submitted_data.subject|default:"No Subject"|truncatechars:30 }}</span>
-                                            </td>
-                                            <td>
-                                                <div class="message-preview" style="max-width: 250px;">
-                                                    {{ submission.submitted_data.message|truncatechars:60 }}
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="d-flex flex-column">
-                                                    <span class="fw-medium">{{ submission.submitted_at|date:"M d, Y" }}</span>
-                                                    <small class="text-muted">{{ submission.submitted_at|time:"H:i" }}</small>
-                                                </div>
-                                            </td>
-                                            <td class="text-end px-4">
-                                                <div class="btn-group">
-                                                    <button class="btn btn-sm btn-outline-primary view-submission" data-id="{{ submission.id }}">
-                                                        <i class="fas fa-eye"></i>
-                                                    </button>
-                                                    <button class="btn btn-sm btn-outline-danger delete-submission" data-id="{{ submission.id }}">
-                                                        <i class="fas fa-trash"></i>
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        {% endfor %}
-                                    </tbody>
-                                </table>
-                            </div>
-                            {% else %}
-                            <div class="text-center py-5">
-                                <div class="mb-4">
-                                    <i class="fas fa-inbox fa-4x text-muted opacity-50"></i>
-                                </div>
-                                <h5 class="text-muted">No Submissions Yet</h5>
-                                <p class="text-muted mb-4">When visitors submit forms on your site, they'll appear here.</p>
-                                <a href="{{ page.get_absolute_url }}" target="_blank" class="btn btn-primary">
-                                    <i class="fas fa-external-link-alt me-2"></i>View Your Site
-                                </a>
-                            </div>
-                            {% endif %}
-                        </div>
-                        
-                        {% if submissions.paginator.num_pages > 1 %}
-                        <div class="card-footer bg-white py-3">
-                            <nav>
-                                <ul class="pagination justify-content-center mb-0">
-                                    {% if submissions.has_previous %}
-                                    <li class="page-item">
-                                        <a class="page-link" href="?page=1{% if request.GET.form_name %}&form_name={{ request.GET.form_name }}{% endif %}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}" aria-label="First">
-                                            <span aria-hidden="true">&laquo;&laquo;</span>
-                                        </a>
-                                    </li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="?page={{ submissions.previous_page_number }}{% if request.GET.form_name %}&form_name={{ request.GET.form_name }}{% endif %}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                        </a>
-                                    </li>
-                                    {% endif %}
-                                    
-                                    {% for num in submissions.paginator.page_range %}
-                                        {% if submissions.number == num %}
-                                        <li class="page-item active"><span class="page-link">{{ num }}</span></li>
-                                        {% elif num > submissions.number|add:'-3' and num < submissions.number|add:'3' %}
-                                        <li class="page-item">
-                                            <a class="page-link" href="?page={{ num }}{% if request.GET.form_name %}&form_name={{ request.GET.form_name }}{% endif %}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">{{ num }}</a>
-                                        </li>
-                                        {% endif %}
-                                    {% endfor %}
-                                    
-                                    {% if submissions.has_next %}
-                                    <li class="page-item">
-                                        <a class="page-link" href="?page={{ submissions.next_page_number }}{% if request.GET.form_name %}&form_name={{ request.GET.form_name }}{% endif %}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}" aria-label="Next">
-                                            <span aria-hidden="true">&raquo;</span>
-                                        </a>
-                                    </li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="?page={{ submissions.paginator.num_pages }}{% if request.GET.form_name %}&form_name={{ request.GET.form_name }}{% endif %}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}" aria-label="Last">
-                                            <span aria-hidden="true">&raquo;&raquo;</span>
-                                        </a>
-                                    </li>
-                                    {% endif %}
-                                </ul>
-                            </nav>
-                        </div>
-                        {% endif %}
-                    </div>
+                <div class="stat-item">
+                    <div class="stat-value">{{ response_rate }}%</div>
+                    <div class="stat-label">Response rate</div>
                 </div>
             </div>
         </div>
+
+        <!-- Toolbar -->
+        <div class="catalog-toolbar">
+
+            <div class="toolbar-search">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"/>
+                    <path d="m21 21-4.3-4.3"/>
+                </svg>
+                <input type="search" id="submissionSearch"
+                       placeholder="Search by email or name…"
+                       value="{{ request.GET.search|default:'' }}">
+            </div>
+
+            <div class="toolbar-divider"></div>
+
+            <!-- Form type filter -->
+            <div class="toolbar-filter dropdown">
+                <button class="filter-trigger" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span>Form</span>
+                    {% if request.GET.form_name %}<span class="filter-count">1</span>{% endif %}
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m6 9 6 6 6-6"/>
+                    </svg>
+                </button>
+                <div class="dropdown-menu filter-panel">
+                    <form method="get" id="formNameFilterForm">
+                        <input type="hidden" name="date_range" value="{{ request.GET.date_range|default:'' }}">
+                        <input type="hidden" name="search" value="{{ request.GET.search|default:'' }}">
+                        <div class="filter-row">
+                            <label>Form type</label>
+                            <select name="form_name" class="form-select" onchange="document.getElementById('formNameFilterForm').submit()">
+                                <option value="">All forms</option>
+                                {% for name in form_names %}
+                                <option value="{{ name }}" {% if request.GET.form_name == name %}selected{% endif %}>
+                                    {{ name|title }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Date range filter -->
+            <div class="toolbar-filter dropdown">
+                <button class="filter-trigger" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span>Date</span>
+                    {% if request.GET.date_range %}<span class="filter-count">1</span>{% endif %}
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m6 9 6 6 6-6"/>
+                    </svg>
+                </button>
+                <div class="dropdown-menu filter-panel">
+                    <form method="get" id="dateRangeFilterForm">
+                        <input type="hidden" name="form_name" value="{{ request.GET.form_name|default:'' }}">
+                        <input type="hidden" name="search" value="{{ request.GET.search|default:'' }}">
+                        <div class="filter-row">
+                            <label>Date range</label>
+                            <select name="date_range" class="form-select" onchange="document.getElementById('dateRangeFilterForm').submit()">
+                                <option value="">All time</option>
+                                <option value="today" {% if request.GET.date_range == 'today' %}selected{% endif %}>Today</option>
+                                <option value="week" {% if request.GET.date_range == 'week' %}selected{% endif %}>This week</option>
+                                <option value="month" {% if request.GET.date_range == 'month' %}selected{% endif %}>This month</option>
+                                <option value="year" {% if request.GET.date_range == 'year' %}selected{% endif %}>This year</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Active filters -->
+        {% if request.GET.form_name or request.GET.date_range or request.GET.search %}
+        <div class="active-filters">
+            <span class="active-filters-label">Filters</span>
+
+            {% if request.GET.form_name %}
+            <span class="filter-pill">
+                <span class="pill-key">Form</span>
+                <span class="pill-value">{{ request.GET.form_name|title }}</span>
+                <a class="pill-close" href="?{% if request.GET.date_range %}date_range={{ request.GET.date_range }}&{% endif %}{% if request.GET.search %}search={{ request.GET.search }}{% endif %}" title="Remove">
+                    <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 6 6 18M6 6l12 12"/>
+                    </svg>
+                </a>
+            </span>
+            {% endif %}
+
+            {% if request.GET.date_range %}
+            <span class="filter-pill">
+                <span class="pill-key">Date</span>
+                <span class="pill-value">{{ request.GET.date_range|title }}</span>
+                <a class="pill-close" href="?{% if request.GET.form_name %}form_name={{ request.GET.form_name }}&{% endif %}{% if request.GET.search %}search={{ request.GET.search }}{% endif %}" title="Remove">
+                    <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 6 6 18M6 6l12 12"/>
+                    </svg>
+                </a>
+            </span>
+            {% endif %}
+
+            {% if request.GET.search %}
+            <span class="filter-pill">
+                <span class="pill-key">Search</span>
+                <span class="pill-value">"{{ request.GET.search|truncatechars:20 }}"</span>
+                <a class="pill-close" href="?{% if request.GET.form_name %}form_name={{ request.GET.form_name }}&{% endif %}{% if request.GET.date_range %}date_range={{ request.GET.date_range }}{% endif %}" title="Remove">
+                    <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 6 6 18M6 6l12 12"/>
+                    </svg>
+                </a>
+            </span>
+            {% endif %}
+
+            <a href="?" style="font-size: 0.6875rem; color: var(--text-muted); margin-left: 0.25rem; text-decoration: none; font-weight: 500;" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text-muted)'">
+                Clear all
+            </a>
+        </div>
+        {% endif %}
+
+        <!-- Submissions -->
+        {% if submissions %}
+        <div class="panel">
+            <div class="panel-head">
+                <h2 class="panel-title">Submissions</h2>
+                <span class="panel-meta">{{ submissions.paginator.count }} result{{ submissions.paginator.count|pluralize }}</span>
+            </div>
+
+            <table class="subs-table">
+                <thead>
+                    <tr>
+                        <th style="width: 40px;">#</th>
+                        <th>Form</th>
+                        <th>Contact</th>
+                        <th>Subject</th>
+                        <th>Message</th>
+                        <th>Date</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for submission in submissions %}
+                    <tr class="submission-row" data-id="{{ submission.id }}">
+                        <td><span class="row-num">{{ forloop.counter|stringformat:"02d" }}</span></td>
+                        <td>
+                            <span class="form-badge">
+                                {{ submission.form_name|title }}
+                            </span>
+                        </td>
+                        <td>
+                            <div class="contact-cell">
+                                <span class="contact-name">
+                                    {{ submission.submitted_data.first_name }} {{ submission.submitted_data.last_name }}
+                                </span>
+                                <span class="contact-meta">
+                                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="2" y="4" width="20" height="16" rx="2"/>
+                                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                                    </svg>
+                                    <span>{{ submission.submitted_data.email }}</span>
+                                </span>
+                                {% if submission.submitted_data.phone %}
+                                <span class="contact-meta">
+                                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                    </svg>
+                                    <span>{{ submission.submitted_data.phone }}</span>
+                                </span>
+                                {% endif %}
+                            </div>
+                        </td>
+                        <td>
+                            <span class="subject-cell">
+                                {{ submission.submitted_data.subject|default:"No subject"|truncatechars:30 }}
+                            </span>
+                        </td>
+                        <td>
+                            <div class="msg-cell">
+                                {{ submission.submitted_data.message|truncatechars:80 }}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="date-cell">
+                                <span class="date-main">{{ submission.submitted_at|date:"M j, Y" }}</span>
+                                {{ submission.submitted_at|time:"H:i" }}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="row-actions">
+                                <button class="row-action view-submission" data-id="{{ submission.id }}" data-tip="View">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+                                        <circle cx="12" cy="12" r="3"/>
+                                    </svg>
+                                </button>
+                                <button class="row-action danger delete-submission" data-id="{{ submission.id }}" data-tip="Delete">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <!-- Pagination -->
+            {% if submissions.paginator.num_pages > 1 %}
+            <ul class="pagination">
+                {% if submissions.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ submissions.previous_page_number }}{% if request.GET.form_name %}&form_name={{ request.GET.form_name }}{% endif %}{% if request.GET.date_range %}&date_range={{ request.GET.date_range }}{% endif %}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m15 18-6-6 6-6"/>
+                        </svg>
+                    </a>
+                </li>
+                {% endif %}
+
+                {% for num in submissions.paginator.page_range %}
+                    {% if submissions.number == num %}
+                    <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+                    {% elif num > submissions.number|add:'-3' and num < submissions.number|add:'3' %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ num }}{% if request.GET.form_name %}&form_name={{ request.GET.form_name }}{% endif %}{% if request.GET.date_range %}&date_range={{ request.GET.date_range }}{% endif %}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">{{ num }}</a>
+                    </li>
+                    {% endif %}
+                {% endfor %}
+
+                {% if submissions.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ submissions.next_page_number }}{% if request.GET.form_name %}&form_name={{ request.GET.form_name }}{% endif %}{% if request.GET.date_range %}&date_range={{ request.GET.date_range }}{% endif %}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m9 18 6-6-6-6"/>
+                        </svg>
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+            {% endif %}
+        </div>
+
+        {% else %}
+
+        <div class="empty-state">
+            <div class="empty-state-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 12h-6l-2 3h-4l-2-3H2"/>
+                    <path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/>
+                </svg>
+            </div>
+            <h5>
+                {% if request.GET.form_name or request.GET.date_range or request.GET.search %}
+                No submissions match your filters
+                {% else %}
+                No submissions yet
+                {% endif %}
+            </h5>
+            <p>
+                {% if request.GET.form_name or request.GET.date_range or request.GET.search %}
+                Try adjusting or clearing your filters to see more results.
+                {% else %}
+                When visitors submit forms on your site, they'll appear here.
+                {% endif %}
+            </p>
+            {% if request.GET.form_name or request.GET.date_range or request.GET.search %}
+            <a href="?" class="btn btn-ghost">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 6 6 18M6 6l12 12"/>
+                </svg>
+                <span>Clear filters</span>
+            </a>
+            {% else %}
+            <a href="{{ page.get_absolute_url }}" target="_blank" rel="noopener" class="btn btn-accent">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                </svg>
+                <span>View your site</span>
+            </a>
+            {% endif %}
+        </div>
+
+        {% endif %}
+
     </div>
 </div>
 
-<!-- View Submission Modal -->
+<!-- ============ VIEW SUBMISSION MODAL ============ -->
 <div class="modal fade" id="viewSubmissionModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content border-0">
-            <div class="modal-header bg-primary text-white border-0">
-                <h5 class="modal-title">
-                    <i class="fas fa-envelope-open-text me-2"></i>
-                    Submission Details
-                </h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Submission details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body p-4" id="submissionDetails">
+            <div class="modal-body" id="submissionDetails">
                 <div class="text-center py-4">
-                    <div class="spinner-border text-primary" role="status">
-                        <span class="visually-hidden">Loading...</span>
+                    <div class="spinner-border text-secondary" role="status">
+                        <span class="visually-hidden">Loading…</span>
                     </div>
                 </div>
             </div>
-            <div class="modal-footer bg-light border-0">
-                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="markAsReadBtn">
-                    <i class="fas fa-check-circle me-2"></i>Mark as Read
+            <div class="modal-footer">
+                <button type="button" class="btn btn-ghost" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-accent" id="markAsReadBtn">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 6 9 17l-5-5"/>
+                    </svg>
+                    <span>Mark as read</span>
                 </button>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Delete Confirmation Modal -->
+<!-- ============ DELETE MODAL ============ -->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content border-0">
-            <div class="modal-header bg-danger text-white border-0">
-                <h5 class="modal-title">
-                    <i class="fas fa-exclamation-triangle me-2"></i>
-                    Confirm Delete
-                </h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete submission</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body p-4 text-center">
-                <i class="fas fa-trash-alt fa-4x text-danger mb-3"></i>
-                <h5>Are you sure?</h5>
-                <p class="text-muted">This action cannot be undone.</p>
+            <div class="modal-body">
+                <p class="mb-2" style="font-size: 0.875rem;">Are you sure?</p>
+                <p class="text-muted mb-0" style="font-size: 0.8125rem;">This can't be undone.</p>
             </div>
-            <div class="modal-footer bg-light border-0">
-                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Delete</button>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-ghost" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn" id="confirmDeleteBtn"
+                        style="background: var(--danger); border-color: var(--danger); color: white;">
+                    Delete
+                </button>
             </div>
         </div>
     </div>
 </div>
+
 {% endblock %}
 
 {% block extra_js %}
@@ -420,56 +1228,70 @@ let currentSubmissionId = null;
 let viewModal = null;
 let deleteModal = null;
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize modals
+document.addEventListener('DOMContentLoaded', function () {
+    /* ============ Initialize modals ============ */
     viewModal = new bootstrap.Modal(document.getElementById('viewSubmissionModal'));
     deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
-    
-    // View submission
+
+    /* ============ Live search (debounced) ============ */
+    const searchInput = document.getElementById('submissionSearch');
+    if (searchInput) {
+        let timer = null;
+        searchInput.addEventListener('input', function () {
+            clearTimeout(timer);
+            timer = setTimeout(() => {
+                const url = new URL(window.location.href);
+                const val = searchInput.value.trim();
+                if (val) url.searchParams.set('search', val);
+                else url.searchParams.delete('search');
+                url.searchParams.delete('page');
+                window.location.href = url.toString();
+            }, 500);
+        });
+    }
+
+    /* ============ View submission ============ */
     document.querySelectorAll('.view-submission').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const id = this.dataset.id;
-            viewSubmission(id);
+        btn.addEventListener('click', function () {
+            viewSubmission(this.dataset.id);
         });
     });
-    
-    // Delete submission
+
+    /* ============ Delete submission ============ */
     document.querySelectorAll('.delete-submission').forEach(btn => {
-        btn.addEventListener('click', function() {
+        btn.addEventListener('click', function () {
             currentSubmissionId = this.dataset.id;
             deleteModal.show();
         });
     });
-    
-    // Confirm delete
-    document.getElementById('confirmDeleteBtn').addEventListener('click', function() {
-        if (currentSubmissionId) {
-            deleteSubmission(currentSubmissionId);
-        }
+
+    /* ============ Confirm delete ============ */
+    document.getElementById('confirmDeleteBtn').addEventListener('click', function () {
+        if (currentSubmissionId) deleteSubmission(currentSubmissionId);
     });
-    
-    // Mark as read
-    document.getElementById('markAsReadBtn').addEventListener('click', function() {
-        if (currentSubmissionId) {
-            markAsRead(currentSubmissionId);
-        }
+
+    /* ============ Mark as read ============ */
+    document.getElementById('markAsReadBtn').addEventListener('click', function () {
+        if (currentSubmissionId) markAsRead(currentSubmissionId);
     });
 });
 
+/* ============ Fetch and render submission details ============ */
 async function viewSubmission(id) {
     const detailsEl = document.getElementById('submissionDetails');
-    
+    currentSubmissionId = id;
+
     try {
         const response = await fetch(`/builder/api/submission/${id}/`);
         const data = await response.json();
-        
+
         if (data.success) {
             const sub = data.submission;
             detailsEl.innerHTML = `
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <div class="bg-light p-3 rounded">
-                            <small class="text-muted d-block mb-1">Form Name</small>
+                            <small class="text-muted d-block mb-1">Form</small>
                             <strong>${escapeHtml(sub.form_name)}</strong>
                         </div>
                     </div>
@@ -480,8 +1302,8 @@ async function viewSubmission(id) {
                         </div>
                     </div>
                 </div>
-                
-                <h6 class="mt-4 mb-3 fw-bold">Contact Information</h6>
+
+                <h6 class="mt-4 mb-3 fw-bold">Contact information</h6>
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <div class="border rounded p-3">
@@ -512,22 +1334,34 @@ async function viewSubmission(id) {
                     </div>
                     ` : ''}
                 </div>
-                
+
                 <h6 class="mt-3 mb-3 fw-bold">Message</h6>
                 <div class="border rounded p-3 bg-light">
                     <p class="mb-0" style="white-space: pre-wrap;">${escapeHtml(sub.data.message)}</p>
                 </div>
-                
-                <div class="mt-4 p-3 bg-primary bg-opacity-10 rounded">
-                    <div class="d-flex align-items-center">
-                        <i class="fas fa-globe text-primary me-3 fa-lg"></i>
-                        <div>
-                            <small class="text-muted d-block">IP Address</small>
-                            <strong>${sub.ip_address || 'N/A'}</strong>
+
+                <div class="mt-4 p-3 rounded" style="background: var(--n-50); border: 1px solid var(--border);">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="d-flex align-items-center gap-2">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-muted);">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                            </svg>
+                            <div>
+                                <small class="text-muted d-block" style="font-size: 0.6875rem;">IP address</small>
+                                <strong style="font-size: 0.8125rem; font-family: ui-monospace, monospace;">${sub.ip_address || 'N/A'}</strong>
+                            </div>
                         </div>
-                        <div class="ms-auto">
-                            <small class="text-muted d-block">Device</small>
-                            <strong>${sub.user_agent ? sub.user_agent.split(' ')[0] : 'Unknown'}</strong>
+                        <div class="d-flex align-items-center gap-2 ms-auto">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-muted);">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                                <line x1="8" y1="21" x2="16" y2="21"/>
+                                <line x1="12" y1="17" x2="12" y2="21"/>
+                            </svg>
+                            <div>
+                                <small class="text-muted d-block" style="font-size: 0.6875rem;">Device</small>
+                                <strong style="font-size: 0.8125rem;">${sub.user_agent ? sub.user_agent.split(' ')[0] : 'Unknown'}</strong>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -538,10 +1372,11 @@ async function viewSubmission(id) {
     } catch (error) {
         detailsEl.innerHTML = '<div class="alert alert-danger">Network error. Please try again.</div>';
     }
-    
+
     viewModal.show();
 }
 
+/* ============ Delete submission ============ */
 async function deleteSubmission(id) {
     try {
         const response = await fetch(`/builder/api/submission/${id}/delete/`, {
@@ -551,64 +1386,58 @@ async function deleteSubmission(id) {
                 'Content-Type': 'application/json'
             }
         });
-        
         const data = await response.json();
-        
+
         if (data.success) {
             deleteModal.hide();
-            // Remove row from table
             const row = document.querySelector(`tr[data-id="${id}"]`);
             if (row) row.remove();
-            showNotification('Submission deleted successfully', 'success');
-            // Reload page if no submissions left
+            toast('Submission deleted', 'success');
             if (document.querySelectorAll('.submission-row').length === 0) {
                 setTimeout(() => location.reload(), 1000);
             }
         } else {
-            showNotification('Failed to delete submission', 'error');
+            toast('Failed to delete submission', 'error');
         }
     } catch (error) {
-        showNotification('Network error', 'error');
+        toast('Network error', 'error');
     }
 }
 
+/* ============ Mark as read ============ */
 async function markAsRead(id) {
-    // Implement mark as read functionality
+    // Original stub preserved
     viewModal.hide();
-    showNotification('Marked as read', 'success');
+    toast('Marked as read', 'success');
 }
 
+/* ============ Export ============ */
 function exportSubmissions() {
     const formName = new URLSearchParams(window.location.search).get('form_name') || '';
     window.location.href = `/builder/export-submissions/{{ page.subdomain }}/?format=csv&form_name=${formName}`;
 }
 
-function showNotification(message, type) {
-    // Enhanced notification system
-    const alertClass = type === 'success' ? 'alert-success' : 
-                      type === 'error' ? 'alert-danger' : 'alert-info';
-    
-    const notification = document.createElement('div');
-    notification.className = `alert ${alertClass} alert-dismissible fade show position-fixed`;
-    notification.style.cssText = 'top: 20px; right: 20px; z-index: 99999; min-width: 300px; max-width: 400px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px;';
-    notification.innerHTML = `
-        <div class="d-flex align-items-center">
-            <i class="fas ${type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle'} me-2 fa-lg"></i>
-            <div class="flex-grow-1">${message}</div>
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        </div>
-    `;
-    
-    document.body.appendChild(notification);
-    
+/* ============ Toast ============ */
+function toast(message, type = 'info') {
+    const stack = document.getElementById('toastStack');
+    if (!stack) return;
+
+    const el = document.createElement('div');
+    el.className = `toast ${type}`;
+    const icon = type === 'error'
+        ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>'
+        : '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+    el.innerHTML = `${icon}<span>${message}</span>`;
+    stack.appendChild(el);
     setTimeout(() => {
-        if (notification.parentNode) {
-            notification.remove();
-        }
-    }, 5000);
+        el.style.transition = 'opacity 0.2s, transform 0.2s';
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(-8px)';
+        setTimeout(() => el.remove(), 200);
+    }, 3000);
 }
 
-// Helper function to escape HTML
+/* ============ Escape helper ============ */
 function escapeHtml(text) {
     if (!text) return '';
     const div = document.createElement('div');

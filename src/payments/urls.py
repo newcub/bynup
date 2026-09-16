@@ -30,6 +30,8 @@ urlpatterns = [
     # Payment Gateway Configuration
     path('configure-paypal/<str:subdomain>/', views.configure_paypal_gateway, name='configure_paypal'),
     path('test-paypal-connection/<str:subdomain>/', views.test_paypal_connection, name='test_paypal_connection'),
+    path('paypal/create-order/<str:subdomain>/', views.paypal_create_order_api, name='paypal_create_order'),
+path('paypal/capture-order/<str:subdomain>/', views.paypal_capture_order_api, name='paypal_capture_order'),
 
     # Razorpay
     path('configure-razorpay/<str:subdomain>/', views.configure_razorpay_gateway, name='configure_razorpay'),

@@ -648,6 +648,22 @@
                                     <i class="fas fa-plus-circle"></i> Create New Store
                                 </a>
                                 {%endif%}
+
+                                {% if user.is_authenticated and user.is_staff %}
+                                
+                                    <a class="dropdown-item-custom" href="{% url 'admin_domain_queue' %}"
+                                    title="Domain requests pending review">
+                                        <i class="fas fa-globe"></i>
+                                        <span class="d-none d-lg-inline ms-1">Domains</span>
+                                        {% if pending_domain_requests_count %}
+                                        <span class="badge rounded-pill bg-danger position-absolute"
+                                            style="top: 4px; right: 4px; font-size: 10px;">
+                                            {{ pending_domain_requests_count }}
+                                        </span>
+                                        {% endif %}
+                                    </a>
+                                
+                                {% endif %}
                                 
                                 <a class="dropdown-item-custom" href="{% url 'accounts:builder_register' %}" >
                                     <i class="fas fa-user-plus"></i> Sign Up

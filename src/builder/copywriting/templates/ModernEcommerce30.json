@@ -3,1394 +3,566 @@
   "pages": {
     "home": [
       {
-        "id": "1",
-        "text": "MAISON MARNA",
+        "id": "2",
+        "text": "{brand}",
         "type": "text",
         "customized": false
       },
       {
-        "id": "2",
+        "id": "3",
         "text": "PARIS",
         "type": "text",
         "customized": false
       },
       {
         "id": "4",
-        "text": "The Story",
+        "text": "Curated Objects",
         "type": "link",
         "customized": false
       },
       {
         "id": "5",
-        "text": "Community",
+        "text": "The Filament",
         "type": "link",
         "customized": false
       },
       {
         "id": "6",
-        "text": "The Object",
+        "text": "Specifications",
         "type": "link",
         "customized": false
       },
       {
         "id": "7",
-        "text": "Reviews",
+        "text": "Studio Contact",
         "type": "link",
+        "customized": false
+      },
+      {
+        "id": "8",
+        "text": "Saved Desires",
+        "type": "heading",
         "customized": false
       },
       {
         "id": "9",
-        "text": "Contact",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "10",
-        "text": "Saved Desires",
+        "text": "Selected Objects",
         "type": "heading",
         "customized": false
       },
       {
         "id": "11",
-        "text": "Selected Objects",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "13",
         "text": "Apply",
         "type": "button",
         "customized": false
       },
       {
-        "id": "14",
+        "id": "12",
         "text": "Gross Value",
         "type": "text",
         "customized": false
       },
       {
-        "id": "15",
-        "text": "Voucher Adjustment",
+        "id": "13",
+        "text": "Voucher Adjustment (10%)",
         "type": "text",
         "customized": false
       },
       {
-        "id": "16",
+        "id": "14",
         "text": "Total Allocation",
         "type": "text",
         "customized": false
       },
       {
-        "id": "17",
+        "id": "15",
         "text": "Proceed To Secure Routing",
         "type": "button",
         "customized": false
       },
       {
-        "id": "19",
+        "id": "16",
         "text": "Review Stack",
         "type": "button",
         "customized": false
       },
       {
-        "id": "800",
+        "id": "17",
         "text": "Collection Autumn/Winter",
         "type": "text",
         "customized": false
       },
       {
-        "id": "801",
-        "text": "The art of carrying",
+        "id": "18",
+        "text": "Sculpted profiles,",
         "type": "text",
         "customized": false
       },
       {
-        "id": "802",
-        "text": "Sculpted",
+        "id": "19",
+        "text": "formed fromearth.",
         "type": "text",
         "customized": false
       },
       {
-        "id": "803",
-        "text": "to move",
+        "id": "600",
+        "text": "earth",
         "type": "text",
         "customized": false
       },
       {
-        "id": "804",
-        "text": "with you.",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "805",
+        "id": "20",
         "text": "An artistic exploration of organic architectural curves and fluid leather contours. Crafted intentionally in limited runs to achieve perfect timeless carrying silhouettes.",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "806",
-        "text": "120",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "807",
-        "text": "Limited Edition",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "808",
-        "text": "4.9",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "809",
-        "text": "Patron Rating",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "810",
-        "text": "247",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "811",
-        "text": "Verified Reviews",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "812",
-        "text": "Explore The Object",
+        "id": "21",
+        "text": "Explore Curious Artifacts",
         "type": "link",
         "customized": false
       },
       {
-        "id": "813",
-        "text": "Read Reviews",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "814",
-        "text": "Limited Edition",
+        "id": "22",
+        "text": "The Permanent Catalog",
         "type": "text",
         "customized": false
       },
       {
-        "id": "815",
-        "text": "120 pieces worldwide",
+        "id": "23",
+        "text": "Objects designed to age with poetic grace.",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "621",
+        "text": "Marna Archetype Tote",
         "type": "text",
         "customized": false
       },
       {
-        "id": "816",
-        "text": "Chapter One",
+        "id": "622",
+        "text": "Sun-Baked Sienna Silt",
         "type": "text",
         "customized": false
       },
       {
-        "id": "817",
-        "text": "The philosophy of",
+        "id": "623",
+        "text": "$520.00",
         "type": "text",
         "customized": false
       },
       {
-        "id": "818",
-        "text": "purposeful form",
+        "id": "624",
+        "text": "Melted Pure Linen Cream",
         "type": "text",
         "customized": false
       },
       {
-        "id": "819",
-        "text": "\"Every curve tells a story. Every line serves a purpose.\"— The Atelier",
+        "id": "625",
+        "text": "$390.00",
         "type": "text",
         "customized": false
       },
       {
-        "id": "820",
-        "text": "— The Atelier",
+        "id": "106",
+        "text": "Sculptural Horizon Clutch",
         "type": "text",
         "customized": false
       },
       {
-        "id": "821",
-        "text": "We approach fashion accessories as portable, living fine art pieces. Our signature sculptural silhouettes avoid classical linear geometry constraints, drawing dynamic movement inspiration from shifting desert dunes and raw pottery vessels.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "823",
-        "text": "Artisanal French craftsmanship",
+        "id": "107",
+        "text": "Dusty Velvet Sage Mist",
         "type": "text",
         "customized": false
       },
       {
-        "id": "824",
-        "text": "Supple full-grain leather",
+        "id": "108",
+        "text": "$440.00",
         "type": "text",
         "customized": false
       },
       {
-        "id": "825",
-        "text": "Internal canvas framework",
+        "id": "109",
+        "text": "Minimalist Structural Pouch",
         "type": "text",
         "customized": false
       },
       {
-        "id": "827",
+        "id": "110",
+        "text": "Raw Umber Earth Obsidian",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "111",
+        "text": "$260.00",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "24",
         "text": "The Marna Filament",
         "type": "text",
         "customized": false
       },
       {
-        "id": "828",
-        "text": "Where structure meetssoul",
+        "id": "25",
+        "text": "Fluid organic integrity balanced with micro-structural parameters.",
         "type": "heading",
         "customized": false
       },
       {
-        "id": "829",
-        "text": "Hand-Crafted",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "830",
-        "text": "Each piece is meticulously shaped by master artisans in our Paris atelier.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "831",
-        "text": "Natural Dye",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "832",
-        "text": "Organic chestnut and oak bark extracts create translucent, living color.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "833",
-        "text": "Limited Production",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "834",
-        "text": "Every shape is capped at 120 numbered units worldwide.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "835",
-        "text": "Real people, real style",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "836",
-        "text": "Community",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "837",
-        "text": "Stories",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "838",
-        "text": "Carrying art",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "839",
-        "text": "My everyday companion",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "840",
-        "text": "Sculptural elegance",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "841",
-        "text": "The perfect form",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "842",
-        "text": "Built to last",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "843",
-        "text": "Timeless design",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "844",
-        "text": "Effortless luxury",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "845",
-        "text": "Worth every detail",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "846",
-        "text": "Limited Edition",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "847",
-        "text": "The Sculptural Carry",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "848",
-        "text": "(0 reviews)",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "849",
-        "text": "$0.00",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "850",
-        "text": "$0.00",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "851",
-        "text": "Save $0.00",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "852",
-        "text": "An elegant sculptural carry system displaying fluid sweeping edges and organic architectural curves.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "853",
-        "text": "Choose Your Tier:",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "854",
-        "text": "Total Price:",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "855",
-        "text": "Packs:",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "856",
-        "text": "Add to Stack— $0.00",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "857",
-        "text": "Secure Now— $0.00",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "859",
-        "text": "Complimentary Shipping",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "860",
-        "text": "Artisan Guarantee",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "861",
-        "text": "Secure Routing",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "862",
-        "text": "30-Day Exploration",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "863",
-        "text": "Artisan Guarantee",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "864",
-        "text": "Every piece is backed by our lifetime craftsmanship pledge.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "865",
-        "text": "Complimentary Shipping",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "866",
-        "text": "White-glove delivery on every order, worldwide.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "867",
-        "text": "30-Day Exploration",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "868",
-        "text": "Experience it fully. Return if it doesn't resonate.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "869",
-        "text": "Secure Routing",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "870",
-        "text": "Your transaction and data are always protected.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "871",
-        "text": "0",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "872",
-        "text": "(0 reviews)",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "873",
-        "text": "Write a Review",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "874",
-        "text": "Design Intelligence",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "875",
-        "text": "FrequentlyAsked",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "876",
-        "text": "How are the sculptural curved profiles balanced?",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "877",
-        "text": "Each bag utilizes lightweight internal resin-dipped canvas ribs that preserve the dynamic outer curve without hardening the natural, supple surface drape of the outer leather grain.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "878",
-        "text": "Tell me about the natural dye process.",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "879",
-        "text": "Our tanneries employ organic chestnut, oak bark, and mineral earth clay solutions. This natural bath sequence infuses the leather with translucent hue depth that reacts smoothly over time to light exposure.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "880",
-        "text": "What limits are enforced on item runs?",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "881",
-        "text": "To protect raw material integrity and control global supply chains, our main atelier operates on an exact allocation scheme capping every specialized shape run at 120 numbered units worldwide.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "882",
-        "text": "What is the return policy?",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "883",
-        "text": "We offer a 30-day exploration period. If the piece doesn't resonate with you, return it in original condition and we'll provide a full refund.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "884",
-        "text": "Ready to",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "885",
-        "text": "carry",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "886",
-        "text": "art with you?",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "887",
-        "text": "Join discerning patrons who've found their perfect carry companion. The Sculptural Carry is engineered to be your most treasured piece.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "888",
-        "text": "Secure Your Piece",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "889",
-        "text": "The Atelier",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "890",
-        "text": "Connect withus",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "891",
-        "text": "Marna Coordinates",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "892",
-        "text": "The Parisian Atelier",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "893",
-        "text": "14 Rue de la Paix75002 Paris, France",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "894",
-        "text": "Digital Inquiries Desk",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "895",
-        "text": "concierge@maisonmarna.com",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "896",
-        "text": "Atelier Hours",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "897",
-        "text": "Mon-Fri: 9AM - 6PM CET",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "898",
-        "text": "Send a Message",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "899",
-        "text": "Your Identity",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "901",
-        "text": "Communication Channel",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "903",
-        "text": "Artifact Custom Request",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "905",
-        "text": "Transmit Inquiry",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "907",
-        "text": "MAISON MARNA.",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "908",
-        "text": ".",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "909",
-        "text": "Sculptural utility infrastructure. Every trace registered.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "910",
-        "text": "Shop",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "911",
-        "text": "The Object",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "912",
-        "text": "Community",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "913",
-        "text": "Reviews",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "914",
-        "text": "Guarantee",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "915",
-        "text": "Support",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "916",
-        "text": "FAQ",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "917",
-        "text": "Contact Us",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "918",
-        "text": "Shipping Policy",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "919",
-        "text": "Returns",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "921",
-        "text": "Stay Updated",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "922",
-        "text": "Subscribe for exclusive drops, early access, and special offers.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "925",
-        "text": "No spam. Unsubscribe anytime.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "926",
-        "text": "© 2026 MAISON MARNA. All rights reserved.",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "927",
-        "text": "Privacy Policy",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "928",
-        "text": "Terms of Service",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "930",
-        "text": "Write a Review",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "931",
-        "text": "Your Name",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "932",
-        "text": "Rating",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "933",
-        "text": "Review Title",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "934",
-        "text": "Your Review",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "935",
-        "text": "Submit Review",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "936",
-        "text": "Cancel",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "937",
-        "text": "The Sculptural Carry",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "938",
-        "text": "Add to Stack —$0.00",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "939",
-        "text": "Secure Now —$0.00",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "heading-145",
-        "text": "Saved Desires",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-146",
-        "text": "Selected Objects",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-147",
-        "text": "Sculptedto movewith you.",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-148",
-        "text": "The philosophy ofpurposeful form",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-149",
-        "text": "Where structure meetssoul",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-150",
-        "text": "Hand-Crafted",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-151",
-        "text": "Natural Dye",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-152",
-        "text": "Limited Production",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-153",
-        "text": "CommunityStories",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-154",
-        "text": "The Sculptural Carry",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-155",
-        "text": "Artisan Guarantee",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-156",
-        "text": "Complimentary Shipping",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-157",
-        "text": "30-Day Exploration",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-158",
-        "text": "Secure Routing",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-159",
-        "text": "FrequentlyAsked",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-160",
-        "text": "Ready tocarryart with you?",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-161",
-        "text": "Connect withus",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-162",
-        "text": "The Parisian Atelier",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-163",
-        "text": "Digital Inquiries Desk",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-164",
-        "text": "Atelier Hours",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-165",
-        "text": "Send a Message",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-166",
-        "text": "MAISON MARNA.",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-167",
-        "text": "Shop",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-168",
-        "text": "Support",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-169",
-        "text": "Stay Updated",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-170",
-        "text": "Write a Review",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "paragraph-171",
-        "text": "An artistic exploration of organic architectural curves and fluid leather contours. Crafted intentionally in limited runs to achieve perfect timeless carrying silhouettes.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-172",
+        "id": "26",
         "text": "We approach fashion accessories as portable, living fine art pieces. Our signature sculptural silhouettes avoid classical linear geometry constraints, drawing dynamic movement inspiration from shifting desert dunes and raw pottery vessels.",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "paragraph-173",
-        "text": "Each piece is meticulously shaped by master artisans in our Paris atelier.",
+        "id": "27",
+        "text": "Every piece is carefully shaped from naturally supple grain hides using custom internal canvas framework support matrixes, allowing the contours to remain striking and soft under daily carry load weights.",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "paragraph-174",
-        "text": "Organic chestnut and oak bark extracts create translucent, living color.",
-        "type": "paragraph",
+        "id": "28",
+        "text": "Design Intelligence",
+        "type": "text",
         "customized": false
       },
       {
-        "id": "paragraph-175",
-        "text": "Every shape is capped at 120 numbered units worldwide.",
-        "type": "paragraph",
+        "id": "29",
+        "text": "Operational Blueprints",
+        "type": "heading",
         "customized": false
       },
       {
-        "id": "paragraph-176",
-        "text": "An elegant sculptural carry system displaying fluid sweeping edges and organic architectural curves.",
-        "type": "paragraph",
+        "id": "30",
+        "text": "How are the sculptural curved profiles balanced?",
+        "type": "text",
         "customized": false
       },
       {
-        "id": "paragraph-177",
-        "text": "Every piece is backed by our lifetime craftsmanship pledge.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-178",
-        "text": "White-glove delivery on every order, worldwide.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-179",
-        "text": "Experience it fully. Return if it doesn't resonate.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-180",
-        "text": "Your transaction and data are always protected.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-181",
-        "text": "No reviews yet. Be the first to share your experience.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-182",
+        "id": "31",
         "text": "Each bag utilizes lightweight internal resin-dipped canvas ribs that preserve the dynamic outer curve without hardening the natural, supple surface drape of the outer leather grain.",
-        "type": "paragraph",
+        "type": "text",
         "customized": false
       },
       {
-        "id": "paragraph-183",
+        "id": "32",
+        "text": "Tell me about the natural dye process.",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "33",
         "text": "Our tanneries employ organic chestnut, oak bark, and mineral earth clay solutions. This natural bath sequence infuses the leather with translucent hue depth that reacts smoothly over time to light exposure.",
-        "type": "paragraph",
+        "type": "text",
         "customized": false
       },
       {
-        "id": "paragraph-184",
+        "id": "34",
+        "text": "What limits are enforced on item runs?",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "35",
         "text": "To protect raw material integrity and control global supply chains, our main atelier operates on an exact allocation scheme capping every specialized shape run at 120 numbered units worldwide.",
-        "type": "paragraph",
+        "type": "text",
         "customized": false
       },
       {
-        "id": "paragraph-185",
-        "text": "We offer a 30-day exploration period. If the piece doesn't resonate with you, return it in original condition and we'll provide a full refund.",
-        "type": "paragraph",
+        "id": "36",
+        "text": "Marna Coordinates",
+        "type": "heading",
         "customized": false
       },
       {
-        "id": "paragraph-186",
-        "text": "Join discerning patrons who've found their perfect carry companion. The Sculptural Carry is engineered to be your most treasured piece.",
-        "type": "paragraph",
+        "id": "37",
+        "text": "The Parisian Atelier",
+        "type": "heading",
         "customized": false
       },
       {
-        "id": "paragraph-187",
+        "id": "38",
         "text": "14 Rue de la Paix75002 Paris, France",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "paragraph-188",
+        "id": "39",
+        "text": "Digital Inquiries Desk",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "40",
         "text": "concierge@maisonmarna.com",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "paragraph-189",
-        "text": "Mon-Fri: 9AM - 6PM CET",
-        "type": "paragraph",
+        "id": "41",
+        "text": "Your Identity Key",
+        "type": "text",
         "customized": false
       },
       {
-        "id": "paragraph-190",
-        "text": "Sculptural utility infrastructure. Every trace registered.",
-        "type": "paragraph",
+        "id": "43",
+        "text": "Secure Communication Channel",
+        "type": "text",
         "customized": false
       },
       {
-        "id": "paragraph-191",
-        "text": "Subscribe for exclusive drops, early access, and special offers.",
-        "type": "paragraph",
+        "id": "45",
+        "text": "Sculptural Artifact Custom Request Notes",
+        "type": "text",
         "customized": false
       },
       {
-        "id": "paragraph-192",
-        "text": "No spam. Unsubscribe anytime.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "button-193",
-        "text": "Apply",
+        "id": "47",
+        "text": "Transmit Production Inquiry",
         "type": "button",
         "customized": false
       },
       {
-        "id": "button-194",
-        "text": "Proceed To Secure Routing",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "button-195",
-        "text": "Review Stack",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "add-to-cart-btn",
-        "text": "Add to Stack— $0.00",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "buy-now-btn",
-        "text": "Secure Now— $0.00",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "button-198",
+        "id": "100",
         "text": "Write a Review",
-        "type": "button",
+        "type": "heading",
         "customized": false
       },
       {
-        "id": "button-199",
-        "text": "How are the sculptural curved profiles balanced?",
-        "type": "button",
+        "id": "101",
+        "text": "Your Name",
+        "type": "text",
         "customized": false
       },
       {
-        "id": "button-200",
-        "text": "Tell me about the natural dye process.",
-        "type": "button",
+        "id": "102",
+        "text": "Rating",
+        "type": "text",
         "customized": false
       },
       {
-        "id": "button-201",
-        "text": "What limits are enforced on item runs?",
-        "type": "button",
+        "id": "103",
+        "text": "Review Title",
+        "type": "text",
         "customized": false
       },
       {
-        "id": "button-202",
-        "text": "What is the return policy?",
-        "type": "button",
+        "id": "104",
+        "text": "Your Review",
+        "type": "text",
         "customized": false
       },
       {
-        "id": "button-203",
-        "text": "Transmit Inquiry",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "button-204",
+        "id": "105",
         "text": "Submit Review",
         "type": "button",
         "customized": false
       },
       {
-        "id": "button-205",
+        "id": "48",
+        "text": "© 2026{brand} ATELIER. Sculptural Utility Infrastructure. Every Trace Registered.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "text-62",
+        "text": "{brand}PARIS",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "heading-63",
+        "text": "Saved Desires",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-64",
+        "text": "Selected Objects",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-65",
+        "text": "Sculpted profiles,formed fromearth.",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-66",
+        "text": "Objects designed to age with poetic grace.",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-67",
+        "text": "Fluid organic integrity balanced with micro-structural parameters.",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-68",
+        "text": "Operational Blueprints",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-69",
+        "text": "Marna Coordinates",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-70",
+        "text": "The Parisian Atelier",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-71",
+        "text": "Digital Inquiries Desk",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-72",
+        "text": "Write a Review",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "paragraph-73",
+        "text": "An artistic exploration of organic architectural curves and fluid leather contours. Crafted intentionally in limited runs to achieve perfect timeless carrying silhouettes.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-74",
+        "text": "We approach fashion accessories as portable, living fine art pieces. Our signature sculptural silhouettes avoid classical linear geometry constraints, drawing dynamic movement inspiration from shifting desert dunes and raw pottery vessels.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-75",
+        "text": "Every piece is carefully shaped from naturally supple grain hides using custom internal canvas framework support matrixes, allowing the contours to remain striking and soft under daily carry load weights.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-76",
+        "text": "14 Rue de la Paix75002 Paris, France",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-77",
+        "text": "concierge@maisonmarna.com",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-78",
+        "text": "© 2026{brand} ATELIER. Sculptural Utility Infrastructure. Every Trace Registered.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "button-79",
+        "text": "Apply",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-80",
+        "text": "Proceed To Secure Routing",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-81",
+        "text": "Review Stack",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-82",
+        "text": "How are the sculptural curved profiles balanced?",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-83",
+        "text": "Tell me about the natural dye process.",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-84",
+        "text": "What limits are enforced on item runs?",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-85",
+        "text": "Transmit Production Inquiry",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-86",
+        "text": "Submit Review",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-87",
         "text": "Cancel",
         "type": "button",
         "customized": false
       },
       {
-        "id": "button-206",
-        "text": "Add to Stack —$0.00",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "button-207",
-        "text": "Secure Now —$0.00",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "link-208",
-        "text": "MAISON MARNAPARIS",
+        "id": "link-88",
+        "text": "{brand}PARIS",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-209",
-        "text": "The Story",
+        "id": "link-89",
+        "text": "Curated Objects",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-210",
-        "text": "Community",
+        "id": "link-90",
+        "text": "The Filament",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-211",
-        "text": "The Object",
+        "id": "link-91",
+        "text": "Specifications",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-212",
-        "text": "Reviews",
+        "id": "link-92",
+        "text": "Studio Contact",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-213",
-        "text": "Contact",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-214",
-        "text": "The Story",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-215",
-        "text": "Community",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-216",
-        "text": "The Object",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-217",
-        "text": "Reviews",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-218",
-        "text": "Contact",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-219",
-        "text": "Explore The Object",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-220",
-        "text": "Read Reviews",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-221",
-        "text": "Secure Your Piece",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-222",
-        "text": "The Object",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-223",
-        "text": "Community",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-224",
-        "text": "Reviews",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-225",
-        "text": "Guarantee",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-226",
-        "text": "FAQ",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-227",
-        "text": "Contact Us",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-228",
-        "text": "Shipping Policy",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-229",
-        "text": "Returns",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-230",
-        "text": "Privacy Policy",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-231",
-        "text": "Terms of Service",
+        "id": "link-93",
+        "text": "Explore Curious Artifacts",
         "type": "link",
         "customized": false
       },
       {
         "id": "page-title",
-        "text": "MAISON MARNA // Sculptural Carry Systems",
+        "text": "{brand}",
         "type": "title",
         "customized": false
       }
@@ -1398,1400 +570,572 @@
   },
   "global_texts": [
     {
-      "id": "1",
-      "text": "MAISON MARNA",
+      "id": "2",
+      "text": "{brand}",
       "type": "text",
       "customized": false
     },
     {
-      "id": "2",
+      "id": "3",
       "text": "PARIS",
       "type": "text",
       "customized": false
     },
     {
       "id": "4",
-      "text": "The Story",
+      "text": "Curated Objects",
       "type": "link",
       "customized": false
     },
     {
       "id": "5",
-      "text": "Community",
+      "text": "The Filament",
       "type": "link",
       "customized": false
     },
     {
       "id": "6",
-      "text": "The Object",
+      "text": "Specifications",
       "type": "link",
       "customized": false
     },
     {
       "id": "7",
-      "text": "Reviews",
+      "text": "Studio Contact",
       "type": "link",
+      "customized": false
+    },
+    {
+      "id": "8",
+      "text": "Saved Desires",
+      "type": "heading",
       "customized": false
     },
     {
       "id": "9",
-      "text": "Contact",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "10",
-      "text": "Saved Desires",
+      "text": "Selected Objects",
       "type": "heading",
       "customized": false
     },
     {
       "id": "11",
-      "text": "Selected Objects",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "13",
       "text": "Apply",
       "type": "button",
       "customized": false
     },
     {
-      "id": "14",
+      "id": "12",
       "text": "Gross Value",
       "type": "text",
       "customized": false
     },
     {
-      "id": "15",
-      "text": "Voucher Adjustment",
+      "id": "13",
+      "text": "Voucher Adjustment (10%)",
       "type": "text",
       "customized": false
     },
     {
-      "id": "16",
+      "id": "14",
       "text": "Total Allocation",
       "type": "text",
       "customized": false
     },
     {
-      "id": "17",
+      "id": "15",
       "text": "Proceed To Secure Routing",
       "type": "button",
       "customized": false
     },
     {
-      "id": "19",
+      "id": "16",
       "text": "Review Stack",
       "type": "button",
       "customized": false
     },
     {
-      "id": "800",
+      "id": "17",
       "text": "Collection Autumn/Winter",
       "type": "text",
       "customized": false
     },
     {
-      "id": "801",
-      "text": "The art of carrying",
+      "id": "18",
+      "text": "Sculpted profiles,",
       "type": "text",
       "customized": false
     },
     {
-      "id": "802",
-      "text": "Sculpted",
+      "id": "19",
+      "text": "formed fromearth.",
       "type": "text",
       "customized": false
     },
     {
-      "id": "803",
-      "text": "to move",
+      "id": "600",
+      "text": "earth",
       "type": "text",
       "customized": false
     },
     {
-      "id": "804",
-      "text": "with you.",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "805",
+      "id": "20",
       "text": "An artistic exploration of organic architectural curves and fluid leather contours. Crafted intentionally in limited runs to achieve perfect timeless carrying silhouettes.",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "806",
-      "text": "120",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "807",
-      "text": "Limited Edition",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "808",
-      "text": "4.9",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "809",
-      "text": "Patron Rating",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "810",
-      "text": "247",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "811",
-      "text": "Verified Reviews",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "812",
-      "text": "Explore The Object",
+      "id": "21",
+      "text": "Explore Curious Artifacts",
       "type": "link",
       "customized": false
     },
     {
-      "id": "813",
-      "text": "Read Reviews",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "814",
-      "text": "Limited Edition",
+      "id": "22",
+      "text": "The Permanent Catalog",
       "type": "text",
       "customized": false
     },
     {
-      "id": "815",
-      "text": "120 pieces worldwide",
+      "id": "23",
+      "text": "Objects designed to age with poetic grace.",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "621",
+      "text": "Marna Archetype Tote",
       "type": "text",
       "customized": false
     },
     {
-      "id": "816",
-      "text": "Chapter One",
+      "id": "622",
+      "text": "Sun-Baked Sienna Silt",
       "type": "text",
       "customized": false
     },
     {
-      "id": "817",
-      "text": "The philosophy of",
+      "id": "623",
+      "text": "$520.00",
       "type": "text",
       "customized": false
     },
     {
-      "id": "818",
-      "text": "purposeful form",
+      "id": "624",
+      "text": "Melted Pure Linen Cream",
       "type": "text",
       "customized": false
     },
     {
-      "id": "819",
-      "text": "\"Every curve tells a story. Every line serves a purpose.\"— The Atelier",
+      "id": "625",
+      "text": "$390.00",
       "type": "text",
       "customized": false
     },
     {
-      "id": "820",
-      "text": "— The Atelier",
+      "id": "106",
+      "text": "Sculptural Horizon Clutch",
       "type": "text",
       "customized": false
     },
     {
-      "id": "821",
-      "text": "We approach fashion accessories as portable, living fine art pieces. Our signature sculptural silhouettes avoid classical linear geometry constraints, drawing dynamic movement inspiration from shifting desert dunes and raw pottery vessels.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "823",
-      "text": "Artisanal French craftsmanship",
+      "id": "107",
+      "text": "Dusty Velvet Sage Mist",
       "type": "text",
       "customized": false
     },
     {
-      "id": "824",
-      "text": "Supple full-grain leather",
+      "id": "108",
+      "text": "$440.00",
       "type": "text",
       "customized": false
     },
     {
-      "id": "825",
-      "text": "Internal canvas framework",
+      "id": "109",
+      "text": "Minimalist Structural Pouch",
       "type": "text",
       "customized": false
     },
     {
-      "id": "827",
+      "id": "110",
+      "text": "Raw Umber Earth Obsidian",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "111",
+      "text": "$260.00",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "24",
       "text": "The Marna Filament",
       "type": "text",
       "customized": false
     },
     {
-      "id": "828",
-      "text": "Where structure meetssoul",
+      "id": "25",
+      "text": "Fluid organic integrity balanced with micro-structural parameters.",
       "type": "heading",
       "customized": false
     },
     {
-      "id": "829",
-      "text": "Hand-Crafted",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "830",
-      "text": "Each piece is meticulously shaped by master artisans in our Paris atelier.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "831",
-      "text": "Natural Dye",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "832",
-      "text": "Organic chestnut and oak bark extracts create translucent, living color.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "833",
-      "text": "Limited Production",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "834",
-      "text": "Every shape is capped at 120 numbered units worldwide.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "835",
-      "text": "Real people, real style",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "836",
-      "text": "Community",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "837",
-      "text": "Stories",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "838",
-      "text": "Carrying art",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "839",
-      "text": "My everyday companion",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "840",
-      "text": "Sculptural elegance",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "841",
-      "text": "The perfect form",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "842",
-      "text": "Built to last",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "843",
-      "text": "Timeless design",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "844",
-      "text": "Effortless luxury",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "845",
-      "text": "Worth every detail",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "846",
-      "text": "Limited Edition",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "847",
-      "text": "The Sculptural Carry",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "848",
-      "text": "(0 reviews)",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "849",
-      "text": "$0.00",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "850",
-      "text": "$0.00",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "851",
-      "text": "Save $0.00",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "852",
-      "text": "An elegant sculptural carry system displaying fluid sweeping edges and organic architectural curves.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "853",
-      "text": "Choose Your Tier:",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "854",
-      "text": "Total Price:",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "855",
-      "text": "Packs:",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "856",
-      "text": "Add to Stack— $0.00",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "857",
-      "text": "Secure Now— $0.00",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "859",
-      "text": "Complimentary Shipping",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "860",
-      "text": "Artisan Guarantee",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "861",
-      "text": "Secure Routing",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "862",
-      "text": "30-Day Exploration",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "863",
-      "text": "Artisan Guarantee",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "864",
-      "text": "Every piece is backed by our lifetime craftsmanship pledge.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "865",
-      "text": "Complimentary Shipping",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "866",
-      "text": "White-glove delivery on every order, worldwide.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "867",
-      "text": "30-Day Exploration",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "868",
-      "text": "Experience it fully. Return if it doesn't resonate.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "869",
-      "text": "Secure Routing",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "870",
-      "text": "Your transaction and data are always protected.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "871",
-      "text": "0",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "872",
-      "text": "(0 reviews)",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "873",
-      "text": "Write a Review",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "874",
-      "text": "Design Intelligence",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "875",
-      "text": "FrequentlyAsked",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "876",
-      "text": "How are the sculptural curved profiles balanced?",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "877",
-      "text": "Each bag utilizes lightweight internal resin-dipped canvas ribs that preserve the dynamic outer curve without hardening the natural, supple surface drape of the outer leather grain.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "878",
-      "text": "Tell me about the natural dye process.",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "879",
-      "text": "Our tanneries employ organic chestnut, oak bark, and mineral earth clay solutions. This natural bath sequence infuses the leather with translucent hue depth that reacts smoothly over time to light exposure.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "880",
-      "text": "What limits are enforced on item runs?",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "881",
-      "text": "To protect raw material integrity and control global supply chains, our main atelier operates on an exact allocation scheme capping every specialized shape run at 120 numbered units worldwide.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "882",
-      "text": "What is the return policy?",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "883",
-      "text": "We offer a 30-day exploration period. If the piece doesn't resonate with you, return it in original condition and we'll provide a full refund.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "884",
-      "text": "Ready to",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "885",
-      "text": "carry",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "886",
-      "text": "art with you?",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "887",
-      "text": "Join discerning patrons who've found their perfect carry companion. The Sculptural Carry is engineered to be your most treasured piece.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "888",
-      "text": "Secure Your Piece",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "889",
-      "text": "The Atelier",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "890",
-      "text": "Connect withus",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "891",
-      "text": "Marna Coordinates",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "892",
-      "text": "The Parisian Atelier",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "893",
-      "text": "14 Rue de la Paix75002 Paris, France",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "894",
-      "text": "Digital Inquiries Desk",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "895",
-      "text": "concierge@maisonmarna.com",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "896",
-      "text": "Atelier Hours",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "897",
-      "text": "Mon-Fri: 9AM - 6PM CET",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "898",
-      "text": "Send a Message",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "899",
-      "text": "Your Identity",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "901",
-      "text": "Communication Channel",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "903",
-      "text": "Artifact Custom Request",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "905",
-      "text": "Transmit Inquiry",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "907",
-      "text": "MAISON MARNA.",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "908",
-      "text": ".",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "909",
-      "text": "Sculptural utility infrastructure. Every trace registered.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "910",
-      "text": "Shop",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "911",
-      "text": "The Object",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "912",
-      "text": "Community",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "913",
-      "text": "Reviews",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "914",
-      "text": "Guarantee",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "915",
-      "text": "Support",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "916",
-      "text": "FAQ",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "917",
-      "text": "Contact Us",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "918",
-      "text": "Shipping Policy",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "919",
-      "text": "Returns",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "921",
-      "text": "Stay Updated",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "922",
-      "text": "Subscribe for exclusive drops, early access, and special offers.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "925",
-      "text": "No spam. Unsubscribe anytime.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "926",
-      "text": "© 2026 MAISON MARNA. All rights reserved.",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "927",
-      "text": "Privacy Policy",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "928",
-      "text": "Terms of Service",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "930",
-      "text": "Write a Review",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "931",
-      "text": "Your Name",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "932",
-      "text": "Rating",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "933",
-      "text": "Review Title",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "934",
-      "text": "Your Review",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "935",
-      "text": "Submit Review",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "936",
-      "text": "Cancel",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "937",
-      "text": "The Sculptural Carry",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "938",
-      "text": "Add to Stack —$0.00",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "939",
-      "text": "Secure Now —$0.00",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "heading-145",
-      "text": "Saved Desires",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-146",
-      "text": "Selected Objects",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-147",
-      "text": "Sculptedto movewith you.",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-148",
-      "text": "The philosophy ofpurposeful form",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-149",
-      "text": "Where structure meetssoul",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-150",
-      "text": "Hand-Crafted",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-151",
-      "text": "Natural Dye",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-152",
-      "text": "Limited Production",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-153",
-      "text": "CommunityStories",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-154",
-      "text": "The Sculptural Carry",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-155",
-      "text": "Artisan Guarantee",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-156",
-      "text": "Complimentary Shipping",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-157",
-      "text": "30-Day Exploration",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-158",
-      "text": "Secure Routing",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-159",
-      "text": "FrequentlyAsked",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-160",
-      "text": "Ready tocarryart with you?",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-161",
-      "text": "Connect withus",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-162",
-      "text": "The Parisian Atelier",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-163",
-      "text": "Digital Inquiries Desk",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-164",
-      "text": "Atelier Hours",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-165",
-      "text": "Send a Message",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-166",
-      "text": "MAISON MARNA.",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-167",
-      "text": "Shop",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-168",
-      "text": "Support",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-169",
-      "text": "Stay Updated",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-170",
-      "text": "Write a Review",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "paragraph-171",
-      "text": "An artistic exploration of organic architectural curves and fluid leather contours. Crafted intentionally in limited runs to achieve perfect timeless carrying silhouettes.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-172",
+      "id": "26",
       "text": "We approach fashion accessories as portable, living fine art pieces. Our signature sculptural silhouettes avoid classical linear geometry constraints, drawing dynamic movement inspiration from shifting desert dunes and raw pottery vessels.",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "paragraph-173",
-      "text": "Each piece is meticulously shaped by master artisans in our Paris atelier.",
+      "id": "27",
+      "text": "Every piece is carefully shaped from naturally supple grain hides using custom internal canvas framework support matrixes, allowing the contours to remain striking and soft under daily carry load weights.",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "paragraph-174",
-      "text": "Organic chestnut and oak bark extracts create translucent, living color.",
-      "type": "paragraph",
+      "id": "28",
+      "text": "Design Intelligence",
+      "type": "text",
       "customized": false
     },
     {
-      "id": "paragraph-175",
-      "text": "Every shape is capped at 120 numbered units worldwide.",
-      "type": "paragraph",
+      "id": "29",
+      "text": "Operational Blueprints",
+      "type": "heading",
       "customized": false
     },
     {
-      "id": "paragraph-176",
-      "text": "An elegant sculptural carry system displaying fluid sweeping edges and organic architectural curves.",
-      "type": "paragraph",
+      "id": "30",
+      "text": "How are the sculptural curved profiles balanced?",
+      "type": "text",
       "customized": false
     },
     {
-      "id": "paragraph-177",
-      "text": "Every piece is backed by our lifetime craftsmanship pledge.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-178",
-      "text": "White-glove delivery on every order, worldwide.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-179",
-      "text": "Experience it fully. Return if it doesn't resonate.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-180",
-      "text": "Your transaction and data are always protected.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-181",
-      "text": "No reviews yet. Be the first to share your experience.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-182",
+      "id": "31",
       "text": "Each bag utilizes lightweight internal resin-dipped canvas ribs that preserve the dynamic outer curve without hardening the natural, supple surface drape of the outer leather grain.",
-      "type": "paragraph",
+      "type": "text",
       "customized": false
     },
     {
-      "id": "paragraph-183",
+      "id": "32",
+      "text": "Tell me about the natural dye process.",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "33",
       "text": "Our tanneries employ organic chestnut, oak bark, and mineral earth clay solutions. This natural bath sequence infuses the leather with translucent hue depth that reacts smoothly over time to light exposure.",
-      "type": "paragraph",
+      "type": "text",
       "customized": false
     },
     {
-      "id": "paragraph-184",
+      "id": "34",
+      "text": "What limits are enforced on item runs?",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "35",
       "text": "To protect raw material integrity and control global supply chains, our main atelier operates on an exact allocation scheme capping every specialized shape run at 120 numbered units worldwide.",
-      "type": "paragraph",
+      "type": "text",
       "customized": false
     },
     {
-      "id": "paragraph-185",
-      "text": "We offer a 30-day exploration period. If the piece doesn't resonate with you, return it in original condition and we'll provide a full refund.",
-      "type": "paragraph",
+      "id": "36",
+      "text": "Marna Coordinates",
+      "type": "heading",
       "customized": false
     },
     {
-      "id": "paragraph-186",
-      "text": "Join discerning patrons who've found their perfect carry companion. The Sculptural Carry is engineered to be your most treasured piece.",
-      "type": "paragraph",
+      "id": "37",
+      "text": "The Parisian Atelier",
+      "type": "heading",
       "customized": false
     },
     {
-      "id": "paragraph-187",
+      "id": "38",
       "text": "14 Rue de la Paix75002 Paris, France",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "paragraph-188",
+      "id": "39",
+      "text": "Digital Inquiries Desk",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "40",
       "text": "concierge@maisonmarna.com",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "paragraph-189",
-      "text": "Mon-Fri: 9AM - 6PM CET",
-      "type": "paragraph",
+      "id": "41",
+      "text": "Your Identity Key",
+      "type": "text",
       "customized": false
     },
     {
-      "id": "paragraph-190",
-      "text": "Sculptural utility infrastructure. Every trace registered.",
-      "type": "paragraph",
+      "id": "43",
+      "text": "Secure Communication Channel",
+      "type": "text",
       "customized": false
     },
     {
-      "id": "paragraph-191",
-      "text": "Subscribe for exclusive drops, early access, and special offers.",
-      "type": "paragraph",
+      "id": "45",
+      "text": "Sculptural Artifact Custom Request Notes",
+      "type": "text",
       "customized": false
     },
     {
-      "id": "paragraph-192",
-      "text": "No spam. Unsubscribe anytime.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "button-193",
-      "text": "Apply",
+      "id": "47",
+      "text": "Transmit Production Inquiry",
       "type": "button",
       "customized": false
     },
     {
-      "id": "button-194",
-      "text": "Proceed To Secure Routing",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "button-195",
-      "text": "Review Stack",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "add-to-cart-btn",
-      "text": "Add to Stack— $0.00",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "buy-now-btn",
-      "text": "Secure Now— $0.00",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "button-198",
+      "id": "100",
       "text": "Write a Review",
-      "type": "button",
+      "type": "heading",
       "customized": false
     },
     {
-      "id": "button-199",
-      "text": "How are the sculptural curved profiles balanced?",
-      "type": "button",
+      "id": "101",
+      "text": "Your Name",
+      "type": "text",
       "customized": false
     },
     {
-      "id": "button-200",
-      "text": "Tell me about the natural dye process.",
-      "type": "button",
+      "id": "102",
+      "text": "Rating",
+      "type": "text",
       "customized": false
     },
     {
-      "id": "button-201",
-      "text": "What limits are enforced on item runs?",
-      "type": "button",
+      "id": "103",
+      "text": "Review Title",
+      "type": "text",
       "customized": false
     },
     {
-      "id": "button-202",
-      "text": "What is the return policy?",
-      "type": "button",
+      "id": "104",
+      "text": "Your Review",
+      "type": "text",
       "customized": false
     },
     {
-      "id": "button-203",
-      "text": "Transmit Inquiry",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "button-204",
+      "id": "105",
       "text": "Submit Review",
       "type": "button",
       "customized": false
     },
     {
-      "id": "button-205",
+      "id": "48",
+      "text": "© 2026{brand} ATELIER. Sculptural Utility Infrastructure. Every Trace Registered.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "text-62",
+      "text": "{brand}PARIS",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "heading-63",
+      "text": "Saved Desires",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-64",
+      "text": "Selected Objects",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-65",
+      "text": "Sculpted profiles,formed fromearth.",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-66",
+      "text": "Objects designed to age with poetic grace.",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-67",
+      "text": "Fluid organic integrity balanced with micro-structural parameters.",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-68",
+      "text": "Operational Blueprints",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-69",
+      "text": "Marna Coordinates",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-70",
+      "text": "The Parisian Atelier",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-71",
+      "text": "Digital Inquiries Desk",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-72",
+      "text": "Write a Review",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "paragraph-73",
+      "text": "An artistic exploration of organic architectural curves and fluid leather contours. Crafted intentionally in limited runs to achieve perfect timeless carrying silhouettes.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-74",
+      "text": "We approach fashion accessories as portable, living fine art pieces. Our signature sculptural silhouettes avoid classical linear geometry constraints, drawing dynamic movement inspiration from shifting desert dunes and raw pottery vessels.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-75",
+      "text": "Every piece is carefully shaped from naturally supple grain hides using custom internal canvas framework support matrixes, allowing the contours to remain striking and soft under daily carry load weights.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-76",
+      "text": "14 Rue de la Paix75002 Paris, France",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-77",
+      "text": "concierge@maisonmarna.com",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-78",
+      "text": "© 2026{brand} ATELIER. Sculptural Utility Infrastructure. Every Trace Registered.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "button-79",
+      "text": "Apply",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-80",
+      "text": "Proceed To Secure Routing",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-81",
+      "text": "Review Stack",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-82",
+      "text": "How are the sculptural curved profiles balanced?",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-83",
+      "text": "Tell me about the natural dye process.",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-84",
+      "text": "What limits are enforced on item runs?",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-85",
+      "text": "Transmit Production Inquiry",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-86",
+      "text": "Submit Review",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-87",
       "text": "Cancel",
       "type": "button",
       "customized": false
     },
     {
-      "id": "button-206",
-      "text": "Add to Stack —$0.00",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "button-207",
-      "text": "Secure Now —$0.00",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "link-208",
-      "text": "MAISON MARNAPARIS",
+      "id": "link-88",
+      "text": "{brand}PARIS",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-209",
-      "text": "The Story",
+      "id": "link-89",
+      "text": "Curated Objects",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-210",
-      "text": "Community",
+      "id": "link-90",
+      "text": "The Filament",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-211",
-      "text": "The Object",
+      "id": "link-91",
+      "text": "Specifications",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-212",
-      "text": "Reviews",
+      "id": "link-92",
+      "text": "Studio Contact",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-213",
-      "text": "Contact",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-214",
-      "text": "The Story",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-215",
-      "text": "Community",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-216",
-      "text": "The Object",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-217",
-      "text": "Reviews",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-218",
-      "text": "Contact",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-219",
-      "text": "Explore The Object",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-220",
-      "text": "Read Reviews",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-221",
-      "text": "Secure Your Piece",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-222",
-      "text": "The Object",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-223",
-      "text": "Community",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-224",
-      "text": "Reviews",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-225",
-      "text": "Guarantee",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-226",
-      "text": "FAQ",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-227",
-      "text": "Contact Us",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-228",
-      "text": "Shipping Policy",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-229",
-      "text": "Returns",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-230",
-      "text": "Privacy Policy",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-231",
-      "text": "Terms of Service",
+      "id": "link-93",
+      "text": "Explore Curious Artifacts",
       "type": "link",
       "customized": false
     },
     {
       "id": "page-title",
-      "text": "MAISON MARNA // Sculptural Carry Systems",
+      "text": "{brand}",
       "type": "title",
       "customized": false
     }
   ],
   "metadata": {
-    "total_elements": 232,
+    "total_elements": 94,
     "pages_count": 1,
     "components_count": 0
   }

@@ -823,87 +823,74 @@ class Command(BaseCommand):
             # ============================================
             # MODERNECOMMERCE27 (Full set)
             # ============================================
+ # ============================================
+            # MODERNECOMMERCE27
+            # ============================================
             {
-                'name': 'ModernEcommerce27 - Dark Neon',
+                'name': 'ModernEcommerce27 - Hazard Yellow',
                 'category': 'ModernEcommerce27',
-                'mood': 'dark',
+                'mood': 'industrial',
                 'colors': [
-                    ('background', 'Dark Background', '--background', '#0A0A0F', '10, 10, 15'),
-                    ('text', 'Light Text', '--text', '#E0E0E0', '224, 224, 224'),
-                    ('heading', 'Off White', '--heading', '#F5F5F2', '245, 245, 242'),
-                    ('primary', 'Dark', '--primary', '#12121A', '18, 18, 26'),
-                    ('secondary', 'Muted Gray', '--secondary', '#7A7A8A', '122, 122, 138'),
-                    ('accent', 'Neon Green', '--accent', '#CCFF00', '204, 255, 0'),
-                    ('border', 'Dark Border', '--border', '#1F1F2A', '31, 31, 42'),
-                    ('success', 'Green', '--success', '#00D26A', '0, 210, 106'),
-                    ('warning', 'Yellow', '--warning', '#FFB800', '255, 184, 0'),
-                ]
-            },
-            {
-                'name': 'ModernEcommerce27 - Warm Stone',
-                'category': 'ModernEcommerce27',
-                'mood': 'warm',
-                'colors': [
-                    ('background', 'Warm White', '--background', '#F8F5F0', '248, 245, 240'),
-                    ('text', 'Dark', '--text', '#2C241E', '44, 36, 30'),
-                    ('heading', 'Very Dark', '--heading', '#1A1512', '26, 21, 18'),
-                    ('primary', 'Warm', '--primary', '#EFEAE2', '239, 234, 226'),
-                    ('secondary', 'Muted Brown', '--secondary', '#8A7E72', '138, 126, 114'),
-                    ('accent', 'Orange', '--accent', '#C65D2B', '198, 93, 43'),
-                    ('border', 'Warm Border', '--border', '#D6CDC2', '214, 205, 194'),
-                    ('success', 'Deep Green', '--success', '#2E7D5E', '46, 125, 94'),
-                    ('warning', 'Golden', '--warning', '#D49A2A', '212, 154, 42'),
-                ]
-            },
-            {
-                'name': 'ModernEcommerce27 - Cool Tech',
-                'category': 'ModernEcommerce27',
-                'mood': 'cool',
-                'colors': [
-                    ('background', 'Dark Blue', '--background', '#0F1219', '15, 18, 25'),
-                    ('text', 'Light Blue', '--text', '#D4DCE8', '212, 220, 232'),
-                    ('heading', 'Very Light', '--heading', '#F0F4FA', '240, 244, 250'),
-                    ('primary', 'Dark', '--primary', '#1A202C', '26, 32, 44'),
-                    ('secondary', 'Muted Blue', '--secondary', '#6B7B93', '107, 123, 147'),
-                    ('accent', 'Bright Blue', '--accent', '#4FC3F7', '79, 195, 247'),
-                    ('border', 'Dark Border', '--border', '#2A3346', '42, 51, 70'),
-                    ('success', 'Teal Green', '--success', '#34D399', '52, 211, 153'),
-                    ('warning', 'Amber', '--warning', '#FBBF24', '251, 191, 36'),
-                ]
-            },
-            {
-                'name': 'ModernEcommerce27 - Pure Minimal',
-                'category': 'ModernEcommerce27',
-                'mood': 'modern',
-                'colors': [
-                    ('background', 'Almost White', '--background', '#FCFCFA', '252, 252, 250'),
-                    ('text', 'Dark', '--text', '#1E1E1C', '30, 30, 28'),
-                    ('heading', 'Black', '--heading', '#0D0D0B', '13, 13, 11'),
+                    ('text', 'Neon Yellow Green', '--text', '#DFFF19', '223, 255, 25'),
+                    ('accent', 'Near Black', '--accent', '#0D0D11', '13, 13, 17'),
+                    ('border', 'Dark Border', '--border', '#18181F', '24, 24, 31'),
+                    ('heading', 'Warm Off White', '--heading', '#F4F4F0', '244, 244, 240'),
                     ('primary', 'Pure White', '--primary', '#FFFFFF', '255, 255, 255'),
-                    ('secondary', 'Muted Gray', '--secondary', '#9CA3AF', '156, 163, 175'),
-                    ('accent', 'Bold Red', '--accent', '#E11D48', '225, 29, 72'),
-                    ('border', 'Light Border', '--border', '#E5E5E0', '229, 229, 224'),
-                    ('success', 'Deep Green', '--success', '#059669', '5, 150, 105'),
-                    ('warning', 'Amber', '--warning', '#D97706', '217, 119, 6'),
+                    ('secondary', 'Muted Gray', '--secondary', '#6B6B76', '107, 107, 118'),
                 ]
             },
             {
-                'name': 'ModernEcommerce27 - Luxe Gold',
+                'name': 'ModernEcommerce27 - Safety Orange',
                 'category': 'ModernEcommerce27',
-                'mood': 'luxurious',
+                'mood': 'caution',
                 'colors': [
-                    ('background', 'Dark', '--background', '#1A1713', '26, 23, 19'),
-                    ('text', 'Warm', '--text', '#CBC3B5', '203, 195, 181'),
-                    ('heading', 'Light', '--heading', '#EDE7DD', '237, 231, 221'),
-                    ('primary', 'Dark', '--primary', '#24201B', '36, 32, 27'),
-                    ('secondary', 'Muted Warm', '--secondary', '#8B8073', '139, 128, 115'),
-                    ('accent', 'Gold', '--accent', '#D4AF37', '212, 175, 55'),
-                    ('border', 'Dark Border', '--border', '#36302A', '54, 48, 42'),
-                    ('success', 'Soft Green', '--success', '#6B8F71', '107, 143, 113'),
-                    ('warning', 'Warm Gold', '--warning', '#C6973A', '198, 151, 58'),
+                    ('text', 'Vivid Safety Orange', '--text', '#FF6A00', '255, 106, 0'),
+                    ('accent', 'Pure Black', '--accent', '#0A0A0A', '10, 10, 10'),
+                    ('border', 'Dark Border', '--border', '#1A1A1A', '26, 26, 26'),
+                    ('heading', 'Cool Off White', '--heading', '#F5F5F5', '245, 245, 245'),
+                    ('primary', 'Pure White', '--primary', '#FFFFFF', '255, 255, 255'),
+                    ('secondary', 'Cool Gray', '--secondary', '#6E6E6E', '110, 110, 110'),
                 ]
             },
-
+            {
+                'name': 'ModernEcommerce27 - Electric Cyan',
+                'category': 'ModernEcommerce27',
+                'mood': 'tech',
+                'colors': [
+                    ('text', 'Electric Cyan', '--text', '#00E5FF', '0, 229, 255'),
+                    ('accent', 'Deep Carbon', '--accent', '#0A0E14', '10, 14, 20'),
+                    ('border', 'Cool Dark Border', '--border', '#1A1E24', '26, 30, 36'),
+                    ('heading', 'Cool White', '--heading', '#F0F4F8', '240, 244, 248'),
+                    ('primary', 'Pure White', '--primary', '#FFFFFF', '255, 255, 255'),
+                    ('secondary', 'Cool Slate', '--secondary', '#5A6470', '90, 100, 112'),
+                ]
+            },
+            {
+                'name': 'ModernEcommerce27 - Acid Lime',
+                'category': 'ModernEcommerce27',
+                'mood': 'biohazard',
+                'colors': [
+                    ('text', 'Acid Lime', '--text', '#A8FF00', '168, 255, 0'),
+                    ('accent', 'Deep Carbon Green', '--accent', '#0A0D08', '10, 13, 8'),
+                    ('border', 'Dark Green Black', '--border', '#1A1D18', '26, 29, 24'),
+                    ('heading', 'Cool Mint White', '--heading', '#F2F5EE', '242, 245, 238'),
+                    ('primary', 'Pure White', '--primary', '#FFFFFF', '255, 255, 255'),
+                    ('secondary', 'Muted Green Gray', '--secondary', '#5A6A58', '90, 106, 88'),
+                ]
+            },
+            {
+                'name': 'ModernEcommerce27 - Blood Red',
+                'category': 'ModernEcommerce27',
+                'mood': 'alert',
+                'colors': [
+                    ('text', 'Pure Red', '--text', '#FF2A2A', '255, 42, 42'),
+                    ('accent', 'Near Black', '--accent', '#0A0A0C', '10, 10, 12'),
+                    ('border', 'Dark Border', '--border', '#1A1A1C', '26, 26, 28'),
+                    ('heading', 'Warm Off White', '--heading', '#F5F2F2', '245, 242, 242'),
+                    ('primary', 'Pure White', '--primary', '#FFFFFF', '255, 255, 255'),
+                    ('secondary', 'Warm Gray', '--secondary', '#706060', '112, 96, 96'),
+                ]
+            },
             # ============================================
             # MODERNECOMMERCE28
             # ============================================
@@ -1573,6 +1560,90 @@ class Command(BaseCommand):
                     ('primary', 'Warm Bronze', '--primary', '#C49A6A', '196, 154, 106'),
                     ('secondary', 'Dark Bronze', '--secondary', '#2A2218', '42, 34, 24'),
                     ('background', 'Warm Beige', '--background', '#F0E8DC', '240, 232, 220'),
+                ]
+            },
+
+            # ============================================
+            # MODERNECOMMERCE36
+            # ============================================
+            {
+                'name': 'ModernEcommerce36 - Ink Black & Electric Yellow',
+                'category': 'ModernEcommerce36',
+                'mood': 'industrial',
+                'colors': [
+                    ('background', 'Warm White', '--background', '#FFFDF5', '255, 253, 245'),
+                    ('heading', 'White', '--heading', '#FFFFFF', '255, 255, 255'),
+                    ('text', 'Pure Black', '--text', '#0A0A0A', '10, 10, 10'),
+                    ('secondary', 'Charcoal', '--secondary', '#3A3A3A', '58, 58, 58'),
+                    ('accent', 'Warm Light Border', '--accent', '#E8E4D8', '232, 228, 216'),
+                    ('border', 'Pure Black', '--border', '#0A0A0A', '10, 10, 10'),
+                    ('primary', 'Electric Yellow', '--primary', '#F5D000', '245, 208, 0'),
+                    ('success', 'Gray', '--success', '#A0A0A0', '160, 160, 160'),
+                    ('warning', 'Dark Yellow', '--warning', '#B89A00', '184, 154, 0'),
+                ]
+            },
+            {
+                'name': 'ModernEcommerce36 - Midnight & Hot Orange',
+                'category': 'ModernEcommerce36',
+                'mood': 'energetic',
+                'colors': [
+                    ('background', 'Warm Peach White', '--background', '#FFF6F0', '255, 246, 240'),
+                    ('heading', 'White', '--heading', '#FFFFFF', '255, 255, 255'),
+                    ('text', 'Near Black', '--text', '#0F0A05', '15, 10, 5'),
+                    ('secondary', 'Dark Burnt', '--secondary', '#4A2A10', '74, 42, 16'),
+                    ('accent', 'Warm Border', '--accent', '#F0DCC8', '240, 220, 200'),
+                    ('border', 'Deep Espresso', '--border', '#1A0A00', '26, 10, 0'),
+                    ('primary', 'Vivid Orange', '--primary', '#FF5A00', '255, 90, 0'),
+                    ('success', 'Tan', '--success', '#C8A88A', '200, 168, 138'),
+                    ('warning', 'Dark Orange', '--warning', '#C43A00', '196, 58, 0'),
+                ]
+            },
+            {
+                'name': 'ModernEcommerce36 - Navy & Electric Cyan',
+                'category': 'ModernEcommerce36',
+                'mood': 'cool',
+                'colors': [
+                    ('background', 'Cool Ice White', '--background', '#F0FAFF', '240, 250, 255'),
+                    ('heading', 'White', '--heading', '#FFFFFF', '255, 255, 255'),
+                    ('text', 'Deep Navy Black', '--text', '#001A2A', '0, 26, 42'),
+                    ('secondary', 'Cool Navy', '--secondary', '#1A4A6A', '26, 74, 106'),
+                    ('accent', 'Cool Border', '--accent', '#C8E4F0', '200, 228, 240'),
+                    ('border', 'Deep Navy', '--border', '#001A2A', '0, 26, 42'),
+                    ('primary', 'Electric Cyan', '--primary', '#00D4E0', '0, 212, 224'),
+                    ('success', 'Cool Stone', '--success', '#8AB4C8', '138, 180, 200'),
+                    ('warning', 'Dark Cyan', '--warning', '#008A9A', '0, 138, 154'),
+                ]
+            },
+            {
+                'name': 'ModernEcommerce36 - Burgundy & Hot Pink',
+                'category': 'ModernEcommerce36',
+                'mood': 'bold',
+                'colors': [
+                    ('background', 'Pink White', '--background', '#FFF5F8', '255, 245, 248'),
+                    ('heading', 'White', '--heading', '#FFFFFF', '255, 255, 255'),
+                    ('text', 'Deep Burgundy Black', '--text', '#1A0510', '26, 5, 16'),
+                    ('secondary', 'Deep Plum', '--secondary', '#5A1A30', '90, 26, 48'),
+                    ('accent', 'Pink Border', '--accent', '#F0D0DC', '240, 208, 220'),
+                    ('border', 'Deep Burgundy', '--border', '#3A0A1A', '58, 10, 26'),
+                    ('primary', 'Hot Pink', '--primary', '#FF0080', '255, 0, 128'),
+                    ('success', 'Dusty Rose', '--success', '#C88AA0', '200, 138, 160'),
+                    ('warning', 'Dark Pink', '--warning', '#C40060', '196, 0, 96'),
+                ]
+            },
+            {
+                'name': 'ModernEcommerce36 - Forest & Acid Green',
+                'category': 'ModernEcommerce36',
+                'mood': 'athletic',
+                'colors': [
+                    ('background', 'Light Sage', '--background', '#F0F8EC', '240, 248, 236'),
+                    ('heading', 'White', '--heading', '#FFFFFF', '255, 255, 255'),
+                    ('text', 'Near Black Green', '--text', '#0A1A0A', '10, 26, 10'),
+                    ('secondary', 'Deep Forest', '--secondary', '#2A4A2A', '42, 74, 42'),
+                    ('accent', 'Sage Border', '--accent', '#C8E0C0', '200, 224, 192'),
+                    ('border', 'Deep Forest Black', '--border', '#0A1A0A', '10, 26, 10'),
+                    ('primary', 'Acid Green', '--primary', '#7AF020', '122, 240, 32'),
+                    ('success', 'Sage Stone', '--success', '#8AB880', '138, 184, 128'),
+                    ('warning', 'Dark Green', '--warning', '#4A9A10', '74, 154, 16'),
                 ]
             },
         ]

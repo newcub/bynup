@@ -1,6 +1,7 @@
 
 from django.urls import path
 from . import views
+from . import views, admin_views
 
 
 
@@ -112,6 +113,11 @@ urlpatterns = [
     path('manage-tiers/<str:subdomain>/<int:product_id>/', 
      views.manage_product_tiers, 
      name='manage_product_tiers'),
+
+    
+     path('upload-video/', views.upload_video, name='upload_video'),
+path('save-video-url/', views.save_video_url, name='save_video_url'),
+path('remove-video/<str:subdomain>/', views.remove_video, name='remove_video'),
 
 
 
@@ -275,6 +281,23 @@ urlpatterns = [
       path('api/memory/status/', views.memory_status, name='memory_status'),
     path('api/memory/test-public/', views.memory_test_public, name='memory_test_public'),
     path('api/memory/test-auth/', views.memory_test_auth, name='memory_test_auth'),
+
+
+        # Domain management
+         path('domains/<str:subdomain>/', views.domains_page, name='domains_page'),
+    path('domains/search/<str:subdomain>/', views.search_domain, name='search_domain'),
+    path('domains/request/<str:subdomain>/', views.request_domain, name='request_domain'),
+    path('domains/list/<str:subdomain>/', views.list_domain_requests, name='list_domain_requests'),
      
+         # Staff-only admin dashboard for domain fulfillment
+     # Staff-only dashboard for domain fulfillment (uses /staff/ to avoid Django admin collision)
+     path('staff/domains/queue/', admin_views.admin_domain_queue, name='admin_domain_queue'),
+     path('staff/domains/in-progress/', admin_views.admin_domain_in_progress, name='admin_domain_in_progress'),
+     path('staff/domains/history/', admin_views.admin_domain_history, name='admin_domain_history'),
+     path('staff/domains/action/<int:request_id>/', admin_views.admin_domain_action, name='admin_domain_action'),
+
+     path('staff/<str:subdomain>/', views.manage_website, name='manage_website'),
+
+
     path('', views.public_page, name='public_page'),
 ]

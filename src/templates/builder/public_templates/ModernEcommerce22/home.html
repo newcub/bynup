@@ -570,7 +570,66 @@
 <section class="hero-section" id="section-12">
     <div class="hero-bg">
         {% if image_customizations.1 %}
-            <img src="{{ image_customizations.1.image_url }}" alt="{{ image_customizations.1.alt_text|default:'Gaming Setup' }}">
+            <img {% with video=video_customizations.1 %}
+    {% if video %}
+        {# ===== VIDEO EXISTS - RENDER VIDEO ===== #}
+        <div class="editable-video" 
+             data-image="1" 
+             data-is-video="true"
+             style="position: relative; overflow: hidden; display: inline-block; max-width: 100%; border-radius: 8px; cursor: pointer;">
+            
+            <video 
+                src="{{ video.video_url }}" 
+                poster="{{ video.poster_url|default:'' }}"
+                {% if video.autoplay %}autoplay{% endif %}
+                {% if video.loop %}loop{% endif %}
+                {% if video.muted %}muted{% endif %}
+                {% if video.controls %}controls{% endif %}
+                style="width: 100%; height: 100%; display: block; object-fit: cover;"
+            >
+                Your browser does not support the video tag.
+            </video>
+            
+            {# ===== PLAY BUTTON OVERLAY ===== #}
+            {% if video.show_play_button %}
+            <div class="video-overlay" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 24px;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            ">
+                <i class="fas fa-play"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+        {# ===== NO VIDEO - RENDER IMAGE ===== #}
+        {% if image_customizations.1 %}
+            <img src="{{ image_customizations.1.image_url }}" 
+                 alt="{{ image_customizations.1.alt_text|default:'{{ image_customizations.1.alt_text|default:' }}" 
+                 class="editable-image" 
+                 data-image="1">
+        {% else %}
+            <img src="https://images.pexels.com/photos/6311675/pexels-photo-6311675.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                 alt="{{ image_customizations.1.alt_text|default:" 
+                 class="editable-image" 
+                 data-image="1">
+        {% endif %}
+    {% endif %}
+{% endwith %} alt="{{ image_customizations.1.alt_text|default:'Gaming Setup' }}">
         {% else %}
             <img src="https://images.pexels.com/photos/2115257/pexels-photo-2115257.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Gaming Setup">
         {% endif %}

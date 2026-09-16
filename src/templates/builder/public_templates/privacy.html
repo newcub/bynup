@@ -2,382 +2,667 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy • {{ page.brand_name }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>{{ page.brand_name }} · Shipping &amp; Returns</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+
     <style>
-        * {
+        /* ============================================================
+           DESIGN TOKENS
+           ============================================================ */
+        :root {
+            /* Neutral scale */
+            --n-0:  #ffffff;
+            --n-50: #fafafa;
+            --n-100:#f4f4f5;
+            --n-200:#e4e4e7;
+            --n-300:#d4d4d8;
+            --n-400:#a1a1aa;
+            --n-500:#71717a;
+            --n-600:#52525b;
+            --n-700:#3f3f46;
+            --n-800:#27272a;
+            --n-900:#18181b;
+
+            /* Store accent — inherited from the merchant's brand color */
+            --accent: {{ page.primary_color|default:"#111827" }};
+            --accent-hover: {{ page.primary_color_hover|default:"#000000" }};
+
+            /* Semantic */
+            --success: #15803d;
+            --warning: #a16207;
+            --danger:  #b91c1c;
+
+            /* Surfaces */
+            --page-bg: #f6f7f9;
+            --border: var(--n-200);
+            --border-strong: var(--n-300);
+            --text: var(--n-900);
+            --text-muted: var(--n-500);
+            --text-subtle: var(--n-400);
+
+            /* Radii */
+            --radius-sm: 4px;
+            --radius: 6px;
+            --radius-lg: 10px;
+
+            /* Elevation */
+            --surface-shadow: 0 1px 2px rgba(24, 24, 27, 0.04), 0 1px 1px rgba(24, 24, 27, 0.03);
+            --surface-shadow-hover: 0 4px 12px rgba(24, 24, 27, 0.06), 0 1px 2px rgba(24, 24, 27, 0.04);
+
+            /* Fluid type scale */
+            --text-xs:  0.75rem;
+            --text-sm:  0.8125rem;
+            --text-base:0.875rem;
+            --text-lg:  1rem;
+            --text-xl:  1.125rem;
+            --text-2xl: clamp(1.375rem, 3vw, 1.75rem);
+            --text-3xl: clamp(1.75rem, 4vw, 2.25rem);
+        }
+
+        /* ============================================================
+           RESET
+           ============================================================ */
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        :root {
-            --primary: #2C3E50;
-            --secondary: #E8C07D;
-            --accent: #D4AF37;
-            --background: #F9F6F0;
-            --surface: #FFFFFF;
-            --text-primary: #2C3E50;
-            --text-secondary: #6B7A8A;
-            --border: #E5D9CC;
-            --shadow-sm: 0 4px 20px rgba(44, 62, 80, 0.05);
-            --shadow-md: 0 8px 30px rgba(44, 62, 80, 0.08);
-            --shadow-lg: 0 20px 40px rgba(44, 62, 80, 0.12);
-        }
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: var(--background);
-            color: var(--text-primary);
-            line-height: 1.6;
-            min-height: 100vh;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: var(--text-base);
+            line-height: 1.55;
+            color: var(--text);
+            background: var(--page-bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
         }
 
-        .policy-wrapper {
-            max-width: 1000px;
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', 'Inter', serif;
+            font-weight: 600;
+            letter-spacing: -0.015em;
+            line-height: 1.2;
+            color: var(--text);
+        }
+
+        p { overflow-wrap: break-word; }
+
+        img { max-width: 100%; height: auto; display: block; }
+
+        ::selection {
+            background: var(--accent);
+            color: var(--n-0);
+        }
+
+        *:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+            border-radius: var(--radius-sm);
+        }
+
+        /* ============================================================
+           SHELL
+           ============================================================ */
+        .policy-shell {
+            max-width: 960px;
             margin: 0 auto;
-            padding: 2rem 1.5rem;
+            padding: 3rem 1.5rem 4rem;
         }
 
-        /* Header */
-        .policy-header {
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
+        @media (max-width: 640px) {
+            .policy-shell { padding: 2rem 1rem 3rem; }
         }
 
-        .policy-header h1 {
+        /* ============================================================
+           TOP BAR — brand + back
+           ============================================================ */
+        .top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.625rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .brand-mark {
+            width: 32px;
+            height: 32px;
+            border-radius: var(--radius);
+            background: var(--accent);
+            color: var(--n-0);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2rem, 5vw, 3rem);
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .policy-header h1 span {
-            color: var(--secondary);
-        }
-
-        .store-name {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-        }
-
-        .store-name i {
-            color: var(--secondary);
-            margin-right: 0.5rem;
+            font-size: 1.0625rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
         }
 
         .back-link {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1.5rem;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 50px;
-            color: var(--text-primary);
+            gap: 0.375rem;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--text-muted);
             text-decoration: none;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            margin-bottom: 2rem;
+            padding: 0.4375rem 0.75rem;
+            border-radius: var(--radius);
+            border: 1px solid transparent;
+            transition: color 0.15s, background 0.15s, border-color 0.15s;
         }
 
         .back-link:hover {
-            background: var(--primary);
-            color: var(--surface);
-            border-color: var(--primary);
+            color: var(--text);
+            background: var(--n-0);
+            border-color: var(--border);
         }
 
-        /* Main Card */
-        .policy-card {
-            background: var(--surface);
-            border-radius: 30px;
-            box-shadow: var(--shadow-lg);
-            overflow: hidden;
+        .back-link svg {
+            transition: transform 0.15s;
+        }
+
+        .back-link:hover svg {
+            transform: translateX(-2px);
+        }
+
+        /* ============================================================
+           PAGE HEADER
+           ============================================================ */
+        .page-header {
+            margin-bottom: 2.5rem;
+            max-width: 720px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4375rem;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 0.875rem;
+            padding: 0.25rem 0.625rem 0.25rem 0.5rem;
+            border-radius: 999px;
+            background: var(--n-0);
             border: 1px solid var(--border);
         }
 
-        .policy-hero {
-            background: linear-gradient(135deg, var(--primary) 0%, #1A2A38 100%);
-            padding: 3rem 2rem;
-            text-align: center;
-            color: var(--surface);
+        .eyebrow::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            flex-shrink: 0;
         }
 
-        .policy-hero h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            margin-bottom: 0.5rem;
+        .page-title {
+            font-size: var(--text-3xl);
+            margin-bottom: 0.625rem;
         }
 
-        .policy-hero p {
-            opacity: 0.9;
+        .page-lede {
             font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.55;
+            max-width: 560px;
         }
 
-        /* Compliance Badges */
-        .compliance-badges {
+        /* ============================================================
+           SECTIONS
+           ============================================================ */
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section:last-child { margin-bottom: 0; }
+
+        .section-head {
             display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin: 1.5rem 0;
+            align-items: baseline;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.875rem;
+            border-bottom: 1px solid var(--border);
             flex-wrap: wrap;
         }
 
-        .compliance-badge {
-            padding: 0.4rem 1.2rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            background: var(--background);
-            border: 1px solid var(--border);
-            color: var(--text-secondary);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
+        .section-title {
+            font-size: var(--text-2xl);
+            margin: 0;
         }
 
-        .compliance-badge.active {
-            background: var(--success-light, #E8F0E9);
-            color: var(--success, #7A9E7E);
-            border-color: var(--success, #7A9E7E);
-        }
-
-        .compliance-badge i {
-            font-size: 1rem;
-        }
-
-        .policy-content {
-            padding: 3rem 2rem;
-        }
-
-        /* Content Styles */
-        .privacy-content {
-            color: var(--text-primary);
-        }
-
-        .privacy-content h1,
-        .privacy-content h2,
-        .privacy-content h3 {
-            font-family: 'Cormorant Garamond', serif;
-            color: var(--primary);
-            margin: 2rem 0 1rem;
-        }
-
-        .privacy-content h2 {
-            font-size: 1.8rem;
-            border-bottom: 2px solid var(--secondary);
-            padding-bottom: 0.5rem;
-            display: inline-block;
-        }
-
-        .privacy-content h3 {
-            font-size: 1.4rem;
-        }
-
-        .privacy-content p {
-            margin-bottom: 1rem;
-            color: var(--text-secondary);
-            line-height: 1.8;
-        }
-
-        .privacy-content ul,
-        .privacy-content ol {
-            margin: 1rem 0 1rem 2rem;
-            color: var(--text-secondary);
-        }
-
-        .privacy-content li {
-            margin-bottom: 0.5rem;
-        }
-
-        .privacy-content a {
-            color: var(--secondary);
-            text-decoration: none;
-        }
-
-        .privacy-content a:hover {
-            text-decoration: underline;
-        }
-
-        .privacy-section {
-            margin-bottom: 2.5rem;
-        }
-
-        .privacy-section:last-child {
-            margin-bottom: 0;
-        }
-
-        /* Last Updated */
-        .last-updated {
-            margin-top: 3rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border);
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+        .section-sub {
+            font-size: 0.8125rem;
+            color: var(--text-muted);
             font-style: italic;
         }
 
-        .last-updated i {
-            color: var(--secondary);
-            margin-right: 0.3rem;
+        /* ============================================================
+           INFO CARDS (grid of key facts)
+           ============================================================ */
+        .facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .policy-content {
-                padding: 2rem 1.5rem;
+        .fact {
+            padding: 1.125rem 1.25rem;
+            background: var(--n-0);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--surface-shadow);
+            transition: box-shadow 0.18s, border-color 0.18s;
+        }
+
+        .fact:hover {
+            border-color: var(--border-strong);
+            box-shadow: var(--surface-shadow-hover);
+        }
+
+        .fact-label {
+            display: block;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .fact-value {
+            font-size: 0.9375rem;
+            color: var(--text);
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        /* ============================================================
+           BODY CARDS (long-form sections)
+           ============================================================ */
+        .card {
+            padding: 1.25rem 1.5rem;
+            background: var(--n-0);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--surface-shadow);
+            margin-bottom: 1rem;
+        }
+
+        .card:last-child { margin-bottom: 0; }
+
+        .card-title {
+            font-size: var(--text-xl);
+            margin: 0 0 0.75rem 0;
+            letter-spacing: -0.01em;
+        }
+
+        .card p {
+            font-size: 0.9375rem;
+            color: var(--n-700);
+            line-height: 1.65;
+            margin-bottom: 0.75rem;
+        }
+
+        .card p:last-child { margin-bottom: 0; }
+
+        .card ul,
+        .card ol {
+            margin: 0.5rem 0 0.75rem 1.25rem;
+            color: var(--n-700);
+            font-size: 0.9375rem;
+        }
+
+        .card ul:last-child,
+        .card ol:last-child { margin-bottom: 0; }
+
+        .card li {
+            padding: 0.25rem 0;
+            line-height: 1.6;
+        }
+
+        .card li::marker {
+            color: var(--accent);
+        }
+
+        /* ============================================================
+           CONTACT CTA
+           ============================================================ */
+        .contact {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            background: var(--n-0);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--surface-shadow);
+            margin-top: 2.5rem;
+        }
+
+        .contact-title {
+            font-size: var(--text-2xl);
+            margin: 0 0 0.375rem;
+        }
+
+        .contact-desc {
+            font-size: 0.9375rem;
+            color: var(--text-muted);
+            margin: 0 auto 1.5rem;
+            max-width: 400px;
+            line-height: 1.55;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4375rem;
+            padding: 0.625rem 1.125rem;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            font-family: inherit;
+            border-radius: var(--radius);
+            text-decoration: none;
+            cursor: pointer;
+            border: 1px solid transparent;
+            white-space: nowrap;
+            transition: background 0.15s, border-color 0.15s, color 0.15s, box-shadow 0.15s;
+        }
+
+        .btn-accent {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--n-0);
+            box-shadow: 0 1px 2px rgba(24, 24, 27, 0.16);
+        }
+
+        .btn-accent:hover {
+            background: var(--accent-hover);
+            border-color: var(--accent-hover);
+            box-shadow: 0 4px 12px rgba(24, 24, 27, 0.18);
+        }
+
+        /* ============================================================
+           FOOTER
+           ============================================================ */
+        .page-footer {
+            margin-top: 3rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.75rem;
+            color: var(--text-subtle);
+            text-align: center;
+        }
+
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
+        @media (max-width: 640px) {
+            .top-bar {
+                margin-bottom: 1.75rem;
+            }
+
+            .page-header {
+                margin-bottom: 2rem;
+            }
+
+            .section {
+                margin-bottom: 2.25rem;
+            }
+
+            .card {
+                padding: 1rem 1.125rem;
+            }
+
+            .contact {
+                padding: 1.5rem 1.125rem;
+            }
+        }
+
+        /* ============================================================
+           PRINT
+           ============================================================ */
+        @media print {
+            body { background: #fff; }
+            .top-bar, .contact, .back-link { display: none; }
+            .policy-shell { padding: 0; max-width: none; }
+            .card, .fact { box-shadow: none; border-color: #ddd; page-break-inside: avoid; }
+            .page-title, .section-title, .card-title { color: #000; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
             }
         }
     </style>
 </head>
 <body>
-    <div class="policy-wrapper">
-        <!-- Header -->
-        <div class="policy-header">
-            <h1>{{ page.brand_name }} <span>•</span></h1>
-            <div class="store-name">
-                <i class="fas fa-shield-alt"></i>
-                Privacy Policy
-            </div>
-            <a href="../../?page=home" class="back-link">
-                <i class="fas fa-arrow-left"></i>
-                Back to Store
-            </a>
+
+<div class="policy-shell">
+
+    <!-- ============================================================
+         TOP BAR
+         ============================================================ -->
+    <div class="top-bar">
+        <a href="../../?page=home" class="brand">
+            <span class="brand-mark">{{ page.brand_name|first|upper }}</span>
+            <span>{{ page.brand_name }}</span>
+        </a>
+        <a href="../../?page=home" class="back-link">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            <span>Back to store</span>
+        </a>
+    </div>
+
+    <!-- ============================================================
+         PAGE HEADER
+         ============================================================ -->
+    <header class="page-header">
+        <span class="eyebrow">Policy</span>
+        <h1 class="page-title">Shipping &amp; Returns</h1>
+        <p class="page-lede">A thoughtful approach to delivery and satisfaction. Everything you need to know about how we ship, and how we handle returns.</p>
+    </header>
+
+    {% if policy %}
+    <!-- ============================================================
+         SHIPPING
+         ============================================================ -->
+    <section class="section">
+        <div class="section-head">
+            <h2 class="section-title">Shipping</h2>
+            <span class="section-sub">Carefully packaged &amp; promptly dispatched</span>
         </div>
 
-        <!-- Main Card -->
-        <div class="policy-card">
-            <div class="policy-hero">
-                <h2>Privacy Policy</h2>
-                <p>How we protect and handle your data</p>
-            </div>
-
-            <!-- Compliance Badges -->
-            {% if privacy %}
-            <div class="compliance-badges">
-                {% if privacy.gdpr_compliant %}
-                <div class="compliance-badge active">
-                    <i class="fab fa-european-union"></i>
-                    GDPR Compliant
-                </div>
-                {% endif %}
-                {% if privacy.ccpa_compliant %}
-                <div class="compliance-badge active">
-                    <i class="fas fa-flag-usa"></i>
-                    CCPA Compliant
-                </div>
-                {% endif %}
+        {% if policy.processing_time or policy.delivery_timeframe or policy.free_shipping_threshold %}
+        <div class="facts">
+            {% if policy.processing_time %}
+            <div class="fact">
+                <span class="fact-label">Processing</span>
+                <span class="fact-value">{{ policy.processing_time }}</span>
             </div>
             {% endif %}
 
-            <div class="policy-content">
-                {% if privacy %}
-                    {% if privacy.content %}
-                        <div class="privacy-content">
-                            {{ privacy.content|safe }}
-                        </div>
-                    {% else %}
-                        <div class="privacy-content">
-                            {% if privacy.introduction %}
-                            <div class="privacy-section">
-                                <h2>Introduction</h2>
-                                {{ privacy.introduction|linebreaks }}
-                            </div>
-                            {% endif %}
+            {% if policy.delivery_timeframe %}
+            <div class="fact">
+                <span class="fact-label">Delivery</span>
+                <span class="fact-value">{{ policy.delivery_timeframe }}</span>
+            </div>
+            {% endif %}
 
-                            {% if privacy.information_collected %}
-                            <div class="privacy-section">
-                                <h2>Information We Collect</h2>
-                                {{ privacy.information_collected|linebreaks }}
-                            </div>
-                            {% endif %}
+            {% if policy.free_shipping_threshold %}
+            <div class="fact">
+                <span class="fact-label">Free shipping</span>
+                <span class="fact-value">{{ policy.free_shipping_threshold }}</span>
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
 
-                            {% if privacy.how_we_use %}
-                            <div class="privacy-section">
-                                <h2>How We Use Your Information</h2>
-                                {{ privacy.how_we_use|linebreaks }}
-                            </div>
-                            {% endif %}
+        {% if policy.shipping_methods %}
+        <div class="card">
+            <h3 class="card-title">Shipping methods</h3>
+            {{ policy.shipping_methods|linebreaks }}
+        </div>
+        {% endif %}
+    </section>
 
-                            {% if privacy.cookies %}
-                            <div class="privacy-section">
-                                <h2>Cookie Policy</h2>
-                                {{ privacy.cookies|linebreaks }}
-                            </div>
-                            {% endif %}
+    <!-- ============================================================
+         RETURNS
+         ============================================================ -->
+    <section class="section">
+        <div class="section-head">
+            <h2 class="section-title">Returns &amp; Exchanges</h2>
+            <span class="section-sub">Your satisfaction, thoughtfully considered</span>
+        </div>
 
-                            {% if privacy.third_party %}
-                            <div class="privacy-section">
-                                <h2>Third-Party Disclosure</h2>
-                                {{ privacy.third_party|linebreaks }}
-                            </div>
-                            {% endif %}
+        {% if policy.return_window %}
+        <div class="card">
+            <h3 class="card-title">Return window</h3>
+            <p>{{ policy.return_window }}</p>
+        </div>
+        {% endif %}
 
-                            {% if privacy.data_security %}
-                            <div class="privacy-section">
-                                <h2>Data Security</h2>
-                                {{ privacy.data_security|linebreaks }}
-                            </div>
-                            {% endif %}
+        {% if policy.return_conditions %}
+        <div class="card">
+            <h3 class="card-title">Conditions</h3>
+            {{ policy.return_conditions|linebreaks }}
+        </div>
+        {% endif %}
 
-                            {% if privacy.your_rights %}
-                            <div class="privacy-section">
-                                <h2>Your Privacy Rights</h2>
-                                {{ privacy.your_rights|linebreaks }}
-                            </div>
-                            {% endif %}
+        {% if policy.return_process %}
+        <div class="card">
+            <h3 class="card-title">Process</h3>
+            {{ policy.return_process|linebreaks }}
+        </div>
+        {% endif %}
 
-                            {% if privacy.children_privacy %}
-                            <div class="privacy-section">
-                                <h2>Children's Privacy</h2>
-                                {{ privacy.children_privacy|linebreaks }}
-                            </div>
-                            {% endif %}
+        {% if policy.refund_info %}
+        <div class="card">
+            <h3 class="card-title">Refunds</h3>
+            {{ policy.refund_info|linebreaks }}
+        </div>
+        {% endif %}
+    </section>
 
-                            {% if privacy.international_transfers %}
-                            <div class="privacy-section">
-                                <h2>International Data Transfers</h2>
-                                {{ privacy.international_transfers|linebreaks }}
-                            </div>
-                            {% endif %}
+    <!-- ============================================================
+         INTERNATIONAL
+         ============================================================ -->
+    {% if policy.international_shipping %}
+    <section class="section">
+        <div class="section-head">
+            <h2 class="section-title">International orders</h2>
+            <span class="section-sub">Shipping beyond borders</span>
+        </div>
+        <div class="card">
+            {{ policy.international_shipping|linebreaks }}
+        </div>
+    </section>
+    {% endif %}
 
-                            {% if privacy.policy_changes %}
-                            <div class="privacy-section">
-                                <h2>Changes to This Policy</h2>
-                                {{ privacy.policy_changes|linebreaks }}
-                            </div>
-                            {% endif %}
+    <!-- ============================================================
+         CONTACT
+         ============================================================ -->
+    {% if policy.support_contact %}
+    <section class="contact">
+        <h2 class="contact-title">Still have questions?</h2>
+        <p class="contact-desc">Our team is here to assist with any inquiries about shipping or returns.</p>
+        <a href="mailto:{{ policy.support_contact }}" class="btn btn-accent">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                <path d="m22 7-10 6L2 7"/>
+            </svg>
+            <span>Contact support</span>
+        </a>
+    </section>
+    {% endif %}
 
-                            {% if privacy.contact_info %}
-                            <div class="privacy-section">
-                                <h2>Contact Information</h2>
-                                {{ privacy.contact_info|linebreaks }}
-                            </div>
-                            {% endif %}
-                        </div>
-                    {% endif %}
+    {% if policy.updated_at %}
+    <footer class="page-footer">
+        Last revised · {{ policy.updated_at|date:"F j, Y" }}
+    </footer>
+    {% endif %}
 
-                    <div class="last-updated">
-                        <i class="fas fa-clock"></i>
-                        Last updated: {{ privacy.last_updated|date:"F j, Y" }}
-                    </div>
+    {% else %}
 
-                {% else %}
-                    <div class="privacy-content">
-                        <p style="text-align: center; color: var(--text-secondary);">
-                            Privacy policy has not been published yet.
-                        </p>
-                    </div>
-                {% endif %}
+    <!-- ============================================================
+         DEFAULT POLICY (no policy object yet)
+         ============================================================ -->
+    <section class="section">
+        <div class="section-head">
+            <h2 class="section-title">Shipping</h2>
+            <span class="section-sub">Our commitment to timely delivery</span>
+        </div>
+
+        <div class="facts">
+            <div class="fact">
+                <span class="fact-label">Processing</span>
+                <span class="fact-value">Orders processed within 1–3 business days</span>
+            </div>
+            <div class="fact">
+                <span class="fact-label">Delivery</span>
+                <span class="fact-value">5–10 business days delivery</span>
+            </div>
+            <div class="fact">
+                <span class="fact-label">Free shipping</span>
+                <span class="fact-value">On orders over $50</span>
             </div>
         </div>
-    </div>
+    </section>
+
+    <section class="section">
+        <div class="section-head">
+            <h2 class="section-title">Returns</h2>
+            <span class="section-sub">30-day return policy</span>
+        </div>
+        <div class="card">
+            <p>Items must be unused and in their original packaging. Once we receive the return, we'll process your refund within 5–7 business days.</p>
+        </div>
+    </section>
+
+    <section class="contact">
+        <h2 class="contact-title">Questions?</h2>
+        <p class="contact-desc">Contact us for assistance with shipping or returns.</p>
+        <a href="../../?page=contact" class="btn btn-accent">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                <path d="m22 7-10 6L2 7"/>
+            </svg>
+            <span>Contact us</span>
+        </a>
+    </section>
+
+    {% endif %}
+
+</div>
+
 </body>
 </html>

@@ -110,11 +110,19 @@ class EncryptedField(models.CharField):
     def from_db_value(self, value, expression, connection):
         return EncryptionService.decrypt(value)
 
+    # def to_python(self, value):
+    #     if value is None:
+    #         return value
+    #     return EncryptionService.decrypt(value)
+
     def to_python(self, value):
         if value is None:
             return value
-        return EncryptionService.decrypt(value)
-
+        # Only decrypt values that look encrypted; leave plaintext alone.
+        if isinstance(value, str) and (value.startswith('$enc$') or value.startswith('gAAAA')):
+            return EncryptionService.decrypt(value)
+        return value
+    
     def get_prep_value(self, value):
         if value is None or value == "":
             return value
@@ -244,8 +252,8 @@ class PaymentGateway(models.Model):
     )
 
     # Webhook configuration
-    webhook_secret = EncryptedField(models.CharField(max_length=200, blank=True, null=True) )
-    
+    # webhook_secret = EncryptedField(models.CharField(max_length=200, blank=True, null=True) )
+    webhook_secret = EncryptedField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -401,7 +409,8 @@ class Order(models.Model):
     # customer_name = models.CharField(max_length=100, blank=True)
     country_iso = models.CharField(max_length=100, blank=True)
     customer_country = models.CharField(max_length=100, blank=True)
-    
+
+    currency = models.CharField(max_length=3, default='USD') 
 
 
     # Delivery information
@@ -1339,7 +1348,15 @@ class Plan(models.Model):
     max_visitors = models.IntegerField(default=1000, help_text="Monthly, -1 for unlimited")
     max_form_submissions = models.IntegerField(default=10, help_text="Monthly, -1 for unlimited")
     max_emails = models.IntegerField(default=0, help_text="Monthly, 0 for none")
-    
+    max_domains = models.IntegerField(
+        default=0,
+        help_text="Max custom domains per user account. 0 = no domains, -1 = unlimited"
+    )
+    free_domain_tlds = models.JSONField(
+        default=list,
+        blank=True,
+        help_text="List of TLDs this plan can register for free. e.g. ['store'] or ['com', 'store']"
+    )
     # Features
     custom_domain = models.BooleanField(default=False)
     remove_branding = models.BooleanField(default=False)

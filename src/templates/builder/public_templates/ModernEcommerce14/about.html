@@ -650,7 +650,66 @@
         <!-- Hero Section -->
         <div class="container">
             <div class="hero-about" id="section-395">
-                <img class="hero-image" data-image="90" src="{% if image_customizations.90 %}{{ image_customizations.90.image_url }}{% else %}{{ about_hero_image|default:'https://images.unsplash.com/photo-1605100940501-e61926f5e72d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80' }}{% endif %}" alt="{{ image_customizations.90.alt_text|default:'Jewelry craftsmanship' }}">
+                {% with video=video_customizations.90 %}
+    {% if video %}
+        {# ===== VIDEO EXISTS - RENDER VIDEO ===== #}
+        <div class="editable-video" 
+             data-image="90" 
+             data-is-video="true"
+             style="position: relative; overflow: hidden; display: inline-block; max-width: 100%; border-radius: 8px; cursor: pointer;">
+            
+            <video 
+                src="{{ video.video_url }}" 
+                poster="{{ video.poster_url|default:'' }}"
+                {% if video.autoplay %}autoplay{% endif %}
+                {% if video.loop %}loop{% endif %}
+                {% if video.muted %}muted{% endif %}
+                {% if video.controls %}controls{% endif %}
+                style="width: 100%; height: 100%; display: block; object-fit: cover;"
+            >
+                Your browser does not support the video tag.
+            </video>
+            
+            {# ===== PLAY BUTTON OVERLAY ===== #}
+            {% if video.show_play_button %}
+            <div class="video-overlay" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 24px;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            ">
+                <i class="fas fa-play"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+        {# ===== NO VIDEO - RENDER IMAGE ===== #}
+        {% if image_customizations.90 %}
+            <img src="{{ image_customizations.90.image_url }}" 
+                 alt="{{ image_customizations.90.alt_text|default:'{{ image_customizations.90.alt_text|default:' }}" 
+                 class="editable-image" 
+                 data-image="90">
+        {% else %}
+            <img src="https://images.pexels.com/photos/6311675/pexels-photo-6311675.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                 alt="{{ image_customizations.90.alt_text|default:" 
+                 class="editable-image" 
+                 data-image="90">
+        {% endif %}
+    {% endif %}
+{% endwith %}
                 <div class="hero-content" id="section-396">
                     <h2 id="section-397">{{ text_contents.702|default:"Timeless Craftsmanship Since 1925" }}</h2>
                     <p id="section-398">{{ text_contents.703|default:"Founded by master jeweler Giovanni Moretti in Florence, Italy, Timeless Elegance began as a small atelier dedicated to the art of fine jewelry making. Giovanni's vision was simple yet profound: to create pieces that would transcend generations, becoming family heirlooms that tell stories of love, celebration, and legacy." }}</p>
@@ -751,7 +810,66 @@
                         </div>
                     </div>
                     
-                    <img class="craftsmanship-image" data-image="91" src="{% if image_customizations.91 %}{{ image_customizations.91.image_url }}{% else %}{{ craftsmanship_image|default:'https://images.unsplash.com/photo-1605100940281-ba7a5b9a5c8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80' }}{% endif %}" alt="{{ image_customizations.91.alt_text|default:'Jewelry craftsmanship process' }}">
+                    {% with video=video_customizations.91 %}
+    {% if video %}
+        {# ===== VIDEO EXISTS - RENDER VIDEO ===== #}
+        <div class="editable-video" 
+             data-image="91" 
+             data-is-video="true"
+             style="position: relative; overflow: hidden; display: inline-block; max-width: 100%; border-radius: 8px; cursor: pointer;">
+            
+            <video 
+                src="{{ video.video_url }}" 
+                poster="{{ video.poster_url|default:'' }}"
+                {% if video.autoplay %}autoplay{% endif %}
+                {% if video.loop %}loop{% endif %}
+                {% if video.muted %}muted{% endif %}
+                {% if video.controls %}controls{% endif %}
+                style="width: 100%; height: 100%; display: block; object-fit: cover;"
+            >
+                Your browser does not support the video tag.
+            </video>
+            
+            {# ===== PLAY BUTTON OVERLAY ===== #}
+            {% if video.show_play_button %}
+            <div class="video-overlay" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 24px;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            ">
+                <i class="fas fa-play"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+        {# ===== NO VIDEO - RENDER IMAGE ===== #}
+        {% if image_customizations.91 %}
+            <img src="{{ image_customizations.91.image_url }}" 
+                 alt="{{ image_customizations.91.alt_text|default:'{{ image_customizations.91.alt_text|default:' }}" 
+                 class="editable-image" 
+                 data-image="91">
+        {% else %}
+            <img src="https://images.pexels.com/photos/6311675/pexels-photo-6311675.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                 alt="{{ image_customizations.91.alt_text|default:" 
+                 class="editable-image" 
+                 data-image="91">
+        {% endif %}
+    {% endif %}
+{% endwith %}
                 </div>
             </div>
         </div>
@@ -836,7 +954,66 @@
                 <div class="team-grid">
                     <!-- Team Member 1 -->
                     <div class="team-member" id="section-424">
-                        <img class="team-member-image" data-image="92" src="{% if image_customizations.92 %}{{ image_customizations.92.image_url }}{% else %}{{ team_member1_image|default:'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80' }}{% endif %}" alt="{{ image_customizations.92.alt_text|default:'Sofia Moretti' }}">
+                        {% with video=video_customizations.92 %}
+    {% if video %}
+        {# ===== VIDEO EXISTS - RENDER VIDEO ===== #}
+        <div class="editable-video" 
+             data-image="92" 
+             data-is-video="true"
+             style="position: relative; overflow: hidden; display: inline-block; max-width: 100%; border-radius: 8px; cursor: pointer;">
+            
+            <video 
+                src="{{ video.video_url }}" 
+                poster="{{ video.poster_url|default:'' }}"
+                {% if video.autoplay %}autoplay{% endif %}
+                {% if video.loop %}loop{% endif %}
+                {% if video.muted %}muted{% endif %}
+                {% if video.controls %}controls{% endif %}
+                style="width: 100%; height: 100%; display: block; object-fit: cover;"
+            >
+                Your browser does not support the video tag.
+            </video>
+            
+            {# ===== PLAY BUTTON OVERLAY ===== #}
+            {% if video.show_play_button %}
+            <div class="video-overlay" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 24px;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            ">
+                <i class="fas fa-play"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+        {# ===== NO VIDEO - RENDER IMAGE ===== #}
+        {% if image_customizations.92 %}
+            <img src="{{ image_customizations.92.image_url }}" 
+                 alt="{{ image_customizations.92.alt_text|default:'{{ image_customizations.92.alt_text|default:' }}" 
+                 class="editable-image" 
+                 data-image="92">
+        {% else %}
+            <img src="https://images.pexels.com/photos/6311675/pexels-photo-6311675.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                 alt="{{ image_customizations.92.alt_text|default:" 
+                 class="editable-image" 
+                 data-image="92">
+        {% endif %}
+    {% endif %}
+{% endwith %}
                         <h3 class="team-member-name" id="section-425">{{ text_contents.742|default:"Sofia Moretti" }}</h3>
                         <div class="team-member-role" id="section-426">{{ text_contents.743|default:"Creative Director" }}</div>
                         <p class="team-member-bio" id="section-427">{{ text_contents.744|default:"Great-granddaughter of founder Giovanni Moretti, Sofia brings contemporary vision while honoring family traditions. Graduate of Central Saint Martins with 15 years of design experience." }}</p>
@@ -844,7 +1021,66 @@
                     
                     <!-- Team Member 2 -->
                     <div class="team-member" id="section-464">
-                        <img class="team-member-image" data-image="93" src="{% if image_customizations.93 %}{{ image_customizations.93.image_url }}{% else %}{{ team_member2_image|default:'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80' }}{% endif %}" alt="{{ image_customizations.93.alt_text|default:'James Chen' }}">
+                        {% with video=video_customizations.93 %}
+    {% if video %}
+        {# ===== VIDEO EXISTS - RENDER VIDEO ===== #}
+        <div class="editable-video" 
+             data-image="93" 
+             data-is-video="true"
+             style="position: relative; overflow: hidden; display: inline-block; max-width: 100%; border-radius: 8px; cursor: pointer;">
+            
+            <video 
+                src="{{ video.video_url }}" 
+                poster="{{ video.poster_url|default:'' }}"
+                {% if video.autoplay %}autoplay{% endif %}
+                {% if video.loop %}loop{% endif %}
+                {% if video.muted %}muted{% endif %}
+                {% if video.controls %}controls{% endif %}
+                style="width: 100%; height: 100%; display: block; object-fit: cover;"
+            >
+                Your browser does not support the video tag.
+            </video>
+            
+            {# ===== PLAY BUTTON OVERLAY ===== #}
+            {% if video.show_play_button %}
+            <div class="video-overlay" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 24px;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            ">
+                <i class="fas fa-play"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+        {# ===== NO VIDEO - RENDER IMAGE ===== #}
+        {% if image_customizations.93 %}
+            <img src="{{ image_customizations.93.image_url }}" 
+                 alt="{{ image_customizations.93.alt_text|default:'{{ image_customizations.93.alt_text|default:' }}" 
+                 class="editable-image" 
+                 data-image="93">
+        {% else %}
+            <img src="https://images.pexels.com/photos/6311675/pexels-photo-6311675.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                 alt="{{ image_customizations.93.alt_text|default:" 
+                 class="editable-image" 
+                 data-image="93">
+        {% endif %}
+    {% endif %}
+{% endwith %}
                         <h3 class="team-member-name" id="section-465">{{ text_contents.745|default:"James Chen" }}</h3>
                         <div class="team-member-role" id="section-466">{{ text_contents.746|default:"Master Goldsmith" }}</div>
                         <p class="team-member-bio" id="section-467">{{ text_contents.747|default:"With 25 years of experience, James specializes in intricate metalwork and our signature setting technique. Trained in both traditional Chinese and European jewelry making." }}</p>
@@ -852,7 +1088,66 @@
                     
                     <!-- Team Member 3 -->
                     <div class="team-member" id="section-468">
-                        <img class="team-member-image" data-image="94" src="{% if image_customizations.94 %}{{ image_customizations.94.image_url }}{% else %}{{ team_member3_image|default:'https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80' }}{% endif %}" alt="{{ image_customizations.94.alt_text|default:'Isabelle Laurent' }}">
+                        {% with video=video_customizations.94 %}
+    {% if video %}
+        {# ===== VIDEO EXISTS - RENDER VIDEO ===== #}
+        <div class="editable-video" 
+             data-image="94" 
+             data-is-video="true"
+             style="position: relative; overflow: hidden; display: inline-block; max-width: 100%; border-radius: 8px; cursor: pointer;">
+            
+            <video 
+                src="{{ video.video_url }}" 
+                poster="{{ video.poster_url|default:'' }}"
+                {% if video.autoplay %}autoplay{% endif %}
+                {% if video.loop %}loop{% endif %}
+                {% if video.muted %}muted{% endif %}
+                {% if video.controls %}controls{% endif %}
+                style="width: 100%; height: 100%; display: block; object-fit: cover;"
+            >
+                Your browser does not support the video tag.
+            </video>
+            
+            {# ===== PLAY BUTTON OVERLAY ===== #}
+            {% if video.show_play_button %}
+            <div class="video-overlay" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 24px;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            ">
+                <i class="fas fa-play"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+        {# ===== NO VIDEO - RENDER IMAGE ===== #}
+        {% if image_customizations.94 %}
+            <img src="{{ image_customizations.94.image_url }}" 
+                 alt="{{ image_customizations.94.alt_text|default:'{{ image_customizations.94.alt_text|default:' }}" 
+                 class="editable-image" 
+                 data-image="94">
+        {% else %}
+            <img src="https://images.pexels.com/photos/6311675/pexels-photo-6311675.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                 alt="{{ image_customizations.94.alt_text|default:" 
+                 class="editable-image" 
+                 data-image="94">
+        {% endif %}
+    {% endif %}
+{% endwith %}
                         <h3 class="team-member-name" id="section-469">{{ text_contents.748|default:"Isabelle Laurent" }}</h3>
                         <div class="team-member-role" id="section-470">{{ text_contents.749|default:"Gemologist" }}</div>
                         <p class="team-member-bio" id="section-471">{{ text_contents.750|default:"GIA-certified gemologist with expertise in rare colored diamonds and gemstone sourcing. Isabelle ensures every stone meets our rigorous ethical and quality standards." }}</p>
@@ -860,7 +1155,66 @@
                     
                     <!-- Team Member 4 -->
                     <div class="team-member" id="section-472">
-                        <img class="team-member-image" data-image="95" src="{% if image_customizations.95 %}{{ image_customizations.95.image_url }}{% else %}{{ team_member4_image|default:'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80' }}{% endif %}" alt="{{ image_customizations.95.alt_text|default:'Marcus Rodriguez' }}">
+                        {% with video=video_customizations.95 %}
+    {% if video %}
+        {# ===== VIDEO EXISTS - RENDER VIDEO ===== #}
+        <div class="editable-video" 
+             data-image="95" 
+             data-is-video="true"
+             style="position: relative; overflow: hidden; display: inline-block; max-width: 100%; border-radius: 8px; cursor: pointer;">
+            
+            <video 
+                src="{{ video.video_url }}" 
+                poster="{{ video.poster_url|default:'' }}"
+                {% if video.autoplay %}autoplay{% endif %}
+                {% if video.loop %}loop{% endif %}
+                {% if video.muted %}muted{% endif %}
+                {% if video.controls %}controls{% endif %}
+                style="width: 100%; height: 100%; display: block; object-fit: cover;"
+            >
+                Your browser does not support the video tag.
+            </video>
+            
+            {# ===== PLAY BUTTON OVERLAY ===== #}
+            {% if video.show_play_button %}
+            <div class="video-overlay" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 24px;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            ">
+                <i class="fas fa-play"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+        {# ===== NO VIDEO - RENDER IMAGE ===== #}
+        {% if image_customizations.95 %}
+            <img src="{{ image_customizations.95.image_url }}" 
+                 alt="{{ image_customizations.95.alt_text|default:'{{ image_customizations.95.alt_text|default:' }}" 
+                 class="editable-image" 
+                 data-image="95">
+        {% else %}
+            <img src="https://images.pexels.com/photos/6311675/pexels-photo-6311675.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                 alt="{{ image_customizations.95.alt_text|default:" 
+                 class="editable-image" 
+                 data-image="95">
+        {% endif %}
+    {% endif %}
+{% endwith %}
                         <h3 class="team-member-name" id="section-473">{{ text_contents.751|default:"Marcus Rodriguez" }}</h3>
                         <div class="team-member-role" id="section-474">{{ text_contents.752|default:"Design Director" }}</div>
                         <p class="team-member-bio" id="section-475">{{ text_contents.753|default:"Former architect turned jewelry designer, Marcus brings structural innovation to our collections. His designs have won multiple international jewelry awards." }}</p>

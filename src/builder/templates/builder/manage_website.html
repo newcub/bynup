@@ -1,0 +1,579 @@
+{% extends 'builder/base.html' %}
+{% load static %}
+
+{% block title %}Manage {{ page.brand_name }}{% endblock %}
+
+{% block extra_css %}
+<style>
+/* ---------- Layout shell ---------- */
+.management-layout {
+    display: flex;
+    min-height: 100vh;
+}
+.management-content {
+    flex: 1;
+    padding: 2.5rem 2.5rem;
+    background: #fafbfc;
+    min-height: 100vh;
+    overflow-y: auto;
+}
+.manage-container {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+/* ---------- Page header ---------- */
+.manage-header {
+    margin-bottom: 2rem;
+}
+.manage-header h1 {
+    font-size: 1.375rem;
+    font-weight: 600;
+    color: #0f1419;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.375rem;
+    line-height: 1.3;
+}
+.manage-header p {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin: 0;
+}
+
+/* ---------- Checklist card ---------- */
+.checklist-card {
+    background: #ffffff;
+    border: 1px solid #e8ebef;
+    border-radius: 12px;
+    padding: 1.75rem 1.75rem 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.cl-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 1.25rem;
+}
+.cl-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #0f1419;
+    letter-spacing: -0.005em;
+    margin: 0 0 4px;
+    line-height: 1.3;
+}
+.cl-subtitle {
+    font-size: 0.8125rem;
+    color: #6b7280;
+    margin: 0;
+    line-height: 1.4;
+}
+.cl-percentage {
+    font-family: 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #0f1419;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    flex-shrink: 0;
+    padding-top: 2px;
+}
+.cl-percentage.is-complete {
+    color: #059669;
+}
+.cl-percent-sign {
+    font-size: 0.875rem;
+    color: #9ca3af;
+    font-weight: 500;
+    margin-left: 1px;
+}
+.cl-percentage.is-complete .cl-percent-sign {
+    color: #059669;
+}
+
+/* ---------- Progress bar ---------- */
+.cl-progress {
+    height: 4px;
+    background: #f0f2f5;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+.cl-progress-fill {
+    height: 100%;
+    background: #4361ee;
+    border-radius: 4px;
+    transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                background-color 0.3s ease;
+}
+.cl-progress-fill.is-complete {
+    background: #059669;
+}
+
+/* ---------- Steps ---------- */
+.cl-steps {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.cl-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 0;
+    border-top: 1px solid #f0f2f5;
+}
+.cl-step:first-child {
+    border-top: none;
+    padding-top: 0;
+}
+.cl-step:last-child {
+    padding-bottom: 0;
+}
+
+.cl-step-indicator {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+    color: #9ca3af;
+}
+.cl-step-indicator svg {
+    width: 18px;
+    height: 18px;
+}
+.cl-step.is-complete .cl-step-indicator {
+    color: #059669;
+}
+.cl-dot {
+    display: block;
+    width: 16px;
+    height: 16px;
+    border: 1.5px solid #d1d5db;
+    border-radius: 50%;
+    transition: border-color 0.15s;
+}
+.cl-dot-amber {
+    border-color: #f59e0b;
+    background: #fef3c7;
+    box-shadow: inset 0 0 0 3px #fff;
+}
+
+.cl-step-body {
+    flex: 1;
+    min-width: 0;
+}
+.cl-step-title {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: #0f1419;
+    margin-bottom: 3px;
+    line-height: 1.4;
+}
+.cl-step.is-complete .cl-step-title {
+    color: #6b7280;
+    text-decoration: line-through;
+    text-decoration-color: #d1d5db;
+}
+.cl-step-description {
+    font-size: 0.8125rem;
+    color: #9ca3af;
+    line-height: 1.45;
+}
+.cl-step.is-complete .cl-step-description {
+    color: #c5cad1;
+}
+
+.cl-step-action {
+    flex-shrink: 0;
+    margin-left: 8px;
+    align-self: center;
+}
+.cl-action-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: #4361ee;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 6px;
+    transition: background 0.15s, color 0.15s;
+    white-space: nowrap;
+}
+.cl-action-link:hover {
+    background: #eef2ff;
+    color: #3451d1;
+    text-decoration: none;
+}
+.cl-action-secondary {
+    color: #92400e;
+}
+.cl-action-secondary:hover {
+    background: #fffbeb;
+    color: #78350f;
+}
+
+/* ---------- Complete note ---------- */
+.cl-complete-note {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 14px;
+    margin-top: 1.5rem;
+    background: #ecfdf5;
+    border: 1px solid #d1fae5;
+    border-radius: 8px;
+    font-size: 0.8125rem;
+    color: #065f46;
+    font-weight: 500;
+}
+.cl-complete-note svg {
+    flex-shrink: 0;
+    color: #059669;
+}
+
+/* ---------- Quick actions ---------- */
+.qa-card {
+    background: #ffffff;
+    border: 1px solid #e8ebef;
+    border-radius: 12px;
+    padding: 1.5rem 1.75rem;
+}
+.qa-heading {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #6b7280;
+    margin: 0 0 1rem;
+}
+.qa-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 8px;
+}
+.qa-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border: 1px solid #e8ebef;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #0f1419;
+    transition: border-color 0.15s, background 0.15s;
+    font-size: 0.875rem;
+    font-weight: 500;
+    min-width: 0;
+}
+.qa-item:hover {
+    border-color: #4361ee;
+    background: #fafbff;
+    text-decoration: none;
+    color: #0f1419;
+}
+.qa-item svg {
+    width: 16px;
+    height: 16px;
+    color: #6b7280;
+    flex-shrink: 0;
+    transition: color 0.15s;
+}
+.qa-item:hover svg {
+    color: #4361ee;
+}
+.qa-item span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ============================================================ */
+/* RESPONSIVE */
+/* ============================================================ */
+
+/* Tablet: reduce padding, keep sidebar visible */
+@media (max-width: 992px) {
+    .management-content {
+        padding: 2rem 1.5rem;
+    }
+    .manage-container {
+        max-width: 100%;
+    }
+}
+
+/* Mobile: stack sidebar on top or collapse entirely, full width content */
+@media (max-width: 768px) {
+    .management-layout {
+        flex-direction: column;
+    }
+    .management-content {
+        padding: 1.25rem 1rem;
+        min-height: auto;
+    }
+    .manage-header {
+        margin-bottom: 1.5rem;
+    }
+    .manage-header h1 {
+        font-size: 1.25rem;
+    }
+
+    .checklist-card {
+        padding: 1.25rem 1.25rem 1rem;
+        border-radius: 10px;
+    }
+    .cl-percentage {
+        font-size: 1.25rem;
+    }
+    .cl-title {
+        font-size: 0.9375rem;
+    }
+    .cl-step {
+        padding: 12px 0;
+        gap: 10px;
+    }
+    .cl-step-title {
+        font-size: 0.875rem;
+    }
+    .cl-step-description {
+        font-size: 0.75rem;
+    }
+
+    .qa-card {
+        padding: 1.25rem;
+        border-radius: 10px;
+    }
+    .qa-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Small mobile: hide step action labels, compress further */
+@media (max-width: 480px) {
+    .management-content {
+        padding: 1rem 0.75rem;
+    }
+    .checklist-card {
+        padding: 1rem;
+    }
+    .qa-card {
+        padding: 1rem;
+    }
+
+    /* Move the action button below the step text on very small screens */
+    .cl-step {
+        flex-wrap: wrap;
+    }
+    .cl-step-body {
+        flex-basis: calc(100% - 30px);
+    }
+    .cl-step-action {
+        flex-basis: 100%;
+        margin-left: 30px;
+        margin-top: 6px;
+        align-self: flex-start;
+    }
+    .cl-action-link {
+        padding-left: 0;
+        font-size: 0.75rem;
+    }
+    .cl-action-link svg {
+        width: 10px;
+        height: 10px;
+    }
+
+    .qa-item {
+        font-size: 0.8125rem;
+        padding: 10px 12px;
+    }
+    .qa-item svg {
+        width: 14px;
+        height: 14px;
+    }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="management-layout">
+    {% include 'builder/includes/sidebar.html' with active_menu='manage' %}
+
+    <div class="management-content">
+        <div class="manage-container">
+
+            <!-- Page header -->
+            <div class="manage-header">
+                <h1>{{ page.brand_name }}</h1>
+                <p>Manage your store or continue setting it up.</p>
+            </div>
+
+            <!-- Checklist -->
+            <div class="checklist-card">
+                <div class="cl-header">
+                    <div>
+                        <h2 class="cl-title">
+                            {% if checklist.is_complete %}
+                                Store setup complete
+                            {% else %}
+                                Store setup
+                            {% endif %}
+                        </h2>
+                        <p class="cl-subtitle">
+                            {% if checklist.is_complete %}
+                                Your store is ready. Nice work.
+                            {% else %}
+                                {{ checklist.completed_count }} of {{ checklist.total_count }} steps complete
+                            {% endif %}
+                        </p>
+                    </div>
+                    <div class="cl-percentage {% if checklist.is_complete %}is-complete{% endif %}">
+                        {{ checklist.percentage }}<span class="cl-percent-sign">%</span>
+                    </div>
+                </div>
+
+                <div class="cl-progress" role="progressbar"
+                     aria-valuenow="{{ checklist.percentage }}"
+                     aria-valuemin="0" aria-valuemax="100">
+                    <div class="cl-progress-fill {% if checklist.is_complete %}is-complete{% endif %}"
+                         style="width: {{ checklist.percentage }}%;"></div>
+                </div>
+
+                <ul class="cl-steps">
+                    {% for step in checklist.steps %}
+                    <li class="cl-step
+                               {% if step.completed %}is-complete{% endif %}
+                               {% if step.in_progress and not step.completed %}is-in-progress{% endif %}">
+
+                        <div class="cl-step-indicator" aria-hidden="true">
+                            {% if step.completed %}
+                                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="3.5 8.5 6.5 11.5 12.5 4.5"></polyline>
+                                </svg>
+                            {% elif step.in_progress %}
+                                <span class="cl-dot cl-dot-amber"></span>
+                            {% else %}
+                                <span class="cl-dot"></span>
+                            {% endif %}
+                        </div>
+
+                        <div class="cl-step-body">
+                            <div class="cl-step-title">{{ step.title }}</div>
+                            <div class="cl-step-description">{{ step.description }}</div>
+                        </div>
+
+                        {% if not step.completed %}
+                        <div class="cl-step-action">
+                            <a href="{{ step.action_url }}"
+                               class="cl-action-link {% if step.in_progress %}cl-action-secondary{% endif %}">
+                                {{ step.action_label }}
+                                <svg viewBox="0 0 16 16" width="12" height="12" fill="none"
+                                     stroke="currentColor" stroke-width="1.75"
+                                     stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 3l5 5-5 5"></path>
+                                </svg>
+                            </a>
+                        </div>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+
+                {% if checklist.is_complete %}
+                <div class="cl-complete-note">
+                    <svg viewBox="0 0 16 16" width="14" height="14" fill="none"
+                         stroke="currentColor" stroke-width="2"
+                         stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="3.5 8.5 6.5 11.5 12.5 4.5"></polyline>
+                    </svg>
+                    <span>Your store is live and ready for customers.</span>
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Quick actions -->
+            <div class="qa-card">
+                <h3 class="qa-heading">Quick actions</h3>
+                <div class="qa-list">
+
+                    <a href="{% url 'manage_products' subdomain=page.subdomain %}" class="qa-item">
+                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                             stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2.5 6.5l1-3h9l1 3M2.5 6.5v6h11v-6M2.5 6.5h11M6 9.5h4"/>
+                        </svg>
+                        <span>Products</span>
+                    </a>
+
+                    <a href="{% url 'manage_product_categories' subdomain=page.subdomain %}" class="qa-item">
+                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                             stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2.5 3.5h4v4h-4zM9.5 3.5h4v4h-4zM2.5 9.5h4v4h-4zM9.5 9.5h4v4h-4z"/>
+                        </svg>
+                        <span>Categories</span>
+                    </a>
+
+                    <a href="{% url 'currency_settings' subdomain=page.subdomain %}" class="qa-item">
+                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                             stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="4" width="12" height="8" rx="1.5"/>
+                            <path d="M2 7h12"/>
+                        </svg>
+                        <span>Payments</span>
+                    </a>
+
+                    <a href="{% url 'domains_page' subdomain=page.subdomain %}" class="qa-item">
+                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                             stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="8" cy="8" r="5.5"/>
+                            <path d="M2.5 8h11M8 2.5c1.5 1.75 2.25 3.5 2.25 5.5S9.5 11.75 8 13.5C6.5 11.75 5.75 10 5.75 8S6.5 4.25 8 2.5z"/>
+                        </svg>
+                        <span>Domains</span>
+                    </a>
+
+                    <a href="{% url 'manage_blog_posts' subdomain=page.subdomain %}" class="qa-item">
+                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                             stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 3h5l3 3v7H4zM9 3v3h3"/>
+                        </svg>
+                        <span>Blog</span>
+                    </a>
+
+                    <a href="{% url 'manage_form_submissions' subdomain=page.subdomain %}" class="qa-item">
+                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                             stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2.5" y="3.5" width="11" height="9" rx="1.5"/>
+                            <path d="M3 4.5l5 4 5-4"/>
+                        </svg>
+                        <span>Form submissions</span>
+                    </a>
+
+                    <a href="{% url 'editor_with_page' template_name=page.template_name subdomain=page.subdomain %}" class="qa-item">
+                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                             stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M11.5 2.5l2 2L6 12l-3 1 1-3z"/>
+                        </svg>
+                        <span>Edit design</span>
+                    </a>
+
+                    <a href="{{ page.get_absolute_url }}" target="_blank" rel="noopener" class="qa-item">
+                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                             stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9.5 2.5h4v4M13.5 2.5L8 8M12 9v3.5a1 1 0 01-1 1H3.5a1 1 0 01-1-1V5a1 1 0 011-1H7"/>
+                        </svg>
+                        <span>View store</span>
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

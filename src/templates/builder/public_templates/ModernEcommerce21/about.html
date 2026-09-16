@@ -488,7 +488,66 @@
         <div class="hero-about" id="section-224">
             <div class="hero-image-container" id="section-225">
                 {% if image_customizations.14 %}
-                    <img class="hero-image" src="{{ image_customizations.14.image_url }}" alt="{{ image_customizations.14.alt_text|default:'Gaming Setup' }}">
+                    <img class="hero-image" {% with video=video_customizations.14 %}
+    {% if video %}
+        {# ===== VIDEO EXISTS - RENDER VIDEO ===== #}
+        <div class="editable-video" 
+             data-image="14" 
+             data-is-video="true"
+             style="position: relative; overflow: hidden; display: inline-block; max-width: 100%; border-radius: 8px; cursor: pointer;">
+            
+            <video 
+                src="{{ video.video_url }}" 
+                poster="{{ video.poster_url|default:'' }}"
+                {% if video.autoplay %}autoplay{% endif %}
+                {% if video.loop %}loop{% endif %}
+                {% if video.muted %}muted{% endif %}
+                {% if video.controls %}controls{% endif %}
+                style="width: 100%; height: 100%; display: block; object-fit: cover;"
+            >
+                Your browser does not support the video tag.
+            </video>
+            
+            {# ===== PLAY BUTTON OVERLAY ===== #}
+            {% if video.show_play_button %}
+            <div class="video-overlay" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 24px;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            ">
+                <i class="fas fa-play"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+        {# ===== NO VIDEO - RENDER IMAGE ===== #}
+        {% if image_customizations.14 %}
+            <img src="{{ image_customizations.14.image_url }}" 
+                 alt="{{ image_customizations.14.alt_text|default:'{{ image_customizations.14.alt_text|default:' }}" 
+                 class="editable-image" 
+                 data-image="14">
+        {% else %}
+            <img src="https://images.pexels.com/photos/6311675/pexels-photo-6311675.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                 alt="{{ image_customizations.14.alt_text|default:" 
+                 class="editable-image" 
+                 data-image="14">
+        {% endif %}
+    {% endif %}
+{% endwith %} alt="{{ image_customizations.14.alt_text|default:'Gaming Setup' }}">
                 {% else %}
                     <img class="hero-image" src="https://images.pexels.com/photos/442576/pexels-photo-442576.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Gaming Setup">
                 {% endif %}
@@ -533,7 +592,66 @@
             <div class="craftsmanship-grid">
                 <div class="craftsmanship-image-container" id="section-247">
                     {% if image_customizations.15 %}
-                        <img class="craftsmanship-image" src="{{ image_customizations.15.image_url }}" alt="{{ image_customizations.15.alt_text|default:'Engineering Process' }}">
+                        <img class="craftsmanship-image" {% with video=video_customizations.15 %}
+    {% if video %}
+        {# ===== VIDEO EXISTS - RENDER VIDEO ===== #}
+        <div class="editable-video" 
+             data-image="15" 
+             data-is-video="true"
+             style="position: relative; overflow: hidden; display: inline-block; max-width: 100%; border-radius: 8px; cursor: pointer;">
+            
+            <video 
+                src="{{ video.video_url }}" 
+                poster="{{ video.poster_url|default:'' }}"
+                {% if video.autoplay %}autoplay{% endif %}
+                {% if video.loop %}loop{% endif %}
+                {% if video.muted %}muted{% endif %}
+                {% if video.controls %}controls{% endif %}
+                style="width: 100%; height: 100%; display: block; object-fit: cover;"
+            >
+                Your browser does not support the video tag.
+            </video>
+            
+            {# ===== PLAY BUTTON OVERLAY ===== #}
+            {% if video.show_play_button %}
+            <div class="video-overlay" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 24px;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            ">
+                <i class="fas fa-play"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+        {# ===== NO VIDEO - RENDER IMAGE ===== #}
+        {% if image_customizations.15 %}
+            <img src="{{ image_customizations.15.image_url }}" 
+                 alt="{{ image_customizations.15.alt_text|default:'{{ image_customizations.14.alt_text|default:' }}" 
+                 class="editable-image" 
+                 data-image="15">
+        {% else %}
+            <img src="https://images.pexels.com/photos/6311675/pexels-photo-6311675.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                 alt="{{ image_customizations.14.alt_text|default:" 
+                 class="editable-image" 
+                 data-image="15">
+        {% endif %}
+    {% endif %}
+{% endwith %} alt="{{ image_customizations.15.alt_text|default:'Engineering Process' }}">
                     {% else %}
                         <img class="craftsmanship-image" src="https://images.pexels.com/photos/2115256/pexels-photo-2115256.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Engineering Process">
                     {% endif %}
@@ -603,7 +721,66 @@
             <div class="team-grid">
                 <div class="team-member" id="section-289">
                     {% if image_customizations.16 %}
-                        <img class="team-member-image" src="{{ image_customizations.16.image_url }}" alt="{{ image_customizations.16.alt_text|default:'Marcus Chen' }}">
+                        <img class="team-member-image" {% with video=video_customizations.16 %}
+    {% if video %}
+        {# ===== VIDEO EXISTS - RENDER VIDEO ===== #}
+        <div class="editable-video" 
+             data-image="16" 
+             data-is-video="true"
+             style="position: relative; overflow: hidden; display: inline-block; max-width: 100%; border-radius: 8px; cursor: pointer;">
+            
+            <video 
+                src="{{ video.video_url }}" 
+                poster="{{ video.poster_url|default:'' }}"
+                {% if video.autoplay %}autoplay{% endif %}
+                {% if video.loop %}loop{% endif %}
+                {% if video.muted %}muted{% endif %}
+                {% if video.controls %}controls{% endif %}
+                style="width: 100%; height: 100%; display: block; object-fit: cover;"
+            >
+                Your browser does not support the video tag.
+            </video>
+            
+            {# ===== PLAY BUTTON OVERLAY ===== #}
+            {% if video.show_play_button %}
+            <div class="video-overlay" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 24px;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            ">
+                <i class="fas fa-play"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+        {# ===== NO VIDEO - RENDER IMAGE ===== #}
+        {% if image_customizations.16 %}
+            <img src="{{ image_customizations.16.image_url }}" 
+                 alt="{{ image_customizations.16.alt_text|default:'{{ image_customizations.14.alt_text|default:' }}" 
+                 class="editable-image" 
+                 data-image="16">
+        {% else %}
+            <img src="https://images.pexels.com/photos/6311675/pexels-photo-6311675.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                 alt="{{ image_customizations.14.alt_text|default:" 
+                 class="editable-image" 
+                 data-image="16">
+        {% endif %}
+    {% endif %}
+{% endwith %} alt="{{ image_customizations.16.alt_text|default:'Marcus Chen' }}">
                     {% else %}
                         <img class="team-member-image" src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Marcus Chen">
                     {% endif %}
@@ -615,7 +792,66 @@
                 </div>
                 <div class="team-member" id="section-293">
                     {% if image_customizations.17 %}
-                        <img class="team-member-image" src="{{ image_customizations.17.image_url }}" alt="{{ image_customizations.17.alt_text|default:'Sarah Rodriguez' }}">
+                        <img class="team-member-image" {% with video=video_customizations.17 %}
+    {% if video %}
+        {# ===== VIDEO EXISTS - RENDER VIDEO ===== #}
+        <div class="editable-video" 
+             data-image="17" 
+             data-is-video="true"
+             style="position: relative; overflow: hidden; display: inline-block; max-width: 100%; border-radius: 8px; cursor: pointer;">
+            
+            <video 
+                src="{{ video.video_url }}" 
+                poster="{{ video.poster_url|default:'' }}"
+                {% if video.autoplay %}autoplay{% endif %}
+                {% if video.loop %}loop{% endif %}
+                {% if video.muted %}muted{% endif %}
+                {% if video.controls %}controls{% endif %}
+                style="width: 100%; height: 100%; display: block; object-fit: cover;"
+            >
+                Your browser does not support the video tag.
+            </video>
+            
+            {# ===== PLAY BUTTON OVERLAY ===== #}
+            {% if video.show_play_button %}
+            <div class="video-overlay" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 24px;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            ">
+                <i class="fas fa-play"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+        {# ===== NO VIDEO - RENDER IMAGE ===== #}
+        {% if image_customizations.17 %}
+            <img src="{{ image_customizations.17.image_url }}" 
+                 alt="{{ image_customizations.17.alt_text|default:'{{ image_customizations.14.alt_text|default:' }}" 
+                 class="editable-image" 
+                 data-image="17">
+        {% else %}
+            <img src="https://images.pexels.com/photos/6311675/pexels-photo-6311675.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                 alt="{{ image_customizations.14.alt_text|default:" 
+                 class="editable-image" 
+                 data-image="17">
+        {% endif %}
+    {% endif %}
+{% endwith %} alt="{{ image_customizations.17.alt_text|default:'Sarah Rodriguez' }}">
                     {% else %}
                         <img class="team-member-image" src="https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Sarah Rodriguez">
                     {% endif %}
@@ -627,7 +863,66 @@
                 </div>
                 <div class="team-member" id="section-297">
                     {% if image_customizations.18 %}
-                        <img class="team-member-image" src="{{ image_customizations.18.image_url }}" alt="{{ image_customizations.18.alt_text|default:'David Kim' }}">
+                        <img class="team-member-image" {% with video=video_customizations.18 %}
+    {% if video %}
+        {# ===== VIDEO EXISTS - RENDER VIDEO ===== #}
+        <div class="editable-video" 
+             data-image="18" 
+             data-is-video="true"
+             style="position: relative; overflow: hidden; display: inline-block; max-width: 100%; border-radius: 8px; cursor: pointer;">
+            
+            <video 
+                src="{{ video.video_url }}" 
+                poster="{{ video.poster_url|default:'' }}"
+                {% if video.autoplay %}autoplay{% endif %}
+                {% if video.loop %}loop{% endif %}
+                {% if video.muted %}muted{% endif %}
+                {% if video.controls %}controls{% endif %}
+                style="width: 100%; height: 100%; display: block; object-fit: cover;"
+            >
+                Your browser does not support the video tag.
+            </video>
+            
+            {# ===== PLAY BUTTON OVERLAY ===== #}
+            {% if video.show_play_button %}
+            <div class="video-overlay" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 24px;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            ">
+                <i class="fas fa-play"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+        {# ===== NO VIDEO - RENDER IMAGE ===== #}
+        {% if image_customizations.18 %}
+            <img src="{{ image_customizations.18.image_url }}" 
+                 alt="{{ image_customizations.18.alt_text|default:'{{ image_customizations.14.alt_text|default:' }}" 
+                 class="editable-image" 
+                 data-image="18">
+        {% else %}
+            <img src="https://images.pexels.com/photos/6311675/pexels-photo-6311675.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                 alt="{{ image_customizations.14.alt_text|default:" 
+                 class="editable-image" 
+                 data-image="18">
+        {% endif %}
+    {% endif %}
+{% endwith %} alt="{{ image_customizations.18.alt_text|default:'David Kim' }}">
                     {% else %}
                         <img class="team-member-image" src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=400" alt="David Kim">
                     {% endif %}
@@ -639,7 +934,66 @@
                 </div>
                 <div class="team-member" id="section-301">
                     {% if image_customizations.19 %}
-                        <img class="team-member-image" src="{{ image_customizations.19.image_url }}" alt="{{ image_customizations.19.alt_text|default:'Emily Watson' }}">
+                        <img class="team-member-image" {% with video=video_customizations.19 %}
+    {% if video %}
+        {# ===== VIDEO EXISTS - RENDER VIDEO ===== #}
+        <div class="editable-video" 
+             data-image="19" 
+             data-is-video="true"
+             style="position: relative; overflow: hidden; display: inline-block; max-width: 100%; border-radius: 8px; cursor: pointer;">
+            
+            <video 
+                src="{{ video.video_url }}" 
+                poster="{{ video.poster_url|default:'' }}"
+                {% if video.autoplay %}autoplay{% endif %}
+                {% if video.loop %}loop{% endif %}
+                {% if video.muted %}muted{% endif %}
+                {% if video.controls %}controls{% endif %}
+                style="width: 100%; height: 100%; display: block; object-fit: cover;"
+            >
+                Your browser does not support the video tag.
+            </video>
+            
+            {# ===== PLAY BUTTON OVERLAY ===== #}
+            {% if video.show_play_button %}
+            <div class="video-overlay" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 24px;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            ">
+                <i class="fas fa-play"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+        {# ===== NO VIDEO - RENDER IMAGE ===== #}
+        {% if image_customizations.19 %}
+            <img src="{{ image_customizations.19.image_url }}" 
+                 alt="{{ image_customizations.19.alt_text|default:'{{ image_customizations.14.alt_text|default:' }}" 
+                 class="editable-image" 
+                 data-image="19">
+        {% else %}
+            <img src="https://images.pexels.com/photos/6311675/pexels-photo-6311675.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                 alt="{{ image_customizations.14.alt_text|default:" 
+                 class="editable-image" 
+                 data-image="19">
+        {% endif %}
+    {% endif %}
+{% endwith %} alt="{{ image_customizations.19.alt_text|default:'Emily Watson' }}">
                     {% else %}
                         <img class="team-member-image" src="https://images.pexels.com/photos/2380794/pexels-photo-2380794.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Emily Watson">
                     {% endif %}

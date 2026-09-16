@@ -1,40 +1,582 @@
-<!-- payments/templates/payments/payment_selection.html -->
 {% extends 'builder/base.html' %}
 {% load currency_filters %}
 
-{% block title %}Checkout - {{ page.brand_name }}{% endblock %}
+{% block title %}Checkout · {{ page.brand_name }}{% endblock %}
 
-{% block content %}
-
+{% block extra_css %}
 <style>
-/* Payment Method Cards - Enhanced with Real Branding */
-.payment-method-card {
-    border: 2px solid #e2e8f0;
-    border-radius: 16px;
+:root {
+    --n-0:  #ffffff;
+    --n-50: #fafafa;
+    --n-100:#f4f4f5;
+    --n-200:#e4e4e7;
+    --n-300:#d4d4d8;
+    --n-400:#a1a1aa;
+    --n-500:#71717a;
+    --n-600:#52525b;
+    --n-700:#3f3f46;
+    --n-800:#27272a;
+    --n-900:#18181b;
+
+    --accent: var(--primary-color, #111827);
+    --accent-hover: #000000;
+
+    --success: #15803d;
+    --warning: #a16207;
+    --danger:  #b91c1c;
+
+    --border: var(--n-200);
+    --border-strong: var(--n-300);
+    --text: var(--n-900);
+    --text-muted: var(--n-500);
+    --text-subtle: var(--n-400);
+
+    --radius-sm: 4px;
+    --radius: 6px;
+    --radius-lg: 10px;
+
+    --page-bg: #f6f7f9;
+    --surface-shadow: 0 1px 2px rgba(24, 24, 27, 0.04), 0 1px 1px rgba(24, 24, 27, 0.03);
+    --surface-shadow-hover: 0 4px 12px rgba(24, 24, 27, 0.06), 0 1px 2px rgba(24, 24, 27, 0.04);
+}
+
+/* ===== Page shell ===== */
+.checkout-page {
+    background: var(--page-bg);
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    color: var(--text);
+    padding: 3rem 1.5rem 5rem;
+}
+
+.checkout-container {
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+/* ===== Header ===== */
+.checkout-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.checkout-title {
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+    margin: 0 0 0.5rem;
+    color: var(--text);
+}
+
+.checkout-sub {
+    font-size: 0.9375rem;
+    color: var(--text-muted);
+    margin: 0 0 2rem;
+}
+
+/* ===== Progress steps ===== */
+.progress-steps {
+    display: flex;
+    justify-content: space-between;
+    max-width: 520px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.progress-steps::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 40px;
+    right: 40px;
+    height: 1px;
+    background: var(--border);
+    z-index: 0;
+}
+
+.step {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    flex: 1;
+}
+
+.step-number {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin: 0 auto 0.5rem;
+    font-variant-numeric: tabular-nums;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.step.active .step-number {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--n-0);
+}
+
+.step-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.step.active .step-label {
+    color: var(--text);
+}
+
+/* ===== Grid ===== */
+.checkout-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 900px) {
+    .checkout-grid { grid-template-columns: 1fr; }
+}
+
+/* ===== Panels ===== */
+.panel {
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--surface-shadow);
+    overflow: hidden;
     margin-bottom: 1rem;
-    transition: all 0.3s ease;
+}
+
+.panel-head {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.875rem 1.125rem;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(to bottom, #ffffff, #fcfcfd);
+}
+
+.panel-head svg {
+    color: var(--n-500);
+    flex-shrink: 0;
+}
+
+.panel-title {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0;
+    letter-spacing: -0.005em;
+}
+
+.panel-body {
+    padding: 1.125rem;
+}
+
+/* ===== Fields ===== */
+.field { margin-bottom: 1rem; }
+.field:last-child { margin-bottom: 0; }
+
+.field-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--n-700);
+    margin-bottom: 0.375rem;
+}
+
+.field-label .req { color: var(--danger); font-weight: 400; margin-left: 2px; }
+
+.form-control,
+.form-select,
+textarea.form-control {
+    width: 100%;
+    font-size: 0.8125rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.5rem 0.75rem;
+    background: var(--n-0);
+    color: var(--text);
+    font-family: inherit;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    line-height: 1.4;
+    box-sizing: border-box;
+    appearance: none;
+}
+
+.form-control::placeholder { color: var(--n-400); }
+
+.form-control:hover,
+.form-select:hover,
+textarea.form-control:hover {
+    border-color: var(--border-strong);
+}
+
+.form-control:focus,
+.form-select:focus,
+textarea.form-control:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(17, 24, 39, 0.06);
+    outline: none;
+}
+
+.form-select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2371717a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.625rem center;
+    padding-right: 2rem;
     cursor: pointer;
-    background: white;
+}
+
+textarea.form-control { resize: vertical; min-height: 60px; line-height: 1.5; }
+
+.field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.field-row.three-col { grid-template-columns: 2fr 1fr 1fr; }
+
+@media (max-width: 640px) {
+    .field-row, .field-row.three-col { grid-template-columns: 1fr; }
+}
+
+/* ===== Buttons ===== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4375rem;
+    padding: 0.625rem 1rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    font-family: inherit;
+    border-radius: var(--radius);
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.15s, border-color 0.15s, color 0.15s, box-shadow 0.15s;
+    box-sizing: border-box;
+}
+
+.btn-full { width: 100%; }
+
+.btn-ghost {
+    background: var(--n-0);
+    border-color: var(--border);
+    color: var(--n-700);
+    box-shadow: 0 1px 2px rgba(24, 24, 27, 0.04);
+}
+
+.btn-ghost:hover {
+    background: var(--n-0);
+    border-color: var(--border-strong);
+    color: var(--text);
+    box-shadow: var(--surface-shadow);
+}
+
+.btn-accent {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--n-0);
+    box-shadow: 0 1px 2px rgba(24, 24, 27, 0.16);
+}
+
+.btn-accent:hover {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+    box-shadow: 0 4px 12px rgba(24, 24, 27, 0.18);
+}
+
+.btn-accent:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.btn-lg {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.875rem;
+}
+
+.btn-spinner {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border: 2px solid currentColor;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    margin-right: 0.375rem;
+}
+
+/* ===== Order summary ===== */
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.8125rem;
+    color: var(--n-700);
+    line-height: 1.5;
+}
+
+.summary-item:last-child { border-bottom: none; }
+
+.summary-item .item-title {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.summary-item .item-price {
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 0.75rem;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+    font-weight: 500;
+    flex-shrink: 0;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+}
+
+.summary-row .label { color: var(--text-muted); }
+.summary-row .value {
+    color: var(--text);
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 0.75rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.summary-row.grand-total {
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.9375rem;
+}
+
+.summary-row.grand-total .label { color: var(--text); font-weight: 600; }
+.summary-row.grand-total .value {
+    color: var(--text);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* ===== Tax breakdown ===== */
+.tax-calculating {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    padding: 0.25rem 0;
+}
+
+.tax-calculating .spin {
+    width: 12px;
+    height: 12px;
+    border: 1.5px solid var(--n-300);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.tax-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.tax-item .tax-amount {
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 0.75rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--text);
+}
+
+.tax-rate-badge {
+    display: inline-block;
+    background: var(--n-100);
+    color: var(--n-600);
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 0.6875rem;
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    margin-left: 0.375rem;
+    font-weight: 500;
+}
+
+.tax-exempt {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 0.75rem;
+    background: #fefce8;
+    border: 1px solid #fde68a;
+    border-radius: var(--radius);
+    font-size: 0.75rem;
+    color: #78350f;
+    font-weight: 500;
+}
+
+.tax-exempt svg { flex-shrink: 0; }
+
+/* ===== Shipping rates ===== */
+.shipping-rates-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.shipping-rate-option {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--n-0);
+    cursor: pointer;
+    transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+    overflow: hidden;
+}
+
+.shipping-rate-option:hover {
+    border-color: var(--border-strong);
+    box-shadow: var(--surface-shadow);
+}
+
+.shipping-rate-option.selected {
+    border-color: var(--accent);
+    box-shadow: var(--surface-shadow);
+    background: #fcfcfd;
+}
+
+.shipping-rate-radio { display: none; }
+
+.shipping-rate-label {
+    display: block;
+    padding: 0.875rem 1rem;
+    cursor: pointer;
+    margin: 0;
+}
+
+.shipping-rate-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.shipping-rate-info { flex: 1; min-width: 0; }
+
+.shipping-rate-name {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.25rem;
+    line-height: 1.3;
+}
+
+.shipping-rate-details {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.shipping-rate-details svg { vertical-align: -2px; margin-right: 0.25rem; color: var(--text-subtle); }
+
+.shipping-rate-price {
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+/* ===== Alerts ===== */
+.alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625rem;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius);
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    border: 1px solid var(--border);
+    background: var(--n-50);
+    color: var(--n-700);
+}
+
+.alert svg { flex-shrink: 0; margin-top: 2px; }
+.alert a { color: var(--text); font-weight: 500; text-decoration: underline; text-decoration-color: var(--border-strong); text-underline-offset: 2px; }
+.alert a:hover { text-decoration-color: var(--text); }
+
+.alert-info { background: var(--n-50); border-color: var(--border); color: var(--n-700); }
+.alert-warning { background: #fefce8; border-color: #fde68a; color: #78350f; }
+.alert-danger { background: #fef2f2; border-color: #fecaca; color: #7f1d1d; }
+
+/* ===== Payment method cards ===== */
+.payment-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.payment-method-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--n-0);
+    cursor: pointer;
+    transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(24, 24, 27, 0.02);
 }
 
 .payment-method-card:hover {
-    border-color: #4361ee;
-    box-shadow: 0 4px 12px rgba(67, 97, 238, 0.1);
+    border-color: var(--border-strong);
+    box-shadow: var(--surface-shadow);
 }
 
 .payment-method-card.selected {
-    border-color: #4361ee;
-    background: linear-gradient(135deg, #f8faff 0%, #f0f4ff 100%);
-    box-shadow: 0 4px 16px rgba(67, 97, 238, 0.15);
+    border-color: var(--accent);
+    background: #fcfcfd;
+    box-shadow: var(--surface-shadow);
 }
 
-.payment-method-radio {
-    display: none;
-}
+.payment-method-radio { display: none; }
 
 .payment-method-label {
     display: block;
-    padding: 1.2rem;
+    padding: 0.875rem 1rem;
     cursor: pointer;
     margin: 0;
 }
@@ -42,514 +584,650 @@
 .payment-method-content {
     display: flex;
     align-items: center;
-    gap: 1.2rem;
+    gap: 0.875rem;
 }
 
 .payment-icon {
-    width: 56px;
-    height: 56px;
-    display: flex;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    background: var(--n-100);
+    border: 1px solid var(--border);
+    color: var(--n-700);
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    border-radius: 14px;
     flex-shrink: 0;
-    font-size: 28px;
 }
 
-/* Stripe Branding */
-.payment-icon.stripe {
-    background: #635BFF;
-    box-shadow: 0 4px 12px rgba(99, 91, 255, 0.2);
+.payment-icon svg { width: 18px; height: 18px; }
+
+.payment-icon .wordmark {
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--n-700);
 }
 
-/* PayPal Branding */
-.payment-icon.paypal {
-    background: #003087;
-    box-shadow: 0 4px 12px rgba(0, 48, 135, 0.2);
-}
-
-/* Razorpay Branding */
-.payment-icon.razorpay {
-    background: #2D8CFF;
-    box-shadow: 0 4px 12px rgba(45, 140, 255, 0.2);
-}
-
-/* Fincra Branding */
-.payment-icon.fincra {
-    background: linear-gradient(135deg, #1a1f2e 0%, #2c3e50 100%);
-    box-shadow: 0 4px 12px rgba(26, 31, 46, 0.2);
-}
-
-/* Cryptomus Branding */
-.payment-icon.cryptomus {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.25);
-}
-
-/* Pay on Delivery Branding */
-.payment-icon.pod {
-    background: linear-gradient(135deg, #10b98150 0%, #0596684a 100%);
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
-}
-
-.payment-icon i, .payment-icon svg {
-    color: white;
-}
-
-.payment-details {
-    flex: 1;
-}
+.payment-details { flex: 1; min-width: 0; }
 
 .payment-name {
-    margin: 0 0 4px;
-    font-size: 1rem;
+    margin: 0 0 0.125rem;
+    font-size: 0.8125rem;
     font-weight: 600;
-    color: #1a1e24;
+    color: var(--text);
+    line-height: 1.3;
+}
+
+.payment-desc {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+    margin: 0 0 0.375rem;
 }
 
 .payment-badges {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 6px;
+    gap: 0.25rem;
 }
 
 .payment-badge {
-    background: #f1f5f9;
-    padding: 4px 8px;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: 500;
-    color: #475569;
     display: inline-flex;
     align-items: center;
-    gap: 4px;
+    gap: 0.25rem;
+    background: var(--n-100);
+    color: var(--n-600);
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-size: 0.625rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    line-height: 1.5;
 }
 
-/* Card Icons */
 .card-icons {
     display: flex;
-    gap: 4px;
-    margin-top: 6px;
+    gap: 0.25rem;
+    flex-wrap: wrap;
 }
 
 .card-icon {
     width: 32px;
-    height: 20px;
-    background: white;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #e2e8f0;
-    font-size: 14px;
-}
-
-/* Pay Via Chat Card Styles */
-.chat-payment-card {
-    border: 2px solid #28a745;
-    background: linear-gradient(135deg, #f0fff4 0%, #e6ffed 100%);
-    border-radius: 16px;
-    padding: 1.2rem;
-    margin-top: 1rem;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-.chat-payment-card:hover {
-    box-shadow: 0 8px 24px rgba(40, 167, 69, 0.15);
-    transform: translateY(-2px);
-}
-.chat-payment-card.selected {
-    border-color: #28a745;
-    box-shadow: 0 0 0 4px rgba(40, 167, 69, 0.2);
-}
-.chat-payment-icon {
-    width: 48px;
-    height: 48px;
-    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    color: white;
-    flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
-}
-.chat-platform-badge {
-    display: inline-block;
-    background: white;
-    padding: 2px 12px;
-    border-radius: 20px;
-    font-size: 0.7rem;
-    font-weight: 600;
-    color: #28a745;
-    border: 1px solid #28a745;
-    margin-left: 0.5rem;
-}
-.payment-icons-row {
-    display: flex;
-    gap: 0.4rem;
-    flex-wrap: wrap;
-    align-items: center;
-    margin-top: 0.3rem;
-}
-.payment-icons-row .icon-item {
-    background: rgba(255,255,255,0.8);
-    padding: 0.15rem 0.5rem;
-    border-radius: 4px;
-    font-size: 0.85rem;
-    border: 1px solid #e9ecef;
+    height: 22px;
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
     display: inline-flex;
     align-items: center;
-    gap: 3px;
-    color: #495057;
-}
-.payment-icons-row .icon-item .label {
-    font-size: 0.55rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
-    color: #6c757d;
+    justify-content: center;
+    color: var(--n-500);
+    font-size: 0.6875rem;
 }
 
-/* Payment Modal */
-.payment-modal-overlay {
+.card-icon svg { width: 14px; height: 14px; }
+
+/* ===== Pay via chat card ===== */
+.chat-payment-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--n-0);
+    padding: 0.875rem 1rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+    box-shadow: 0 1px 2px rgba(24, 24, 27, 0.02);
+}
+
+.chat-payment-card:hover {
+    border-color: var(--border-strong);
+    box-shadow: var(--surface-shadow);
+}
+
+.chat-payment-card.selected {
+    border-color: var(--accent);
+    background: #fcfcfd;
+    box-shadow: var(--surface-shadow);
+}
+
+.chat-payment-content {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+}
+
+.chat-payment-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    background: var(--n-100);
+    border: 1px solid var(--border);
+    color: var(--n-700);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.chat-payment-icon svg { width: 18px; height: 18px; }
+
+.chat-payment-body { flex: 1; min-width: 0; }
+
+.chat-payment-title {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0 0 0.375rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.chat-payment-count {
+    display: inline-flex;
+    align-items: center;
+    padding: 1px 7px;
+    background: var(--n-100);
+    color: var(--n-600);
+    border-radius: 999px;
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.chat-payment-desc {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+    margin: 0;
+}
+
+.chat-payment-chevron {
+    color: var(--text-subtle);
+    flex-shrink: 0;
+}
+
+/* ===== POD instructions ===== */
+.pod-instructions {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625rem;
+    padding: 0.875rem 1rem;
+    background: var(--n-50);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 0.75rem;
+    color: var(--n-700);
+    line-height: 1.55;
+    margin-bottom: 1rem;
+}
+
+.pod-instructions svg { flex-shrink: 0; margin-top: 2px; color: var(--n-500); }
+.pod-instructions strong { color: var(--text); font-weight: 600; }
+.pod-instructions ul { margin: 0.375rem 0 0 1.125rem; padding: 0; }
+.pod-instructions li { padding: 0.125rem 0; }
+
+/* ===== Back link ===== */
+.back-row {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.5rem 0.875rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: color 0.15s, border-color 0.15s, box-shadow 0.15s;
+    box-shadow: 0 1px 2px rgba(24, 24, 27, 0.04);
+}
+
+.back-link:hover {
+    color: var(--text);
+    border-color: var(--border-strong);
+    box-shadow: var(--surface-shadow);
+}
+
+.back-link svg { transition: transform 0.15s; }
+.back-link:hover svg { transform: translateX(-2px); }
+
+/* ===== Chat platform modal ===== */
+.modal-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    inset: 0;
+    background: rgba(24, 24, 27, 0.4);
     backdrop-filter: blur(4px);
-    z-index: 9999;
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 1000;
     display: none;
     align-items: center;
     justify-content: center;
-    animation: fadeIn 0.3s ease;
+    padding: 1rem;
 }
-.payment-modal-overlay.active {
-    display: flex;
-}
-.payment-modal {
-    background: white;
-    border-radius: 24px;
-    max-width: 520px;
-    width: 95%;
+
+.modal-overlay.active { display: flex; }
+
+.modal-content {
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    max-width: 480px;
+    width: 100%;
     max-height: 90vh;
     overflow-y: auto;
-    padding: 2rem;
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15), 0 4px 12px rgba(0, 0, 0, 0.06);
     position: relative;
-    animation: slideUp 0.3s ease;
-    box-shadow: 0 24px 64px rgba(0,0,0,0.2);
+    animation: modalIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.payment-modal-close {
-    position: absolute;
-    top: 16px;
-    right: 20px;
-    background: none;
-    border: none;
-    font-size: 1.8rem;
-    color: #6c757d;
-    cursor: pointer;
-    transition: 0.2s;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.payment-modal-close:hover {
-    background: #f1f3f5;
-    color: #212529;
-}
-.payment-modal-title {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #1a202c;
-    margin-bottom: 0.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
-.payment-modal-title .icon-wrapper {
-    background: linear-gradient(135deg, #28a745, #20c997);
-    color: white;
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-}
-.payment-modal-subtitle {
-    color: #6c757d;
-    font-size: 0.9rem;
-    margin-bottom: 1.5rem;
-}
-.payment-option-grid {
-    display: grid;
-    gap: 0.75rem;
-}
-.payment-option {
-    display: flex;
-    align-items: center;
-    padding: 0.9rem 1.2rem;
-    border: 2px solid #e9ecef;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    background: white;
-    text-decoration: none;
-    color: inherit;
-}
-.payment-option:hover {
-    border-color: #28a745;
-    background: #f8fff9;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.1);
-}
-.payment-option .platform-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.3rem;
-    flex-shrink: 0;
-    margin-right: 0.9rem;
-}
-.payment-option .platform-icon.whatsapp { background: #25D36620; color: #25D366; }
-.payment-option .platform-icon.facebook { background: #0084FF20; color: #0084FF; }
-.payment-option .platform-icon.instagram { background: #E4405F20; color: #E4405F; }
-.payment-option .platform-icon.telegram { background: #26A5E420; color: #26A5E4; }
-.payment-option .platform-icon.x { background: #00000020; color: #000; }
-.payment-option .platform-info { flex: 1; }
-.payment-option .platform-name { font-weight: 600; color: #1a202c; font-size: 0.95rem; }
-.payment-option .platform-desc { font-size: 0.8rem; color: #6c757d; }
-.payment-option .platform-arrow { color: #adb5bd; font-size: 1.1rem; transition: 0.2s; }
-.payment-option:hover .platform-arrow { color: #28a745; transform: translateX(3px); }
 
-@keyframes fadeIn {
-    from { opacity: 0; } to { opacity: 1; }
-}
-@keyframes slideUp {
-    from { opacity: 0; transform: translateY(20px) scale(0.96); }
+@keyframes modalIn {
+    from { opacity: 0; transform: translateY(8px) scale(0.98); }
     to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* Progress Steps */
-.progress-steps {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-}
-.progress-steps::before {
-    content: '';
+.modal-close {
     position: absolute;
-    top: 20px;
-    left: 50px;
-    right: 50px;
-    height: 2px;
-    background: #e9ecef;
-    z-index: 0;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--n-500);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
-.step {
+
+.modal-close:hover {
+    background: var(--n-100);
+    color: var(--text);
+    border-color: var(--border);
+}
+
+.modal-close svg { width: 14px; height: 14px; }
+
+.modal-head {
+    padding: 1.25rem 1.25rem 0.5rem;
+}
+
+.modal-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0 0 0.375rem;
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+}
+
+.modal-title .modal-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-sm);
+    background: var(--n-100);
+    border: 1px solid var(--border);
+    color: var(--n-700);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.modal-title .modal-icon svg { width: 16px; height: 16px; }
+
+.modal-sub {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.modal-body {
+    padding: 0.75rem 1.25rem 1.25rem;
+}
+
+.platform-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.platform-option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 0.875rem;
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+}
+
+.platform-option:hover {
+    border-color: var(--border-strong);
+    background: #fdfdfe;
+    box-shadow: var(--surface-shadow);
+}
+
+.platform-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-sm);
+    background: var(--n-100);
+    border: 1px solid var(--border);
+    color: var(--n-700);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1rem;
+}
+
+.platform-info { flex: 1; min-width: 0; }
+
+.platform-name {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0 0 0.125rem;
+    line-height: 1.3;
+}
+
+.platform-name .business-name {
+    color: var(--text-muted);
+    font-weight: 400;
+    font-size: 0.75rem;
+    margin-left: 0.25rem;
+}
+
+.platform-desc {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+    margin: 0;
+}
+
+.platform-arrow {
+    color: var(--text-subtle);
+    flex-shrink: 0;
+    transition: color 0.15s, transform 0.15s;
+}
+
+.platform-option:hover .platform-arrow {
+    color: var(--text);
+    transform: translateX(2px);
+}
+
+.modal-footer-note {
+    margin-top: 1rem;
+    padding-top: 0.875rem;
+    border-top: 1px solid var(--border);
     text-align: center;
-    position: relative;
-    z-index: 1;
-}
-.step.active .step-number {
-    background: #4361ee;
-    color: white;
-}
-.step-number {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: #e9ecef;
-    color: #6c757d;
+    font-size: 0.6875rem;
+    color: var(--text-muted);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: bold;
-    margin: 0 auto 0.5rem;
-    border: 3px solid white;
-}
-.step-label {
-    font-size: 0.9rem;
-    color: #6c757d;
-}
-.step.active .step-label {
-    color: #4361ee;
-    font-weight: 500;
+    gap: 0.375rem;
 }
 
-/* Order Items */
-.order-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #eee;
+.modal-footer-note svg { color: var(--text-subtle); flex-shrink: 0; }
+
+@media (max-width: 640px) {
+    .checkout-page { padding: 2rem 1rem 3rem; }
+    .checkout-header { margin-bottom: 2rem; }
 }
 
-/* Shipping Rate Options */
-.shipping-rate-option {
-    border: 2px solid #e9ecef;
-    border-radius: 8px;
-    margin-bottom: 0.75rem;
-    transition: all 0.2s ease;
-    cursor: pointer;
+/* ============================================================
+   Stripe Elements — native card form styling
+   ============================================================ */
+.stripe-input {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.5rem 0.75rem;
+    background: var(--n-0);
+    transition: border-color 0.15s, box-shadow 0.15s;
+    height: 38px;
+    box-sizing: border-box;
 }
-.shipping-rate-option:hover {
-    border-color: #4361ee;
-    background-color: #f8f9ff;
+
+.stripe-input.StripeElement--focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(17, 24, 39, 0.06);
 }
-.shipping-rate-option.selected {
-    border-color: #4361ee;
-    background-color: #f0f4ff;
+
+.stripe-input.StripeElement--invalid {
+    border-color: var(--danger);
+    box-shadow: 0 0 0 4px rgba(185, 28, 28, 0.06);
 }
-.shipping-rate-radio {
-    display: none;
+
+.stripe-input.StripeElement--complete {
+    border-color: var(--border-strong);
 }
-.shipping-rate-label {
-    display: block;
-    padding: 1rem;
-    cursor: pointer;
-    margin: 0;
-}
-.shipping-rate-content {
+
+.stripe-row {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
 }
-.shipping-rate-info {
+
+.stripe-input-half {
     flex: 1;
 }
-.shipping-rate-name {
-    font-weight: 600;
-    margin-bottom: 4px;
-}
-.shipping-rate-details {
-    font-size: 0.85rem;
-    color: #6c757d;
-}
-.shipping-rate-price {
-    font-weight: 700;
-    color: #28a745;
-    font-size: 1.1rem;
+
+/* Inline payment form wrapper (used by both Stripe and PayPal) */
+.inline-payment-wrapper {
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
 }
 
-/* Tax Breakdown */
-.tax-breakdown-item {
+.inline-payment-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.3rem 0;
-    font-size: 0.9rem;
-    color: #6c757d;
-}
-.tax-rate-badge {
-    background: #e9ecef;
-    padding: 0.2rem 0.5rem;
-    border-radius: 12px;
-    font-size: 0.75rem;
-    margin-left: 0.5rem;
+    margin-bottom: 0.875rem;
 }
 
-/* Form Validation */
-.form-control:invalid {
-    border-color: #dc3545;
+.inline-payment-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0;
 }
-.form-control:valid {
-    border-color: #28a745;
+
+.inline-payment-error {
+    display: none;
+    margin-top: 0.75rem;
+    padding: 0.625rem 0.75rem;
+    font-size: 0.75rem;
+    color: #7f1d1d;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: var(--radius);
+    line-height: 1.5;
+}
+
+.inline-payment-error.visible {
+    display: block;
+}
+
+#expressCheckoutElement:empty {
+    display: none;
+}
+
+#expressDivider {
+    display: none;
+    margin: 1rem 0;
+    text-align: center;
+    position: relative;
+}
+
+#expressDivider span {
+    position: relative;
+    z-index: 1;
+    background: #fff;
+    padding: 0 0.75rem;
+    font-size: 0.6875rem;
+    color: #71717a;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+#expressDivider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    border-top: 1px solid #e4e4e7;
+}
+
+.secure-note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.375rem;
+    margin-top: 0.875rem;
+    font-size: 0.6875rem;
+    color: #71717a;
+}
+
+/* PayPal button mount styling */
+#paypalButtonContainer {
+    margin-top: 0.5rem;
+    min-height: 45px;
+}
+
+.paypal-button-fallback {
+    width: 100%;
+    padding: 0.875rem 1.25rem;
+    background: #ffc439;
+    color: #003087;
+    border: none;
+    border-radius: var(--radius);
+    font-weight: 700;
+    font-size: 0.9375rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: background 0.15s;
+    font-family: inherit;
+}
+
+.paypal-button-fallback:hover {
+    background: #f0b52c;
+}
+
+.paypal-button-fallback:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
 }
 </style>
+{% endblock %}
 
-<div class="container py-5">
-    <div class="row justify-content-center">
-        <div class="col-lg-10">
-            <!-- Header -->
-            <div class="text-center mb-4">
-                <h1 class="h2 text-primary">Checkout</h1>
-                <p class="text-muted">Complete your order in 3 simple steps</p>
-                
-                <!-- Progress Steps -->
-                <div class="row justify-content-center mb-4">
-                    <div class="col-lg-8">
-                        <div class="progress-steps">
-                            <div class="step active">
-                                <div class="step-number">1</div>
-                                <div class="step-label">Your Information</div>
-                            </div>
-                            <div class="step">
-                                <div class="step-number">2</div>
-                                <div class="step-label">Shipping</div>
-                            </div>
-                            <div class="step">
-                                <div class="step-number">3</div>
-                                <div class="step-label">Payment</div>
-                            </div>
-                        </div>
-                    </div>
+{% block content %}
+
+<div class="checkout-page">
+    <div class="checkout-container">
+
+        <!-- ===== Header ===== -->
+        <header class="checkout-header">
+            <h1 class="checkout-title">Checkout</h1>
+            <p class="checkout-sub">Complete your order in three simple steps</p>
+
+            <div class="progress-steps">
+                <div class="step active">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Your information</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Shipping</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Payment</div>
                 </div>
             </div>
+        </header>
 
-            <div class="row">
-                <!-- Left Column: Customer Information Form -->
-                <div class="col-lg-6 mb-4">
-                    <div class="card">
-                        <div class="card-header bg-light">
-                            <h5 class="card-title mb-0">
-                                <i class="fas fa-user me-2"></i>Your Information
-                            </h5>
-                        </div>
-                        <div class="card-body">
-                            <form id="customerInfoForm">
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="customerEmail" class="form-label">Email Address *</label>
-                                        <input type="email" class="form-control" id="customerEmail" required>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="customerName" class="form-label">Full Name *</label>
-                                        <input type="text" class="form-control" id="customerName" required>
-                                    </div>
+        <!-- ===== Grid ===== -->
+        <div class="checkout-grid">
+
+            <!-- ============================================================
+                 LEFT: Customer info form
+                 ============================================================ -->
+            <div>
+                <div class="panel">
+                    <div class="panel-head">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                        <h2 class="panel-title">Your information</h2>
+                    </div>
+                    <div class="panel-body">
+
+                        <form id="customerInfoForm" autocomplete="on">
+                            <div class="field-row">
+                                <div class="field">
+                                    <label for="customerEmail" class="field-label">Email address <span class="req">*</span></label>
+                                    <input type="email" class="form-control" id="customerEmail" autocomplete="email" required>
                                 </div>
-
-                                <div class="mb-3">
-                                    <label for="customerPhone" class="form-label">Phone Number *</label>
-                                    <input type="tel" class="form-control" id="customerPhone" required>
+                                <div class="field">
+                                    <label for="customerName" class="field-label">Full name <span class="req">*</span></label>
+                                    <input type="text" class="form-control" id="customerName" autocomplete="name" required>
                                 </div>
+                            </div>
 
-                                <h6 class="mt-4 mb-3">Shipping Address</h6>
-                                <div class="mb-3">
-                                    <label for="customerAddress" class="form-label">Street Address *</label>
-                                    <textarea class="form-control" id="customerAddress" rows="2" required></textarea>
+                            <div class="field">
+                                <label for="customerPhone" class="field-label">Phone number <span class="req">*</span></label>
+                                <input type="tel" class="form-control" id="customerPhone" autocomplete="tel" required>
+                            </div>
+
+                            <div class="field" style="margin-top: 1.5rem;">
+                                <label for="customerAddress" class="field-label" style="font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted);">Shipping address</label>
+                                <textarea class="form-control" id="customerAddress" rows="2" autocomplete="street-address" placeholder="Street address" required></textarea>
+                            </div>
+
+                            <div class="field-row three-col">
+                                <div class="field">
+                                    <label for="customerCity" class="field-label">City <span class="req">*</span></label>
+                                    <input type="text" class="form-control" id="customerCity" autocomplete="address-level2" required>
                                 </div>
-
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="customerCity" class="form-label">City *</label>
-                                        <input type="text" class="form-control" id="customerCity" required>
-                                    </div>
-                                    <div class="col-md-3 mb-3">
-                                        <label for="customerState" class="form-label">State/Province</label>
-                                        <input type="text" class="form-control" id="customerState">
-                                    </div>
-                                    <div class="col-md-3 mb-3">
-                                        <label for="customerZip" class="form-label">Postal Code *</label>
-                                        <input type="text" class="form-control" id="customerZip" required>
-                                    </div>
+                                <div class="field">
+                                    <label for="customerState" class="field-label">State / Province</label>
+                                    <input type="text" class="form-control" id="customerState" autocomplete="address-level1">
                                 </div>
+                                <div class="field">
+                                    <label for="customerZip" class="field-label">Postal code <span class="req">*</span></label>
+                                    <input type="text" class="form-control" id="customerZip" autocomplete="postal-code" required>
+                                </div>
+                            </div>
 
-                                <div class="mb-3">
-                                    <label for="customerCountry" class="form-label">Country *</label>
-                                    <select class="form-control" id="customerCountry" required>
-                                    <option value="">Select Country</option>
+                            <div class="field">
+                                <label for="customerCountry" class="field-label">Country <span class="req">*</span></label>
+                                <select class="form-select" id="customerCountry" autocomplete="country-name" required>
+                                    <option value="">Select country</option>
                                     <option value="US">United States</option>
                                     <option value="CA">Canada</option>
                                     <option value="GB">United Kingdom</option>
@@ -747,360 +1425,542 @@
                                     <option value="ZM">Zambia</option>
                                     <option value="ZW">Zimbabwe</option>
                                 </select>
-                                </div>
+                            </div>
 
-                                <div class="mb-4">
-                                    <label for="deliveryNotes" class="form-label">Delivery Notes</label>
-                                    <textarea class="form-control" id="deliveryNotes" rows="2" 
-                                              placeholder="Any special instructions for delivery"></textarea>
-                                </div>
+                            <div class="field" style="margin-top: 1rem;">
+                                <label for="deliveryNotes" class="field-label">Delivery notes <span style="color: var(--text-subtle); font-weight: 400;">— optional</span></label>
+                                <textarea class="form-control" id="deliveryNotes" rows="2" placeholder="Any special instructions for delivery"></textarea>
+                            </div>
 
-                                <button type="button" id="continueToShippingBtn" class="btn btn-primary w-100">
-                                    Continue to Shipping Options
+                            <div style="margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--border);">
+                                <button type="button" id="continueToShippingBtn" class="btn btn-accent btn-full btn-lg">
+                                    <span class="btn-text">Continue to shipping</span>
                                 </button>
-                            </form>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================================
+                 RIGHT: Order summary + shipping + payment
+                 ============================================================ -->
+            <div>
+
+                <!-- Order summary -->
+                <div class="panel">
+                    <div class="panel-head">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 3h2l2.4 12.3a2 2 0 0 0 2 1.7h9.7a2 2 0 0 0 2-1.6L23 6H6"/>
+                            <circle cx="9" cy="20" r="1"/>
+                            <circle cx="20" cy="20" r="1"/>
+                        </svg>
+                        <h2 class="panel-title">Order summary</h2>
+                    </div>
+                    <div class="panel-body">
+                        <div id="orderSummary">
+                            <p style="font-size: 0.8125rem; color: var(--text-muted); margin: 0;">Loading…</p>
+                        </div>
+
+                        <div id="shippingSection" style="display: none; margin-top: 0.875rem;">
+                            <div class="summary-row" id="shippingCostRow" style="display: none;">
+                                <span class="label">Shipping</span>
+                                <span class="value" id="shippingCostDisplay">{{ page.currency_symbol }}0.00</span>
+                            </div>
+                        </div>
+
+                        <div id="taxSection" style="display: none; margin-top: 0.875rem;">
+                            <div id="taxCalculating" style="display: none;" class="tax-calculating">
+                                <span class="spin"></span>
+                                <span>Calculating tax…</span>
+                            </div>
+                            <div id="taxBreakdown"></div>
+                            <div id="taxExemptNotice" class="tax-exempt" style="display: none;">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                    <polyline points="14 2 14 8 20 8"/>
+                                </svg>
+                                <span><strong>Tax exempt</strong> — no tax will be charged</span>
+                            </div>
+                            <div class="summary-row" id="taxTotalRow" style="display: none;">
+                                <span class="label">Tax</span>
+                                <span class="value" id="taxAmount">{{ page.currency_symbol }}0.00</span>
+                            </div>
+                        </div>
+
+                        <div style="display: none;">
+                            <span id="subtotalDisplay">{{ page.currency_symbol }}0.00</span>
+                        </div>
+
+                        <div class="summary-row grand-total" style="margin-top: 0.75rem;">
+                            <span class="label">Total</span>
+                            <span class="value" id="grandTotal">{{ page.currency_symbol }}0.00</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Right Column: Order Summary -->
-                <div class="col-lg-6">
-                    <!-- Order Summary -->
-                    <div class="card mb-4">
-                        <div class="card-header bg-light">
-                            <h5 class="card-title mb-0">Order Summary</h5>
-                        </div>
-                        <div class="card-body">
-                            <div id="orderSummary">
-                                <!-- Dynamic order summary will be inserted here -->
-                            </div>
-                            
-                            <!-- Shipping Section (initially hidden) -->
-                            <div id="shippingSection" style="display: none; margin-top: 1rem;">
-                                <hr>
-                                <div class="d-flex justify-content-between">
-                                    <span>Subtotal:</span>
-                                    <span id="subtotalDisplay">$0.00</span>
-                                </div>
-                                <div class="d-flex justify-content-between" id="shippingCostRow" style="display: none;">
-                                    <span>Shipping:</span>
-                                    <span id="shippingCostDisplay">$0.00</span>
-                                </div>
-                            </div>
-                            
-                            <!-- TAX SECTION -->
-                            <div id="taxSection" style="display: none; margin-top: 1rem;">
-                                <div id="taxCalculating" style="display: none; text-align: center; color: #6c757d;">
-                                    <i class="fas fa-spinner fa-spin me-2"></i>Calculating tax...
-                                </div>
-                                <div id="taxBreakdown"></div>
-                                <div id="taxExemptNotice" class="alert alert-warning py-2 small" style="display: none;">
-                                    <i class="fas fa-file-invoice me-2"></i>
-                                    <strong>Tax Exempt</strong> - No tax will be charged
-                                </div>
-                                <div class="d-flex justify-content-between mt-2" id="taxTotalRow" style="display: none;">
-                                    <span class="fw-bold">Tax:</span>
-                                    <span class="fw-bold text-success" id="taxAmount">$0.00</span>
-                                </div>
-                            </div>
-                            
-                            <!-- Grand Total -->
-                            <div class="d-flex justify-content-between mt-3 pt-3 border-top">
-                                <h5 class="fw-bold">Total:</h5>
-                                <h5 class="fw-bold text-primary" id="grandTotal">$0.00</h5>
-                            </div>
-                        </div>
+                <!-- Shipping options -->
+                <div class="panel" id="shippingOptionsCard" style="display: none;">
+                    <div class="panel-head">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="1" y="3" width="15" height="13" rx="1"/>
+                            <polygon points="16 8 20 8 23 11 23 16 16 16"/>
+                            <circle cx="5.5" cy="18.5" r="2.5"/>
+                            <circle cx="18.5" cy="18.5" r="2.5"/>
+                        </svg>
+                        <h2 class="panel-title">Shipping options</h2>
                     </div>
+                    <div class="panel-body">
 
-                    <!-- Shipping Options (Initially Hidden) -->
-                    <div class="card mb-4" id="shippingOptionsCard" style="display: none;">
-                        <div class="card-header bg-light">
-                            <h5 class="card-title mb-0">
-                                <i class="fas fa-truck me-2"></i>Shipping Options
-                            </h5>
+                        <div id="shippingRatesContainer"></div>
+
+                        <div id="noShippingMessage" class="alert alert-warning" style="display: none;">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m21.73 18-8-14a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/>
+                                <path d="M12 9v4M12 17h.01"/>
+                            </svg>
+                            <span>No shipping rates available for your address.</span>
                         </div>
-                        <div class="card-body">
-                            <div id="shippingRatesContainer">
-                                <!-- Dynamic shipping rates will appear here -->
-                            </div>
-                            <div id="noShippingMessage" class="alert alert-warning" style="display: none;">
-                                <i class="fas fa-exclamation-triangle me-2"></i>
-                                No shipping rates available for your address.
-                            </div>
-                            <div id="contactForShippingMessage" class="alert alert-info" style="display: none;">
-                                <i class="fas fa-envelope me-2"></i>
+
+                        <div id="contactForShippingMessage" class="alert alert-info" style="display: none;">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                                <path d="m22 7-10 6L2 7"/>
+                            </svg>
+                            <span>
                                 <strong>Need shipping to your location?</strong><br>
-                                Please <a href="../../?page=contact" id="contactStoreLink">contact the store</a> for shipping options. Free shipping will be applied now.
-                            </div>
-                            <button type="button" id="continueToPaymentBtn" class="btn btn-primary w-100 mt-3" style="display: none;">
-                                Continue to Payment Method
+                                Please <a href="../../?page=contact" id="contactStoreLink">contact the store</a> for shipping options. Free shipping will be applied for now.
+                            </span>
+                        </div>
+
+                        <div style="margin-top: 1rem;">
+                            <button type="button" id="continueToPaymentBtn" class="btn btn-accent btn-full" style="display: none;">
+                                <span class="btn-text">Continue to payment method</span>
                             </button>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Payment Methods (Initially Hidden) -->
-                    <div class="card" id="paymentMethodsCard" style="display: none;">
-                        <div class="card-header bg-light">
-                            <h5 class="card-title mb-0">Select Payment Method</h5>
-                        </div>
-                        <div class="card-body">
-                            {% if available_gateways %}
-                                <div class="payment-methods" id="paymentMethods">
-                                    {% for gateway in available_gateways %}
-                                        {# Skip social_media gateway - it's now shown as Pay Via Chat #}
-                                        {% if gateway.gateway_type != 'social_media' %}
-                                        <div class="payment-method-card" data-gateway="{{ gateway.gateway_type }}">
-                                            <input type="radio" name="paymentMethod"
-                                                id="payment_{{ gateway.gateway_type }}"
-                                                value="{{ gateway.gateway_type }}"
-                                                class="payment-method-radio">
-                                            <label for="payment_{{ gateway.gateway_type }}" class="payment-method-label">
-                                                <div class="payment-method-content">
-                                                    <div class="payment-icon 
-                                                        {% if gateway.gateway_type == 'stripe' %}stripe
-                                                        {% elif gateway.gateway_type == 'paypal' %}paypal
-                                                        {% elif gateway.gateway_type == 'razorpay' %}razorpay
-                                                        {% elif gateway.gateway_type == 'fincra' %}fincra
-                                                        {% elif gateway.gateway_type == 'cryptomus' %}cryptomus
-                                                        {% elif gateway.gateway_type == 'pay_on_delivery' %}pod
-                                                        {% endif %}">
-                                                        
-                                                        {% if gateway.gateway_type == 'stripe' %}
-                                                            <i class="fab fa-stripe fa-2x"></i>
+                <!-- Payment methods -->
+                <div class="panel" id="paymentMethodsCard" style="display: none;">
+                    <div class="panel-head">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="5" width="20" height="14" rx="2"/>
+                            <path d="M2 10h20"/>
+                        </svg>
+                        <h2 class="panel-title">Select payment method</h2>
+                    </div>
+                    <div class="panel-body">
+
+                        {% if available_gateways %}
+                            <div class="payment-methods" id="paymentMethods">
+                                {% for gateway in available_gateways %}
+                                    {% if gateway.gateway_type != 'social_media' %}
+                                    <div class="payment-method-card" data-gateway="{{ gateway.gateway_type }}">
+                                        <input type="radio" name="paymentMethod"
+                                               id="payment_{{ gateway.gateway_type }}"
+                                               value="{{ gateway.gateway_type }}"
+                                               class="payment-method-radio">
+                                        <label for="payment_{{ gateway.gateway_type }}" class="payment-method-label">
+                                            <div class="payment-method-content">
+
+                                                <div class="payment-icon">
+                                                    {% if gateway.gateway_type == 'stripe' %}
+                                                        <span class="wordmark">S</span>
+                                                    {% elif gateway.gateway_type == 'paypal' %}
+                                                        <span class="wordmark">P</span>
+                                                    {% elif gateway.gateway_type == 'razorpay' %}
+                                                        <span class="wordmark">R</span>
+                                                    {% elif gateway.gateway_type == 'fincra' %}
+                                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                                            <path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h.01M15 9h.01M9 13h.01M15 13h.01M9 17h.01M15 17h.01"/>
+                                                        </svg>
+                                                    {% elif gateway.gateway_type == 'cryptomus' %}
+                                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                                            <circle cx="12" cy="12" r="10"/>
+                                                            <path d="M9.5 9.5c0-1.1.9-2 2-2h2a2 2 0 0 1 0 4h-3M9.5 11.5h4a2 2 0 0 1 0 4h-2a2 2 0 0 1-2-2"/>
+                                                        </svg>
+                                                    {% elif gateway.gateway_type == 'pay_on_delivery' %}
+                                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                                            <rect x="1" y="3" width="15" height="13" rx="1"/>
+                                                            <polygon points="16 8 20 8 23 11 23 16 16 16"/>
+                                                            <circle cx="5.5" cy="18.5" r="2.5"/>
+                                                            <circle cx="18.5" cy="18.5" r="2.5"/>
+                                                        </svg>
+                                                    {% else %}
+                                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                                            <rect x="2" y="5" width="20" height="14" rx="2"/>
+                                                            <path d="M2 10h20"/>
+                                                        </svg>
+                                                    {% endif %}
+                                                </div>
+
+                                                <div class="payment-details">
+                                                    <h3 class="payment-name">
+                                                        {% if gateway.gateway_type == 'pay_on_delivery' %}
+                                                            Pay on Delivery
+                                                        {% elif gateway.gateway_type == 'stripe' %}
+                                                            Stripe
                                                         {% elif gateway.gateway_type == 'paypal' %}
-                                                            <i class="fab fa-paypal fa-2x"></i>
+                                                            PayPal
                                                         {% elif gateway.gateway_type == 'razorpay' %}
-                                                            <span style="color: white; font-weight: 700; font-size: 20px;">R</span>
+                                                            Razorpay
                                                         {% elif gateway.gateway_type == 'fincra' %}
-                                                            <i class="fas fa-building-columns fa-2x"></i>
+                                                            Fincra
                                                         {% elif gateway.gateway_type == 'cryptomus' %}
-                                                            <i class="fas fa-bitcoin-sign fa-2x"></i>
-                                                        {% elif gateway.gateway_type == 'pay_on_delivery' %}
-                                                            <i class="fas fa-truck fa-2x"></i>
+                                                            Cryptomus
                                                         {% else %}
-                                                            <i class="fas fa-credit-card fa-2x"></i>
+                                                            {{ gateway.get_gateway_type_display }}
                                                         {% endif %}
-                                                    </div>
-                                                    
-                                                    <div class="payment-details">
-                                                        <h6 class="payment-name">
-                                                            {% if gateway.gateway_type == 'pay_on_delivery' %}
-                                                                Pay on Delivery
-                                                            {% elif gateway.gateway_type == 'stripe' %}
-                                                                Stripe
-                                                            {% elif gateway.gateway_type == 'paypal' %}
-                                                                PayPal
-                                                            {% elif gateway.gateway_type == 'razorpay' %}
-                                                                Razorpay
-                                                            {% elif gateway.gateway_type == 'fincra' %}
-                                                                Fincra
-                                                            {% elif gateway.gateway_type == 'cryptomus' %}
-                                                                Cryptomus
-                                                            {% else %}
-                                                                {{ gateway.get_gateway_type_display }}
-                                                            {% endif %}
-                                                        </h6>
-                                                        
-                                                        <small class="text-muted">
-                                                            {% if gateway.gateway_type == 'stripe' %}
-                                                                Cards, Apple Pay, Google Pay, Link
-                                                            {% elif gateway.gateway_type == 'paypal' %}
-                                                                PayPal balance, Cards, Venmo, Pay Later
-                                                            {% elif gateway.gateway_type == 'pay_on_delivery' %}
-                                                                Pay with cash when your order is delivered
-                                                            {% elif gateway.gateway_type == 'razorpay' %}
-                                                                UPI, Cards, NetBanking, Wallets, EMI
-                                                            {% elif gateway.gateway_type == 'fincra' %}
-                                                                Cards, Bank Transfer, Mobile Money, Virtual Account
-                                                            {% elif gateway.gateway_type == 'cryptomus' %}
-                                                                Bitcoin, Ethereum, USDT, +15 cryptocurrencies
-                                                            {% else %}
-                                                                Secure payment processing
-                                                            {% endif %}
-                                                        </small>
-                                                        
+                                                    </h3>
+
+                                                    <p class="payment-desc">
                                                         {% if gateway.gateway_type == 'stripe' %}
-                                                        <div class="card-icons">
-                                                            <span class="card-icon"><i class="fab fa-cc-visa" style="color: #1A1F71;"></i></span>
-                                                            <span class="card-icon"><i class="fab fa-cc-mastercard" style="color: #EB001B;"></i></span>
-                                                            <span class="card-icon"><i class="fab fa-cc-amex" style="color: #2E77BC;"></i></span>
-                                                            <span class="card-icon"><i class="fab fa-apple-pay"></i></span>
-                                                            <span class="card-icon"><i class="fab fa-google-pay"></i></span>
-                                                        </div>
+                                                            Cards, Apple Pay, Google Pay, Link
                                                         {% elif gateway.gateway_type == 'paypal' %}
-                                                        <div class="card-icons">
-                                                            <span class="card-icon"><i class="fab fa-cc-visa" style="color: #1A1F71;"></i></span>
-                                                            <span class="card-icon"><i class="fab fa-cc-mastercard" style="color: #EB001B;"></i></span>
-                                                            <span class="card-icon"><i class="fab fa-cc-amex" style="color: #2E77BC;"></i></span>
-                                                        </div>
+                                                            PayPal balance, cards, Venmo, Pay Later
+                                                        {% elif gateway.gateway_type == 'pay_on_delivery' %}
+                                                            Pay with cash when your order is delivered
                                                         {% elif gateway.gateway_type == 'razorpay' %}
-                                                        <div class="payment-badges">
-                                                            <span class="payment-badge"><i class="fas fa-mobile-alt"></i> UPI</span>
-                                                            <span class="payment-badge"><i class="far fa-credit-card"></i> Cards</span>
-                                                            <span class="payment-badge"><i class="fas fa-university"></i> NetBanking</span>
-                                                        </div>
+                                                            UPI, cards, net banking, wallets, EMI
+                                                        {% elif gateway.gateway_type == 'fincra' %}
+                                                            Cards, bank transfer, mobile money, virtual account
                                                         {% elif gateway.gateway_type == 'cryptomus' %}
+                                                            Bitcoin, Ethereum, USDT + 15 more
+                                                        {% else %}
+                                                            Secure payment processing
+                                                        {% endif %}
+                                                    </p>
+
+                                                    {% if gateway.gateway_type == 'stripe' or gateway.gateway_type == 'paypal' %}
+                                                        <div class="card-icons">
+                                                            <span class="card-icon" title="Visa">
+                                                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 7.5 6.5 16.5h2L11.5 7.5h-2zM15 7.5c-2 0-2.5 1.2-2.5 2.5s.5 1.5 1.5 2c1 .3 1.5.5 1.5 1s-.5.5-1 .5-1.5-.3-1.5-.3l-.5 2s1 .3 2 .3 3-.5 3-2.5-.5-1.5-1.5-2c-1-.3-1-.5-1-1s.5-.5 1-.5 1 .3 1 .3l.5-2s-1-.3-2-.3zM20.5 7.5h-1.5c-.5 0-1 .3-1 .8l-3 8.2h2l.5-1h2l.5 1h1.5l-1.5-9zM18.5 12l1-2.5.5 2.5h-1.5z"/></svg>
+                                                            </span>
+                                                            <span class="card-icon" title="Mastercard">
+                                                                <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="9" cy="12" r="5"/><circle cx="15" cy="12" r="5" fill-opacity="0.6"/></svg>
+                                                            </span>
+                                                            <span class="card-icon" title="American Express">
+                                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="6" width="18" height="12" rx="1.5"/><path d="M7 10h3M7 14h3M14 10h3M14 14h3"/></svg>
+                                                            </span>
+                                                        </div>
+                                                    {% elif gateway.gateway_type == 'razorpay' %}
                                                         <div class="payment-badges">
-                                                            <span class="payment-badge"><i class="fab fa-bitcoin"></i> BTC</span>
-                                                            <span class="payment-badge"><i class="fab fa-ethereum"></i> ETH</span>
-                                                            <span class="payment-badge"><i class="fas fa-dollar-sign"></i> USDT</span>
+                                                            <span class="payment-badge">UPI</span>
+                                                            <span class="payment-badge">Cards</span>
+                                                            <span class="payment-badge">NetBanking</span>
+                                                        </div>
+                                                    {% elif gateway.gateway_type == 'cryptomus' %}
+                                                        <div class="payment-badges">
+                                                            <span class="payment-badge">BTC</span>
+                                                            <span class="payment-badge">ETH</span>
+                                                            <span class="payment-badge">USDT</span>
                                                             <span class="payment-badge">+15 more</span>
                                                         </div>
-                                                        {% elif gateway.gateway_type == 'fincra' %}
+                                                    {% elif gateway.gateway_type == 'fincra' %}
                                                         <div class="payment-badges">
-                                                            <span class="payment-badge"><i class="fas fa-credit-card"></i> Cards</span>
-                                                            <span class="payment-badge"><i class="fas fa-building"></i> Bank Transfer</span>
-                                                            <span class="payment-badge"><i class="fas fa-mobile-alt"></i> Mobile Money</span>
+                                                            <span class="payment-badge">Cards</span>
+                                                            <span class="payment-badge">Bank transfer</span>
+                                                            <span class="payment-badge">Mobile money</span>
                                                         </div>
-                                                        {% elif gateway.gateway_type == 'pay_on_delivery' %}
+                                                    {% elif gateway.gateway_type == 'pay_on_delivery' %}
                                                         <div class="payment-badges">
-                                                            <span class="payment-badge"><i class="fas fa-check-circle"></i> Pay on Receipt</span>
-                                                            <span class="payment-badge"><i class="fas fa-shield-alt"></i> Secure</span>
+                                                            <span class="payment-badge">Pay on receipt</span>
+                                                            <span class="payment-badge">No upfront payment</span>
                                                         </div>
-                                                        {% else %}
+                                                    {% else %}
                                                         <div class="card-icons">
-                                                            <span class="card-icon"><i class="fab fa-cc-visa" style="color: #1A1F71;"></i></span>
-                                                            <span class="card-icon"><i class="fab fa-cc-mastercard" style="color: #EB001B;"></i></span>
+                                                            <span class="card-icon" title="Visa">
+                                                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 7.5 6.5 16.5h2L11.5 7.5h-2z"/></svg>
+                                                            </span>
                                                         </div>
-                                                        {% endif %}
-                                                    </div>
+                                                    {% endif %}
                                                 </div>
-                                            </label>
-                                        </div>
-                                        {% endif %}
-                                    {% endfor %}
-                                </div>
 
-                                <!-- PAY VIA CHAT CARD -->
-                                {% if platform_count > 0 %}
-                                <div class="chat-payment-card" id="chatPaymentCard">
-                                    <div class="d-flex align-items-center">
-                                        <div class="chat-payment-icon me-3">
-                                            <i class="fas fa-comment-dots"></i>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <h6 class="mb-0">
-                                                Pay Via Chat
-                                                <span class="chat-platform-badge">
-                                                    {{ platform_count }} platform{{ platform_count|pluralize }}
-                                                </span>
-                                            </h6>
-                                            <div class="payment-icons-row">
-                                                <span class="icon-item"><i class="fab fa-cc-visa" style="color:#1A1F71;"></i></span>
-                                                <span class="icon-item"><i class="fab fa-cc-mastercard" style="color:#EB001B;"></i></span>
-                                                <span class="icon-item"><i class="fab fa-cc-amex" style="color:#2E77BC;"></i></span>
-                                                <span class="icon-item"><i class="fab fa-cc-paypal" style="color:#003087;"></i></span>
-                                                <span class="icon-item"><i class="fas fa-university" style="color:#0056b3;"></i> <span class="label">Bank</span></span>
-                                                <span class="icon-item"><i class="fas fa-mobile-alt" style="color:#25D366;"></i> <span class="label">Mobile</span></span>
-                                                <span class="icon-item"><i class="fas fa-wallet" style="color:#764ba2;"></i> <span class="label">Wallet</span></span>
                                             </div>
-                                            <small class="text-muted">
-                                                Pay with any method. Complete payment via your preferred chat platform.
-                                            </small>
-                                        </div>
-                                        <div class="ms-3">
-                                            <i class="fas fa-chevron-right text-muted"></i>
-                                        </div>
+                                        </label>
                                     </div>
-                                </div>
-                                {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
 
-                                <!-- POD Instructions -->
-                                <div id="podInstructions" class="alert alert-info mt-3" style="display: none;">
-                                    <h6><i class="fas fa-truck me-2"></i>Pay on Delivery Information</h6>
-                                    <p id="podInstructionText" class="mb-0 small"></p>
+                            <!-- Pay via chat -->
+                            {% if platform_count > 0 %}
+                            <div class="chat-payment-card" id="chatPaymentCard">
+                                <div class="chat-payment-content">
+                                    <div class="chat-payment-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="chat-payment-body">
+                                        <h3 class="chat-payment-title">
+                                            Pay via chat
+                                            <span class="chat-payment-count">{{ platform_count }} platform{{ platform_count|pluralize }}</span>
+                                        </h3>
+                                        <p class="chat-payment-desc">
+                                            Pay with any method — Visa, Mastercard, PayPal, bank, mobile money, or wallet. Complete payment via your preferred chat platform.
+                                        </p>
+                                    </div>
+                                    <span class="chat-payment-chevron">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="m9 18 6-6-6-6"/>
+                                        </svg>
+                                    </span>
                                 </div>
+                            </div>
+                            {% endif %}
 
-                                <!-- Complete Order Button -->
-                                <div class="mt-4">
-                                    <button id="completeOrderBtn" class="btn btn-success btn-lg w-100" disabled>
-                                        <i class="fas fa-lock me-2"></i>
-                                        Complete Order
+                            <!-- POD instructions -->
+                            <div id="podInstructions" class="pod-instructions" style="display: none;">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="1" y="3" width="15" height="13" rx="1"/>
+                                    <polygon points="16 8 20 8 23 11 23 16 16 16"/>
+                                    <circle cx="5.5" cy="18.5" r="2.5"/>
+                                    <circle cx="18.5" cy="18.5" r="2.5"/>
+                                </svg>
+                                <div>
+                                    <strong>Pay on Delivery</strong>
+                                    <p id="podInstructionText" style="margin: 0.25rem 0 0;"></p>
+                                </div>
+                            </div>
+
+                            <!-- Complete order -->
+                            <div style="margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--border);">
+                                <button id="completeOrderBtn" class="btn btn-accent btn-full btn-lg" disabled>
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="11" width="18" height="11" rx="2"/>
+                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                                    </svg>
+                                    <span class="btn-text">Complete order</span>
+                                </button>
+                            </div>
+
+                            <!-- ============================================================
+                                 Stripe Elements — inline native card form
+                                 ============================================================ -->
+                            <div id="stripeElementsWrapper" class="inline-payment-wrapper" style="display: none;">
+                                <div class="inline-payment-header">
+                                    <h3 class="inline-payment-title">Card details</h3>
+                                    <button type="button" id="elementsBackBtn" class="btn btn-ghost"
+                                            style="padding: 0.375rem 0.75rem; font-size: 0.75rem;">
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                                        </svg>
+                                        Back
                                     </button>
                                 </div>
-                            {% else %}
-                                <div class="alert alert-warning text-center">
-                                    <i class="fas fa-exclamation-triangle me-2"></i>
-                                    No payment methods available. Please contact the store.
+
+                                <!-- Express checkout (Apple Pay / Google Pay) -->
+                                <div id="expressCheckoutElement" style="margin-bottom: 1rem;"></div>
+                                <div id="expressDivider">
+                                    <span>Or pay with card</span>
                                 </div>
-                            {% endif %}
-                        </div>
+
+                                <form id="stripeElementsForm" novalidate>
+                                    <div class="field">
+                                        <label for="elementsEmail" class="field-label">Email</label>
+                                        <input type="email" class="form-control" id="elementsEmail"
+                                               autocomplete="email" required>
+                                    </div>
+
+                                    <div class="field">
+                                        <label for="elementsCardholderName" class="field-label">Cardholder name</label>
+                                        <input type="text" class="form-control" id="elementsCardholderName"
+                                               autocomplete="cc-name" required>
+                                    </div>
+
+                                    <div class="field">
+                                        <label class="field-label">Card information</label>
+                                        <div id="cardNumberElement" class="stripe-input"></div>
+                                        <div class="stripe-row">
+                                            <div id="cardExpiryElement" class="stripe-input stripe-input-half"></div>
+                                            <div id="cardCvcElement" class="stripe-input stripe-input-half"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="field-row">
+                                        <div class="field">
+                                            <label for="elementsCountry" class="field-label">Country</label>
+                                            <select class="form-select" id="elementsCountry" autocomplete="country">
+                                                <option value="US">United States</option>
+                                                <option value="CA">Canada</option>
+                                                <option value="GB">United Kingdom</option>
+                                                <option value="AU">Australia</option>
+                                                <option value="DE">Germany</option>
+                                                <option value="FR">France</option>
+                                                <option value="IT">Italy</option>
+                                                <option value="ES">Spain</option>
+                                                <option value="JP">Japan</option>
+                                                <option value="IN">India</option>
+                                                <option value="NG">Nigeria</option>
+                                                <option value="ZA">South Africa</option>
+                                                <option value="KE">Kenya</option>
+                                                <option value="GH">Ghana</option>
+                                                <option value="CM">Cameroon</option>
+                                            </select>
+                                        </div>
+                                        <div class="field">
+                                            <label for="elementsPostal" class="field-label">Postal code</label>
+                                            <input type="text" class="form-control" id="elementsPostal"
+                                                   autocomplete="postal-code" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="field" style="margin-top: 1rem;">
+                                        <label style="display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.75rem; color: #52525b; cursor: pointer;">
+                                            <input type="checkbox" id="billingSameAsShipping" checked
+                                                   style="margin-top: 2px; accent-color: #111827;">
+                                            <span>Billing address is the same as shipping</span>
+                                        </label>
+                                    </div>
+
+                                    <div id="elementsError" class="inline-payment-error"></div>
+
+                                    <button type="submit" id="elementsSubmitBtn" class="btn btn-accent btn-full btn-lg"
+                                            style="margin-top: 1.25rem;">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <rect x="3" y="11" width="18" height="11" rx="2"/>
+                                            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                                        </svg>
+                                        <span class="btn-text">Pay <span id="elementsAmountLabel"></span></span>
+                                    </button>
+
+                                    <div class="secure-note">
+                                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none"
+                                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <rect x="3" y="11" width="18" height="11" rx="2"/>
+                                            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                                        </svg>
+                                        Payments are encrypted and secure. Powered by Stripe.
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- ============================================================
+                                 PayPal — inline payment form
+                                 HTML shell ready — JS wired once paypal_service.py is provided
+                                 ============================================================ -->
+                            <div id="paypalInlineWrapper" class="inline-payment-wrapper" style="display: none;">
+                                <div class="inline-payment-header">
+                                    <h3 class="inline-payment-title">Pay with PayPal</h3>
+                                    <button type="button" id="paypalBackBtn" class="btn btn-ghost"
+                                            style="padding: 0.375rem 0.75rem; font-size: 0.75rem;">
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                                        </svg>
+                                        Back
+                                    </button>
+                                </div>
+
+                                <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 6px; padding: 0.875rem; margin-bottom: 1rem; font-size: 0.75rem; color: #52525b; line-height: 1.55;">
+                                    <strong style="color: #18181b; display: block; margin-bottom: 0.25rem;">Secure PayPal checkout</strong>
+                                    You'll be redirected to PayPal to complete your payment, then returned to this page. Your order is saved and reserved.
+                                </div>
+
+                                <div id="paypalButtonContainer">
+                                    <!-- PayPal SDK buttons mount here -->
+                                </div>
+
+                                <div id="paypalError" class="inline-payment-error"></div>
+
+                                <div class="secure-note">
+                                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none"
+                                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="11" width="18" height="11" rx="2"/>
+                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                                    </svg>
+                                    Buyer protection included. Powered by PayPal.
+                                </div>
+                            </div>
+
+                        {% else %}
+                            <div class="alert alert-warning">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="m21.73 18-8-14a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/>
+                                    <path d="M12 9v4M12 17h.01"/>
+                                </svg>
+                                <span>No payment methods available. Please contact the store.</span>
+                            </div>
+                        {% endif %}
+
                     </div>
                 </div>
-            </div>
 
-            <!-- Back Button -->
-            <div class="text-center mt-4">
-                <a href="javascript:history.back()" class="btn btn-outline-secondary">
-                    <i class="fas fa-arrow-left me-2"></i>
-                    Back to Shopping
-                </a>
             </div>
         </div>
+
+        <!-- Back link -->
+        <div class="back-row">
+            <a href="javascript:history.back()" class="back-link">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                <span>Back to shopping</span>
+            </a>
+        </div>
+
     </div>
 </div>
 
-<!-- PAYMENT MODAL -->
+<!-- Chat platform modal -->
 {% if platform_count > 1 %}
-<div class="payment-modal-overlay" id="paymentModal">
-    <div class="payment-modal">
-        <button class="payment-modal-close" id="closePaymentModal" aria-label="Close">
-            <i class="fas fa-times"></i>
+<div class="modal-overlay" id="paymentModal">
+    <div class="modal-content">
+        <button class="modal-close" id="closePaymentModal" aria-label="Close">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg>
         </button>
 
-        <div class="payment-modal-title">
-            <span class="icon-wrapper"><i class="fas fa-comment-dots"></i></span>
-            Choose Your Chat Platform
+        <div class="modal-head">
+            <h2 class="modal-title">
+                <span class="modal-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                    </svg>
+                </span>
+                Choose your chat platform
+            </h2>
+            <p class="modal-sub">Select your preferred platform. Your order details are pre-filled and ready to send.</p>
         </div>
-        <p class="payment-modal-subtitle">
-            Select your preferred platform to complete your order. Your order details are pre-filled.
-        </p>
 
-        <div class="mb-4">
-            <div class="payment-icons-row">
-                <span class="icon-item"><i class="fab fa-cc-visa" style="color:#1A1F71;"></i> Visa</span>
-                <span class="icon-item"><i class="fab fa-cc-mastercard" style="color:#EB001B;"></i> Mastercard</span>
-                <span class="icon-item"><i class="fab fa-cc-amex" style="color:#2E77BC;"></i> Amex</span>
-                <span class="icon-item"><i class="fab fa-cc-paypal" style="color:#003087;"></i> PayPal</span>
-                <span class="icon-item"><i class="fas fa-university" style="color:#0056b3;"></i> Bank</span>
-                <span class="icon-item"><i class="fas fa-mobile-alt" style="color:#25D366;"></i> Mobile</span>
+        <div class="modal-body">
+            <div class="platform-options">
+                {% for platform_key, platform in platform_messages.items %}
+                <a href="{{ platform.link }}" target="_blank" rel="noopener" class="platform-option chat-platform-link" data-platform="{{ platform_key }}">
+                    <span class="platform-icon">
+                        <i class="{{ platform.icon }}"></i>
+                    </span>
+                    <div class="platform-info">
+                        <p class="platform-name">
+                            {{ platform.display_name|default:platform_key|title }}
+                            {% if platform.business_name %}
+                                <span class="business-name">({{ platform.business_name }})</span>
+                            {% endif %}
+                        </p>
+                        <p class="platform-desc">
+                            {% if platform.username %}@{{ platform.username }} · {% endif %}Order pre-filled
+                        </p>
+                    </div>
+                    <span class="platform-arrow">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                </a>
+                {% endfor %}
             </div>
-            <p class="text-muted small mb-0">
-                <i class="fas fa-check-circle text-success me-1"></i>
-                Any payment method accepted. Complete your payment via chat.
-            </p>
-        </div>
 
-        <div class="payment-option-grid">
-            {% for platform_key, platform in platform_messages.items %}
-            <a href="{{ platform.link }}" target="_blank" class="payment-option text-decoration-none chat-platform-link" data-platform="{{ platform_key }}">
-                <div class="platform-icon {{ platform_key }}">
-                    <i class="{{ platform.icon }}"></i>
-                </div>
-                <div class="platform-info">
-                    <div class="platform-name">
-                        {{ platform.display_name|default:platform_key|title }}
-                        {% if platform.business_name %}
-                        <span class="text-muted fw-normal small">({{ platform.business_name }})</span>
-                        {% endif %}
-                    </div>
-                    <div class="platform-desc">
-                        {% if platform.username %}@{{ platform.username }}{% endif %}
-                        <span class="text-muted ms-2">• Order pre-filled</span>
-                    </div>
-                </div>
-                <div class="platform-arrow">
-                    <i class="fas fa-arrow-right"></i>
-                </div>
-            </a>
-            {% endfor %}
-        </div>
-
-        <div class="mt-4 pt-3 border-top text-center">
-            <p class="text-muted small mb-0">
-                <i class="fas fa-lock me-1"></i>
+            <div class="modal-footer-note">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="11" width="18" height="11" rx="2"/>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                </svg>
                 Your information is secure. You'll complete payment directly with the store.
-            </p>
+            </div>
         </div>
     </div>
 </div>
@@ -1109,9 +1969,12 @@
 {% endblock %}
 
 {% block extra_js %}
+<script src="https://js.stripe.com/v3/"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Elements
+    /* ============================================================
+       ELEMENTS
+       ============================================================ */
     const continueToShippingBtn = document.getElementById('continueToShippingBtn');
     const shippingOptionsCard = document.getElementById('shippingOptionsCard');
     const shippingRatesContainer = document.getElementById('shippingRatesContainer');
@@ -1124,8 +1987,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const shippingCostDisplay = document.getElementById('shippingCostDisplay');
     const shippingCostRow = document.getElementById('shippingCostRow');
     const shippingSection = document.getElementById('shippingSection');
-    
-    // Tax Elements
+
     const taxSection = document.getElementById('taxSection');
     const taxCalculating = document.getElementById('taxCalculating');
     const taxBreakdown = document.getElementById('taxBreakdown');
@@ -1133,8 +1995,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const taxTotalRow = document.getElementById('taxTotalRow');
     const taxAmount = document.getElementById('taxAmount');
     const grandTotal = document.getElementById('grandTotal');
-    
-    // State variables
+
+    const platformCount = {{ platform_count|default:0 }};
+    const platformMessages = {{ platform_messages|safe|default:'{}' }};
+    const chatPaymentCard = document.getElementById('chatPaymentCard');
+    const paymentModal = document.getElementById('paymentModal');
+    const closeModalBtn = document.getElementById('closePaymentModal');
+
+    /* ============================================================
+       STATE
+       ============================================================ */
     let orderData = {};
     let customerInfo = {};
     let selectedShippingRate = null;
@@ -1144,35 +2014,72 @@ document.addEventListener('DOMContentLoaded', function() {
     let shippingCost = 0;
     let shippingRates = [];
     let debounceTimer;
-    
-    // Pay Via Chat data from server
-    const platformCount = {{ platform_count|default:0 }};
-    const platformMessages = {{ platform_messages|safe|default:'{}' }};
-    const chatPaymentCard = document.getElementById('chatPaymentCard');
-    const paymentModal = document.getElementById('paymentModal');
-    const closeModalBtn = document.getElementById('closePaymentModal');
-    
-    // Load order data from URL parameters
+
+    // Stripe Elements state
+    let stripeInstance = null;
+    let elementsInstance = null;
+    let cardNumberElement = null;
+    let cardExpiryElement = null;
+    let cardCvcElement = null;
+    let stripeClientSecret = null;
+
+    // PayPal state
+    let paypalClientId = null;
+    let paypalOrderId = null;
+    let paypalSdkLoaded = false;
+
+    /* ============================================================
+       HELPERS
+       ============================================================ */
+    function escapeHtml(text) {
+        if (!text) return '';
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    function formatPrice(price) {
+        const currencySymbol = '{{ page.currency_symbol|default:"$" }}';
+        const decimalPlaces = {{ page.decimal_places|default:2 }};
+        const priceNum = parseFloat(price);
+        if (isNaN(priceNum)) return currencySymbol + '0.00';
+        return currencySymbol + priceNum.toFixed(decimalPlaces);
+    }
+
+    function getCSRFToken() {
+        try {
+            return document.cookie
+                .split('; ')
+                .find(row => row.startsWith('csrftoken='))
+                ?.split('=')[1] || '';
+        } catch (e) {
+            return '';
+        }
+    }
+
+    function buildReturnUrl() {
+        return window.location.origin + '/payments/checkout-success/{{ page.subdomain }}/';
+    }
+
+    /* ============================================================
+       ORDER DATA
+       ============================================================ */
     function loadOrderData() {
         try {
             const urlParams = new URLSearchParams(window.location.search);
             const cartParam = urlParams.get('cart');
             const productParam = urlParams.get('product');
-            
+
             orderData = {
                 checkout_type: urlParams.get('type') || 'instant',
                 product: productParam ? JSON.parse(decodeURIComponent(productParam)) : {},
                 cart: cartParam ? JSON.parse(decodeURIComponent(cartParam)) : {},
                 customer: JSON.parse(urlParams.get('customer') || '{}')
             };
-            
+
             if (orderData.checkout_type === 'instant' && orderData.product) {
-                if (!orderData.product.weight) {
-                    orderData.product.weight = 0;
-                }
-                if (!orderData.product.requires_shipping) {
-                    orderData.product.requires_shipping = true;
-                }
+                if (!orderData.product.weight) orderData.product.weight = 0;
+                if (!orderData.product.requires_shipping) orderData.product.requires_shipping = true;
                 const price = parseFloat(orderData.product.price) || 0;
                 const quantity = parseInt(orderData.product.quantity) || 1;
                 subtotal = price * quantity;
@@ -1180,32 +2087,23 @@ document.addEventListener('DOMContentLoaded', function() {
             } else if (orderData.checkout_type === 'cart' && orderData.cart) {
                 subtotal = parseFloat(orderData.cart.subtotal) || 0;
                 shippingCost = 0;
-                if (!orderData.cart.weight) {
-                    orderData.cart.weight = 0;
-                }
-                if (!orderData.cart.requires_shipping) {
-                    orderData.cart.requires_shipping = true;
-                }
-                if (orderData.cart.shipping_amount) {
-                    delete orderData.cart.shipping_amount;
-                }
-                if (orderData.cart.tax_amount) {
-                    delete orderData.cart.tax_amount;
-                }
+                if (!orderData.cart.weight) orderData.cart.weight = 0;
+                if (!orderData.cart.requires_shipping) orderData.cart.requires_shipping = true;
+                if (orderData.cart.shipping_amount) delete orderData.cart.shipping_amount;
+                if (orderData.cart.tax_amount) delete orderData.cart.tax_amount;
             }
-            
+
             subtotal = isNaN(subtotal) ? 0 : subtotal;
             updateOrderSummary();
             updateGrandTotal();
-            
             return orderData;
         } catch (error) {
             console.error('Error loading order data:', error);
-            orderSummary.innerHTML = '<p class="text-muted">Error loading order information</p>';
+            orderSummary.innerHTML = '<p style="font-size: 0.8125rem; color: var(--text-muted); margin: 0;">Error loading order information</p>';
             return {};
         }
     }
-    
+
     function updateOrderSummary() {
         let html = '';
         try {
@@ -1215,13 +2113,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 const quantity = parseInt(product.quantity) || 1;
                 const itemTotal = price * quantity;
                 html = `
-                    <div class="order-item">
-                        <span>${escapeHtml(product.title || 'Product')} x${quantity}</span>
-                        <span>${formatPrice(itemTotal)}</span>
-                    </div>
-                    <div class="d-flex justify-content-between mt-2">
-                        <span>Subtotal:</span>
-                        <span>${formatPrice(itemTotal)}</span>
+                    <div class="summary-item">
+                        <span class="item-title">${escapeHtml(product.title || 'Product')} × ${quantity}</span>
+                        <span class="item-price">${formatPrice(itemTotal)}</span>
                     </div>
                 `;
             } else if (orderData.checkout_type === 'cart' && orderData.cart && orderData.cart.items) {
@@ -1231,46 +2125,26 @@ document.addEventListener('DOMContentLoaded', function() {
                     const quantity = parseInt(item.quantity) || 1;
                     const itemTotal = price * quantity;
                     html += `
-                        <div class="order-item">
-                            <span>${escapeHtml(item.title || 'Product')} x${quantity}</span>
-                            <span>${formatPrice(itemTotal)}</span>
+                        <div class="summary-item">
+                            <span class="item-title">${escapeHtml(item.title || 'Product')} × ${quantity}</span>
+                            <span class="item-price">${formatPrice(itemTotal)}</span>
                         </div>
                     `;
                 });
-                html += `
-                    <div class="d-flex justify-content-between mt-2">
-                        <span>Subtotal:</span>
-                        <span>${formatPrice(subtotal)}</span>
-                    </div>
-                `;
             } else {
-                html = '<p class="text-muted">No order information available</p>';
+                html = '<p style="font-size: 0.8125rem; color: var(--text-muted); margin: 0;">No order information available</p>';
             }
             orderSummary.innerHTML = html;
-            if (subtotalDisplay) {
-                subtotalDisplay.innerHTML = formatPrice(subtotal);
-            }
+            if (subtotalDisplay) subtotalDisplay.innerHTML = formatPrice(subtotal);
         } catch (error) {
             console.error('Error updating order summary:', error);
-            orderSummary.innerHTML = '<p class="text-muted">Error displaying order</p>';
+            orderSummary.innerHTML = '<p style="font-size: 0.8125rem; color: var(--text-muted); margin: 0;">Error displaying order</p>';
         }
     }
-    
-    function escapeHtml(text) {
-        if (!text) return '';
-        const div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
-    }
-    
-    function formatPrice(price) {
-        const currencySymbol = '{{ page.currency_symbol|default:"$" }}';
-        const decimalPlaces = {{ page.decimal_places|default:2 }};
-        const priceNum = parseFloat(price);
-        if (isNaN(priceNum)) return currencySymbol + '0.00';
-        return currencySymbol + priceNum.toFixed(decimalPlaces);
-    }
-    
+
+    /* ============================================================
+       CUSTOMER INFO
+       ============================================================ */
     function validateCustomerForm() {
         const requiredFields = [
             'customerEmail', 'customerName', 'customerPhone',
@@ -1291,7 +2165,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         return true;
     }
-    
+
     function getCustomerAddress() {
         const countrySelect = document.getElementById('customerCountry');
         const selectedOption = countrySelect.options[countrySelect.selectedIndex];
@@ -1307,7 +2181,7 @@ document.addEventListener('DOMContentLoaded', function() {
             phone: document.getElementById('customerPhone')?.value || ''
         };
     }
-    
+
     function getCustomerInfo() {
         const countrySelect = document.getElementById('customerCountry');
         const selectedOption = countrySelect.options[countrySelect.selectedIndex];
@@ -1328,23 +2202,30 @@ document.addEventListener('DOMContentLoaded', function() {
             delivery_zip: document.getElementById('customerZip')?.value || '',
         };
     }
-    
+
+    /* ============================================================
+       SHIPPING RATES
+       ============================================================ */
     async function loadShippingRates() {
         if (!shippingRatesContainer) return;
         const address = getCustomerAddress();
         if (!address.country_code) {
-            shippingRatesContainer.innerHTML = '<div class="alert alert-info">Please select a country to see shipping rates</div>';
+            shippingRatesContainer.innerHTML = `
+                <div class="alert alert-info">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                    <span>Please select a country to see shipping rates.</span>
+                </div>`;
             noShippingMessage.style.display = 'none';
             return;
         }
+
         shippingRatesContainer.innerHTML = `
-            <div class="text-center py-4">
-                <div class="spinner-border text-primary" role="status">
-                    <span class="visually-hidden">Loading shipping rates...</span>
-                </div>
-                <p class="text-muted mt-2">Calculating shipping rates...</p>
+            <div class="tax-calculating" style="justify-content: center; padding: 1rem 0;">
+                <span class="spin"></span>
+                <span>Calculating shipping rates…</span>
             </div>
         `;
+
         try {
             let url = `/payments/shipping/rates/{{ page.subdomain }}/?address=${encodeURIComponent(JSON.stringify(address))}`;
             if (orderData.checkout_type === 'instant' && orderData.product) {
@@ -1352,57 +2233,69 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             const response = await fetch(url);
             const result = await response.json();
+
             if (result.success && result.rates && result.rates.length > 0) {
                 shippingRates = result.rates;
                 displayShippingRates(shippingRates);
                 noShippingMessage.style.display = 'none';
-                continueToPaymentBtn.style.display = 'block';
+                continueToPaymentBtn.style.display = 'flex';
             } else if (result.cart_empty) {
-                shippingRatesContainer.innerHTML = '<div class="alert alert-info">Your cart is empty</div>';
+                shippingRatesContainer.innerHTML = `
+                    <div class="alert alert-info">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                        <span>Your cart is empty.</span>
+                    </div>`;
                 noShippingMessage.style.display = 'none';
                 continueToPaymentBtn.style.display = 'none';
             } else {
                 shippingRatesContainer.innerHTML = '';
-                noShippingMessage.style.display = 'block';
+                noShippingMessage.style.display = 'flex';
                 continueToPaymentBtn.style.display = 'none';
             }
         } catch (error) {
             console.error('Error loading shipping rates:', error);
-            shippingRatesContainer.innerHTML = '<div class="alert alert-danger">Error loading shipping rates. Please try again.</div>';
+            shippingRatesContainer.innerHTML = `
+                <div class="alert alert-danger">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+                    <span>Error loading shipping rates. Please try again.</span>
+                </div>`;
             noShippingMessage.style.display = 'none';
             continueToPaymentBtn.style.display = 'none';
         }
     }
-    
+
     function displayShippingRates(rates) {
         if (!shippingRatesContainer) return;
+
         const isFallback = rates.length === 1 && rates[0].is_fallback;
         if (isFallback) {
             const rate = rates[0];
             let alertType = 'info';
-            let icon = 'fa-info-circle';
             let title = rate.name;
+            let message = '';
+
             if (rate.message && rate.message.includes('no rates apply')) {
                 alertType = 'warning';
-                icon = 'fa-exclamation-triangle';
             } else if (rate.message && rate.message.includes('not configured')) {
                 alertType = 'info';
-                icon = 'fa-truck';
             } else if (rate.message && rate.message.includes('not available')) {
                 alertType = 'warning';
-                icon = 'fa-map-marker-alt';
             }
+
+            message = rate.message ? `<p style="margin: 0.375rem 0 0; color: var(--text-muted);">${escapeHtml(rate.message)}</p>` : '';
+
             shippingRatesContainer.innerHTML = `
                 <div class="alert alert-${alertType}">
-                    <div class="d-flex align-items-start">
-                        <i class="fas ${icon} me-3 mt-1 fa-lg"></i>
-                        <div>
-                            <h6 class="mb-1">${escapeHtml(title)}</h6>
-                            <p class="mb-0 small">${escapeHtml(rate.description)}</p>
-                            ${rate.message ? `<p class="mb-0 small text-muted mt-1">${escapeHtml(rate.message)}</p>` : ''}
-                            <p class="mb-0 mt-2"><strong>Shipping Cost:</strong> ${formatPrice(rate.price)}</p>
-                            ${rate.delivery_estimate ? `<p class="mb-0"><strong>Delivery Estimate:</strong> ${escapeHtml(rate.delivery_estimate)}</p>` : ''}
-                        </div>
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 16v-4M12 8h.01"/>
+                    </svg>
+                    <div>
+                        <strong>${escapeHtml(title)}</strong>
+                        <p style="margin: 0.25rem 0 0;">${escapeHtml(rate.description || '')}</p>
+                        ${message}
+                        <p style="margin: 0.375rem 0 0;"><strong>Shipping cost:</strong> ${formatPrice(rate.price)}</p>
+                        ${rate.delivery_estimate ? `<p style="margin: 0.125rem 0 0;"><strong>Delivery estimate:</strong> ${escapeHtml(rate.delivery_estimate)}</p>` : ''}
                     </div>
                 </div>
                 <input type="hidden" id="fallback_shipping_rate" value="${rate.price}" data-rate-name="${rate.name}">
@@ -1410,10 +2303,11 @@ document.addEventListener('DOMContentLoaded', function() {
             selectedShippingRate = rate;
             shippingCost = parseFloat(rate.price);
             updateShippingDisplay();
-            continueToPaymentBtn.style.display = 'block';
+            continueToPaymentBtn.style.display = 'flex';
             noShippingMessage.style.display = 'none';
             return;
         }
+
         let html = '<div class="shipping-rates-list">';
         rates.forEach((rate, index) => {
             const isSelected = index === 0 && !selectedShippingRate;
@@ -1425,12 +2319,10 @@ document.addEventListener('DOMContentLoaded', function() {
                             <div class="shipping-rate-info">
                                 <div class="shipping-rate-name">${escapeHtml(rate.name)}</div>
                                 ${rate.description ? `<div class="shipping-rate-details">${escapeHtml(rate.description)}</div>` : ''}
-                                ${rate.delivery_estimate ? `<div class="shipping-rate-details"><i class="fas fa-clock"></i> ${escapeHtml(rate.delivery_estimate)}</div>` : ''}
-                                ${rate.carrier ? `<div class="shipping-rate-details"><i class="fas fa-building"></i> ${escapeHtml(rate.carrier)}</div>` : ''}
+                                ${rate.delivery_estimate ? `<div class="shipping-rate-details"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>${escapeHtml(rate.delivery_estimate)}</div>` : ''}
+                                ${rate.carrier ? `<div class="shipping-rate-details"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-8V4H4v12h1M14 17h4l3-3v-4"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>${escapeHtml(rate.carrier)}</div>` : ''}
                             </div>
-                            <div class="shipping-rate-price">
-                                ${formatPrice(rate.price)}
-                            </div>
+                            <div class="shipping-rate-price">${formatPrice(rate.price)}</div>
                         </div>
                     </label>
                 </div>
@@ -1438,43 +2330,44 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         html += '</div>';
         shippingRatesContainer.innerHTML = html;
+
         if (rates.length > 0 && !selectedShippingRate) {
             selectedShippingRate = rates[0];
             shippingCost = parseFloat(selectedShippingRate.price);
             updateShippingDisplay();
         }
+
         document.querySelectorAll('.shipping-rate-option').forEach(option => {
             const radio = option.querySelector('input[type="radio"]');
             const newOption = option.cloneNode(true);
             option.parentNode.replaceChild(newOption, option);
             const newRadio = newOption.querySelector('input[type="radio"]');
+
             newOption.addEventListener('click', (e) => {
                 if (e.target === newRadio) return;
                 newRadio.checked = true;
-                const event = new Event('change');
-                newRadio.dispatchEvent(event);
+                newRadio.dispatchEvent(new Event('change'));
             });
+
             newRadio.addEventListener('change', () => {
-                if (newRadio.checked) {
-                    document.querySelectorAll('.shipping-rate-option').forEach(opt => {
-                        opt.classList.remove('selected');
-                    });
-                    newOption.classList.add('selected');
-                    const rateId = parseInt(newOption.dataset.rateId);
-                    const ratePrice = parseFloat(newOption.dataset.ratePrice);
-                    selectedShippingRate = shippingRates.find(r => r.id === rateId);
-                    shippingCost = ratePrice;
-                    updateShippingDisplay();
-                    if (customerInfo && customerInfo.country) {
-                        calculateTax();
-                    }
+                if (!newRadio.checked) return;
+                document.querySelectorAll('.shipping-rate-option').forEach(o => o.classList.remove('selected'));
+                newOption.classList.add('selected');
+                const rateId = parseInt(newOption.dataset.rateId);
+                const ratePrice = parseFloat(newOption.dataset.ratePrice);
+                selectedShippingRate = shippingRates.find(r => r.id === rateId);
+                shippingCost = ratePrice;
+                updateShippingDisplay();
+                if (customerInfo && customerInfo.country) {
+                    calculateTax();
                 }
             });
         });
-        continueToPaymentBtn.style.display = 'block';
+
+        continueToPaymentBtn.style.display = 'flex';
         noShippingMessage.style.display = 'none';
     }
-    
+
     function updateShippingDisplay() {
         if (shippingCostDisplay && shippingCostRow) {
             shippingCostDisplay.innerHTML = formatPrice(shippingCost);
@@ -1483,13 +2376,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         updateGrandTotal();
     }
-    
+
+    /* ============================================================
+       TAX
+       ============================================================ */
     async function calculateTax() {
         if (!taxSection) return;
         taxSection.style.display = 'block';
-        if (taxCalculating) taxCalculating.style.display = 'block';
+        if (taxCalculating) taxCalculating.style.display = 'flex';
         if (taxBreakdown) taxBreakdown.innerHTML = '';
         if (debounceTimer) clearTimeout(debounceTimer);
+
         debounceTimer = setTimeout(async () => {
             try {
                 const customerData = {
@@ -1499,6 +2396,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     city: document.getElementById('customerCity')?.value || '',
                     postal_code: document.getElementById('customerZip')?.value || ''
                 };
+
                 const items = [];
                 if (orderData.checkout_type === 'instant' && orderData.product) {
                     items.push({
@@ -1517,11 +2415,13 @@ document.addEventListener('DOMContentLoaded', function() {
                         });
                     });
                 }
+
                 if (items.length === 0 || !customerData.country) {
                     if (taxCalculating) taxCalculating.style.display = 'none';
-                    if (taxBreakdown) taxBreakdown.innerHTML = '<p class="text-muted small">Enter shipping address to calculate tax</p>';
+                    if (taxBreakdown) taxBreakdown.innerHTML = '<p style="font-size: 0.75rem; color: var(--text-muted); margin: 0;">Enter shipping address to calculate tax</p>';
                     return;
                 }
+
                 const response = await fetch(`/payments/api/tax/calculate/{{ page.subdomain }}/`, {
                     method: 'POST',
                     headers: {
@@ -1529,12 +2429,13 @@ document.addEventListener('DOMContentLoaded', function() {
                         'X-CSRFToken': getCSRFToken()
                     },
                     body: JSON.stringify({
-                        items: items,
+                        items,
                         customer: customerData,
                         shipping_cost: shippingCost || 0,
                         debug: true
                     })
                 });
+
                 const data = await response.json();
                 if (data.success && data.data) {
                     currentTaxData = data.data;
@@ -1542,126 +2443,101 @@ document.addEventListener('DOMContentLoaded', function() {
                 } else {
                     console.error('Tax calculation error:', data.error);
                     if (taxCalculating) taxCalculating.style.display = 'none';
-                    if (taxBreakdown) {
-                        taxBreakdown.innerHTML = '<p class="text-muted small">Unable to calculate tax</p>';
-                    }
+                    if (taxBreakdown) taxBreakdown.innerHTML = '<p style="font-size: 0.75rem; color: var(--text-muted); margin: 0;">Unable to calculate tax</p>';
                 }
             } catch (error) {
                 console.error('Tax calculation error:', error);
                 if (taxCalculating) taxCalculating.style.display = 'none';
-                if (taxBreakdown) {
-                    taxBreakdown.innerHTML = '<p class="text-muted small">Tax calculation unavailable</p>';
-                }
+                if (taxBreakdown) taxBreakdown.innerHTML = '<p style="font-size: 0.75rem; color: var(--text-muted); margin: 0;">Tax calculation unavailable</p>';
             }
         }, 500);
     }
-    
+
     function renderTaxBreakdown() {
         if (!currentTaxData || !taxBreakdown) return;
         if (taxCalculating) taxCalculating.style.display = 'none';
+
         if (currentTaxData.is_exempt) {
-            taxExemptNotice.style.display = 'block';
+            taxExemptNotice.style.display = 'flex';
             taxBreakdown.innerHTML = '';
             taxTotalRow.style.display = 'none';
         } else {
             taxExemptNotice.style.display = 'none';
             let breakdownHtml = '';
             let totalTax = 0;
+
             if (currentTaxData.breakdown && currentTaxData.breakdown.length > 0) {
                 currentTaxData.breakdown.forEach(item => {
                     if (item.rates_applied && item.rates_applied.length > 0) {
                         item.rates_applied.forEach(rate => {
-                            let taxAmountVal = parseFloat(rate.tax_amount) || 0;
+                            const taxAmountVal = parseFloat(rate.tax_amount) || 0;
                             totalTax += taxAmountVal;
                             breakdownHtml += `
-                                <div class="tax-breakdown-item">
+                                <div class="tax-item">
                                     <span>
-                                        ${escapeHtml(rate.jurisdiction || 'Tax')} 
+                                        ${escapeHtml(rate.jurisdiction || 'Tax')}
                                         <span class="tax-rate-badge">${(parseFloat(rate.rate_percentage) || 0).toFixed(2)}%</span>
                                     </span>
-                                    <span>{{ page.currency_symbol }}${taxAmountVal.toFixed(2)}</span>
+                                    <span class="tax-amount">{{ page.currency_symbol }}${taxAmountVal.toFixed(2)}</span>
                                 </div>
                             `;
                         });
                     }
                 });
             }
+
             if (breakdownHtml) {
-                breakdownHtml += `
-                    <div class="tax-subtotal">
-                        <span>Total Tax:</span>
-                        <span>{{ page.currency_symbol }}${totalTax.toFixed(2)}</span>
-                    </div>
-                `;
                 taxBreakdown.innerHTML = breakdownHtml;
                 taxTotalRow.style.display = 'flex';
-                if (taxAmount) {
-                    taxAmount.innerHTML = `{{ page.currency_symbol }}${totalTax.toFixed(2)}`;
-                }
+                if (taxAmount) taxAmount.innerHTML = `{{ page.currency_symbol }}${totalTax.toFixed(2)}`;
             } else {
-                taxBreakdown.innerHTML = '<p class="text-muted small">No tax applicable</p>';
+                taxBreakdown.innerHTML = '<p style="font-size: 0.75rem; color: var(--text-muted); margin: 0;">No tax applicable</p>';
                 taxTotalRow.style.display = 'none';
             }
         }
         updateGrandTotal();
     }
-    
+
     function updateGrandTotal() {
         try {
             let total = subtotal + shippingCost;
             if (currentTaxData && !currentTaxData.is_exempt) {
-                let taxValue = parseFloat(currentTaxData.tax_total) || 0;
-                total += taxValue;
+                total += parseFloat(currentTaxData.tax_total) || 0;
             }
             if (isNaN(total)) total = 0;
-            if (grandTotal) {
-                grandTotal.innerHTML = formatPrice(total);
-            }
+            if (grandTotal) grandTotal.innerHTML = formatPrice(total);
         } catch (error) {
             console.error('Error updating grand total:', error);
         }
     }
-    
-    // Continue to Shipping button
+
+    /* ============================================================
+       STEP 1 → 2
+       ============================================================ */
     if (continueToShippingBtn) {
         continueToShippingBtn.addEventListener('click', function() {
             if (!validateCustomerForm()) {
                 alert('Please fill in all required fields marked with *');
                 return;
             }
-            const countrySelect = document.getElementById('customerCountry');
-            const selectedOption = countrySelect.options[countrySelect.selectedIndex];
-            customerInfo = {
-                name: document.getElementById('customerName')?.value || '',
-                email: document.getElementById('customerEmail')?.value || '',
-                phone: document.getElementById('customerPhone')?.value || '',
-                address: document.getElementById('customerAddress')?.value || '',
-                city: document.getElementById('customerCity')?.value || '',
-                state: document.getElementById('customerState')?.value || '',
-                zip: document.getElementById('customerZip')?.value || '',
-                country: countrySelect.value || '',
-                country_name: selectedOption?.text || '',
-                delivery_notes: document.getElementById('deliveryNotes')?.value || '',
-                delivery_address: document.getElementById('customerAddress')?.value || '',
-                delivery_city: document.getElementById('customerCity')?.value || '',
-                delivery_state: document.getElementById('customerState')?.value || '',
-                delivery_zip: document.getElementById('customerZip')?.value || '',
-            };
+            customerInfo = getCustomerInfo();
             orderData.customer = customerInfo;
-            if (shippingOptionsCard) {
-                shippingOptionsCard.style.display = 'block';
-            }
+
+            if (shippingOptionsCard) shippingOptionsCard.style.display = 'block';
             loadShippingRates();
+
             const steps = document.querySelectorAll('.step');
             if (steps.length >= 2) {
                 steps[0].classList.remove('active');
                 steps[1].classList.add('active');
             }
-            shippingOptionsCard.scrollIntoView({ behavior: 'smooth' });
+            shippingOptionsCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         });
     }
-    
-    // Continue to Payment button
+
+    /* ============================================================
+       STEP 2 → 3
+       ============================================================ */
     if (continueToPaymentBtn) {
         continueToPaymentBtn.addEventListener('click', function() {
             if (!selectedShippingRate) {
@@ -1670,6 +2546,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             orderData.shipping_rate = selectedShippingRate;
             orderData.shipping_cost = shippingCost;
+
             if (currentTaxData) {
                 orderData.tax_amount = parseFloat(currentTaxData.tax_total) || 0;
                 orderData.tax_breakdown = currentTaxData.breakdown || [];
@@ -1677,64 +2554,58 @@ document.addEventListener('DOMContentLoaded', function() {
                 orderData.tax_amount = 0;
                 orderData.tax_breakdown = [];
             }
-            const total = subtotal + shippingCost + (parseFloat(orderData.tax_amount) || 0);
-            orderData.total_amount = total;
-            if (paymentMethodsCard) {
-                paymentMethodsCard.style.display = 'block';
-            }
+            orderData.total_amount = subtotal + shippingCost + (parseFloat(orderData.tax_amount) || 0);
+
+            if (paymentMethodsCard) paymentMethodsCard.style.display = 'block';
+
             const steps = document.querySelectorAll('.step');
             if (steps.length >= 3) {
                 steps[1].classList.remove('active');
                 steps[2].classList.add('active');
             }
-            paymentMethodsCard.scrollIntoView({ behavior: 'smooth' });
+            paymentMethodsCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         });
     }
-    
-    // Payment method selection - only for non-social_media gateways
+
+    /* ============================================================
+       PAYMENT METHOD SELECTION
+       ============================================================ */
     document.querySelectorAll('.payment-method-radio').forEach(radio => {
         radio.addEventListener('change', function() {
             selectedPaymentMethod = this.value;
-            if (chatPaymentCard) {
-                chatPaymentCard.classList.remove('selected');
-            }
-            document.querySelectorAll('.payment-method-card').forEach(card => {
-                card.classList.remove('selected');
-            });
+            if (chatPaymentCard) chatPaymentCard.classList.remove('selected');
+            document.querySelectorAll('.payment-method-card').forEach(card => card.classList.remove('selected'));
             this.closest('.payment-method-card')?.classList.add('selected');
-            if (completeOrderBtn) {
-                completeOrderBtn.disabled = false;
-            }
+            if (completeOrderBtn) completeOrderBtn.disabled = false;
+
+            const podInstructions = document.getElementById('podInstructions');
             if (this.value === 'pay_on_delivery') {
                 showPodInstructions();
-            } else {
-                const podInstructions = document.getElementById('podInstructions');
-                if (podInstructions) {
-                    podInstructions.style.display = 'none';
-                }
+            } else if (podInstructions) {
+                podInstructions.style.display = 'none';
             }
         });
     });
-    
-    // ========== PAY VIA CHAT LOGIC ==========
+
+    /* ============================================================
+       PAY VIA CHAT
+       ============================================================ */
     if (chatPaymentCard) {
         chatPaymentCard.addEventListener('click', function() {
-            document.querySelectorAll('.payment-method-card').forEach(card => {
-                card.classList.remove('selected');
-            });
-            document.querySelectorAll('.payment-method-radio').forEach(radio => {
-                radio.checked = false;
-            });
+            document.querySelectorAll('.payment-method-card').forEach(c => c.classList.remove('selected'));
+            document.querySelectorAll('.payment-method-radio').forEach(r => { r.checked = false; });
             this.classList.toggle('selected');
+
             if (this.classList.contains('selected')) {
                 selectedPaymentMethod = 'social_media';
                 completeOrderBtn.disabled = false;
+
                 if (platformCount === 1) {
                     const platformKey = Object.keys(platformMessages)[0];
                     const platform = platformMessages[platformKey];
                     customerInfo = getCustomerInfo();
                     orderData.customer = customerInfo;
-                    completeOrderBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Redirecting...';
+                    completeOrderBtn.innerHTML = '<span class="btn-text">Redirecting…</span>';
                     completeOrderBtn.disabled = true;
                     createOrderAndRedirect(platform.link);
                     return;
@@ -1749,10 +2620,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
+
     async function createOrderAndRedirect(redirectUrl) {
         try {
-            // Prepare order payload
             let orderPayload = {
                 checkout_type: orderData.checkout_type || 'instant',
                 items: [],
@@ -1762,14 +2632,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 total_amount: parseFloat(orderData.total_amount) || (subtotal + shippingCost),
                 customer: customerInfo || {}
             };
-            
-            // Handle instant checkout
+
             if (orderData.checkout_type === 'instant' && orderData.product) {
                 const product = orderData.product;
                 product.quantity = parseInt(product.quantity) || 1;
                 product.price = parseFloat(product.price) || 0;
                 product.total_price = product.price * product.quantity;
-                
+
                 orderPayload.product = product;
                 orderPayload.subtotal = product.total_price;
                 orderPayload.total_amount = product.total_price + shippingCost + (parseFloat(orderData.tax_amount) || 0);
@@ -1784,15 +2653,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     selected_color: product.selected_color || '',
                     selected_size: product.selected_size || '',
                 }];
-            } 
-            // Handle cart checkout
-            else if (orderData.checkout_type === 'cart' && orderData.cart) {
+            } else if (orderData.checkout_type === 'cart' && orderData.cart) {
                 const cart = orderData.cart;
                 orderPayload.items = cart.items || [];
                 orderPayload.subtotal = cart.subtotal || 0;
                 orderPayload.total_amount = (cart.total_amount || 0) + shippingCost;
             }
-            
+
             const response = await fetch(`/payments/create-chat-order/{{ page.subdomain }}/`, {
                 method: 'POST',
                 headers: {
@@ -1804,7 +2671,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     customer: customerInfo || {}
                 })
             });
-            
+
             const data = await response.json();
             if (data.success) {
                 sessionStorage.setItem('last_order_number', data.order_number);
@@ -1815,53 +2682,37 @@ document.addEventListener('DOMContentLoaded', function() {
         } catch (error) {
             console.error('Order creation error:', error);
             alert('Error creating order: ' + error.message);
-            completeOrderBtn.innerHTML = '<i class="fas fa-lock me-2"></i>Complete Order';
+            completeOrderBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span class="btn-text">Complete order</span>';
             completeOrderBtn.disabled = false;
-            if (chatPaymentCard) {
-                chatPaymentCard.classList.remove('selected');
-            }
+            if (chatPaymentCard) chatPaymentCard.classList.remove('selected');
             selectedPaymentMethod = null;
         }
     }
-    
-    // Modal Controls
-    if (paymentModal) {
-        if (closeModalBtn) {
-            closeModalBtn.addEventListener('click', function() {
-                paymentModal.classList.remove('active');
-                document.body.style.overflow = '';
-                if (chatPaymentCard) {
-                    chatPaymentCard.classList.remove('selected');
-                    selectedPaymentMethod = null;
-                    completeOrderBtn.disabled = true;
-                }
-            });
+
+    /* ============================================================
+       MODAL
+       ============================================================ */
+    function closeChatModal() {
+        if (!paymentModal) return;
+        paymentModal.classList.remove('active');
+        document.body.style.overflow = '';
+        if (chatPaymentCard) {
+            chatPaymentCard.classList.remove('selected');
+            selectedPaymentMethod = null;
+            completeOrderBtn.disabled = true;
         }
+    }
+
+    if (paymentModal) {
+        if (closeModalBtn) closeModalBtn.addEventListener('click', closeChatModal);
         paymentModal.addEventListener('click', function(e) {
-            if (e.target === paymentModal) {
-                paymentModal.classList.remove('active');
-                document.body.style.overflow = '';
-                if (chatPaymentCard) {
-                    chatPaymentCard.classList.remove('selected');
-                    selectedPaymentMethod = null;
-                    completeOrderBtn.disabled = true;
-                }
-            }
+            if (e.target === paymentModal) closeChatModal();
         });
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && paymentModal.classList.contains('active')) {
-                paymentModal.classList.remove('active');
-                document.body.style.overflow = '';
-                if (chatPaymentCard) {
-                    chatPaymentCard.classList.remove('selected');
-                    selectedPaymentMethod = null;
-                    completeOrderBtn.disabled = true;
-                }
-            }
+            if (e.key === 'Escape' && paymentModal.classList.contains('active')) closeChatModal();
         });
     }
-    
-    // Chat platform links in modal
+
     document.querySelectorAll('.chat-platform-link').forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
@@ -1872,13 +2723,15 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             customerInfo = getCustomerInfo();
             orderData.customer = customerInfo;
-            completeOrderBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Redirecting...';
+            completeOrderBtn.innerHTML = '<span class="btn-text">Redirecting…</span>';
             completeOrderBtn.disabled = true;
             createOrderAndRedirect(targetUrl);
         });
     });
-    
-    // Show POD instructions
+
+    /* ============================================================
+       POD INSTRUCTIONS
+       ============================================================ */
     async function showPodInstructions() {
         try {
             const response = await fetch(`/payments/api/pod-info/{{ page.subdomain }}/`);
@@ -1889,7 +2742,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     podInstructionText.textContent = data.pod_instructions;
                 } else {
                     podInstructionText.innerHTML = `
-                        <ul class="mb-0">
+                        <ul style="margin: 0.375rem 0 0 1.125rem; padding: 0;">
                             <li>Pay when your order is delivered</li>
                             <li>Cash or mobile payment accepted</li>
                             <li>No upfront payment required</li>
@@ -1899,28 +2752,477 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
             const podInstructions = document.getElementById('podInstructions');
-            if (podInstructions) {
-                podInstructions.style.display = 'block';
-            }
+            if (podInstructions) podInstructions.style.display = 'flex';
         } catch (error) {
             console.error('Error loading POD info:', error);
         }
     }
+
+    /* ============================================================
+       STRIPE ELEMENTS — native card form
+       ============================================================ */
+    const stripeAppearance = {
+        theme: 'stripe',
+        variables: {
+            colorPrimary: '#111827',
+            colorBackground: '#ffffff',
+            colorText: '#18181b',
+            colorTextSecondary: '#71717a',
+            colorDanger: '#b91c1c',
+            fontFamily: '-apple-system, BlinkMacSystemFont, Inter, Segoe UI, Roboto, sans-serif',
+            fontSizeBase: '13px',
+            spacingUnit: '4px',
+            borderRadius: '6px',
+        },
+        rules: {
+            '.Input': { border: 'none', boxShadow: 'none', padding: '0', fontSize: '13px' },
+            '.Input:focus': { outline: 'none', boxShadow: 'none' },
+            '.Input--invalid': { color: '#b91c1c' },
+            '.Label': { display: 'none' },
+            '.Error': { fontSize: '11px', marginTop: '4px' },
+        },
+    };
+
+    function hideAllPaymentPanels() {
+        const ids = ['paymentMethods', 'chatPaymentCard', 'podInstructions', 'completeOrderBtn'];
+        ids.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.style.display = 'none';
+        });
+    }
+
+    function restoreSelectionUI() {
+        const ids = ['paymentMethods', 'chatPaymentCard', 'completeOrderBtn'];
+        ids.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.style.display = '';
+        });
+        const podBox = document.getElementById('podInstructions');
+        if (podBox && selectedPaymentMethod === 'pay_on_delivery') {
+            podBox.style.display = 'flex';
+        }
+        if (completeOrderBtn) {
+            completeOrderBtn.disabled = false;
+            completeOrderBtn.innerHTML =
+                '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+                '<rect x="3" y="11" width="18" height="11" rx="2"/>' +
+                '<path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>' +
+                '<span class="btn-text">Complete order</span>';
+        }
+    }
+
+    async function mountStripeElements(publishableKey, clientSecret, amountLabel) {
+        const wrapper = document.getElementById('stripeElementsWrapper');
+        hideAllPaymentPanels();
+        wrapper.style.display = 'block';
+
+        // Pre-fill
+        const emailInput = document.getElementById('elementsEmail');
+        const nameInput = document.getElementById('elementsCardholderName');
+        const postalInput = document.getElementById('elementsPostal');
+        const countryInput = document.getElementById('elementsCountry');
+        if (emailInput && customerInfo.email) emailInput.value = customerInfo.email;
+        if (nameInput && customerInfo.name) nameInput.value = customerInfo.name;
+        if (postalInput && customerInfo.zip) postalInput.value = customerInfo.zip;
+        if (countryInput && customerInfo.country) countryInput.value = customerInfo.country;
+
+        const amountEl = document.getElementById('elementsAmountLabel');
+        if (amountEl) amountEl.textContent = amountLabel || '';
+
+        if (!window.Stripe) {
+            await new Promise((resolve, reject) => {
+                const script = document.createElement('script');
+                script.src = 'https://js.stripe.com/v3/';
+                script.onload = resolve;
+                script.onerror = reject;
+                document.head.appendChild(script);
+            });
+        }
+
+        stripeInstance = Stripe(publishableKey);
+        elementsInstance = stripeInstance.elements({
+            clientSecret,
+            appearance: stripeAppearance,
+        });
+        stripeClientSecret = clientSecret; 
+
+        const cardNumber = elementsInstance.create('cardNumber', {
+            showIcon: true,
+            placeholder: '1234 1234 1234 1234',
+        });
+        const cardExpiry = elementsInstance.create('cardExpiry', { placeholder: 'MM / YY' });
+        const cardCvc = elementsInstance.create('cardCvc', { placeholder: 'CVC' });
+
+        cardNumber.mount('#cardNumberElement');
+        cardExpiry.mount('#cardExpiryElement');
+        cardCvc.mount('#cardCvcElement');
+
+        cardNumberElement = cardNumber;
+        cardExpiryElement = cardExpiry;
+        cardCvcElement = cardCvc;
+
+        const stripeInputs = [
+            { el: cardNumber, wrap: document.getElementById('cardNumberElement') },
+            { el: cardExpiry, wrap: document.getElementById('cardExpiryElement') },
+            { el: cardCvc, wrap: document.getElementById('cardCvcElement') },
+        ];
+
+        stripeInputs.forEach(({ el, wrap }) => {
+            el.on('focus', () => wrap.classList.add('StripeElement--focus'));
+            el.on('blur', () => wrap.classList.remove('StripeElement--focus'));
+            el.on('change', (event) => {
+                wrap.classList.toggle('StripeElement--invalid', !!event.error);
+                wrap.classList.toggle('StripeElement--complete', event.complete);
+                if (event.error) showElementsError(event.error.message);
+                else hideElementsError();
+            });
+        });
+
+        // Express checkout
+        // Express checkout
+try {
+    const expressCheckout = elementsInstance.create('expressCheckout', {
+        paymentMethods: { applePay: 'auto', googlePay: 'auto', link: 'auto' },
+    });
+    expressCheckout.mount('#expressCheckoutElement');
     
-    // Complete order button
+    expressCheckout.on('ready', ({ availablePaymentMethods }) => {
+        if (availablePaymentMethods) {
+            document.getElementById('expressDivider').style.display = 'block';
+        }
+    });
+    
+   expressCheckout.on('confirm', async (event) => {
+    // Load actions for the Checkout Session
+    const result = await checkout.loadActions();
+    
+    if (result.type === 'error') {
+        showElementsError(result.error.message);
+        return;
+    }
+
+    // Use the correct confirm method for Checkout Sessions
+    const { error } = await result.actions.confirm({
+        expressCheckoutConfirmEvent: event,
+        return_url: buildReturnUrl(),
+    });
+
+    if (error) {
+        showElementsError(error.message);
+    }
+});
+
+} catch (e) {
+    console.warn('Express checkout unavailable:', e);
+}
+
+        wrapper.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function unmountStripeElements() {
+        if (cardNumberElement) { try { cardNumberElement.unmount(); } catch(e){} cardNumberElement = null; }
+        if (cardExpiryElement) { try { cardExpiryElement.unmount(); } catch(e){} cardExpiryElement = null; }
+        if (cardCvcElement)    { try { cardCvcElement.unmount(); }    catch(e){} cardCvcElement = null; }
+        elementsInstance = null;
+        stripeInstance = null;
+
+        const wrapper = document.getElementById('stripeElementsWrapper');
+        if (wrapper) wrapper.style.display = 'none';
+        hideElementsError();
+        restoreSelectionUI();
+    }
+
+    function showElementsError(message) {
+        const box = document.getElementById('elementsError');
+        if (!box) return;
+        box.textContent = message;
+        box.classList.add('visible');
+    }
+
+    function hideElementsError() {
+        const box = document.getElementById('elementsError');
+        if (!box) return;
+        box.classList.remove('visible');
+        box.textContent = '';
+    }
+
+    // Back button + form submit
+    const elementsBackBtn = document.getElementById('elementsBackBtn');
+    if (elementsBackBtn) {
+        elementsBackBtn.addEventListener('click', () => unmountStripeElements());
+    }
+
+    const stripeForm = document.getElementById('stripeElementsForm');
+    if (stripeForm) {
+        stripeForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const submitBtn = document.getElementById('elementsSubmitBtn');
+            const originalHTML = submitBtn.innerHTML;
+
+            const email = document.getElementById('elementsEmail').value.trim();
+            const name = document.getElementById('elementsCardholderName').value.trim();
+            const postal = document.getElementById('elementsPostal').value.trim();
+
+            if (!email || !email.includes('@')) { showElementsError('Please enter a valid email.'); return; }
+            if (!name) { showElementsError('Please enter the cardholder name.'); return; }
+            if (!postal) { showElementsError('Please enter your postal code.'); return; }
+            if (!stripeInstance || !stripeClientSecret || !cardNumberElement) {
+                showElementsError('Payment form not ready. Please wait.');
+                return;
+            }
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="btn-spinner"></span>Processing…';
+            hideElementsError();
+
+            const billingSame = document.getElementById('billingSameAsShipping').checked;
+
+            try {
+const { error, paymentIntent } = await stripeInstance.confirmCardPayment(
+    stripeClientSecret,  // ← first argument: the PaymentIntent client secret
+    {
+        payment_method: {
+            card: cardNumberElement,   // ← pass the mounted cardNumber element
+            billing_details: {
+                name: name,
+                email: email,
+                address: billingSame && customerInfo ? {
+                    line1: customerInfo.address || '',
+                    city: customerInfo.city || '',
+                    state: customerInfo.state || '',
+                    postal_code: customerInfo.zip || '',
+                    country: customerInfo.country || 'US',
+                } : {
+                    postal_code: postal,
+                    country: document.getElementById('elementsCountry').value,
+                },
+            },
+        },
+        // Optional: let Stripe handle the return for 3DS if needed
+        return_url: buildReturnUrl(),
+    }
+);
+                if (error) {
+                    showElementsError(error.message || 'Payment failed. Please try again.');
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalHTML;
+                    return;
+                }
+
+                if (paymentIntent && paymentIntent.status === 'succeeded') {
+                    const returnUrl = buildReturnUrl() + '?payment_intent=' + paymentIntent.id;
+                    window.location.href = returnUrl;
+                }
+            } catch (err) {
+                console.error('Payment error:', err);
+                showElementsError(err.message || 'Unexpected error.');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalHTML;
+            }
+        });
+    }
+
+    /* ============================================================
+       PAYPAL — inline form
+       HTML shell is ready; JS wires once paypal_service.py provides:
+         - /payments/paypal/create-order/<subdomain>/   → { order_id, client_id }
+         - /payments/paypal/capture-order/<subdomain>/  → { success, order_number }
+       ============================================================ */
+   function mountPayPalInline(clientId, orderId) {
+    const wrapper = document.getElementById('paypalInlineWrapper');
+    hideAllPaymentPanels();
+    wrapper.style.display = 'block';
+
+    paypalClientId = clientId;
+    paypalOrderId = orderId;
+
+    const container = document.getElementById('paypalButtonContainer');
+    container.innerHTML = '';
+
+    // Determine sandbox vs live from the client_id prefix.
+    // PayPal sandbox client IDs are typically longer and use a different
+    // app context, but the more reliable signal here is: if the merchant
+    // gateway is in test mode, the client_id we received is a sandbox one.
+    // We infer from a data attribute if present; otherwise default to sandbox
+    // since we're in dev. Adjust if your gateway exposes this differently.
+    const isSandbox = (document.body.dataset.paypalMode || 'sandbox') === 'sandbox';
+    const fallbackCheckoutBase = isSandbox
+        ? 'https://www.sandbox.paypal.com/checkoutnow'
+        : 'https://www.paypal.com/checkoutnow';
+
+    // Read currency from the page — your template renders {{ page.currency_symbol }},
+    // but the ISO code should be on a data attribute. Fallback to USD.
+    const currency = (document.body.dataset.currency || 'USD').toUpperCase();
+
+    // Load PayPal SDK if not already loaded.
+    const loadSdk = () => new Promise((resolve, reject) => {
+        // If SDK already loaded with a *different* client-id, we need to reload.
+        // Detect by checking a marker we set on window after first load.
+        if (window.paypal && window.__paypalClientId === clientId) {
+            resolve();
+            return;
+        }
+
+        // Remove any previous SDK script to avoid the "loaded twice" warning
+        // and to allow switching accounts.
+        const existing = document.querySelector('script[data-paypal-sdk="true"]');
+        if (existing) existing.remove();
+        if (window.paypal) delete window.paypal;
+
+        const script = document.createElement('script');
+        script.setAttribute('data-paypal-sdk', 'true');
+        script.src = `https://www.paypal.com/sdk/js?client-id=${encodeURIComponent(clientId)}&currency=${encodeURIComponent(currency)}&intent=capture&components=buttons&disable-funding=credit`;
+        script.onload = () => {
+            paypalSdkLoaded = true;
+            window.__paypalClientId = clientId;
+            resolve();
+        };
+        script.onerror = () => reject(new Error('PayPal SDK failed to load'));
+        document.head.appendChild(script);
+    });
+
+    loadSdk()
+        .then(() => {
+            if (!window.paypal || !window.paypal.Buttons) {
+                throw new Error('PayPal SDK failed to initialize');
+            }
+
+            const buttons = window.paypal.Buttons({
+                style: {
+                    layout: 'vertical',
+                    color: 'gold',
+                    shape: 'rect',
+                    label: 'paypal',
+                    height: 45,
+                },
+
+                // Return the order_id we already created server-side.
+                // Do NOT create a new order here — that's the backend's job,
+                // otherwise you'd end up with two PayPal orders per attempt.
+                createOrder: () => {
+                    if (!paypalOrderId) {
+                        throw new Error('Missing PayPal order id');
+                    }
+                    return paypalOrderId;
+                },
+
+                onApprove: async (data) => {
+                    try {
+                        const resp = await fetch(
+                            `/payments/paypal/capture-order/{{ page.subdomain }}/`,
+                            {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'X-CSRFToken': getCSRFToken(),
+                                },
+                                body: JSON.stringify({
+                                    order_id: data.orderID,
+                                    payer_id: data.payerID,
+                                }),
+                            }
+                        );
+
+                        const result = await resp.json();
+
+                        if (!resp.ok || !result.success) {
+                            showPayPalError(result.error || 'Capture failed. Please try again.');
+                            return;
+                        }
+
+                        // Success → straight to success page.
+                        window.location.href = buildReturnUrl()
+                            + '?order_number=' + encodeURIComponent(result.order_number || '');
+                    } catch (err) {
+                        console.error('PayPal capture error:', err);
+                        showPayPalError(err.message || 'Capture request failed.');
+                    }
+                },
+
+                onError: (err) => {
+                    console.error('PayPal error:', err);
+                    showPayPalError('PayPal encountered an error. Please try again.');
+                },
+
+                onCancel: () => {
+                    showPayPalError('Payment cancelled. You can try again or choose another method.');
+                },
+            });
+
+            // render() returns a promise; catch rendering errors too.
+            return buttons.render('#paypalButtonContainer');
+        })
+        .catch((err) => {
+            console.error('PayPal SDK load error:', err);
+
+            // Fallback button — direct link to the PayPal checkout URL
+            // constructed from the *correct* base (sandbox vs live).
+            container.innerHTML = `
+                <button type="button" class="paypal-button-fallback" id="paypalFallbackBtn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c-.013.076-.026.175-.041.254-.93 4.778-4.005 7.201-9.138 7.201h-2.19a.563.563 0 0 0-.556.479l-1.187 7.527h-.506l-.24 1.516a.56.56 0 0 0 .554.647h3.882c.46 0 .85-.334.922-.788.06-.26.76-4.852.816-5.09a.932.932 0 0 1 .923-.788h.58c3.76 0 6.705-1.528 7.565-5.946.36-1.847.174-3.388-.777-4.471z"/>
+                    </svg>
+                    Pay with PayPal
+                </button>
+            `;
+            document.getElementById('paypalFallbackBtn')?.addEventListener('click', () => {
+                if (paypalOrderId && clientId) {
+                    window.location.href = `${fallbackCheckoutBase}?token=${encodeURIComponent(paypalOrderId)}`;
+                } else {
+                    showPayPalError('PayPal is not available right now. Please try another payment method.');
+                }
+            });
+        });
+
+    wrapper.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+    function unmountPayPalInline() {
+        const wrapper = document.getElementById('paypalInlineWrapper');
+        const container = document.getElementById('paypalButtonContainer');
+        if (wrapper) wrapper.style.display = 'none';
+        if (container) container.innerHTML = '';
+        hidePayPalError();
+        restoreSelectionUI();
+    }
+
+    function showPayPalError(message) {
+        const box = document.getElementById('paypalError');
+        if (!box) return;
+        box.textContent = message;
+        box.classList.add('visible');
+    }
+
+    function hidePayPalError() {
+        const box = document.getElementById('paypalError');
+        if (!box) return;
+        box.classList.remove('visible');
+        box.textContent = '';
+    }
+
+    const paypalBackBtn = document.getElementById('paypalBackBtn');
+    if (paypalBackBtn) {
+        paypalBackBtn.addEventListener('click', () => unmountPayPalInline());
+    }
+
+    /* ============================================================
+       COMPLETE ORDER
+       ============================================================ */
     if (completeOrderBtn) {
         completeOrderBtn.addEventListener('click', async function() {
             if (!selectedPaymentMethod) {
                 alert('Please select a payment method');
                 return;
             }
+
             if (selectedPaymentMethod === 'social_media') {
                 customerInfo = getCustomerInfo();
                 orderData.customer = customerInfo;
+
                 if (platformCount === 1) {
                     const platformKey = Object.keys(platformMessages)[0];
                     const platform = platformMessages[platformKey];
-                    this.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Redirecting...';
+                    this.innerHTML = '<span class="btn-text">Redirecting…</span>';
                     this.disabled = true;
                     createOrderAndRedirect(platform.link);
                     return;
@@ -1931,8 +3233,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 return;
             }
-            this.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Processing...';
+
+            this.innerHTML = '<span class="btn-text">Processing…</span>';
             this.disabled = true;
+
             try {
                 const response = await fetch(`/payments/process-payment/{{ page.subdomain }}/`, {
                     method: 'POST',
@@ -1945,13 +3249,19 @@ document.addEventListener('DOMContentLoaded', function() {
                         order_data: orderData
                     })
                 });
+
                 const data = await response.json();
-                if (!response.ok) {
-                    throw new Error(data.error || 'Payment processing failed');
-                }
-                if (selectedPaymentMethod === 'stripe' && data.session_id && data.public_key) {
-                    await loadStripeAndRedirect(data.public_key, data.session_id);
+                if (!response.ok) throw new Error(data.error || 'Payment processing failed');
+
+                if (selectedPaymentMethod === 'stripe' && data.client_secret && data.publishable_key) {
+                    // ---- Stripe Elements (native form) ----
+                    const amountLabel = formatPrice(parseFloat(orderData.total_amount) || subtotal + shippingCost);
+                    await mountStripeElements(data.publishable_key, data.client_secret, amountLabel);
+                } else if (selectedPaymentMethod === 'paypal' && data.client_id && data.order_id) {
+                    // ---- PayPal inline (native form shell, SDK buttons) ----
+                    mountPayPalInline(data.client_id, data.order_id);
                 } else if (selectedPaymentMethod === 'paypal' && data.approval_url) {
+                    // ---- Fallback: legacy PayPal redirect ----
                     window.location.href = data.approval_url;
                 } else if (selectedPaymentMethod === 'pay_on_delivery' && data.order_number) {
                     window.location.href = `/payments/pod-success/{{ page.subdomain }}/?order=${data.order_number}`;
@@ -1959,56 +3269,23 @@ document.addEventListener('DOMContentLoaded', function() {
                     window.location.href = data.redirect_url;
                 } else {
                     alert('Payment method not fully implemented: ' + selectedPaymentMethod);
-                    this.innerHTML = '<i class="fas fa-lock me-2"></i>Complete Order';
+                    this.innerHTML = '<span class="btn-text">Complete order</span>';
                     this.disabled = false;
                 }
             } catch (error) {
                 console.error('Payment error:', error);
                 alert('Payment error: ' + error.message);
-                this.innerHTML = '<i class="fas fa-lock me-2"></i>Complete Order';
+                this.innerHTML = '<span class="btn-text">Complete order</span>';
                 this.disabled = false;
             }
         });
     }
-    
-    async function loadStripeAndRedirect(publicKey, sessionId) {
-        try {
-            if (!window.Stripe) {
-                await new Promise((resolve, reject) => {
-                    const script = document.createElement('script');
-                    script.src = 'https://js.stripe.com/v3/';
-                    script.onload = resolve;
-                    script.onerror = reject;
-                    document.head.appendChild(script);
-                });
-            }
-            const stripe = Stripe(publicKey);
-            const { error } = await stripe.redirectToCheckout({ sessionId });
-            if (error) {
-                throw new Error(error.message);
-            }
-        } catch (error) {
-            console.error('Stripe redirect error:', error);
-            throw error;
-        }
-    }
-    
-    function getCSRFToken() {
-        try {
-            const cookieValue = document.cookie
-                .split('; ')
-                .find(row => row.startsWith('csrftoken='))
-                ?.split('=')[1];
-            return cookieValue || '';
-        } catch (error) {
-            console.error('Error getting CSRF token:', error);
-            return '';
-        }
-    }
-    
-    // Initialize
+
+    /* ============================================================
+       INIT
+       ============================================================ */
     loadOrderData();
-    
+
     if (orderData.customer && Object.keys(orderData.customer).length > 0) {
         const customer = orderData.customer;
         const setFieldValue = (id, value) => {
@@ -2023,37 +3300,33 @@ document.addEventListener('DOMContentLoaded', function() {
         setFieldValue('customerState', customer.state);
         setFieldValue('customerZip', customer.zip);
         setFieldValue('customerCountry', customer.country || 'US');
-        setTimeout(() => {
-            calculateTax();
-        }, 500);
-        setTimeout(() => {
-            if (continueToShippingBtn) {
-                continueToShippingBtn.click();
-            }
-        }, 1000);
+
+        setTimeout(() => calculateTax(), 500);
+        setTimeout(() => { if (continueToShippingBtn) continueToShippingBtn.click(); }, 1000);
     }
-    
+
     const taxTriggerFields = ['customerCountry', 'customerState', 'customerCity', 'customerZip', 'customerEmail'];
     taxTriggerFields.forEach(fieldId => {
         const field = document.getElementById(fieldId);
-        if (field) {
-            field.addEventListener('change', function() {
-                if (fieldId === 'customerEmail') {
-                } else if (shippingOptionsCard && shippingOptionsCard.style.display === 'block') {
-                    loadShippingRates();
-                } else {
-                    calculateTax();
-                }
-            });
-            field.addEventListener('blur', function() {
-                if (fieldId === 'customerEmail') {
-                } else if (field.value && shippingOptionsCard && shippingOptionsCard.style.display === 'block') {
-                    loadShippingRates();
-                } else if (field.value) {
-                    calculateTax();
-                }
-            });
-        }
+        if (!field) return;
+
+        field.addEventListener('change', function() {
+            if (fieldId === 'customerEmail') return;
+            if (shippingOptionsCard && shippingOptionsCard.style.display === 'block') {
+                loadShippingRates();
+            } else {
+                calculateTax();
+            }
+        });
+
+        field.addEventListener('blur', function() {
+            if (fieldId === 'customerEmail') return;
+            if (field.value && shippingOptionsCard && shippingOptionsCard.style.display === 'block') {
+                loadShippingRates();
+            } else if (field.value) {
+                calculateTax();
+            }
+        });
     });
 });
 </script>

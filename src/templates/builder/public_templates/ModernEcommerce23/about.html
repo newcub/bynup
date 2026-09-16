@@ -499,7 +499,66 @@
 <!-- Hero Section -->
 <div class="container">
     <div class="hero-about" id="section-317">
-        <img class="hero-image" src="https://cdn.pixabay.com/photo/2023/12/23/08/42/island-8465139_1280.png" alt="{{ image_customizations.46.alt_text|default:'Jewelry craftsmanship' }}" data-image="46">
+        {% with video=video_customizations.46 %}
+    {% if video %}
+        {# ===== VIDEO EXISTS - RENDER VIDEO ===== #}
+        <div class="editable-video" 
+             data-image="46" 
+             data-is-video="true"
+             style="position: relative; overflow: hidden; display: inline-block; max-width: 100%; border-radius: 8px; cursor: pointer;">
+            
+            <video 
+                src="{{ video.video_url }}" 
+                poster="{{ video.poster_url|default:'' }}"
+                {% if video.autoplay %}autoplay{% endif %}
+                {% if video.loop %}loop{% endif %}
+                {% if video.muted %}muted{% endif %}
+                {% if video.controls %}controls{% endif %}
+                style="width: 100%; height: 100%; display: block; object-fit: cover;"
+            >
+                Your browser does not support the video tag.
+            </video>
+            
+            {# ===== PLAY BUTTON OVERLAY ===== #}
+            {% if video.show_play_button %}
+            <div class="video-overlay" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 24px;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            ">
+                <i class="fas fa-play"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+        {# ===== NO VIDEO - RENDER IMAGE ===== #}
+        {% if image_customizations.46 %}
+            <img src="{{ image_customizations.46.image_url }}" 
+                 alt="{{ image_customizations.46.alt_text|default:'{{ image_customizations.46.alt_text|default:' }}" 
+                 class="editable-image" 
+                 data-image="46">
+        {% else %}
+            <img src="https://cdn.pixabay.com/photo/2023/12/23/08/42/island-8465139_1280.png" 
+                 alt="{{ image_customizations.46.alt_text|default:" 
+                 class="editable-image" 
+                 data-image="46">
+        {% endif %}
+    {% endif %}
+{% endwith %}
         <div class="hero-content" id="section-318">
             <h2 id="section-319">{{ text_contents.217|default:"Timeless Craftsmanship Since 1925" }}</h2>
             <p id="section-320">{{ text_contents.218|default:"Founded by master jeweler Giovanni Moretti in Florence, Italy, Timeless Elegance began as a small atelier dedicated to the art of fine jewelry making. Giovanni's vision was simple yet profound: to create pieces that would transcend generations, becoming family heirlooms that tell stories of love, celebration, and legacy." }}</p>
@@ -581,7 +640,66 @@
                 </div>
             </div>
             
-            <img class="craftsmanship-image" src="https://cdn.pixabay.com/photo/2023/12/23/08/42/island-8465139_1280.png" alt="{{ image_customizations.48.alt_text|default:'Jewelry craftsmanship process' }}" data-image="48">
+            {% with video=video_customizations.48 %}
+    {% if video %}
+        {# ===== VIDEO EXISTS - RENDER VIDEO ===== #}
+        <div class="editable-video" 
+             data-image="48" 
+             data-is-video="true"
+             style="position: relative; overflow: hidden; display: inline-block; max-width: 100%; border-radius: 8px; cursor: pointer;">
+            
+            <video 
+                src="{{ video.video_url }}" 
+                poster="{{ video.poster_url|default:'' }}"
+                {% if video.autoplay %}autoplay{% endif %}
+                {% if video.loop %}loop{% endif %}
+                {% if video.muted %}muted{% endif %}
+                {% if video.controls %}controls{% endif %}
+                style="width: 100%; height: 100%; display: block; object-fit: cover;"
+            >
+                Your browser does not support the video tag.
+            </video>
+            
+            {# ===== PLAY BUTTON OVERLAY ===== #}
+            {% if video.show_play_button %}
+            <div class="video-overlay" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 24px;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            ">
+                <i class="fas fa-play"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+        {# ===== NO VIDEO - RENDER IMAGE ===== #}
+        {% if image_customizations.48 %}
+            <img src="{{ image_customizations.48.image_url }}" 
+                 alt="{{ image_customizations.48.alt_text|default:'{{ image_customizations.48.alt_text|default:' }}" 
+                 class="editable-image" 
+                 data-image="48">
+        {% else %}
+            <img src="https://cdn.pixabay.com/photo/2023/12/23/08/42/island-8465139_1280.png" 
+                 alt="{{ image_customizations.48.alt_text|default:" 
+                 class="editable-image" 
+                 data-image="48">
+        {% endif %}
+    {% endif %}
+{% endwith %}
         </div>
     </div>
 
@@ -644,7 +762,66 @@
         <div class="team-grid">
             <!-- Team Member 1 - Editable Template -->
             <div class="team-member" id="section-348">
-                <img class="team-member-image" src="https://cdn.pixabay.com/photo/2023/12/23/08/42/island-8465139_1280.png" alt="{{ image_customizations.49.alt_text|default:'Sofia Moretti' }}" data-image="49">
+                {% with video=video_customizations.49 %}
+    {% if video %}
+        {# ===== VIDEO EXISTS - RENDER VIDEO ===== #}
+        <div class="editable-video" 
+             data-image="49" 
+             data-is-video="true"
+             style="position: relative; overflow: hidden; display: inline-block; max-width: 100%; border-radius: 8px; cursor: pointer;">
+            
+            <video 
+                src="{{ video.video_url }}" 
+                poster="{{ video.poster_url|default:'' }}"
+                {% if video.autoplay %}autoplay{% endif %}
+                {% if video.loop %}loop{% endif %}
+                {% if video.muted %}muted{% endif %}
+                {% if video.controls %}controls{% endif %}
+                style="width: 100%; height: 100%; display: block; object-fit: cover;"
+            >
+                Your browser does not support the video tag.
+            </video>
+            
+            {# ===== PLAY BUTTON OVERLAY ===== #}
+            {% if video.show_play_button %}
+            <div class="video-overlay" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 24px;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            ">
+                <i class="fas fa-play"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+        {# ===== NO VIDEO - RENDER IMAGE ===== #}
+        {% if image_customizations.49 %}
+            <img src="{{ image_customizations.49.image_url }}" 
+                 alt="{{ image_customizations.49.alt_text|default:'{{ image_customizations.49.alt_text|default:' }}" 
+                 class="editable-image" 
+                 data-image="49">
+        {% else %}
+            <img src="https://cdn.pixabay.com/photo/2023/12/23/08/42/island-8465139_1280.png" 
+                 alt="{{ image_customizations.49.alt_text|default:" 
+                 class="editable-image" 
+                 data-image="49">
+        {% endif %}
+    {% endif %}
+{% endwith %}
                 <h3 class="team-member-name" id="section-349">{{ text_contents.257|default:"Sofia Moretti" }}</h3>
                 <div class="team-member-role" id="section-350">{{ text_contents.258|default:"Creative Director" }}</div>
                 <p class="team-member-bio" id="section-351">{{ text_contents.259|default:"Great-granddaughter of founder Giovanni Moretti, Sofia brings contemporary vision while honoring family traditions. Graduate of Central Saint Martins with 15 years of design experience." }}</p>

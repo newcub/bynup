@@ -62,7 +62,7 @@ OPENROUTER_MODELS = [
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # Render.com domain and your custom domain
 RENDER_DOMAIN = 'bynup-m6zc.onrender.com'
@@ -204,7 +204,6 @@ MIDDLEWARE = [
     'accounts.middleware.AuthRedirectMiddleware',
     'allauth.account.middleware.AccountMiddleware',
     
-    
 
 ]
 
@@ -227,6 +226,7 @@ TEMPLATES = [
                 'builder.context_processors.branding_context',
                 'builder.context_processors.subscription_tiers',
                 'builder.context_processors.brand_context',
+                'builder.context_processors.pending_domain_requests',
 
 
     

@@ -1,9 +1,9 @@
+<!-- builder/public_templates/ModernEcommerce17/home.html -->
 {% load static %}
 {% load style_filters %}
 {% load color_filters %}
 {% load currency_filters %}
 {% load icon_filters %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,11 +12,10 @@
   <title>{{ page.brand_name|default:"NORTH/01" }} — Signature Hoodie</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet" />
+
   {% render_icon_data icon_customizations %}
+
   <style>
-    /* ----------------------------------------------
-       CSS VARIABLES
-    ------------------------------------------------ */
     :root {
       --color-bg: #f8f6f2;
       --color-surface: #ffffff;
@@ -47,9 +46,6 @@
 
     {% generate_color_variables %}
 
-    /* ----------------------------------------------
-       RESET & BASE
-    ------------------------------------------------ */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
     body {
@@ -68,9 +64,6 @@
     .section-padding { padding: var(--space-xl) 0; }
     .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
 
-    /* ----------------------------------------------
-       TYPOGRAPHY
-    ------------------------------------------------ */
     .eyebrow {
       font-size: 0.75rem;
       letter-spacing: 0.2em;
@@ -102,14 +95,10 @@
       color: var(--color-text-secondary);
     }
 
-    /* ----------------------------------------------
-       NAVIGATION
-    ------------------------------------------------ */
+    /* NAVIGATION */
     .site-header {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       z-index: 1000;
       background: rgba(248, 246, 242, 0.92);
       backdrop-filter: blur(8px);
@@ -159,8 +148,7 @@
     .nav-actions .cart-icon-btn:hover { color: var(--color-brand-dark); }
     .nav-actions .cart-badge {
       position: absolute;
-      top: -4px;
-      right: -4px;
+      top: -4px; right: -4px;
       background: var(--color-brand-dark);
       color: var(--color-white);
       border-radius: 50%;
@@ -202,24 +190,19 @@
       transition: all 0.25s ease;
     }
 
-    /* mobile nav */
     .mobile-nav-overlay {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
+      top: 0; left: 0;
+      width: 100%; height: 100vh;
       background: rgba(0,0,0,0.3);
-      opacity: 0;
-      visibility: hidden;
+      opacity: 0; visibility: hidden;
       transition: opacity 0.3s ease, visibility 0s 0.3s;
       z-index: 1100;
     }
     .mobile-nav-overlay.open { opacity: 1; visibility: visible; transition: opacity 0.3s ease, visibility 0s 0s; }
     .mobile-nav-drawer {
       position: fixed;
-      top: 0;
-      right: -100%;
+      top: 0; right: -100%;
       width: 300px;
       max-width: 80vw;
       height: 100vh;
@@ -299,9 +282,7 @@
       gap: 8px;
     }
 
-    /* ----------------------------------------------
-       HERO SECTION (Video + Brand Story)
-    ------------------------------------------------ */
+    /* HERO */
     #hero {
       padding-top: 68px;
       min-height: 100vh;
@@ -325,33 +306,16 @@
       background: var(--color-brand-dark);
       aspect-ratio: 16/9;
       width: 100%;
+      cursor: pointer;
     }
     .hero-video-wrapper img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: transform 0.4s var(--ease-out-expo);
     }
-    .hero-video-wrapper .play-overlay {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(0,0,0,0.25);
-      transition: background 0.3s;
-      cursor: pointer;
-    }
-    .hero-video-wrapper .play-overlay:hover {
-      background: rgba(0,0,0,0.4);
-    }
-    .hero-video-wrapper .play-overlay i {
-      font-size: 5rem;
-      color: white;
-      text-shadow: 0 4px 30px rgba(0,0,0,0.6);
-      transition: transform 0.3s;
-    }
-    .hero-video-wrapper .play-overlay:hover i {
-      transform: scale(1.08);
+    .hero-video-wrapper:hover img {
+      transform: scale(1.03);
     }
     .hero-video-badge {
       position: absolute;
@@ -438,9 +402,7 @@
     }
     .hero-reassurance span { display: flex; align-items: center; gap: 6px; }
 
-    /* ----------------------------------------------
-       PRODUCT SELECTION SECTION (Gallery + Variants)
-    ------------------------------------------------ */
+    /* PRODUCT SELECTION */
     #product-selection {
       padding: var(--space-xl) 0;
       background: var(--color-surface);
@@ -493,9 +455,7 @@
       flex-direction: column;
       gap: var(--space-sm);
     }
-    .selection-content .eyebrow {
-      margin-bottom: 0;
-    }
+    .selection-content .eyebrow { margin-bottom: 0; }
     .selection-content .product-title {
       font-family: var(--font-display);
       font-size: 1.8rem;
@@ -666,9 +626,7 @@
     }
     .size-guide-link:hover { color: var(--color-brand-dark); }
 
-    /* ----------------------------------------------
-       TRUST BAR
-    ------------------------------------------------ */
+    /* TRUST BAR */
     .trust-bar {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -688,9 +646,7 @@
     .trust-item strong { font-size: 0.9rem; font-weight: 600; }
     .trust-item span { font-size: 0.8rem; color: var(--color-text-secondary); }
 
-    /* ----------------------------------------------
-       STORY
-    ------------------------------------------------ */
+    /* STORY */
     .story-split {
       display: grid;
       grid-template-columns: 1fr;
@@ -729,9 +685,7 @@
     }
     .comparison-item ul li { padding: 2px 0; }
 
-    /* ----------------------------------------------
-       ANATOMY
-    ------------------------------------------------ */
+    /* ANATOMY */
     .anatomy-wrap {
       position: relative;
       border-radius: var(--radius-md);
@@ -762,9 +716,7 @@
       color: white;
     }
 
-    /* ----------------------------------------------
-       GALLERY
-    ------------------------------------------------ */
+    /* GALLERY */
     .gallery-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -787,9 +739,7 @@
     .gallery-grid .gallery-item:nth-child(1) { grid-column: span 2; }
     .gallery-grid .gallery-item:nth-child(1) img { height: 320px; }
 
-    /* ----------------------------------------------
-       UGC VIDEO GRID
-    ------------------------------------------------ */
+    /* UGC */
     .ugc-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -813,30 +763,17 @@
     }
     .ugc-card .ugc-overlay {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      bottom: 0; left: 0; right: 0;
       padding: var(--space-xs);
       background: linear-gradient(transparent, rgba(0,0,0,0.6));
       color: white;
       font-size: 0.75rem;
     }
     .ugc-card .ugc-overlay .verified { color: #7bed9f; font-weight: 600; }
-    .ugc-card .play-icon-ugc {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: white;
-      font-size: 2.4rem;
-      text-shadow: 0 4px 20px rgba(0,0,0,0.5);
-      pointer-events: none;
-    }
     .ugc-card .subtitles {
       position: absolute;
       bottom: 48px;
-      left: 10px;
-      right: 10px;
+      left: 10px; right: 10px;
       background: rgba(0,0,0,0.7);
       color: white;
       padding: 4px 10px;
@@ -846,9 +783,7 @@
       backdrop-filter: blur(4px);
     }
 
-    /* ----------------------------------------------
-       REVIEWS
-    ------------------------------------------------ */
+    /* REVIEWS */
     .review-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -870,9 +805,7 @@
       margin-top: 6px;
     }
 
-    /* ----------------------------------------------
-       FAQ
-    ------------------------------------------------ */
+    /* FAQ */
     .faq-item {
       border-bottom: 1px solid var(--color-border-subtle);
       padding: var(--space-sm) 0;
@@ -899,9 +832,7 @@
       padding-top: var(--space-xs);
     }
 
-    /* ----------------------------------------------
-       FINAL CTA
-    ------------------------------------------------ */
+    /* FINAL CTA */
     .final-cta {
       background: var(--color-brand-dark);
       color: var(--color-white);
@@ -919,9 +850,7 @@
     }
     .final-cta .primary-action:hover { background: var(--color-accent-soft); }
 
-    /* ----------------------------------------------
-       CONTACT FORM (below footer)
-    ------------------------------------------------ */
+    /* CONTACT */
     .contact-section {
       background: var(--color-surface);
       padding: var(--space-xl) 0;
@@ -1021,9 +950,7 @@
       font-weight: 500;
       margin-top: var(--space-sm);
     }
-    .contact-form-wrapper .form-success.show {
-      display: block;
-    }
+    .contact-form-wrapper .form-success.show { display: block; }
     .contact-form-wrapper .form-error {
       display: none;
       padding: var(--space-sm);
@@ -1034,13 +961,9 @@
       font-weight: 500;
       margin-top: var(--space-sm);
     }
-    .contact-form-wrapper .form-error.show {
-      display: block;
-    }
+    .contact-form-wrapper .form-error.show { display: block; }
 
-    /* ----------------------------------------------
-       FOOTER
-    ------------------------------------------------ */
+    /* FOOTER */
     .site-footer {
       padding: var(--space-lg) 0 var(--space-md);
       border-top: 1px solid var(--color-border-subtle);
@@ -1064,14 +987,10 @@
     }
     .footer-col a:hover { color: var(--color-brand-dark); }
 
-    /* ----------------------------------------------
-       STICKY PURCHASE BAR
-    ------------------------------------------------ */
+    /* STICKY */
     .sticky-purchase {
       position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      bottom: 0; left: 0; right: 0;
       background: var(--color-surface);
       border-top: 1px solid var(--color-border-subtle);
       padding: 0.6rem var(--space-md);
@@ -1118,79 +1037,22 @@
       gap: 6px;
     }
 
-    /* ----------------------------------------------
-       VIDEO MODAL
-    ------------------------------------------------ */
-    .video-modal-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.85);
-      z-index: 2100;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s, visibility 0s 0.3s;
-      padding: var(--space-md);
-    }
-    .video-modal-overlay.open {
-      opacity: 1;
-      visibility: visible;
-      transition: opacity 0.3s, visibility 0s 0s;
-    }
-    .video-modal-content {
-      position: relative;
-      width: 100%;
-      max-width: 900px;
-      background: var(--color-brand-dark);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      aspect-ratio: 16/9;
-    }
-    .video-modal-content iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-    .video-modal-close {
-      position: absolute;
-      top: 12px;
-      right: 16px;
-      font-size: 2.2rem;
-      color: white;
-      background: none;
-      border: none;
-      cursor: pointer;
-      z-index: 10;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
-    }
-
-    /* ----------------------------------------------
-       IMAGE VIEWER
-    ------------------------------------------------ */
+    /* IMAGE VIEWER */
     .image-viewer {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background: rgba(0,0,0,0.85);
       display: flex;
       align-items: center;
       justify-content: center;
       z-index: 2000;
-      opacity: 0;
-      visibility: hidden;
+      opacity: 0; visibility: hidden;
       transition: opacity 0.3s, visibility 0s 0s;
       padding: var(--space-md);
     }
     .image-viewer.open {
-      opacity: 1;
-      visibility: visible;
+      opacity: 1; visibility: visible;
       transition: opacity 0.3s, visibility 0s 0s;
     }
     .image-viewer img {
@@ -1201,8 +1063,7 @@
     }
     .image-viewer .close-viewer {
       position: absolute;
-      top: 20px;
-      right: 30px;
+      top: 20px; right: 30px;
       font-size: 2.4rem;
       color: white;
       background: none;
@@ -1210,30 +1071,23 @@
       cursor: pointer;
     }
 
-    /* ----------------------------------------------
-       CART DRAWER
-    ------------------------------------------------ */
+    /* CART DRAWER */
     .cart-drawer-overlay {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background: rgba(0,0,0,0.25);
       z-index: 1500;
-      opacity: 0;
-      visibility: hidden;
+      opacity: 0; visibility: hidden;
       transition: opacity 0.3s, visibility 0s 0.3s;
     }
     .cart-drawer-overlay.open {
-      opacity: 1;
-      visibility: visible;
+      opacity: 1; visibility: visible;
       transition: opacity 0.3s, visibility 0s 0s;
     }
     .cart-drawer {
       position: fixed;
-      top: 0;
-      right: -420px;
+      top: 0; right: -420px;
       width: 380px;
       max-width: 90vw;
       height: 100%;
@@ -1275,8 +1129,7 @@
       border-bottom: 1px solid var(--color-border-subtle);
     }
     .cart-item img {
-      width: 60px;
-      height: 60px;
+      width: 60px; height: 60px;
       object-fit: cover;
       border-radius: var(--radius-sm);
     }
@@ -1330,26 +1183,11 @@
       transform: translateX(-50%) translateY(0);
     }
 
-    /* ----------------------------------------------
-       RESPONSIVE
-    ------------------------------------------------ */
     @media (min-width: 768px) {
-      .hero-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: var(--space-lg);
-        align-items: center;
-      }
-      .selection-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: var(--space-lg);
-      }
-      .contact-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: var(--space-lg);
-      }
-      .contact-form-wrapper .form-row {
-        grid-template-columns: 1fr 1fr;
-      }
+      .hero-grid { grid-template-columns: 1fr 1fr; gap: var(--space-lg); align-items: center; }
+      .selection-grid { grid-template-columns: 1fr 1fr; gap: var(--space-lg); }
+      .contact-grid { grid-template-columns: 1fr 1fr; gap: var(--space-lg); }
+      .contact-form-wrapper .form-row { grid-template-columns: 1fr 1fr; }
       .nav-links-desktop { display: flex; }
       .nav-actions .primary-action-small { display: inline-flex; }
       .hamburger { display: none; }
@@ -1372,15 +1210,17 @@
       .contact-form-wrapper .submit-action { width: 100%; }
     }
 
-    {% generate_section_styles style_customizations 1 164 %}
-    {% generate_background_images background_images 1 164 %}
+    {% generate_section_styles style_customizations 1 216 %}
+    {% generate_background_images background_images 1 216 %}
     {% generate_hover_keyframes %}
   </style>
 </head>
-<body data-page-subdomain="{{ page.subdomain }}" data-currency-symbol="{{ page.currency_symbol|default:'$' }}">
+<body data-page-subdomain="{{ page.subdomain }}"
+      data-currency-symbol="{{ page.currency_symbol|default:'$' }}"
+      data-product-id="{% if products %}{{ products.0.id }}{% else %}0{% endif %}">
 
   <!-- Toast -->
-  <div id="toast" class="toast"><i class="fas fa-check-circle" style="margin-right:8px;"></i> Added to your rotation.</div>
+  <div id="toast" class="toast" id="section-1"><i class="fas fa-check-circle" style="margin-right:8px;"></i> {{ text_contents.1|default:"Added to your rotation." }}</div>
 
   <!-- Image Viewer -->
   <div id="imageViewer" class="image-viewer">
@@ -1388,35 +1228,29 @@
     <img id="viewerImage" src="" alt="preview" />
   </div>
 
-  <!-- Video Modal -->
-  <div id="heroVideoModal" class="video-modal-overlay">
-    <div class="video-modal-content">
-      <button class="video-modal-close" id="closeHeroVideo">&times;</button>
-      <iframe id="heroVideoIframe" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    </div>
-  </div>
-
   <!-- Cart Drawer -->
   <div id="cartOverlay" class="cart-drawer-overlay"></div>
   <div id="cartDrawer" class="cart-drawer">
     <div class="cart-drawer-header">
-      <h3><i class="fas fa-shopping-bag" style="margin-right:8px;"></i> Your rotation</h3>
+      <h3 id="section-2"><i class="{{ icon_customizations.106|default:'fas fa-shopping-bag' }}" data-icon="106" style="margin-right:8px;"></i> {{ text_contents.2|default:"Your rotation" }}</h3>
       <button id="closeCart" style="font-size:1.4rem;">&times;</button>
     </div>
     <div id="cartItems" class="cart-drawer-items">
       <div class="cart-empty-state">
-        <i class="fas fa-tshirt"></i>
-        <p>Your rotation starts here.</p>
-        <a href="#product-selection" style="text-decoration:underline; font-weight:500;">Shop the hoodie</a>
+        <i class="{{ icon_customizations.100|default:'fas fa-tshirt' }}" data-icon="100"></i>
+        <p id="section-3">{{ text_contents.3|default:"Your rotation starts here." }}</p>
+        <a href="#product-selection" style="text-decoration:underline; font-weight:500;" id="section-4">{{ text_contents.4|default:"Shop the hoodie" }}</a>
       </div>
     </div>
     <div class="cart-drawer-footer" id="cartFooter" style="display:none;">
-      <div class="cart-total-row"><span>Subtotal</span><span id="cartSubtotal">$89.00</span></div>
-      <div class="cart-total-row"><span>Shipping</span><span>Free</span></div>
-      <div class="cart-total-row"><span>Total</span><span id="cartTotal">$89.00</span></div>
-      <button class="checkout-action">Checkout Securely <i class="fas fa-arrow-right"></i></button>
+      <div class="cart-total-row"><span id="section-5">{{ text_contents.5|default:"Subtotal" }}</span><span id="cartSubtotal">{{ page.currency_symbol|default:'$' }}0.00</span></div>
+      <div class="cart-total-row"><span id="section-6">{{ text_contents.6|default:"Shipping" }}</span><span id="section-7">{{ text_contents.7|default:"Free" }}</span></div>
+      <div class="cart-total-row"><span id="section-8">{{ text_contents.8|default:"Total" }}</span><span id="cartTotal">{{ page.currency_symbol|default:'$' }}0.00</span></div>
+      <button class="checkout-action" id="section-9">{{ text_contents.9|default:"Checkout Securely" }} <i class="{{ icon_customizations.101|default:'fas fa-arrow-right' }}" data-icon="101"></i></button>
       <div style="display:flex; gap:10px; justify-content:center; margin-top:8px; font-size:1.2rem; color:var(--color-text-secondary);">
-        <i class="fab fa-apple-pay"></i> <i class="fab fa-google-pay"></i> <i class="fas fa-credit-card"></i>
+        <i class="{{ icon_customizations.102|default:'fab fa-apple-pay' }}" data-icon="102"></i>
+        <i class="{{ icon_customizations.103|default:'fab fa-google-pay' }}" data-icon="103"></i>
+        <i class="{{ icon_customizations.104|default:'fas fa-credit-card' }}" data-icon="104"></i>
       </div>
     </div>
   </div>
@@ -1425,44 +1259,44 @@
   <div id="mobileNavOverlay" class="mobile-nav-overlay"></div>
   <div id="mobileNavDrawer" class="mobile-nav-drawer">
     <div class="mobile-nav-header">
-      <span class="logo" id="section-1">{{ text_contents.1|default:"NORTH/01" }}</span>
+      <span class="logo" id="section-10">{{ text_contents.10|default:"NORTH/01" }}</span>
       <button class="mobile-nav-close" id="closeMobileNav">&times;</button>
     </div>
     <div class="mobile-nav-links">
-      <a href="#hero" id="section-2">{{ text_contents.2|default:"Home" }}</a>
-      <a href="#product-selection" id="section-3">{{ text_contents.3|default:"Shop" }}</a>
-      <a href="#story" id="section-4">{{ text_contents.4|default:"Story" }}</a>
-      <a href="#details" id="section-5">{{ text_contents.5|default:"Details" }}</a>
-      <a href="#reviews" id="section-6">{{ text_contents.6|default:"Reviews" }}</a>
-      <a href="#faq" id="section-7">{{ text_contents.7|default:"FAQ" }}</a>
+      <a href="#hero" id="section-11">{{ text_contents.11|default:"Home" }}</a>
+      <a href="#product-selection" id="section-12">{{ text_contents.12|default:"Shop" }}</a>
+      <a href="#story" id="section-13">{{ text_contents.13|default:"Story" }}</a>
+      <a href="#details" id="section-14">{{ text_contents.14|default:"Details" }}</a>
+      <a href="#reviews" id="section-15">{{ text_contents.15|default:"Reviews" }}</a>
+      <a href="#faq" id="section-16">{{ text_contents.16|default:"FAQ" }}</a>
     </div>
     <div class="mobile-nav-actions">
       <div class="mobile-cart-row">
-        <span><i class="fas fa-shopping-bag" style="margin-right:8px;"></i> Cart</span>
+        <span id="section-17"><i class="{{ icon_customizations.106|default:'fas fa-shopping-bag' }}" data-icon="106" style="margin-right:8px;"></i> {{ text_contents.17|default:"Cart" }}</span>
         <span class="cart-badge-mobile" id="mobileCartCount">0</span>
       </div>
-      <a href="#product-selection" class="primary-action-full" id="section-8"><i class="fas fa-bolt"></i> {{ text_contents.8|default:"Buy Now" }}</a>
+      <a href="#product-selection" class="primary-action-full" id="section-18"><i class="{{ icon_customizations.105|default:'fas fa-bolt' }}" data-icon="105"></i> {{ text_contents.18|default:"Buy Now" }}</a>
     </div>
   </div>
 
   <!-- Header -->
-  <header class="site-header" id="section-9">
-    <div class="navbar" id="section-10">
-      <a href="#hero" class="logo" id="section-11">{{ text_contents.9|default:"NORTH/01" }}</a>
+  <header class="site-header" id="section-19">
+    <div class="navbar" id="section-20">
+      <a href="#hero" class="logo" id="section-21">{{ page.brand_name|default:"NORTH/01" }}</a>
       <nav class="nav-links-desktop">
-        <a href="#hero" id="section-12">{{ text_contents.10|default:"Home" }}</a>
-        <a href="#product-selection" id="section-13">{{ text_contents.11|default:"Shop" }}</a>
-        <a href="#story" id="section-14">{{ text_contents.12|default:"Story" }}</a>
-        <a href="#details" id="section-15">{{ text_contents.13|default:"Details" }}</a>
-        <a href="#reviews" id="section-16">{{ text_contents.14|default:"Reviews" }}</a>
-        <a href="#faq" id="section-17">{{ text_contents.15|default:"FAQ" }}</a>
+        <a href="#hero" id="section-22">{{ text_contents.20|default:"Home" }}</a>
+        <a href="#product-selection" id="section-23">{{ text_contents.21|default:"Shop" }}</a>
+        <a href="#story" id="section-24">{{ text_contents.22|default:"Story" }}</a>
+        <a href="#details" id="section-25">{{ text_contents.23|default:"Details" }}</a>
+        <a href="#reviews" id="section-26">{{ text_contents.24|default:"Reviews" }}</a>
+        <a href="#faq" id="section-27">{{ text_contents.25|default:"FAQ" }}</a>
       </nav>
       <div class="nav-actions">
         <button class="cart-icon-btn" id="cartTrigger" aria-label="Cart">
-          <i class="fas fa-shopping-bag" data-icon="100"></i>
+          <i class="{{ icon_customizations.106|default:'fas fa-shopping-bag' }}" data-icon="106"></i>
           <span class="cart-badge" id="cartCount">0</span>
         </button>
-        <a href="#product-selection" class="primary-action-small" id="section-18"><i class="fas fa-bolt"></i> {{ text_contents.16|default:"Buy Now" }}</a>
+        <a href="#product-selection" class="primary-action-small" id="section-28"><i class="{{ icon_customizations.107|default:'fas fa-bolt' }}" data-icon="107"></i> {{ text_contents.26|default:"Buy Now" }}</a>
         <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
           <span></span><span></span><span></span>
         </button>
@@ -1470,46 +1304,38 @@
     </div>
   </header>
 
-  <!-- Component Drop Zone - Header -->
-  {% for component in components %}
-    {% if component.drop_zone == '1' %}
-      <section class="dynamic-component" data-instance-id="{{ component.instance_id }}">
-        {{ component.html_content|safe }}
-      </section>
-    {% endif %}
-  {% endfor %}
-
-  <!-- HERO SECTION -->
-  <section id="hero" class="editable-section" data-section="19">
+  <!-- HERO -->
+  <section id="hero" id="section-29">
     <div class="container hero-grid">
-      <div class="hero-video-wrapper" id="heroVideoTrigger">
+      <div class="hero-video-wrapper" id="heroVideoTrigger" id="section-30">
         {% if image_customizations.1 %}
-          <img src="{{ image_customizations.1.image_url }}" alt="{{ image_customizations.1.alt_text|default:'NORTH/01 brand film' }}" data-image="1" style="width:100%; height:100%; object-fit:cover;" />
+          <img src="{{ image_customizations.1.image_url }}" alt="{{ image_customizations.1.alt_text|default:'NORTH/01 brand film' }}" class="editable-image" data-image="1" />
         {% else %}
-          <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800&h=600&fit=crop&crop=center&auto=format" alt="NORTH/01 brand film" data-image="1" style="width:100%; height:100%; object-fit:cover;" />
+          <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800&h=600&fit=crop&crop=center&auto=format" alt="NORTH/01 brand film" class="editable-image" data-image="1" />
         {% endif %}
-        <div class="play-overlay">
-          <i class="fas fa-play-circle" data-icon="101"></i>
-        </div>
-        <span class="hero-video-badge" id="section-21"><i class="fas fa-play" style="margin-right:4px;"></i> {{ text_contents.17|default:"Watch the Film" }}</span>
+        <span class="hero-video-badge" id="section-31"><i class="{{ icon_customizations.108|default:'fas fa-play' }}" data-icon="108" style="margin-right:4px;"></i> {{ text_contents.27|default:"Watch the Film" }}</span>
       </div>
 
       <div class="hero-content">
-        <span class="eyebrow" id="section-22"><i class="fas fa-tag" style="margin-right:6px;"></i> {{ text_contents.18|default:"NORTH/01 — SIGNATURE SERIES" }}</span>
-        <h1 class="heading-xl" id="section-23">{{ text_contents.19|default:"MADE FOR THE EVERYDAY." }}</h1>
-        <p class="body-large" id="section-24">{{ text_contents.20|default:"A heavyweight essential engineered for comfort, structure and everyday movement." }}</p>
+        <span class="eyebrow" id="section-32"><i class="{{ icon_customizations.109|default:'fas fa-tag' }}" data-icon="109" style="margin-right:6px;"></i> {{ text_contents.28|default:"NORTH/01 — SIGNATURE SERIES" }}</span>
+        <h1 class="heading-xl" id="section-33">{{ text_contents.29|default:"MADE FOR THE EVERYDAY." }}</h1>
+        <p class="body-large" id="section-34">{{ text_contents.30|default:"A heavyweight essential engineered for comfort, structure and everyday movement." }}</p>
         <div class="hero-rating">
-          <i class="fas fa-star" style="color:#d4a04a;"></i><i class="fas fa-star" style="color:#d4a04a;"></i><i class="fas fa-star" style="color:#d4a04a;"></i><i class="fas fa-star" style="color:#d4a04a;"></i><i class="fas fa-star" style="color:#d4a04a;"></i>
-          <span id="section-25">{{ text_contents.21|default:"4.9/5 &bull; 2,400+ verified customers" }}</span>
+          <i class="{{ icon_customizations.110|default:'fas fa-star' }}" data-icon="110" style="color:#d4a04a;"></i>
+          <i class="{{ icon_customizations.110|default:'fas fa-star' }}" data-icon="110" style="color:#d4a04a;"></i>
+          <i class="{{ icon_customizations.110|default:'fas fa-star' }}" data-icon="110" style="color:#d4a04a;"></i>
+          <i class="{{ icon_customizations.110|default:'fas fa-star' }}" data-icon="110" style="color:#d4a04a;"></i>
+          <i class="{{ icon_customizations.110|default:'fas fa-star' }}" data-icon="110" style="color:#d4a04a;"></i>
+          <span id="section-35">{{ text_contents.31|default:"4.9/5 • 2,400+ verified customers" }}</span>
         </div>
         <div class="hero-cta-group">
-          <a href="#product-selection" class="primary-action" id="section-26"><i class="fas fa-bolt"></i> {{ text_contents.22|default:"Shop Now" }}</a>
-          <button class="secondary-action" id="heroWatchFilmBtn" id="section-27"><i class="fas fa-play"></i> {{ text_contents.23|default:"Watch the Film" }}</button>
+          <a href="#product-selection" class="primary-action" id="section-36"><i class="{{ icon_customizations.111|default:'fas fa-bolt' }}" data-icon="111"></i> {{ text_contents.32|default:"Shop Now" }}</a>
+          <button class="secondary-action" id="heroWatchFilmBtn" id="section-37"><i class="{{ icon_customizations.112|default:'fas fa-play' }}" data-icon="112"></i> {{ text_contents.33|default:"Watch the Film" }}</button>
         </div>
-        <div class="hero-reassurance" id="section-28">
-          <span><i class="fas fa-truck" data-icon="500"></i> {{ text_contents.24|default:"Free shipping" }}</span>
-          <span><i class="fas fa-undo-alt" data-icon="501"></i> {{ text_contents.25|default:"Easy returns" }}</span>
-          <span><i class="fas fa-lock" data-icon="502"></i> {{ text_contents.26|default:"Secure checkout" }}</span>
+        <div class="hero-reassurance" id="section-38">
+          <span id="section-39"><i class="{{ icon_customizations.113|default:'fas fa-truck' }}" data-icon="113"></i> {{ text_contents.34|default:"Free shipping" }}</span>
+          <span id="section-40"><i class="{{ icon_customizations.114|default:'fas fa-undo-alt' }}" data-icon="114"></i> {{ text_contents.35|default:"Easy returns" }}</span>
+          <span id="section-41"><i class="{{ icon_customizations.115|default:'fas fa-lock' }}" data-icon="115"></i> {{ text_contents.36|default:"Secure checkout" }}</span>
         </div>
       </div>
     </div>
@@ -1517,315 +1343,414 @@
 
   <!-- Trust Bar -->
   <div class="container">
-    <div class="trust-bar" id="section-29">
-      <div class="trust-item" id="section-30"><i class="fas fa-weight-hanging" data-icon="504"></i><strong>{{ text_contents.27|default:"Heavyweight Fabric" }}</strong><span>{{ text_contents.28|default:"Premium structured cotton blend." }}</span></div>
-      <div class="trust-item" id="section-31"><i class="fas fa-shield-alt" data-icon="505"></i><strong>{{ text_contents.29|default:"Built to Last" }}</strong><span>{{ text_contents.30|default:"Designed for repeated everyday wear." }}</span></div>
-      <div class="trust-item" id="section-32"><i class="fas fa-undo-alt" data-icon="506"></i><strong>{{ text_contents.31|default:"Easy Returns" }}</strong><span>{{ text_contents.32|default:"30-day hassle-free returns." }}</span></div>
-      <div class="trust-item" id="section-33"><i class="fas fa-lock" data-icon="507"></i><strong>{{ text_contents.33|default:"Secure Checkout" }}</strong><span>{{ text_contents.34|default:"Encrypted and trusted payment." }}</span></div>
+    <div class="trust-bar" id="section-42">
+      <div class="trust-item" id="section-43">
+        <i class="{{ icon_customizations.116|default:'fas fa-weight-hanging' }}" data-icon="116"></i>
+        <strong id="section-44">{{ text_contents.37|default:"Heavyweight Fabric" }}</strong>
+        <span id="section-45">{{ text_contents.38|default:"Premium structured cotton blend." }}</span>
+      </div>
+      <div class="trust-item" id="section-46">
+        <i class="{{ icon_customizations.117|default:'fas fa-shield-alt' }}" data-icon="117"></i>
+        <strong id="section-47">{{ text_contents.39|default:"Built to Last" }}</strong>
+        <span id="section-48">{{ text_contents.40|default:"Designed for repeated everyday wear." }}</span>
+      </div>
+      <div class="trust-item" id="section-49">
+        <i class="{{ icon_customizations.118|default:'fas fa-undo-alt' }}" data-icon="118"></i>
+        <strong id="section-50">{{ text_contents.41|default:"Easy Returns" }}</strong>
+        <span id="section-51">{{ text_contents.42|default:"30-day hassle-free returns." }}</span>
+      </div>
+      <div class="trust-item" id="section-52">
+        <i class="{{ icon_customizations.119|default:'fas fa-lock' }}" data-icon="119"></i>
+        <strong id="section-53">{{ text_contents.43|default:"Secure Checkout" }}</strong>
+        <span id="section-54">{{ text_contents.44|default:"Encrypted and trusted payment." }}</span>
+      </div>
     </div>
   </div>
 
   <!-- PRODUCT SELECTION -->
-  <section id="product-selection" class="editable-section" data-section="34">
+  <section id="product-selection" id="section-55">
     <div class="container">
       <div class="selection-grid">
-        <div class="product-gallery" id="section-35">
-          {% if image_customizations.2 %}
-            <img id="mainProductImage" src="{{ image_customizations.2.image_url }}" alt="{{ image_customizations.2.alt_text|default:'NORTH/01 Signature Hoodie' }}" data-image="2" loading="lazy" />
+        <div class="product-gallery" id="section-56">
+          {% with first_product=products.0 first_variant=products.0.variants.first %}
+          {% if first_product.main_image %}
+            <img id="mainProductImage" src="{{ first_product.main_image.url }}" alt="{{ first_product.title }}" class="editable-image" data-image="2" loading="lazy" />
           {% else %}
-            <img id="mainProductImage" src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800&h=800&fit=crop&crop=center&auto=format" alt="NORTH/01 Signature Hoodie" data-image="2" loading="lazy" />
+            <img id="mainProductImage" src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800&h=800&fit=crop&crop=center&auto=format" alt="NORTH/01 Signature Hoodie" class="editable-image" data-image="2" loading="lazy" />
           {% endif %}
           <div class="thumbnail-strip" id="thumbnailStrip">
-            <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=100&h=100&fit=crop&crop=center&auto=format" data-main="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800&h=800&fit=crop&crop=center&auto=format" class="active" alt="Front" />
-            <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=100&h=100&fit=crop&crop=center&auto=format" data-main="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=800&h=800&fit=crop&crop=center&auto=format" alt="Back" />
-            <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=100&h=100&fit=crop&crop=center&auto=format" data-main="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=800&h=800&fit=crop&crop=center&auto=format" alt="Fabric" />
-            <img src="https://images.unsplash.com/photo-1576871337632-b9aef4c17ab9?w=100&h=100&fit=crop&crop=center&auto=format" data-main="https://images.unsplash.com/photo-1576871337632-b9aef4c17ab9?w=800&h=800&fit=crop&crop=center&auto=format" alt="Hood" />
-            <img src="https://images.unsplash.com/photo-1618354691551-44de113f0164?w=100&h=100&fit=crop&crop=center&auto=format" data-main="https://images.unsplash.com/photo-1618354691551-44de113f0164?w=800&h=800&fit=crop&crop=center&auto=format" alt="Cuff" />
+            <img src="{% if first_product.main_image %}{{ first_product.main_image.url }}{% else %}https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=100&h=100&fit=crop&crop=center&auto=format{% endif %}"
+                 data-main="{% if first_product.main_image %}{{ first_product.main_image.url }}{% else %}https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800&h=800&fit=crop&crop=center&auto=format{% endif %}"
+                 class="active editable-image" data-image="3" alt="Front" />
+
+            {% for image in first_product.images.all|slice:":3" %}
+              <img src="{{ image.image.url }}"
+                   data-main="{{ image.image.url }}"
+                   alt="{{ image.alt_text|default:'Product view' }}"
+                   class="editable-image"
+                   data-image="{{ forloop.counter|add:3 }}" />
+            {% empty %}
+              <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=100&h=100&fit=crop&crop=center&auto=format" data-main="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=800&h=800&fit=crop&crop=center&auto=format" alt="Back" class="editable-image" data-image="4" />
+              <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=100&h=100&fit=crop&crop=center&auto=format" data-main="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=800&h=800&fit=crop&crop=center&auto=format" alt="Fabric" class="editable-image" data-image="5" />
+              <img src="https://images.unsplash.com/photo-1576871337632-b9aef4c17ab9?w=100&h=100&fit=crop&crop=center&auto=format" data-main="https://images.unsplash.com/photo-1576871337632-b9aef4c17ab9?w=800&h=800&fit=crop&crop=center&auto=format" alt="Hood" class="editable-image" data-image="6" />
+            {% endfor %}
           </div>
         </div>
 
         <div class="selection-content">
-          <span class="eyebrow" id="section-36">{{ text_contents.35|default:"The Signature" }}</span>
-          <h2 class="product-title" id="section-37">{{ text_contents.36|default:"NORTH/01 Signature Hoodie" }}</h2>
-          <span class="product-price" id="displayPrice" id="section-38">$89</span>
+          <span class="eyebrow" id="section-57">{{ text_contents.45|default:"The Signature" }}</span>
+          <h2 class="product-title" id="section-58">{{ first_product.title|default:"NORTH/01 Signature Hoodie" }}</h2>
+          <span class="product-price" id="displayPrice" id="section-59">
+            {{ page.currency_symbol|default:'$' }}{% if first_variant %}{{ first_variant.price|floatformat:0 }}{% elif first_product.price %}{{ first_product.price|floatformat:0 }}{% else %}89{% endif %}
+          </span>
 
-          <div class="product-purchase-card" id="section-39">
+          <div class="product-purchase-card" id="section-60">
+            <!-- TIERS: DB-driven with fallback -->
             <div class="bundle-selector" id="bundleSelector">
-              <button class="active" data-bundle="1" data-price="89" id="section-40">{{ text_contents.37|default:"1 Hoodie" }} <span class="save"></span></button>
-              <button data-bundle="2" data-price="160" id="section-41">{{ text_contents.38|default:"2 Hoodies" }} <span class="save">{{ text_contents.39|default:"Save $18" }}</span></button>
-              <button data-bundle="3" data-price="225" id="section-42">{{ text_contents.40|default:"3 Hoodies" }} <span class="save">{{ text_contents.41|default:"Save $42" }}</span></button>
+              {% if tiers %}
+                {% for tier in tiers %}
+                  <button class="{% if tier.is_default %}active{% endif %}"
+                          data-bundle="{{ tier.quantity }}"
+                          data-price="{{ tier.total_price|stringformat:'.2f' }}"
+                          data-perunit="{{ tier.price_per_unit|stringformat:'.2f' }}"
+                          data-save="{{ tier.savings|stringformat:'.2f' }}"
+                          id="section-{{ 60|add:forloop.counter }}">
+                    {{ tier.quantity }} Hoodie{{ tier.quantity|pluralize }}
+                    {% if tier.savings > 0 %}<span class="save">Save {{ page.currency_symbol|default:'$' }}{{ tier.savings|floatformat:0 }}</span>{% endif %}
+                    {% if tier.badge_text %}<span class="save">{{ tier.badge_text }}</span>{% endif %}
+                  </button>
+                {% endfor %}
+              {% else %}
+                <button class="active" data-bundle="1" data-price="89.00" data-perunit="89.00" data-save="0" id="section-61">{{ text_contents.48|default:"1 Hoodie" }} <span class="save"></span></button>
+                <button data-bundle="2" data-price="160.00" data-perunit="80.00" data-save="18.00" id="section-62">{{ text_contents.49|default:"2 Hoodies" }} <span class="save">{{ text_contents.50|default:"Save $18" }}</span></button>
+                <button data-bundle="3" data-price="225.00" data-perunit="75.00" data-save="42.00" id="section-63">{{ text_contents.51|default:"3 Hoodies" }} <span class="save">{{ text_contents.52|default:"Save $42" }}</span></button>
+              {% endif %}
             </div>
 
             <div class="purchase-options">
-              <div class="option-group">
-                <label id="section-43">{{ text_contents.42|default:"Size" }}</label>
-                <div class="size-selector" id="sizeSelector">
-                  <button data-size="XS" id="section-44">{{ text_contents.43|default:"XS" }}</button>
-                  <button data-size="S" id="section-45">{{ text_contents.44|default:"S" }}</button>
-                  <button class="active" data-size="M" id="section-46">{{ text_contents.45|default:"M" }}</button>
-                  <button data-size="L" id="section-47">{{ text_contents.46|default:"L" }}</button>
-                  <button data-size="XL" id="section-48">{{ text_contents.47|default:"XL" }}</button>
-                  <button data-size="XXL" id="section-49">{{ text_contents.48|default:"XXL" }}</button>
+              <!-- VARIANTS: rendered by JS from productData.variants -->
+              <div class="option-group" style="flex:1 1 100%;">
+                <label id="section-64">{{ text_contents.53|default:"Select Options" }}</label>
+                <div id="variant-attributes-container"></div>
+                <div class="selected-options-display" id="selected-options-display">
+                  <span class="label">Selected:</span>
+                  <span class="value" id="selected-options-text"></span>
                 </div>
-                <button class="size-guide-link" id="sizeGuideBtn" id="section-50">{{ text_contents.49|default:"View Size Guide" }}</button>
+                <div class="variant-error" id="variant-error" style="color:#c0392b; font-size:0.7rem; font-weight:700; text-transform:uppercase; display:none; margin-top:6px; letter-spacing:1px;">Please select all options before adding to cart</div>
               </div>
-              <div class="option-group">
-                <label id="section-51">{{ text_contents.50|default:"Color" }}</label>
-                <div class="color-swatches" id="colorSelector">
-                  <button class="active swatch-black" data-color="Midnight Black" data-image="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800&h=800&fit=crop&crop=center&auto=format" aria-label="Midnight Black"></button>
-                  <button class="swatch-stone" data-color="Stone" data-image="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=800&h=800&fit=crop&crop=center&auto=format" aria-label="Stone"></button>
-                  <button class="swatch-bone" data-color="Bone" data-image="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=800&h=800&fit=crop&crop=center&auto=format" aria-label="Bone"></button>
-                </div>
-              </div>
+              <button class="size-guide-link" id="sizeGuideBtn" id="section-71">{{ text_contents.60|default:"View Size Guide" }}</button>
             </div>
 
             <div class="action-row">
               <div class="quantity-selector">
-                <button id="qtyDec" id="section-52">-</button>
-                <span id="qtyDisplay" id="section-53">1</span>
-                <button id="qtyInc" id="section-54">+</button>
+                <button id="qtyDec" id="section-73">{{ text_contents.62|default:"-" }}</button>
+                <span id="qtyDisplay" id="section-74">{{ text_contents.63|default:"1" }}</span>
+                <button id="qtyInc" id="section-75">{{ text_contents.64|default:"+" }}</button>
               </div>
-              <button id="addToCartBtn" class="btn-add-to-cart" id="section-55"><i class="fas fa-shopping-bag"></i> {{ text_contents.51|default:"Add to Cart" }}</button>
-              <button id="buyNowBtn" class="btn-buy-now" id="section-56"><i class="fas fa-bolt"></i> {{ text_contents.52|default:"Buy Now" }}</button>
+              <button id="addToCartBtn" class="btn-add-to-cart" id="section-76" data-product-id="{{ first_product.id|default:0 }}"><i class="{{ icon_customizations.120|default:'fas fa-shopping-bag' }}" data-icon="120"></i> {{ text_contents.65|default:"Add to Cart" }}</button>
+              <button id="buyNowBtn" class="btn-buy-now" id="section-77" data-product-id="{{ first_product.id|default:0 }}"><i class="{{ icon_customizations.121|default:'fas fa-bolt' }}" data-icon="121"></i> {{ text_contents.66|default:"Buy Now" }}</button>
             </div>
           </div>
+          {% endwith %}
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Component Drop Zone - Before Story -->
-  {% for component in components %}
-    {% if component.drop_zone == '2' %}
-      <section class="dynamic-component" data-instance-id="{{ component.instance_id }}">
-        {{ component.html_content|safe }}
-      </section>
-    {% endif %}
-  {% endfor %}
-
   <!-- STORY -->
-  <section id="story" class="section-padding editable-section" data-section="57">
+  <section id="story" class="section-padding" id="section-78">
     <div class="container">
       <div class="story-split">
-        <div class="image-wrap">
-          {% if image_customizations.3 %}
-            <img src="{{ image_customizations.3.image_url }}" alt="{{ image_customizations.3.alt_text|default:'Hoodie craftsmanship' }}" data-image="3" loading="lazy" />
+        <div class="image-wrap" id="section-79">
+          {% if image_customizations.8 %}
+            <img src="{{ image_customizations.8.image_url }}" alt="{{ image_customizations.8.alt_text|default:'Hoodie craftsmanship' }}" class="editable-image" data-image="8" loading="lazy" />
           {% else %}
-            <img src="https://images.unsplash.com/photo-1607345366928-199ea26cfe3e?w=600&h=600&fit=crop&crop=center&auto=format" alt="Hoodie craftsmanship" data-image="3" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1607345366928-199ea26cfe3e?w=600&h=600&fit=crop&crop=center&auto=format" alt="Hoodie craftsmanship" class="editable-image" data-image="8" loading="lazy" />
           {% endif %}
         </div>
         <div class="text-wrap">
-          <span class="eyebrow" id="section-58">{{ text_contents.53|default:"Why NORTH/01" }}</span>
-          <h2 class="heading-lg" id="section-59">{{ text_contents.54|default:"Most hoodies are either comfortable <em>or</em> well-structured. We wanted both." }}</h2>
-          <p class="body-large" id="section-60">{{ text_contents.55|default:"We believe everyday clothing shouldn't feel ordinary. The Signature Hoodie is built with a structured heavyweight fabric, refined oversized fit, and reinforced construction—designed to outlast the moment." }}</p>
+          <span class="eyebrow" id="section-80">{{ text_contents.67|default:"Why NORTH/01" }}</span>
+          <h2 class="heading-lg" id="section-81">{{ text_contents.68|default:"Most hoodies are either comfortable or well-structured. We wanted both." }}</h2>
+          <p class="body-large" id="section-82">{{ text_contents.69|default:"We believe everyday clothing shouldn't feel ordinary. The Signature Hoodie is built with a structured heavyweight fabric, refined oversized fit, and reinforced construction—designed to outlast the moment." }}</p>
           <div class="comparison-grid">
-            <div class="comparison-item" id="section-61"><h4>{{ text_contents.56|default:"Ordinary Hoodie" }}</h4><ul><li>✕ {{ text_contents.57|default:"Loses shape" }}</li><li>✕ {{ text_contents.58|default:"Lightweight fabric" }}</li><li>✕ {{ text_contents.59|default:"Generic fit" }}</li></ul></div>
-            <div class="comparison-item positive" id="section-62"><h4>{{ text_contents.60|default:"NORTH/01" }}</h4><ul><li>✓ {{ text_contents.61|default:"Structured heavyweight" }}</li><li>✓ {{ text_contents.62|default:"Refined oversized fit" }}</li><li>✓ {{ text_contents.63|default:"Reinforced construction" }}</li></ul></div>
+            <div class="comparison-item" id="section-83">
+              <h4 id="section-84">{{ text_contents.70|default:"Ordinary Hoodie" }}</h4>
+              <ul>
+                <li id="section-85">{{ text_contents.71|default:"✕ Loses shape" }}</li>
+                <li id="section-86">{{ text_contents.72|default:"✕ Lightweight fabric" }}</li>
+                <li id="section-87">{{ text_contents.73|default:"✕ Generic fit" }}</li>
+              </ul>
+            </div>
+            <div class="comparison-item positive" id="section-88">
+              <h4 id="section-89">{{ text_contents.74|default:"NORTH/01" }}</h4>
+              <ul>
+                <li id="section-90">{{ text_contents.75|default:"✓ Structured heavyweight" }}</li>
+                <li id="section-91">{{ text_contents.76|default:"✓ Refined oversized fit" }}</li>
+                <li id="section-92">{{ text_contents.77|default:"✓ Reinforced construction" }}</li>
+              </ul>
+            </div>
           </div>
-          <a href="#product-selection" class="primary-action" id="section-63" style="align-self:flex-start; margin-top:var(--space-xs);"><i class="fas fa-bolt"></i> {{ text_contents.64|default:"Shop Now" }}</a>
+          <a href="#product-selection" class="primary-action" id="section-93" style="align-self:flex-start; margin-top:var(--space-xs);"><i class="{{ icon_customizations.122|default:'fas fa-bolt' }}" data-icon="122"></i> {{ text_contents.78|default:"Shop Now" }}</a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- DETAILS -->
-  <section id="details" class="section-padding editable-section" data-section="64" style="padding-top:0;">
+  <section id="details" class="section-padding" id="section-94" style="padding-top:0;">
     <div class="container">
-      <span class="eyebrow" id="section-65" style="display:block; text-align:center;">{{ text_contents.65|default:"Anatomy" }}</span>
-      <h2 class="heading-lg" id="section-66" style="text-align:center; margin-bottom:var(--space-md);">{{ text_contents.66|default:"Built with intention." }}</h2>
-      <div class="anatomy-wrap" id="section-67">
-        {% if image_customizations.4 %}
-          <img src="{{ image_customizations.4.image_url }}" alt="{{ image_customizations.4.alt_text|default:'Hoodie anatomy' }}" data-image="4" loading="lazy" />
+      <span class="eyebrow" id="section-95" style="display:block; text-align:center;">{{ text_contents.79|default:"Anatomy" }}</span>
+      <h2 class="heading-lg" id="section-96" style="text-align:center; margin-bottom:var(--space-md);">{{ text_contents.80|default:"Built with intention." }}</h2>
+      <div class="anatomy-wrap" id="section-97">
+        {% if image_customizations.9 %}
+          <img src="{{ image_customizations.9.image_url }}" alt="{{ image_customizations.9.alt_text|default:'Hoodie anatomy' }}" class="editable-image" data-image="9" loading="lazy" />
         {% else %}
-          <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=1000&h=600&fit=crop&crop=center&auto=format" alt="Hoodie anatomy" data-image="4" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=1000&h=600&fit=crop&crop=center&auto=format" alt="Hoodie anatomy" class="editable-image" data-image="9" loading="lazy" />
         {% endif %}
-        <div class="hotspot" id="section-68" style="top:20%; left:15%;" title="{{ text_contents.67|default:'Heavyweight fabric' }}">1</div>
-        <div class="hotspot" id="section-69" style="top:35%; left:75%;" title="{{ text_contents.68|default:'Reinforced seams' }}">2</div>
-        <div class="hotspot" id="section-70" style="top:10%; left:55%;" title="{{ text_contents.69|default:'Structured hood' }}">3</div>
-        <div class="hotspot" id="section-71" style="top:50%; left:30%;" title="{{ text_contents.70|default:'Premium drawstrings' }}">4</div>
-        <div class="hotspot" id="section-72" style="top:70%; left:60%;" title="{{ text_contents.71|default:'Ribbed cuffs' }}">5</div>
-        <div class="hotspot" id="section-73" style="top:65%; left:25%;" title="{{ text_contents.72|default:'Kangaroo pocket' }}">6</div>
-        <div class="hotspot" id="section-74" style="top:22%; left:88%;" title="{{ text_contents.73|default:'Embroidered branding' }}">7</div>
+        <div class="hotspot" id="section-98" style="top:20%; left:15%;" title="Heavyweight fabric">1</div>
+        <div class="hotspot" id="section-99" style="top:35%; left:75%;" title="Reinforced seams">2</div>
+        <div class="hotspot" id="section-100" style="top:10%; left:55%;" title="Structured hood">3</div>
+        <div class="hotspot" id="section-101" style="top:50%; left:30%;" title="Premium drawstrings">4</div>
+        <div class="hotspot" id="section-102" style="top:70%; left:60%;" title="Ribbed cuffs">5</div>
+        <div class="hotspot" id="section-103" style="top:65%; left:25%;" title="Kangaroo pocket">6</div>
+        <div class="hotspot" id="section-104" style="top:22%; left:88%;" title="Embroidered branding">7</div>
       </div>
-      <div style="display:flex; flex-wrap:wrap; gap:var(--space-xs); justify-content:center; margin-top:var(--space-sm); font-size:0.8rem; color:var(--color-text-secondary);" id="section-75">
-        <span>① {{ text_contents.74|default:"Heavyweight fabric" }}</span> <span>② {{ text_contents.75|default:"Reinforced seams" }}</span> <span>③ {{ text_contents.76|default:"Structured hood" }}</span>
-        <span>④ {{ text_contents.77|default:"Drawstrings" }}</span> <span>⑤ {{ text_contents.78|default:"Ribbed cuffs" }}</span> <span>⑥ {{ text_contents.79|default:"Pocket" }}</span> <span>⑦ {{ text_contents.80|default:"Embroidered logo" }}</span>
-      </div>
+      <div style="display:flex; flex-wrap:wrap; gap:var(--space-xs); justify-content:center; margin-top:var(--space-sm); font-size:0.8rem; color:var(--color-text-secondary);" id="section-105">{{ text_contents.86|default:"① Heavyweight fabric ② Reinforced seams ③ Structured hood ④ Drawstrings ⑤ Ribbed cuffs ⑥ Pocket ⑦ Embroidered logo" }}</div>
     </div>
   </section>
 
   <!-- GALLERY -->
-  <section class="section-padding editable-section" data-section="76" style="padding-top:0;">
+  <section class="section-padding" id="section-106" style="padding-top:0;">
     <div class="container">
-      <span class="eyebrow" id="section-77" style="display:block; text-align:center;">{{ text_contents.81|default:"Gallery" }}</span>
-      <h2 class="heading-lg" id="section-78" style="text-align:center; margin-bottom:var(--space-md);">{{ text_contents.82|default:"The Signature." }}</h2>
+      <span class="eyebrow" id="section-107" style="display:block; text-align:center;">{{ text_contents.87|default:"Gallery" }}</span>
+      <h2 class="heading-lg" id="section-108" style="text-align:center; margin-bottom:var(--space-md);">{{ text_contents.88|default:"The Signature." }}</h2>
       <div class="gallery-grid" id="galleryGrid">
-        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=600&h=400&fit=crop&crop=center&auto=format" alt="Front" data-full="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=1200&fit=crop&crop=center&auto=format" loading="lazy" /></div>
-        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&h=400&fit=crop&crop=center&auto=format" alt="Back" data-full="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=800&fit=crop&crop=center&auto=format" loading="lazy" /></div>
-        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400&h=400&fit=crop&crop=center&auto=format" alt="Fabric" data-full="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800&fit=crop&crop=center&auto=format" loading="lazy" /></div>
-        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1576871337632-b9aef4c17ab9?w=400&h=400&fit=crop&crop=center&auto=format" alt="Hood" data-full="https://images.unsplash.com/photo-1576871337632-b9aef4c17ab9?w=800&fit=crop&crop=center&auto=format" loading="lazy" /></div>
-        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1618354691551-44de113f0164?w=400&h=400&fit=crop&crop=center&auto=format" alt="Sleeve" data-full="https://images.unsplash.com/photo-1618354691551-44de113f0164?w=800&fit=crop&crop=center&auto=format" loading="lazy" /></div>
-        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400&h=400&fit=crop&crop=center&auto=format" alt="Lifestyle" data-full="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800&fit=crop&crop=center&auto=format" loading="lazy" /></div>
+        <div class="gallery-item" id="section-109"><img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=600&h=400&fit=crop&crop=center&auto=format" alt="Front" data-full="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=1200&fit=crop&crop=center&auto=format" loading="lazy" class="editable-image" data-image="10" /></div>
+        <div class="gallery-item" id="section-110"><img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&h=400&fit=crop&crop=center&auto=format" alt="Back" data-full="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=800&fit=crop&crop=center&auto=format" loading="lazy" class="editable-image" data-image="11" /></div>
+        <div class="gallery-item" id="section-111"><img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400&h=400&fit=crop&crop=center&auto=format" alt="Fabric" data-full="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800&fit=crop&crop=center&auto=format" loading="lazy" class="editable-image" data-image="12" /></div>
+        <div class="gallery-item" id="section-112"><img src="https://images.unsplash.com/photo-1576871337632-b9aef4c17ab9?w=400&h=400&fit=crop&crop=center&auto=format" alt="Hood" data-full="https://images.unsplash.com/photo-1576871337632-b9aef4c17ab9?w=800&fit=crop&crop=center&auto=format" loading="lazy" class="editable-image" data-image="13" /></div>
+        <div class="gallery-item" id="section-113"><img src="https://images.unsplash.com/photo-1618354691551-44de113f0164?w=400&h=400&fit=crop&crop=center&auto=format" alt="Sleeve" data-full="https://images.unsplash.com/photo-1618354691551-44de113f0164?w=800&fit=crop&crop=center&auto=format" loading="lazy" class="editable-image" data-image="14" /></div>
+        <div class="gallery-item" id="section-114"><img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400&h=400&fit=crop&crop=center&auto=format" alt="Lifestyle" data-full="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800&fit=crop&crop=center&auto=format" loading="lazy" class="editable-image" data-image="15" /></div>
       </div>
     </div>
   </section>
 
   <!-- UGC -->
-  <section class="section-padding editable-section" data-section="79" style="padding-top:0;">
+  <section class="section-padding" id="section-115" style="padding-top:0;">
     <div class="container">
-      <span class="eyebrow" id="section-80" style="display:block; text-align:center;">{{ text_contents.83|default:"Worn your way" }}</span>
-      <h2 class="heading-lg" id="section-81" style="text-align:center; margin-bottom:var(--space-sm);">{{ text_contents.84|default:"Real people, real hoodie." }}</h2>
-      <p style="text-align:center; color:var(--color-text-secondary); margin-bottom:var(--space-md);" id="section-82">{{ text_contents.85|default:"Unboxing • Lifestyle • Reviews" }}</p>
+      <span class="eyebrow" id="section-116" style="display:block; text-align:center;">{{ text_contents.89|default:"Worn your way" }}</span>
+      <h2 class="heading-lg" id="section-117" style="text-align:center; margin-bottom:var(--space-sm);">{{ text_contents.90|default:"Real people, real hoodie." }}</h2>
+      <p style="text-align:center; color:var(--color-text-secondary); margin-bottom:var(--space-md);" id="section-118">{{ text_contents.91|default:"Unboxing • Lifestyle • Reviews" }}</p>
       <div class="ugc-grid">
-        <div class="ugc-card" id="section-83">
-          <video muted loop playsinline poster="https://images.unsplash.com/photo-1618354691551-44de113f0164?w=400&h=600&fit=crop&crop=center&auto=format">
-            <source src="#" type="video/mp4" />
-          </video>
-          <div class="play-icon-ugc"><i class="fas fa-play-circle"></i></div>
-          <div class="subtitles" id="section-84">{{ text_contents.86|default:'"Perfect fit, amazing quality"' }}</div>
-          <div class="ugc-overlay"><span class="verified">✓ Verified</span> @citydweller</div>
+        <div class="ugc-card" id="section-119">
+          {% if image_customizations.16 %}
+            <img src="{{ image_customizations.16.image_url }}" alt="{{ image_customizations.16.alt_text|default:'UGC 1' }}" class="editable-image" data-image="16" />
+          {% else %}
+            <img src="https://images.unsplash.com/photo-1618354691551-44de113f0164?w=400&h=600&fit=crop&crop=center&auto=format" alt="UGC 1" class="editable-image" data-image="16" />
+          {% endif %}
+          <div class="subtitles" id="section-120">{{ text_contents.92|default:'"Perfect fit, amazing quality"' }}</div>
+          <div class="ugc-overlay">
+            <span class="verified" id="section-121">{{ text_contents.93|default:"✓ Verified" }}</span>
+            <span id="section-122">{{ text_contents.94|default:" @citydweller" }}</span>
+          </div>
         </div>
-        <div class="ugc-card" id="section-85">
-          <video muted loop playsinline poster="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400&h=600&fit=crop&crop=center&auto=format">
-            <source src="#" type="video/mp4" />
-          </video>
-          <div class="play-icon-ugc"><i class="fas fa-play-circle"></i></div>
-          <div class="subtitles" id="section-86">{{ text_contents.87|default:'"Best hoodie I\'ve owned"' }}</div>
-          <div class="ugc-overlay"><span class="verified">✓ Verified</span> @minimal.movement</div>
+        <div class="ugc-card" id="section-123">
+          {% if image_customizations.17 %}
+            <img src="{{ image_customizations.17.image_url }}" alt="{{ image_customizations.17.alt_text|default:'UGC 2' }}" class="editable-image" data-image="17" />
+          {% else %}
+            <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400&h=600&fit=crop&crop=center&auto=format" alt="UGC 2" class="editable-image" data-image="17" />
+          {% endif %}
+          <div class="subtitles" id="section-124">{{ text_contents.95|default:'"Best hoodie I\'ve owned"' }}</div>
+          <div class="ugc-overlay">
+            <span class="verified" id="section-125">{{ text_contents.96|default:"✓ Verified" }}</span>
+            <span id="section-126">{{ text_contents.97|default:" @minimal.movement" }}</span>
+          </div>
         </div>
-        <div class="ugc-card" id="section-87">
-          <video muted loop playsinline poster="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&h=600&fit=crop&crop=center&auto=format">
-            <source src="#" type="video/mp4" />
-          </video>
-          <div class="play-icon-ugc"><i class="fas fa-play-circle"></i></div>
-          <div class="subtitles" id="section-88">{{ text_contents.88|default:'"Unreal fabric quality"' }}</div>
-          <div class="ugc-overlay"><span class="verified">✓ Verified</span> @studio.mono</div>
+        <div class="ugc-card" id="section-127">
+          {% if image_customizations.18 %}
+            <img src="{{ image_customizations.18.image_url }}" alt="{{ image_customizations.18.alt_text|default:'UGC 3' }}" class="editable-image" data-image="18" />
+          {% else %}
+            <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&h=600&fit=crop&crop=center&auto=format" alt="UGC 3" class="editable-image" data-image="18" />
+          {% endif %}
+          <div class="subtitles" id="section-128">{{ text_contents.98|default:'"Unreal fabric quality"' }}</div>
+          <div class="ugc-overlay">
+            <span class="verified" id="section-129">{{ text_contents.99|default:"✓ Verified" }}</span>
+            <span id="section-130">{{ text_contents.100|default:" @studio.mono" }}</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- REVIEWS -->
-  <section id="reviews" class="section-padding editable-section" data-section="89" style="padding-top:0;">
+  <section id="reviews" class="section-padding" id="section-131" style="padding-top:0;">
     <div class="container">
+      {% with first_product=products.0 %}
       <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:var(--space-sm);">
         <div>
-          <span class="eyebrow" id="section-90">{{ text_contents.89|default:"Reviews" }}</span>
-          <h2 class="heading-lg" id="section-91">4.9 / 5 <span style="font-size:1rem; color:#d4a04a;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span></h2>
-          <p style="color:var(--color-text-secondary);" id="section-92">{{ text_contents.90|default:"2,400+ verified reviews" }}</p>
+          <span class="eyebrow" id="section-132">{{ text_contents.101|default:"Reviews" }}</span>
+          <h2 class="heading-lg" id="section-133">
+            {{ first_product.review_stats.average_rating|default:"4.9" }} / 5
+            <span style="font-size:1rem; color:#d4a04a;">
+              <i class="{{ icon_customizations.110|default:'fas fa-star' }}" data-icon="110"></i>
+              <i class="{{ icon_customizations.110|default:'fas fa-star' }}" data-icon="110"></i>
+              <i class="{{ icon_customizations.110|default:'fas fa-star' }}" data-icon="110"></i>
+              <i class="{{ icon_customizations.110|default:'fas fa-star' }}" data-icon="110"></i>
+              <i class="{{ icon_customizations.110|default:'fas fa-star' }}" data-icon="110"></i>
+            </span>
+          </h2>
+          <p style="color:var(--color-text-secondary);" id="section-134">{{ first_product.review_stats.total_reviews|default:"2,400+" }} {{ text_contents.103|default:"verified reviews" }}</p>
         </div>
-        <button class="secondary-action" id="writeReviewBtn" id="section-93"><i class="fas fa-pen" style="margin-right:6px;"></i> {{ text_contents.91|default:"Write a Review" }}</button>
+        <button class="secondary-action" id="writeReviewBtn" id="section-135" data-product-id="{{ first_product.id|default:0 }}" onclick="openReviewModal({{ first_product.id|default:0 }})"><i class="{{ icon_customizations.123|default:'fas fa-pen' }}" data-icon="123" style="margin-right:6px;"></i> {{ text_contents.104|default:"Write a Review" }}</button>
       </div>
       <div class="review-grid" id="reviewGrid">
-        <div class="review-card" id="section-94"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>{{ text_contents.92|default:'"Best hoodie I\'ve ever owned. The weight is perfect."' }}</p><div class="review-meta"><span><strong>Alex M.</strong> <span style="color:var(--color-success);">✓ Verified</span></span><span>2 days ago</span></div></div>
-        <div class="review-card" id="section-95"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>{{ text_contents.93|default:'"Incredible quality and the fit is exactly what I wanted."' }}</p><div class="review-meta"><span><strong>Jordan K.</strong> <span style="color:var(--color-success);">✓ Verified</span></span><span>1 week ago</span></div></div>
-        <div class="review-card" id="section-96"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><p>{{ text_contents.94|default:'"Almost perfect. The fabric is premium, will buy again."' }}</p><div class="review-meta"><span><strong>Sam R.</strong> <span style="color:var(--color-success);">✓ Verified</span></span><span>3 weeks ago</span></div></div>
+        {% for review in first_product.reviews.all|slice:":3" %}
+          <div class="review-card" id="section-{{ 135|add:forloop.counter }}">
+            <div class="stars">
+              {% for i in "12345"|make_list %}
+                {% if forloop.counter <= review.rating %}
+                  <i class="{{ icon_customizations.110|default:'fas fa-star' }}" data-icon="110"></i>
+                {% endif %}
+              {% endfor %}
+            </div>
+            <p id="section-{{ 136|add:forloop.counter }}">"{{ review.comment|truncatechars:140 }}"</p>
+            <div class="review-meta">
+              <span><strong id="section-{{ 137|add:forloop.counter }}">{{ review.user_name|default:"Anonymous" }}</strong> <span style="color:var(--color-success);" id="section-{{ 138|add:forloop.counter }}">{{ text_contents.107|default:"✓ Verified" }}</span></span>
+              <span id="section-{{ 139|add:forloop.counter }}">{{ review.created_at|date:"M d, Y"|default:"recently" }}</span>
+            </div>
+          </div>
+        {% empty %}
+          <div class="review-card" id="section-136">
+            <div class="stars"><i class="{{ icon_customizations.110|default:'fas fa-star' }}" data-icon="110"></i><i class="{{ icon_customizations.110|default:'fas fa-star' }}" data-icon="110"></i><i class="{{ icon_customizations.110|default:'fas fa-star' }}" data-icon="110"></i><i class="{{ icon_customizations.110|default:'fas fa-star' }}" data-icon="110"></i><i class="{{ icon_customizations.110|default:'fas fa-star' }}" data-icon="110"></i></div>
+            <p id="section-137">{{ text_contents.105|default:'"Best hoodie I\'ve ever owned. The weight is perfect."' }}</p>
+            <div class="review-meta">
+              <span><strong id="section-138">{{ text_contents.106|default:"Alex M." }}</strong> <span style="color:var(--color-success);" id="section-139">{{ text_contents.107|default:"✓ Verified" }}</span></span>
+              <span id="section-140">{{ text_contents.108|default:"2 days ago" }}</span>
+            </div>
+          </div>
+          <div class="review-card" id="section-141">
+            <div class="stars"><i class="{{ icon_customizations.110|default:'fas fa-star' }}" data-icon="110"></i><i class="{{ icon_customizations.110|default:'fas fa-star' }}" data-icon="110"></i><i class="{{ icon_customizations.110|default:'fas fa-star' }}" data-icon="110"></i><i class="{{ icon_customizations.110|default:'fas fa-star' }}" data-icon="110"></i><i class="{{ icon_customizations.110|default:'fas fa-star' }}" data-icon="110"></i></div>
+            <p id="section-142">{{ text_contents.109|default:'"Incredible quality and the fit is exactly what I wanted."' }}</p>
+            <div class="review-meta">
+              <span><strong id="section-143">{{ text_contents.110|default:"Jordan K." }}</strong> <span style="color:var(--color-success);" id="section-144">{{ text_contents.111|default:"✓ Verified" }}</span></span>
+              <span id="section-145">{{ text_contents.112|default:"1 week ago" }}</span>
+            </div>
+          </div>
+          <div class="review-card" id="section-146">
+            <div class="stars"><i class="{{ icon_customizations.110|default:'fas fa-star' }}" data-icon="110"></i><i class="{{ icon_customizations.110|default:'fas fa-star' }}" data-icon="110"></i><i class="{{ icon_customizations.110|default:'fas fa-star' }}" data-icon="110"></i><i class="{{ icon_customizations.110|default:'fas fa-star' }}" data-icon="110"></i><i class="{{ icon_customizations.124|default:'fas fa-star-half-alt' }}" data-icon="124"></i></div>
+            <p id="section-147">{{ text_contents.113|default:'"Almost perfect. The fabric is premium, will buy again."' }}</p>
+            <div class="review-meta">
+              <span><strong id="section-148">{{ text_contents.114|default:"Sam R." }}</strong> <span style="color:var(--color-success);" id="section-149">{{ text_contents.115|default:"✓ Verified" }}</span></span>
+              <span id="section-150">{{ text_contents.116|default:"3 weeks ago" }}</span>
+            </div>
+          </div>
+        {% endfor %}
       </div>
+      {% endwith %}
     </div>
   </section>
 
   <!-- FAQ -->
-  <section id="faq" class="section-padding editable-section" data-section="97" style="padding-top:0;">
+  <section id="faq" class="section-padding" id="section-151" style="padding-top:0;">
     <div class="container">
-      <span class="eyebrow" id="section-98" style="display:block; text-align:center;">{{ text_contents.95|default:"FAQ" }}</span>
-      <h2 class="heading-lg" id="section-99" style="text-align:center; margin-bottom:var(--space-md);">{{ text_contents.96|default:"Questions? We've got answers." }}</h2>
+      <span class="eyebrow" id="section-152" style="display:block; text-align:center;">{{ text_contents.117|default:"FAQ" }}</span>
+      <h2 class="heading-lg" id="section-153" style="text-align:center; margin-bottom:var(--space-md);">{{ text_contents.118|default:"Questions? We've got answers." }}</h2>
       <div style="max-width:700px; margin:0 auto;">
-        <div class="faq-item" id="section-100"><div class="faq-question" data-target="faq1" id="section-101">{{ text_contents.97|default:"What size should I choose?" }} <i class="fas fa-chevron-down"></i></div><div class="faq-answer" id="faq1" id="section-102">{{ text_contents.98|default:"We recommend ordering your usual size. The hoodie has a refined oversized fit—size down for a slimmer look." }}</div></div>
-        <div class="faq-item" id="section-103"><div class="faq-question" data-target="faq2" id="section-104">{{ text_contents.99|default:"Is the hoodie oversized?" }} <i class="fas fa-chevron-down"></i></div><div class="faq-answer" id="faq2" id="section-105">{{ text_contents.100|default:"Yes, it's designed with a relaxed, structured oversized fit that still feels tailored." }}</div></div>
-        <div class="faq-item" id="section-106"><div class="faq-question" data-target="faq3" id="section-107">{{ text_contents.101|default:"What material is it made from?" }} <i class="fas fa-chevron-down"></i></div><div class="faq-answer" id="faq3" id="section-108">{{ text_contents.102|default:"Heavyweight 100% structured cotton blend, 450gsm for durability and comfort." }}</div></div>
-        <div class="faq-item" id="section-109"><div class="faq-question" data-target="faq4" id="section-110">{{ text_contents.103|default:"How should I wash it?" }} <i class="fas fa-chevron-down"></i></div><div class="faq-answer" id="faq4" id="section-111">{{ text_contents.104|default:"Machine wash cold inside out, hang dry to maintain structure and color." }}</div></div>
-        <div class="faq-item" id="section-112"><div class="faq-question" data-target="faq5" id="section-113">{{ text_contents.105|default:"How long does shipping take?" }} <i class="fas fa-chevron-down"></i></div><div class="faq-answer" id="faq5" id="section-114">{{ text_contents.106|default:"Standard shipping 3-5 business days. Express available at checkout." }}</div></div>
-        <div class="faq-item" id="section-115"><div class="faq-question" data-target="faq6" id="section-116">{{ text_contents.107|default:"What is your return policy?" }} <i class="fas fa-chevron-down"></i></div><div class="faq-answer" id="faq6" id="section-117">{{ text_contents.108|default:"30-day hassle-free returns on unworn items with tags." }}</div></div>
+        <div class="faq-item" id="section-154">
+          <div class="faq-question" data-target="faq1" id="section-155">{{ text_contents.119|default:"What size should I choose?" }} <i class="{{ icon_customizations.125|default:'fas fa-chevron-down' }}" data-icon="125"></i></div>
+          <div class="faq-answer" id="faq1" id="section-156">{{ text_contents.120|default:"We recommend ordering your usual size. The hoodie has a refined oversized fit—size down for a slimmer look." }}</div>
+        </div>
+        <div class="faq-item" id="section-157">
+          <div class="faq-question" data-target="faq2" id="section-158">{{ text_contents.121|default:"Is the hoodie oversized?" }} <i class="{{ icon_customizations.125|default:'fas fa-chevron-down' }}" data-icon="125"></i></div>
+          <div class="faq-answer" id="faq2" id="section-159">{{ text_contents.122|default:"Yes, it's designed with a relaxed, structured oversized fit that still feels tailored." }}</div>
+        </div>
+        <div class="faq-item" id="section-160">
+          <div class="faq-question" data-target="faq3" id="section-161">{{ text_contents.123|default:"What material is it made from?" }} <i class="{{ icon_customizations.125|default:'fas fa-chevron-down' }}" data-icon="125"></i></div>
+          <div class="faq-answer" id="faq3" id="section-162">{{ text_contents.124|default:"Heavyweight 100% structured cotton blend, 450gsm for durability and comfort." }}</div>
+        </div>
+        <div class="faq-item" id="section-163">
+          <div class="faq-question" data-target="faq4" id="section-164">{{ text_contents.125|default:"How should I wash it?" }} <i class="{{ icon_customizations.125|default:'fas fa-chevron-down' }}" data-icon="125"></i></div>
+          <div class="faq-answer" id="faq4" id="section-165">{{ text_contents.126|default:"Machine wash cold inside out, hang dry to maintain structure and color." }}</div>
+        </div>
+        <div class="faq-item" id="section-166">
+          <div class="faq-question" data-target="faq5" id="section-167">{{ text_contents.127|default:"How long does shipping take?" }} <i class="{{ icon_customizations.125|default:'fas fa-chevron-down' }}" data-icon="125"></i></div>
+          <div class="faq-answer" id="faq5" id="section-168">{{ text_contents.128|default:"Standard shipping 3-5 business days. Express available at checkout." }}</div>
+        </div>
+        <div class="faq-item" id="section-169">
+          <div class="faq-question" data-target="faq6" id="section-170">{{ text_contents.129|default:"What is your return policy?" }} <i class="{{ icon_customizations.125|default:'fas fa-chevron-down' }}" data-icon="125"></i></div>
+          <div class="faq-answer" id="faq6" id="section-171">{{ text_contents.130|default:"30-day hassle-free returns on unworn items with tags." }}</div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- FINAL CTA -->
-  <section class="section-padding editable-section" data-section="118" style="padding-top:0;">
+  <section class="section-padding" id="section-172" style="padding-top:0;">
     <div class="container">
-      <div class="final-cta" id="section-119">
-        <h2 class="heading-lg" id="section-120">{{ text_contents.109|default:"YOUR EVERYDAY, UPGRADED." }}</h2>
-        <p style="font-size:1.2rem; opacity:0.8; margin:var(--space-xs) 0;" id="section-121">{{ text_contents.110|default:"One hoodie. Built properly." }}</p>
-        <a href="#product-selection" class="primary-action" id="section-122"><i class="fas fa-bolt"></i> {{ text_contents.111|default:"Shop Now" }}</a>
+      <div class="final-cta" id="section-173">
+        <h2 class="heading-lg" id="section-174">{{ text_contents.131|default:"YOUR EVERYDAY, UPGRADED." }}</h2>
+        <p style="font-size:1.2rem; opacity:0.8; margin:var(--space-xs) 0;" id="section-175">{{ text_contents.132|default:"One hoodie. Built properly." }}</p>
+        <a href="#product-selection" class="primary-action" id="section-176"><i class="{{ icon_customizations.125|default:'fas fa-bolt' }}" data-icon="125"></i> {{ text_contents.133|default:"Shop Now" }}</a>
       </div>
     </div>
   </section>
 
-  <!-- Component Drop Zone - Before Contact -->
-  {% for component in components %}
-    {% if component.drop_zone == '3' %}
-      <section class="dynamic-component" data-instance-id="{{ component.instance_id }}">
-        {{ component.html_content|safe }}
-      </section>
-    {% endif %}
-  {% endfor %}
-
-  <!-- CONTACT FORM -->
-  <section class="contact-section editable-section" id="contact" data-section="123">
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact" id="section-177">
     <div class="container">
       <div class="contact-grid">
         <div class="contact-info">
-          <span class="eyebrow" id="section-124">{{ text_contents.112|default:"Get in touch" }}</span>
-          <h2 class="heading-lg" id="section-125">{{ text_contents.113|default:"We'd love to hear from you." }}</h2>
-          <p class="body-large" id="section-126" style="max-width:400px;">{{ text_contents.114|default:"Have questions about sizing, shipping, or just want to say hello? Reach out anytime." }}</p>
-          <div class="contact-detail" id="section-127">
-            <i class="fas fa-envelope"></i>
-            <span>{{ text_contents.115|default:"hello@north01.com" }}</span>
+          <span class="eyebrow" id="section-178">{{ text_contents.134|default:"Get in touch" }}</span>
+          <h2 class="heading-lg" id="section-179">{{ text_contents.135|default:"We'd love to hear from you." }}</h2>
+          <p class="body-large" id="section-180" style="max-width:400px;">{{ text_contents.136|default:"Have questions about sizing, shipping, or just want to say hello? Reach out anytime." }}</p>
+          <div class="contact-detail" id="section-181">
+            <i class="{{ icon_customizations.126|default:'fas fa-envelope' }}" data-icon="126"></i>
+            <span>{{ text_contents.137|default:"hello@north01.com" }}</span>
           </div>
-          <div class="contact-detail" id="section-128">
-            <i class="fas fa-phone"></i>
-            <span>{{ text_contents.116|default:"+1 (800) 555-0199" }}</span>
+          <div class="contact-detail" id="section-182">
+            <i class="{{ icon_customizations.127|default:'fas fa-phone' }}" data-icon="127"></i>
+            <span>{{ text_contents.138|default:"+1 (800) 555‑0199" }}</span>
           </div>
-          <div class="contact-detail" id="section-129">
-            <i class="fas fa-map-marker-alt"></i>
-            <span>{{ text_contents.117|default:"New York, NY" }}</span>
+          <div class="contact-detail" id="section-183">
+            <i class="{{ icon_customizations.128|default:'fas fa-map-marker-alt' }}" data-icon="128"></i>
+            <span>{{ text_contents.139|default:"New York, NY" }}</span>
           </div>
           <div style="display:flex; gap:var(--space-sm); margin-top:var(--space-xs); font-size:1.4rem; color:var(--color-text-secondary);">
-            {% if page.social_media.all %}
-              {% for social in page.social_media.all %}
-                {% if social.is_active %}
-                  <a href="{{ social.get_url }}" target="_blank" data-icon="{{ forloop.counter|add:100 }}">
-                    <i class="{{ social.get_icon }}"></i>
-                  </a>
-                {% endif %}
-              {% endfor %}
-            {% else %}
-              <a href="#" data-icon="102"><i class="fab fa-instagram"></i></a>
-              <a href="#" data-icon="103"><i class="fab fa-tiktok"></i></a>
-              <a href="#" data-icon="104"><i class="fab fa-x-twitter"></i></a>
-            {% endif %}
+            <a href="#" aria-label="Instagram" data-icon="129"><i class="{{ icon_customizations.129|default:'fab fa-instagram' }}" data-icon="129"></i></a>
+            <a href="#" aria-label="TikTok" data-icon="130"><i class="{{ icon_customizations.130|default:'fab fa-tiktok' }}" data-icon="130"></i></a>
+            <a href="#" aria-label="X" data-icon="131"><i class="{{ icon_customizations.131|default:'fab fa-x-twitter' }}" data-icon="131"></i></a>
           </div>
         </div>
 
-        <div class="contact-form-wrapper" id="section-130">
+        <div class="contact-form-wrapper" id="section-184">
           <form id="contactForm" novalidate>
             {% csrf_token %}
             <div class="form-row">
               <div class="form-group">
-                <label for="contactName" id="section-131">{{ text_contents.118|default:"Full Name" }}</label>
-                <input type="text" id="contactName" id="section-132" placeholder="{{ text_contents.119|default:'Your name' }}" required />
+                <label for="contactName" id="section-185">{{ text_contents.140|default:"Full Name" }}</label>
+                <input type="text" id="contactName" placeholder="Your name" required />
               </div>
               <div class="form-group">
-                <label for="contactEmail" id="section-133">{{ text_contents.120|default:"Email Address" }}</label>
-                <input type="email" id="contactEmail" id="section-134" placeholder="{{ text_contents.121|default:'you@example.com' }}" required />
+                <label for="contactEmail" id="section-186">{{ text_contents.141|default:"Email Address" }}</label>
+                <input type="email" id="contactEmail" placeholder="you@example.com" required />
               </div>
             </div>
             <div class="form-group">
-              <label for="contactSubject" id="section-135">{{ text_contents.122|default:"Subject" }}</label>
-              <input type="text" id="contactSubject" id="section-136" placeholder="{{ text_contents.123|default:'What\'s this about?' }}" required />
+              <label for="contactSubject" id="section-187">{{ text_contents.142|default:"Subject" }}</label>
+              <input type="text" id="contactSubject" placeholder="What's this about?" required />
             </div>
             <div class="form-group">
-              <label for="contactMessage" id="section-137">{{ text_contents.124|default:"Message" }}</label>
-              <textarea id="contactMessage" id="section-138" placeholder="{{ text_contents.125|default:'Tell us everything...' }}" required></textarea>
+              <label for="contactMessage" id="section-188">{{ text_contents.143|default:"Message" }}</label>
+              <textarea id="contactMessage" placeholder="Tell us everything..." required></textarea>
             </div>
-            <button type="submit" class="submit-action" id="section-139">
-              <i class="fas fa-paper-plane"></i> {{ text_contents.126|default:"Send Message" }}
+            <button type="submit" class="submit-action" id="section-189">
+              <i class="{{ icon_customizations.132|default:'fas fa-paper-plane' }}" data-icon="132"></i> {{ text_contents.144|default:"Send Message" }}
             </button>
-            <div id="formSuccess" class="form-success">
-              <i class="fas fa-check-circle" style="margin-right:8px;"></i> {{ text_contents.127|default:"Thanks! We'll get back to you within 24 hours." }}
+            <div id="formSuccess" class="form-success" id="section-190">
+              <i class="{{ icon_customizations.133|default:'fas fa-check-circle' }}" data-icon="133" style="margin-right:8px;"></i> {{ text_contents.145|default:"Thanks! We'll get back to you within 24 hours." }}
             </div>
-            <div id="formError" class="form-error">
-              <i class="fas fa-exclamation-circle" style="margin-right:8px;"></i> {{ text_contents.128|default:"Please fill in all fields correctly." }}
+            <div id="formError" class="form-error" id="section-191">
+              <i class="{{ icon_customizations.134|default:'fas fa-exclamation-circle' }}" data-icon="134" style="margin-right:8px;"></i> {{ text_contents.146|default:"Please fill in all fields correctly." }}
             </div>
           </form>
         </div>
@@ -1833,427 +1758,884 @@
     </div>
   </section>
 
-  <!-- Component Drop Zone - Footer -->
-  {% for component in components %}
-    {% if component.drop_zone == '4' %}
-      <section class="dynamic-component" data-instance-id="{{ component.instance_id }}">
-        {{ component.html_content|safe }}
-      </section>
-    {% endif %}
-  {% endfor %}
-
   <!-- FOOTER -->
-  <footer class="site-footer editable-section" data-section="140">
+  <footer class="site-footer" id="section-192">
     <div class="container">
       <div class="footer-grid">
-        <div class="footer-col"><h4 id="section-141">{{ text_contents.129|default:"NORTH/01" }}</h4><p style="font-size:0.85rem; color:var(--color-text-secondary);" id="section-142">{{ text_contents.130|default:"Built for the city. Designed to outlast the moment." }}</p></div>
-        <div class="footer-col"><h4 id="section-143">{{ text_contents.131|default:"Navigate" }}</h4><a href="#hero" id="section-144">{{ text_contents.132|default:"Home" }}</a><a href="#product-selection" id="section-145">{{ text_contents.133|default:"Shop" }}</a><a href="#story" id="section-146">{{ text_contents.134|default:"Story" }}</a><a href="#details" id="section-147">{{ text_contents.135|default:"Details" }}</a><a href="#reviews" id="section-148">{{ text_contents.136|default:"Reviews" }}</a><a href="#faq" id="section-149">{{ text_contents.137|default:"FAQ" }}</a></div>
-        <div class="footer-col"><h4 id="section-150">{{ text_contents.138|default:"Customer Care" }}</h4><a href="#contact" id="section-151">{{ text_contents.139|default:"Contact" }}</a><a href="#" id="section-152">{{ text_contents.140|default:"Shipping" }}</a><a href="#" id="section-153">{{ text_contents.141|default:"Returns" }}</a><a href="#" id="section-154">{{ text_contents.142|default:"Size Guide" }}</a></div>
-        <div class="footer-col"><h4 id="section-155">{{ text_contents.143|default:"Connect" }}</h4><a href="#" id="section-156"><i class="fab fa-instagram" style="margin-right:6px;"></i> {{ text_contents.144|default:"Instagram" }}</a><a href="#" id="section-157"><i class="fab fa-tiktok" style="margin-right:6px;"></i> {{ text_contents.145|default:"TikTok" }}</a><a href="#" id="section-158"><i class="fab fa-x-twitter" style="margin-right:6px;"></i> {{ text_contents.146|default:"X" }}</a></div>
+        <div class="footer-col">
+          <h4 id="section-193">{{ page.brand_name|default:"NORTH/01" }}</h4>
+          <p style="font-size:0.85rem; color:var(--color-text-secondary);" id="section-194">{{ text_contents.148|default:"Built for the city. Designed to outlast the moment." }}</p>
+        </div>
+        <div class="footer-col">
+          <h4 id="section-195">{{ text_contents.149|default:"Navigate" }}</h4>
+          <a href="#hero" id="section-196">{{ text_contents.150|default:"Home" }}</a>
+          <a href="#product-selection" id="section-197">{{ text_contents.151|default:"Shop" }}</a>
+          <a href="#story" id="section-198">{{ text_contents.152|default:"Story" }}</a>
+          <a href="#details" id="section-199">{{ text_contents.153|default:"Details" }}</a>
+          <a href="#reviews" id="section-200">{{ text_contents.154|default:"Reviews" }}</a>
+          <a href="#faq" id="section-201">{{ text_contents.155|default:"FAQ" }}</a>
+        </div>
+        <div class="footer-col">
+          <h4 id="section-202">{{ text_contents.156|default:"Customer Care" }}</h4>
+          <a href="#contact" id="section-203">{{ text_contents.157|default:"Contact" }}</a>
+          <a href="#" id="section-204">{{ text_contents.158|default:"Shipping" }}</a>
+          <a href="#" id="section-205">{{ text_contents.159|default:"Returns" }}</a>
+          <a href="#" id="section-206">{{ text_contents.160|default:"Size Guide" }}</a>
+        </div>
+        <div class="footer-col">
+          <h4 id="section-207">{{ text_contents.161|default:"Connect" }}</h4>
+          <a href="#" id="section-208"><i class="{{ icon_customizations.135|default:'fab fa-instagram' }}" data-icon="135" style="margin-right:6px;"></i> {{ text_contents.162|default:"Instagram" }}</a>
+          <a href="#" id="section-209"><i class="{{ icon_customizations.136|default:'fab fa-tiktok' }}" data-icon="136" style="margin-right:6px;"></i> {{ text_contents.163|default:"TikTok" }}</a>
+          <a href="#" id="section-210"><i class="{{ icon_customizations.137|default:'fab fa-x-twitter' }}" data-icon="137" style="margin-right:6px;"></i> {{ text_contents.164|default:"X" }}</a>
+        </div>
       </div>
-      <div style="text-align:center; margin-top:var(--space-lg); font-size:0.8rem; color:var(--color-text-secondary); border-top:1px solid var(--color-border-subtle); padding-top:var(--space-md);" id="section-159">&copy; 2025 NORTH/01. {{ text_contents.147|default:"All rights reserved. Privacy &bull; Terms" }}</div>
+      <div style="text-align:center; margin-top:var(--space-lg); font-size:0.8rem; color:var(--color-text-secondary); border-top:1px solid var(--color-border-subtle); padding-top:var(--space-md);" id="section-211">&copy; 2025 {{ page.brand_name|default:"NORTH/01" }}. {{ text_contents.165|default:"All rights reserved. Privacy • Terms" }}</div>
     </div>
   </footer>
 
   <!-- STICKY BAR -->
   <div id="stickyBar" class="sticky-purchase">
     <div class="sticky-info">
-      <strong id="section-160">{{ text_contents.148|default:"NORTH/01 Signature Hoodie" }}</strong>
-      <span style="color:var(--color-text-secondary);" id="stickyPrice" id="section-161">$89</span>
-      <span id="stickySize" id="section-162">M</span>
+      <strong id="section-212">{{ text_contents.166|default:"NORTH/01 Signature Hoodie" }}</strong>
+      <span style="color:var(--color-text-secondary);" id="stickyPrice" id="section-213">
+        {{ page.currency_symbol|default:'$' }}{% if products.0.variants.first %}{{ products.0.variants.first.price|floatformat:0 }}{% elif products.0.price %}{{ products.0.price|floatformat:0 }}{% else %}89{% endif %}
+      </span>
+      <span id="stickySize" id="section-214">—</span>
       <span id="stickyColor" style="display:inline-block; width:16px; height:16px; border-radius:50%; background:#1e1e1e; border:1px solid var(--color-border-subtle);"></span>
     </div>
     <div class="sticky-actions">
-      <button id="stickyAddToCart" class="sticky-btn-cart" id="section-163"><i class="fas fa-shopping-bag"></i> {{ text_contents.149|default:"Add" }}</button>
-      <button id="stickyBuyNow" class="sticky-btn-buy" id="section-164"><i class="fas fa-bolt"></i> {{ text_contents.150|default:"Buy" }}</button>
+      <button id="stickyAddToCart" class="sticky-btn-cart" id="section-215"><i class="{{ icon_customizations.138|default:'fas fa-shopping-bag' }}" data-icon="138"></i> {{ text_contents.169|default:"Add" }}</button>
+      <button id="stickyBuyNow" class="sticky-btn-buy" id="section-216"><i class="{{ icon_customizations.139|default:'fas fa-bolt' }}" data-icon="139"></i> {{ text_contents.170|default:"Buy" }}</button>
     </div>
   </div>
 
-  {% render_icon_script %}
-
-  <script src="{% static 'builder/js/cart-manager.js' %}"></script>
-
   <script>
-    (function() {
-      "use strict";
+    // ============================================================
+    // PRODUCT DATA — FROM BACKEND
+    // ============================================================
+    const productData = {
+      id: {{ products.0.id|default:0 }},
+      title: "{{ products.0.title|escapejs|default:'NORTH/01 Signature Hoodie' }}",
+      price: {{ products.0.price|default:89 }},
+      desc: "{{ products.0.description|striptags|escapejs|default:'A heavyweight essential engineered for comfort, structure and everyday movement.' }}",
+      main_image: "{% if products.0.main_image %}{{ products.0.main_image.url }}{% else %}https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800&h=800&fit=crop&crop=center&auto=format{% endif %}",
+      additional_images: [
+        {% for image in products.0.images.all %}
+          "{{ image.image.url }}"{% if not forloop.last %},{% endif %}
+        {% endfor %}
+      ],
+      variants: [
+        {% for variant in products.0.variants.all %}
+        {
+          id: {{ variant.id }},
+          options: {% if variant.options %}{{ variant.options|safe }}{% else %}{}{% endif %},
+          price: {{ variant.price|default:products.0.price }},
+          compare_price: {% if variant.compare_at_price %}{{ variant.compare_at_price }}{% else %}null{% endif %},
+          quantity: {{ variant.quantity|default:0 }},
+          sku: "{{ variant.sku|default:'' }}",
+          cj_vid: "{{ variant.cj_vid|default:'' }}",
+          image: "{% if variant.image %}{{ variant.image.url }}{% elif products.0.main_image %}{{ products.0.main_image.url }}{% else %}https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800&h=800&fit=crop&crop=center&auto=format{% endif %}",
+          color_hex: "{{ variant.color_hex|default:'#1e1e1e' }}"
+        }{% if not forloop.last %},{% endif %}
+        {% empty %}
+        {
+          id: 1,
+          options: {"Size": "M", "Color": "Midnight Black"},
+          price: 89.00,
+          compare_price: null,
+          quantity: 10,
+          sku: "",
+          cj_vid: "",
+          image: "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800&h=800&fit=crop&crop=center&auto=format",
+          color_hex: "#1e1e1e"
+        },
+        {
+          id: 2,
+          options: {"Size": "L", "Color": "Stone"},
+          price: 89.00,
+          compare_price: null,
+          quantity: 8,
+          sku: "",
+          cj_vid: "",
+          image: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=800&h=800&fit=crop&crop=center&auto=format",
+          color_hex: "#c6bdb2"
+        },
+        {
+          id: 3,
+          options: {"Size": "M", "Color": "Bone"},
+          price: 89.00,
+          compare_price: null,
+          quantity: 6,
+          sku: "",
+          cj_vid: "",
+          image: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=800&h=800&fit=crop&crop=center&auto=format",
+          color_hex: "#e8dfd3"
+        }
+        {% endfor %}
+      ],
+      tiers: [
+        {% if tiers %}
+          {% for tier in tiers %}
+          {
+            quantity: {{ tier.quantity }},
+            total_price: {{ tier.total_price|stringformat:'.2f' }},
+            price_per_unit: {{ tier.price_per_unit|stringformat:'.2f' }},
+            savings: {{ tier.savings|stringformat:'.2f' }},
+            is_default: {% if tier.is_default %}true{% else %}false{% endif %}
+          }{% if not forloop.last %},{% endif %}
+          {% endfor %}
+        {% else %}
+          { quantity: 1, total_price: 89.00, price_per_unit: 89.00, savings: 0, is_default: true },
+          { quantity: 2, total_price: 160.00, price_per_unit: 80.00, savings: 18.00, is_default: false },
+          { quantity: 3, total_price: 225.00, price_per_unit: 75.00, savings: 42.00, is_default: false }
+        {% endif %}
+      ]
+    };
 
-      // ----- DOM refs -----
-      const hamburger = document.getElementById('hamburgerBtn');
-      const mobileNavOverlay = document.getElementById('mobileNavOverlay');
-      const mobileNavDrawer = document.getElementById('mobileNavDrawer');
-      const closeMobileNav = document.getElementById('closeMobileNav');
-      const cartTrigger = document.getElementById('cartTrigger');
-      const cartOverlay = document.getElementById('cartOverlay');
-      const cartDrawer = document.getElementById('cartDrawer');
-      const closeCart = document.getElementById('closeCart');
-      const cartItems = document.getElementById('cartItems');
-      const cartFooter = document.getElementById('cartFooter');
-      const cartSubtotal = document.getElementById('cartSubtotal');
-      const cartTotal = document.getElementById('cartTotal');
-      const cartCount = document.getElementById('cartCount');
-      const mobileCartCount = document.getElementById('mobileCartCount');
-      const addToCartBtn = document.getElementById('addToCartBtn');
-      const buyNowBtn = document.getElementById('buyNowBtn');
-      const stickyAddToCart = document.getElementById('stickyAddToCart');
-      const stickyBuyNow = document.getElementById('stickyBuyNow');
-      const qtyDisplay = document.getElementById('qtyDisplay');
-      const qtyDec = document.getElementById('qtyDec');
-      const qtyInc = document.getElementById('qtyInc');
-      const sizeSelector = document.getElementById('sizeSelector');
-      const colorSelector = document.getElementById('colorSelector');
-      const stickySize = document.getElementById('stickySize');
-      const stickyColor = document.getElementById('stickyColor');
-      const stickyPrice = document.getElementById('stickyPrice');
-      const displayPrice = document.getElementById('displayPrice');
-      const mainImage = document.getElementById('mainProductImage');
-      const toast = document.getElementById('toast');
-      const viewer = document.getElementById('imageViewer');
-      const viewerImg = document.getElementById('viewerImage');
-      const closeViewer = document.getElementById('closeViewer');
-      const galleryItems = document.querySelectorAll('.gallery-item img');
-      const faqQuestions = document.querySelectorAll('.faq-question');
-      const reviewGrid = document.getElementById('reviewGrid');
-      const writeReviewBtn = document.getElementById('writeReviewBtn');
-      const heroVideoTrigger = document.getElementById('heroVideoTrigger');
-      const heroVideoModal = document.getElementById('heroVideoModal');
-      const closeHeroVideo = document.getElementById('closeHeroVideo');
-      const heroWatchFilmBtn = document.getElementById('heroWatchFilmBtn');
-      const heroVideoIframe = document.getElementById('heroVideoIframe');
-      const thumbnailStrip = document.getElementById('thumbnailStrip');
-      const bundleSelector = document.getElementById('bundleSelector');
-      const sizeGuideBtn = document.getElementById('sizeGuideBtn');
+    // ============================================================
+    // BUILD COLOR MAP FROM VARIANTS
+    // ============================================================
+    const colorMap = {};
+    if (productData.variants.length) {
+      productData.variants.forEach(function(v) {
+        var key = (v.options && (v.options.Color || v.options.color || v.options.colour)) || 'Default';
+        if (!colorMap[key]) {
+          colorMap[key] = { hex: v.color_hex, image: v.image };
+        }
+      });
+    }
+    if (Object.keys(colorMap).length === 0) {
+      colorMap['Midnight Black'] = { hex: '#1e1e1e', image: productData.main_image };
+    }
 
-      // Contact form
-      const contactForm = document.getElementById('contactForm');
-      const formSuccess = document.getElementById('formSuccess');
-      const formError = document.getElementById('formError');
+    // ============================================================
+    // STATE
+    // ============================================================
+    let cart = [];
+    let quantity = 1;
+    let selectedSize = null;
+    let selectedColor = null;
+    let selectedBundle = 1;
+    let tierPerUnit = productData.price;
+    let variantSelections = {};
 
-      // ----- state -----
-      let cart = [];
-      let quantity = 1;
-      let selectedSize = 'M';
-      let selectedColor = 'Midnight Black';
-      let selectedBundle = 1;
-      let bundlePrice = 89;
-      const colorMap = {
-        'Midnight Black': { hex: '#1e1e1e', image: 'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800&h=800&fit=crop&crop=center&auto=format' },
-        'Stone': { hex: '#c6bdb2', image: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=800&h=800&fit=crop&crop=center&auto=format' },
-        'Bone': { hex: '#e8dfd3', image: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=800&h=800&fit=crop&crop=center&auto=format' }
+    // ============================================================
+    // DOM REFS
+    // ============================================================
+    const $ = function(id) { return document.getElementById(id); };
+    const hamburger = $('hamburgerBtn');
+    const mobileNavOverlay = $('mobileNavOverlay');
+    const mobileNavDrawer = $('mobileNavDrawer');
+    const closeMobileNav = $('closeMobileNav');
+    const cartTrigger = $('cartTrigger');
+    const cartOverlay = $('cartOverlay');
+    const cartDrawer = $('cartDrawer');
+    const closeCart = $('closeCart');
+    const cartItems = $('cartItems');
+    const cartFooter = $('cartFooter');
+    const cartSubtotal = $('cartSubtotal');
+    const cartTotal = $('cartTotal');
+    const cartCount = $('cartCount');
+    const mobileCartCount = $('mobileCartCount');
+    const addToCartBtn = $('addToCartBtn');
+    const buyNowBtn = $('buyNowBtn');
+    const stickyAddToCart = $('stickyAddToCart');
+    const stickyBuyNow = $('stickyBuyNow');
+    const qtyDisplay = $('qtyDisplay');
+    const qtyDec = $('qtyDec');
+    const qtyInc = $('qtyInc');
+    const stickySize = $('stickySize');
+    const stickyColor = $('stickyColor');
+    const stickyPrice = $('stickyPrice');
+    const displayPrice = $('displayPrice');
+    const mainImage = $('mainProductImage');
+    const toast = $('toast');
+    const viewer = $('imageViewer');
+    const viewerImg = $('viewerImage');
+    const closeViewer = $('closeViewer');
+    const galleryItems = document.querySelectorAll('.gallery-item img');
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    const reviewGrid = $('reviewGrid');
+    const writeReviewBtn = $('writeReviewBtn');
+    const heroVideoTrigger = $('heroVideoTrigger');
+    const heroWatchFilmBtn = $('heroWatchFilmBtn');
+    const thumbnailStrip = $('thumbnailStrip');
+    const bundleSelector = $('bundleSelector');
+    const sizeGuideBtn = $('sizeGuideBtn');
+    const contactForm = $('contactForm');
+    const formSuccess = $('formSuccess');
+    const formError = $('formError');
+    const variantContainer = $('variant-attributes-container');
+    const selectedOptionsDisplay = $('selected-options-display');
+    const selectedOptionsText = $('selected-options-text');
+    const variantError = $('variant-error');
+
+    // ============================================================
+    // HELPERS
+    // ============================================================
+    function getCurrencySymbol() {
+      return document.body.getAttribute('data-currency-symbol') || '$';
+    }
+    function getCSRFToken() {
+      var t = document.querySelector('[name=csrfmiddlewaretoken]');
+      return t ? t.value : '';
+    }
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str).replace(/[&<>"]/g, function(m) {
+        if (m === '&') return '&amp;';
+        if (m === '<') return '&lt;';
+        if (m === '>') return '&gt;';
+        if (m === '"') return '&quot;';
+        return m;
+      });
+    }
+
+    // ============================================================
+    // VARIANT SELECTOR — RENDERED BY JS FROM productData.variants
+    // ============================================================
+    function getVariantOptions(product) {
+      var optionNames = [];
+      var seen = {};
+      if (product.variants && product.variants.length > 0) {
+        for (var i = 0; i < product.variants.length; i++) {
+          var v = product.variants[i];
+          if (v.options) {
+            for (var key in v.options) {
+              if (!seen[key]) {
+                seen[key] = true;
+                optionNames.push(key);
+              }
+            }
+          }
+        }
+      }
+      return optionNames;
+    }
+
+    function getUniqueOptionValues(product, optionName) {
+      var values = [];
+      var seen = {};
+      if (product.variants) {
+        for (var i = 0; i < product.variants.length; i++) {
+          var v = product.variants[i];
+          if (v.options && v.options[optionName] && !seen[v.options[optionName]]) {
+            seen[v.options[optionName]] = true;
+            values.push(v.options[optionName]);
+          }
+        }
+      }
+      return values;
+    }
+
+    function findVariant(product, selectedOptions) {
+      if (!product.variants || product.variants.length === 0) return null;
+      for (var i = 0; i < product.variants.length; i++) {
+        var v = product.variants[i];
+        if (!v.options) continue;
+        var match = true;
+        for (var key in selectedOptions) {
+          if (v.options[key] !== selectedOptions[key]) {
+            match = false;
+            break;
+          }
+        }
+        if (match) return v;
+      }
+      return null;
+    }
+
+    function isColorAttribute(name) {
+      var lower = name.toLowerCase();
+      return lower.indexOf('color') !== -1 || lower.indexOf('colour') !== -1;
+    }
+
+    function renderVariantSelector(product) {
+      if (!variantContainer) return;
+      var optionNames = getVariantOptions(product);
+      if (optionNames.length === 0) {
+        variantContainer.innerHTML = '';
+        return;
+      }
+      if (!variantSelections[product.id]) variantSelections[product.id] = {};
+
+      var html = '';
+      for (var i = 0; i < optionNames.length; i++) {
+        var optionName = optionNames[i];
+        var values = getUniqueOptionValues(product, optionName);
+        var isColor = isColorAttribute(optionName);
+        var currentValue = variantSelections[product.id][optionName] || '';
+
+        html += '<div class="option-group" style="margin-bottom:12px;">';
+        html += '<label style="display:block; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em; font-weight:600; margin-bottom:6px; color:var(--color-text-secondary);">' + escapeHtml(optionName) + '</label>';
+
+        if (isColor) {
+          html += '<div class="color-swatches" data-attr="' + escapeHtml(optionName) + '">';
+          for (var j = 0; j < values.length; j++) {
+            var value = values[j];
+            var hex = '#6B6B76';
+            var img = null;
+            for (var k = 0; k < product.variants.length; k++) {
+              var v = product.variants[k];
+              if (v.options && v.options[optionName] === value) {
+                if (v.color_hex) hex = v.color_hex;
+                if (v.image) img = v.image;
+                break;
+              }
+            }
+            html += '<button type="button" class="' + (currentValue === value ? 'active' : '') + '" '
+                  + 'data-value="' + escapeHtml(value) + '" '
+                  + 'data-image="' + escapeHtml(img || '') + '" '
+                  + 'style="background:' + hex + ';" '
+                  + 'aria-label="' + escapeHtml(value) + '" '
+                  + 'onclick="selectVariantOption(\'' + escapeHtml(optionName) + '\', \'' + escapeHtml(value) + '\', this)"></button>';
+          }
+          html += '</div>';
+        } else {
+          html += '<div class="size-selector" data-attr="' + escapeHtml(optionName) + '">';
+          for (var j = 0; j < values.length; j++) {
+            var value = values[j];
+            html += '<button type="button" class="' + (currentValue === value ? 'active' : '') + '" '
+                  + 'data-value="' + escapeHtml(value) + '" '
+                  + 'onclick="selectVariantOption(\'' + escapeHtml(optionName) + '\', \'' + escapeHtml(value) + '\', this)">'
+                  + escapeHtml(value) + '</button>';
+          }
+          html += '</div>';
+        }
+        html += '</div>';
+      }
+      variantContainer.innerHTML = html;
+
+      // Auto-select first option combination if nothing selected yet
+      if (Object.keys(variantSelections[product.id]).length === 0) {
+        var firstSelections = {};
+        for (var i = 0; i < optionNames.length; i++) {
+          var vals = getUniqueOptionValues(product, optionNames[i]);
+          if (vals.length > 0) firstSelections[optionNames[i]] = vals[0];
+        }
+        variantSelections[product.id] = firstSelections;
+        updateVariantUI(product);
+        // Re-render to reflect the active state
+        renderVariantSelector(product);
+      }
+    }
+
+    function selectVariantOption(optionName, value, el) {
+      var product = productData;
+      if (!variantSelections[product.id]) variantSelections[product.id] = {};
+      variantSelections[product.id][optionName] = value;
+      updateVariantUI(product);
+      renderVariantSelector(product);
+    }
+    window.selectVariantOption = selectVariantOption;
+
+    function updateVariantUI(product) {
+      var selectedOptions = variantSelections[product.id] || {};
+      var variant = findVariant(product, selectedOptions);
+
+      // Update visible selected options
+      if (selectedOptionsDisplay && selectedOptionsText) {
+        var parts = [];
+        var optionNames = getVariantOptions(product);
+        for (var i = 0; i < optionNames.length; i++) {
+          var key = optionNames[i];
+          if (selectedOptions[key]) parts.push(key + ': ' + selectedOptions[key]);
+        }
+        if (parts.length > 0) {
+          selectedOptionsText.textContent = parts.join(' | ');
+          selectedOptionsDisplay.style.display = 'block';
+        } else {
+          selectedOptionsDisplay.style.display = 'none';
+        }
+      }
+
+      // Update size/color shortcuts for sticky bar
+      if (selectedOptions.Size) {
+        selectedSize = selectedOptions.Size;
+        if (stickySize) stickySize.textContent = selectedSize;
+      }
+      if (selectedOptions.Color || selectedOptions.color || selectedOptions.colour) {
+        selectedColor = selectedOptions.Color || selectedOptions.color || selectedOptions.colour;
+        if (stickyColor && colorMap[selectedColor]) {
+          stickyColor.style.background = colorMap[selectedColor].hex;
+        }
+      }
+
+      // Update price
+      if (variant && variant.price) {
+        tierPerUnit = variant.price;
+        if (displayPrice) displayPrice.textContent = getCurrencySymbol() + variant.price.toFixed(0);
+        if (stickyPrice) stickyPrice.textContent = getCurrencySymbol() + variant.price.toFixed(0);
+      }
+
+      // Update main image if variant has one
+      if (variant && variant.image && mainImage) {
+        mainImage.style.opacity = '0.6';
+        setTimeout(function() {
+          mainImage.src = variant.image;
+          mainImage.style.opacity = '1';
+        }, 150);
+      }
+    }
+
+    // ============================================================
+    // CART
+    // ============================================================
+    function updateCartUI() {
+      var totalItems = cart.reduce(function(s, i) { return s + i.qty; }, 0);
+      if (cartCount) cartCount.textContent = totalItems;
+      if (mobileCartCount) mobileCartCount.textContent = totalItems;
+
+      if (cart.length === 0) {
+        if (cartItems) cartItems.innerHTML = '<div class="cart-empty-state"><i class="fas fa-tshirt"></i><p>Your rotation starts here.</p><a href="#product-selection" style="text-decoration:underline; font-weight:500;">Shop the hoodie</a></div>';
+        if (cartFooter) cartFooter.style.display = 'none';
+        return;
+      }
+
+      var html = '';
+      var subtotal = 0;
+      cart.forEach(function(item, idx) {
+        var itemTotal = item.qty * item.price;
+        subtotal += itemTotal;
+        html += '<div class="cart-item">'
+              + '<img src="' + (item.image || productData.main_image) + '" alt="hoodie">'
+              + '<div class="cart-item-details">'
+              + '<h4>' + escapeHtml(productData.title) + '</h4>'
+              + '<p>' + escapeHtml(item.size || '') + ' · ' + escapeHtml(item.color || '') + '</p>'
+              + '<p>' + getCurrencySymbol() + itemTotal.toFixed(2) + '</p>'
+              + '</div>'
+              + '<button class="cart-item-remove" data-index="' + idx + '"><i class="fas fa-times"></i></button>'
+              + '</div>';
+      });
+      cartItems.innerHTML = html;
+      cartFooter.style.display = 'block';
+      cartSubtotal.textContent = getCurrencySymbol() + subtotal.toFixed(2);
+      cartTotal.textContent = getCurrencySymbol() + subtotal.toFixed(2);
+
+      document.querySelectorAll('.cart-item-remove').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var idx = parseInt(this.dataset.index);
+          cart.splice(idx, 1);
+          updateCartUI();
+          showToast('Removed from rotation.');
+        });
+      });
+    }
+
+    function showToast(msg) {
+      if (!toast) return;
+      toast.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(toast._timer);
+      toast._timer = setTimeout(function() { toast.classList.remove('show'); }, 2200);
+    }
+
+    // ============================================================
+    // ADD TO CART
+    // ============================================================
+    function addToCartAction(instantCheckout) {
+      var product = productData;
+      var selectedOptions = variantSelections[product.id] || {};
+      var optionNames = getVariantOptions(product);
+      var allSelected = true;
+      for (var i = 0; i < optionNames.length; i++) {
+        if (!selectedOptions[optionNames[i]]) { allSelected = false; break; }
+      }
+      if (optionNames.length > 0 && !allSelected) {
+        if (variantError) { variantError.style.display = 'block'; }
+        return;
+      }
+      if (variantError) variantError.style.display = 'none';
+
+      var variant = findVariant(product, selectedOptions);
+      var subdomain = document.body.getAttribute('data-page-subdomain') || '{{ page.subdomain }}';
+      var totalQty = quantity * selectedBundle;
+
+      var requestData = {
+        product_id: parseInt(product.id),
+        quantity: totalQty
       };
+      if (variant) {
+        requestData.variant_id = variant.id;
+        requestData.options = variant.options;
+      }
+      if (Object.keys(selectedOptions).length > 0) {
+        requestData.selected_options = selectedOptions;
+      }
 
-      // ----- helpers -----
-      function updateCartUI() {
-        const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
-        cartCount.textContent = totalItems;
-        mobileCartCount.textContent = totalItems;
-        if (cart.length === 0) {
-          cartItems.innerHTML = `<div class="cart-empty-state"><i class="fas fa-tshirt"></i><p>Your rotation starts here.</p><a href="#product-selection" style="text-decoration:underline; font-weight:500;">Shop the hoodie</a></div>`;
-          cartFooter.style.display = 'none';
-        } else {
-          let html = '';
-          let subtotal = 0;
-          cart.forEach((item, idx) => {
-            const itemTotal = item.qty * item.price;
-            subtotal += itemTotal;
-            html += `
-              <div class="cart-item">
-                <img src="${item.image || 'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=100&h=100&fit=crop&crop=center&auto=format'}" alt="hoodie">
-                <div class="cart-item-details">
-                  <h4>NORTH/01 Signature Hoodie</h4>
-                  <p>${item.size} · ${item.color}</p>
-                  <p>$${itemTotal.toFixed(2)}</p>
-                </div>
-                <button class="cart-item-remove" data-index="${idx}"><i class="fas fa-times"></i></button>
-              </div>
-            `;
+      fetch('/builder/cart/add/' + subdomain + '/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-CSRFToken': getCSRFToken() },
+        body: JSON.stringify(requestData)
+      })
+      .then(function(r) {
+        if (!r.ok) {
+          return r.json().then(function(e) { throw new Error(e.error || 'Server error'); });
+        }
+        return r.json();
+      })
+      .then(function(data) {
+        if (data.success) {
+          var price = variant ? variant.price : tierPerUnit;
+          var img = variant && variant.image ? variant.image : product.main_image;
+          var existing = cart.find(function(item) {
+            return item.size === selectedOptions.Size && item.color === (selectedOptions.Color || selectedOptions.color);
           });
-          cartItems.innerHTML = html;
-          cartFooter.style.display = 'block';
-          cartSubtotal.textContent = `$${subtotal.toFixed(2)}`;
-          cartTotal.textContent = `$${subtotal.toFixed(2)}`;
-          document.querySelectorAll('.cart-item-remove').forEach(btn => {
-            btn.addEventListener('click', function() {
-              const idx = parseInt(this.dataset.index);
-              cart.splice(idx, 1);
-              updateCartUI();
-              showToast('Removed from rotation.');
+          if (existing) {
+            existing.qty += totalQty;
+          } else {
+            cart.push({
+              size: selectedOptions.Size || '',
+              color: selectedOptions.Color || selectedOptions.color || '',
+              qty: totalQty,
+              price: price,
+              image: img
             });
-          });
-        }
-      }
-
-      function showToast(msg) {
-        toast.textContent = msg;
-        toast.classList.add('show');
-        clearTimeout(toast._timer);
-        toast._timer = setTimeout(() => toast.classList.remove('show'), 2200);
-      }
-
-      function getCurrentVariant() {
-        const perUnit = bundlePrice / selectedBundle;
-        return {
-          size: selectedSize,
-          color: selectedColor,
-          qty: quantity * selectedBundle,
-          price: perUnit,
-          image: colorMap[selectedColor]?.image || colorMap['Midnight Black'].image
-        };
-      }
-
-      function addToCartAction() {
-        const variant = getCurrentVariant();
-        const existing = cart.find(item => item.size === variant.size && item.color === variant.color);
-        if (existing) {
-          existing.qty += variant.qty;
+          }
+          updateCartUI();
+          showToast('Added to your rotation.');
+          if (cartTrigger) {
+            cartTrigger.style.transform = 'scale(1.2)';
+            setTimeout(function() { cartTrigger.style.transform = 'scale(1)'; }, 200);
+          }
+          if (instantCheckout) {
+            setTimeout(function() { executeCheckout(); }, 500);
+          } else {
+            cartOverlay.classList.add('open');
+            cartDrawer.classList.add('open');
+          }
         } else {
-          cart.push({ ...variant });
+          showToast(data.error || 'Error adding to cart');
         }
+      })
+      .catch(function(error) {
+        console.error('Cart error:', error);
+        // Optimistic fallback
+        var price = variant ? variant.price : tierPerUnit;
+        var img = variant && variant.image ? variant.image : product.main_image;
+        var existing = cart.find(function(item) {
+          return item.size === selectedOptions.Size && item.color === (selectedOptions.Color || selectedOptions.color);
+        });
+        if (existing) existing.qty += totalQty;
+        else cart.push({
+          size: selectedOptions.Size || '',
+          color: selectedOptions.Color || selectedOptions.color || '',
+          qty: totalQty,
+          price: price,
+          image: img
+        });
         updateCartUI();
         showToast('Added to your rotation.');
-        cartTrigger.style.transform = 'scale(1.2)';
-        setTimeout(() => cartTrigger.style.transform = 'scale(1)', 200);
         cartOverlay.classList.add('open');
         cartDrawer.classList.add('open');
-      }
+      });
+    }
 
-      function buyNowAction() {
-        addToCartAction();
-      }
+    function buyNowAction() {
+      addToCartAction(true);
+    }
 
-      function updatePrice() {
-        const perUnit = bundlePrice / selectedBundle;
-        const total = perUnit * quantity;
-        displayPrice.textContent = `$${total.toFixed(0)}`;
-        stickyPrice.textContent = `$${total.toFixed(0)}`;
+    function executeCheckout() {
+      if (cart.length === 0) {
+        showToast('Your rotation is empty.');
+        return;
       }
+      var subdomain = document.body.getAttribute('data-page-subdomain') || '{{ page.subdomain }}';
+      var items = [];
+      var subtotal = 0;
+      cart.forEach(function(item) {
+        var itemTotal = item.price * item.qty;
+        subtotal += itemTotal;
+        items.push({
+          id: productData.id,
+          title: productData.title,
+          description: '',
+          price: item.price,
+          quantity: item.qty,
+          total_price: itemTotal,
+          selected_color: item.color || '',
+          selected_size: item.size || '',
+          cj_vid: '',
+          variant_id: null
+        });
+      });
+      var shipping = subtotal > 0 ? 5.00 : 0;
+      var tax = subtotal * 0.08;
+      var total = subtotal + shipping + tax;
 
-      function updateColorImage(color) {
-        const colorData = colorMap[color];
-        if (colorData && mainImage) {
-          mainImage.style.opacity = '0.6';
-          setTimeout(() => {
-            mainImage.src = colorData.image;
-            mainImage.style.opacity = '1';
-          }, 150);
-        }
-        stickyColor.style.background = colorData?.hex || '#1e1e1e';
-      }
+      var cartData = {
+        items: items,
+        subtotal: parseFloat(subtotal.toFixed(2)),
+        shipping_amount: parseFloat(shipping.toFixed(2)),
+        tax_amount: parseFloat(tax.toFixed(2)),
+        total_amount: parseFloat(total.toFixed(2)),
+        is_buy_now: true
+      };
+      var product = cartData.items[0];
+      var urlParams = new URLSearchParams({
+        type: 'instant',
+        product: JSON.stringify({
+          title: product.title,
+          description: product.description || '',
+          id: product.id,
+          cj_vid: product.cj_vid || '',
+          price: product.price,
+          quantity: product.quantity,
+          selected_color: product.selected_color || '',
+          selected_size: product.selected_size || '',
+          total_price: product.total_price
+        })
+      });
+      urlParams.append('cart_data', JSON.stringify({
+        items: cartData.items,
+        subtotal: cartData.subtotal,
+        shipping_amount: cartData.shipping_amount,
+        tax_amount: cartData.tax_amount,
+        total_amount: cartData.total_amount
+      }));
+      window.location.href = '/payments/select-payment/' + subdomain + '/?' + urlParams.toString();
+    }
+    window.executeCheckout = executeCheckout;
 
-      // ----- bundle -----
-      bundleSelector.addEventListener('click', (e) => {
-        const btn = e.target.closest('button');
+    // ============================================================
+    // TIER SELECTION
+    // ============================================================
+    function selectTier(el) {
+      document.querySelectorAll('.bundle-selector button').forEach(function(c) { c.classList.remove('active'); });
+      el.classList.add('active');
+      selectedBundle = parseInt(el.dataset.bundle, 10) || 1;
+      var perunit = parseFloat(el.dataset.perunit || '0');
+      var total = parseFloat(el.dataset.price || '0');
+      tierPerUnit = perunit > 0 ? perunit : (total / selectedBundle);
+      updatePrice();
+    }
+    window.selectTier = selectTier;
+
+    function updatePrice() {
+      var total = tierPerUnit * quantity * selectedBundle;
+      if (displayPrice) displayPrice.textContent = getCurrencySymbol() + total.toFixed(0);
+      if (stickyPrice) stickyPrice.textContent = getCurrencySymbol() + total.toFixed(0);
+    }
+
+    // ============================================================
+    // BUNDLE SELECTOR EVENTS
+    // ============================================================
+    if (bundleSelector) {
+      bundleSelector.addEventListener('click', function(e) {
+        var btn = e.target.closest('button');
         if (!btn) return;
-        bundleSelector.querySelectorAll('button').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        selectedBundle = parseInt(btn.dataset.bundle);
-        bundlePrice = parseInt(btn.dataset.price);
-        updatePrice();
+        selectTier(btn);
       });
+    }
 
-      // ----- size -----
-      sizeSelector.addEventListener('click', (e) => {
-        const btn = e.target.closest('button');
-        if (!btn) return;
-        sizeSelector.querySelectorAll('button').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        selectedSize = btn.dataset.size;
-        stickySize.textContent = selectedSize;
-      });
+    // Quantity controls
+    if (qtyDec) qtyDec.addEventListener('click', function() {
+      if (quantity > 1) { quantity--; qtyDisplay.textContent = quantity; updatePrice(); }
+    });
+    if (qtyInc) qtyInc.addEventListener('click', function() {
+      quantity++; qtyDisplay.textContent = quantity; updatePrice();
+    });
 
-      // ----- color -----
-      colorSelector.addEventListener('click', (e) => {
-        const btn = e.target.closest('button');
-        if (!btn) return;
-        colorSelector.querySelectorAll('button').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        selectedColor = btn.dataset.color;
-        updateColorImage(selectedColor);
-      });
+    // Add/Buy
+    if (addToCartBtn) addToCartBtn.addEventListener('click', function(e) { e.preventDefault(); addToCartAction(false); });
+    if (buyNowBtn) buyNowBtn.addEventListener('click', function(e) { e.preventDefault(); addToCartAction(true); });
+    if (stickyAddToCart) stickyAddToCart.addEventListener('click', function() { addToCartAction(false); });
+    if (stickyBuyNow) stickyBuyNow.addEventListener('click', function() { addToCartAction(true); });
 
-      // ----- quantity -----
-      qtyDec.addEventListener('click', () => {
-        if (quantity > 1) { quantity--; qtyDisplay.textContent = quantity; updatePrice(); }
-      });
-      qtyInc.addEventListener('click', () => {
-        quantity++; qtyDisplay.textContent = quantity; updatePrice();
-      });
-
-      // ----- action buttons -----
-      addToCartBtn.addEventListener('click', addToCartAction);
-      buyNowBtn.addEventListener('click', buyNowAction);
-      stickyAddToCart.addEventListener('click', addToCartAction);
-      stickyBuyNow.addEventListener('click', buyNowAction);
-
-      // ----- thumbnails -----
-      thumbnailStrip.addEventListener('click', (e) => {
-        const img = e.target.closest('img');
+    // Thumbnails
+    if (thumbnailStrip) {
+      thumbnailStrip.addEventListener('click', function(e) {
+        var img = e.target.closest('img');
         if (!img) return;
-        thumbnailStrip.querySelectorAll('img').forEach(i => i.classList.remove('active'));
+        thumbnailStrip.querySelectorAll('img').forEach(function(i) { i.classList.remove('active'); });
         img.classList.add('active');
         if (img.dataset.main && mainImage) {
           mainImage.style.opacity = '0.6';
-          setTimeout(() => {
+          setTimeout(function() {
             mainImage.src = img.dataset.main;
             mainImage.style.opacity = '1';
           }, 150);
         }
       });
+    }
 
-      // ----- mobile nav -----
-      function openMobileNav() {
-        mobileNavOverlay.classList.add('open');
-        mobileNavDrawer.classList.add('open');
+    // Mobile nav
+    function openMobileNav() {
+      mobileNavOverlay.classList.add('open');
+      mobileNavDrawer.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMobileNavFn() {
+      mobileNavOverlay.classList.remove('open');
+      mobileNavDrawer.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    if (hamburger) hamburger.addEventListener('click', openMobileNav);
+    if (closeMobileNav) closeMobileNav.addEventListener('click', closeMobileNavFn);
+    if (mobileNavOverlay) mobileNavOverlay.addEventListener('click', closeMobileNavFn);
+    document.querySelectorAll('.mobile-nav-links a').forEach(function(link) {
+      link.addEventListener('click', closeMobileNavFn);
+    });
+
+    // Cart drawer
+    if (cartTrigger) cartTrigger.addEventListener('click', function() { cartOverlay.classList.add('open'); cartDrawer.classList.add('open'); });
+    if (closeCart) closeCart.addEventListener('click', function() { cartOverlay.classList.remove('open'); cartDrawer.classList.remove('open'); });
+    if (cartOverlay) cartOverlay.addEventListener('click', function() { cartOverlay.classList.remove('open'); cartDrawer.classList.remove('open'); });
+
+    // Sticky bar
+    var stickyVisible = false;
+    var productSection = document.getElementById('product-selection');
+    var productTop = productSection ? productSection.offsetTop - 100 : 800;
+    window.addEventListener('scroll', function() {
+      var scrollY = window.scrollY;
+      if (scrollY > productTop && !stickyVisible) {
+        document.getElementById('stickyBar').classList.add('visible');
+        stickyVisible = true;
+      } else if (scrollY <= productTop && stickyVisible) {
+        document.getElementById('stickyBar').classList.remove('visible');
+        stickyVisible = false;
+      }
+    });
+
+    // Hero film
+    function openHeroFilm() { showToast('Film will be available soon.'); }
+    if (heroVideoTrigger) heroVideoTrigger.addEventListener('click', openHeroFilm);
+    if (heroWatchFilmBtn) heroWatchFilmBtn.addEventListener('click', openHeroFilm);
+
+    // Gallery viewer
+    galleryItems.forEach(function(img) {
+      img.addEventListener('click', function() {
+        viewerImg.src = img.dataset.full || img.src;
+        viewer.classList.add('open');
         document.body.style.overflow = 'hidden';
-      }
-      function closeMobileNavFn() {
-        mobileNavOverlay.classList.remove('open');
-        mobileNavDrawer.classList.remove('open');
-        document.body.style.overflow = '';
-      }
-      hamburger.addEventListener('click', openMobileNav);
-      closeMobileNav.addEventListener('click', closeMobileNavFn);
-      mobileNavOverlay.addEventListener('click', closeMobileNavFn);
-      document.querySelectorAll('.mobile-nav-links a').forEach(link => {
-        link.addEventListener('click', closeMobileNavFn);
       });
+    });
+    if (closeViewer) closeViewer.addEventListener('click', function() {
+      viewer.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+    if (viewer) viewer.addEventListener('click', function(e) {
+      if (e.target === viewer) { viewer.classList.remove('open'); document.body.style.overflow = ''; }
+    });
 
-      // ----- cart drawer -----
-      cartTrigger.addEventListener('click', () => {
-        cartOverlay.classList.add('open');
-        cartDrawer.classList.add('open');
-      });
-      closeCart.addEventListener('click', () => {
-        cartOverlay.classList.remove('open');
-        cartDrawer.classList.remove('open');
-      });
-      cartOverlay.addEventListener('click', () => {
-        cartOverlay.classList.remove('open');
-        cartDrawer.classList.remove('open');
-      });
-
-      // ----- sticky bar -----
-      let stickyVisible = false;
-      const productSelectionTop = document.getElementById('product-selection').offsetTop - 100;
-      window.addEventListener('scroll', () => {
-        const scrollY = window.scrollY;
-        if (scrollY > productSelectionTop && !stickyVisible) {
-          document.getElementById('stickyBar').classList.add('visible');
-          stickyVisible = true;
-        } else if (scrollY <= productSelectionTop && stickyVisible) {
-          document.getElementById('stickyBar').classList.remove('visible');
-          stickyVisible = false;
+    // FAQ
+    faqQuestions.forEach(function(q) {
+      q.addEventListener('click', function() {
+        var targetId = this.dataset.target;
+        var answer = document.getElementById(targetId);
+        var isOpen = answer.classList.contains('open');
+        document.querySelectorAll('.faq-answer').forEach(function(a) { a.classList.remove('open'); });
+        document.querySelectorAll('.faq-question').forEach(function(q2) { q2.classList.remove('open'); });
+        if (!isOpen) {
+          answer.classList.add('open');
+          this.classList.add('open');
         }
       });
+    });
 
-      // ----- hero video -----
-      function openHeroVideo() {
-        heroVideoModal.classList.add('open');
-        document.body.style.overflow = 'hidden';
-        heroVideoIframe.src = 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&rel=0';
-      }
-      function closeHeroVideoFn() {
-        heroVideoModal.classList.remove('open');
-        document.body.style.overflow = '';
-        heroVideoIframe.src = 'https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&mute=1';
-      }
-      heroVideoTrigger.addEventListener('click', openHeroVideo);
-      heroWatchFilmBtn.addEventListener('click', openHeroVideo);
-      closeHeroVideo.addEventListener('click', closeHeroVideoFn);
-      heroVideoModal.addEventListener('click', (e) => {
-        if (e.target === heroVideoModal) closeHeroVideoFn();
-      });
+    // Review modal — REAL submission to backend
+    function openReviewModal(productId) {
+      var name = prompt('Your name:');
+      if (!name) return;
+      var rating = prompt('Rating (1-5):');
+      var reviewText = prompt('Your review:');
+      if (!reviewText) return;
+      var subdomain = document.body.getAttribute('data-page-subdomain') || '{{ page.subdomain }}';
+      var formData = new FormData();
+      formData.append('product_id', productId);
+      formData.append('user_name', name);
+      formData.append('rating', rating || '5');
+      formData.append('title', 'Customer Review');
+      formData.append('comment', reviewText);
+      fetch('/builder/review/submit/' + subdomain + '/', {
+        method: 'POST',
+        body: formData,
+        headers: { 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFToken': getCSRFToken() }
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (data.success) {
+          showToast('Review submitted!');
+          setTimeout(function() { location.reload(); }, 800);
+        } else {
+          alert('Error: ' + (data.error || 'Please try again.'));
+        }
+      })
+      .catch(function() { alert('Error submitting review.'); });
+    }
+    window.openReviewModal = openReviewModal;
 
-      // ----- gallery viewer -----
-      galleryItems.forEach(img => {
-        img.addEventListener('click', () => {
-          viewerImg.src = img.dataset.full || img.src;
-          viewer.classList.add('open');
-          document.body.style.overflow = 'hidden';
-        });
-      });
-      closeViewer.addEventListener('click', () => {
-        viewer.classList.remove('open');
-        document.body.style.overflow = '';
-      });
-      viewer.addEventListener('click', (e) => {
-        if (e.target === viewer) { viewer.classList.remove('open'); document.body.style.overflow = ''; }
-      });
+    // Size guide
+    if (sizeGuideBtn) sizeGuideBtn.addEventListener('click', function() {
+      alert('Size Guide: XS (34-36), S (36-38), M (38-40), L (40-42), XL (42-44), XXL (44-46). Model is 6\'1" wearing M.');
+    });
 
-      // ----- FAQ -----
-      faqQuestions.forEach(q => {
-        q.addEventListener('click', function() {
-          const targetId = this.dataset.target;
-          const answer = document.getElementById(targetId);
-          const isOpen = answer.classList.contains('open');
-          document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
-          document.querySelectorAll('.faq-question').forEach(q2 => q2.classList.remove('open'));
-          if (!isOpen) {
-            answer.classList.add('open');
-            this.classList.add('open');
-          }
-        });
-      });
-
-      // ----- write review -----
-      writeReviewBtn.addEventListener('click', () => {
-        const name = prompt('Your name:');
-        if (!name) return;
-        const rating = prompt('Rating (1-5):');
-        const reviewText = prompt('Your review:');
-        if (!reviewText) return;
-        const stars = '★'.repeat(Math.min(5, Math.max(1, parseInt(rating) || 5)));
-        const card = document.createElement('div');
-        card.className = 'review-card';
-        card.innerHTML = `
-          <div class="stars">${stars}</div>
-          <p>"${reviewText}"</p>
-          <div class="review-meta"><span><strong>${name}</strong> <span style="color:var(--color-success);">✓ Verified</span></span><span>Just now</span></div>
-        `;
-        reviewGrid.prepend(card);
-        card.style.opacity = '0';
-        requestAnimationFrame(() => { card.style.transition = 'opacity 0.5s'; card.style.opacity = '1'; });
-      });
-
-      // ----- size guide -----
-      sizeGuideBtn.addEventListener('click', () => {
-        alert('Size Guide: XS (34-36), S (36-38), M (38-40), L (40-42), XL (42-44), XXL (44-46). Model is 6\'1" wearing M.');
-      });
-
-      // ----- contact form -----
+    // Contact form
+    if (contactForm) {
       contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        const name = document.getElementById('contactName').value.trim();
-        const email = document.getElementById('contactEmail').value.trim();
-        const subject = document.getElementById('contactSubject').value.trim();
-        const message = document.getElementById('contactMessage').value.trim();
+        var name = document.getElementById('contactName').value.trim();
+        var email = document.getElementById('contactEmail').value.trim();
+        var subject = document.getElementById('contactSubject').value.trim();
+        var message = document.getElementById('contactMessage').value.trim();
 
-        // Simple validation
         if (!name || !email || !subject || !message || !email.includes('@')) {
           formError.classList.add('show');
           formSuccess.classList.remove('show');
-          setTimeout(() => formError.classList.remove('show'), 4000);
+          setTimeout(function() { formError.classList.remove('show'); }, 4000);
           return;
         }
 
-        // Simulate sending (in production, this would be a fetch/axios call)
-        formError.classList.remove('show');
-        formSuccess.classList.add('show');
+        var subdomain = document.body.getAttribute('data-page-subdomain') || '{{ page.subdomain }}';
+        var formData = new FormData();
+        formData.append('name', name);
+        formData.append('email', email);
+        formData.append('subject', subject);
+        formData.append('message', message);
+        formData.append('form_name', 'contact_form');
 
-        // Reset form
-        contactForm.reset();
-
-        setTimeout(() => {
+        fetch('/builder/submit-form/' + subdomain + '/', {
+          method: 'POST',
+          body: formData,
+          headers: { 'X-Requested-With': 'XMLHttpRequest' }
+        })
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          if (data.success) {
+            formError.classList.remove('show');
+            formSuccess.classList.add('show');
+            contactForm.reset();
+            setTimeout(function() { formSuccess.classList.remove('show'); }, 5000);
+          } else {
+            formError.classList.add('show');
+            formSuccess.classList.remove('show');
+            setTimeout(function() { formError.classList.remove('show'); }, 4000);
+          }
+        })
+        .catch(function() {
+          formError.classList.add('show');
           formSuccess.classList.remove('show');
-        }, 5000);
+          setTimeout(function() { formError.classList.remove('show'); }, 4000);
+        });
       });
+    }
 
-      // ----- init -----
-      updateCartUI();
-      updateColorImage('Midnight Black');
-      stickySize.textContent = 'M';
-      updatePrice();
+    // ============================================================
+    // INIT
+    // ============================================================
+    updateCartUI();
+    renderVariantSelector(productData);
+    var defaultTier = document.querySelector('.bundle-selector button.active');
+    if (defaultTier) {
+      selectedBundle = parseInt(defaultTier.dataset.bundle, 10) || 1;
+      var pu = parseFloat(defaultTier.dataset.perunit || '0');
+      var tp = parseFloat(defaultTier.dataset.price || '0');
+      tierPerUnit = pu > 0 ? pu : (tp / selectedBundle);
+    }
+    updatePrice();
 
-    })();
   </script>
+
+  {% render_icon_script %}
 </body>
 </html>

@@ -5,295 +5,752 @@
 
 {% block extra_css %}
 <style>
-    .classes-container {
-        max-width: 1200px;
-        margin: 0 auto;
+:root {
+    --n-0: #ffffff;
+    --n-50: #fafafa;
+    --n-100: #f4f4f5;
+    --n-200: #e4e4e7;
+    --n-300: #d4d4d8;
+    --n-400: #a1a1aa;
+    --n-500: #71717a;
+    --n-600: #52525b;
+    --n-700: #3f3f46;
+    --n-800: #27272a;
+    --n-900: #18181b;
+
+    --accent: var(--primary-color, #111827);
+    --accent-hover: #000000;
+
+    --success: #15803d;
+    --warning: #a16207;
+    --danger: #b91c1c;
+
+    --border: var(--n-200);
+    --border-strong: var(--n-300);
+    --text: var(--n-900);
+    --text-muted: var(--n-500);
+    --text-subtle: var(--n-400);
+
+    --radius-sm: 4px;
+    --radius: 6px;
+    --radius-lg: 10px;
+
+    --page-bg: #f6f7f9;
+    --surface-shadow: 0 1px 2px rgba(24, 24, 27, 0.04), 0 1px 1px rgba(24, 24, 27, 0.03);
+    --surface-shadow-hover: 0 4px 12px rgba(24, 24, 27, 0.06), 0 1px 2px rgba(24, 24, 27, 0.04);
+}
+
+/* ===== Shell — cooperates with sidebar.html ===== */
+.management-layout {
+    background: var(--page-bg);
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 13px;
+    color: var(--text);
+}
+
+.management-content { padding: 0; }
+
+.classes-wrap {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem 2rem 4rem;
+}
+
+/* ===== Context breadcrumb ===== */
+.catalog-context {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.context-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.15s;
+    font-weight: 500;
+}
+
+.context-back:hover { color: var(--text); }
+.context-back svg { transition: transform 0.15s; }
+.context-back:hover svg { transform: translateX(-2px); }
+.context-sep { color: var(--n-300); }
+.context-current { color: var(--text); font-weight: 500; }
+
+/* ===== Title row ===== */
+.catalog-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.catalog-title-block { min-width: 0; }
+
+.catalog-title {
+    font-size: 1.625rem;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    color: var(--text);
+    margin: 0 0 0.375rem 0;
+    line-height: 1.15;
+}
+
+.catalog-sub {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.catalog-actions {
+    display: flex;
+    gap: 0.375rem;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* ===== Buttons ===== */
+.btn {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    border-radius: var(--radius);
+    padding: 0.5rem 0.875rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    line-height: 1.25;
+    transition: background 0.15s, border-color 0.15s, color 0.15s, box-shadow 0.15s;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: inherit;
+}
+
+.btn-ghost {
+    background: var(--n-0);
+    border-color: var(--border);
+    color: var(--n-700);
+    box-shadow: 0 1px 2px rgba(24, 24, 27, 0.04);
+}
+
+.btn-ghost:hover {
+    background: var(--n-0);
+    border-color: var(--border-strong);
+    color: var(--text);
+    box-shadow: var(--surface-shadow);
+}
+
+.btn-accent {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+    box-shadow: 0 1px 2px rgba(24, 24, 27, 0.16);
+}
+
+.btn-accent:hover {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+    color: white;
+    box-shadow: 0 4px 12px rgba(24, 24, 27, 0.18);
+}
+
+.btn-danger-ghost {
+    background: transparent;
+    border-color: var(--border);
+    color: var(--n-700);
+}
+
+.btn-danger-ghost:hover {
+    background: #fef2f2;
+    border-color: var(--danger);
+    color: var(--danger);
+}
+
+/* ===== Classes panel ===== */
+.classes-panel {
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--surface-shadow);
+}
+
+.class-card {
+    border-bottom: 1px solid var(--border);
+    padding: 1.125rem;
+}
+
+.class-card:last-child { border-bottom: none; }
+
+/* Card head */
+.class-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 0.875rem;
+}
+
+.class-name-row {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.25rem;
+}
+
+.class-name {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+}
+
+.class-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3125rem;
+    padding: 0.1875rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 1.4;
+}
+
+.class-badge.default {
+    background: #f0fdf4;
+    color: var(--success);
+}
+
+.class-badge.default::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--success);
+}
+
+.class-description {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Two-column body */
+.class-body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    gap: 1rem;
+    align-items: start;
+}
+
+/* Left: meta */
+.class-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+    min-width: 0;
+}
+
+.class-stats {
+    display: flex;
+    gap: 0;
+    padding: 0.625rem 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.class-stats .col {
+    flex: 1;
+    padding: 0 0.5rem;
+    border-right: 1px solid var(--border);
+    min-width: 0;
+}
+
+.class-stats .col:first-child { padding-left: 0; }
+.class-stats .col:last-child { padding-right: 0; border-right: none; }
+
+.class-stat-value {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+    line-height: 1.2;
+    margin-bottom: 0.125rem;
+}
+
+.class-stat-label {
+    font-size: 0.625rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+}
+
+/* Feature chips */
+.class-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+}
+
+.chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3125rem;
+    padding: 0.1875rem 0.5rem;
+    background: var(--n-100);
+    border-radius: 4px;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    color: var(--n-700);
+    line-height: 1.4;
+}
+
+.chip::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--n-400);
+    flex-shrink: 0;
+}
+
+.chip.calc::before { background: var(--n-700); }
+.chip.shipping::before { background: var(--warning); }
+.chip.compound::before { background: var(--n-500); }
+
+/* Right: rates preview */
+.rates-preview {
+    background: var(--n-50);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.75rem 0.875rem;
+    min-width: 0;
+}
+
+.rates-preview-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.625rem;
+    gap: 0.5rem;
+}
+
+.rates-preview-title {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0;
+}
+
+.rates-preview-link {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    transition: color 0.15s;
+}
+
+.rates-preview-link:hover { color: var(--text); }
+
+.rate-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.75rem;
+    min-width: 0;
+}
+
+.rate-row:last-child { border-bottom: none; }
+
+.rate-row-name {
+    color: var(--n-700);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+}
+
+.rate-row-value {
+    font-weight: 600;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 0.75rem;
+}
+
+.rates-empty {
+    font-size: 0.6875rem;
+    color: var(--text-subtle);
+    font-style: italic;
+    padding: 0.375rem 0;
+    margin: 0;
+}
+
+/* Card actions */
+.class-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.375rem;
+    margin-top: 0.875rem;
+    padding-top: 0.875rem;
+    border-top: 1px solid var(--border);
+}
+
+.class-actions .btn {
+    font-size: 0.75rem;
+    padding: 0.4375rem 0.75rem;
+}
+
+/* ===== Empty state ===== */
+.empty-state {
+    text-align: center;
+    padding: 5rem 2rem;
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--surface-shadow);
+}
+
+.empty-state-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f4f4f5, #e9e9eb);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--n-500);
+    margin-bottom: 1.25rem;
+}
+
+.empty-state h5 {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0 0 0.4375rem 0;
+    letter-spacing: -0.015em;
+}
+
+.empty-state p {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin: 0 0 1.5rem 0;
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.55;
+}
+
+/* ===== Toast ===== */
+.toast-stack {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    pointer-events: none;
+}
+
+.toast {
+    background: var(--n-900);
+    color: white;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15), 0 2px 6px rgba(0,0,0,0.08);
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    max-width: 360px;
+    pointer-events: auto;
+    animation: toastIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.toast.error { background: var(--danger); }
+
+@keyframes toastIn {
+    from { opacity: 0; transform: translateY(-10px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+    .classes-wrap { padding: 1.5rem 1rem 3rem; }
+
+    .catalog-title-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
     }
 
-    .classes-header {
-        background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
-        color: white;
-        padding: 2rem;
-        border-radius: 20px;
-        margin-bottom: 2rem;
-        box-shadow: 0 10px 30px rgba(52, 152, 219, 0.2);
-    }
+    .catalog-actions { justify-content: flex-start; flex-wrap: wrap; }
 
-    .class-card {
-        background: white;
-        border-radius: 16px;
-        padding: 1.5rem;
-        margin-bottom: 1.5rem;
-        border: 2px solid #eef2f6;
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
+    .class-body {
+        grid-template-columns: 1fr;
     }
+}
 
-    .class-card:hover {
-        border-color: #3498db;
-        transform: translateY(-2px);
-        box-shadow: 0 10px 25px rgba(52, 152, 219, 0.1);
-    }
-
-    .class-card.default {
-        border-color: #2ecc71;
-        background: #f0fff4;
-    }
-
-    .default-badge {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        background: #2ecc71;
-        color: white;
-        padding: 0.3rem 1rem;
-        border-radius: 30px;
-        font-size: 0.8rem;
-        font-weight: 500;
-    }
-
-    .class-name {
-        font-size: 1.3rem;
-        font-weight: 600;
-        color: #2c3e50;
-        margin-bottom: 0.5rem;
-    }
-
-    .class-description {
-        color: #7f8c8d;
-        margin-bottom: 1rem;
-    }
-
-    .class-stats {
-        display: flex;
-        gap: 1.5rem;
-        margin-bottom: 1rem;
-    }
-
-    .stat-item {
-        text-align: center;
-    }
-
-    .stat-value {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: #2c3e50;
-        line-height: 1;
-    }
-
-    .stat-label {
-        font-size: 0.8rem;
-        color: #95a5a6;
-        text-transform: uppercase;
-    }
-
-    .rates-preview {
-        background: #f8fafc;
-        border-radius: 12px;
-        padding: 1rem;
-        margin-top: 1rem;
-    }
-
-    .rate-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0.5rem 0;
-        border-bottom: 1px dashed #e2e8f0;
-    }
-
-    .rate-item:last-child {
-        border-bottom: none;
-    }
-
-    .rate-badge {
-        background: #e8f5e9;
-        color: #2ecc71;
-        padding: 0.2rem 0.8rem;
-        border-radius: 30px;
-        font-size: 0.9rem;
-        font-weight: 600;
-    }
-
-    .btn-class {
-        padding: 0.6rem 1.2rem;
-        border-radius: 12px;
-        font-weight: 500;
-        transition: all 0.3s ease;
-        border: none;
-    }
-
-    .btn-class-primary {
-        background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
-        color: white;
-    }
-
-    .btn-class-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
-    }
-
-    .btn-class-outline {
-        background: transparent;
-        border: 2px solid #3498db;
-        color: #3498db;
-    }
-
-    .btn-class-outline:hover {
-        background: #3498db;
-        color: white;
-    }
-
-    .empty-state {
-        text-align: center;
-        padding: 4rem;
-        background: white;
-        border-radius: 20px;
-        border: 2px dashed #e2e8f0;
-    }
-
-    .empty-state i {
-        font-size: 4rem;
-        color: #cbd5e1;
-        margin-bottom: 1rem;
-    }
+@media (max-width: 640px) {
+    .catalog-title { font-size: 1.375rem; }
+}
 </style>
 {% endblock %}
 
 {% block content %}
-<div class="container py-4">
-    <div class="classes-container">
-        <!-- Header -->
-        <div class="classes-header d-flex justify-content-between align-items-center">
-            <div>
-                <h1 class="h3 mb-2">Tax Classes</h1>
-                <p class="mb-0 opacity-75">Manage tax classes and their rates for {{ page.brand_name }}</p>
-            </div>
-            <div>
-                <a href="{% url 'payments:tax_dashboard' page.subdomain %}" class="btn btn-light me-2">
-                    <i class="fas fa-arrow-left me-2"></i>Back
-                </a>
-                <a href="{% url 'payments:tax_class_create' page.subdomain %}" class="btn btn-light">
-                    <i class="fas fa-plus me-2"></i>New Class
-                </a>
-            </div>
-        </div>
 
-        <!-- Tax Classes List -->
-        {% for tax_class in tax_classes %}
-        <div class="class-card {% if tax_class.is_default %}default{% endif %}">
-            {% if tax_class.is_default %}
-            <span class="default-badge">
-                <i class="fas fa-star me-1"></i>Default
-            </span>
-            {% endif %}
-            
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <div class="class-name">{{ tax_class.name }}</div>
-                    <div class="class-description">{{ tax_class.description|default:"No description provided" }}</div>
-                    
-                    <div class="class-stats">
-                        <div class="stat-item">
-                            <div class="stat-value">{{ tax_class.rates_count }}</div>
-                            <div class="stat-label">Total Rates</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">{{ tax_class.active_rates_count }}</div>
-                            <div class="stat-label">Active</div>
-                        </div>
-                    </div>
+<div class="management-layout">
+    {% include 'builder/includes/sidebar.html' with active_menu='taxes' %}
 
-                    <div class="mt-2">
-                        <span class="badge bg-light text-dark me-2">
-                            <i class="fas fa-calculator me-1"></i>{{ tax_class.get_calculation_type_display }}
-                        </span>
-                        {% if tax_class.is_shipping_taxable %}
-                        <span class="badge bg-info">
-                            <i class="fas fa-truck me-1"></i>Shipping Taxable
-                        </span>
-                        {% endif %}
-                        {% if tax_class.is_compound %}
-                        <span class="badge bg-warning">
-                            <i class="fas fa-layer-group me-1"></i>Compound
-                        </span>
-                        {% endif %}
-                    </div>
+    <div class="management-content">
+        <div class="classes-wrap">
+
+            <div class="toast-stack" id="toastStack"></div>
+
+            <!-- Context -->
+            <div class="catalog-context">
+                <a href="{% url 'dashboard' %}" class="context-back">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    <span>Dashboard</span>
+                </a>
+                <span class="context-sep">/</span>
+                <a href="{% url 'payments:tax_dashboard' page.subdomain %}" class="context-back">
+                    <span>Tax</span>
+                </a>
+                <span class="context-sep">/</span>
+                <span class="context-current">Classes</span>
+            </div>
+
+            <!-- Title -->
+            <div class="catalog-title-row">
+                <div class="catalog-title-block">
+                    <h1 class="catalog-title">Tax classes</h1>
+                    <p class="catalog-sub">
+                        {{ tax_classes|length }} class{{ tax_classes|length|pluralize }} ·
+                        Group products by how they're taxed
+                    </p>
                 </div>
+                <div class="catalog-actions">
+                    <a href="{% url 'payments:tax_dashboard' page.subdomain %}" class="btn btn-ghost">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="{% url 'payments:tax_class_create' page.subdomain %}" class="btn btn-accent">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 5v14M5 12h14"/>
+                        </svg>
+                        <span>New class</span>
+                    </a>
+                </div>
+            </div>
 
-                <div class="col-md-6">
-                    <!-- Rates Preview -->
-                    <div class="rates-preview">
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                            <strong>Recent Rates</strong>
-                            <a href="{% url 'payments:tax_rates_list' page.subdomain %}?tax_class={{ tax_class.id }}" 
-                               class="text-primary small">View All</a>
+            <!-- Classes -->
+            {% if tax_classes %}
+
+            <div class="classes-panel">
+                {% for tax_class in tax_classes %}
+                <div class="class-card">
+
+                    <!-- Head -->
+                    <div class="class-head">
+                        <div style="min-width: 0;">
+                            <div class="class-name-row">
+                                <h3 class="class-name">{{ tax_class.name }}</h3>
+                                {% if tax_class.is_default %}
+                                <span class="class-badge default">Default</span>
+                                {% endif %}
+                            </div>
+                            <p class="class-description">
+                                {{ tax_class.description|default:"No description provided" }}
+                            </p>
                         </div>
-                        
-                        {% for rate in tax_class.rates.all|slice:":3" %}
-                        <div class="rate-item">
-                            <span>{{ rate.name }}</span>
-                            <span class="rate-badge">{{ rate.rate }}%</span>
+                    </div>
+
+                    <!-- Body: meta | rates -->
+                    <div class="class-body">
+
+                        <!-- Left: stats + chips -->
+                        <div class="class-meta">
+
+                            <div class="class-stats">
+                                <div class="col">
+                                    <div class="class-stat-value">{{ tax_class.rates_count }}</div>
+                                    <div class="class-stat-label">Rates</div>
+                                </div>
+                                <div class="col">
+                                    <div class="class-stat-value">{{ tax_class.active_rates_count }}</div>
+                                    <div class="class-stat-label">Active</div>
+                                </div>
+                            </div>
+
+                            <div class="class-chips">
+                                <span class="chip calc">
+                                    {{ tax_class.get_calculation_type_display }}
+                                </span>
+                                {% if tax_class.is_shipping_taxable %}
+                                <span class="chip shipping">Shipping taxable</span>
+                                {% endif %}
+                                {% if tax_class.is_compound %}
+                                <span class="chip compound">Compound</span>
+                                {% endif %}
+                            </div>
+
                         </div>
-                        {% empty %}
-                        <p class="text-muted small mb-0">No rates added yet</p>
-                        {% endfor %}
+
+                        <!-- Right: rates preview -->
+                        <div class="rates-preview">
+                            <div class="rates-preview-head">
+                                <span class="rates-preview-title">Recent rates</span>
+                                <a href="{% url 'payments:tax_rates_list' page.subdomain %}?tax_class={{ tax_class.id }}"
+                                   class="rates-preview-link">
+                                    <span>View all</span>
+                                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                                    </svg>
+                                </a>
+                            </div>
+
+                            {% for rate in tax_class.rates.all|slice:":3" %}
+                            <div class="rate-row">
+                                <span class="rate-row-name">{{ rate.name }}</span>
+                                <span class="rate-row-value">{{ rate.rate }}%</span>
+                            </div>
+                            {% empty %}
+                            <p class="rates-empty">No rates added yet</p>
+                            {% endfor %}
+                        </div>
+
                     </div>
 
                     <!-- Actions -->
-                    <div class="mt-3 d-flex gap-2 justify-content-end">
-                        <a href="{% url 'payments:tax_rate_create' page.subdomain %}?class_id={{ tax_class.id }}" 
-                           class="btn btn-sm btn-class-outline">
-                            <i class="fas fa-plus me-1"></i>Add Rate
+                    <div class="class-actions">
+                        <a href="{% url 'payments:tax_rate_create' page.subdomain %}?class_id={{ tax_class.id }}"
+                           class="btn btn-ghost">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 5v14M5 12h14"/>
+                            </svg>
+                            <span>Add rate</span>
                         </a>
-                        <a href="{% url 'payments:tax_class_edit' page.subdomain tax_class.id %}" 
-                           class="btn btn-sm btn-class-outline">
-                            <i class="fas fa-edit me-1"></i>Edit
+                        <a href="{% url 'payments:tax_class_edit' page.subdomain tax_class.id %}"
+                           class="btn btn-ghost">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
+                            </svg>
+                            <span>Edit</span>
                         </a>
                         {% if not tax_class.is_default %}
-                        <button class="btn btn-sm btn-class-outline text-danger" 
-                                onclick="deleteClass({{ tax_class.id }}, '{{ tax_class.name }}')">
-                            <i class="fas fa-trash"></i>
+                        <button class="btn btn-danger-ghost"
+                                onclick="deleteClass({{ tax_class.id }}, '{{ tax_class.name|escapejs }}')">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/>
+                            </svg>
+                            <span>Delete</span>
                         </button>
                         {% endif %}
                     </div>
+
                 </div>
+                {% endfor %}
             </div>
+
+            {% else %}
+
+            <div class="empty-state">
+                <div class="empty-state-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/>
+                        <path d="M4 6v12c0 1.1.9 2 2 2h14v-4"/>
+                        <path d="M18 12a2 2 0 0 0-2 2c0 1.1.9 2 2 2h4v-4z"/>
+                    </svg>
+                </div>
+                <h5>No tax classes yet</h5>
+                <p>Create your first tax class to start configuring rates for different product types.</p>
+                <a href="{% url 'payments:tax_class_create' page.subdomain %}" class="btn btn-accent">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 5v14M5 12h14"/>
+                    </svg>
+                    <span>Create tax class</span>
+                </a>
+            </div>
+
+            {% endif %}
+
         </div>
-        {% empty %}
-        <!-- Empty State -->
-        <div class="empty-state">
-            <i class="fas fa-tags"></i>
-            <h4>No Tax Classes Yet</h4>
-            <p class="text-muted mb-4">Create your first tax class to start configuring rates</p>
-            <a href="{% url 'payments:tax_class_create' page.subdomain %}" class="btn btn-class-primary">
-                <i class="fas fa-plus me-2"></i>Create Tax Class
-            </a>
-        </div>
-        {% endfor %}
     </div>
 </div>
 
 <script>
 function deleteClass(classId, className) {
-    if (confirm(`Are you sure you want to delete "${className}"? This action cannot be undone.`)) {
-        fetch(`/payments/tax/{{ page.subdomain }}/class/${classId}/delete/`, {
-            method: 'POST',
-            headers: {
-                'X-CSRFToken': '{{ csrf_token }}',
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                location.reload();
-            } else {
-                alert('Error: ' + data.error);
-            }
-        });
-    }
+    if (!confirm(`Are you sure you want to delete "${className}"? This action cannot be undone.`)) return;
+
+    fetch(`/payments/tax/{{ page.subdomain }}/class/${classId}/delete/`, {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': '{{ csrf_token }}',
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            location.reload();
+        } else {
+            toast('Error: ' + (data.error || 'Could not delete'), 'error');
+        }
+    })
+    .catch(() => toast('Network error', 'error'));
+}
+
+function toast(message, type = 'info') {
+    const stack = document.getElementById('toastStack');
+    if (!stack) return;
+
+    const el = document.createElement('div');
+    el.className = `toast ${type}`;
+    const icon = type === 'error'
+        ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>'
+        : '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+    el.innerHTML = `${icon}<span>${message}</span>`;
+    stack.appendChild(el);
+    setTimeout(() => {
+        el.style.transition = 'opacity 0.2s, transform 0.2s';
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(-8px)';
+        setTimeout(() => el.remove(), 200);
+    }, 3000);
 }
 </script>
+
 {% endblock %}

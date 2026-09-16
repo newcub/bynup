@@ -52,300 +52,828 @@
       },
       {
         "id": "9",
-        "text": "The Core Directive //",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "10",
         "text": "We reject delicate consumer jewelry standards. Every structural loop from {brand} honors cold chiseled obsidian, raw forged molten profiles, and unpolished earth compounds. Made for physical permanence.",
         "type": "paragraph",
         "customized": false
       },
       {
+        "id": "10",
+        "text": "Acquire The Artifact",
+        "type": "button",
+        "customized": false
+      },
+      {
         "id": "11",
-        "text": "Chamber Artifacts",
-        "type": "heading",
+        "text": "Read The Manifesto",
+        "type": "button",
         "customized": false
       },
       {
         "id": "12",
+        "text": "◆ Forged Ore Cuff",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "800",
+        "text": "✦ The Manifesto",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "801",
+        "text": "Forged fromfire& pressure.",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "802",
+        "text": "We spent four years developing a single artifact. Not a collection. Not a season. Just one piece of jewelry that could carry the weight of tectonic history on your wrist — forever.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "803",
+        "text": "The Forge",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "804",
+        "text": "Chapter One",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "805",
+        "text": "Where ore meetsorbit",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "806",
+        "text": "\"Every artifact carries the fingerprint of the tectonic pressure that shaped it.\"— Our Master Smith",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "807",
+        "text": "— Our Master Smith",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "808",
+        "text": "Our signature cuff begins as a raw iron ore block, hammered through 14 forge cycles until the crystalline structure aligns into something both brutal and precise. No casting. No plating. Just honest, heavy metal.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "809",
+        "text": "Hand-Forged",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "810",
+        "text": "14-Cycle Forge",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "811",
+        "text": "Solid Core",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "812",
+        "text": "Chapter Two",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "813",
+        "text": "Tested underrealpressure",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "814",
+        "text": "\"We loaded it, dropped it, and wore it for a year. It still carries zero visible drift.\"— Our Testing Team",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "815",
+        "text": "— Our Testing Team",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "816",
+        "text": "Every artifact survives six months of daily wear in our workshop. Gym sessions, salt water, thermal shock, and 200kg load-bearing stress tests. If it can be broken, our forging process has already prevented it.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "817",
+        "text": "Lab Tested",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "818",
+        "text": "Load Certified",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "819",
+        "text": "1-Year Field Test",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "820",
+        "text": "The Test Bay",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "821",
+        "text": "Lifetime Artifact",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "822",
+        "text": "Chapter Three",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "823",
+        "text": "Built to beinherited",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "824",
+        "text": "\"The best artifacts aren't purchased. They're passed down.\"— Our Founder",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "825",
+        "text": "— Our Founder",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "826",
+        "text": "Raw iron doesn't wear out. It patinas. Every year you wear it, the surface develops another layer of character, another story, another reason it will outlive every mass-produced chain you've ever owned. This is the artifact your lineage will fight over.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "827",
+        "text": "Lifetime Warranty",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "828",
+        "text": "Raw Materials",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "829",
+        "text": "Made with Fire",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "830",
+        "text": "✦ From The Collective",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "831",
+        "text": "Real wearers. Realweight.",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "832",
+        "text": "Five months. Zero drift.",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "833",
+        "text": "Heavier than I expected.",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "834",
+        "text": "Daily driver for 8 months.",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "835",
+        "text": "Tectonic. Literally.",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "840",
+        "text": "Chamber Artifact",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "841",
         "text": "[ Verified Cast Inventory ]",
         "type": "text",
         "customized": false
       },
       {
-        "id": "100",
-        "text": "Geological Profile A_01",
+        "id": "842",
+        "text": "The Only Artifact You Need",
         "type": "text",
         "customized": false
       },
       {
-        "id": "101",
+        "id": "843",
         "text": "Asymmetric Forged Molten Iron Cuff",
         "type": "heading",
         "customized": false
       },
       {
-        "id": "102",
+        "id": "844",
+        "text": "(247 verified wearers)",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "845",
         "text": "$340.00",
         "type": "text",
         "customized": false
       },
       {
-        "id": "103",
-        "text": "Mineral Form B_12",
+        "id": "846",
+        "text": "$420.00",
         "type": "text",
         "customized": false
       },
       {
-        "id": "104",
-        "text": "Chiseled Volcanic Rock Statement Band",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "105",
-        "text": "$190.00",
+        "id": "847",
+        "text": "Save $80.00",
         "type": "text",
         "customized": false
       },
       {
-        "id": "106",
-        "text": "Structural Loop C_04",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "107",
-        "text": "Interlocking Segmented Block Chain Link",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "108",
-        "text": "$410.00",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "13",
-        "text": "Initialize Commission Protocol",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "14",
-        "text": "Seeking dimensional customizations, high-mass material alternatives, or looking to register parameters for private gallery fitment loops? Record your blueprint details directly inside our secure studio intake desk.",
+        "id": "848",
+        "text": "Hand-forged from a single block of raw iron ore through 14 forge cycles. No casting, no plating, no compromise. The signature 68mm radial profile carries 240g of pure structural mass — designed to be worn daily, developing a unique patina across a lifetime.",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "15",
-        "text": "terminal@atelierore.internal",
+        "id": "849",
+        "text": "Choose Your Pack:",
         "type": "text",
         "customized": false
       },
       {
-        "id": "16",
-        "text": "Grid Vault 09, Basal Layer Section",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "17",
-        "text": "Collector Handle Identity",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "19",
-        "text": "Secure Comms Node (Email)",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "21",
-        "text": "Structural Intent Specification",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "22",
-        "text": "Custom Heavy Weight Matrix ForgingPrivate Vault Fitment Session BookingMaterial Integrity Assessment & Review",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "23",
-        "text": "Inquiry Blueprint Payload",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "25",
-        "text": "Transmit Registry Intake Package",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "26",
-        "text": "Material Weight Profiles",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "27",
-        "text": "Our silver arrays features structural solid density structures. No hollow cores or synthetic thin plating layers are engineered in our workspace vaults.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "28",
-        "text": "Transport & Security Parameters",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "29",
-        "text": "All final acquisitions exit inside solid matte-wax stamped stone containers to defend surface finish parameters from rough transit conditions.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "30",
-        "text": "Field Hardness & Fitment Logs",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "32",
-        "text": "Alpha Grade // Zero FlawsBeta Grade // Standard DriftGamma Grade // Surface Variance",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "34",
-        "text": "Record Log Entry",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "35",
-        "text": "Acquisitions Manifest",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "36",
+        "id": "850",
         "text": "Total Valuation:",
         "type": "text",
         "customized": false
       },
       {
-        "id": "37",
+        "id": "851",
+        "text": "Packs:",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "852",
+        "text": "Add to Acquisitions— $620.00",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "853",
+        "text": "Buy Now— $620.00",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "854",
+        "text": "Free Shipping",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "855",
+        "text": "Lifetime Guarantee",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "856",
+        "text": "Secure Checkout",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "857",
+        "text": "30-Day Returns",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "858",
+        "text": "Hand-Forged",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "859",
+        "text": "Every artifact shaped by master artisans in small batches.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "860",
+        "text": "Solid Core",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "861",
+        "text": "No hollow cores. No plating. Pure structural metal.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "862",
+        "text": "Lifetime Warranty",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "863",
+        "text": "Built to outlast you. Guaranteed forever.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "864",
+        "text": "Absolute Guarantee",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "865",
+        "text": "Love it or we'll make it right. No questions asked.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "866",
+        "text": "4.9",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "867",
+        "text": "(247 verified reviews)",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "868",
+        "text": "Write a Review",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "869",
+        "text": "\"This cuff is a literal anchor. The weight is perfect — heavy enough to feel permanent, balanced enough to forget you're wearing it.\"",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "870",
+        "text": "Vance O.",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "871",
+        "text": "Verified Wearer",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "872",
+        "text": "\"I've owned mine for two years. The patina gets better every month. This is the last cuff I'll ever buy.\"",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "873",
+        "text": "K. R.",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "874",
+        "text": "Verified Wearer",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "875",
+        "text": "\"The forge texture is unmatched. You can feel the 14 hammer cycles the moment you pick it up.\"",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "876",
+        "text": "Operator 33",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "877",
+        "text": "Verified Wearer",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "878",
+        "text": "✦ Protocols",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "879",
+        "text": "Material Questions",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "880",
+        "text": "Material Weight Profiles",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "881",
+        "text": "Our silver arrays feature structural solid density structures. No hollow cores or synthetic thin plating layers are engineered in our workspace vaults. Each cuff carries approximately 240g of pure structural mass.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "882",
+        "text": "Transport & Security Parameters",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "883",
+        "text": "All final acquisitions exit inside solid matte-wax stamped stone containers to defend surface finish parameters from rough transit conditions.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "884",
+        "text": "How do I care for my artifact?",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "885",
+        "text": "Wipe with a dry cloth after wear. Avoid prolonged contact with chlorinated water. Do not polish — the patina IS the character. The longer you wear it, the better it gets.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "886",
+        "text": "What is your return policy?",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "887",
+        "text": "We offer hassle-free returns within 30 days of purchase. If you're not completely satisfied with your artifact, we'll refund every penny — no questions asked.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "888",
+        "text": "✦ The Invitation",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "889",
+        "text": "Ready to carry tectonic weight?",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "890",
+        "text": "Join 12,000+ wearers who've replaced their entire jewelry box with a single artifact.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "891",
+        "text": "Acquire The Artifact",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "892",
+        "text": "Initialize Commission Protocol",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "893",
+        "text": "Seeking dimensional customizations, high-mass material alternatives, or looking to register parameters for private gallery fitment loops? Record your blueprint details directly inside our secure studio intake desk.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "894",
+        "text": "terminal@atelierore.internal",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "895",
+        "text": "Grid Vault 09, Basal Layer Section",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "896",
+        "text": "Collector Handle Identity",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "898",
+        "text": "Secure Comms Node (Email)",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "900",
+        "text": "Structural Intent Specification",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "901",
+        "text": "Custom Heavy Weight Matrix ForgingPrivate Vault Fitment Session BookingMaterial Integrity Assessment & Review",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "902",
+        "text": "Inquiry Blueprint Payload",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "904",
+        "text": "Transmit Registry Intake Package",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "910",
+        "text": "Acquisitions Manifest",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "911",
+        "text": "Total Valuation:",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "912",
         "text": "Dispatch Route Matrix",
         "type": "button",
         "customized": false
       },
       {
-        "id": "38",
+        "id": "913",
         "text": "Saved Anchors",
         "type": "text",
         "customized": false
       },
       {
-        "id": "39",
+        "id": "914",
         "text": "View Bag",
         "type": "button",
         "customized": false
       },
       {
-        "id": "40",
+        "id": "915",
         "text": "Checkout",
         "type": "button",
         "customized": false
       },
       {
-        "id": "41",
+        "id": "920",
         "text": "{brand}",
         "type": "text",
         "customized": false
       },
       {
-        "id": "42",
+        "id": "921",
         "text": "Heavy-mass, architectural jewelry forged to preserve strict geological texture references and raw geometric identity rulesets.",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "43",
-        "text": "Atelier Access Points",
+        "id": "922",
+        "text": "Explore",
         "type": "heading",
         "customized": false
       },
       {
-        "id": "44",
-        "text": "Commission Registry Desk",
+        "id": "923",
+        "text": "Our Manifesto",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "924",
+        "text": "The Artifact",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "925",
+        "text": "The Collective",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "926",
+        "text": "Support",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "927",
+        "text": "Commission Registry",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "928",
+        "text": "Shipping Policy",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "929",
+        "text": "Returns",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "930",
+        "text": "Warranty",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "931",
+        "text": "Newsletter",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "932",
+        "text": "Subscribe for forge drops, material updates, and private vault access.",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "45",
-        "text": "Return to Top Canopy",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "46",
+        "id": "933",
         "text": "© 2026 {brand} Group. Pure Asymmetric Grid CSS Matrix Layout Engine.",
         "type": "text",
         "customized": false
       },
       {
-        "id": "47",
-        "text": "System Configuration: ORE_GRID_V2.1",
+        "id": "934",
+        "text": "System Configuration: ORE_GRID_V3.0 // ONE_PRODUCT_EDITION",
         "type": "text",
         "customized": false
       },
       {
-        "id": "heading-52",
+        "id": "heading-132",
         "text": "Tectonic Ornaments.Heavy Geometries.SERIES_01 // RAW CORE",
         "type": "heading",
         "customized": false
       },
       {
-        "id": "heading-53",
-        "text": "The Core Directive //",
+        "id": "heading-133",
+        "text": "Forged fromfire& pressure.",
         "type": "heading",
         "customized": false
       },
       {
-        "id": "heading-54",
-        "text": "Chamber Artifacts",
+        "id": "heading-134",
+        "text": "Where ore meetsorbit",
         "type": "heading",
         "customized": false
       },
       {
-        "id": "heading-55",
+        "id": "heading-135",
+        "text": "Tested underrealpressure",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-136",
+        "text": "Built to beinherited",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-137",
+        "text": "Real wearers. Realweight.",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-138",
+        "text": "Chamber Artifact",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-139",
         "text": "Asymmetric Forged Molten Iron Cuff",
         "type": "heading",
         "customized": false
       },
       {
-        "id": "heading-56",
-        "text": "Chiseled Volcanic Rock Statement Band",
+        "id": "heading-140",
+        "text": "Hand-Forged",
         "type": "heading",
         "customized": false
       },
       {
-        "id": "heading-57",
-        "text": "Interlocking Segmented Block Chain Link",
+        "id": "heading-141",
+        "text": "Solid Core",
         "type": "heading",
         "customized": false
       },
       {
-        "id": "heading-58",
+        "id": "heading-142",
+        "text": "Lifetime Warranty",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-143",
+        "text": "Absolute Guarantee",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-144",
+        "text": "Material Questions",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-145",
+        "text": "Ready to carry tectonic weight?",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-146",
         "text": "Initialize Commission Protocol",
         "type": "heading",
         "customized": false
@@ -357,98 +885,218 @@
         "customized": false
       },
       {
-        "id": "heading-60",
-        "text": "Atelier Access Points",
+        "id": "heading-148",
+        "text": "Explore",
         "type": "heading",
         "customized": false
       },
       {
-        "id": "paragraph-61",
+        "id": "heading-149",
+        "text": "Support",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-150",
+        "text": "Newsletter",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "paragraph-151",
         "text": "We reject delicate consumer jewelry standards. Every structural loop from {brand} honors cold chiseled obsidian, raw forged molten profiles, and unpolished earth compounds. Made for physical permanence.",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "paragraph-62",
-        "text": "Seeking dimensional customizations, high-mass material alternatives, or looking to register parameters for private gallery fitment loops? Record your blueprint details directly inside our secure studio intake desk.",
+        "id": "paragraph-152",
+        "text": "We spent four years developing a single artifact. Not a collection. Not a season. Just one piece of jewelry that could carry the weight of tectonic history on your wrist — forever.",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "paragraph-63",
-        "text": "Our silver arrays features structural solid density structures. No hollow cores or synthetic thin plating layers are engineered in our workspace vaults.",
+        "id": "paragraph-153",
+        "text": "Our signature cuff begins as a raw iron ore block, hammered through 14 forge cycles until the crystalline structure aligns into something both brutal and precise. No casting. No plating. Just honest, heavy metal.",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "paragraph-64",
+        "id": "paragraph-154",
+        "text": "Every artifact survives six months of daily wear in our workshop. Gym sessions, salt water, thermal shock, and 200kg load-bearing stress tests. If it can be broken, our forging process has already prevented it.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-155",
+        "text": "Raw iron doesn't wear out. It patinas. Every year you wear it, the surface develops another layer of character, another story, another reason it will outlive every mass-produced chain you've ever owned. This is the artifact your lineage will fight over.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-156",
+        "text": "Hand-forged from a single block of raw iron ore through 14 forge cycles. No casting, no plating, no compromise. The signature 68mm radial profile carries 240g of pure structural mass — designed to be worn daily, developing a unique patina across a lifetime.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-157",
+        "text": "Every artifact shaped by master artisans in small batches.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-158",
+        "text": "No hollow cores. No plating. Pure structural metal.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-159",
+        "text": "Built to outlast you. Guaranteed forever.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-160",
+        "text": "Love it or we'll make it right. No questions asked.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-161",
+        "text": "\"This cuff is a literal anchor. The weight is perfect — heavy enough to feel permanent, balanced enough to forget you're wearing it.\"",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-162",
+        "text": "\"I've owned mine for two years. The patina gets better every month. This is the last cuff I'll ever buy.\"",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-163",
+        "text": "\"The forge texture is unmatched. You can feel the 14 hammer cycles the moment you pick it up.\"",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-164",
+        "text": "Our silver arrays feature structural solid density structures. No hollow cores or synthetic thin plating layers are engineered in our workspace vaults. Each cuff carries approximately 240g of pure structural mass.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-165",
         "text": "All final acquisitions exit inside solid matte-wax stamped stone containers to defend surface finish parameters from rough transit conditions.",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "paragraph-65",
+        "id": "paragraph-166",
+        "text": "Wipe with a dry cloth after wear. Avoid prolonged contact with chlorinated water. Do not polish — the patina IS the character. The longer you wear it, the better it gets.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-167",
+        "text": "We offer hassle-free returns within 30 days of purchase. If you're not completely satisfied with your artifact, we'll refund every penny — no questions asked.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-168",
+        "text": "Join 12,000+ wearers who've replaced their entire jewelry box with a single artifact.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-169",
+        "text": "Seeking dimensional customizations, high-mass material alternatives, or looking to register parameters for private gallery fitment loops? Record your blueprint details directly inside our secure studio intake desk.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-170",
         "text": "Heavy-mass, architectural jewelry forged to preserve strict geological texture references and raw geometric identity rulesets.",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "paragraph-66",
-        "text": "Commission Registry Desk",
+        "id": "paragraph-171",
+        "text": "Subscribe for forge drops, material updates, and private vault access.",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "paragraph-67",
-        "text": "Return to Top Canopy",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "button-68",
+        "id": "button-172",
         "text": "Saved Arch0",
         "type": "button",
         "customized": false
       },
       {
-        "id": "button-69",
+        "id": "button-173",
         "text": "Acquisitions Bag0",
         "type": "button",
         "customized": false
       },
       {
-        "id": "button-70",
-        "text": "Examine",
+        "id": "button-174",
+        "text": "Acquire The Artifact",
         "type": "button",
         "customized": false
       },
       {
-        "id": "button-71",
-        "text": "Examine",
+        "id": "button-175",
+        "text": "Read The Manifesto",
         "type": "button",
         "customized": false
       },
       {
-        "id": "button-72",
-        "text": "Examine",
+        "id": "add-to-cart-btn",
+        "text": "Add to Acquisitions— $620.00",
         "type": "button",
         "customized": false
       },
       {
-        "id": "button-73",
-        "text": "Transmit Registry Intake Package",
+        "id": "buy-now-btn",
+        "text": "Buy Now— $620.00",
         "type": "button",
         "customized": false
       },
       {
-        "id": "button-74",
+        "id": "button-178",
+        "text": "Write a Review",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-179",
         "text": "Material Weight Profiles",
         "type": "button",
         "customized": false
       },
       {
-        "id": "button-75",
+        "id": "button-180",
         "text": "Transport & Security Parameters",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-181",
+        "text": "How do I care for my artifact?",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-182",
+        "text": "What is your return policy?",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-183",
+        "text": "Transmit Registry Intake Package",
         "type": "button",
         "customized": false
       },
@@ -465,56 +1113,62 @@
         "customized": false
       },
       {
-        "id": "button-78",
+        "id": "button-186",
         "text": "Record Log Entry",
         "type": "button",
         "customized": false
       },
       {
-        "id": "button-79",
+        "id": "button-187",
         "text": "Dispatch Route Matrix",
         "type": "button",
         "customized": false
       },
       {
-        "id": "button-80",
+        "id": "button-188",
         "text": "View Bag",
         "type": "button",
         "customized": false
       },
       {
-        "id": "button-81",
+        "id": "button-189",
         "text": "Checkout",
         "type": "button",
         "customized": false
       },
       {
-        "id": "link-82",
+        "id": "link-190",
         "text": "Sign Up",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-83",
+        "id": "link-191",
         "text": "Sign In",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-84",
+        "id": "link-192",
         "text": "Orders",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-85",
+        "id": "link-193",
         "text": "Logout",
         "type": "link",
         "customized": false
       },
       {
+        "id": "link-194",
+        "text": "Acquire The Artifact",
+        "type": "link",
+        "customized": false
+      },
+      {
         "id": "page-title",
-        "text": "{brand}",
+        "text": "{brand} — One Artifact. Absolute Permanence.",
         "type": "title",
         "customized": false
       }
@@ -571,300 +1225,828 @@
     },
     {
       "id": "9",
-      "text": "The Core Directive //",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "10",
       "text": "We reject delicate consumer jewelry standards. Every structural loop from {brand} honors cold chiseled obsidian, raw forged molten profiles, and unpolished earth compounds. Made for physical permanence.",
       "type": "paragraph",
       "customized": false
     },
     {
+      "id": "10",
+      "text": "Acquire The Artifact",
+      "type": "button",
+      "customized": false
+    },
+    {
       "id": "11",
-      "text": "Chamber Artifacts",
-      "type": "heading",
+      "text": "Read The Manifesto",
+      "type": "button",
       "customized": false
     },
     {
       "id": "12",
+      "text": "◆ Forged Ore Cuff",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "800",
+      "text": "✦ The Manifesto",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "801",
+      "text": "Forged fromfire& pressure.",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "802",
+      "text": "We spent four years developing a single artifact. Not a collection. Not a season. Just one piece of jewelry that could carry the weight of tectonic history on your wrist — forever.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "803",
+      "text": "The Forge",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "804",
+      "text": "Chapter One",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "805",
+      "text": "Where ore meetsorbit",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "806",
+      "text": "\"Every artifact carries the fingerprint of the tectonic pressure that shaped it.\"— Our Master Smith",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "807",
+      "text": "— Our Master Smith",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "808",
+      "text": "Our signature cuff begins as a raw iron ore block, hammered through 14 forge cycles until the crystalline structure aligns into something both brutal and precise. No casting. No plating. Just honest, heavy metal.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "809",
+      "text": "Hand-Forged",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "810",
+      "text": "14-Cycle Forge",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "811",
+      "text": "Solid Core",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "812",
+      "text": "Chapter Two",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "813",
+      "text": "Tested underrealpressure",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "814",
+      "text": "\"We loaded it, dropped it, and wore it for a year. It still carries zero visible drift.\"— Our Testing Team",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "815",
+      "text": "— Our Testing Team",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "816",
+      "text": "Every artifact survives six months of daily wear in our workshop. Gym sessions, salt water, thermal shock, and 200kg load-bearing stress tests. If it can be broken, our forging process has already prevented it.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "817",
+      "text": "Lab Tested",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "818",
+      "text": "Load Certified",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "819",
+      "text": "1-Year Field Test",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "820",
+      "text": "The Test Bay",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "821",
+      "text": "Lifetime Artifact",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "822",
+      "text": "Chapter Three",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "823",
+      "text": "Built to beinherited",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "824",
+      "text": "\"The best artifacts aren't purchased. They're passed down.\"— Our Founder",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "825",
+      "text": "— Our Founder",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "826",
+      "text": "Raw iron doesn't wear out. It patinas. Every year you wear it, the surface develops another layer of character, another story, another reason it will outlive every mass-produced chain you've ever owned. This is the artifact your lineage will fight over.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "827",
+      "text": "Lifetime Warranty",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "828",
+      "text": "Raw Materials",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "829",
+      "text": "Made with Fire",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "830",
+      "text": "✦ From The Collective",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "831",
+      "text": "Real wearers. Realweight.",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "832",
+      "text": "Five months. Zero drift.",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "833",
+      "text": "Heavier than I expected.",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "834",
+      "text": "Daily driver for 8 months.",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "835",
+      "text": "Tectonic. Literally.",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "840",
+      "text": "Chamber Artifact",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "841",
       "text": "[ Verified Cast Inventory ]",
       "type": "text",
       "customized": false
     },
     {
-      "id": "100",
-      "text": "Geological Profile A_01",
+      "id": "842",
+      "text": "The Only Artifact You Need",
       "type": "text",
       "customized": false
     },
     {
-      "id": "101",
+      "id": "843",
       "text": "Asymmetric Forged Molten Iron Cuff",
       "type": "heading",
       "customized": false
     },
     {
-      "id": "102",
+      "id": "844",
+      "text": "(247 verified wearers)",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "845",
       "text": "$340.00",
       "type": "text",
       "customized": false
     },
     {
-      "id": "103",
-      "text": "Mineral Form B_12",
+      "id": "846",
+      "text": "$420.00",
       "type": "text",
       "customized": false
     },
     {
-      "id": "104",
-      "text": "Chiseled Volcanic Rock Statement Band",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "105",
-      "text": "$190.00",
+      "id": "847",
+      "text": "Save $80.00",
       "type": "text",
       "customized": false
     },
     {
-      "id": "106",
-      "text": "Structural Loop C_04",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "107",
-      "text": "Interlocking Segmented Block Chain Link",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "108",
-      "text": "$410.00",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "13",
-      "text": "Initialize Commission Protocol",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "14",
-      "text": "Seeking dimensional customizations, high-mass material alternatives, or looking to register parameters for private gallery fitment loops? Record your blueprint details directly inside our secure studio intake desk.",
+      "id": "848",
+      "text": "Hand-forged from a single block of raw iron ore through 14 forge cycles. No casting, no plating, no compromise. The signature 68mm radial profile carries 240g of pure structural mass — designed to be worn daily, developing a unique patina across a lifetime.",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "15",
-      "text": "terminal@atelierore.internal",
+      "id": "849",
+      "text": "Choose Your Pack:",
       "type": "text",
       "customized": false
     },
     {
-      "id": "16",
-      "text": "Grid Vault 09, Basal Layer Section",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "17",
-      "text": "Collector Handle Identity",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "19",
-      "text": "Secure Comms Node (Email)",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "21",
-      "text": "Structural Intent Specification",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "22",
-      "text": "Custom Heavy Weight Matrix ForgingPrivate Vault Fitment Session BookingMaterial Integrity Assessment & Review",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "23",
-      "text": "Inquiry Blueprint Payload",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "25",
-      "text": "Transmit Registry Intake Package",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "26",
-      "text": "Material Weight Profiles",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "27",
-      "text": "Our silver arrays features structural solid density structures. No hollow cores or synthetic thin plating layers are engineered in our workspace vaults.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "28",
-      "text": "Transport & Security Parameters",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "29",
-      "text": "All final acquisitions exit inside solid matte-wax stamped stone containers to defend surface finish parameters from rough transit conditions.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "30",
-      "text": "Field Hardness & Fitment Logs",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "32",
-      "text": "Alpha Grade // Zero FlawsBeta Grade // Standard DriftGamma Grade // Surface Variance",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "34",
-      "text": "Record Log Entry",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "35",
-      "text": "Acquisitions Manifest",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "36",
+      "id": "850",
       "text": "Total Valuation:",
       "type": "text",
       "customized": false
     },
     {
-      "id": "37",
+      "id": "851",
+      "text": "Packs:",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "852",
+      "text": "Add to Acquisitions— $620.00",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "853",
+      "text": "Buy Now— $620.00",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "854",
+      "text": "Free Shipping",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "855",
+      "text": "Lifetime Guarantee",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "856",
+      "text": "Secure Checkout",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "857",
+      "text": "30-Day Returns",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "858",
+      "text": "Hand-Forged",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "859",
+      "text": "Every artifact shaped by master artisans in small batches.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "860",
+      "text": "Solid Core",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "861",
+      "text": "No hollow cores. No plating. Pure structural metal.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "862",
+      "text": "Lifetime Warranty",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "863",
+      "text": "Built to outlast you. Guaranteed forever.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "864",
+      "text": "Absolute Guarantee",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "865",
+      "text": "Love it or we'll make it right. No questions asked.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "866",
+      "text": "4.9",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "867",
+      "text": "(247 verified reviews)",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "868",
+      "text": "Write a Review",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "869",
+      "text": "\"This cuff is a literal anchor. The weight is perfect — heavy enough to feel permanent, balanced enough to forget you're wearing it.\"",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "870",
+      "text": "Vance O.",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "871",
+      "text": "Verified Wearer",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "872",
+      "text": "\"I've owned mine for two years. The patina gets better every month. This is the last cuff I'll ever buy.\"",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "873",
+      "text": "K. R.",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "874",
+      "text": "Verified Wearer",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "875",
+      "text": "\"The forge texture is unmatched. You can feel the 14 hammer cycles the moment you pick it up.\"",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "876",
+      "text": "Operator 33",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "877",
+      "text": "Verified Wearer",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "878",
+      "text": "✦ Protocols",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "879",
+      "text": "Material Questions",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "880",
+      "text": "Material Weight Profiles",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "881",
+      "text": "Our silver arrays feature structural solid density structures. No hollow cores or synthetic thin plating layers are engineered in our workspace vaults. Each cuff carries approximately 240g of pure structural mass.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "882",
+      "text": "Transport & Security Parameters",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "883",
+      "text": "All final acquisitions exit inside solid matte-wax stamped stone containers to defend surface finish parameters from rough transit conditions.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "884",
+      "text": "How do I care for my artifact?",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "885",
+      "text": "Wipe with a dry cloth after wear. Avoid prolonged contact with chlorinated water. Do not polish — the patina IS the character. The longer you wear it, the better it gets.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "886",
+      "text": "What is your return policy?",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "887",
+      "text": "We offer hassle-free returns within 30 days of purchase. If you're not completely satisfied with your artifact, we'll refund every penny — no questions asked.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "888",
+      "text": "✦ The Invitation",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "889",
+      "text": "Ready to carry tectonic weight?",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "890",
+      "text": "Join 12,000+ wearers who've replaced their entire jewelry box with a single artifact.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "891",
+      "text": "Acquire The Artifact",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "892",
+      "text": "Initialize Commission Protocol",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "893",
+      "text": "Seeking dimensional customizations, high-mass material alternatives, or looking to register parameters for private gallery fitment loops? Record your blueprint details directly inside our secure studio intake desk.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "894",
+      "text": "terminal@atelierore.internal",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "895",
+      "text": "Grid Vault 09, Basal Layer Section",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "896",
+      "text": "Collector Handle Identity",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "898",
+      "text": "Secure Comms Node (Email)",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "900",
+      "text": "Structural Intent Specification",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "901",
+      "text": "Custom Heavy Weight Matrix ForgingPrivate Vault Fitment Session BookingMaterial Integrity Assessment & Review",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "902",
+      "text": "Inquiry Blueprint Payload",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "904",
+      "text": "Transmit Registry Intake Package",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "910",
+      "text": "Acquisitions Manifest",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "911",
+      "text": "Total Valuation:",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "912",
       "text": "Dispatch Route Matrix",
       "type": "button",
       "customized": false
     },
     {
-      "id": "38",
+      "id": "913",
       "text": "Saved Anchors",
       "type": "text",
       "customized": false
     },
     {
-      "id": "39",
+      "id": "914",
       "text": "View Bag",
       "type": "button",
       "customized": false
     },
     {
-      "id": "40",
+      "id": "915",
       "text": "Checkout",
       "type": "button",
       "customized": false
     },
     {
-      "id": "41",
+      "id": "920",
       "text": "{brand}",
       "type": "text",
       "customized": false
     },
     {
-      "id": "42",
+      "id": "921",
       "text": "Heavy-mass, architectural jewelry forged to preserve strict geological texture references and raw geometric identity rulesets.",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "43",
-      "text": "Atelier Access Points",
+      "id": "922",
+      "text": "Explore",
       "type": "heading",
       "customized": false
     },
     {
-      "id": "44",
-      "text": "Commission Registry Desk",
+      "id": "923",
+      "text": "Our Manifesto",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "924",
+      "text": "The Artifact",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "925",
+      "text": "The Collective",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "926",
+      "text": "Support",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "927",
+      "text": "Commission Registry",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "928",
+      "text": "Shipping Policy",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "929",
+      "text": "Returns",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "930",
+      "text": "Warranty",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "931",
+      "text": "Newsletter",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "932",
+      "text": "Subscribe for forge drops, material updates, and private vault access.",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "45",
-      "text": "Return to Top Canopy",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "46",
+      "id": "933",
       "text": "© 2026 {brand} Group. Pure Asymmetric Grid CSS Matrix Layout Engine.",
       "type": "text",
       "customized": false
     },
     {
-      "id": "47",
-      "text": "System Configuration: ORE_GRID_V2.1",
+      "id": "934",
+      "text": "System Configuration: ORE_GRID_V3.0 // ONE_PRODUCT_EDITION",
       "type": "text",
       "customized": false
     },
     {
-      "id": "heading-52",
+      "id": "heading-132",
       "text": "Tectonic Ornaments.Heavy Geometries.SERIES_01 // RAW CORE",
       "type": "heading",
       "customized": false
     },
     {
-      "id": "heading-53",
-      "text": "The Core Directive //",
+      "id": "heading-133",
+      "text": "Forged fromfire& pressure.",
       "type": "heading",
       "customized": false
     },
     {
-      "id": "heading-54",
-      "text": "Chamber Artifacts",
+      "id": "heading-134",
+      "text": "Where ore meetsorbit",
       "type": "heading",
       "customized": false
     },
     {
-      "id": "heading-55",
+      "id": "heading-135",
+      "text": "Tested underrealpressure",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-136",
+      "text": "Built to beinherited",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-137",
+      "text": "Real wearers. Realweight.",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-138",
+      "text": "Chamber Artifact",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-139",
       "text": "Asymmetric Forged Molten Iron Cuff",
       "type": "heading",
       "customized": false
     },
     {
-      "id": "heading-56",
-      "text": "Chiseled Volcanic Rock Statement Band",
+      "id": "heading-140",
+      "text": "Hand-Forged",
       "type": "heading",
       "customized": false
     },
     {
-      "id": "heading-57",
-      "text": "Interlocking Segmented Block Chain Link",
+      "id": "heading-141",
+      "text": "Solid Core",
       "type": "heading",
       "customized": false
     },
     {
-      "id": "heading-58",
+      "id": "heading-142",
+      "text": "Lifetime Warranty",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-143",
+      "text": "Absolute Guarantee",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-144",
+      "text": "Material Questions",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-145",
+      "text": "Ready to carry tectonic weight?",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-146",
       "text": "Initialize Commission Protocol",
       "type": "heading",
       "customized": false
@@ -876,98 +2058,218 @@
       "customized": false
     },
     {
-      "id": "heading-60",
-      "text": "Atelier Access Points",
+      "id": "heading-148",
+      "text": "Explore",
       "type": "heading",
       "customized": false
     },
     {
-      "id": "paragraph-61",
+      "id": "heading-149",
+      "text": "Support",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-150",
+      "text": "Newsletter",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "paragraph-151",
       "text": "We reject delicate consumer jewelry standards. Every structural loop from {brand} honors cold chiseled obsidian, raw forged molten profiles, and unpolished earth compounds. Made for physical permanence.",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "paragraph-62",
-      "text": "Seeking dimensional customizations, high-mass material alternatives, or looking to register parameters for private gallery fitment loops? Record your blueprint details directly inside our secure studio intake desk.",
+      "id": "paragraph-152",
+      "text": "We spent four years developing a single artifact. Not a collection. Not a season. Just one piece of jewelry that could carry the weight of tectonic history on your wrist — forever.",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "paragraph-63",
-      "text": "Our silver arrays features structural solid density structures. No hollow cores or synthetic thin plating layers are engineered in our workspace vaults.",
+      "id": "paragraph-153",
+      "text": "Our signature cuff begins as a raw iron ore block, hammered through 14 forge cycles until the crystalline structure aligns into something both brutal and precise. No casting. No plating. Just honest, heavy metal.",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "paragraph-64",
+      "id": "paragraph-154",
+      "text": "Every artifact survives six months of daily wear in our workshop. Gym sessions, salt water, thermal shock, and 200kg load-bearing stress tests. If it can be broken, our forging process has already prevented it.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-155",
+      "text": "Raw iron doesn't wear out. It patinas. Every year you wear it, the surface develops another layer of character, another story, another reason it will outlive every mass-produced chain you've ever owned. This is the artifact your lineage will fight over.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-156",
+      "text": "Hand-forged from a single block of raw iron ore through 14 forge cycles. No casting, no plating, no compromise. The signature 68mm radial profile carries 240g of pure structural mass — designed to be worn daily, developing a unique patina across a lifetime.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-157",
+      "text": "Every artifact shaped by master artisans in small batches.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-158",
+      "text": "No hollow cores. No plating. Pure structural metal.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-159",
+      "text": "Built to outlast you. Guaranteed forever.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-160",
+      "text": "Love it or we'll make it right. No questions asked.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-161",
+      "text": "\"This cuff is a literal anchor. The weight is perfect — heavy enough to feel permanent, balanced enough to forget you're wearing it.\"",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-162",
+      "text": "\"I've owned mine for two years. The patina gets better every month. This is the last cuff I'll ever buy.\"",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-163",
+      "text": "\"The forge texture is unmatched. You can feel the 14 hammer cycles the moment you pick it up.\"",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-164",
+      "text": "Our silver arrays feature structural solid density structures. No hollow cores or synthetic thin plating layers are engineered in our workspace vaults. Each cuff carries approximately 240g of pure structural mass.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-165",
       "text": "All final acquisitions exit inside solid matte-wax stamped stone containers to defend surface finish parameters from rough transit conditions.",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "paragraph-65",
+      "id": "paragraph-166",
+      "text": "Wipe with a dry cloth after wear. Avoid prolonged contact with chlorinated water. Do not polish — the patina IS the character. The longer you wear it, the better it gets.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-167",
+      "text": "We offer hassle-free returns within 30 days of purchase. If you're not completely satisfied with your artifact, we'll refund every penny — no questions asked.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-168",
+      "text": "Join 12,000+ wearers who've replaced their entire jewelry box with a single artifact.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-169",
+      "text": "Seeking dimensional customizations, high-mass material alternatives, or looking to register parameters for private gallery fitment loops? Record your blueprint details directly inside our secure studio intake desk.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-170",
       "text": "Heavy-mass, architectural jewelry forged to preserve strict geological texture references and raw geometric identity rulesets.",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "paragraph-66",
-      "text": "Commission Registry Desk",
+      "id": "paragraph-171",
+      "text": "Subscribe for forge drops, material updates, and private vault access.",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "paragraph-67",
-      "text": "Return to Top Canopy",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "button-68",
+      "id": "button-172",
       "text": "Saved Arch0",
       "type": "button",
       "customized": false
     },
     {
-      "id": "button-69",
+      "id": "button-173",
       "text": "Acquisitions Bag0",
       "type": "button",
       "customized": false
     },
     {
-      "id": "button-70",
-      "text": "Examine",
+      "id": "button-174",
+      "text": "Acquire The Artifact",
       "type": "button",
       "customized": false
     },
     {
-      "id": "button-71",
-      "text": "Examine",
+      "id": "button-175",
+      "text": "Read The Manifesto",
       "type": "button",
       "customized": false
     },
     {
-      "id": "button-72",
-      "text": "Examine",
+      "id": "add-to-cart-btn",
+      "text": "Add to Acquisitions— $620.00",
       "type": "button",
       "customized": false
     },
     {
-      "id": "button-73",
-      "text": "Transmit Registry Intake Package",
+      "id": "buy-now-btn",
+      "text": "Buy Now— $620.00",
       "type": "button",
       "customized": false
     },
     {
-      "id": "button-74",
+      "id": "button-178",
+      "text": "Write a Review",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-179",
       "text": "Material Weight Profiles",
       "type": "button",
       "customized": false
     },
     {
-      "id": "button-75",
+      "id": "button-180",
       "text": "Transport & Security Parameters",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-181",
+      "text": "How do I care for my artifact?",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-182",
+      "text": "What is your return policy?",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-183",
+      "text": "Transmit Registry Intake Package",
       "type": "button",
       "customized": false
     },
@@ -984,62 +2286,68 @@
       "customized": false
     },
     {
-      "id": "button-78",
+      "id": "button-186",
       "text": "Record Log Entry",
       "type": "button",
       "customized": false
     },
     {
-      "id": "button-79",
+      "id": "button-187",
       "text": "Dispatch Route Matrix",
       "type": "button",
       "customized": false
     },
     {
-      "id": "button-80",
+      "id": "button-188",
       "text": "View Bag",
       "type": "button",
       "customized": false
     },
     {
-      "id": "button-81",
+      "id": "button-189",
       "text": "Checkout",
       "type": "button",
       "customized": false
     },
     {
-      "id": "link-82",
+      "id": "link-190",
       "text": "Sign Up",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-83",
+      "id": "link-191",
       "text": "Sign In",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-84",
+      "id": "link-192",
       "text": "Orders",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-85",
+      "id": "link-193",
       "text": "Logout",
       "type": "link",
       "customized": false
     },
     {
+      "id": "link-194",
+      "text": "Acquire The Artifact",
+      "type": "link",
+      "customized": false
+    },
+    {
       "id": "page-title",
-      "text": "{brand}",
+      "text": "{brand} — One Artifact. Absolute Permanence.",
       "type": "title",
       "customized": false
     }
   ],
   "metadata": {
-    "total_elements": 86,
+    "total_elements": 195,
     "pages_count": 1,
     "components_count": 0
   }

@@ -2,816 +2,964 @@
 {% extends 'builder/base.html' %}
 {% load static %}
 
-{% block title %}Manage Variants - {{ product.title }}{% endblock %}
+{% block title %}Variants · {{ product.title }}{% endblock %}
 
 {% block extra_css %}
 <style>
-    /* ====== MAIN LAYOUT ====== */
+    :root {
+        --n-0: #ffffff;
+        --n-50: #fafafa;
+        --n-100: #f4f4f5;
+        --n-200: #e4e4e7;
+        --n-300: #d4d4d8;
+        --n-400: #a1a1aa;
+        --n-500: #71717a;
+        --n-600: #52525b;
+        --n-700: #3f3f46;
+        --n-800: #27272a;
+        --n-900: #18181b;
+
+        --accent: var(--primary-color, #111827);
+        --accent-hover: #000000;
+
+        --success: #15803d;
+        --warning: #a16207;
+        --danger:  #b91c1c;
+
+        --border: var(--n-200);
+        --border-strong: var(--n-300);
+        --text: var(--n-900);
+        --text-muted: var(--n-500);
+        --text-subtle: var(--n-400);
+
+        --radius-sm: 4px;
+        --radius: 6px;
+        --radius-lg: 10px;
+
+        --page-bg: #f6f7f9;
+        --surface-shadow: 0 1px 2px rgba(24, 24, 27, 0.04), 0 1px 1px rgba(24, 24, 27, 0.03);
+        --surface-shadow-hover: 0 4px 12px rgba(24, 24, 27, 0.06), 0 1px 2px rgba(24, 24, 27, 0.04);
+    }
+
+    /* ===== Layout (with sidebar) ===== */
+    .management-layout {
+        display: flex;
+        min-height: calc(100vh - 120px);
+        background: var(--page-bg);
+        font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        font-size: 13px;
+        color: var(--text);
+    }
+
+    .management-content {
+        flex: 1;
+        min-width: 0;
+        padding: 2rem 2rem 4rem;
+    }
+
     .variant-page {
-        max-width: 900px;
+        max-width: 1080px;
         margin: 0 auto;
-        padding: 20px 0;
     }
-    
-    .page-header {
+
+    /* ====== BREADCRUMB ====== */
+    .catalog-context {
         display: flex;
-        justify-content: space-between;
         align-items: center;
-        margin-bottom: 30px;
+        gap: 0.5rem;
+        font-size: 12px;
+        color: var(--text-muted);
+        margin-bottom: 1rem;
         flex-wrap: wrap;
-        gap: 12px;
     }
-    
-    .page-header h1 {
-        font-size: 24px;
-        font-weight: 700;
+    .context-back {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.375rem;
+        color: var(--text-muted);
+        text-decoration: none;
+    }
+    .context-back:hover { color: var(--text); }
+    .context-back svg { width: 12px; height: 12px; }
+    .context-sep { color: var(--n-300); }
+    .context-current { color: var(--text); font-weight: 500; }
+
+    /* ====== TITLE ROW ====== */
+    .catalog-title-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+    }
+    .catalog-title-block { min-width: 0; flex: 1; }
+    .catalog-title {
+        font-size: 26px;
+        font-weight: 600;
+        letter-spacing: -0.025em;
         margin: 0;
+        color: var(--text);
     }
-    
-    .page-header .subtitle {
-        color: #64748b;
-        font-size: 14px;
-        margin-top: 4px;
+    .catalog-sub {
+        color: var(--text-muted);
+        font-size: 13px;
+        margin: 0.375rem 0 0;
     }
-    
-    /* ====== ADD VARIANT FORM ====== */
-    .add-variant-card {
-        background: white;
-        border-radius: 12px;
-        padding: 24px;
-        margin-bottom: 30px;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-        border: 1px solid #e2e8f0;
-        transition: all 0.3s ease;
+    .catalog-actions {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        flex-shrink: 0;
     }
-    
-    .add-variant-card.collapsed {
-        padding: 16px 24px;
+
+    /* ====== BUTTONS ====== */
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.375rem;
+        padding: 0.4375rem 0.875rem;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 1;
+        border-radius: var(--radius);
+        border: 1px solid transparent;
         cursor: pointer;
+        text-decoration: none;
+        transition: background 0.12s ease, border-color 0.12s ease, color 0.12s ease, box-shadow 0.12s ease;
+        font-family: inherit;
+        white-space: nowrap;
     }
-    
-    .add-variant-card.collapsed .form-content {
-        display: none;
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .btn-ghost {
+        background: var(--n-0);
+        border-color: var(--border);
+        color: var(--n-700);
+        box-shadow: 0 1px 2px rgba(24, 24, 27, 0.04);
     }
-    
-    .add-variant-card .card-header {
+    .btn-ghost:hover {
+        background: var(--n-0);
+        border-color: var(--border-strong);
+        color: var(--text);
+        box-shadow: var(--surface-shadow);
+    }
+
+    .btn-accent {
+        background: var(--accent);
+        color: var(--n-0);
+        border-color: var(--accent);
+        box-shadow: 0 1px 2px rgba(24, 24, 27, 0.16);
+    }
+    .btn-accent:hover {
+        background: var(--accent-hover);
+        border-color: var(--accent-hover);
+        box-shadow: 0 4px 12px rgba(24, 24, 27, 0.18);
+    }
+
+    .btn-danger-ghost {
+        background: var(--n-0);
+        border-color: var(--border);
+        color: var(--n-700);
+    }
+    .btn-danger-ghost:hover {
+        border-color: var(--danger);
+        color: var(--danger);
+        background: #fef2f2;
+    }
+
+    .btn-icon {
+        width: 30px;
+        height: 30px;
+        padding: 0;
+        justify-content: center;
+        border-radius: var(--radius-sm);
+    }
+    .btn-icon svg { width: 14px; height: 14px; }
+
+    /* ====== PANELS ====== */
+    .panel {
+        background: var(--n-0);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        margin-bottom: 1.5rem;
+        box-shadow: var(--surface-shadow);
+        transition: box-shadow 0.18s ease;
+    }
+    .panel:hover {
+        box-shadow: var(--surface-shadow-hover);
+    }
+    .panel-head {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        padding: 0.875rem 1.125rem;
+        border-bottom: 1px solid var(--border);
+        gap: 1rem;
+        background: linear-gradient(to bottom, #ffffff, #fcfcfd);
+        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    }
+    .panel-title {
+        font-size: 13px;
+        font-weight: 600;
+        margin: 0;
+        color: var(--text);
+    }
+    .panel-sub {
+        font-size: 11px;
+        color: var(--text-muted);
+        margin: 0.125rem 0 0;
+    }
+    .panel-body { padding: 1.125rem; }
+    .panel-body-flush { padding: 0; }
+
+    /* ====== COLLAPSIBLE ADD FORM ====== */
+    .add-head {
         cursor: pointer;
         user-select: none;
     }
-    
-    .add-variant-card .card-header h3 {
-        font-size: 16px;
-        font-weight: 600;
-        margin: 0;
-        color: #1e293b;
+    .add-head .chevron {
+        color: var(--text-subtle);
+        transition: transform 0.2s ease;
+        display: inline-flex;
     }
-    
-    .add-variant-card .card-header .toggle-icon {
-        transition: transform 0.3s ease;
-        font-size: 18px;
-        color: #94a3b8;
-    }
-    
-    .add-variant-card.collapsed .card-header .toggle-icon {
-        transform: rotate(180deg);
-    }
-    
-    .form-content {
-        margin-top: 20px;
-        padding-top: 20px;
-        border-top: 1px solid #e2e8f0;
-    }
-    
+    .panel.collapsed .add-head .chevron { transform: rotate(-90deg); }
+    .panel.collapsed .add-body { display: none; }
+
+    /* ====== FORM ====== */
     .form-row {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 16px;
-        margin-bottom: 16px;
+        gap: 1rem;
+        margin-bottom: 1rem;
     }
-    
-    .form-row.three-col {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-    
-    .form-group {
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-    }
-    
-    .form-group label {
-        font-size: 13px;
+    .form-row.three-col { grid-template-columns: 1fr 1fr 1fr; }
+    .form-row:last-child { margin-bottom: 0; }
+
+    .field { display: flex; flex-direction: column; gap: 0.375rem; }
+    .field-label {
+        font-size: 12px;
         font-weight: 500;
-        color: #475569;
+        color: var(--n-700);
     }
-    
-    .form-group input,
-    .form-group select {
-        padding: 8px 12px;
-        border: 1px solid #cbd5e1;
-        border-radius: 6px;
-        font-size: 14px;
-        transition: border-color 0.2s;
-        background: white;
+    .field-label .optional {
+        color: var(--text-subtle);
+        font-weight: 400;
+        margin-left: 0.25rem;
     }
-    
-    .form-group input:focus,
-    .form-group select:focus {
+    .field-help {
+        font-size: 11px;
+        color: var(--text-muted);
+        line-height: 1.4;
+    }
+    .field-help code {
+        font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+        font-size: 10.5px;
+        background: var(--n-100);
+        padding: 1px 4px;
+        border-radius: var(--radius-sm);
+        color: var(--n-700);
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 0.5rem 0.75rem;
+        font-size: 13px;
+        font-family: inherit;
+        color: var(--text);
+        background: var(--n-0);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        transition: border-color 0.12s ease, box-shadow 0.12s ease;
+        box-sizing: border-box;
+    }
+    .form-control::placeholder { color: var(--n-400); }
+    .form-control:hover { border-color: var(--border-strong); }
+    .form-control:focus {
         outline: none;
-        border-color: #4361ee;
-        box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+        border-color: var(--accent);
+        box-shadow: 0 0 0 4px rgba(17, 24, 39, 0.06);
     }
-    
-    .form-group .help-text {
-        font-size: 12px;
-        color: #94a3b8;
+    .form-control[type="number"] {
+        font-variant-numeric: tabular-nums;
+        font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+        font-size: 12.5px;
     }
-    
-    /* Image upload */
-    .image-upload-area {
-        border: 2px dashed #cbd5e1;
-        border-radius: 8px;
-        padding: 20px;
-        text-align: center;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        background: #f8fafc;
-        position: relative;
-        min-height: 120px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    .image-upload-area:hover {
-        border-color: #4361ee;
-        background: #f1f5f9;
-    }
-    
-    .image-upload-area.has-image {
-        border-color: #22c55e;
-        background: #f0fdf4;
-        padding: 8px;
-    }
-    
-    .image-upload-area img {
-        max-width: 100%;
-        max-height: 120px;
-        border-radius: 4px;
-    }
-    
-    .image-upload-area .placeholder {
-        color: #94a3b8;
-        font-size: 14px;
-    }
-    
-    .image-upload-area .placeholder i {
-        font-size: 32px;
-        display: block;
-        margin-bottom: 8px;
-        color: #cbd5e1;
-    }
-    
-    .image-upload-area input[type="file"] {
-        display: none;
-    }
-    
-    .image-upload-area .remove-image {
-        position: absolute;
-        top: 8px;
-        right: 8px;
-        background: #ef4444;
-        color: white;
-        border: none;
-        border-radius: 50%;
-        width: 28px;
-        height: 28px;
-        display: none;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        font-size: 12px;
-    }
-    
-    .image-upload-area.has-image .remove-image {
-        display: flex;
-    }
-    
+
     .form-actions {
         display: flex;
-        gap: 12px;
-        margin-top: 16px;
         justify-content: flex-end;
+        gap: 0.5rem;
+        margin-top: 1.25rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--border);
     }
-    
-    .btn {
-        padding: 8px 20px;
-        border-radius: 6px;
-        font-size: 14px;
-        font-weight: 500;
-        border: none;
+
+    /* ====== IMAGE UPLOAD ====== */
+    .image-upload-area {
+        border: 1px dashed var(--border-strong);
+        border-radius: var(--radius);
+        padding: 0.875rem;
+        text-align: center;
         cursor: pointer;
-        transition: all 0.2s ease;
-        display: inline-flex;
+        background: linear-gradient(to bottom, #fbfbfc, #f6f7f9);
+        position: relative;
+        min-height: 96px;
+        display: flex;
+        flex-direction: column;
         align-items: center;
-        gap: 6px;
+        justify-content: center;
+        transition: border-color 0.12s ease, background 0.12s ease;
     }
-    
-    .btn-primary {
-        background: #4361ee;
-        color: white;
+    .image-upload-area:hover {
+        border-color: var(--n-400);
+        background: linear-gradient(to bottom, #f8f9fb, #f1f2f5);
     }
-    
-    .btn-primary:hover {
-        background: #3a56d4;
-        transform: translateY(-1px);
-        box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
+    .image-upload-area.has-image {
+        border-style: solid;
+        border-color: var(--border);
+        background: var(--n-0);
+        padding: 0.5rem;
+        box-shadow: var(--surface-shadow);
     }
-    
-    .btn-primary:disabled {
-        opacity: 0.6;
-        cursor: not-allowed;
-        transform: none;
+    .image-upload-area img {
+        max-width: 100%;
+        max-height: 96px;
+        border-radius: var(--radius-sm);
+        display: block;
     }
-    
-    .btn-secondary {
-        background: #e2e8f0;
-        color: #475569;
+    .image-upload-area .placeholder {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.375rem;
+        color: var(--text-muted);
+        font-size: 12px;
     }
-    
-    .btn-secondary:hover {
-        background: #cbd5e1;
+    .image-upload-area .placeholder svg {
+        width: 18px;
+        height: 18px;
+        color: var(--n-400);
     }
-    
-    .btn-danger {
-        background: #ef4444;
-        color: white;
+    .image-upload-area .placeholder .hint {
+        font-size: 11px;
+        color: var(--text-subtle);
     }
-    
-    .btn-danger:hover {
-        background: #dc2626;
+    .image-upload-area input[type="file"] { display: none; }
+    .image-upload-area .remove-image {
+        position: absolute;
+        top: 6px;
+        right: 6px;
+        background: var(--n-0);
+        color: var(--n-600);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        width: 24px;
+        height: 24px;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        padding: 0;
+        box-shadow: var(--surface-shadow);
     }
-    
-    .btn-outline {
-        background: transparent;
-        border: 1px solid #cbd5e1;
-        color: #475569;
+    .image-upload-area .remove-image:hover {
+        color: var(--danger);
+        border-color: var(--danger);
+        background: #fef2f2;
     }
-    
-    .btn-outline:hover {
-        background: #f1f5f9;
-        border-color: #94a3b8;
-    }
-    
-    .btn-success {
-        background: #22c55e;
-        color: white;
-    }
-    
-    .btn-success:hover {
-        background: #16a34a;
-    }
-    
+    .image-upload-area .remove-image svg { width: 12px; height: 12px; }
+    .image-upload-area.has-image .remove-image { display: flex; }
+
     /* ====== VARIANT LIST ====== */
     .variant-list {
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        gap: 0.625rem;
     }
-    
     .variant-card {
-        background: white;
-        border-radius: 12px;
-        padding: 16px 20px;
-        border: 1px solid #e2e8f0;
         display: flex;
         align-items: center;
-        gap: 20px;
-        transition: all 0.2s ease;
+        gap: 1rem;
+        padding: 1rem 1.125rem;
+        background: var(--n-0);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--surface-shadow);
+        transition: box-shadow 0.18s ease, border-color 0.18s ease;
         position: relative;
     }
-    
     .variant-card:hover {
-        border-color: #cbd5e1;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        border-color: var(--border-strong);
+        box-shadow: var(--surface-shadow-hover);
     }
-    
-    .variant-card .variant-image {
-        width: 64px;
-        height: 64px;
-        border-radius: 8px;
-        background: #f1f5f9;
+    .variant-card::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 12px;
+        bottom: 12px;
+        width: 3px;
+        border-radius: 0 3px 3px 0;
+        background: var(--n-300);
+    }
+    .variant-card.stock-in::before { background: var(--success); }
+    .variant-card.stock-low::before { background: var(--warning); }
+    .variant-card.stock-out::before { background: var(--danger); }
+
+    .variant-image {
+        width: 56px;
+        height: 56px;
+        border-radius: var(--radius);
+        background: linear-gradient(135deg, #f9fafb, #f2f3f5);
         flex-shrink: 0;
         overflow: hidden;
         display: flex;
         align-items: center;
         justify-content: center;
-        border: 1px solid #e2e8f0;
+        border: 1px solid var(--border);
     }
-    
-    .variant-card .variant-image img {
+    .variant-image img {
         width: 100%;
         height: 100%;
         object-fit: cover;
     }
-    
-    .variant-card .variant-image .no-image {
-        color: #94a3b8;
-        font-size: 24px;
+    .variant-image .no-image {
+        color: var(--n-400);
+        display: inline-flex;
     }
-    
-    .variant-card .variant-info {
-        flex: 1;
-        min-width: 0;
-    }
-    
-    .variant-card .variant-options {
+    .variant-image .no-image svg { width: 20px; height: 20px; }
+
+    .variant-info { flex: 1; min-width: 0; }
+
+    .variant-options {
         display: flex;
         flex-wrap: wrap;
-        gap: 6px;
-        margin-bottom: 6px;
+        gap: 0.375rem;
+        margin-bottom: 0.4375rem;
     }
-    
-    .variant-card .option-tag {
-        background: #f1f5f9;
-        padding: 2px 10px;
-        border-radius: 12px;
-        font-size: 12px;
+    .option-tag {
+        font-size: 11.5px;
+        color: var(--n-600);
+        background: var(--n-100);
+        padding: 3px 9px;
+        border-radius: var(--radius-sm);
         font-weight: 500;
-        color: #475569;
+        border: 1px solid var(--border);
     }
-    
-    .variant-card .option-tag strong {
-        color: #1e293b;
+    .option-tag strong {
+        color: var(--n-800);
+        font-weight: 600;
     }
-    
-    .variant-card .variant-details {
+
+    .variant-details {
         display: flex;
         flex-wrap: wrap;
-        gap: 16px;
+        gap: 1rem;
+        align-items: center;
+        font-size: 12px;
+        color: var(--text-muted);
+    }
+    .variant-details .price {
+        font-family: ui-monospace, 'SF Mono', Menlo, monospace;
         font-size: 13px;
-        color: #64748b;
-    }
-    
-    .variant-card .variant-details .price {
         font-weight: 600;
-        color: #1e293b;
+        color: var(--text);
+        font-variant-numeric: tabular-nums;
     }
-    
-    .variant-card .variant-details .compare {
+    .variant-details .compare {
+        font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+        font-size: 12px;
         text-decoration: line-through;
-        color: #94a3b8;
+        color: var(--text-subtle);
     }
-    
-    .variant-card .variant-details .stock {
-        color: #22c55e;
+    .variant-details .sku {
+        font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+        font-size: 11px;
+        color: var(--text-subtle);
+        background: var(--n-100);
+        padding: 2px 6px;
+        border-radius: var(--radius-sm);
     }
-    
-    .variant-card .variant-details .stock.low {
-        color: #f59e0b;
+
+    /* Status dot for stock */
+    .status-dot {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.375rem;
+        font-size: 12px;
+        color: var(--text-muted);
+        font-weight: 500;
     }
-    
-    .variant-card .variant-details .stock.out {
-        color: #ef4444;
+    .status-dot::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--n-400);
+        flex-shrink: 0;
+        transition: box-shadow 0.18s ease;
     }
-    
-    .variant-card .variant-actions {
+    .status-dot.in-stock::before {
+        background: var(--success);
+        box-shadow: 0 0 0 2px rgba(21, 128, 61, 0.15);
+    }
+    .status-dot.low::before {
+        background: var(--warning);
+        box-shadow: 0 0 0 2px rgba(161, 98, 7, 0.15);
+    }
+    .status-dot.out::before {
+        background: var(--danger);
+        box-shadow: 0 0 0 2px rgba(185, 28, 28, 0.15);
+    }
+    .status-dot.out { color: var(--danger); }
+    .status-dot.low { color: var(--warning); }
+
+    .variant-actions {
         display: flex;
-        gap: 6px;
+        gap: 0.375rem;
         flex-shrink: 0;
     }
-    
-    .variant-card .variant-actions .btn {
-        padding: 6px 10px;
-        font-size: 13px;
+
+    /* Tooltip */
+    .variant-actions [data-tip] {
+        position: relative;
     }
-    
+    .variant-actions [data-tip]:hover::after {
+        content: attr(data-tip);
+        position: absolute;
+        bottom: calc(100% + 6px);
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--n-900);
+        color: white;
+        padding: 4px 9px;
+        border-radius: var(--radius-sm);
+        font-size: 11px;
+        white-space: nowrap;
+        font-weight: 500;
+        z-index: 10;
+        pointer-events: none;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    }
+
     /* ====== EMPTY STATE ====== */
     .empty-state {
         text-align: center;
-        padding: 60px 20px;
-        background: white;
-        border-radius: 12px;
-        border: 2px dashed #e2e8f0;
+        padding: 4rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: var(--n-0);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--surface-shadow);
     }
-    
-    .empty-state i {
-        font-size: 48px;
-        color: #cbd5e1;
-        margin-bottom: 16px;
+    .empty-state-icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #f4f4f5, #e9e9eb);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--n-500);
+        margin-bottom: 1.25rem;
     }
-    
+    .empty-state-icon svg { width: 22px; height: 22px; }
     .empty-state h3 {
-        color: #64748b;
-        margin-bottom: 8px;
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--text);
+        margin: 0 0 0.4375rem;
+        letter-spacing: -0.015em;
     }
-    
     .empty-state p {
-        color: #94a3b8;
-        margin-bottom: 20px;
+        font-size: 13px;
+        color: var(--text-muted);
+        max-width: 380px;
+        margin: 0 0 1.5rem;
+        line-height: 1.55;
     }
-    
-    /* ====== EDIT MODAL ====== */
+
+    /* ====== MODAL ====== */
     .modal-overlay {
         display: none;
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0,0,0,0.4);
+        inset: 0;
+        background: rgba(24, 24, 27, 0.4);
         backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
         z-index: 1000;
         align-items: center;
         justify-content: center;
+        padding: 1rem;
     }
-    
-    .modal-overlay.active {
-        display: flex;
-    }
-    
+    .modal-overlay.active { display: flex; }
+
     .modal-content {
-        background: white;
-        border-radius: 16px;
-        max-width: 500px;
-        width: 90%;
+        background: var(--n-0);
+        border-radius: var(--radius-lg);
+        max-width: 520px;
+        width: 100%;
         max-height: 90vh;
         overflow-y: auto;
-        padding: 32px;
-        animation: slideUp 0.3s ease;
+        box-shadow: 0 20px 40px -12px rgba(24, 24, 27, 0.18), 0 4px 12px rgba(24, 24, 27, 0.08);
+        border: 1px solid var(--border);
     }
-    
-    .modal-content .modal-header {
+    .modal-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 20px;
-        padding-bottom: 16px;
-        border-bottom: 1px solid #e2e8f0;
+        padding: 1rem 1.25rem;
+        border-bottom: 1px solid var(--border);
+        background: linear-gradient(to bottom, #ffffff, #fcfcfd);
     }
-    
-    .modal-content .modal-header h2 {
-        font-size: 20px;
+    .modal-header h2 {
+        font-size: 14px;
         font-weight: 600;
         margin: 0;
+        color: var(--text);
     }
-    
-    .modal-content .modal-header .close {
+    .modal-close {
         background: none;
         border: none;
-        font-size: 24px;
+        color: var(--n-500);
         cursor: pointer;
-        color: #94a3b8;
-        padding: 4px 8px;
-        border-radius: 4px;
+        padding: 4px;
+        border-radius: var(--radius-sm);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
     }
-    
-    .modal-content .modal-header .close:hover {
-        background: #f1f5f9;
-        color: #475569;
-    }
-    
-    .modal-content .modal-footer {
+    .modal-close:hover { background: var(--n-100); color: var(--text); }
+    .modal-close svg { width: 14px; height: 14px; }
+
+    .modal-body { padding: 1.25rem; }
+
+    .modal-footer {
         display: flex;
-        gap: 12px;
         justify-content: flex-end;
-        margin-top: 20px;
-        padding-top: 16px;
-        border-top: 1px solid #e2e8f0;
+        gap: 0.5rem;
+        padding: 0.875rem 1.25rem;
+        background: var(--n-50);
+        border-top: 1px solid var(--border);
     }
-    
-    @keyframes slideUp {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    
-    /* ====== RESPONSIVE ====== */
-    @media (max-width: 768px) {
-        .page-header {
-            flex-direction: column;
-            align-items: flex-start;
-        }
-        
-        .form-row {
-            grid-template-columns: 1fr;
-        }
-        
-        .form-row.three-col {
-            grid-template-columns: 1fr;
-        }
-        
-        .variant-card {
-            flex-direction: column;
-            align-items: stretch;
-            text-align: center;
-            padding: 16px;
-        }
-        
-        .variant-card .variant-image {
-            align-self: center;
-        }
-        
-        .variant-card .variant-actions {
-            justify-content: center;
-            margin-top: 8px;
-        }
-        
-        .variant-card .variant-details {
-            justify-content: center;
-        }
-        
-        .variant-card .variant-options {
-            justify-content: center;
-        }
-        
-        .modal-content {
-            padding: 20px;
-            margin: 16px;
-        }
-    }
-    
-    /* ====== NOTIFICATION ====== */
-    .notification {
+
+    /* ====== TOASTS ====== */
+    .toast-stack {
         position: fixed;
-        top: 20px;
-        right: 20px;
-        padding: 12px 20px;
-        border-radius: 8px;
-        color: white;
-        font-weight: 500;
+        top: 1rem;
+        right: 1rem;
         z-index: 2000;
-        animation: slideIn 0.3s ease;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        pointer-events: none;
     }
-    
-    .notification.success {
-        background: #22c55e;
+    .toast {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1rem;
+        border-radius: var(--radius);
+        font-size: 12.5px;
+        font-weight: 500;
+        color: var(--n-0);
+        background: var(--n-900);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18), 0 2px 6px rgba(0, 0, 0, 0.08);
+        pointer-events: auto;
+        animation: toastIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+        min-width: 220px;
+        max-width: 380px;
     }
-    
-    .notification.error {
-        background: #ef4444;
+    .toast svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .toast.error { background: var(--danger); }
+    .toast.info { background: var(--n-700); }
+
+    @keyframes toastIn {
+        from { opacity: 0; transform: translateY(-10px) scale(0.98); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
     }
-    
-    .notification.info {
-        background: #3b82f6;
-    }
-    
-    @keyframes slideIn {
-        from {
-            opacity: 0;
-            transform: translateX(20px);
+
+    /* ====== RESPONSIVE ====== */
+    @media (max-width: 900px) {
+        .management-content { padding: 1.5rem 1rem 3rem; }
+        .catalog-title-row { flex-direction: column; align-items: stretch; }
+        .catalog-actions { width: 100%; }
+        .catalog-actions .btn { flex: 1; justify-content: center; }
+        .form-row, .form-row.three-col { grid-template-columns: 1fr; }
+        .variant-card {
+            flex-wrap: wrap;
+            gap: 0.75rem;
         }
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
+        .variant-actions { margin-left: auto; }
     }
 </style>
 {% endblock %}
 
 {% block content %}
-<div class="variant-page">
-    <!-- Hidden fields for JavaScript -->
-    <input type="hidden" id="page-subdomain" value="{{ page.subdomain }}">
-    <input type="hidden" id="product-id" value="{{ product.id }}">
-    
-    <!-- ====== HEADER ====== -->
-    <div class="page-header">
-        <div>
-            <h1>
-                <i class="fas fa-cubes me-2 text-primary"></i>
-                Manage Variants
-            </h1>
-            <div class="subtitle">
-                {{ product.title }} • 
-                <span class="text-success">{{ variants.count }}</span> variants
-                {% if variants.count == 0 %}
-                    <span class="text-muted">— Click "Add Variant" to get started</span>
+<div class="management-layout">
+    {% include 'builder/includes/sidebar.html' with active_menu='products' %}
+
+    <div class="management-content">
+        <div class="variant-page">
+
+            <input type="hidden" id="page-subdomain" value="{{ page.subdomain }}">
+            <input type="hidden" id="product-id" value="{{ product.id }}">
+
+            <!-- ====== BREADCRUMB ====== -->
+            <div class="catalog-context">
+                <a href="{% url 'dashboard' %}" class="context-back">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 12L6 8l4-4"/></svg>
+                    <span>Dashboard</span>
+                </a>
+                <span class="context-sep">/</span>
+                <a href="{% url 'product_editor' subdomain=page.subdomain product_id=product.id %}" class="context-back">
+                    <span>{{ product.title|truncatechars:32 }}</span>
+                </a>
+                <span class="context-sep">/</span>
+                <span class="context-current">Variants</span>
+            </div>
+
+            <!-- ====== TITLE ROW ====== -->
+            <div class="catalog-title-row">
+                <div class="catalog-title-block">
+                    <h1 class="catalog-title">Variants</h1>
+                    <p class="catalog-sub">
+                        <strong>{{ variants.count }}</strong> variant{{ variants.count|pluralize }} for
+                        <strong>{{ product.title }}</strong>
+                        {% if variants.count == 0 %}· none created yet{% endif %}
+                    </p>
+                </div>
+                <div class="catalog-actions">
+                    <a href="{% url 'product_editor' subdomain=page.subdomain product_id=product.id %}" class="btn btn-ghost">
+                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px;"><path d="M10 12L6 8l4-4"/></svg>
+                        Back to product
+                    </a>
+                </div>
+            </div>
+
+            <!-- ====== ADD VARIANT ====== -->
+            <div class="panel" id="addVariantCard">
+                <div class="panel-head add-head" onclick="toggleAddVariant()">
+                    <div>
+                        <h2 class="panel-title" id="addVariantTitle">Add new variant</h2>
+                        <p class="panel-sub" id="addVariantSub">Define options, pricing, and stock</p>
+                    </div>
+                    <span class="chevron">
+                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;"><path d="M4 6l4 4 4-4"/></svg>
+                    </span>
+                </div>
+
+                <div class="panel-body add-body" id="addVariantForm">
+                    <div class="form-row">
+                        <div class="field">
+                            <label class="field-label" for="opt1Name">Option 1 name</label>
+                            <input type="text" class="form-control" id="opt1Name" placeholder="Size" value="Size">
+                            <span class="field-help">e.g. Size, Color, Material</span>
+                        </div>
+                        <div class="field">
+                            <label class="field-label" for="opt1Value">Option 1 value</label>
+                            <input type="text" class="form-control" id="opt1Value" placeholder="Large" value="Large">
+                            <span class="field-help">e.g. Large, Red, Cotton</span>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="field">
+                            <label class="field-label" for="opt2Name">Option 2 name <span class="optional">optional</span></label>
+                            <input type="text" class="form-control" id="opt2Name" placeholder="Color">
+                            <span class="field-help">Leave blank for single-option variants</span>
+                        </div>
+                        <div class="field">
+                            <label class="field-label" for="opt2Value">Option 2 value <span class="optional">optional</span></label>
+                            <input type="text" class="form-control" id="opt2Value" placeholder="Red">
+                        </div>
+                    </div>
+
+                    <div class="form-row three-col">
+                        <div class="field">
+                            <label class="field-label" for="variantPrice">Price</label>
+                            <input type="number" class="form-control" id="variantPrice" placeholder="99.99" step="0.01" min="0">
+                        </div>
+                        <div class="field">
+                            <label class="field-label" for="variantCompare">Compare at <span class="optional">sale</span></label>
+                            <input type="number" class="form-control" id="variantCompare" placeholder="129.99" step="0.01" min="0">
+                            <span class="field-help">Original price shown struck through</span>
+                        </div>
+                        <div class="field">
+                            <label class="field-label" for="variantQuantity">Stock quantity</label>
+                            <input type="number" class="form-control" id="variantQuantity" placeholder="10" min="0" value="10">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="field">
+                            <label class="field-label" for="variantSku">SKU <span class="optional">optional</span></label>
+                            <input type="text" class="form-control" id="variantSku" placeholder="Auto-generated if blank">
+                        </div>
+                        <div class="field">
+                            <label class="field-label">Variant image <span class="optional">optional</span></label>
+                            <div class="image-upload-area" id="imageUploadArea" onclick="document.getElementById('imageInput').click()">
+                                <div class="placeholder" id="imagePlaceholder">
+                                    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="14" height="14" rx="2"/><circle cx="7.5" cy="7.5" r="1.5"/><path d="M17 13l-4-4-5 5-3-3-2 2"/></svg>
+                                    <span>Click to upload</span>
+                                    <span class="hint">PNG, JPG up to 5MB</span>
+                                </div>
+                                <img id="imagePreview" style="display:none;" alt="Variant image preview">
+                                <button type="button" class="remove-image" id="removeImageBtn" onclick="event.stopPropagation(); removeImage();" aria-label="Remove image">
+                                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg>
+                                </button>
+                                <input type="file" id="imageInput" accept="image/*">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-ghost" onclick="resetForm()">Clear</button>
+                        <button type="button" class="btn btn-accent" id="addVariantBtn" onclick="addVariant()">
+                            <span class="btn-text">Add variant</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ====== VARIANT LIST ====== -->
+            <div class="variant-list" id="variantList">
+                {% if variants %}
+                    {% for variant in variants %}
+                    <div class="variant-card {% if variant.quantity <= 0 %}stock-out{% elif variant.quantity <= 5 %}stock-low{% else %}stock-in{% endif %}" id="variant-{{ variant.id }}">
+                        <div class="variant-image">
+                            {% if variant.image %}
+                                <img src="{{ variant.image.url }}" alt="Variant image">
+                            {% else %}
+                                <span class="no-image">
+                                    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2l7 4v8l-7 4-7-4V6l7-4z"/><path d="M3 6l7 4 7-4M10 10v8"/></svg>
+                                </span>
+                            {% endif %}
+                        </div>
+
+                        <div class="variant-info">
+                            <div class="variant-options">
+                                {% for key, value in variant.options.items %}
+                                    <span class="option-tag"><strong>{{ key }}:</strong> {{ value }}</span>
+                                {% endfor %}
+                            </div>
+                            <div class="variant-details">
+                                <span class="price">${{ variant.price|default:'0.00' }}</span>
+                                {% if variant.compare_at_price %}
+                                    <span class="compare">${{ variant.compare_at_price }}</span>
+                                {% endif %}
+                                <span class="status-dot {% if variant.quantity <= 0 %}out{% elif variant.quantity <= 5 %}low{% else %}in-stock{% endif %}">
+                                    {{ variant.quantity }} in stock
+                                </span>
+                                {% if variant.sku %}
+                                    <span class="sku">{{ variant.sku }}</span>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="variant-actions">
+                            <button type="button" class="btn btn-ghost btn-icon" data-tip="Edit" onclick="editVariant({{ variant.id }})" aria-label="Edit variant">
+                                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 2l3 3-8 8H3v-3l8-8z"/></svg>
+                            </button>
+                            <button type="button" class="btn btn-danger-ghost btn-icon" data-tip="Delete" onclick="deleteVariant({{ variant.id }})" aria-label="Delete variant">
+                                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h10M6 4V2h4v2M5 4l1 9h4l1-9"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="empty-state">
+                        <div class="empty-state-icon">
+                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2l7 4v8l-7 4-7-4V6l7-4z"/><path d="M3 6l7 4 7-4M10 10v8"/></svg>
+                        </div>
+                        <h3>No variants yet</h3>
+                        <p>Variants let you offer different sizes, colors, or configurations of this product. Add your first one to get started.</p>
+                        <button type="button" class="btn btn-accent" onclick="document.getElementById('addVariantCard').scrollIntoView({behavior:'smooth'}); if(document.getElementById('addVariantCard').classList.contains('collapsed')) toggleAddVariant();">
+                            <span class="btn-text">Add first variant</span>
+                        </button>
+                    </div>
                 {% endif %}
             </div>
         </div>
-        <div>
-            <a href="{% url 'product_editor' subdomain=page.subdomain product_id=product.id %}" class="btn btn-secondary">
-                <i class="fas fa-arrow-left me-1"></i> Back
-            </a>
-        </div>
-    </div>
-    
-    <!-- ====== ADD VARIANT FORM ====== -->
-    <div class="add-variant-card" id="addVariantCard">
-        <div class="card-header" onclick="toggleAddVariant()">
-            <h3>
-                <i class="fas fa-plus-circle me-2 text-primary"></i>
-                <span id="addVariantTitle">Add New Variant</span>
-            </h3>
-            <span class="toggle-icon" id="toggleIcon">
-                <i class="fas fa-chevron-down"></i>
-            </span>
-        </div>
-        
-        <div class="form-content" id="addVariantForm">
-            <div class="form-row">
-                <!-- Option 1 -->
-                <div class="form-group">
-                    <label>Option 1 Name</label>
-                    <input type="text" id="opt1Name" placeholder="e.g., Size" value="Size">
-                    <span class="help-text">e.g., Size, Color, Material</span>
-                </div>
-                <div class="form-group">
-                    <label>Option 1 Value</label>
-                    <input type="text" id="opt1Value" placeholder="e.g., Large" value="Large">
-                    <span class="help-text">e.g., Large, Red, Cotton</span>
-                </div>
-            </div>
-            
-            <div class="form-row">
-                <!-- Option 2 -->
-                <div class="form-group">
-                    <label>Option 2 Name <span class="text-muted">(optional)</span></label>
-                    <input type="text" id="opt2Name" placeholder="e.g., Color">
-                    <span class="help-text">Leave blank for single option</span>
-                </div>
-                <div class="form-group">
-                    <label>Option 2 Value <span class="text-muted">(optional)</span></label>
-                    <input type="text" id="opt2Value" placeholder="e.g., Red">
-                </div>
-            </div>
-            
-            <div class="form-row three-col">
-                <div class="form-group">
-                    <label>Price</label>
-                    <input type="number" id="variantPrice" placeholder="99.99" step="0.01" min="0">
-                </div>
-                <div class="form-group">
-                    <label>Compare at Price <span class="text-muted">(sale)</span></label>
-                    <input type="number" id="variantCompare" placeholder="129.99" step="0.01" min="0">
-                    <span class="help-text">Original price for sale badge</span>
-                </div>
-                <div class="form-group">
-                    <label>Stock Quantity</label>
-                    <input type="number" id="variantQuantity" placeholder="10" min="0" value="10">
-                </div>
-            </div>
-            
-            <div class="form-row">
-                <div class="form-group">
-                    <label>SKU <span class="text-muted">(optional)</span></label>
-                    <input type="text" id="variantSku" placeholder="Auto-generated if empty">
-                </div>
-                <div class="form-group">
-                    <label>Variant Image <span class="text-muted">(optional)</span></label>
-                    <div class="image-upload-area" id="imageUploadArea" onclick="document.getElementById('imageInput').click()">
-                        <div class="placeholder" id="imagePlaceholder">
-                            <i class="fas fa-image"></i>
-                            <span>Click to upload image</span>
-                            <span style="font-size:12px; color:#94a3b8;">PNG, JPG up to 5MB</span>
-                        </div>
-                        <img id="imagePreview" style="display:none;" alt="Variant image">
-                        <button class="remove-image" id="removeImageBtn" onclick="event.stopPropagation(); removeImage();">
-                            <i class="fas fa-times"></i>
-                        </button>
-                        <input type="file" id="imageInput" accept="image/*">
-                    </div>
-                </div>
-            </div>
-            
-            <div class="form-actions">
-                <button class="btn btn-secondary" onclick="resetForm()">Clear</button>
-                <button class="btn btn-primary" id="addVariantBtn" onclick="addVariant()">
-                    <i class="fas fa-plus me-1"></i> Add Variant
-                </button>
-            </div>
-        </div>
-    </div>
-    
-    <!-- ====== VARIANT LIST ====== -->
-    <div class="variant-list" id="variantList">
-        {% if variants %}
-            {% for variant in variants %}
-            <div class="variant-card" id="variant-{{ variant.id }}">
-                <!-- Image -->
-                <div class="variant-image">
-                    {% if variant.image %}
-                        <img src="{{ variant.image.url }}" alt="{{ variant.options|join:',' }}">
-                    {% else %}
-                        <span class="no-image"><i class="fas fa-cube"></i></span>
-                    {% endif %}
-                </div>
-                
-                <!-- Info -->
-                <div class="variant-info">
-                    <div class="variant-options">
-                        {% for key, value in variant.options.items %}
-                            <span class="option-tag">
-                                <strong>{{ key }}:</strong> {{ value }}
-                            </span>
-                        {% endfor %}
-                    </div>
-                    <div class="variant-details">
-                        <span class="price">${{ variant.price|default:'0.00' }}</span>
-                        {% if variant.compare_at_price %}
-                            <span class="compare">${{ variant.compare_at_price }}</span>
-                        {% endif %}
-                        <span class="stock {% if variant.quantity <= 0 %}out{% elif variant.quantity <= 5 %}low{% endif %}">
-                            <i class="fas fa-{% if variant.quantity <= 0 %}times-circle{% elif variant.quantity <= 5 %}exclamation-circle{% else %}check-circle{% endif %}"></i>
-                            {{ variant.quantity }} in stock
-                        </span>
-                        {% if variant.sku %}
-                            <span>SKU: {{ variant.sku }}</span>
-                        {% endif %}
-                    </div>
-                </div>
-                
-                <!-- Actions -->
-                <div class="variant-actions">
-                    <button class="btn btn-outline" onclick="editVariant({{ variant.id }})">
-                        <i class="fas fa-edit"></i>
-                    </button>
-                    <button class="btn btn-danger" onclick="deleteVariant({{ variant.id }})">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                </div>
-            </div>
-            {% endfor %}
-        {% else %}
-            <div class="empty-state">
-                <i class="fas fa-cubes"></i>
-                <h3>No Variants Yet</h3>
-                <p>Create your first variant by filling out the form above.</p>
-                <button class="btn btn-primary" onclick="document.getElementById('addVariantCard').scrollIntoView({behavior:'smooth'}); toggleAddVariant();">
-                    <i class="fas fa-plus me-1"></i> Create First Variant
-                </button>
-            </div>
-        {% endif %}
     </div>
 </div>
 
 <!-- ====== EDIT MODAL ====== -->
-<div class="modal-overlay" id="editModal">
+<div class="modal-overlay" id="editModal" role="dialog" aria-modal="true" aria-labelledby="editModalTitle">
     <div class="modal-content">
         <div class="modal-header">
-            <h2><i class="fas fa-edit me-2 text-primary"></i> Edit Variant</h2>
-            <button class="close" onclick="closeModal()">&times;</button>
+            <h2 id="editModalTitle">Edit variant</h2>
+            <button type="button" class="modal-close" onclick="closeModal()" aria-label="Close">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg>
+            </button>
         </div>
-        <div id="editFormContent">
-            <!-- Dynamic content loaded via JavaScript -->
-        </div>
+        <div id="editFormContent"></div>
     </div>
 </div>
+
+<!-- ====== TOASTS ====== -->
+<div class="toast-stack" id="toastStack"></div>
 
 <script>
 // ================================================================
 // STATE
 // ================================================================
-
 let currentEditVariantId = null;
 let tempImageFile = null;
-let isAdding = true;
+let pendingDeleteId = null;
+
+// ================================================================
+// TOASTS
+// ================================================================
+function toast(message, type = 'success') {
+    const stack = document.getElementById('toastStack');
+    const el = document.createElement('div');
+    el.className = `toast ${type}`;
+
+    const icon = type === 'error'
+        ? '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><path d="M8 5v3M8 11h.01"/></svg>'
+        : '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>';
+
+    el.innerHTML = `${icon}<span>${message}</span>`;
+    stack.appendChild(el);
+
+    setTimeout(() => {
+        el.style.transition = 'opacity 0.15s ease, transform 0.15s ease';
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(-8px)';
+        setTimeout(() => el.remove(), 200);
+    }, 3000);
+}
 
 // ================================================================
 // TOGGLE ADD FORM
 // ================================================================
-
 function toggleAddVariant() {
-    const card = document.getElementById('addVariantCard');
-    card.classList.toggle('collapsed');
-    const icon = document.getElementById('toggleIcon');
-    icon.innerHTML = card.classList.contains('collapsed') 
-        ? '<i class="fas fa-chevron-up"></i>' 
-        : '<i class="fas fa-chevron-down"></i>';
+    document.getElementById('addVariantCard').classList.toggle('collapsed');
 }
 
 // ================================================================
-// IMAGE UPLOAD
+// IMAGE UPLOAD (ADD)
 // ================================================================
-
-document.getElementById('imageInput').addEventListener('change', function(e) {
+document.getElementById('imageInput').addEventListener('change', function (e) {
     const file = e.target.files[0];
-    if (file) {
-        tempImageFile = file;
-        const reader = new FileReader();
-        reader.onload = function(event) {
-            const preview = document.getElementById('imagePreview');
-            const placeholder = document.getElementById('imagePlaceholder');
-            const area = document.getElementById('imageUploadArea');
-            
-            preview.src = event.target.result;
-            preview.style.display = 'block';
-            placeholder.style.display = 'none';
-            area.classList.add('has-image');
-        };
-        reader.readAsDataURL(file);
-    }
+    if (!file) return;
+    tempImageFile = file;
+    const reader = new FileReader();
+    reader.onload = function (event) {
+        const preview = document.getElementById('imagePreview');
+        const placeholder = document.getElementById('imagePlaceholder');
+        const area = document.getElementById('imageUploadArea');
+        preview.src = event.target.result;
+        preview.style.display = 'block';
+        placeholder.style.display = 'none';
+        area.classList.add('has-image');
+    };
+    reader.readAsDataURL(file);
 });
 
 function removeImage() {
@@ -819,28 +967,26 @@ function removeImage() {
     const preview = document.getElementById('imagePreview');
     const placeholder = document.getElementById('imagePlaceholder');
     const area = document.getElementById('imageUploadArea');
-    const input = document.getElementById('imageInput');
-    
+    document.getElementById('imageInput').value = '';
     preview.src = '';
     preview.style.display = 'none';
-    placeholder.style.display = 'block';
+    placeholder.style.display = 'flex';
     area.classList.remove('has-image');
-    input.value = '';
 }
 
 // ================================================================
 // ADD VARIANT
 // ================================================================
-
 function addVariant() {
     const btn = document.getElementById('addVariantBtn');
+    const btnText = btn.querySelector('.btn-text');
+    const originalText = btnText.textContent;
     btn.disabled = true;
-    btn.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span> Adding...';
-    
+    btnText.textContent = 'Adding…';
+
     const subdomain = document.getElementById('page-subdomain').value;
     const productId = document.getElementById('product-id').value;
-    
-    // Get form data
+
     const opt1Name = document.getElementById('opt1Name').value.trim();
     const opt1Value = document.getElementById('opt1Value').value.trim();
     const opt2Name = document.getElementById('opt2Name').value.trim();
@@ -849,16 +995,14 @@ function addVariant() {
     const compare = document.getElementById('variantCompare').value;
     const quantity = document.getElementById('variantQuantity').value;
     const sku = document.getElementById('variantSku').value.trim();
-    
-    // Validate
+
     if (!opt1Name || !opt1Value) {
-        showNotification('Please fill in Option 1', 'error');
+        toast('Fill in Option 1 name and value', 'error');
         btn.disabled = false;
-        btn.innerHTML = '<i class="fas fa-plus me-1"></i> Add Variant';
+        btnText.textContent = originalText;
         return;
     }
-    
-    // Build form data
+
     const formData = new FormData();
     formData.append('option1_name', opt1Name);
     formData.append('option1_value', opt1Value);
@@ -868,189 +1012,170 @@ function addVariant() {
     formData.append('compare_price', compare);
     formData.append('quantity', quantity);
     formData.append('sku', sku);
-    
-    if (tempImageFile) {
-        formData.append('image', tempImageFile);
-    }
-    
-    // Send request
+    if (tempImageFile) formData.append('image', tempImageFile);
+
     fetch(`/builder/api/add-variant-simple/${subdomain}/${productId}/`, {
         method: 'POST',
-        headers: {
-            'X-CSRFToken': getCsrfToken(),
-        },
+        headers: { 'X-CSRFToken': getCsrfToken() },
         body: formData,
     })
-    .then(response => response.json())
+    .then(r => r.json())
     .then(data => {
         if (data.success) {
-            showNotification('Variant added successfully! 🎉', 'success');
-            // Reload to show new variant
-            setTimeout(() => location.reload(), 500);
+            toast('Variant added');
+            setTimeout(() => location.reload(), 400);
         } else {
-            showNotification('Error: ' + data.error, 'error');
+            toast(data.error || 'Failed to add variant', 'error');
             btn.disabled = false;
-            btn.innerHTML = '<i class="fas fa-plus me-1"></i> Add Variant';
+            btnText.textContent = originalText;
         }
     })
-    .catch(error => {
-        showNotification('Error: ' + error, 'error');
+    .catch(err => {
+        toast('Network error', 'error');
         btn.disabled = false;
-        btn.innerHTML = '<i class="fas fa-plus me-1"></i> Add Variant';
+        btnText.textContent = originalText;
     });
 }
 
 // ================================================================
 // EDIT VARIANT
 // ================================================================
-
 function editVariant(variantId) {
     currentEditVariantId = variantId;
-    
-    // Find the variant card
     const card = document.getElementById(`variant-${variantId}`);
     if (!card) return;
-    
-    // Extract data from the card
+
     const options = [];
     card.querySelectorAll('.option-tag').forEach(tag => {
         const text = tag.textContent.trim();
-        const parts = text.split(':');
-        if (parts.length === 2) {
-            options.push({ name: parts[0].trim(), value: parts[1].trim() });
+        const idx = text.indexOf(':');
+        if (idx > -1) {
+            options.push({ name: text.slice(0, idx).trim(), value: text.slice(idx + 1).trim() });
         }
     });
-    
+
     const details = card.querySelector('.variant-details');
     const priceEl = details.querySelector('.price');
     const compareEl = details.querySelector('.compare');
-    const stockEl = details.querySelector('.stock');
-    
-    const price = priceEl ? priceEl.textContent.replace('$', '') : '';
-    const compare = compareEl ? compareEl.textContent.replace('$', '') : '';
-    const stock = stockEl ? stockEl.textContent.match(/\d+/) : '0';
-    const sku = details.textContent.match(/SKU:\s*(\S+)/);
-    
-    // Get image
+    const skuEl = details.querySelector('.sku');
+
+    const price = priceEl ? priceEl.textContent.replace('$', '').trim() : '';
+    const compare = compareEl ? compareEl.textContent.replace('$', '').trim() : '';
+    const sku = skuEl ? skuEl.textContent.trim() : '';
+
+    const stockMatch = details.querySelector('.status-dot')?.textContent.match(/\d+/);
+    const stock = stockMatch ? stockMatch[0] : '0';
+
     const img = card.querySelector('.variant-image img');
-    const hasImage = img && img.src && !img.src.includes('cube');
-    
-    // Build edit form
-    const formContent = document.getElementById('editFormContent');
-    formContent.innerHTML = `
-        <div class="form-group" style="margin-bottom: 16px;">
-            <label>Options</label>
-            <div style="display: flex; flex-wrap: wrap; gap: 8px; padding: 8px 0;">
-                ${options.map(opt => `
-                    <span class="option-tag" style="font-size:14px; padding:4px 14px;">
-                        <strong>${opt.name}:</strong> ${opt.value}
-                    </span>
-                `).join('')}
+    const hasImage = img && img.src;
+
+    document.getElementById('editFormContent').innerHTML = `
+        <div class="modal-body">
+            <div class="field" style="margin-bottom:1rem;">
+                <label class="field-label">Options</label>
+                <div style="display:flex; flex-wrap:wrap; gap:0.375rem; padding:0.25rem 0;">
+                    ${options.map(o => `<span class="option-tag"><strong>${escapeHtml(o.name)}:</strong> ${escapeHtml(o.value)}</span>`).join('')}
+                </div>
+                <span class="field-help">To change options, delete this variant and add a new one.</span>
             </div>
-            <span class="help-text">Edit options by deleting and re-adding the variant</span>
-        </div>
-        
-        <div class="form-row">
-            <div class="form-group">
-                <label>Price</label>
-                <input type="number" id="editPrice" value="${price}" step="0.01" min="0" class="form-control">
+
+            <div class="form-row">
+                <div class="field">
+                    <label class="field-label" for="editPrice">Price</label>
+                    <input type="number" class="form-control" id="editPrice" value="${escapeAttr(price)}" step="0.01" min="0">
+                </div>
+                <div class="field">
+                    <label class="field-label" for="editCompare">Compare at</label>
+                    <input type="number" class="form-control" id="editCompare" value="${escapeAttr(compare)}" step="0.01" min="0">
+                </div>
             </div>
-            <div class="form-group">
-                <label>Compare at Price</label>
-                <input type="number" id="editCompare" value="${compare}" step="0.01" min="0" class="form-control">
+
+            <div class="form-row">
+                <div class="field">
+                    <label class="field-label" for="editQuantity">Stock quantity</label>
+                    <input type="number" class="form-control" id="editQuantity" value="${escapeAttr(stock)}" min="0">
+                </div>
+                <div class="field">
+                    <label class="field-label" for="editSku">SKU</label>
+                    <input type="text" class="form-control" id="editSku" value="${escapeAttr(sku)}">
+                </div>
             </div>
-        </div>
-        
-        <div class="form-row">
-            <div class="form-group">
-                <label>Stock Quantity</label>
-                <input type="number" id="editQuantity" value="${stock}" min="0" class="form-control">
-            </div>
-            <div class="form-group">
-                <label>SKU</label>
-                <input type="text" id="editSku" value="${sku ? sku[1] : ''}" class="form-control">
-            </div>
-        </div>
-        
-        <div class="form-group" style="margin-top: 16px;">
-            <label>Variant Image</label>
-            <div class="image-upload-area ${hasImage ? 'has-image' : ''}" id="editImageArea" onclick="document.getElementById('editImageInput').click()">
-                ${hasImage ? `<img src="${img.src}" alt="Variant image" style="max-width:100%; max-height:120px;">` : `
-                    <div class="placeholder">
-                        <i class="fas fa-image"></i>
-                        <span>Click to upload new image</span>
-                    </div>
-                `}
-                <button class="remove-image" id="editRemoveImageBtn" onclick="event.stopPropagation(); document.getElementById('editImageArea').querySelector('img')?.remove(); this.parentElement.classList.remove('has-image');">
-                    <i class="fas fa-times"></i>
-                </button>
-                <input type="file" id="editImageInput" accept="image/*" style="display:none;">
+
+            <div class="field" style="margin-top:1rem;">
+                <label class="field-label">Variant image</label>
+                <div class="image-upload-area ${hasImage ? 'has-image' : ''}" id="editImageArea" onclick="document.getElementById('editImageInput').click()">
+                    ${hasImage
+                        ? `<img src="${img.src}" alt="Variant image">`
+                        : `<div class="placeholder">
+                               <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="14" height="14" rx="2"/><circle cx="7.5" cy="7.5" r="1.5"/><path d="M17 13l-4-4-5 5-3-3-2 2"/></svg>
+                               <span>Click to upload</span>
+                           </div>`}
+                    <button type="button" class="remove-image" onclick="event.stopPropagation(); removeEditImage();" aria-label="Remove image">
+                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg>
+                    </button>
+                    <input type="file" id="editImageInput" accept="image/*">
+                </div>
             </div>
         </div>
-        
+
         <div class="modal-footer">
-            <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
-            <button class="btn btn-primary" onclick="saveEdit()">
-                <i class="fas fa-save me-1"></i> Save Changes
+            <button type="button" class="btn btn-ghost" onclick="closeModal()">Cancel</button>
+            <button type="button" class="btn btn-accent" id="saveEditBtn" onclick="saveEdit()">
+                <span class="btn-text">Save changes</span>
             </button>
         </div>
     `;
-    
-    // Handle image upload in edit mode
-    document.getElementById('editImageInput').addEventListener('change', function(e) {
+
+    document.getElementById('editImageInput').addEventListener('change', function (e) {
         const file = e.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(event) {
-                const area = document.getElementById('editImageArea');
-                const existingImg = area.querySelector('img');
-                if (existingImg) {
-                    existingImg.src = event.target.result;
-                } else {
-                    const img = document.createElement('img');
-                    img.src = event.target.result;
-                    img.alt = 'Variant image';
-                    img.style.maxWidth = '100%';
-                    img.style.maxHeight = '120px';
-                    area.querySelector('.placeholder')?.remove();
-                    area.appendChild(img);
-                    area.classList.add('has-image');
-                }
-            };
-            reader.readAsDataURL(file);
-        }
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = function (event) {
+            const area = document.getElementById('editImageArea');
+            let existingImg = area.querySelector('img');
+            if (existingImg) {
+                existingImg.src = event.target.result;
+            } else {
+                const newImg = document.createElement('img');
+                newImg.src = event.target.result;
+                newImg.alt = 'Variant image';
+                area.querySelector('.placeholder')?.remove();
+                area.insertBefore(newImg, area.firstChild);
+                area.classList.add('has-image');
+            }
+        };
+        reader.readAsDataURL(file);
     });
-    
-    // Show modal
+
     document.getElementById('editModal').classList.add('active');
 }
 
+function removeEditImage() {
+    const area = document.getElementById('editImageArea');
+    area.querySelector('img')?.remove();
+    area.classList.remove('has-image');
+    area.insertAdjacentHTML('afterbegin', `
+        <div class="placeholder">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="14" height="14" rx="2"/><circle cx="7.5" cy="7.5" r="1.5"/><path d="M17 13l-4-4-5 5-3-3-2 2"/></svg>
+            <span>Click to upload</span>
+        </div>
+    `);
+}
+
 function saveEdit() {
+    const btn = document.getElementById('saveEditBtn');
+    const btnText = btn.querySelector('.btn-text');
+    btn.disabled = true;
+    btnText.textContent = 'Saving…';
+
     const subdomain = document.getElementById('page-subdomain').value;
     const variantId = currentEditVariantId;
-    
+
     const price = document.getElementById('editPrice').value;
     const compare = document.getElementById('editCompare').value;
     const quantity = document.getElementById('editQuantity').value;
     const sku = document.getElementById('editSku').value.trim();
-    
-    // Check if image was changed
-    const imageArea = document.getElementById('editImageArea');
-    const img = imageArea.querySelector('img');
-    const hasImage = img && img.src && !img.src.includes('cube');
-    
-    // Build form data
-    const formData = new FormData();
-    formData.append('price', price);
-    formData.append('compare_price', compare);
-    formData.append('quantity', quantity);
-    formData.append('sku', sku);
-    
-    // If image was changed, we need to handle it
-    // For simplicity, we'll use the existing quick-edit endpoint
-    // and handle image separately
-    
-    // First update the variant data
+
     fetch(`/builder/api/quick-edit-variant/${subdomain}/${variantId}/`, {
         method: 'POST',
         headers: {
@@ -1065,98 +1190,85 @@ function saveEdit() {
             track_quantity: true,
         }),
     })
-    .then(response => response.json())
+    .then(r => r.json())
     .then(data => {
-        if (data.success) {
-            // If there's an image change, handle it
-            const fileInput = document.getElementById('editImageInput');
-            if (fileInput && fileInput.files.length > 0) {
-                const imageFormData = new FormData();
-                imageFormData.append('image', fileInput.files[0]);
-                
-                return fetch(`/builder/api/upload-variant-image/${subdomain}/${variantId}/`, {
-                    method: 'POST',
-                    headers: {
-                        'X-CSRFToken': getCsrfToken(),
-                    },
-                    body: imageFormData,
-                });
-            }
-            return { success: true };
-        } else {
-            throw new Error(data.error);
+        if (!data.success) throw new Error(data.error || 'Update failed');
+        const fileInput = document.getElementById('editImageInput');
+        if (fileInput && fileInput.files.length > 0) {
+            const imageFormData = new FormData();
+            imageFormData.append('image', fileInput.files[0]);
+            return fetch(`/builder/api/upload-variant-image/${subdomain}/${variantId}/`, {
+                method: 'POST',
+                headers: { 'X-CSRFToken': getCsrfToken() },
+                body: imageFormData,
+            }).then(r => r.json());
         }
+        return { success: true };
     })
     .then(result => {
-        if (result.success !== false) {
-            showNotification('Variant updated successfully! ✅', 'success');
-            closeModal();
-            setTimeout(() => location.reload(), 500);
-        }
+        if (result.success === false) throw new Error(result.error || 'Image upload failed');
+        toast('Variant updated');
+        closeModal();
+        setTimeout(() => location.reload(), 400);
     })
-    .catch(error => {
-        showNotification('Error: ' + error.message, 'error');
+    .catch(err => {
+        toast(err.message || 'Update failed', 'error');
+        btn.disabled = false;
+        btnText.textContent = 'Save changes';
     });
 }
 
 // ================================================================
 // DELETE VARIANT
 // ================================================================
-
 function deleteVariant(variantId) {
-    if (!confirm('Delete this variant?')) return;
-    
+    if (!confirm('Delete this variant? This cannot be undone.')) return;
     const subdomain = document.getElementById('page-subdomain').value;
-    
+
     fetch(`/builder/api/delete-variant/${subdomain}/${variantId}/`, {
         method: 'POST',
-        headers: {
-            'X-CSRFToken': getCsrfToken(),
-        },
+        headers: { 'X-CSRFToken': getCsrfToken() },
     })
-    .then(response => response.json())
+    .then(r => r.json())
     .then(data => {
         if (data.success) {
-            showNotification('Variant deleted', 'info');
-            const card = document.getElementById(`variant-${variantId}`);
-            if (card) {
-                card.style.transition = 'all 0.3s ease';
-                card.style.opacity = '0';
-                card.style.transform = 'scale(0.95)';
-                setTimeout(() => card.remove(), 300);
-            }
+            toast('Variant deleted', 'info');
+            document.getElementById(`variant-${variantId}`)?.remove();
+            if (!document.querySelectorAll('.variant-card').length) location.reload();
         } else {
-            showNotification('Error: ' + data.error, 'error');
+            toast(data.error || 'Delete failed', 'error');
         }
     })
-    .catch(error => {
-        showNotification('Error: ' + error, 'error');
-    });
+    .catch(() => toast('Network error', 'error'));
 }
 
 // ================================================================
 // MODAL
 // ================================================================
-
 function closeModal() {
     document.getElementById('editModal').classList.remove('active');
     currentEditVariantId = null;
+    document.getElementById('editFormContent').innerHTML = '';
 }
 
-// Close modal on overlay click
-document.getElementById('editModal').addEventListener('click', function(e) {
+document.getElementById('editModal').addEventListener('click', function (e) {
     if (e.target === this) closeModal();
 });
 
-// Close modal on Escape key
-document.addEventListener('keydown', function(e) {
+document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') closeModal();
+    if (e.ctrlKey && e.key === 'Enter') {
+        const form = document.getElementById('addVariantForm');
+        if (form && !document.getElementById('addVariantCard').classList.contains('collapsed')) {
+            e.preventDefault();
+            addVariant();
+        }
+    }
 });
 
 // ================================================================
-// RESET FORM
+// RESET
 // ================================================================
-
 function resetForm() {
     document.getElementById('opt1Name').value = 'Size';
     document.getElementById('opt1Value').value = 'Large';
@@ -1172,41 +1284,16 @@ function resetForm() {
 // ================================================================
 // HELPERS
 // ================================================================
-
 function getCsrfToken() {
-    return document.querySelector('input[name="csrfmiddlewaretoken"]')?.value || 
+    return document.querySelector('input[name="csrfmiddlewaretoken"]')?.value ||
            document.querySelector('[name=csrfmiddlewaretoken]')?.value || '';
 }
 
-function showNotification(message, type) {
-    // Remove existing notifications
-    document.querySelectorAll('.notification').forEach(el => el.remove());
-    
-    const notification = document.createElement('div');
-    notification.className = `notification ${type}`;
-    notification.textContent = message;
-    document.body.appendChild(notification);
-    
-    setTimeout(() => {
-        notification.style.opacity = '0';
-        notification.style.transition = 'opacity 0.3s ease';
-        setTimeout(() => notification.remove(), 300);
-    }, 3000);
+function escapeHtml(str) {
+    return String(str).replace(/[&<>"']/g, c => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[c]));
 }
-
-// ================================================================
-// KEYBOARD SHORTCUTS
-// ================================================================
-
-document.addEventListener('keydown', function(e) {
-    // Ctrl+Enter to add variant
-    if (e.ctrlKey && e.key === 'Enter') {
-        const form = document.getElementById('addVariantForm');
-        if (form.style.display !== 'none') {
-            e.preventDefault();
-            addVariant();
-        }
-    }
-});
+function escapeAttr(str) { return escapeHtml(str); }
 </script>
 {% endblock %}

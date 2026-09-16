@@ -1,796 +1,789 @@
 {% extends 'builder/base.html' %}
 {% load static %}
 
-{% block title %}Shipping & Returns • {{ page.brand_name }}{% endblock %}
+{% block title %}Shipping &amp; Returns • {{ page.brand_name }}{% endblock %}
 
 {% block extra_css %}
 <style>
-    /* Management Layout */
-    .management-layout {
-        display: flex;
-        min-height: 100vh;
-    }
+:root {
+    --n-0: #ffffff;
+    --n-50: #fafafa;
+    --n-100: #f4f4f5;
+    --n-200: #e4e4e7;
+    --n-300: #d4d4d8;
+    --n-400: #a1a1aa;
+    --n-500: #71717a;
+    --n-600: #52525b;
+    --n-700: #3f3f46;
+    --n-800: #27272a;
+    --n-900: #18181b;
 
-    .management-content {
-        flex: 1;
-        padding: 1.5rem;
-        background: #F9F6F0;
-        min-height: 100vh;
-        overflow-y: auto;
-    }
+    --accent: var(--primary-color, #111827);
+    --accent-hover: #000000;
 
-    :root {
-        --primary: #2C3E50;
-        --secondary: #E8C07D;
-        --accent: #D4AF37;
-        --background: #F9F6F0;
-        --surface: #FFFFFF;
-        --text-primary: #2C3E50;
-        --text-secondary: #6B7A8A;
-        --border: #E5D9CC;
-        --success: #7A9E7E;
-        --success-light: #E8F0E9;
-        --error: #C44545;
-        --error-light: #F9E9E9;
-        --shadow-sm: 0 4px 20px rgba(44, 62, 80, 0.05);
-        --shadow-md: 0 8px 30px rgba(44, 62, 80, 0.08);
-        --shadow-lg: 0 20px 40px rgba(44, 62, 80, 0.12);
-    }
+    --success: #15803d;
+    --warning: #a16207;
+    --danger: #b91c1c;
 
-    body {
-        background: var(--background);
-    }
+    --border: var(--n-200);
+    --border-strong: var(--n-300);
+    --text: var(--n-900);
+    --text-muted: var(--n-500);
+    --text-subtle: var(--n-400);
 
-    .policy-editor-container {
-        max-width: 1000px;
-        margin: 0 auto;
-    }
+    --radius-sm: 4px;
+    --radius: 6px;
+    --radius-lg: 10px;
+}
 
-    /* Toast Notifications */
-    .toast-container {
-        position: fixed;
-        top: 2rem;
-        right: 2rem;
-        z-index: 9999;
-        display: flex;
+.management-layout {
+    display: flex;
+    min-height: calc(100vh - 120px);
+    background: var(--n-50);
+}
+
+.management-content {
+    flex: 1;
+    padding: 2.5rem 2rem 4rem;
+    max-width: 1280px;
+    width: 100%;
+}
+
+/* ===== Context breadcrumb ===== */
+.catalog-context {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.context-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.15s;
+    font-weight: 500;
+}
+
+.context-back:hover { color: var(--text); }
+.context-back svg { transition: transform 0.15s; }
+.context-back:hover svg { transform: translateX(-2px); }
+.context-sep { color: var(--n-300); }
+.context-current { color: var(--text); font-weight: 500; }
+
+/* ===== Title row ===== */
+.catalog-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.catalog-title-block { min-width: 0; }
+
+.catalog-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    color: var(--text);
+    margin: 0 0 0.25rem 0;
+    line-height: 1.15;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.catalog-sub {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.catalog-actions {
+    display: flex;
+    gap: 0.375rem;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* ===== Status chip ===== */
+.status-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.1875rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    background: var(--n-100);
+    color: var(--n-700);
+    flex-shrink: 0;
+    line-height: 1.4;
+}
+
+.status-chip::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: currentColor;
+    flex-shrink: 0;
+}
+
+.status-chip.active {
+    background: #f0fdf4;
+    color: var(--success);
+}
+
+/* ===== Buttons ===== */
+.btn {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    border-radius: var(--radius);
+    padding: 0.5rem 0.875rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    line-height: 1.25;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: inherit;
+}
+
+.btn-ghost {
+    background: var(--n-0);
+    border-color: var(--border);
+    color: var(--n-700);
+}
+
+.btn-ghost:hover {
+    background: var(--n-50);
+    border-color: var(--border-strong);
+    color: var(--text);
+}
+
+.btn-accent {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+}
+
+.btn-accent:hover {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+    color: white;
+}
+
+.btn-danger-ghost {
+    background: transparent;
+    border-color: var(--border);
+    color: var(--n-700);
+}
+
+.btn-danger-ghost:hover {
+    background: #fef2f2;
+    border-color: var(--danger);
+    color: var(--danger);
+}
+
+/* ===== Panels ===== */
+.panel {
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.panel-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.875rem 1.125rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.panel-title {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0;
+    letter-spacing: -0.005em;
+}
+
+.panel-sub {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    margin: 0.125rem 0 0 0;
+}
+
+.panel-body {
+    padding: 1.125rem;
+}
+
+/* ===== Fields ===== */
+.field {
+    margin-bottom: 1rem;
+}
+
+.field:last-child { margin-bottom: 0; }
+
+.field-label {
+    display: block;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--n-700);
+    margin-bottom: 0.375rem;
+}
+
+.field-help {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    margin-top: 0.375rem;
+    line-height: 1.5;
+}
+
+.field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-control {
+    width: 100%;
+    font-size: 0.8125rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.5rem 0.75rem;
+    background: var(--n-0);
+    color: var(--text);
+    font-family: inherit;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    line-height: 1.5;
+}
+
+.form-control:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+    outline: none;
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 90px;
+}
+
+/* ===== Toggle ===== */
+.toggle-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1.125rem;
+    border-top: 1px solid var(--border);
+}
+
+.toggle {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 22px;
+    flex-shrink: 0;
+}
+
+.toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background: var(--n-300);
+    border-radius: 100px;
+    transition: background 0.2s;
+}
+
+.toggle-slider::before {
+    content: '';
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    left: 3px;
+    top: 3px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.2s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.toggle input:checked + .toggle-slider {
+    background: var(--accent);
+}
+
+.toggle input:checked + .toggle-slider::before {
+    transform: translateX(18px);
+}
+
+.toggle input:focus + .toggle-slider {
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+.toggle-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.toggle-title {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.3;
+    margin: 0 0 0.125rem 0;
+}
+
+.toggle-desc {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* ===== Sticky footer ===== */
+.form-footer {
+    position: sticky;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1.125rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    margin-top: 1rem;
+    flex-wrap: wrap;
+    z-index: 10;
+}
+
+.form-footer-msg {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+}
+
+.form-footer-actions {
+    display: flex;
+    gap: 0.375rem;
+    align-items: center;
+}
+
+/* ===== Auto-save status ===== */
+.auto-save-status {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--n-900);
+    color: white;
+    padding: 0.625rem 0.875rem;
+    border-radius: var(--radius);
+    font-size: 0.75rem;
+    font-weight: 500;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transform: translateY(150%);
+    transition: transform 0.25s ease;
+    z-index: 9998;
+    max-width: 320px;
+    pointer-events: none;
+}
+
+.auto-save-status.show {
+    transform: translateY(0);
+}
+
+.auto-save-status .save-spinner {
+    width: 12px;
+    height: 12px;
+    border: 1.5px solid rgba(255,255,255,0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    flex-shrink: 0;
+}
+
+.auto-save-status.saved .save-spinner {
+    display: none;
+}
+
+.auto-save-status.saved::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--success);
+    flex-shrink: 0;
+}
+
+.auto-save-status.error::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--danger);
+    flex-shrink: 0;
+}
+
+.auto-save-status.error .save-spinner {
+    display: none;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.auto-save-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    min-width: 0;
+}
+
+.auto-save-text strong {
+    font-weight: 500;
+    font-size: 0.75rem;
+    color: white;
+}
+
+.auto-save-text small {
+    font-size: 0.6875rem;
+    color: rgba(255,255,255,0.6);
+    font-variant-numeric: tabular-nums;
+}
+
+/* ===== Toast ===== */
+.toast-stack {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    pointer-events: none;
+}
+
+.toast {
+    background: var(--n-900);
+    color: white;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    max-width: 360px;
+    pointer-events: auto;
+    animation: toastIn 0.2s ease;
+    line-height: 1.5;
+}
+
+.toast.error { background: var(--danger); }
+
+@keyframes toastIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+    .management-content { padding: 1.5rem 1rem 3rem; }
+
+    .catalog-title-row {
         flex-direction: column;
+        align-items: stretch;
         gap: 1rem;
     }
 
-    .toast {
-        min-width: 320px;
-        padding: 1rem 1.5rem;
-        background: var(--surface);
-        border-radius: 12px;
-        box-shadow: var(--shadow-lg);
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        transform: translateX(120%);
-        animation: slideIn 0.3s ease forwards;
-        border-left: 4px solid var(--success);
-        border: 1px solid var(--border);
-    }
+    .catalog-actions { justify-content: flex-start; flex-wrap: wrap; }
 
-    .toast.success {
-        border-left-color: var(--success);
-    }
+    .field-row { grid-template-columns: 1fr; }
 
-    .toast.error {
-        border-left-color: var(--error);
+    .form-footer {
+        flex-direction: column;
+        align-items: stretch;
     }
-
-    .toast.info {
-        border-left-color: var(--secondary);
+    .form-footer-actions {
+        justify-content: stretch;
     }
-
-    .toast-icon {
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1rem;
-    }
-
-    .toast.success .toast-icon {
-        background: var(--success-light);
-        color: var(--success);
-    }
-
-    .toast.error .toast-icon {
-        background: var(--error-light);
-        color: var(--error);
-    }
-
-    .toast.info .toast-icon {
-        background: #FDF6E9;
-        color: var(--secondary);
-    }
-
-    .toast-content {
+    .form-footer-actions .btn {
         flex: 1;
-    }
-
-    .toast-title {
-        font-weight: 600;
-        font-size: 0.95rem;
-        color: var(--text-primary);
-    }
-
-    .toast-message {
-        font-size: 0.85rem;
-        color: var(--text-secondary);
-        margin-top: 0.2rem;
-    }
-
-    .toast-close {
-        color: var(--text-secondary);
-        cursor: pointer;
-        transition: color 0.2s ease;
-    }
-
-    .toast-close:hover {
-        color: var(--text-primary);
-    }
-
-    @keyframes slideIn {
-        to {
-            transform: translateX(0);
-        }
-    }
-
-    @keyframes slideOut {
-        to {
-            transform: translateX(120%);
-        }
-    }
-
-    /* Auto-save Indicator */
-    .auto-save-status {
-        position: fixed;
-        bottom: 2rem;
-        right: 2rem;
-        background: var(--surface);
-        padding: 0.75rem 1.5rem;
-        border-radius: 50px;
-        box-shadow: var(--shadow-md);
-        display: flex;
-        align-items: center;
-        gap: 0.8rem;
-        border: 1px solid var(--border);
-        transform: translateY(150%);
-        transition: transform 0.3s ease;
-        z-index: 9998;
-    }
-
-    .auto-save-status.show {
-        transform: translateY(0);
-    }
-
-    .auto-save-status.saving {
-        border-left-color: var(--secondary);
-    }
-
-    .auto-save-status.saved {
-        border-left-color: var(--success);
-    }
-
-    .auto-save-status.error {
-        border-left-color: var(--error);
-    }
-
-    .save-spinner {
-        width: 20px;
-        height: 20px;
-        border: 2px solid var(--border);
-        border-top-color: var(--secondary);
-        border-radius: 50%;
-        animation: spin 0.8s linear infinite;
-    }
-
-    @keyframes spin {
-        to { transform: rotate(360deg); }
-    }
-
-    /* Elegant Header */
-    .elegant-header {
-        text-align: center;
-        margin-bottom: 3rem;
-        position: relative;
-    }
-
-    .elegant-header::after {
-        content: '';
-        position: absolute;
-        bottom: -1rem;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 60px;
-        height: 2px;
-        background: linear-gradient(90deg, transparent, var(--secondary), transparent);
-    }
-
-    .elegant-header h1 {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 2.5rem;
-        color: var(--primary);
-        margin-bottom: 0.5rem;
-    }
-
-    .elegant-header p {
-        color: var(--text-secondary);
-        font-size: 1rem;
-    }
-
-    .store-badge {
-        display: inline-block;
-        background: var(--surface);
-        padding: 0.5rem 2rem;
-        border-radius: 50px;
-        font-size: 0.9rem;
-        color: var(--text-secondary);
-        box-shadow: var(--shadow-sm);
-        border: 1px solid var(--border);
-        margin-top: 1rem;
-    }
-
-    .store-badge i {
-        color: var(--secondary);
-        margin-right: 0.5rem;
-    }
-
-    .store-badge a {
-        text-decoration: none;
-        color: inherit;
-    }
-
-    /* Main Card */
-    .policy-card {
-        background: var(--surface);
-        border-radius: 30px;
-        box-shadow: var(--shadow-lg);
-        overflow: hidden;
-        border: 1px solid var(--border);
-    }
-
-    .policy-card-header {
-        padding: 1.5rem 2rem;
-        background: var(--background);
-        border-bottom: 1px solid var(--border);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 1rem;
-    }
-
-    .policy-card-header h2 {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 1.5rem;
-        color: var(--primary);
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-
-    .policy-card-header h2 i {
-        color: var(--secondary);
-    }
-
-    .status-badge {
-        padding: 0.4rem 1.2rem;
-        border-radius: 50px;
-        font-size: 0.85rem;
-        background: var(--surface);
-        border: 1px solid var(--border);
-        color: var(--text-secondary);
-    }
-
-    .status-badge.active {
-        background: var(--success-light);
-        color: var(--success);
-        border-color: var(--success);
-    }
-
-    /* Form Sections */
-    .policy-form {
-        padding: 2rem;
-    }
-
-    .form-section {
-        margin-bottom: 2rem;
-        padding: 2rem;
-        background: var(--background);
-        border-radius: 20px;
-        border: 1px solid var(--border);
-        transition: all 0.3s ease;
-    }
-
-    .form-section:hover {
-        border-color: var(--secondary);
-        box-shadow: var(--shadow-sm);
-    }
-
-    .section-title {
-        display: flex;
-        align-items: center;
-        gap: 0.8rem;
-        margin-bottom: 1.5rem;
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 1.3rem;
-        color: var(--primary);
-    }
-
-    .section-title i {
-        width: 36px;
-        height: 36px;
-        background: var(--surface);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
         justify-content: center;
-        color: var(--secondary);
-        font-size: 1rem;
-        border: 1px solid var(--border);
     }
+}
 
-    .form-group {
-        margin-bottom: 1.5rem;
-    }
-
-    .form-label {
-        display: block;
-        margin-bottom: 0.5rem;
-        font-weight: 500;
-        color: var(--text-primary);
-        font-size: 0.9rem;
-    }
-
-    .form-control {
-        width: 100%;
-        padding: 0.8rem 1rem;
-        border: 2px solid var(--border);
-        border-radius: 12px;
-        font-size: 0.95rem;
-        transition: all 0.2s ease;
-        background: var(--surface);
-        font-family: 'Inter', sans-serif;
-    }
-
-    .form-control:focus {
-        outline: none;
-        border-color: var(--secondary);
-        box-shadow: 0 0 0 4px rgba(232, 192, 125, 0.1);
-    }
-
-    textarea.form-control {
-        min-height: 100px;
-        resize: vertical;
-    }
-
-    /* Toggle Switch */
-    .toggle-switch {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        padding: 1rem 0;
-    }
-
-    .toggle-switch-label {
-        display: flex;
-        align-items: center;
-        gap: 0.8rem;
-        cursor: pointer;
-    }
-
-    .toggle-switch input[type="checkbox"] {
-        width: 48px;
-        height: 24px;
-        appearance: none;
-        background: var(--border);
-        border-radius: 12px;
-        position: relative;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-
-    .toggle-switch input[type="checkbox"]:checked {
-        background: var(--secondary);
-    }
-
-    .toggle-switch input[type="checkbox"]::before {
-        content: '';
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        background: var(--surface);
-        border-radius: 50%;
-        top: 2px;
-        left: 2px;
-        transition: all 0.3s ease;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    .toggle-switch input[type="checkbox"]:checked::before {
-        left: 26px;
-    }
-
-    .toggle-text {
-        font-size: 0.95rem;
-        color: var(--text-primary);
-    }
-
-    .toggle-text small {
-        color: var(--text-secondary);
-        font-size: 0.8rem;
-        display: block;
-        margin-top: 0.2rem;
-    }
-
-    /* Form Actions */
-    .form-actions {
-        display: flex;
-        gap: 1rem;
-        justify-content: flex-end;
-        margin-top: 2rem;
-        padding-top: 2rem;
-        border-top: 1px solid var(--border);
-    }
-
-    .btn {
-        padding: 0.8rem 2rem;
-        border-radius: 50px;
-        font-weight: 500;
-        font-size: 0.95rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        border: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-family: 'Inter', sans-serif;
-    }
-
-    .btn-primary {
-        background: var(--primary);
-        color: var(--surface);
-        box-shadow: 0 4px 12px rgba(44, 62, 80, 0.2);
-    }
-
-    .btn-primary:hover {
-        background: #1A2A38;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 16px rgba(44, 62, 80, 0.3);
-    }
-
-    .btn-secondary {
-        background: var(--surface);
-        color: var(--text-primary);
-        border: 2px solid var(--border);
-    }
-
-    .btn-secondary:hover {
-        border-color: var(--secondary);
-        color: var(--secondary);
-    }
-
-    .btn-danger {
-        background: var(--surface);
-        color: var(--error);
-        border: 2px solid var(--error-light);
-    }
-
-    .btn-danger:hover {
-        background: var(--error);
-        color: var(--surface);
-    }
-
-    /* Preview Card */
-    .preview-card {
-        background: var(--surface);
-        border-radius: 20px;
-        padding: 2rem;
-        margin-top: 2rem;
-        border: 1px solid var(--border);
-        position: relative;
-    }
-
-    .preview-card::before {
-        content: 'Preview';
-        position: absolute;
-        top: -12px;
-        left: 2rem;
-        background: var(--surface);
-        padding: 0.2rem 1rem;
-        font-size: 0.8rem;
-        color: var(--secondary);
-        border: 1px solid var(--border);
-        border-radius: 50px;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-        .management-layout {
-            flex-direction: column;
-        }
-        
-        .management-content {
-            width: 100%;
-            padding: 1rem;
-        }
-        
-        .policy-editor-container {
-            padding: 0;
-        }
-        
-        .policy-card-header {
-            flex-direction: column;
-            gap: 1rem;
-            text-align: center;
-        }
-
-        .form-actions {
-            flex-direction: column;
-        }
-
-        .btn {
-            width: 100%;
-            justify-content: center;
-        }
-
-        .toast-container {
-            left: 1rem;
-            right: 1rem;
-        }
-
-        .toast {
-            min-width: auto;
-        }
-        
-        .auto-save-status {
-            bottom: 1rem;
-            right: 1rem;
-            left: 1rem;
-            padding: 0.75rem 1rem;
-        }
-    }
+@media (max-width: 640px) {
+    .catalog-title { font-size: 1.375rem; }
+    .auto-save-status { left: 1rem; right: 1rem; max-width: none; }
+}
 </style>
 {% endblock %}
 
 {% block content %}
-<!-- Toast Container -->
-<div class="toast-container" id="toastContainer"></div>
 
-<!-- Auto-save Status -->
+<div class="toast-stack" id="toastStack"></div>
+
+<!-- Auto-save status (floating) -->
 <div class="auto-save-status" id="autoSaveStatus">
-    <div class="save-spinner" id="saveSpinner"></div>
-    <div>
-        <div id="saveStatusText">Saving changes...</div>
-        <small id="saveStatusDetail" style="color: var(--text-secondary);"></small>
+    <div class="save-spinner"></div>
+    <div class="auto-save-text">
+        <strong id="saveStatusText">Saving changes…</strong>
+        <small id="saveStatusDetail"></small>
     </div>
 </div>
 
-<div class="container-fluid py-4">
-    <!-- Management Layout with Sidebar -->
-    <div class="management-layout">
-        <!-- Include Sidebar Snippet with active_menu='shipping' -->
-        {% include 'builder/includes/sidebar.html' with active_menu='shipping' %}
-        
-        <!-- Main Content -->
-        <div class="management-content">
-            <div class="policy-editor-container">
-                <!-- Elegant Header -->
-                <div class="elegant-header">
-                    <h1>Shipping & Returns</h1>
-                    <p>Define your store's shipping and return policies</p>
-                    <div class="store-badge">
-                        <a href="{% url 'manage_products' subdomain=page.subdomain %}">
-                            <i class="fas fa-store-alt"></i>
-                            {{ page.brand_name }}
-                        </a>
-                    </div>
-                </div>
+<div class="management-layout">
+    {% include 'builder/includes/sidebar.html' with active_menu='shipping' %}
 
-                <!-- Main Card -->
-                <div class="policy-card">
-                    <div class="policy-card-header">
-                        <h2>
-                            <i class="fas fa-feather-alt"></i>
-                            Policy Editor
-                        </h2>
-                        <div class="status-badge {% if policy and policy.is_active %}active{% endif %}" id="statusBadge">
-                            <i class="fas {% if policy and policy.is_active %}fa-check-circle{% else %}fa-clock{% endif %}"></i>
-                            <span id="statusText">{% if policy and policy.is_active %}Active{% else %}Draft{% endif %}</span>
-                        </div>
-                    </div>
+    <div class="management-content">
 
-                    <form method="post" class="policy-form" id="policyForm" data-subdomain="{{ page.subdomain }}">
-                        {% csrf_token %}
-                        
-                        <!-- Shipping Section -->
-                        <div class="form-section">
-                            <div class="section-title">
-                                <i class="fas fa-ship"></i>
-                                <span>Shipping</span>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label class="form-label">Processing Time</label>
-                                <input type="text" class="form-control" name="processing_time" 
-                                       value="{{ policy.processing_time|default:'1-3 business days' }}" 
-                                       placeholder="e.g., 1-3 business days">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label class="form-label">Shipping Methods & Rates</label>
-                                <textarea class="form-control" name="shipping_methods" rows="4" 
-                                          placeholder="Describe your shipping methods and rates...">{{ policy.shipping_methods|default:'' }}</textarea>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label class="form-label">Delivery Timeframe</label>
-                                <input type="text" class="form-control" name="delivery_timeframe" 
-                                       value="{{ policy.delivery_timeframe|default:'5-10 business days' }}" 
-                                       placeholder="e.g., 5-10 business days">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label class="form-label">Free Shipping Threshold</label>
-                                <input type="text" class="form-control" name="free_shipping_threshold" 
-                                       value="{{ policy.free_shipping_threshold|default:'Orders over $50' }}" 
-                                       placeholder="e.g., Orders over $50">
-                            </div>
-                        </div>
+        <!-- Context -->
+        <div class="catalog-context">
+            <a href="{% url 'dashboard' %}" class="context-back">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                <span>Dashboard</span>
+            </a>
+            <span class="context-sep">/</span>
+            <a href="{% url 'manage_products' subdomain=page.subdomain %}" class="context-back">
+                <span>{{ page.brand_name }}</span>
+            </a>
+            <span class="context-sep">/</span>
+            <span class="context-current">Shipping &amp; returns</span>
+        </div>
 
-                        <!-- Returns Section -->
-                        <div class="form-section">
-                            <div class="section-title">
-                                <i class="fas fa-undo-alt"></i>
-                                <span>Returns & Exchanges</span>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label class="form-label">Return Window</label>
-                                <input type="text" class="form-control" name="return_window" 
-                                       value="{{ policy.return_window|default:'30 days' }}" 
-                                       placeholder="e.g., 30 days">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label class="form-label">Return Conditions</label>
-                                <textarea class="form-control" name="return_conditions" rows="4" 
-                                          placeholder="Describe the conditions for returns...">{{ policy.return_conditions|default:'' }}</textarea>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label class="form-label">Return Process</label>
-                                <textarea class="form-control" name="return_process" rows="4" 
-                                          placeholder="Explain how customers can initiate a return...">{{ policy.return_process|default:'' }}</textarea>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label class="form-label">Refund Information</label>
-                                <textarea class="form-control" name="refund_info" rows="3" 
-                                          placeholder="Describe refund process and timeline...">{{ policy.refund_info|default:'' }}</textarea>
-                            </div>
-                        </div>
-
-                        <!-- Additional Information -->
-                        <div class="form-section">
-                            <div class="section-title">
-                                <i class="fas fa-globe-asia"></i>
-                                <span>Additional</span>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label class="form-label">International Shipping</label>
-                                <textarea class="form-control" name="international_shipping" rows="3" 
-                                          placeholder="Information about international shipping...">{{ policy.international_shipping|default:'' }}</textarea>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label class="form-label">Customer Support Contact</label>
-                                <input type="text" class="form-control" name="support_contact" 
-                                       value="{{ policy.support_contact|default:'' }}" 
-                                       placeholder="Email or contact form link">
-                            </div>
-                            
-                            <div class="toggle-switch">
-                                <label class="toggle-switch-label">
-                                    <input type="checkbox" name="is_active" id="isActiveToggle" {% if policy and policy.is_active %}checked{% endif %}>
-                                    <span class="toggle-text">
-                                        Make policy active
-                                        <small>When active, this policy will be visible to customers</small>
-                                    </span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- Form Actions -->
-                        <div class="form-actions">
-                            <button type="button" class="btn btn-secondary" onclick="window.history.back()">
-                                <i class="fas fa-times"></i> Cancel
-                            </button>
-                            <button type="submit" class="btn btn-primary" id="saveButton">
-                                <i class="fas fa-save"></i> Save Policy
-                            </button>
-                            {% if policy %}
-                            <button type="button" class="btn btn-danger" onclick="deletePolicy()">
-                                <i class="fas fa-trash"></i> Delete
-                            </button>
-                            {% endif %}
-                        </div>
-                    </form>
-                </div>
-
-                <!-- Preview Card -->
-                <div class="preview-card">
-                    <h3 style="font-family: 'Cormorant Garamond', serif; color: var(--primary); margin-bottom: 1rem;">
-                        {{ page.brand_name }} • Preview
-                    </h3>
-                    <div style="background: var(--background); border-radius: 12px; padding: 1rem; border: 1px dashed var(--border);">
-                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; color: var(--text-secondary);">
-                            <i class="fas fa-store-alt" style="color: var(--secondary);"></i>
-                            <span style="font-weight: 500;">{{ page.brand_name }}</span>
-                            <span style="margin-left: auto;">
-                                <i class="fas fa-arrow-left"></i>
-                                <span style="color: var(--secondary);">Back to Home</span>
-                            </span>
-                        </div>
-                        <div style="background: var(--surface); padding: 1rem; border-radius: 8px;">
-                            <p style="color: var(--text-secondary); font-style: italic;">Your policy will be displayed with elegant formatting...</p>
-                        </div>
-                    </div>
-                </div>
+        <!-- Title -->
+        <div class="catalog-title-row">
+            <div class="catalog-title-block">
+                <h1 class="catalog-title">
+                    Shipping &amp; returns
+                    <span class="status-chip {% if policy and policy.is_active %}active{% endif %}" id="statusBadge">
+                        <span id="statusText">{% if policy and policy.is_active %}Active{% else %}Draft{% endif %}</span>
+                    </span>
+                </h1>
+                <p class="catalog-sub">Define your store's shipping and return policies</p>
+            </div>
+            <div class="catalog-actions">
+                <button type="button" class="btn btn-ghost" onclick="window.history.back()">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    <span>Back</span>
+                </button>
             </div>
         </div>
+
+        <!-- Editor -->
+        <form method="post" id="policyForm" data-subdomain="{{ page.subdomain }}">
+            {% csrf_token %}
+
+            <!-- Shipping -->
+            <div class="panel">
+                <div class="panel-head">
+                    <div>
+                        <h2 class="panel-title">Shipping</h2>
+                        <p class="panel-sub">How you ship orders to customers</p>
+                    </div>
+                </div>
+                <div class="panel-body">
+
+                    <div class="field-row">
+                        <div class="field">
+                            <label class="field-label" for="processing_time">Processing time</label>
+                            <input type="text" class="form-control" name="processing_time" id="processing_time"
+                                   value="{{ policy.processing_time|default:'1-3 business days' }}"
+                                   placeholder="e.g., 1-3 business days">
+                        </div>
+                        <div class="field">
+                            <label class="field-label" for="delivery_timeframe">Delivery timeframe</label>
+                            <input type="text" class="form-control" name="delivery_timeframe" id="delivery_timeframe"
+                                   value="{{ policy.delivery_timeframe|default:'5-10 business days' }}"
+                                   placeholder="e.g., 5-10 business days">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="field-label" for="shipping_methods">Shipping methods &amp; rates</label>
+                        <textarea class="form-control" name="shipping_methods" id="shipping_methods" rows="4"
+                                  placeholder="Describe your shipping methods and rates…">{{ policy.shipping_methods|default:'' }}</textarea>
+                    </div>
+
+                    <div class="field">
+                        <label class="field-label" for="free_shipping_threshold">Free shipping threshold</label>
+                        <input type="text" class="form-control" name="free_shipping_threshold" id="free_shipping_threshold"
+                               value="{{ policy.free_shipping_threshold|default:'Orders over $50' }}"
+                               placeholder="e.g., Orders over $50">
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Returns -->
+            <div class="panel">
+                <div class="panel-head">
+                    <div>
+                        <h2 class="panel-title">Returns &amp; exchanges</h2>
+                        <p class="panel-sub">Your refund and return policy</p>
+                    </div>
+                </div>
+                <div class="panel-body">
+
+                    <div class="field">
+                        <label class="field-label" for="return_window">Return window</label>
+                        <input type="text" class="form-control" name="return_window" id="return_window"
+                               value="{{ policy.return_window|default:'30 days' }}"
+                               placeholder="e.g., 30 days">
+                    </div>
+
+                    <div class="field">
+                        <label class="field-label" for="return_conditions">Return conditions</label>
+                        <textarea class="form-control" name="return_conditions" id="return_conditions" rows="4"
+                                  placeholder="Describe the conditions for returns…">{{ policy.return_conditions|default:'' }}</textarea>
+                    </div>
+
+                    <div class="field">
+                        <label class="field-label" for="return_process">Return process</label>
+                        <textarea class="form-control" name="return_process" id="return_process" rows="4"
+                                  placeholder="Explain how customers can initiate a return…">{{ policy.return_process|default:'' }}</textarea>
+                    </div>
+
+                    <div class="field">
+                        <label class="field-label" for="refund_info">Refund information</label>
+                        <textarea class="form-control" name="refund_info" id="refund_info" rows="3"
+                                  placeholder="Describe refund process and timeline…">{{ policy.refund_info|default:'' }}</textarea>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Additional -->
+            <div class="panel">
+                <div class="panel-head">
+                    <div>
+                        <h2 class="panel-title">Additional information</h2>
+                        <p class="panel-sub">International shipping and support</p>
+                    </div>
+                </div>
+                <div class="panel-body">
+
+                    <div class="field">
+                        <label class="field-label" for="international_shipping">International shipping</label>
+                        <textarea class="form-control" name="international_shipping" id="international_shipping" rows="3"
+                                  placeholder="Information about international shipping…">{{ policy.international_shipping|default:'' }}</textarea>
+                    </div>
+
+                    <div class="field">
+                        <label class="field-label" for="support_contact">Customer support contact</label>
+                        <input type="text" class="form-control" name="support_contact" id="support_contact"
+                               value="{{ policy.support_contact|default:'' }}"
+                               placeholder="Email or contact form link">
+                    </div>
+
+                </div>
+
+                <!-- Activation toggle -->
+                <div class="toggle-row">
+                    <label class="toggle">
+                        <input type="checkbox" name="is_active" id="isActiveToggle"
+                               {% if policy and policy.is_active %}checked{% endif %}>
+                        <span class="toggle-slider"></span>
+                    </label>
+                    <div class="toggle-body">
+                        <p class="toggle-title">Make policy active</p>
+                        <p class="toggle-desc">When active, this policy is visible to your customers.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Sticky footer -->
+            <div class="form-footer">
+                <span class="form-footer-msg">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 16v-4M12 8h.01"/>
+                    </svg>
+                    Changes save automatically
+                </span>
+                <div class="form-footer-actions">
+                    <button type="button" class="btn btn-ghost" onclick="window.history.back()">
+                        <span>Cancel</span>
+                    </button>
+                    {% if policy %}
+                    <button type="button" class="btn btn-danger-ghost" onclick="deletePolicy()">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/>
+                        </svg>
+                        <span>Delete</span>
+                    </button>
+                    {% endif %}
+                    <button type="submit" class="btn btn-accent" id="saveButton">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 6 9 17l-5-5"/>
+                        </svg>
+                        <span>Save policy</span>
+                    </button>
+                </div>
+            </div>
+
+        </form>
+
     </div>
 </div>
 
 <script>
-// Toast Notification System
-class Toast {
-    constructor() {
-        this.container = document.getElementById('toastContainer');
-    }
+/* ============ Toast ============ */
+function toast(message, type = 'info', duration = 4000) {
+    const stack = document.getElementById('toastStack');
+    if (!stack) return;
 
-    show(message, type = 'success', duration = 5000) {
-        const toast = document.createElement('div');
-        toast.className = `toast ${type}`;
-        
-        const icons = {
-            success: 'fa-check-circle',
-            error: 'fa-exclamation-circle',
-            info: 'fa-info-circle'
-        };
-
-        toast.innerHTML = `
-            <div class="toast-icon">
-                <i class="fas ${icons[type]}"></i>
-            </div>
-            <div class="toast-content">
-                <div class="toast-title">${type.charAt(0).toUpperCase() + type.slice(1)}</div>
-                <div class="toast-message">${message}</div>
-            </div>
-            <div class="toast-close" onclick="this.parentElement.style.animation = 'slideOut 0.3s ease forwards'; setTimeout(() => this.parentElement.remove(), 300)">
-                <i class="fas fa-times"></i>
-            </div>
-        `;
-
-        this.container.appendChild(toast);
-
-        setTimeout(() => {
-            if (toast.parentElement) {
-                toast.style.animation = 'slideOut 0.3s ease forwards';
-                setTimeout(() => toast.remove(), 300);
-            }
-        }, duration);
-    }
+    const el = document.createElement('div');
+    el.className = `toast ${type}`;
+    const icon = type === 'error'
+        ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>'
+        : '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+    el.innerHTML = `${icon}<span>${message}</span>`;
+    stack.appendChild(el);
+    setTimeout(() => {
+        el.style.transition = 'opacity 0.2s, transform 0.2s';
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(-8px)';
+        setTimeout(() => el.remove(), 200);
+    }, duration);
 }
 
-// Auto-save functionality
+/* ============ Auto-save manager ============ */
 class AutoSaveManager {
     constructor(form, subdomain) {
         this.form = form;
@@ -798,44 +791,36 @@ class AutoSaveManager {
         this.saveTimeout = null;
         this.lastSavedData = this.getFormData();
         this.isSaving = false;
-        
+
         this.statusIndicator = document.getElementById('autoSaveStatus');
         this.saveStatusText = document.getElementById('saveStatusText');
         this.saveStatusDetail = document.getElementById('saveStatusDetail');
-        this.spinner = document.getElementById('saveSpinner');
-        
-        this.toast = new Toast();
-        
+
         this.init();
     }
 
     init() {
-        // Auto-save on input changes
         this.form.querySelectorAll('input, textarea, select').forEach(input => {
             input.addEventListener('input', () => this.scheduleSave());
         });
 
-        // Handle toggle changes
-        document.getElementById('isActiveToggle')?.addEventListener('change', () => this.scheduleSave());
+        const toggle = document.getElementById('isActiveToggle');
+        if (toggle) toggle.addEventListener('change', () => this.scheduleSave());
 
-        // Handle form submission
         this.form.addEventListener('submit', (e) => {
             e.preventDefault();
             this.saveImmediately(true);
         });
 
-        // Save on page leave
         window.addEventListener('beforeunload', () => {
-            if (this.hasChanges()) {
-                this.saveImmediately(false);
-            }
+            if (this.hasChanges()) this.saveImmediately(false);
         });
     }
 
     getFormData() {
         const formData = new FormData(this.form);
         const data = {};
-        for (let [key, value] of formData.entries()) {
+        for (const [key, value] of formData.entries()) {
             data[key] = value;
         }
         return data;
@@ -847,59 +832,50 @@ class AutoSaveManager {
     }
 
     showSaving() {
-        this.statusIndicator.classList.add('show', 'saving');
-        this.saveStatusText.textContent = 'Saving changes...';
+        this.statusIndicator.classList.add('show');
+        this.statusIndicator.classList.remove('saved', 'error');
+        this.saveStatusText.textContent = 'Saving changes…';
         this.saveStatusDetail.textContent = 'Just a moment';
-        this.spinner.style.display = 'block';
     }
 
     showSaved() {
-        this.statusIndicator.classList.remove('saving');
+        this.statusIndicator.classList.remove('saving', 'error');
         this.statusIndicator.classList.add('saved');
         this.saveStatusText.textContent = 'All changes saved';
         this.saveStatusDetail.textContent = new Date().toLocaleTimeString();
-        this.spinner.style.display = 'none';
-        
+
         setTimeout(() => {
             this.statusIndicator.classList.remove('show');
         }, 3000);
     }
 
     showError(error) {
-        this.statusIndicator.classList.remove('saving', 'saved');
+        this.statusIndicator.classList.remove('saved', 'saving');
         this.statusIndicator.classList.add('error');
         this.saveStatusText.textContent = 'Save failed';
-        this.saveStatusDetail.textContent = 'Trying again...';
-        this.spinner.style.display = 'none';
-        
-        this.toast.show(error, 'error');
-        
+        this.saveStatusDetail.textContent = 'Try again';
+
+        toast(error, 'error');
+
         setTimeout(() => {
             this.statusIndicator.classList.remove('show', 'error');
         }, 5000);
     }
 
     scheduleSave() {
-        if (this.saveTimeout) {
-            clearTimeout(this.saveTimeout);
-        }
-        
-        this.saveTimeout = setTimeout(() => {
-            this.save();
-        }, 2000);
+        if (this.saveTimeout) clearTimeout(this.saveTimeout);
+        this.saveTimeout = setTimeout(() => this.save(), 2000);
     }
 
     async save(showToast = true) {
-        if (this.isSaving || !this.hasChanges()) {
-            return;
-        }
+        if (this.isSaving || !this.hasChanges()) return;
 
         this.isSaving = true;
         this.showSaving();
 
         const formData = new FormData(this.form);
         const data = {};
-        for (let [key, value] of formData.entries()) {
+        for (const [key, value] of formData.entries()) {
             data[key] = value;
         }
 
@@ -918,23 +894,18 @@ class AutoSaveManager {
             if (response.ok && result.success) {
                 this.lastSavedData = this.getFormData();
                 this.showSaved();
-                
-                // Update status badge
+
                 const badge = document.getElementById('statusBadge');
                 const statusText = document.getElementById('statusText');
                 if (data.is_active === 'on') {
                     badge.classList.add('active');
                     statusText.textContent = 'Active';
-                    badge.querySelector('i').className = 'fas fa-check-circle';
                 } else {
                     badge.classList.remove('active');
                     statusText.textContent = 'Draft';
-                    badge.querySelector('i').className = 'fas fa-clock';
                 }
-                
-                if (showToast) {
-                    this.toast.show('Policy saved successfully', 'success');
-                }
+
+                if (showToast) toast('Policy saved', 'success');
             } else {
                 throw new Error(result.error || 'Failed to save');
             }
@@ -947,38 +918,36 @@ class AutoSaveManager {
     }
 
     async saveImmediately(showToast = true) {
-        if (this.saveTimeout) {
-            clearTimeout(this.saveTimeout);
-        }
+        if (this.saveTimeout) clearTimeout(this.saveTimeout);
         await this.save(showToast);
     }
 }
 
-// Initialize auto-save
+/* ============ Delete policy ============ */
+function deletePolicy() {
+    if (!confirm('Are you sure you want to delete this policy? This action cannot be undone.')) return;
+
+    fetch(window.location.href, {
+        method: 'DELETE',
+        headers: {
+            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+        }
+    }).then(response => {
+        if (response.ok) {
+            toast('Policy deleted', 'success');
+            setTimeout(() => {
+                window.location.href = "{% url 'dashboard' %}";
+            }, 1500);
+        }
+    });
+}
+
+/* ============ Init ============ */
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('policyForm');
     const subdomain = form.dataset.subdomain;
     window.autoSaveManager = new AutoSaveManager(form, subdomain);
 });
-
-// Delete policy function
-function deletePolicy() {
-    if (confirm('Are you sure you want to delete this policy? This action cannot be undone.')) {
-        fetch(window.location.href, {
-            method: 'DELETE',
-            headers: {
-                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
-            }
-        }).then(response => {
-            if (response.ok) {
-                const toast = new Toast();
-                toast.show('Policy deleted successfully', 'success');
-                setTimeout(() => {
-                    window.location.href = "{% url 'dashboard' %}";
-                }, 1500);
-            }
-        });
-    }
-}
 </script>
+
 {% endblock %}

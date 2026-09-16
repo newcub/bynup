@@ -1,424 +1,1209 @@
-{% extends 'payments/base_payments.html' %}
+{% extends 'builder/base.html' %}
+{% load static %}
 
-{% block title %}Configure PayPal - {{ page.brand_name }}{% endblock %}
+{% block title %}PayPal - {{ page.brand_name }}{% endblock %}
 
 {% block extra_css %}
 <style>
-.paypal-setup-steps {
-    background: #f8f9fa;
-    border-radius: 8px;
-    padding: 1.5rem;
-    margin-bottom: 2rem;
+:root {
+    --n-0: #ffffff;
+    --n-50: #fafafa;
+    --n-100: #f4f4f5;
+    --n-200: #e4e4e7;
+    --n-300: #d4d4d8;
+    --n-400: #a1a1aa;
+    --n-500: #71717a;
+    --n-600: #52525b;
+    --n-700: #3f3f46;
+    --n-800: #27272a;
+    --n-900: #18181b;
+
+    --accent: var(--primary-color, #111827);
+    --accent-hover: #000000;
+
+    --success: #15803d;
+    --warning: #a16207;
+    --danger: #b91c1c;
+
+    --border: var(--n-200);
+    --border-strong: var(--n-300);
+    --text: var(--n-900);
+    --text-muted: var(--n-500);
+    --text-subtle: var(--n-400);
+
+    --radius-sm: 4px;
+    --radius: 6px;
+    --radius-lg: 10px;
+
+    --page-bg: #f6f7f9;
+    --surface-shadow: 0 1px 2px rgba(24, 24, 27, 0.04), 0 1px 1px rgba(24, 24, 27, 0.03);
+    --surface-shadow-hover: 0 4px 12px rgba(24, 24, 27, 0.06), 0 1px 2px rgba(24, 24, 27, 0.04);
 }
-.step {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 1rem;
+
+/* ===== Shell — cooperates with sidebar.html ===== */
+.management-layout {
+    background: var(--page-bg);
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 13px;
+    color: var(--text);
 }
-.step-number {
-    background: #0070ba;
-    color: white;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
+
+.management-content { padding: 0; }
+
+.paypal-wrap {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 2rem 2rem 4rem;
+}
+
+/* ===== Context breadcrumb ===== */
+.catalog-context {
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    margin-right: 1rem;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.context-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.15s;
+    font-weight: 500;
+}
+
+.context-back:hover { color: var(--text); }
+.context-back svg { transition: transform 0.15s; }
+.context-back:hover svg { transform: translateX(-2px); }
+.context-sep { color: var(--n-300); }
+.context-current { color: var(--text); font-weight: 500; }
+
+/* ===== Title row ===== */
+.catalog-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.catalog-title-block { min-width: 0; }
+
+.catalog-title {
+    font-size: 1.625rem;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    color: var(--text);
+    margin: 0 0 0.375rem 0;
+    line-height: 1.15;
+}
+
+.catalog-sub {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.catalog-actions {
+    display: flex;
+    gap: 0.375rem;
+    align-items: center;
     flex-shrink: 0;
 }
-.step-content {
+
+/* ===== Buttons ===== */
+.btn {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    border-radius: var(--radius);
+    padding: 0.5rem 0.875rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    line-height: 1.25;
+    transition: background 0.15s, border-color 0.15s, color 0.15s, box-shadow 0.15s;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: inherit;
+}
+
+.btn-ghost {
+    background: var(--n-0);
+    border-color: var(--border);
+    color: var(--n-700);
+    box-shadow: 0 1px 2px rgba(24, 24, 27, 0.04);
+}
+
+.btn-ghost:hover {
+    background: var(--n-0);
+    border-color: var(--border-strong);
+    color: var(--text);
+    box-shadow: var(--surface-shadow);
+}
+
+.btn-accent {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+    box-shadow: 0 1px 2px rgba(24, 24, 27, 0.16);
+}
+
+.btn-accent:hover {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+    color: white;
+    box-shadow: 0 4px 12px rgba(24, 24, 27, 0.18);
+}
+
+/* ===== Mode strip ===== */
+.mode-strip {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.875rem 1.125rem;
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    margin-bottom: 1rem;
+    transition: background 0.15s, border-color 0.15s;
+    box-shadow: var(--surface-shadow);
+}
+
+.mode-strip.test {
+    background: #fefce8;
+    border-color: #fde68a;
+}
+
+.mode-body {
     flex: 1;
+    min-width: 0;
 }
-.credentials-test {
-    background: #e7f3ff;
-    border: 1px solid #b6d7ff;
-    border-radius: 6px;
-    padding: 1rem;
+
+.mode-title {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0 0 0.125rem 0;
+}
+
+.mode-desc {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* ===== Toggle ===== */
+.toggle {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 22px;
+    flex-shrink: 0;
+}
+
+.toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background: var(--n-300);
+    border-radius: 100px;
+    transition: background 0.2s;
+}
+
+.toggle-slider::before {
+    content: '';
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    left: 3px;
+    top: 3px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.2s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.toggle input:checked + .toggle-slider {
+    background: var(--accent);
+}
+
+.toggle input:checked + .toggle-slider::before {
+    transform: translateX(18px);
+}
+
+.toggle input:focus-visible + .toggle-slider {
+    box-shadow: 0 0 0 4px rgba(17, 24, 39, 0.1);
+}
+
+/* ===== Panels ===== */
+.panel {
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: 1rem;
+    box-shadow: var(--surface-shadow);
+}
+
+.panel-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.875rem 1.125rem;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(to bottom, #ffffff, #fcfcfd);
+}
+
+.panel-title {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0;
+    letter-spacing: -0.005em;
+}
+
+.panel-sub {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    margin: 0.125rem 0 0 0;
+}
+
+.panel-badge {
+    font-size: 0.6875rem;
+    color: var(--warning);
+    background: #fefce8;
+    padding: 0.1875rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.panel-badge.danger {
+    color: var(--danger);
+    background: #fef2f2;
+}
+
+.panel-body {
+    padding: 1.125rem;
+}
+
+/* ===== Fields ===== */
+.field {
+    margin-bottom: 1rem;
+}
+
+.field:last-child {
+    margin-bottom: 0;
+}
+
+.field-label {
+    display: block;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--n-700);
+    margin-bottom: 0.375rem;
+}
+
+.field-help {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    margin-top: 0.375rem;
+    line-height: 1.5;
+}
+
+.form-control {
+    width: 100%;
+    font-size: 0.8125rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.5rem 0.75rem;
+    background: var(--n-0);
+    color: var(--text);
+    font-family: inherit;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    line-height: 1.4;
+}
+
+.form-control:hover {
+    border-color: var(--border-strong);
+}
+
+.form-control:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(17, 24, 39, 0.06);
+    outline: none;
+}
+
+.form-control.mono {
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 0.75rem;
+}
+
+/* Input group */
+.input-group {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+}
+
+.input-group .form-control {
+    border-radius: var(--radius) 0 0 var(--radius);
+    border-right: none;
+}
+
+.input-group .btn {
+    border-radius: 0 var(--radius) var(--radius) 0;
+    border-left: 1px solid var(--border);
+    padding: 0 0.75rem;
+    height: auto;
+}
+
+/* Info strip */
+.info-strip {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.625rem 0.75rem;
+    background: var(--n-50);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 0.75rem;
+    color: var(--n-700);
+    line-height: 1.5;
     margin-top: 1rem;
 }
-.test-account-info {
-    background: #fff3cd;
-    border: 1px solid #ffeaa7;
-    border-radius: 6px;
-    padding: 1rem;
-    margin-top: 1rem;
+
+.info-strip svg {
+    color: var(--n-500);
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.info-strip.warning {
+    background: #fefce8;
+    border-color: #fde68a;
+    color: #78350f;
+}
+
+.info-strip.warning svg {
+    color: var(--warning);
+}
+
+.info-strip strong {
+    color: var(--text);
+    font-weight: 600;
+}
+
+.info-strip.warning strong {
+    color: #78350f;
+}
+
+/* Connection test */
+.test-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.test-result {
+    font-size: 0.75rem;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    line-height: 1.4;
+}
+
+.test-result.success { color: var(--success); }
+.test-result.error { color: var(--danger); }
+
+/* Check-card */
+.check-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.875rem 1rem;
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: background 0.1s, border-color 0.1s, box-shadow 0.15s;
+    margin-bottom: 1rem;
+    box-shadow: 0 1px 2px rgba(24, 24, 27, 0.02);
+}
+
+.check-card:hover {
+    background: #fdfdfe;
+    border-color: var(--border-strong);
+    box-shadow: var(--surface-shadow);
+}
+
+.check-card:has(input:checked) {
+    border-color: var(--accent);
+    background: #fcfcfd;
+}
+
+.check-card input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    accent-color: var(--n-900);
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.check-card-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.check-card-title {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.3;
+    margin: 0 0 0.125rem 0;
+}
+
+.check-card-desc {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Sticky footer */
+.settings-footer {
+    position: sticky;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1.125rem;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: saturate(180%) blur(12px);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+    z-index: 10;
+    box-shadow: 0 -1px 0 rgba(24, 24, 27, 0.04), 0 -8px 24px rgba(24, 24, 27, 0.04);
+}
+
+.settings-footer-msg {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+}
+
+.settings-footer-actions {
+    display: flex;
+    gap: 0.375rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Steps */
+.steps-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.step {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.625rem 1.125rem;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+}
+
+.step:last-child { border-bottom: none; }
+
+.step-num {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--n-100);
+    color: var(--n-700);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    flex-shrink: 0;
+    font-variant-numeric: tabular-nums;
+    margin-top: 1px;
+}
+
+.step-text {
+    font-size: 0.8125rem;
+    color: var(--n-700);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.step-text a {
+    color: var(--text);
+    text-decoration: underline;
+    text-decoration-color: var(--border-strong);
+    text-underline-offset: 2px;
+}
+
+.step-text a:hover {
+    text-decoration-color: var(--text);
+}
+
+.step-text strong {
+    color: var(--text);
+    font-weight: 600;
+}
+
+/* Bullets */
+.bullet-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    padding: 1.125rem;
+}
+
+.bullet-item {
+    display: flex;
+    gap: 0.625rem;
+    align-items: flex-start;
+}
+
+.bullet-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--n-400);
+    flex-shrink: 0;
+    margin-top: 7px;
+}
+
+.bullet-text {
+    font-size: 0.75rem;
+    color: var(--n-700);
+    line-height: 1.55;
+    margin: 0;
+}
+
+/* Toast */
+.toast-stack {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    pointer-events: none;
+}
+
+.toast {
+    background: var(--n-900);
+    color: white;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15), 0 2px 6px rgba(0,0,0,0.08);
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    max-width: 360px;
+    pointer-events: auto;
+    animation: toastIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.toast.error { background: var(--danger); }
+.toast.warning { background: var(--warning); }
+
+@keyframes toastIn {
+    from { opacity: 0; transform: translateY(-10px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .paypal-wrap { padding: 1.5rem 1rem 3rem; }
+
+    .catalog-title-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+
+    .catalog-actions { justify-content: flex-start; flex-wrap: wrap; }
+
+    .settings-footer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .settings-footer-actions {
+        justify-content: stretch;
+    }
+    .settings-footer-actions .btn {
+        flex: 1;
+        justify-content: center;
+    }
+    .test-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
 }
 </style>
 {% endblock %}
 
-{% block payment_content %}
-<div class="row justify-content-center">
-    <div class="col-lg-10">
-        <!-- Setup Steps -->
-        <div class="paypal-setup-steps">
-            <h5 class="text-primary mb-3"><i class="fab fa-paypal me-2"></i>PayPal Setup Steps</h5>
-            <div class="step">
-                <div class="step-number">1</div>
-                <div class="step-content">
-                    <strong>Create PayPal Developer Account</strong>
-                    <p class="mb-0 small text-muted">Go to PayPal Developer Dashboard and create sandbox/live apps</p>
+{% block content %}
+
+<div class="management-layout">
+    {% include 'builder/includes/sidebar.html' with active_menu='gateways' %}
+
+    <div class="management-content">
+        <div class="paypal-wrap">
+
+            <div class="toast-stack" id="toastStack"></div>
+
+            <!-- Context -->
+            <div class="catalog-context">
+                <a href="{% url 'dashboard' %}" class="context-back">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    <span>{{ page.brand_name }}</span>
+                </a>
+                <span class="context-sep">/</span>
+                <a href="{% url 'payments:manage_gateways' page.subdomain %}" class="context-back">
+                    <span>Payment gateways</span>
+                </a>
+                <span class="context-sep">/</span>
+                <span class="context-current">PayPal</span>
+            </div>
+
+            <!-- Title -->
+            <div class="catalog-title-row">
+                <div class="catalog-title-block">
+                    <h1 class="catalog-title">PayPal</h1>
+                    <p class="catalog-sub">Accept PayPal, Venmo, and credit cards</p>
+                </div>
+                <div class="catalog-actions">
+                    <a href="{% url 'payments:manage_gateways' page.subdomain %}" class="btn btn-ghost">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        <span>Gateways</span>
+                    </a>
                 </div>
             </div>
-            <div class="step">
-                <div class="step-number">2</div>
-                <div class="step-content">
-                    <strong>Get API Credentials</strong>
-                    <p class="mb-0 small text-muted">Copy Client ID and Secret from your PayPal app settings</p>
+
+            <form method="post" id="paypalConfigForm">
+                {% csrf_token %}
+
+                <!-- Mode strip -->
+                <div class="mode-strip {% if paypal_gateway.is_test_mode %}test{% endif %}" id="modeStrip">
+                    <div class="mode-body">
+                        <p class="mode-title" id="modeTitle">
+                            {% if paypal_gateway.is_test_mode %}Sandbox mode{% else %}Live mode{% endif %}
+                        </p>
+                        <p class="mode-desc" id="modeDesc">
+                            {% if paypal_gateway.is_test_mode %}
+                                Using sandbox credentials. No real payments will be processed.
+                            {% else %}
+                                Using live credentials. Real payments will be processed.
+                            {% endif %}
+                        </p>
+                    </div>
+                    <label class="toggle">
+                        <input type="checkbox" id="is_test_mode" name="is_test_mode" {% if paypal_gateway.is_test_mode %}checked{% endif %}>
+                        <span class="toggle-slider"></span>
+                    </label>
                 </div>
-            </div>
-            <div class="step">
-                <div class="step-number">3</div>
-                <div class="step-content">
-                    <strong>Configure Below</strong>
-                    <p class="mb-0 small text-muted">Enter your credentials and test the connection</p>
+
+                <!-- Sandbox credentials -->
+                <div class="panel" id="sandboxCredentials" {% if not paypal_gateway.is_test_mode %}style="display: none;"{% endif %}>
+                    <div class="panel-head">
+                        <div>
+                            <h2 class="panel-title">Sandbox credentials</h2>
+                            <p class="panel-sub">Test app keys from your PayPal developer account</p>
+                        </div>
+                        <span class="panel-badge">Sandbox</span>
+                    </div>
+                    <div class="panel-body">
+
+                        <div class="field">
+                            <label class="field-label" for="paypal_client_id">Client ID</label>
+                            <div class="input-group">
+                                <input type="text"
+                                       class="form-control mono"
+                                       id="paypal_client_id"
+                                       name="paypal_client_id"
+                                       value="{{ paypal_gateway.paypal_client_id|default:'' }}"
+                                       placeholder="AeAAL…"
+                                       autocomplete="off"
+                                       spellcheck="false">
+                                <button type="button" class="btn btn-ghost" data-toggle-key="paypal_client_id" title="Show/hide">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+                                        <circle cx="12" cy="12" r="3"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="field-help">Found in PayPal Developer → My Apps & Credentials → Sandbox.</div>
+                        </div>
+
+                        <div class="field">
+                            <label class="field-label" for="paypal_client_secret">Client Secret</label>
+                            <div class="input-group">
+                                <input type="password"
+                                       class="form-control mono"
+                                       id="paypal_client_secret"
+                                       name="paypal_client_secret"
+                                       value="{{ paypal_gateway.paypal_client_secret|default:'' }}"
+                                       placeholder="ECb…"
+                                       autocomplete="new-password"
+                                       spellcheck="false">
+                                <button type="button" class="btn btn-ghost" data-toggle-key="paypal_client_secret" title="Show/hide">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+                                        <circle cx="12" cy="12" r="3"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="field-help">Keep this secret. Never share or commit to version control.</div>
+                        </div>
+
+                        <div class="info-strip">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 16v-4M12 8h.01"/>
+                            </svg>
+                            <span>Use your sandbox <strong>personal accounts</strong> and <strong>test credit cards</strong> from the PayPal developer dashboard to place test orders.</span>
+                        </div>
+
+                    </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="card">
-            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
-                <h5 class="card-title mb-0">
-                    <i class="fab fa-paypal me-2"></i>Configure PayPal
-                </h5>
-                <div>
-                    {% if paypal_gateway.is_active %}
-                        <span class="badge bg-success me-2">Active</span>
-                    {% endif %}
-                    {% if paypal_gateway.is_test_mode %}
-                        <span class="badge bg-warning">Sandbox Mode</span>
-                    {% else %}
-                        <span class="badge bg-success">Live Mode</span>
-                    {% endif %}
+                <!-- Live credentials -->
+                <div class="panel" id="liveCredentials" {% if paypal_gateway.is_test_mode %}style="display: none;"{% endif %}>
+                    <div class="panel-head">
+                        <div>
+                            <h2 class="panel-title">Live credentials</h2>
+                            <p class="panel-sub">Production keys — real payments</p>
+                        </div>
+                        <span class="panel-badge danger">Live</span>
+                    </div>
+                    <div class="panel-body">
+
+                        <div class="info-strip warning">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m21.73 18-8-14a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/>
+                                <path d="M12 9v4M12 17h.01"/>
+                            </svg>
+                            <span><strong>Live keys process real money.</strong> Test thoroughly in sandbox before switching.</span>
+                        </div>
+
+                        <div class="field">
+                            <label class="field-label" for="paypal_live_client_id">Client ID</label>
+                            <div class="input-group">
+                                <input type="text"
+                                       class="form-control mono"
+                                       id="paypal_live_client_id"
+                                       name="paypal_live_client_id"
+                                       value="{{ paypal_gateway.paypal_live_client_id|default:'' }}"
+                                       placeholder="AeAAL…"
+                                       autocomplete="off"
+                                       spellcheck="false">
+                                <button type="button" class="btn btn-ghost" data-toggle-key="paypal_live_client_id" title="Show/hide">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+                                        <circle cx="12" cy="12" r="3"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="field-help">From PayPal Developer → My Apps & Credentials → Live.</div>
+                        </div>
+
+                        <div class="field">
+                            <label class="field-label" for="paypal_live_client_secret">Client Secret</label>
+                            <div class="input-group">
+                                <input type="password"
+                                       class="form-control mono"
+                                       id="paypal_live_client_secret"
+                                       name="paypal_live_client_secret"
+                                       value="{{ paypal_gateway.paypal_live_client_secret|default:'' }}"
+                                       placeholder="ECb…"
+                                       autocomplete="new-password"
+                                       spellcheck="false">
+                                <button type="button" class="btn btn-ghost" data-toggle-key="paypal_live_client_secret" title="Show/hide">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+                                        <circle cx="12" cy="12" r="3"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="field-help">Keep this extremely secure. Never expose this key.</div>
+                        </div>
+
+                    </div>
                 </div>
-            </div>
-            
-            <div class="card-body">
-                <form method="post" id="paypalConfigForm">
-                    {% csrf_token %}
-                    
-                    <!-- Mode Toggle -->
-                    <div class="row mb-4">
-                        <div class="col-12">
-                            <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" id="is_test_mode" name="is_test_mode" 
-                                       {% if paypal_gateway.is_test_mode %}checked{% endif %}>
-                                <label class="form-check-label" for="is_test_mode">
-                                    <strong>Sandbox Mode</strong>
-                                    <small class="text-muted d-block">
-                                        Use sandbox credentials for testing. Disable when ready for real payments.
-                                    </small>
-                                </label>
-                            </div>
+
+                <!-- Connection test -->
+                <div class="panel">
+                    <div class="panel-head">
+                        <div>
+                            <h2 class="panel-title">Test connection</h2>
+                            <p class="panel-sub">Verify your credentials work before saving</p>
                         </div>
                     </div>
+                    <div class="panel-body">
 
-                    <!-- Sandbox Credentials -->
-                    <div class="sandbox-credentials {% if not paypal_gateway.is_test_mode %}d-none{% endif %}">
-                        <h6 class="border-bottom pb-2 mb-3">
-                            <i class="fas fa-vial me-2"></i>Sandbox Credentials
-                        </h6>
-                        
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label for="paypal_client_id" class="form-label">Sandbox Client ID *</label>
-                                <input type="text" class="form-control api-key-field" id="paypal_client_id" 
-                                       name="paypal_client_id" value="{{ paypal_gateway.paypal_client_id|default:'' }}"
-                                       placeholder="AeAAL...">
-                                <div class="form-text">
-                                    Get this from PayPal Developer Dashboard → My Apps & Credentials → Sandbox App
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="paypal_client_secret" class="form-label">Sandbox Client Secret *</label>
-                                <input type="password" class="form-control api-key-field" id="paypal_client_secret" 
-                                       name="paypal_client_secret" value="{{ paypal_gateway.paypal_client_secret|default:'' }}"
-                                       placeholder="ECb...">
-                                <div class="form-text">
-                                    Keep this secret! Never share or commit to version control.
-                                </div>
-                            </div>
+                        <div class="test-row">
+                            <button type="button" id="testPaypalConnection" class="btn btn-ghost">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 22v-5M9 8V2M15 8V2M18 8v3a6 6 0 0 1-6 6h0a6 6 0 0 1-6-6V8"/>
+                                </svg>
+                                <span class="btn-text">Test PayPal connection</span>
+                                <span class="spinner-border spinner-border-sm d-none" role="status"></span>
+                            </button>
+
+                            <span id="connectionResult" class="test-result"></span>
                         </div>
 
-                        <!-- Test Account Information -->
-                        <div class="test-account-info">
-                            <h6 class="text-warning mb-2"><i class="fas fa-info-circle me-1"></i>Sandbox Testing</h6>
-                            <p class="small mb-2">Use these sandbox accounts for testing:</p>
-                            <ul class="small mb-0">
-                                <li><strong>Personal Account:</strong> Use any email from your sandbox accounts</li>
-                                <li><strong>Password:</strong> The password you set for sandbox accounts</li>
-                                <li><strong>Test Cards:</strong> Use sandbox provided test credit cards</li>
-                            </ul>
-                        </div>
                     </div>
+                </div>
 
-                    <!-- Live Credentials -->
-                    <div class="live-credentials {% if paypal_gateway.is_test_mode %}d-none{% endif %}">
-                        <h6 class="border-bottom pb-2 mb-3">
-                            <i class="fas fa-globe me-2"></i>Live Credentials
-                        </h6>
-                        
-                        <div class="alert alert-warning">
-                            <i class="fas fa-exclamation-triangle me-2"></i>
-                            <strong>Warning:</strong> Live credentials will process real payments. Test thoroughly in sandbox first.
-                        </div>
-                        
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label for="paypal_live_client_id" class="form-label">Live Client ID *</label>
-                                <input type="text" class="form-control api-key-field" id="paypal_live_client_id" 
-                                       name="paypal_live_client_id" value="{{ paypal_gateway.paypal_live_client_id|default:'' }}"
-                                       placeholder="AeAAL...">
-                                <div class="form-text">
-                                    From PayPal Developer Dashboard → My Apps & Credentials → Live App
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="paypal_live_client_secret" class="form-label">Live Client Secret *</label>
-                                <input type="password" class="form-control api-key-field" id="paypal_live_client_secret" 
-                                       name="paypal_live_client_secret" value="{{ paypal_gateway.paypal_live_client_secret|default:'' }}"
-                                       placeholder="ECb...">
-                                <div class="form-text">
-                                    Keep this extremely secure! Never expose this key.
-                                </div>
-                            </div>
-                        </div>
+                <!-- Activation -->
+                <label class="check-card" for="is_active">
+                    <input type="checkbox" id="is_active" name="is_active" {% if paypal_gateway.is_active %}checked{% endif %}>
+                    <div class="check-card-body">
+                        <p class="check-card-title">Activate PayPal payments</p>
+                        <p class="check-card-desc">Enable PayPal as a payment option at checkout on your store.</p>
                     </div>
+                </label>
 
-                    <!-- Connection Test -->
-                    <div class="credentials-test">
-                        <h6 class="mb-3"><i class="fas fa-bolt me-2"></i>Test Connection</h6>
-                        <button type="button" id="testPaypalConnection" class="btn btn-outline-primary btn-sm">
-                            <i class="fas fa-plug me-1"></i>Test PayPal Connection
-                        </button>
-                        <div id="connectionResult" class="mt-2 small"></div>
-                    </div>
-
-                    <!-- Activation Toggle -->
-                    <div class="row mb-4">
-                        <div class="col-12">
-                            <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" id="is_active" name="is_active" 
-                                       {% if paypal_gateway.is_active %}checked{% endif %}>
-                                <label class="form-check-label" for="is_active">
-                                    <strong>Activate PayPal Payments</strong>
-                                    <small class="text-muted d-block">
-                                        Enable to accept payments through PayPal on your website
-                                    </small>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Form Actions -->
-                    <div class="d-flex gap-2 justify-content-end">
-                        <a href="{% url 'payments:manage_gateways' page.subdomain %}" class="btn btn-outline-secondary">
-                            <i class="fas fa-arrow-left me-2"></i>Back
+                <!-- Sticky footer -->
+                <div class="settings-footer">
+                    <span class="settings-footer-msg">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 16v-4M12 8h.01"/>
+                        </svg>
+                        Changes apply immediately
+                    </span>
+                    <div class="settings-footer-actions">
+                        <a href="{% url 'payments:manage_gateways' page.subdomain %}" class="btn btn-ghost">
+                            <span>Cancel</span>
                         </a>
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-save me-2"></i>Save Configuration
-                        </button>
                         {% if paypal_gateway.is_active %}
-                        <a href="{% url 'payments:payment_selection' page.subdomain %}?type=instant&product={\"title\":\"Test Product\",\"price\":1.00}" 
-                           class="btn btn-success" target="_blank">
-                            <i class="fab fa-paypal me-2"></i>Test PayPal
+                        <a href="{% url 'payments:payment_selection' page.subdomain %}?type=instant&product={% filter urlencode %}{"title":"Test Product","price":1.00}{% endfilter %}"
+                           class="btn btn-ghost"
+                           target="_blank"
+                           rel="noopener">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                            </svg>
+                            <span>Test checkout</span>
                         </a>
                         {% endif %}
+                        <button type="submit" class="btn btn-accent">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 6 9 17l-5-5"/>
+                            </svg>
+                            <span>Save configuration</span>
+                        </button>
                     </div>
-                </form>
-            </div>
-        </div>
+                </div>
 
-        <!-- Help Information -->
-        <div class="card mt-4">
-            <div class="card-header bg-light">
-                <h5 class="card-title mb-0">
-                    <i class="fas fa-question-circle me-2"></i>PayPal Setup Guide
-                </h5>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h6>Sandbox Setup (Testing):</h6>
-                        <ol class="small">
-                            <li class="mb-2">
-                                <strong>Go to:</strong> 
-                                <a href="https://developer.paypal.com/developer/accounts/" target="_blank">PayPal Developer</a>
-                            </li>
-                            <li class="mb-2">
-                                <strong>Create Sandbox Business Account</strong> in Accounts section
-                            </li>
-                            <li class="mb-2">
-                                <strong>Create Sandbox App:</strong> 
-                                Dashboard → My Apps & Credentials → Create App
-                            </li>
-                            <li class="mb-2">
-                                <strong>Copy Credentials:</strong> 
-                                Sandbox Client ID and Secret
-                            </li>
-                            <li>
-                                <strong>Test:</strong> 
-                                Use sandbox personal accounts for testing
-                            </li>
-                        </ol>
-                    </div>
-                    <div class="col-md-6">
-                        <h6>Live Setup (Production):</h6>
-                        <ol class="small">
-                            <li class="mb-2">
-                                <strong>Business Account:</strong> 
-                                Ensure PayPal Business account
-                            </li>
-                            <li class="mb-2">
-                                <strong>Create Live App:</strong> 
-                                In PayPal Developer Dashboard
-                            </li>
-                            <li class="mb-2">
-                                <strong>Get Live Credentials:</strong> 
-                                Live Client ID and Secret
-                            </li>
-                            <li class="mb-2">
-                                <strong>Switch to Live:</strong> 
-                                Disable sandbox mode when ready
-                            </li>
-                            <li>
-                                <strong>Monitor:</strong> 
-                                Check transactions in PayPal Manager
-                            </li>
-                        </ol>
+            </form>
+
+            <!-- Setup guide -->
+            <div class="panel" style="margin-top: 1.5rem;">
+                <div class="panel-head">
+                    <div>
+                        <h2 class="panel-title">Setup guide</h2>
+                        <p class="panel-sub">Get PayPal running in 5 steps</p>
                     </div>
                 </div>
-                
-                <div class="alert alert-info mt-3">
-                    <h6 class="alert-heading"><i class="fas fa-lightbulb me-2"></i>Pro Tips</h6>
-                    <ul class="mb-0 small">
-                        <li>Always test thoroughly in sandbox before going live</li>
-                        <li>Keep your client secret secure - never share it</li>
-                        <li>Use strong passwords for your PayPal accounts</li>
-                        <li>Monitor your PayPal account for suspicious activity</li>
-                    </ul>
+                <div class="steps-list">
+
+                    <div class="step">
+                        <span class="step-num">1</span>
+                        <p class="step-text">
+                            Open the
+                            <a href="https://developer.paypal.com/developer/accounts/" target="_blank" rel="noopener">PayPal Developer Dashboard</a>
+                            and create a sandbox business account.
+                        </p>
+                    </div>
+
+                    <div class="step">
+                        <span class="step-num">2</span>
+                        <p class="step-text">
+                            In <strong>My Apps & Credentials</strong>, create a new app and copy the
+                            <strong>Client ID</strong> and <strong>Secret</strong>.
+                        </p>
+                    </div>
+
+                    <div class="step">
+                        <span class="step-num">3</span>
+                        <p class="step-text">
+                            Paste them into the form above in <strong>Sandbox mode</strong> and click
+                            <strong>Test connection</strong>.
+                        </p>
+                    </div>
+
+                    <div class="step">
+                        <span class="step-num">4</span>
+                        <p class="step-text">
+                            Place a test order using a sandbox personal account and a test credit card.
+                        </p>
+                    </div>
+
+                    <div class="step">
+                        <span class="step-num">5</span>
+                        <p class="step-text">
+                            When everything works, disable the mode toggle and paste your
+                            <strong>live</strong> credentials.
+                        </p>
+                    </div>
+
                 </div>
             </div>
+
+            <!-- Pro tips -->
+            <div class="panel">
+                <div class="panel-head">
+                    <div>
+                        <h2 class="panel-title">Pro tips</h2>
+                        <p class="panel-sub">Best practices for PayPal integration</p>
+                    </div>
+                </div>
+                <div class="bullet-list">
+                    <div class="bullet-item">
+                        <span class="bullet-dot"></span>
+                        <p class="bullet-text">Always test in sandbox mode before switching to live. PayPal's sandbox is comprehensive — use it.</p>
+                    </div>
+                    <div class="bullet-item">
+                        <span class="bullet-dot"></span>
+                        <p class="bullet-text">Store your live client secret somewhere safe (like a password manager) so you never lose access.</p>
+                    </div>
+                    <div class="bullet-item">
+                        <span class="bullet-dot"></span>
+                        <p class="bullet-text">Monitor your PayPal account for unusual activity, especially in the first few weeks of going live.</p>
+                    </div>
+                    <div class="bullet-item">
+                        <span class="bullet-dot"></span>
+                        <p class="bullet-text">PayPal business accounts have lower fees than personal accounts for accepting payments.</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
+
 {% endblock %}
 
 {% block extra_js %}
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const testModeToggle = document.getElementById('is_test_mode');
-    const sandboxCredentials = document.querySelector('.sandbox-credentials');
-    const liveCredentials = document.querySelector('.live-credentials');
-    const testConnectionBtn = document.getElementById('testPaypalConnection');
-    const connectionResult = document.getElementById('connectionResult');
-    
-    // Toggle between sandbox and live credentials
-    testModeToggle.addEventListener('change', function() {
-        if (this.checked) {
-            sandboxCredentials.classList.remove('d-none');
-            liveCredentials.classList.add('d-none');
-        } else {
-            sandboxCredentials.classList.add('d-none');
-            liveCredentials.classList.remove('d-none');
-        }
+document.addEventListener('DOMContentLoaded', function () {
+
+    /* ============ Toggle sandbox/live UI ============ */
+    const modeToggle = document.getElementById('is_test_mode');
+    const modeStrip = document.getElementById('modeStrip');
+    const modeTitle = document.getElementById('modeTitle');
+    const modeDesc = document.getElementById('modeDesc');
+    const sandboxCredentials = document.getElementById('sandboxCredentials');
+    const liveCredentials = document.getElementById('liveCredentials');
+
+    if (modeToggle) {
+        modeToggle.addEventListener('change', function () {
+            const isTest = this.checked;
+
+            modeStrip.classList.toggle('test', isTest);
+            modeTitle.textContent = isTest ? 'Sandbox mode' : 'Live mode';
+            modeDesc.textContent = isTest
+                ? 'Using sandbox credentials. No real payments will be processed.'
+                : 'Using live credentials. Real payments will be processed.';
+
+            sandboxCredentials.style.display = isTest ? '' : 'none';
+            liveCredentials.style.display = isTest ? 'none' : '';
+        });
+    }
+
+    /* ============ Show/hide secret keys ============ */
+    document.querySelectorAll('[data-toggle-key]').forEach(btn => {
+        btn.addEventListener('click', function () {
+            const input = document.getElementById(this.dataset.toggleKey);
+            if (!input) return;
+
+            const isPassword = input.type === 'password';
+            input.type = isPassword ? 'text' : 'password';
+
+            this.innerHTML = isPassword
+                ? '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><line x1="2" x2="22" y1="2" y2="22"/></svg>'
+                : '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>';
+        });
     });
-    
-    // Test PayPal connection
-    testConnectionBtn.addEventListener('click', async function() {
-        const isTestMode = document.getElementById('is_test_mode').checked;
-        const clientId = isTestMode ? 
-            document.getElementById('paypal_client_id').value :
-            document.getElementById('paypal_live_client_id').value;
-        const clientSecret = isTestMode ?
-            document.getElementById('paypal_client_secret').value :
-            document.getElementById('paypal_live_client_secret').value;
-        
-        if (!clientId || !clientSecret) {
-            connectionResult.innerHTML = '<span class="text-danger">Please enter both Client ID and Secret</span>';
-            return;
-        }
-        
-        testConnectionBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i>Testing...';
-        testConnectionBtn.disabled = true;
-        
-        try {
-            const response = await fetch('{% url "payments:test_paypal_connection" page.subdomain %}', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': getCSRFToken(),
-                },
-                body: JSON.stringify({
-                    client_id: clientId,
-                    client_secret: clientSecret,
-                    is_test_mode: isTestMode
-                })
-            });
-            
-            const data = await response.json();
-            
-            if (data.success) {
-                connectionResult.innerHTML = '<span class="text-success"><i class="fas fa-check-circle me-1"></i>Connection successful! PayPal is properly configured.</span>';
-            } else {
-                connectionResult.innerHTML = `<span class="text-danger"><i class="fas fa-times-circle me-1"></i>Connection failed: ${data.error}</span>`;
+
+    /* ============ Test PayPal connection ============ */
+    const testBtn = document.getElementById('testPaypalConnection');
+    const resultEl = document.getElementById('connectionResult');
+
+    if (testBtn) {
+        testBtn.addEventListener('click', async function () {
+            const isTestMode = document.getElementById('is_test_mode').checked;
+
+            const clientId = isTestMode
+                ? document.getElementById('paypal_client_id').value.trim()
+                : document.getElementById('paypal_live_client_id').value.trim();
+
+            const clientSecret = isTestMode
+                ? document.getElementById('paypal_client_secret').value.trim()
+                : document.getElementById('paypal_live_client_secret').value.trim();
+
+            resultEl.className = 'test-result';
+            resultEl.textContent = '';
+
+            if (!clientId || !clientSecret) {
+                resultEl.className = 'test-result error';
+                resultEl.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg> Enter both Client ID and Secret first.';
+                return;
             }
-            
-        } catch (error) {
-            connectionResult.innerHTML = `<span class="text-danger"><i class="fas fa-times-circle me-1"></i>Test failed: ${error.message}</span>`;
-        } finally {
-            testConnectionBtn.innerHTML = '<i class="fas fa-plug me-1"></i>Test PayPal Connection';
-            testConnectionBtn.disabled = false;
-        }
-    });
-    
-    // Form validation
-    document.getElementById('paypalConfigForm').addEventListener('submit', function(e) {
-        const isActive = document.getElementById('is_active').checked;
-        const isTestMode = document.getElementById('is_test_mode').checked;
-        
-        if (isActive) {
+
+            const btnText = testBtn.querySelector('.btn-text');
+            const spin = testBtn.querySelector('.spinner-border');
+            testBtn.disabled = true;
+            btnText.textContent = 'Testing…';
+            spin.classList.remove('d-none');
+
+            try {
+                const res = await fetch('{% url "payments:test_paypal_connection" page.subdomain %}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCSRFToken(),
+                    },
+                    body: JSON.stringify({
+                        client_id: clientId,
+                        client_secret: clientSecret,
+                        is_test_mode: isTestMode,
+                    })
+                });
+
+                const data = await res.json();
+
+                if (data.success) {
+                    resultEl.className = 'test-result success';
+                    resultEl.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Connection successful.';
+                } else {
+                    resultEl.className = 'test-result error';
+                    resultEl.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg> ${data.error || 'Connection failed'}`;
+                }
+            } catch (err) {
+                resultEl.className = 'test-result error';
+                resultEl.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg> ${err.message}`;
+            } finally {
+                testBtn.disabled = false;
+                btnText.textContent = 'Test PayPal connection';
+                spin.classList.add('d-none');
+            }
+        });
+    }
+
+    /* ============ Form validation ============ */
+    const form = document.getElementById('paypalConfigForm');
+    if (form) {
+        form.addEventListener('submit', function (e) {
+            const isActive = document.getElementById('is_active').checked;
+            const isTestMode = document.getElementById('is_test_mode').checked;
+
+            if (!isActive) return;
+
             if (isTestMode) {
-                const clientId = document.getElementById('paypal_client_id').value;
-                const clientSecret = document.getElementById('paypal_client_secret').value;
-                
-                if (!clientId || !clientId.startsWith('A')) {
-                    alert('Please enter a valid sandbox Client ID');
+                const id = document.getElementById('paypal_client_id').value.trim();
+                const sec = document.getElementById('paypal_client_secret').value.trim();
+
+                if (!id || !id.startsWith('A')) {
                     e.preventDefault();
+                    toast('Sandbox Client ID must start with "A"', 'error');
+                    document.getElementById('paypal_client_id').focus();
                     return;
                 }
-                
-                if (!clientSecret || !clientSecret.startsWith('E')) {
-                    alert('Please enter a valid sandbox Client Secret');
+
+                if (!sec || !sec.startsWith('E')) {
                     e.preventDefault();
+                    toast('Sandbox Client Secret must start with "E"', 'error');
+                    document.getElementById('paypal_client_secret').focus();
                     return;
                 }
             } else {
-                const liveClientId = document.getElementById('paypal_live_client_id').value;
-                const liveClientSecret = document.getElementById('paypal_live_client_secret').value;
-                
-                if (!liveClientId || !liveClientId.startsWith('A')) {
-                    alert('Please enter a valid live Client ID');
+                const id = document.getElementById('paypal_live_client_id').value.trim();
+                const sec = document.getElementById('paypal_live_client_secret').value.trim();
+
+                if (!id || !id.startsWith('A')) {
                     e.preventDefault();
+                    toast('Live Client ID must start with "A"', 'error');
+                    document.getElementById('paypal_live_client_id').focus();
                     return;
                 }
-                
-                if (!liveClientSecret || !liveClientSecret.startsWith('E')) {
-                    alert('Please enter a valid live Client Secret');
+
+                if (!sec || !sec.startsWith('E')) {
                     e.preventDefault();
+                    toast('Live Client Secret must start with "E"', 'error');
+                    document.getElementById('paypal_live_client_secret').focus();
                     return;
                 }
             }
-        }
-    });
-    
+        });
+    }
+
+    /* ============ Helpers ============ */
     function getCSRFToken() {
-        const cookieValue = document.cookie
-            .split('; ')
-            .find(row => row.startsWith('csrftoken='))
-            ?.split('=')[1];
-        return cookieValue || '';
+        const m = document.cookie.match(/csrftoken=([^;]+)/);
+        return m ? m[1] : '';
+    }
+
+    function toast(message, type = 'info') {
+        const stack = document.getElementById('toastStack');
+        if (!stack) return;
+
+        const el = document.createElement('div');
+        el.className = `toast ${type}`;
+        const icon = type === 'error'
+            ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>'
+            : '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+        el.innerHTML = `${icon}<span>${message}</span>`;
+        stack.appendChild(el);
+        setTimeout(() => {
+            el.style.transition = 'opacity 0.2s, transform 0.2s';
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(-8px)';
+            setTimeout(() => el.remove(), 200);
+        }, 3000);
     }
 });
 </script>

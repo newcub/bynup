@@ -3015,9 +3015,253 @@ class ProductOptionValue(models.Model):
         return f"{self.option.name}: {self.value}"
 
 
+# Add to builder/models.py - After ImageCustomization class
 
-
+class VideoCustomization(models.Model):
+    """
+    Store custom videos for editable-image elements
+    """
+    page = models.ForeignKey(PublishedPage, on_delete=models.CASCADE, related_name='video_customizations')
+    element_id = models.CharField(max_length=50)  # e.g., "1", "2", "3"
+    video_url = models.URLField(max_length=500, blank=True, null=True, 
+                                help_text="YouTube, Vimeo, or direct video URL")
+    video_file = models.FileField(upload_to='custom_videos/', 
+                                
+                                  blank=True, null=True)
+    poster_image = models.ImageField(upload_to='video_posters/', 
+                                      
+                                     blank=True, null=True,
+                                     help_text="Preview image shown before video plays")
+    alt_text = models.CharField(max_length=200, blank=True)
+    autoplay = models.BooleanField(default=False)
+    loop = models.BooleanField(default=False)
+    muted = models.BooleanField(default=True)
+    controls = models.BooleanField(default=True)
+    show_play_button = models.BooleanField(default=True, help_text="Show play button overlay on video")
+    created_at = models.DateTimeField(auto_now_add=True)
+    page_name = models.CharField(max_length=50, default='home')
     
+    class Meta:
+        unique_together = ['page', 'element_id', 'page_name']
+    
+    def __str__(self):
+        return f"{self.page.brand_name} - Video {self.element_id} ({self.page_name})"
+    
+    def get_video_embed_url(self):
+        """Convert YouTube/Vimeo URLs to embed format"""
+        if not self.video_url:
+            return None
+        
+        # YouTube
+        if 'youtube.com/watch' in self.video_url or 'youtu.be' in self.video_url:
+            import re
+            # Extract video ID
+            patterns = [
+                r'(?:youtube\.com\/watch\?v=)([\w-]+)',
+                r'(?:youtu\.be\/)([\w-]+)',
+                r'(?:youtube\.com\/embed\/)([\w-]+)'
+            ]
+            for pattern in patterns:
+                match = re.search(pattern, self.video_url)
+                if match:
+                    video_id = match.group(1)
+                    return f"https://www.youtube.com/embed/{video_id}"
+        
+        # Vimeo
+        elif 'vimeo.com' in self.video_url:
+            import re
+            match = re.search(r'vimeo\.com\/(\d+)', self.video_url)
+            if match:
+                video_id = match.group(1)
+                return f"https://player.vimeo.com/video/{video_id}"
+        
+        # Direct URL or already embed
+        return self.video_url
+
+
+
+
+# ============================================================
+# DOMAIN FULFILLMENT SYSTEM
+# ============================================================
+
+class DomainRequest(models.Model):
+    """
+    User's request for a custom domain on their store.
+    This is the user-facing intent + the operational state machine.
+    """
+    STATUS_CHOICES = [
+        ('pending_review', 'Pending Review'),
+        ('approved', 'Approved'),
+        ('purchasing', 'Processing'),
+        ('purchased', 'Processed'),
+        ('configuring_dns', 'Configuring DNS'),
+        ('active', 'Active'),
+        ('failed', 'Failed'),
+        ('rejected', 'Rejected'),
+        ('cancelled', 'Cancelled'),
+    ]
+
+    TERMINAL_STATUSES = ['active', 'failed', 'rejected', 'cancelled']
+
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='domain_requests'
+    )
+    page = models.ForeignKey(
+        PublishedPage,
+        on_delete=models.CASCADE,
+        related_name='domain_requests',
+        null=True,
+        blank=True,
+        help_text="The store this domain is intended for"
+    )
+
+    # The requested domain
+    domain_name = models.CharField(max_length=255, db_index=True)
+    tld = models.CharField(max_length=20, db_index=True)
+    is_free_tier = models.BooleanField(
+        default=True,
+        help_text="True if this request is covered by the user's plan (free domain benefit)"
+    )
+
+    # State machine
+    status = models.CharField(
+        max_length=20,
+        choices=STATUS_CHOICES,
+        default='pending_review',
+        db_index=True
+    )
+
+    # Admin review
+    admin_notes = models.TextField(blank=True)
+    reviewed_by = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='reviewed_domain_requests'
+    )
+    reviewed_at = models.DateTimeField(null=True, blank=True)
+
+    # Registrar details (populated after purchase)
+    registrar = models.CharField(max_length=50, blank=True)
+    registrar_order_id = models.CharField(max_length=100, blank=True)
+    purchase_cost = models.DecimalField(
+        max_digits=10, decimal_places=2, null=True, blank=True
+    )
+    purchase_currency = models.CharField(max_length=3, default='USD')
+    purchase_date = models.DateTimeField(null=True, blank=True)
+    expiry_date = models.DateTimeField(null=True, blank=True)
+
+    # DNS / activation
+    dns_configured = models.BooleanField(default=False)
+    dns_verified_at = models.DateTimeField(null=True, blank=True)
+
+    # Timestamps
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    activated_at = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = "Domain Request"
+        verbose_name_plural = "Domain Requests"
+        indexes = [
+            models.Index(fields=['user', 'status']),
+            models.Index(fields=['status', 'created_at']),
+            models.Index(fields=['domain_name']),
+        ]
+
+    def __str__(self):
+        return f"{self.domain_name} - {self.get_status_display()} ({self.user.username})"
+
+    @property
+    def is_terminal(self):
+        return self.status in self.TERMINAL_STATUSES
+
+    @property
+    def is_active_request(self):
+        return not self.is_terminal
+
+
+class PurchasedDomain(models.Model):
+    """
+    A domain that has been purchased and is owned by the platform.
+    Domain assets outlive any single user, so this is decoupled from DomainRequest.
+    """
+    domain_name = models.CharField(max_length=255, unique=True, db_index=True)
+    registrar = models.CharField(max_length=50, default='namecheap')
+
+    purchase_date = models.DateTimeField()
+    expiry_date = models.DateTimeField(db_index=True)
+    auto_renew = models.BooleanField(default=True)
+
+    purchase_cost = models.DecimalField(max_digits=10, decimal_places=2)
+    renewal_cost = models.DecimalField(
+        max_digits=10, decimal_places=2, null=True, blank=True
+    )
+    currency = models.CharField(max_length=3, default='USD')
+
+    # Linkage
+    assigned_page = models.ForeignKey(
+        PublishedPage,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='purchased_domains'
+    )
+    source_request = models.ForeignKey(
+        DomainRequest,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='purchased_domain'
+    )
+
+    is_active = models.BooleanField(default=True)
+    notes = models.TextField(blank=True)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = "Purchased Domain"
+        verbose_name_plural = "Purchased Domains"
+        indexes = [
+            models.Index(fields=['expiry_date']),
+            models.Index(fields=['assigned_page']),
+        ]
+
+    def __str__(self):
+        return self.domain_name
+
+
+class DomainAvailabilityCache(models.Model):
+    """
+    Short-lived cache of RDAP availability checks.
+    Reduces registry load and speeds up the search UX.
+    """
+    domain_name = models.CharField(max_length=255, unique=True, db_index=True)
+    is_available = models.BooleanField()
+    checked_at = models.DateTimeField(auto_now=True)
+    expires_at = models.DateTimeField(db_index=True)
+
+    class Meta:
+        verbose_name = "Domain Availability Cache"
+        verbose_name_plural = "Domain Availability Cache"
+        indexes = [
+            models.Index(fields=['expires_at']),
+        ]
+
+    def __str__(self):
+        return f"{self.domain_name} - {'available' if self.is_available else 'taken'}"
+
+    @property
+    def is_valid(self):
+        return timezone.now() < self.expires_at
 
 
     

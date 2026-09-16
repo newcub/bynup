@@ -5,364 +5,958 @@
 
 {% block extra_css %}
 <style>
-    .reports-container {
-        max-width: 1400px;
-        margin: 0 auto;
+:root {
+    --n-0: #ffffff;
+    --n-50: #fafafa;
+    --n-100: #f4f4f5;
+    --n-200: #e4e4e7;
+    --n-300: #d4d4d8;
+    --n-400: #a1a1aa;
+    --n-500: #71717a;
+    --n-600: #52525b;
+    --n-700: #3f3f46;
+    --n-800: #27272a;
+    --n-900: #18181b;
+
+    --accent: var(--primary-color, #111827);
+    --accent-hover: #000000;
+
+    --success: #15803d;
+    --warning: #a16207;
+    --danger: #b91c1c;
+
+    --border: var(--n-200);
+    --border-strong: var(--n-300);
+    --text: var(--n-900);
+    --text-muted: var(--n-500);
+    --text-subtle: var(--n-400);
+
+    --radius-sm: 4px;
+    --radius: 6px;
+    --radius-lg: 10px;
+
+    --page-bg: #f6f7f9;
+    --surface-shadow: 0 1px 2px rgba(24, 24, 27, 0.04), 0 1px 1px rgba(24, 24, 27, 0.03);
+    --surface-shadow-hover: 0 4px 12px rgba(24, 24, 27, 0.06), 0 1px 2px rgba(24, 24, 27, 0.04);
+}
+
+/* ===== Shell — cooperates with sidebar.html ===== */
+.management-layout {
+    background: var(--page-bg);
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 13px;
+    color: var(--text);
+}
+
+.management-content { padding: 0; }
+
+.reports-wrap {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem 2rem 4rem;
+}
+
+/* ===== Context breadcrumb ===== */
+.catalog-context {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.context-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.15s;
+    font-weight: 500;
+}
+
+.context-back:hover { color: var(--text); }
+.context-back svg { transition: transform 0.15s; }
+.context-back:hover svg { transform: translateX(-2px); }
+.context-sep { color: var(--n-300); }
+.context-current { color: var(--text); font-weight: 500; }
+
+/* ===== Title row ===== */
+.catalog-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.catalog-title-block { min-width: 0; }
+
+.catalog-title {
+    font-size: 1.625rem;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    color: var(--text);
+    margin: 0 0 0.375rem 0;
+    line-height: 1.15;
+}
+
+.catalog-sub {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    margin: 0;
+    font-variant-numeric: tabular-nums;
+}
+
+.catalog-actions {
+    display: flex;
+    gap: 0.375rem;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* ===== Buttons ===== */
+.btn {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    border-radius: var(--radius);
+    padding: 0.5rem 0.875rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    line-height: 1.25;
+    transition: background 0.15s, border-color 0.15s, color 0.15s, box-shadow 0.15s;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: inherit;
+}
+
+.btn-ghost {
+    background: var(--n-0);
+    border-color: var(--border);
+    color: var(--n-700);
+    box-shadow: 0 1px 2px rgba(24, 24, 27, 0.04);
+}
+
+.btn-ghost:hover {
+    background: var(--n-0);
+    border-color: var(--border-strong);
+    color: var(--text);
+    box-shadow: var(--surface-shadow);
+}
+
+.btn-accent {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+    box-shadow: 0 1px 2px rgba(24, 24, 27, 0.16);
+}
+
+.btn-accent:hover {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+    color: white;
+    box-shadow: 0 4px 12px rgba(24, 24, 27, 0.18);
+}
+
+/* ===== Stats bar ===== */
+.stats-bar {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0.875rem 1.125rem;
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    margin-bottom: 1.5rem;
+    box-shadow: var(--surface-shadow);
+}
+
+.stats-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding-right: 1.5rem;
+    border-right: 1px solid var(--border);
+}
+
+.stats-grid {
+    flex: 1;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    min-width: 0;
+}
+
+.stat-value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+}
+
+.stat-value.success { color: var(--success); }
+
+.stat-label {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+}
+
+.stat-sub {
+    font-size: 0.6875rem;
+    color: var(--text-subtle);
+    margin-top: 0.125rem;
+}
+
+/* ===== Date filter bar ===== */
+.date-filter {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.75rem;
+    padding: 0.875rem 1.125rem;
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    box-shadow: var(--surface-shadow);
+}
+
+.date-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    min-width: 0;
+}
+
+.date-field-label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.date-field input[type="date"] {
+    font-size: 0.8125rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.4375rem 0.625rem;
+    background: var(--n-0);
+    color: var(--text);
+    font-family: inherit;
+    font-variant-numeric: tabular-nums;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.date-field input[type="date"]:hover {
+    border-color: var(--border-strong);
+}
+
+.date-field input[type="date"]:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(17, 24, 39, 0.06);
+    outline: none;
+}
+
+.date-filter-actions {
+    display: flex;
+    gap: 0.375rem;
+    align-items: flex-end;
+    margin-left: auto;
+}
+
+/* ===== Panels ===== */
+.panel {
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: 1rem;
+    box-shadow: var(--surface-shadow);
+}
+
+.panel-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.875rem 1.125rem;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(to bottom, #ffffff, #fcfcfd);
+}
+
+.panel-title {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0;
+    letter-spacing: -0.005em;
+}
+
+.panel-sub {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    margin: 0.125rem 0 0 0;
+}
+
+.panel-body {
+    padding: 1.125rem;
+}
+
+/* ===== Chart container ===== */
+.chart-wrap {
+    height: 260px;
+    position: relative;
+}
+
+.chart-wrap-sm {
+    height: 220px;
+    position: relative;
+}
+
+.chart-empty {
+    height: 260px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
+    font-size: 0.8125rem;
+}
+
+.chart-empty svg { color: var(--n-300); }
+
+/* ===== Two column grid ===== */
+.reports-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* ===== Report table ===== */
+.report-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8125rem;
+}
+
+.report-table th {
+    text-align: left;
+    font-weight: 500;
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.625rem 1.125rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--n-50);
+    white-space: nowrap;
+}
+
+.report-table th:last-child { text-align: right; }
+
+.report-table td {
+    padding: 0.875rem 1.125rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+}
+
+.report-table td:last-child { text-align: right; }
+
+.report-table tbody tr:last-child td { border-bottom: none; }
+.report-table tbody tr:hover { background: var(--n-50); }
+
+.month-label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--text);
+    white-space: nowrap;
+}
+
+.cell-num {
+    font-size: 0.8125rem;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+}
+
+.cell-num.muted { color: var(--text-muted); }
+
+.cell-num.tax {
+    font-weight: 600;
+    color: var(--success);
+}
+
+.cell-num.rate {
+    color: var(--text-muted);
+}
+
+/* Row action */
+.row-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--n-500);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.1s, color 0.1s, border-color 0.1s;
+    position: relative;
+}
+
+.row-action:hover {
+    background: var(--n-100);
+    color: var(--text);
+    border-color: var(--border);
+}
+
+.row-action[data-tip]:hover::after {
+    content: attr(data-tip);
+    position: absolute;
+    bottom: calc(100% + 6px);
+    right: 0;
+    background: var(--n-900);
+    color: white;
+    padding: 4px 9px;
+    border-radius: 4px;
+    font-size: 0.6875rem;
+    white-space: nowrap;
+    font-weight: 500;
+    z-index: 10;
+    pointer-events: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* ===== Empty state ===== */
+.report-empty {
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.8125rem;
+}
+
+.report-empty svg {
+    color: var(--n-300);
+    margin-bottom: 0.625rem;
+}
+
+.report-empty p { margin: 0; }
+
+/* ===== Responsive ===== */
+@media (max-width: 1000px) {
+    .reports-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 900px) {
+    .reports-wrap { padding: 1.5rem 1rem 3rem; }
+
+    .catalog-title-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
     }
 
-    .reports-header {
-        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-        color: white;
-        padding: 2rem;
-        border-radius: 20px;
-        margin-bottom: 2rem;
-        box-shadow: 0 10px 30px rgba(16, 185, 129, 0.2);
+    .catalog-actions { justify-content: flex-start; flex-wrap: wrap; }
+
+    .stats-bar {
+        flex-wrap: wrap;
+        gap: 1rem;
     }
 
-    .summary-cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1.5rem;
-        margin-bottom: 2rem;
+    .stats-label {
+        border-right: none;
+        padding-right: 0;
+        width: 100%;
     }
 
-    .summary-card {
-        background: white;
-        border-radius: 16px;
-        padding: 1.5rem;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        border: 1px solid #eef2f6;
+    .stats-grid {
+        width: 100%;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
     }
 
-    .summary-card-title {
-        color: #64748b;
-        font-size: 0.9rem;
-        text-transform: uppercase;
-        margin-bottom: 0.5rem;
+    .date-filter {
+        flex-direction: column;
+        align-items: stretch;
     }
 
-    .summary-card-value {
-        font-size: 2rem;
-        font-weight: 700;
-        color: #2c3e50;
+    .date-filter-actions {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 640px) {
+    .catalog-title { font-size: 1.375rem; }
+
+    .report-table th:nth-child(2),
+    .report-table td:nth-child(2),
+    .report-table th:nth-child(3),
+    .report-table td:nth-child(3),
+    .report-table th:nth-child(5),
+    .report-table td:nth-child(5) {
+        display: none;
     }
 
-    .summary-card-change {
-        margin-top: 0.5rem;
-        font-size: 0.9rem;
+    .report-table th, .report-table td {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
     }
-
-    .chart-card {
-        background: white;
-        border-radius: 20px;
-        padding: 1.5rem;
-        margin-bottom: 2rem;
-        border: 1px solid #eef2f6;
-    }
-
-    .chart-container {
-        height: 300px;
-        margin-top: 1rem;
-    }
-
-    .report-table {
-        background: white;
-        border-radius: 20px;
-        overflow: hidden;
-        border: 1px solid #eef2f6;
-    }
-
-    .report-table th {
-        background: #f8fafc;
-        font-weight: 600;
-        color: #475569;
-        padding: 1rem 1.5rem;
-    }
-
-    .report-table td {
-        padding: 1rem 1.5rem;
-        border-bottom: 1px solid #eef2f6;
-    }
-
-    .date-range-picker {
-        background: white;
-        border-radius: 12px;
-        padding: 1.5rem;
-        margin-bottom: 2rem;
-        border: 1px solid #eef2f6;
-    }
-
-    .export-btn {
-        background: white;
-        border: 2px solid #10b981;
-        color: #10b981;
-        padding: 0.6rem 1.5rem;
-        border-radius: 30px;
-        font-weight: 500;
-        transition: all 0.3s ease;
-    }
-
-    .export-btn:hover {
-        background: #10b981;
-        color: white;
-    }
+}
 </style>
 {% endblock %}
 
 {% block content %}
-<div class="container py-4">
-    <div class="reports-container">
-        <!-- Header -->
-        <div class="reports-header d-flex justify-content-between align-items-center">
-            <div>
-                <h1 class="h3 mb-2">Tax Reports</h1>
-                <p class="mb-0 opacity-75">Tax collection analytics for {{ page.brand_name }}</p>
-            </div>
-            <div>
-                <a href="{% url 'payments:tax_dashboard' page.subdomain %}" class="btn btn-light me-2">
-                    <i class="fas fa-arrow-left me-2"></i>Back
-                </a>
-                <button class="btn btn-light" onclick="exportReport()">
-                    <i class="fas fa-download me-2"></i>Export Report
-                </button>
-            </div>
-        </div>
 
-        <!-- Date Range Picker -->
-        <div class="date-range-picker">
-            <form method="get" class="row align-items-end">
-                <div class="col-md-4">
-                    <label class="form-label fw-medium">From</label>
-                    <input type="date" class="form-control" name="from" 
-                           value="{{ start_date|date:'Y-m-d' }}">
+<div class="management-layout">
+    {% include 'builder/includes/sidebar.html' with active_menu='taxes' %}
+
+    <div class="management-content">
+        <div class="reports-wrap">
+
+            <!-- Context -->
+            <div class="catalog-context">
+                <a href="{% url 'dashboard' %}" class="context-back">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    <span>Dashboard</span>
+                </a>
+                <span class="context-sep">/</span>
+                <a href="{% url 'payments:tax_dashboard' page.subdomain %}" class="context-back">
+                    <span>Tax</span>
+                </a>
+                <span class="context-sep">/</span>
+                <span class="context-current">Reports</span>
+            </div>
+
+            <!-- Title -->
+            <div class="catalog-title-row">
+                <div class="catalog-title-block">
+                    <h1 class="catalog-title">Tax reports</h1>
+                    <p class="catalog-sub">
+                        Tax collection analytics for {{ page.brand_name }}
+                    </p>
                 </div>
-                <div class="col-md-4">
-                    <label class="form-label fw-medium">To</label>
-                    <input type="date" class="form-control" name="to" 
-                           value="{{ end_date|date:'Y-m-d' }}">
-                </div>
-                <div class="col-md-2">
-                    <button type="submit" class="btn btn-success w-100">
-                        <i class="fas fa-filter me-2"></i>Apply
+                <div class="catalog-actions">
+                    <a href="{% url 'payments:tax_dashboard' page.subdomain %}" class="btn btn-ghost">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        <span>Dashboard</span>
+                    </a>
+                    <button class="btn btn-accent" onclick="exportReport()">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7 10 12 15 17 10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        <span>Export report</span>
                     </button>
                 </div>
-                <div class="col-md-2">
-                    <a href="?period=this_month" class="btn btn-outline-success w-100">This Month</a>
+            </div>
+
+            <!-- Stats bar -->
+            <div class="stats-bar">
+                <span class="stats-label">Overview</span>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-value success">${{ total_tax_collected|floatformat:2 }}</div>
+                        <div class="stat-label">Tax collected</div>
+                        <div class="stat-sub">In selected period</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">{{ monthly_tax|length }}</div>
+                        <div class="stat-label">Taxable orders</div>
+                        <div class="stat-sub">With tax applied</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">{{ avg_rate|floatformat:2 }}%</div>
+                        <div class="stat-label">Average rate</div>
+                        <div class="stat-sub">Across all transactions</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">0</div>
+                        <div class="stat-label">Exempt orders</div>
+                        <div class="stat-sub">Tax-exempt transactions</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Date filter -->
+            <form method="get">
+                <div class="date-filter">
+                    <div class="date-field">
+                        <label class="date-field-label" for="filterFrom">From</label>
+                        <input type="date" name="from" id="filterFrom"
+                               value="{{ start_date|date:'Y-m-d' }}">
+                    </div>
+                    <div class="date-field">
+                        <label class="date-field-label" for="filterTo">To</label>
+                        <input type="date" name="to" id="filterTo"
+                               value="{{ end_date|date:'Y-m-d' }}">
+                    </div>
+                    <div class="date-filter-actions">
+                        <button type="submit" class="btn btn-accent">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
+                            </svg>
+                            <span>Apply</span>
+                        </button>
+                        <a href="?period=this_month" class="btn btn-ghost">
+                            <span>This month</span>
+                        </a>
+                    </div>
                 </div>
             </form>
-        </div>
 
-        <!-- Summary Cards -->
-        <div class="summary-cards">
-            <div class="summary-card">
-                <div class="summary-card-title">Total Tax Collected</div>
-                <div class="summary-card-value">${{ total_tax_collected|floatformat:2 }}</div>
-                <div class="summary-card-change text-success">
-                    <i class="fas fa-arrow-up me-1"></i>12% vs last period
-                </div>
-            </div>
-
-            <div class="summary-card">
-                <div class="summary-card-title">Taxable Orders</div>
-                <div class="summary-card-value">{{ monthly_tax|length }}</div>
-                <div class="summary-card-change text-muted">
-                    <i class="fas fa-shopping-cart me-1"></i>Orders with tax
-                </div>
-            </div>
-
-            <div class="summary-card">
-                <div class="summary-card-title">Average Tax Rate</div>
-                <div class="summary-card-value">{{ avg_rate|floatformat:2 }}%</div>
-                <div class="summary-card-change text-info">
-                    <i class="fas fa-percent me-1"></i>Across all transactions
-                </div>
-            </div>
-
-            <div class="summary-card">
-                <div class="summary-card-title">Exempt Orders</div>
-                <div class="summary-card-value">0</div>
-                <div class="summary-card-change text-warning">
-                    <i class="fas fa-file-invoice me-1"></i>Tax-exempt transactions
-                </div>
-            </div>
-        </div>
-
-        <!-- Monthly Tax Chart -->
-        <div class="chart-card">
-            <h5 class="mb-3">Monthly Tax Collection</h5>
-            <div class="chart-container">
-                <canvas id="monthlyTaxChart"></canvas>
-            </div>
-        </div>
-
-        <!-- Tax by Country -->
-        <div class="row">
-            <div class="col-md-6">
-                <div class="chart-card">
-                    <h5 class="mb-3">Tax by Country</h5>
-                    <div class="chart-container" style="height: 250px;">
-                        <canvas id="countryChart"></canvas>
+            <!-- Monthly tax chart -->
+            <div class="panel">
+                <div class="panel-head">
+                    <div>
+                        <h2 class="panel-title">Monthly tax collection</h2>
+                        <p class="panel-sub">Tax collected per month</p>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="chart-card">
-                    <h5 class="mb-3">Top Tax Rates Used</h5>
-                    <div class="chart-container" style="height: 250px;">
-                        <canvas id="ratesChart"></canvas>
+                <div class="panel-body">
+                    {% if monthly_tax %}
+                    <div class="chart-wrap">
+                        <canvas id="monthlyTaxChart"></canvas>
                     </div>
+                    {% else %}
+                    <div class="chart-empty">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 3v18h18"/>
+                            <path d="m19 9-5 5-4-4-3 3"/>
+                        </svg>
+                        <p>No monthly tax data for this period</p>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
-        </div>
 
-        <!-- Detailed Table -->
-        <div class="report-table">
-            <table class="table mb-0">
-                <thead>
-                    <tr>
-                        <th>Month</th>
-                        <th>Orders</th>
-                        <th>Total Sales</th>
-                        <th>Tax Collected</th>
-                        <th>Avg Tax Rate</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for month in monthly_tax %}
-                    <tr>
-                        <td><strong>{{ month.month|date:"F Y" }}</strong></td>
-                        <td>{{ month.order_count }}</td>
-                        <td>${{ month.total_sales|floatformat:2 }}</td>
-                        <td class="text-success fw-bold">${{ month.tax_collected|floatformat:2 }}</td>
-                        <td>
-                            {% if month.total_sales %}
-                                {{ month.tax_collected|divisibleby:month.total_sales|floatformat:2 }}%
-                            {% else %}
-                                0%
-                            {% endif %}
-                        </td>
-                        <td>
-                            <button class="btn btn-sm btn-outline-success" onclick="viewMonthDetails('{{ month.month|date:'Y-m' }}')">
-                                <i class="fas fa-eye"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    {% empty %}
-                    <tr>
-                        <td colspan="6" class="text-center py-4 text-muted">
-                            No tax data available for this period
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+            <!-- Two charts -->
+            <div class="reports-grid">
+
+                <!-- Country -->
+                <div class="panel">
+                    <div class="panel-head">
+                        <div>
+                            <h2 class="panel-title">Tax by country</h2>
+                            <p class="panel-sub">Where tax is being collected</p>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        {% if tax_by_country %}
+                        <div class="chart-wrap-sm">
+                            <canvas id="countryChart"></canvas>
+                        </div>
+                        {% else %}
+                        <div class="chart-empty" style="height: 220px;">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                            </svg>
+                            <p>No country data yet</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Top rates -->
+                <div class="panel">
+                    <div class="panel-head">
+                        <div>
+                            <h2 class="panel-title">Top tax rates</h2>
+                            <p class="panel-sub">Most frequently applied</p>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        {% if top_rates %}
+                        <div class="chart-wrap-sm">
+                            <canvas id="ratesChart"></canvas>
+                        </div>
+                        {% else %}
+                        <div class="chart-empty" style="height: 220px;">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="19" y1="5" x2="5" y2="19"/>
+                                <circle cx="6.5" cy="6.5" r="2.5"/>
+                                <circle cx="17.5" cy="17.5" r="2.5"/>
+                            </svg>
+                            <p>No rate usage data yet</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Detailed table -->
+            <div class="panel">
+                <div class="panel-head">
+                    <div>
+                        <h2 class="panel-title">Monthly breakdown</h2>
+                        <p class="panel-sub">Detailed tax metrics by month</p>
+                    </div>
+                </div>
+
+                {% if monthly_tax %}
+                <table class="report-table">
+                    <thead>
+                        <tr>
+                            <th>Month</th>
+                            <th>Orders</th>
+                            <th>Total sales</th>
+                            <th>Tax collected</th>
+                            <th>Avg rate</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for month in monthly_tax %}
+                        <tr>
+                            <td><span class="month-label">{{ month.month|date:"F Y" }}</span></td>
+                            <td><span class="cell-num muted">{{ month.order_count }}</span></td>
+                            <td><span class="cell-num">${{ month.total_sales|floatformat:2 }}</span></td>
+                            <td><span class="cell-num tax">${{ month.tax_collected|floatformat:2 }}</span></td>
+                            <td>
+                                <span class="cell-num rate">
+                                    {% if month.total_sales %}
+                                        {{ month.tax_collected|divisibleby:month.total_sales|floatformat:2 }}%
+                                    {% else %}
+                                        0%
+                                    {% endif %}
+                                </span>
+                            </td>
+                            <td>
+                                <button class="row-action" data-tip="View details"
+                                        onclick="viewMonthDetails('{{ month.month|date:'Y-m' }}')">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+                                        <circle cx="12" cy="12" r="3"/>
+                                    </svg>
+                                </button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <div class="report-empty">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 3v18h18"/>
+                        <path d="m19 9-5 5-4-4-3 3"/>
+                    </svg>
+                    <p>No tax data available for this period</p>
+                </div>
+                {% endif %}
+            </div>
+
         </div>
     </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Monthly Tax Chart
-    const monthlyCtx = document.getElementById('monthlyTaxChart').getContext('2d');
-    
-    {% if monthly_tax %}
-    new Chart(monthlyCtx, {
-        type: 'line',
-        data: {
-            labels: [{% for month in monthly_tax %}'{{ month.month|date:"M Y" }}',{% endfor %}],
-            datasets: [{
-                label: 'Tax Collected',
-                data: [{% for month in monthly_tax %}{{ month.tax_collected }},{% endfor %}],
-                borderColor: '#10b981',
-                backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                tension: 0.4,
-                fill: true
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    display: false
-                }
-            }
-        }
-    });
-    {% endif %}
+document.addEventListener('DOMContentLoaded', function () {
+    // Shared monochrome chart defaults
+    if (typeof Chart !== 'undefined') {
+        Chart.defaults.font.family = '-apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif';
+        Chart.defaults.font.size = 11;
+        Chart.defaults.color = '#71717a';
+    }
 
-    // Country Chart
-    const countryCtx = document.getElementById('countryChart').getContext('2d');
-    
-    {% if tax_by_country %}
-    new Chart(countryCtx, {
-        type: 'doughnut',
-        data: {
-            labels: [{% for country in tax_by_country %}'{{ country.country_code|default:"Other" }}',{% endfor %}],
-            datasets: [{
-                data: [{% for country in tax_by_country %}{{ country.total_tax }},{% endfor %}],
-                backgroundColor: [
-                    '#10b981',
-                    '#3b82f6',
-                    '#f59e0b',
-                    '#ef4444',
-                    '#8b5cf6',
-                    '#ec4899'
-                ]
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    position: 'bottom'
-                }
-            }
-        }
-    });
-    {% endif %}
+    /* ============ Monthly tax chart ============ */
+    const monthlyCanvas = document.getElementById('monthlyTaxChart');
+    if (monthlyCanvas && typeof Chart !== 'undefined') {
+        const ctx = monthlyCanvas.getContext('2d');
+        const gradient = ctx.createLinearGradient(0, 0, 0, 260);
+        gradient.addColorStop(0, 'rgba(24, 24, 27, 0.12)');
+        gradient.addColorStop(1, 'rgba(24, 24, 27, 0.0)');
 
-    // Rates Chart
-    const ratesCtx = document.getElementById('ratesChart').getContext('2d');
-    
-    {% if top_rates %}
-    new Chart(ratesCtx, {
-        type: 'bar',
-        data: {
-            labels: [{% for rate in top_rates %}'{{ rate.name }}',{% endfor %}],
-            datasets: [{
-                label: 'Usage Count',
-                data: [{% for rate in top_rates %}{{ rate.usage_count }},{% endfor %}],
-                backgroundColor: '#f59e0b'
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            indexAxis: 'y',
-            plugins: {
-                legend: {
-                    display: false
+        new Chart(monthlyCanvas, {
+            type: 'line',
+            data: {
+                labels: [{% for month in monthly_tax %}'{{ month.month|date:"M Y" }}',{% endfor %}],
+                datasets: [{
+                    label: 'Tax collected',
+                    data: [{% for month in monthly_tax %}{{ month.tax_collected }},{% endfor %}],
+                    borderColor: '#18181b',
+                    backgroundColor: gradient,
+                    borderWidth: 1.5,
+                    fill: true,
+                    tension: 0.35,
+                    pointRadius: 0,
+                    pointHoverRadius: 4,
+                    pointHoverBackgroundColor: '#18181b',
+                    pointHoverBorderColor: '#ffffff',
+                    pointHoverBorderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: { mode: 'index', intersect: false },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: '#18181b',
+                        padding: 10,
+                        cornerRadius: 6,
+                        titleFont: { size: 11, weight: '600' },
+                        bodyFont: { size: 11 },
+                        displayColors: false,
+                        callbacks: {
+                            label: (ctx) => '$' + ctx.parsed.y.toLocaleString()
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: { display: false },
+                        border: { display: false },
+                        ticks: { maxRotation: 0, autoSkipPadding: 20 }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: '#f4f4f5', drawBorder: false },
+                        border: { display: false },
+                        ticks: {
+                            callback: (v) => '$' + v.toLocaleString(),
+                            maxTicksLimit: 5
+                        }
+                    }
                 }
             }
-        }
-    });
-    {% endif %}
+        });
+    }
+
+    /* ============ Country chart ============ */
+    const countryCanvas = document.getElementById('countryChart');
+    if (countryCanvas && typeof Chart !== 'undefined') {
+        const palette = ['#18181b', '#3f3f46', '#71717a', '#a1a1aa', '#d4d4d8', '#e4e4e7'];
+        new Chart(countryCanvas, {
+            type: 'doughnut',
+            data: {
+                labels: [{% for country in tax_by_country %}'{{ country.country_code|default:"Other" }}',{% endfor %}],
+                datasets: [{
+                    data: [{% for country in tax_by_country %}{{ country.total_tax }},{% endfor %}],
+                    backgroundColor: palette,
+                    borderWidth: 0,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '65%',
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            boxWidth: 8,
+                            boxHeight: 8,
+                            padding: 12,
+                            font: { size: 11 }
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: '#18181b',
+                        padding: 10,
+                        cornerRadius: 6,
+                        displayColors: false
+                    }
+                }
+            }
+        });
+    }
+
+    /* ============ Rates chart ============ */
+    const ratesCanvas = document.getElementById('ratesChart');
+    if (ratesCanvas && typeof Chart !== 'undefined') {
+        new Chart(ratesCanvas, {
+            type: 'bar',
+            data: {
+                labels: [{% for rate in top_rates %}'{{ rate.name }}',{% endfor %}],
+                datasets: [{
+                    label: 'Usage count',
+                    data: [{% for rate in top_rates %}{{ rate.usage_count }},{% endfor %}],
+                    backgroundColor: '#18181b',
+                    borderRadius: 4,
+                    barThickness: 18
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: '#18181b',
+                        padding: 10,
+                        cornerRadius: 6,
+                        displayColors: false
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        grid: { color: '#f4f4f5', drawBorder: false },
+                        border: { display: false },
+                        ticks: { maxTicksLimit: 5 }
+                    },
+                    y: {
+                        grid: { display: false },
+                        border: { display: false }
+                    }
+                }
+            }
+        });
+    }
 });
 
+/* ============ Export report ============ */
 function exportReport() {
     const urlParams = new URLSearchParams(window.location.search);
     const from = urlParams.get('from') || '{{ start_date|date:"Y-m-d" }}';
     const to = urlParams.get('to') || '{{ end_date|date:"Y-m-d" }}';
-    
+
     window.location.href = `{% url 'payments:export_tax_rates' page.subdomain %}?from=${from}&to=${to}`;
 }
 
+/* ============ View month details ============ */
 function viewMonthDetails(yearMonth) {
     window.location.href = `{% url 'payments:tax_rates_list' page.subdomain %}?month=${yearMonth}`;
 }
 </script>
+
 {% endblock %}

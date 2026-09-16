@@ -2,1649 +2,1579 @@
 {% extends 'builder/base.html' %}
 {% load static %}
 
-{% block title %}Edit Product - {{ product.title }}{% endblock %}
+{% block title %}Edit · {{ product.title }}{% endblock %}
 
 {% block extra_css %}
 <style>
-    /* ====== MAIN LAYOUT ====== */
-    .product-editor {
-        background: #f4f6f8;
-        min-height: calc(100vh - 200px);
-        padding: 24px 0 40px;
+    :root {
+        --n-0: #ffffff;
+        --n-50: #fafafa;
+        --n-100: #f4f4f5;
+        --n-200: #e4e4e7;
+        --n-300: #d4d4d8;
+        --n-400: #a1a1aa;
+        --n-500: #71717a;
+        --n-600: #52525b;
+        --n-700: #3f3f46;
+        --n-800: #27272a;
+        --n-900: #18181b;
+
+        --accent: var(--primary-color, #111827);
+        --accent-hover: #000000;
+
+        --success: #15803d;
+        --warning: #a16207;
+        --danger:  #b91c1c;
+
+        --border: var(--n-200);
+        --border-strong: var(--n-300);
+        --text: var(--n-900);
+        --text-muted: var(--n-500);
+        --text-subtle: var(--n-400);
+
+        --radius-sm: 4px;
+        --radius: 6px;
+        --radius-lg: 10px;
+        --radius-xl: 14px;
+
+        /* Premium surface treatment */
+        --page-bg: #f6f7f9;
+        --surface-shadow: 0 1px 2px rgba(24, 24, 27, 0.04), 0 1px 1px rgba(24, 24, 27, 0.03);
+        --surface-shadow-hover: 0 4px 12px rgba(24, 24, 27, 0.06), 0 1px 2px rgba(24, 24, 27, 0.04);
+        --footer-shadow: 0 -1px 0 rgba(24, 24, 27, 0.04), 0 -8px 24px rgba(24, 24, 27, 0.04);
+    }
+
+    /* ===== Layout (with sidebar) ===== */
+    .management-layout {
+        display: flex;
+        min-height: calc(100vh - 120px);
+        background: var(--page-bg);
+        font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        font-size: 13px;
+        color: var(--text);
+        position: relative;
+    }
+
+    .management-content {
+        flex: 1;
+        min-width: 0;
+        padding: 2rem 2rem 0;
+        display: flex;
+        flex-direction: column;
     }
 
     .editor-content {
-        max-width: 1200px;
+        width: 100%;
+        max-width: 820px;
         margin: 0 auto;
-        padding: 0 24px;
+        padding-bottom: 2rem;
+        flex: 1;
     }
 
-    /* ====== HEADER ====== */
-    .editor-header {
-        background: white;
-        border-bottom: 1px solid #e2e8f0;
-        padding: 16px 0;
-        margin-bottom: 24px;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    /* ====== BREADCRUMB ====== */
+    .catalog-context {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 12px;
+        color: var(--text-muted);
+        margin-bottom: 1.25rem;
+        flex-wrap: wrap;
     }
-
-    .editor-header .breadcrumb {
-        margin-bottom: 4px;
-        font-size: 13px;
-    }
-
-    .editor-header .breadcrumb-item a {
-        color: #64748b;
-        text-decoration: none;
-    }
-
-    .editor-header .breadcrumb-item a:hover {
-        color: #4361ee;
-    }
-
-    .editor-header h1 {
-        font-size: 22px;
-        font-weight: 700;
-        color: #0f172a;
-        margin: 0;
-    }
-
-    .editor-header .product-status {
-        font-size: 13px;
-        padding: 4px 14px;
-        border-radius: 20px;
-        font-weight: 500;
-    }
-
-    .editor-header .product-status.draft {
-        background: #f1f5f9;
-        color: #64748b;
-    }
-
-    .editor-header .product-status.active {
-        background: #dcfce7;
-        color: #16a34a;
-    }
-
-    .editor-header .product-status.archived {
-        background: #fee2e2;
-        color: #dc2626;
-    }
-
-    .editor-header .btn-variants {
-        background: #f1f5f9;
-        color: #1e293b;
-        border: 1px solid #e2e8f0;
-        padding: 8px 16px;
-        border-radius: 8px;
-        font-size: 13px;
-        font-weight: 500;
-        transition: all 0.2s ease;
-        text-decoration: none;
+    .context-back {
         display: inline-flex;
         align-items: center;
-        gap: 8px;
+        gap: 0.375rem;
+        color: var(--text-muted);
+        text-decoration: none;
     }
+    .context-back:hover { color: var(--text); }
+    .context-back svg { width: 12px; height: 12px; }
+    .context-sep { color: var(--n-300); }
+    .context-current { color: var(--text); font-weight: 500; }
 
-    .editor-header .btn-variants:hover {
-        background: #e2e8f0;
-        border-color: #cbd5e1;
-        color: #0f172a;
-    }
-
-    .editor-header .btn-variants i {
-        color: #4361ee;
-    }
-
-    .editor-header .variant-badge {
-        background: #4361ee;
-        color: white;
-        font-size: 10px;
-        padding: 1px 8px;
-        border-radius: 10px;
-        margin-left: 4px;
-    }
-
-    /* ====== FORM CARDS ====== */
-    .form-card {
-        background: white;
-        border-radius: 12px;
-        border: 1px solid #e2e8f0;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-        padding: 28px;
-        margin-bottom: 24px;
-        transition: all 0.2s ease;
-    }
-
-    .form-card:hover {
-        border-color: #cbd5e1;
-    }
-
-    .form-card .card-header {
+    /* ====== TITLE ROW ====== */
+    .catalog-title-row {
         display: flex;
-        align-items: center;
-        gap: 12px;
-        margin-bottom: 20px;
-        padding-bottom: 14px;
-        border-bottom: 2px solid #f1f5f9;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
     }
-
-    .form-card .card-header .icon-wrapper {
-        width: 36px;
-        height: 36px;
-        border-radius: 8px;
+    .catalog-title-block { min-width: 0; flex: 1; }
+    .catalog-title {
+        font-size: 28px;
+        font-weight: 600;
+        letter-spacing: -0.025em;
+        margin: 0;
+        color: var(--text);
+        word-break: break-word;
+        line-height: 1.2;
+    }
+    .catalog-sub {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
-        justify-content: center;
-        background: #eef2ff;
-        color: #4361ee;
-        font-size: 16px;
+        gap: 0.875rem;
+        color: var(--text-muted);
+        font-size: 12px;
+        margin: 0.625rem 0 0;
+    }
+    .catalog-actions {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
         flex-shrink: 0;
     }
 
-    .form-card .card-header h3 {
-        font-size: 15px;
-        font-weight: 600;
-        color: #0f172a;
-        margin: 0;
-    }
-
-    .form-card .card-header .badge {
-        font-size: 10px;
-        font-weight: 500;
-        padding: 2px 10px;
-        border-radius: 12px;
-        margin-left: auto;
-        background: #f1f5f9;
-        color: #64748b;
-    }
-
-    .form-card .card-header .badge.required {
-        background: #fee2e2;
-        color: #ef4444;
-    }
-
-    .form-card .card-description {
-        font-size: 13px;
-        color: #64748b;
-        margin-bottom: 20px;
-        padding-bottom: 14px;
-        border-bottom: 1px solid #f1f5f9;
-    }
-
-    /* ====== FORM GROUPS ====== */
-    .form-group {
-        margin-bottom: 18px;
-    }
-
-    .form-group:last-child {
-        margin-bottom: 0;
-    }
-
-    .form-group label {
-        font-weight: 500;
-        font-size: 13px;
-        color: #1e293b;
-        margin-bottom: 4px;
-        display: block;
-    }
-
-    .form-group label .required-star {
-        color: #ef4444;
-        margin-left: 2px;
-    }
-
-    .form-group .help-text {
+    /* ====== STATUS DOT ====== */
+    .status-dot {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.375rem;
         font-size: 12px;
-        color: #94a3b8;
-        margin-top: 4px;
-        display: block;
+        color: var(--text-muted);
+        font-weight: 500;
     }
-
-    .form-control,
-    .form-select {
-        border: 1.5px solid #e2e8f0;
-        border-radius: 8px;
-        padding: 10px 14px;
-        font-size: 14px;
-        transition: all 0.2s ease;
-        width: 100%;
-        background: white;
-        color: #1e293b;
+    .status-dot::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--n-400);
+        flex-shrink: 0;
     }
+    .status-dot.active::before { background: var(--success); }
+    .status-dot.active { color: var(--success); }
+    .status-dot.draft::before { background: var(--n-400); }
+    .status-dot.archived::before { background: var(--danger); }
+    .status-dot.archived { color: var(--danger); }
 
-    .form-control:focus,
-    .form-select:focus {
-        border-color: #4361ee;
-        box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.12);
-        outline: none;
-    }
-
-    .form-control-sm {
-        padding: 6px 10px;
+    /* ====== BUTTONS ====== */
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.375rem;
+        padding: 0.5rem 0.9375rem;
         font-size: 13px;
-        border-radius: 6px;
+        font-weight: 500;
+        line-height: 1;
+        border-radius: var(--radius);
+        border: 1px solid transparent;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background 0.14s ease, border-color 0.14s ease, color 0.14s ease, box-shadow 0.14s ease;
+        font-family: inherit;
+        white-space: nowrap;
+    }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn-ghost {
+        background: var(--n-0);
+        border-color: var(--border);
+        color: var(--n-700);
+        box-shadow: 0 1px 2px rgba(24, 24, 27, 0.04);
+    }
+    .btn-ghost:hover {
+        background: var(--n-0);
+        border-color: var(--border-strong);
+        color: var(--text);
+        box-shadow: var(--surface-shadow);
+    }
+    .btn-accent {
+        background: var(--accent);
+        color: var(--n-0);
+        border-color: var(--accent);
+        box-shadow: 0 1px 2px rgba(24, 24, 27, 0.16);
+    }
+    .btn-accent:hover {
+        background: var(--accent-hover);
+        border-color: var(--accent-hover);
+        box-shadow: 0 4px 12px rgba(24, 24, 27, 0.18);
     }
 
-    /* ====== GRID LAYOUTS ====== */
-    .form-grid-2 {
+    .btn-sm {
+        padding: 0.375rem 0.6875rem;
+        font-size: 12px;
+    }
+
+    /* ====== PANEL ====== */
+    .panel {
+        background: var(--n-0);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-xl);
+        margin-bottom: 1.25rem;
+        box-shadow: var(--surface-shadow);
+        overflow: hidden;
+        transition: box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+    .panel:hover {
+        box-shadow: var(--surface-shadow-hover);
+    }
+    .panel-head {
+        padding: 1.125rem 1.5rem;
+        border-bottom: 1px solid var(--border);
+        background: linear-gradient(to bottom, #ffffff, #fcfcfd);
+    }
+    .panel-title {
+        font-size: 14px;
+        font-weight: 600;
+        margin: 0;
+        color: var(--text);
+        letter-spacing: -0.01em;
+    }
+    .panel-sub {
+        font-size: 12px;
+        color: var(--text-muted);
+        margin: 0.25rem 0 0;
+    }
+    .panel-body { padding: 1.5rem; }
+
+    /* ====== FORM ====== */
+    .form-row {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 20px;
+        gap: 1.125rem;
+        margin-bottom: 1.125rem;
+    }
+    .form-row.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .form-row.cols-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+    .form-row:last-child { margin-bottom: 0; }
+
+    .field { display: flex; flex-direction: column; gap: 0.4375rem; min-width: 0; }
+    .field-label {
+        font-size: 12.5px;
+        font-weight: 500;
+        color: var(--n-700);
+        letter-spacing: -0.005em;
+    }
+    .field-label .optional {
+        color: var(--text-subtle);
+        font-weight: 400;
+        margin-left: 0.25rem;
+    }
+    .field-label .required {
+        color: var(--danger);
+        margin-left: 2px;
+    }
+    .field-help {
+        font-size: 11.5px;
+        color: var(--text-muted);
+        line-height: 1.5;
+    }
+    .field-help a {
+        color: var(--text);
+        text-decoration: underline;
+        text-decoration-color: var(--border-strong);
+        text-underline-offset: 2px;
+    }
+    .field-help a:hover { text-decoration-color: var(--text); }
+
+    .form-control,
+    .form-select,
+    textarea.form-control {
+        width: 100%;
+        padding: 0.625rem 0.8125rem;
+        font-size: 13px;
+        font-family: inherit;
+        color: var(--text);
+        background: var(--n-0);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        transition: border-color 0.14s ease, box-shadow 0.14s ease, background 0.14s ease;
+        box-sizing: border-box;
+    }
+    .form-control::placeholder { color: var(--n-400); }
+    .form-control:hover,
+    .form-select:hover,
+    textarea.form-control:hover {
+        border-color: var(--border-strong);
+    }
+    .form-control:focus,
+    .form-select:focus,
+    textarea.form-control:focus {
+        outline: none;
+        border-color: var(--accent);
+        background: var(--n-0);
+        box-shadow: 0 0 0 4px rgba(17, 24, 39, 0.06);
+    }
+    textarea.form-control {
+        resize: vertical;
+        min-height: 68px;
+        line-height: 1.55;
+    }
+    .form-select {
+        appearance: none;
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%2371717a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M4 6l4 4 4-4'/></svg>");
+        background-repeat: no-repeat;
+        background-position: right 0.75rem center;
+        background-size: 12px;
+        padding-right: 2rem;
+    }
+    .form-control[type="number"] {
+        font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+        font-size: 12.5px;
+        font-variant-numeric: tabular-nums;
     }
 
-    .form-grid-3 {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 20px;
+    /* Input with prefix */
+    .input-prefix {
+        display: flex;
+        align-items: stretch;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: var(--n-0);
+        overflow: hidden;
+        transition: border-color 0.14s ease, box-shadow 0.14s ease;
     }
-
-    .form-grid-4 {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: 16px;
+    .input-prefix:hover { border-color: var(--border-strong); }
+    .input-prefix:focus-within {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 4px rgba(17, 24, 39, 0.06);
     }
-
-    @media (max-width: 992px) {
-        .form-grid-2 {
-            grid-template-columns: 1fr;
-        }
-        .form-grid-3 {
-            grid-template-columns: 1fr 1fr;
-        }
-        .form-grid-4 {
-            grid-template-columns: 1fr 1fr;
-        }
+    .input-prefix .prefix {
+        display: flex;
+        align-items: center;
+        padding: 0 0.75rem;
+        background: var(--n-50);
+        border-right: 1px solid var(--border);
+        color: var(--text-muted);
+        font-size: 12px;
+        font-family: ui-monospace, 'SF Mono', Menlo, monospace;
     }
+    .input-prefix .form-control {
+        border: none;
+        border-radius: 0;
+        box-shadow: none !important;
+        background: transparent;
+    }
+    .input-prefix .form-control:hover { border-color: transparent; }
 
-    @media (max-width: 576px) {
-        .form-grid-3 {
-            grid-template-columns: 1fr;
-        }
-        .form-grid-4 {
-            grid-template-columns: 1fr;
-        }
+    /* ====== CHECK CARD ====== */
+    .check-card {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.875rem;
+        padding: 0.9375rem 1rem;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: var(--n-0);
+        cursor: pointer;
+        transition: border-color 0.14s ease, background 0.14s ease, box-shadow 0.14s ease;
+        box-shadow: 0 1px 2px rgba(24, 24, 27, 0.02);
+    }
+    .check-card:hover {
+        border-color: var(--border-strong);
+        background: #fdfdfe;
+        box-shadow: var(--surface-shadow);
+    }
+    .check-card:has(input:checked) {
+        border-color: var(--accent);
+        background: #fcfcfd;
+    }
+    .check-card input[type="checkbox"] {
+        appearance: none;
+        -webkit-appearance: none;
+        width: 18px;
+        height: 18px;
+        border: 1.5px solid var(--border-strong);
+        border-radius: var(--radius-sm);
+        background: var(--n-0);
+        cursor: pointer;
+        flex-shrink: 0;
+        margin: 0;
+        position: relative;
+        transition: background 0.14s ease, border-color 0.14s ease, box-shadow 0.14s ease;
+    }
+    .check-card input[type="checkbox"]:hover {
+        border-color: var(--n-500);
+    }
+    .check-card input[type="checkbox"]:checked {
+        background: var(--accent);
+        border-color: var(--accent);
+    }
+    .check-card input[type="checkbox"]:checked::after {
+        content: '';
+        position: absolute;
+        left: 5.5px;
+        top: 2px;
+        width: 5px;
+        height: 9px;
+        border: solid var(--n-0);
+        border-width: 0 1.75px 1.75px 0;
+        transform: rotate(45deg);
+    }
+    .check-card input[type="checkbox"]:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 4px rgba(17, 24, 39, 0.1);
+    }
+    .check-card-body { flex: 1; min-width: 0; }
+    .check-card-title {
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--text);
+        margin: 0;
+        line-height: 1.35;
+    }
+    .check-card-desc {
+        font-size: 11.5px;
+        color: var(--text-muted);
+        margin: 0.1875rem 0 0;
+        line-height: 1.5;
     }
 
     /* ====== IMAGE UPLOAD ====== */
     .image-upload-area {
-        border: 2px dashed #e2e8f0;
-        border-radius: 12px;
-        padding: 24px;
+        border: 1.5px dashed var(--border-strong);
+        border-radius: var(--radius-lg);
+        padding: 1.25rem;
         text-align: center;
-        transition: all 0.3s ease;
         cursor: pointer;
+        background: linear-gradient(to bottom, #fbfbfc, #f6f7f9);
         position: relative;
-        min-height: 120px;
+        min-height: 140px;
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        flex-direction: column;
-        background: #fafbfc;
+        transition: border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
     }
-
     .image-upload-area:hover {
-        border-color: #4361ee;
-        background: #f8faff;
+        border-color: var(--n-400);
+        background: linear-gradient(to bottom, #f8f9fb, #f1f2f5);
+        box-shadow: 0 2px 8px rgba(24, 24, 27, 0.04) inset;
     }
-
-    .image-upload-area .upload-icon {
-        font-size: 32px;
-        color: #94a3b8;
-        margin-bottom: 8px;
-    }
-
-    .image-upload-area .upload-text {
-        font-size: 14px;
-        color: #64748b;
-    }
-
-    .image-upload-area .upload-hint {
-        font-size: 12px;
-        color: #94a3b8;
-    }
-
     .image-upload-area.has-image {
-        padding: 12px;
         border-style: solid;
-        border-color: #10b981;
-        background: #f0fdf4;
+        border-color: var(--border);
+        background: var(--n-0);
+        padding: 0.75rem;
+        box-shadow: var(--surface-shadow);
     }
-
     .image-upload-area .preview-image {
         max-width: 100%;
-        max-height: 160px;
-        border-radius: 8px;
+        max-height: 180px;
+        border-radius: var(--radius);
+        display: block;
         object-fit: contain;
     }
-
+    .image-upload-area .placeholder {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--text-muted);
+        font-size: 12.5px;
+    }
+    .image-upload-area .placeholder svg {
+        width: 22px;
+        height: 22px;
+        color: var(--n-500);
+    }
+    .image-upload-area .placeholder .hint {
+        font-size: 11px;
+        color: var(--text-subtle);
+    }
+    .image-upload-area input[type="file"] { display: none; }
     .image-upload-area .remove-image {
         position: absolute;
         top: 8px;
         right: 8px;
-        background: #fee2e2;
-        color: #ef4444;
-        border: none;
-        border-radius: 50%;
-        width: 28px;
-        height: 28px;
-        font-size: 14px;
-        cursor: pointer;
-        transition: all 0.2s ease;
+        background: var(--n-0);
+        color: var(--n-600);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        width: 26px;
+        height: 26px;
         display: none;
         align-items: center;
         justify-content: center;
+        cursor: pointer;
+        padding: 0;
+        box-shadow: var(--surface-shadow);
+        transition: all 0.14s ease;
     }
-
-    .image-upload-area.has-image .remove-image {
-        display: flex;
-    }
-
     .image-upload-area .remove-image:hover {
-        background: #ef4444;
-        color: white;
+        color: var(--danger);
+        border-color: var(--danger);
+        background: #fef2f2;
     }
+    .image-upload-area .remove-image svg { width: 12px; height: 12px; }
+    .image-upload-area.has-image .remove-image { display: flex; }
 
-    /* ====== TOGGLE SWITCH ====== */
-    .toggle-wrapper {
+    /* Gallery thumbnails */
+    .gallery-thumbs {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin-top: 0.875rem;
+    }
+    .gallery-thumbs img {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--border);
+        box-shadow: var(--surface-shadow);
+        transition: box-shadow 0.14s ease, transform 0.14s ease;
+    }
+    .gallery-thumbs img:hover {
+        box-shadow: var(--surface-shadow-hover);
+    }
+    .gallery-thumbs .more {
         display: flex;
         align-items: center;
-        gap: 12px;
-        padding: 8px 0;
-    }
-
-    .toggle-wrapper .form-switch {
-        margin: 0;
-    }
-
-    .toggle-wrapper .form-switch .form-check-input {
-        width: 40px;
-        height: 22px;
-        cursor: pointer;
-    }
-
-    .toggle-wrapper .form-switch .form-check-input:checked {
-        background-color: #4361ee;
-        border-color: #4361ee;
-    }
-
-    .toggle-wrapper .toggle-label {
+        justify-content: center;
+        width: 60px;
+        height: 60px;
+        background: var(--n-50);
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--border);
+        font-size: 11px;
+        color: var(--text-muted);
         font-weight: 500;
-        font-size: 14px;
-        color: #1e293b;
     }
 
-    .toggle-wrapper .toggle-description {
-        font-size: 13px;
-        color: #64748b;
-        margin-left: auto;
-    }
-
-    /* ====== SHIPPING SETTINGS ====== */
-    .shipping-settings {
-        background: #f8fafc;
-        border-radius: 8px;
-        padding: 16px;
-        margin-top: 12px;
-        border: 1px solid #e2e8f0;
-    }
-
-    .shipping-settings.collapsed {
-        display: none;
-    }
-
-    /* ====== SPECIFICATIONS ====== */
+    /* ====== SPEC ROW ====== */
     .spec-row {
         display: grid;
         grid-template-columns: 1fr 1fr auto;
-        gap: 12px;
-        padding: 12px;
-        background: #f8fafc;
-        border-radius: 8px;
-        margin-bottom: 8px;
+        gap: 0.625rem;
+        padding: 0.625rem;
+        background: var(--n-50);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        margin-bottom: 0.5rem;
         align-items: center;
-        border: 1px solid transparent;
-        transition: all 0.2s ease;
+        transition: background 0.14s ease, border-color 0.14s ease;
     }
-
     .spec-row:hover {
-        background: #f1f5f9;
-        border-color: #e2e8f0;
+        background: var(--n-0);
+        border-color: var(--border-strong);
     }
-
+    .spec-row .form-control {
+        background: var(--n-0);
+        font-size: 12.5px;
+        padding: 0.4375rem 0.6875rem;
+    }
     .spec-row .remove-spec-btn {
-        background: none;
-        border: none;
-        color: #94a3b8;
-        padding: 4px 8px;
-        border-radius: 6px;
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        background: var(--n-0);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        color: var(--n-500);
         cursor: pointer;
-        transition: all 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.14s ease;
     }
-
     .spec-row .remove-spec-btn:hover {
-        background: #fee2e2;
-        color: #ef4444;
+        color: var(--danger);
+        border-color: var(--danger);
+        background: #fef2f2;
     }
+    .spec-row .remove-spec-btn svg { width: 12px; height: 12px; }
 
-    .suggestion-badges {
+    /* Suggestion chips */
+    .suggestions {
         display: flex;
         flex-wrap: wrap;
-        gap: 8px;
-        margin-top: 8px;
+        gap: 0.4375rem;
+        margin-top: 0.875rem;
     }
-
-    .suggestion-badge {
-        padding: 6px 14px;
-        border-radius: 20px;
-        background: #f1f5f9;
-        color: #475569;
+    .suggestion-chip {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.375rem 0.75rem;
         font-size: 12px;
         font-weight: 500;
+        color: var(--n-600);
+        background: var(--n-0);
+        border: 1px solid var(--border);
+        border-radius: 999px;
         cursor: pointer;
-        transition: all 0.2s ease;
-        border: 1px solid #e2e8f0;
+        font-family: inherit;
+        box-shadow: 0 1px 2px rgba(24, 24, 27, 0.03);
+        transition: background 0.14s ease, border-color 0.14s ease, color 0.14s ease, box-shadow 0.14s ease;
     }
-
-    .suggestion-badge:hover {
-        background: #4361ee;
-        color: white;
-        border-color: #4361ee;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(67, 97, 238, 0.2);
+    .suggestion-chip:hover {
+        background: var(--n-0);
+        border-color: var(--border-strong);
+        color: var(--text);
+        box-shadow: var(--surface-shadow);
     }
 
     /* ====== SEO PREVIEW ====== */
     .seo-preview {
-        background: #f8fafc;
-        border-radius: 8px;
-        padding: 16px;
-        border: 1px solid #e2e8f0;
-        margin-top: 8px;
+        background: linear-gradient(to bottom, #fbfbfc, #f6f7f9);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 1rem 1.125rem;
+        margin-top: 0.75rem;
     }
-
+    .seo-preview-label {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--text-subtle);
+        font-weight: 600;
+        margin-bottom: 0.625rem;
+    }
     .seo-preview .seo-title {
-        font-size: 18px;
+        font-size: 16px;
         color: #1a0dab;
         text-decoration: none;
         display: block;
-        margin-bottom: 4px;
+        margin-bottom: 3px;
+        line-height: 1.3;
         font-weight: 400;
     }
-
-    .seo-preview .seo-title:hover {
-        text-decoration: underline;
-    }
-
+    .seo-preview .seo-title:hover { text-decoration: underline; }
     .seo-preview .seo-url {
-        font-size: 14px;
+        font-size: 12px;
         color: #006621;
         display: block;
-        margin-bottom: 4px;
+        margin-bottom: 5px;
+        font-family: ui-monospace, 'SF Mono', Menlo, monospace;
     }
-
     .seo-preview .seo-description {
-        font-size: 14px;
-        color: #545454;
-        line-height: 1.4;
+        font-size: 13px;
+        color: var(--n-600);
+        line-height: 1.5;
+        margin: 0;
     }
 
-    /* ====== STICKY FOOTER ====== */
+    /* ====== DIGITAL FILE ====== */
+    .file-card {
+        display: flex;
+        align-items: center;
+        gap: 0.875rem;
+        padding: 0.75rem 0.875rem;
+        background: var(--n-0);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        margin-bottom: 0.875rem;
+        box-shadow: var(--surface-shadow);
+    }
+    .file-card .file-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: var(--radius-sm);
+        background: var(--n-100);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--n-600);
+        flex-shrink: 0;
+    }
+    .file-card .file-icon svg { width: 16px; height: 16px; }
+    .file-card .file-info { flex: 1; min-width: 0; }
+    .file-card .file-name {
+        font-size: 12.5px;
+        font-weight: 500;
+        color: var(--text);
+        margin: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    }
+    .file-card .file-meta {
+        font-size: 11px;
+        color: var(--text-muted);
+        margin: 0.125rem 0 0;
+    }
+
+    /* ====== STICKY FOOTER (now inside .management-content) ====== */
     .editor-footer {
         position: sticky;
         bottom: 0;
-        background: white;
-        border-top: 1px solid #e2e8f0;
-        padding: 14px 24px;
+        margin: 0 -2rem;
+        padding: 0.875rem 2rem;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: saturate(180%) blur(12px);
+        -webkit-backdrop-filter: saturate(180%) blur(12px);
+        border-top: 1px solid var(--border);
         display: flex;
         justify-content: space-between;
         align-items: center;
-        z-index: 100;
-        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
-        border-radius: 0 0 12px 12px;
+        gap: 1rem;
+        z-index: 50;
+        box-shadow: var(--footer-shadow);
+        flex-wrap: wrap;
     }
-
-    .editor-footer .save-status {
+    .editor-footer .footer-inner {
+        width: 100%;
+        max-width: 820px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+    .save-status {
         display: flex;
         align-items: center;
-        gap: 8px;
-        font-size: 13px;
-        color: #64748b;
+        gap: 0.5rem;
+        font-size: 12px;
+        color: var(--text-muted);
     }
-
-    .editor-footer .save-status .saved {
-        color: #10b981;
+    .save-status .dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--n-400);
+        flex-shrink: 0;
+        transition: background 0.2s ease;
     }
-
-    .editor-footer .save-status .saving {
-        color: #f59e0b;
-        animation: pulse 1s infinite;
+    .save-status.saved .dot { background: var(--success); }
+    .save-status.saving .dot {
+        background: var(--warning);
+        animation: pulse 1.4s ease-in-out infinite;
     }
-
-    .editor-footer .save-status .error {
-        color: #ef4444;
-    }
+    .save-status.error .dot { background: var(--danger); }
+    .save-status.error { color: var(--danger); }
 
     @keyframes pulse {
-        0%,
-        100% {
-            opacity: 1;
-        }
-        50% {
-            opacity: 0.5;
-        }
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.45; }
     }
 
-    .editor-footer .btn {
-        padding: 10px 28px;
-        border-radius: 8px;
-        font-weight: 500;
-        font-size: 14px;
-        transition: all 0.2s ease;
-    }
-
-    .editor-footer .btn-primary {
-        background: #4361ee;
-        color: white;
-        border: none;
-        box-shadow: 0 2px 8px rgba(67, 97, 238, 0.3);
-    }
-
-    .editor-footer .btn-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 16px rgba(67, 97, 238, 0.4);
-    }
-
-    .editor-footer .btn-secondary {
-        background: white;
-        color: #64748b;
-        border: 1.5px solid #e2e8f0;
-    }
-
-    .editor-footer .btn-secondary:hover {
-        background: #f8fafc;
-        border-color: #cbd5e1;
-    }
-
-    .editor-footer .btn-variants-footer {
-        background: #f1f5f9;
-        color: #1e293b;
-        border: 1px solid #e2e8f0;
-        padding: 10px 20px;
-        border-radius: 8px;
-        font-size: 14px;
-        font-weight: 500;
-        transition: all 0.2s ease;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-    }
-
-    .editor-footer .btn-variants-footer:hover {
-        background: #e2e8f0;
-        border-color: #cbd5e1;
-    }
-
-    .editor-footer .btn-variants-footer i {
-        color: #4361ee;
-    }
-
-    .editor-footer .footer-actions {
+    .footer-actions {
         display: flex;
-        gap: 12px;
+        gap: 0.5rem;
         align-items: center;
+        flex-wrap: wrap;
     }
 
-    /* ====== TOAST NOTIFICATION ====== */
-    .toast-notification {
+    /* ====== TOASTS ====== */
+    .toast-stack {
         position: fixed;
-        top: 24px;
-        right: 24px;
-        z-index: 9999;
-        padding: 14px 24px;
-        border-radius: 12px;
-        font-size: 14px;
-        font-weight: 500;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-        transform: translateX(120%);
-        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        max-width: 400px;
+        top: 1.25rem;
+        right: 1.25rem;
+        z-index: 2000;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        pointer-events: none;
+    }
+    .toast {
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: 0.625rem;
+        padding: 0.75rem 1rem;
+        border-radius: var(--radius);
+        font-size: 12.5px;
+        font-weight: 500;
+        color: var(--n-0);
+        background: var(--n-900);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18), 0 2px 6px rgba(0, 0, 0, 0.08);
+        pointer-events: auto;
+        animation: toastIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+        min-width: 220px;
+        max-width: 380px;
     }
+    .toast svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .toast.error { background: var(--danger); }
+    .toast.info { background: var(--n-700); }
 
-    .toast-notification.show {
-        transform: translateX(0);
-    }
-
-    .toast-notification.success {
-        background: #10b981;
-        color: white;
-    }
-
-    .toast-notification.error {
-        background: #ef4444;
-        color: white;
-    }
-
-    .toast-notification.info {
-        background: #4361ee;
-        color: white;
-    }
-
-    .toast-notification .toast-close {
-        background: none;
-        border: none;
-        color: rgba(255, 255, 255, 0.8);
-        font-size: 18px;
-        cursor: pointer;
-        padding: 0 4px;
+    @keyframes toastIn {
+        from { opacity: 0; transform: translateY(-10px) scale(0.98); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
     /* ====== RESPONSIVE ====== */
-    @media (max-width: 768px) {
-        .editor-content {
-            padding: 0 16px;
-        }
-        .form-card {
-            padding: 20px;
-        }
-        .editor-footer {
-            flex-direction: column;
-            gap: 12px;
-            padding: 12px 16px;
-        }
-        .editor-footer .btn {
-            width: 100%;
-            justify-content: center;
-        }
-        .editor-footer .footer-actions {
-            flex-direction: column;
-            width: 100%;
-        }
-        .editor-footer .footer-actions .btn {
-            width: 100%;
-        }
-        .form-grid-3 {
-            grid-template-columns: 1fr;
-        }
-        .form-grid-4 {
-            grid-template-columns: 1fr;
-        }
-        .editor-header h1 {
-            font-size: 18px;
-        }
-        .editor-header .d-flex {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 8px;
-        }
-    }
-
-    @media (max-width: 576px) {
-        .form-card {
-            padding: 16px;
-        }
-        .spec-row {
-            grid-template-columns: 1fr;
-            gap: 8px;
-        }
-    }
-
-    /* ====== ANIMATIONS ====== */
-    .form-card {
-        opacity: 0;
-        transform: translateY(20px);
-        animation: fadeInUp 0.5s ease forwards;
-    }
-
-    .form-card:nth-child(1) {
-        animation-delay: 0.05s;
-    }
-    .form-card:nth-child(2) {
-        animation-delay: 0.1s;
-    }
-    .form-card:nth-child(3) {
-        animation-delay: 0.15s;
-    }
-    .form-card:nth-child(4) {
-        animation-delay: 0.2s;
-    }
-    .form-card:nth-child(5) {
-        animation-delay: 0.25s;
-    }
-    .form-card:nth-child(6) {
-        animation-delay: 0.3s;
-    }
-    .form-card:nth-child(7) {
-        animation-delay: 0.35s;
-    }
-
-    @keyframes fadeInUp {
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    @media (max-width: 900px) {
+        .management-content { padding: 1.5rem 1rem 0; }
+        .editor-content { padding-bottom: 1.5rem; }
+        .editor-footer { margin: 0 -1rem; padding: 0.75rem 1rem; }
+        .editor-footer .footer-inner { flex-direction: column; align-items: stretch; }
+        .footer-actions { flex-direction: column; }
+        .footer-actions .btn { width: 100%; justify-content: center; }
+        .form-row,
+        .form-row.cols-3,
+        .form-row.cols-4 { grid-template-columns: 1fr; }
+        .catalog-title-row { flex-direction: column; align-items: stretch; }
+        .catalog-actions { width: 100%; }
+        .catalog-actions .btn { flex: 1; justify-content: center; }
+        .spec-row { grid-template-columns: 1fr; }
+        .spec-row .remove-spec-btn { justify-self: end; }
+        .panel-body { padding: 1.125rem; }
+        .panel-head { padding: 1rem 1.125rem; }
     }
 </style>
 {% endblock %}
 
 {% block content %}
-<div class="product-editor">
-    <!-- ====== HEADER ====== -->
-    <div class="editor-header">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{% url 'dashboard' %}"><i class="fas fa-home me-1"></i>Dashboard</a></li>
-                            <li class="breadcrumb-item"><a href="{% url 'manage_products' subdomain=page.subdomain %}">Products</a></li>
-                            <a href="{% url 'manage_product_tiers' subdomain=page.subdomain product_id=product.id %}" 
-   class="btn btn-outline-primary btn-sm">
-    <i class="fas fa-tags"></i> Manage Tiers
-</a>
-                            <li class="breadcrumb-item active">{{ product.title|truncatechars:30 }}</li>
-                        </ol>
-                    </nav>
-                    <div class="d-flex align-items-center gap-3 flex-wrap">
-                        <h1 class="mb-0">{{ product.title }}</h1>
-                        <span class="product-status {{ product.status }}">
-                            <i class="fas fa-circle me-1" style="font-size: 8px;"></i>
+<div class="management-layout">
+    {% include 'builder/includes/sidebar.html' with active_menu='products' %}
+
+    <div class="management-content">
+        <div class="editor-content">
+
+            <!-- ====== BREADCRUMB ====== -->
+            <div class="catalog-context">
+                <a href="{% url 'dashboard' %}" class="context-back">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 12L6 8l4-4"/></svg>
+                    <span>Dashboard</span>
+                </a>
+                <span class="context-sep">/</span>
+                <a href="{% url 'manage_products' subdomain=page.subdomain %}" class="context-back">
+                    <span>Products</span>
+                </a>
+                <span class="context-sep">/</span>
+                <span class="context-current">{{ product.title|truncatechars:40 }}</span>
+            </div>
+
+            <!-- ====== TITLE ROW ====== -->
+            <div class="catalog-title-row">
+                <div class="catalog-title-block">
+                    <h1 class="catalog-title">{{ product.title }}</h1>
+                    <div class="catalog-sub">
+                        <span class="status-dot {{ product.status }}">
                             {{ product.get_status_display }}
                         </span>
-                        <span class="badge bg-light text-dark" style="font-weight: 400; font-size: 12px; padding: 4px 12px;">
-                            <i class="far fa-clock me-1"></i>Last saved: <span id="lastSavedTime">just now</span>
-                        </span>
+                        <span>Last saved <span id="lastSavedTime">just now</span></span>
                     </div>
                 </div>
-                <div class="col-auto">
-                    <a href="{% url 'manage_variants_simple' subdomain=page.subdomain product_id=product.id %}" class="btn-variants">
-                        <i class="fas fa-cubes"></i> Variants
-                        {% if variants.count > 0 %}
-                            <span class="variant-badge">{{ variants.count }}</span>
+                <div class="catalog-actions">
+                    <a href="{% url 'manage_variants_simple' subdomain=page.subdomain product_id=product.id %}" class="btn btn-ghost">
+                        Variants{% if variants.count > 0 %} · {{ variants.count }}{% endif %}
+                    </a>
+                    <a href="{% url 'manage_products' subdomain=page.subdomain %}" class="btn btn-ghost">
+                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px;"><path d="M10 12L6 8l4-4"/></svg>
+                        Back
+                    </a>
+                </div>
+            </div>
+
+            <!-- ====== FORM ====== -->
+            <form id="productForm" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="hidden" name="product_id" value="{{ product.id }}">
+
+                <!-- ====== BASIC INFORMATION ====== -->
+                <div class="panel">
+                    <div class="panel-head">
+                        <h2 class="panel-title">Basic information</h2>
+                        <p class="panel-sub">Title, description, and organization</p>
+                    </div>
+                    <div class="panel-body">
+                        <div class="field" style="margin-bottom:1.125rem;">
+                            <label class="field-label" for="productTitle">Product title <span class="required">*</span></label>
+                            <input type="text" class="form-control" id="productTitle" name="title" value="{{ product.title }}" placeholder="e.g. Classic Leather Jacket" required>
+                        </div>
+
+                        <div class="field" style="margin-bottom:1.125rem;">
+                            <label class="field-label" for="productDescription">Description</label>
+                            <textarea class="form-control" id="productDescription" name="description" rows="5" placeholder="Describe your product in detail…">{{ product.description }}</textarea>
+                            <span class="field-help">Highlight features, materials, and benefits.</span>
+                        </div>
+
+                        <div class="field" style="margin-bottom:1.125rem;">
+                            <label class="field-label" for="productShortDescription">Short description <span class="optional">optional</span></label>
+                            <textarea class="form-control" id="productShortDescription" name="short_description" rows="2" placeholder="Brief summary for product listings…">{{ product.short_description }}</textarea>
+                            <span class="field-help">Quick summary that appears in product listings.</span>
+                        </div>
+
+                        <div class="form-row cols-3">
+                            <div class="field">
+                                <label class="field-label" for="productStatus">Status</label>
+                                <select class="form-select" id="productStatus" name="status">
+                                    <option value="draft" {% if product.status == 'draft' %}selected{% endif %}>Draft</option>
+                                    <option value="active" {% if product.status == 'active' %}selected{% endif %}>Active</option>
+                                    <option value="archived" {% if product.status == 'archived' %}selected{% endif %}>Archived</option>
+                                </select>
+                            </div>
+
+                            <div class="field">
+                                <label class="field-label" for="productType">Product type</label>
+                                <select class="form-select" id="productType" name="type">
+                                    <option value="physical" {% if product.type == 'physical' %}selected{% endif %}>Physical</option>
+                                    <option value="digital" {% if product.type == 'digital' %}selected{% endif %}>Digital</option>
+                                    <option value="service" {% if product.type == 'service' %}selected{% endif %}>Service</option>
+                                </select>
+                            </div>
+
+                            <div class="field">
+                                <label class="field-label" for="productCategory">Category</label>
+                                <select class="form-select" id="productCategory" name="category">
+                                    <option value="">Uncategorized</option>
+                                    {% for category in categories %}
+                                    <option value="{{ category.id }}" {% if product.category.id == category.id %}selected{% endif %}>
+                                        {{ category.name }}
+                                    </option>
+                                    {% endfor %}
+                                </select>
+                                <span class="field-help">
+                                    <a href="{% url 'manage_product_categories' subdomain=page.subdomain %}">Add category</a>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-row cols-3">
+                            <div class="field">
+                                <label class="field-label" for="productColors">Colors</label>
+                                <input type="text" class="form-control" id="productColors" name="colors" value="{{ product.colors }}" placeholder="red, black, #20c997">
+                                <span class="field-help">Comma separated colors or hex codes.</span>
+                            </div>
+
+                            <div class="field">
+                                <label class="field-label" for="productSizes">Sizes</label>
+                                <input type="text" class="form-control" id="productSizes" name="sizes" value="{{ product.sizes }}" placeholder="S, M, L, XL">
+                                <span class="field-help">Comma separated sizes.</span>
+                            </div>
+
+                            <div class="field">
+                                <label class="field-label" for="productTags">Tags</label>
+                                <input type="text" class="form-control" id="productTags" name="tags" value="{{ product.tags|join:', ' }}" placeholder="new, featured, sale">
+                                <span class="field-help">Comma separated tags for filtering.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ====== MEDIA ====== -->
+                <div class="panel">
+                    <div class="panel-head">
+                        <h2 class="panel-title">Media</h2>
+                        <p class="panel-sub">Main image and gallery</p>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-row">
+                            <div class="field">
+                                <label class="field-label">Main image</label>
+                                <div class="image-upload-area {% if product.main_image %}has-image{% endif %}" id="mainImageUpload" onclick="document.getElementById('mainImageInput').click()">
+                                    <input type="file" id="mainImageInput" name="main_image" accept="image/*" onchange="previewImage(this)">
+                                    <div id="mainImagePreview">
+                                        {% if product.main_image %}
+                                            <img src="{{ product.main_image.url }}" alt="{{ product.title }}" class="preview-image">
+                                        {% else %}
+                                            <div class="placeholder">
+                                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15V5a2 2 0 012-2h10a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M3 13l4-4 5 5 3-3 2 2"/><circle cx="7.5" cy="7.5" r="1"/></svg>
+                                                <span>Click to upload</span>
+                                                <span class="hint">PNG, JPG or WEBP · max 5MB</span>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                    <button type="button" class="remove-image" aria-label="Remove image" onclick="event.stopPropagation(); removeImage();">
+                                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label class="field-label">Additional images <span class="optional">optional</span></label>
+                                <div class="image-upload-area" onclick="document.getElementById('galleryInput').click()">
+                                    <input type="file" id="galleryInput" name="images" multiple accept="image/*">
+                                    <div class="placeholder">
+                                        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="14" height="14" rx="2"/><circle cx="7.5" cy="7.5" r="1.5"/><path d="M17 13l-4-4-5 5-3-3-2 2"/></svg>
+                                        <span>Add gallery images</span>
+                                        <span class="hint">Select multiple</span>
+                                    </div>
+                                </div>
+                                {% if product.product_images.all %}
+                                <div class="gallery-thumbs">
+                                    {% for img in product.product_images.all|slice:":4" %}
+                                        <img src="{{ img.image.url }}" alt="">
+                                    {% endfor %}
+                                    {% if product.product_images.count > 4 %}
+                                        <span class="more">+{{ product.product_images.count|add:"-4" }}</span>
+                                    {% endif %}
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ====== PRICING ====== -->
+                <div class="panel">
+                    <div class="panel-head">
+                        <h2 class="panel-title">Pricing</h2>
+                        <p class="panel-sub">Price, compare-at price, and cost</p>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-row cols-3">
+                            <div class="field">
+                                <label class="field-label" for="productPrice">Price <span class="required">*</span></label>
+                                <div class="input-prefix">
+                                    <span class="prefix">$</span>
+                                    <input type="number" class="form-control" id="productPrice" name="price" value="{{ product.price }}" step="0.01" min="0" required>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label class="field-label" for="productCompare">Compare at price <span class="optional">sale</span></label>
+                                <div class="input-prefix">
+                                    <span class="prefix">$</span>
+                                    <input type="number" class="form-control" id="productCompare" name="compare_at_price" value="{{ product.compare_at_price|default:'' }}" step="0.01" min="0">
+                                </div>
+                                <span class="field-help">Shows a sale price when higher than price.</span>
+                            </div>
+
+                            <div class="field">
+                                <label class="field-label" for="productCost">Cost per item <span class="optional">optional</span></label>
+                                <div class="input-prefix">
+                                    <span class="prefix">$</span>
+                                    <input type="number" class="form-control" id="productCost" name="cost_per_item" value="{{ product.cost_per_item|default:'' }}" step="0.01" min="0">
+                                </div>
+                                <span class="field-help">For profit calculations.</span>
+                            </div>
+                        </div>
+
+                        <label class="check-card" for="chargeTax">
+                            <input type="checkbox" id="chargeTax" name="charge_tax" {% if product.charge_tax %}checked{% endif %}>
+                            <div class="check-card-body">
+                                <p class="check-card-title">Charge sales tax on this product</p>
+                                <p class="check-card-desc">Applied at checkout based on your tax settings.</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- ====== INVENTORY ====== -->
+                <div class="panel">
+                    <div class="panel-head">
+                        <h2 class="panel-title">Inventory</h2>
+                        <p class="panel-sub">SKU, quantity, and stock tracking</p>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-row cols-3">
+                            <div class="field">
+                                <label class="field-label" for="productSku">SKU <span class="optional">optional</span></label>
+                                <input type="text" class="form-control" id="productSku" name="sku" value="{{ product.sku }}" placeholder="e.g. JKT-001">
+                            </div>
+
+                            <div class="field">
+                                <label class="field-label" for="productBarcode">Barcode <span class="optional">optional</span></label>
+                                <input type="text" class="form-control" id="productBarcode" name="barcode" value="{{ product.barcode }}" placeholder="Barcode number">
+                            </div>
+
+                            <div class="field">
+                                <label class="field-label" for="productQuantity">Quantity</label>
+                                <input type="number" class="form-control" id="productQuantity" name="quantity" value="{{ product.quantity }}" min="0">
+                            </div>
+                        </div>
+
+                        <div class="field" style="margin-bottom:1.125rem;">
+                            <label class="field-label" for="productLowStock">Low stock threshold</label>
+                            <input type="number" class="form-control" id="productLowStock" name="low_stock_threshold" value="{{ product.low_stock_threshold }}" min="0">
+                            <span class="field-help">Get notified when stock falls below this number.</span>
+                        </div>
+
+                        <label class="check-card" for="trackQuantity" style="margin-bottom:0.625rem;">
+                            <input type="checkbox" id="trackQuantity" name="track_quantity" {% if product.track_quantity %}checked{% endif %}>
+                            <div class="check-card-body">
+                                <p class="check-card-title">Track quantity</p>
+                                <p class="check-card-desc">Decrement inventory automatically when orders are placed.</p>
+                            </div>
+                        </label>
+
+                        <label class="check-card" for="allowBackorders">
+                            <input type="checkbox" id="allowBackorders" name="allow_backorders" {% if product.allow_backorders %}checked{% endif %}>
+                            <div class="check-card-body">
+                                <p class="check-card-title">Allow backorders</p>
+                                <p class="check-card-desc">Let customers purchase when stock reaches zero.</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- ====== SHIPPING ====== -->
+                <div class="panel">
+                    <div class="panel-head">
+                        <h2 class="panel-title">Shipping</h2>
+                        <p class="panel-sub">Delivery options, dimensions, and weight</p>
+                    </div>
+                    <div class="panel-body">
+
+                        <label class="check-card" for="requiresShipping" style="margin-bottom:0.875rem;">
+                            <input type="checkbox" id="requiresShipping" name="requires_shipping" {% if product.requires_shipping %}checked{% endif %}>
+                            <div class="check-card-body">
+                                <p class="check-card-title">This product requires shipping</p>
+                                <p class="check-card-desc">Uncheck for services or digital goods.</p>
+                            </div>
+                        </label>
+
+                        <div class="form-row cols-4">
+                            <div class="field">
+                                <label class="field-label" for="productWeight">Weight</label>
+                                <input type="number" class="form-control" id="productWeight" name="weight" value="{{ product.weight }}" step="0.01" min="0">
+                            </div>
+                            <div class="field">
+                                <label class="field-label" for="productWeightUnit">Unit</label>
+                                <select class="form-select" id="productWeightUnit" name="weight_unit">
+                                    <option value="kg" {% if product.weight_unit == 'kg' %}selected{% endif %}>kg</option>
+                                    <option value="lb" {% if product.weight_unit == 'lb' %}selected{% endif %}>lb</option>
+                                    <option value="oz" {% if product.weight_unit == 'oz' %}selected{% endif %}>oz</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label class="field-label" for="productLength">Length (cm)</label>
+                                <input type="number" class="form-control" id="productLength" name="length" value="{{ product.length }}" step="0.01" min="0">
+                            </div>
+                            <div class="field">
+                                <label class="field-label" for="productWidth">Width (cm)</label>
+                                <input type="number" class="form-control" id="productWidth" name="width" value="{{ product.width }}" step="0.01" min="0">
+                            </div>
+                        </div>
+
+                        <label class="check-card" for="freeShipping" style="margin-bottom:0.875rem;">
+                            <input type="checkbox" id="freeShipping" name="free_shipping" {% if product.free_shipping %}checked{% endif %}>
+                            <div class="check-card-body">
+                                <p class="check-card-title">Offer free shipping</p>
+                                <p class="check-card-desc">Overrides shipping rates at checkout for this product.</p>
+                            </div>
+                        </label>
+
+                        <div style="border-top:1px solid var(--border); margin:1.25rem 0;"></div>
+
+                        <label class="check-card" for="use_custom_shipping" style="margin-bottom:0.875rem;">
+                            <input type="checkbox" id="use_custom_shipping" name="use_custom_shipping" {% if product.use_custom_shipping %}checked{% endif %}>
+                            <div class="check-card-body">
+                                <p class="check-card-title">Use custom shipping rates</p>
+                                <p class="check-card-desc">Override store defaults for this product.</p>
+                            </div>
+                        </label>
+
+                        <div id="customShippingSettings" style="{% if not product.use_custom_shipping %}display:none;{% endif %}">
+                            <div class="form-row cols-3">
+                                <div class="field">
+                                    <label class="field-label" for="customShippingType">Shipping type</label>
+                                    <select class="form-select" id="customShippingType" name="custom_shipping_type">
+                                        <option value="flat" {% if product.custom_shipping_type == 'flat' %}selected{% endif %}>Flat rate</option>
+                                        <option value="free" {% if product.custom_shipping_type == 'free' %}selected{% endif %}>Free shipping</option>
+                                        <option value="per_item" {% if product.custom_shipping_type == 'per_item' %}selected{% endif %}>Per item</option>
+                                        <option value="calculated" {% if product.custom_shipping_type == 'calculated' %}selected{% endif %}>Calculated by quantity</option>
+                                    </select>
+                                </div>
+
+                                <div class="field" id="flatShippingFields" style="{% if product.custom_shipping_type != 'flat' and product.custom_shipping_type != 'calculated' %}display:none;{% endif %}">
+                                    <label class="field-label" for="customShippingPrice">Shipping price ($)</label>
+                                    <div class="input-prefix">
+                                        <span class="prefix">$</span>
+                                        <input type="number" class="form-control" id="customShippingPrice" name="custom_shipping_price" value="{{ product.custom_shipping_price|default:0 }}" step="0.01" min="0">
+                                    </div>
+                                </div>
+
+                                <div class="field" id="perItemShippingFields" style="{% if product.custom_shipping_type != 'per_item' %}display:none;{% endif %}">
+                                    <label class="field-label" for="shippingPerItem">Cost per item ($)</label>
+                                    <div class="input-prefix">
+                                        <span class="prefix">$</span>
+                                        <input type="number" class="form-control" id="shippingPerItem" name="shipping_per_item" value="{{ product.shipping_per_item|default:0 }}" step="0.01" min="0">
+                                    </div>
+                                </div>
+
+                                <div class="field" id="freeShippingFields" style="{% if product.custom_shipping_type != 'free' %}display:none;{% endif %}">
+                                    <label class="field-label" for="customFreeShipping">Free shipping minimum ($) <span class="optional">optional</span></label>
+                                    <div class="input-prefix">
+                                        <span class="prefix">$</span>
+                                        <input type="number" class="form-control" id="customFreeShipping" name="custom_free_shipping_min_price" value="{{ product.custom_free_shipping_min_price|default:'' }}" step="0.01" min="0">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="field" style="margin-bottom:0.875rem;">
+                                <label class="field-label" for="shippingNote">Shipping note <span class="optional">optional</span></label>
+                                <input type="text" class="form-control" id="shippingNote" name="shipping_note" value="{{ product.shipping_note|default:'' }}" placeholder="e.g. Ships separately, Express available…">
+                            </div>
+
+                            <label class="check-card" for="shipsSeparately">
+                                <input type="checkbox" id="shipsSeparately" name="ships_separately" {% if product.ships_separately %}checked{% endif %}>
+                                <div class="check-card-body">
+                                    <p class="check-card-title">Ships separately</p>
+                                    <p class="check-card-desc">Additional shipping cost applies.</p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ====== SPECIFICATIONS ====== -->
+                <div class="panel">
+                    <div class="panel-head">
+                        <h2 class="panel-title">Specifications</h2>
+                        <p class="panel-sub">Material, warranty, dimensions, and other details</p>
+                    </div>
+                    <div class="panel-body">
+                        <div id="specificationsContainer">
+                            {% if specifications %}
+                                {% for spec in specifications %}
+                                <div class="spec-row" data-spec-id="{{ spec.id }}">
+                                    <input type="text" class="form-control spec-title" name="spec_title[]" value="{{ spec.title }}" placeholder="e.g. Material">
+                                    <input type="text" class="form-control spec-value" name="spec_value[]" value="{{ spec.value }}" placeholder="e.g. Cotton">
+                                    <button type="button" class="remove-spec-btn" title="Remove" aria-label="Remove specification">
+                                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg>
+                                    </button>
+                                </div>
+                                {% endfor %}
+                            {% else %}
+                                <div class="spec-row">
+                                    <input type="text" class="form-control spec-title" name="spec_title[]" placeholder="e.g. Material">
+                                    <input type="text" class="form-control spec-value" name="spec_value[]" placeholder="e.g. Cotton">
+                                    <button type="button" class="remove-spec-btn" title="Remove" aria-label="Remove specification">
+                                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg>
+                                    </button>
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; margin-top:0.875rem;">
+                            <button type="button" class="btn btn-ghost btn-sm" id="addSpecRow">Add specification</button>
+                            <span class="field-help" style="margin:0;">Unlimited specifications</span>
+                        </div>
+
+                        <div style="margin-top:1.125rem;">
+                            <span class="field-help" style="display:block; margin-bottom:0.625rem;">Quick add</span>
+                            <div class="suggestions">
+                                <button type="button" class="suggestion-chip" onclick="addSuggestedSpec('Material', 'Cotton')">Material</button>
+                                <button type="button" class="suggestion-chip" onclick="addSuggestedSpec('Warranty', '2 Years')">Warranty</button>
+                                <button type="button" class="suggestion-chip" onclick="addSuggestedSpec('Weight', '500g')">Weight</button>
+                                <button type="button" class="suggestion-chip" onclick="addSuggestedSpec('Dimensions', '10×20×5 cm')">Dimensions</button>
+                                <button type="button" class="suggestion-chip" onclick="addSuggestedSpec('Color', 'Black/White')">Color</button>
+                                <button type="button" class="suggestion-chip" onclick="addSuggestedSpec('Country of Origin', 'China')">Country of Origin</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ====== SEO ====== -->
+                <div class="panel">
+                    <div class="panel-head">
+                        <h2 class="panel-title">SEO</h2>
+                        <p class="panel-sub">Search engine metadata and URL</p>
+                    </div>
+                    <div class="panel-body">
+                        <div class="field" style="margin-bottom:1.125rem;">
+                            <label class="field-label" for="metaTitle">Page title <span class="optional">optional</span></label>
+                            <input type="text" class="form-control" id="metaTitle" name="meta_title" value="{{ product.meta_title }}" placeholder="Usually the same as product title">
+                            <span class="field-help">Appears in search results and the browser tab. Aim for 50–60 characters.</span>
+                        </div>
+
+                        <div class="field" style="margin-bottom:1.125rem;">
+                            <label class="field-label" for="metaDescription">Meta description <span class="optional">optional</span></label>
+                            <textarea class="form-control" id="metaDescription" name="meta_description" rows="3" placeholder="Brief description for search engines…">{{ product.meta_description }}</textarea>
+                            <span class="field-help">Appears in search results. Aim for 150–160 characters.</span>
+                        </div>
+
+                        <div class="field">
+                            <label class="field-label" for="productSlug">URL handle <span class="optional">optional</span></label>
+                            <div class="input-prefix">
+                                <span class="prefix">/products/</span>
+                                <input type="text" class="form-control" id="productSlug" name="slug" value="{{ product.slug }}" placeholder="auto-generated-from-title">
+                            </div>
+                            <span class="field-help">Custom URL for this product. Auto-generated from the title if left blank.</span>
+                        </div>
+
+                        <div class="seo-preview">
+                            <div class="seo-preview-label">Search result preview</div>
+                            <a href="#" class="seo-title" id="seoPreviewTitle">{{ product.meta_title|default:product.title }}</a>
+                            <span class="seo-url">{{ page.subdomain }}.bynup.store/products/{{ product.slug|default:product.title|slugify }}</span>
+                            <p class="seo-description" id="seoPreviewDescription">{{ product.meta_description|default:"No description provided." }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ====== DIGITAL PRODUCT (conditional) ====== -->
+                <div class="panel" id="digitalSettings" style="{% if product.type != 'digital' %}display:none;{% endif %}">
+                    <div class="panel-head">
+                        <h2 class="panel-title">Digital delivery</h2>
+                        <p class="panel-sub">File, download limit, and expiry</p>
+                    </div>
+                    <div class="panel-body">
+                        {% if product.digital_file %}
+                        <div class="file-card">
+                            <div class="file-icon">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 2H6a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7l-5-5z"/><path d="M11 2v5h5"/></svg>
+                            </div>
+                            <div class="file-info">
+                                <p class="file-name">{{ product.digital_file.name|slice:"13:" }}</p>
+                                <p class="file-meta">Current file</p>
+                            </div>
+                            <a href="{{ product.digital_file.url }}" target="_blank" class="btn btn-ghost btn-sm">Download</a>
+                        </div>
                         {% endif %}
+
+                        <div class="field" style="margin-bottom:1.125rem;">
+                            <label class="field-label" for="digitalFile">Digital file</label>
+                            <input type="file" class="form-control" id="digitalFile" name="digital_file" accept=".pdf,.zip,.mp3,.mp4,.jpg,.png">
+                            <span class="field-help">File customers will download after purchase.</span>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="field">
+                                <label class="field-label" for="downloadLimit">Download limit</label>
+                                <input type="number" class="form-control" id="downloadLimit" name="download_limit" value="{{ product.download_limit }}" min="1">
+                                <span class="field-help">Number of times the file can be downloaded.</span>
+                            </div>
+                            <div class="field">
+                                <label class="field-label" for="downloadExpiry">Download expiry (days)</label>
+                                <input type="number" class="form-control" id="downloadExpiry" name="download_expiry" value="{{ product.download_expiry }}" min="1">
+                                <span class="field-help">Days until the download link expires.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- ====== STICKY FOOTER (inside .management-content) ====== -->
+        <div class="editor-footer">
+            <div class="footer-inner">
+                <div class="save-status saved" id="saveStatus">
+                    <span class="dot"></span>
+                    <span id="saveStatusText">All changes saved</span>
+                </div>
+                <div class="footer-actions">
+                    <a href="{% url 'manage_variants_simple' subdomain=page.subdomain product_id=product.id %}" class="btn btn-ghost">
+                        Manage variants{% if variants.count > 0 %} · {{ variants.count }}{% endif %}
                     </a>
-                    <a href="{% url 'manage_products' subdomain=page.subdomain %}" class="btn btn-secondary" style="margin-left: 8px;">
-                        <i class="fas fa-arrow-left me-1"></i> Back
-                    </a>
+                    <button type="button" class="btn btn-ghost" onclick="window.location.href='{% url 'manage_products' subdomain=page.subdomain %}'">Cancel</button>
+                    <button type="button" class="btn btn-accent" id="saveProductBtn">
+                        <span class="btn-text">Save product</span>
+                    </button>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- ====== MAIN CONTENT ====== -->
-    <div class="editor-content">
-        <form id="productForm" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <input type="hidden" name="product_id" value="{{ product.id }}">
-
-            <!-- ====== CARD 1: BASIC INFORMATION ====== -->
-            <div class="form-card">
-                <div class="card-header">
-                    <div class="icon-wrapper"><i class="fas fa-info-circle"></i></div>
-                    <h3>Basic Information</h3>
-                    <span class="badge required">Required</span>
-                </div>
-
-                <div class="form-group">
-                    <label>Product Title <span class="required-star">*</span></label>
-                    <input type="text" class="form-control" name="title" value="{{ product.title }}" placeholder="e.g. Classic Leather Jacket" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Description</label>
-                    <textarea class="form-control" name="description" rows="4" placeholder="Describe your product in detail...">{{ product.description }}</textarea>
-                    <span class="help-text">Highlight features, materials, and benefits.</span>
-                </div>
-
-                <div class="form-group">
-                    <label>Short Description</label>
-                    <textarea class="form-control" name="short_description" rows="2" placeholder="Brief summary for product listings...">{{ product.short_description }}</textarea>
-                    <span class="help-text">Quick summary that appears in product listings.</span>
-                </div>
-
-                <div class="form-grid-3">
-                    <div class="form-group">
-                        <label>Status</label>
-                        <select class="form-select" name="status">
-                            <option value="draft" {% if product.status == 'draft' %}selected{% endif %}>Draft</option>
-                            <option value="active" {% if product.status == 'active' %}selected{% endif %}>Active</option>
-                            <option value="archived" {% if product.status == 'archived' %}selected{% endif %}>Archived</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Product Type</label>
-                        <select class="form-select" name="type" id="productType">
-                            <option value="physical" {% if product.type == 'physical' %}selected{% endif %}>Physical Product</option>
-                            <option value="digital" {% if product.type == 'digital' %}selected{% endif %}>Digital Product</option>
-                            <option value="service" {% if product.type == 'service' %}selected{% endif %}>Service</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Category</label>
-                        <select class="form-select" name="category">
-                            <option value="">Uncategorized</option>
-                            {% for category in categories %}
-                            <option value="{{ category.id }}" {% if product.category.id == category.id %}selected{% endif %}>
-                                {{ category.name }}
-                            </option>
-                            {% endfor %}
-                        </select>
-                        <span class="help-text">
-                            <a href="{% url 'manage_product_categories' subdomain=page.subdomain %}" style="color: #4361ee; text-decoration: none;">
-                                <i class="fas fa-plus-circle"></i> Add New Category
-                            </a>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="form-grid-3">
-                    <div class="form-group">
-                        <label>Colors</label>
-                        <input type="text" class="form-control" name="colors" value="{{ product.colors }}" placeholder="red, black, #20c997">
-                        <span class="help-text">Comma separated colors or hex codes.</span>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Sizes</label>
-                        <input type="text" class="form-control" name="sizes" value="{{ product.sizes }}" placeholder="S, M, L, XL">
-                        <span class="help-text">Comma separated sizes.</span>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Tags</label>
-                        <input type="text" class="form-control" name="tags" value="{{ product.tags|join:', ' }}" placeholder="new, featured, sale">
-                        <span class="help-text">Comma separated tags for filtering.</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ====== CARD 2: MEDIA ====== -->
-            <div class="form-card">
-                <div class="card-header">
-                    <div class="icon-wrapper"><i class="fas fa-image"></i></div>
-                    <h3>Media</h3>
-                    <span class="badge">Images</span>
-                </div>
-
-                <div class="form-grid-2">
-                    <div class="form-group">
-                        <label>Main Image</label>
-                        <div class="image-upload-area {% if product.main_image %}has-image{% endif %}" id="mainImageUpload" onclick="document.getElementById('mainImageInput').click()">
-                            <input type="file" id="mainImageInput" name="main_image" accept="image/*" style="display: none;" onchange="previewImage(this, 'mainImagePreview')">
-                            <div id="mainImagePreview">
-                                {% if product.main_image %}
-                                <img src="{{ product.main_image.url }}" alt="{{ product.title }}" class="preview-image">
-                                {% else %}
-                                <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                                <div class="upload-text">Click to upload main image</div>
-                                <div class="upload-hint">PNG, JPG or WEBP (Max 5MB)</div>
-                                {% endif %}
-                            </div>
-                            <button type="button" class="remove-image" onclick="event.stopPropagation(); removeImage('mainImagePreview', 'mainImageInput')">✕</button>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Additional Images</label>
-                        <div class="image-upload-area" onclick="document.getElementById('galleryInput').click()">
-                            <input type="file" id="galleryInput" name="images" multiple accept="image/*" style="display: none;">
-                            <div class="upload-icon"><i class="fas fa-images"></i></div>
-                            <div class="upload-text">Click to add additional images</div>
-                            <div class="upload-hint">Select multiple images for your gallery</div>
-                        </div>
-                        {% if product.product_images.all %}
-                        <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px;">
-                            {% for img in product.product_images.all|slice:":4" %}
-                            <img src="{{ img.image.url }}" alt="" style="width: 60px; height: 60px; object-fit: cover; border-radius: 6px; border: 1px solid #e2e8f0;">
-                            {% endfor %}
-                            {% if product.product_images.count > 4 %}
-                            <span style="display: flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: #f1f5f9; border-radius: 6px; font-size: 12px; color: #64748b;">
-                                +{{ product.product_images.count|add:"-4" }}
-                            </span>
-                            {% endif %}
-                        </div>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-
-            <!-- ====== CARD 3: PRICING ====== -->
-            <div class="form-card">
-                <div class="card-header">
-                    <div class="icon-wrapper"><i class="fas fa-tag"></i></div>
-                    <h3>Pricing</h3>
-                    <span class="badge required">Required</span>
-                </div>
-
-                <div class="form-grid-3">
-                    <div class="form-group">
-                        <label>Price <span class="required-star">*</span></label>
-                        <div class="input-group">
-                            <span class="input-group-text" style="background: #f8fafc; border-color: #e2e8f0;">$</span>
-                            <input type="number" class="form-control" name="price" value="{{ product.price }}" step="0.01" min="0" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Compare at Price</label>
-                        <div class="input-group">
-                            <span class="input-group-text" style="background: #f8fafc; border-color: #e2e8f0;">$</span>
-                            <input type="number" class="form-control" name="compare_at_price" value="{{ product.compare_at_price|default:'' }}" step="0.01" min="0">
-                        </div>
-                        <span class="help-text">Shows a "Sale" badge when higher than price.</span>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Cost per Item</label>
-                        <div class="input-group">
-                            <span class="input-group-text" style="background: #f8fafc; border-color: #e2e8f0;">$</span>
-                            <input type="number" class="form-control" name="cost_per_item" value="{{ product.cost_per_item|default:'' }}" step="0.01" min="0">
-                        </div>
-                        <span class="help-text">For profit calculations.</span>
-                    </div>
-                </div>
-
-                <div class="toggle-wrapper">
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" name="charge_tax" {% if product.charge_tax %}checked{% endif %} id="chargeTax">
-                        <label class="form-check-label" for="chargeTax">Charge sales tax on this product</label>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ====== CARD 4: INVENTORY ====== -->
-            <div class="form-card">
-                <div class="card-header">
-                    <div class="icon-wrapper"><i class="fas fa-warehouse"></i></div>
-                    <h3>Inventory</h3>
-                    <span class="badge">Stock Management</span>
-                </div>
-
-                <div class="form-grid-3">
-                    <div class="form-group">
-                        <label>SKU</label>
-                        <input type="text" class="form-control" name="sku" value="{{ product.sku }}" placeholder="e.g. JKT-001">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Barcode</label>
-                        <input type="text" class="form-control" name="barcode" value="{{ product.barcode }}" placeholder="Barcode number">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Quantity</label>
-                        <input type="number" class="form-control" name="quantity" value="{{ product.quantity }}" min="0">
-                    </div>
-                </div>
-
-                <div class="form-grid-3">
-                    <div class="form-group">
-                        <label>Low Stock Threshold</label>
-                        <input type="number" class="form-control" name="low_stock_threshold" value="{{ product.low_stock_threshold }}" min="0">
-                        <span class="help-text">Get notified when stock falls below this.</span>
-                    </div>
-
-                    <div class="toggle-wrapper" style="padding: 0;">
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" name="track_quantity" {% if product.track_quantity %}checked{% endif %} id="trackQuantity">
-                            <label class="form-check-label" for="trackQuantity">Track quantity</label>
-                        </div>
-                    </div>
-
-                    <div class="toggle-wrapper" style="padding: 0;">
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" name="allow_backorders" {% if product.allow_backorders %}checked{% endif %} id="allowBackorders">
-                            <label class="form-check-label" for="allowBackorders">Allow backorders</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ====== CARD 5: SHIPPING ====== -->
-            <div class="form-card">
-                <div class="card-header">
-                    <div class="icon-wrapper"><i class="fas fa-shipping-fast"></i></div>
-                    <h3>Shipping</h3>
-                    <span class="badge">Delivery Settings</span>
-                </div>
-
-                <!-- Custom Shipping Toggle -->
-                <div class="toggle-wrapper">
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" name="use_custom_shipping" id="use_custom_shipping" {% if product.use_custom_shipping %}checked{% endif %}>
-                        <label class="form-check-label" for="use_custom_shipping">Use custom shipping rates</label>
-                    </div>
-                    <span class="toggle-description">Override store defaults</span>
-                </div>
-
-                <!-- Custom Shipping Settings -->
-                <div class="shipping-settings {% if not product.use_custom_shipping %}collapsed{% endif %}" id="customShippingSettings">
-                    <div class="form-grid-3">
-                        <div class="form-group">
-                            <label>Shipping Type</label>
-                            <select class="form-select" name="custom_shipping_type" id="customShippingType">
-                                <option value="flat" {% if product.custom_shipping_type == 'flat' %}selected{% endif %}>Flat Rate</option>
-                                <option value="free" {% if product.custom_shipping_type == 'free' %}selected{% endif %}>Free Shipping</option>
-                                <option value="per_item" {% if product.custom_shipping_type == 'per_item' %}selected{% endif %}>Per Item</option>
-                                <option value="calculated" {% if product.custom_shipping_type == 'calculated' %}selected{% endif %}>Calculated by Quantity</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group" id="flatShippingFields" style="{% if product.custom_shipping_type != 'flat' and product.custom_shipping_type != 'calculated' %}display: none;{% endif %}">
-                            <label>Shipping Price ($)</label>
-                            <input type="number" class="form-control" name="custom_shipping_price" value="{{ product.custom_shipping_price|default:0 }}" step="0.01" min="0">
-                        </div>
-
-                        <div class="form-group" id="perItemShippingFields" style="{% if product.custom_shipping_type != 'per_item' %}display: none;{% endif %}">
-                            <label>Cost Per Item ($)</label>
-                            <input type="number" class="form-control" name="shipping_per_item" value="{{ product.shipping_per_item|default:0 }}" step="0.01" min="0">
-                        </div>
-
-                        <div class="form-group" id="freeShippingFields" style="{% if product.custom_shipping_type != 'free' %}display: none;{% endif %}">
-                            <label>Free Shipping Minimum ($)</label>
-                            <input type="number" class="form-control" name="custom_free_shipping_min_price" value="{{ product.custom_free_shipping_min_price|default:'' }}" step="0.01" min="0" placeholder="Optional">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Shipping Note</label>
-                        <input type="text" class="form-control" name="shipping_note" value="{{ product.shipping_note|default:'' }}" placeholder="e.g. Ships separately, Express available...">
-                    </div>
-
-                    <div class="toggle-wrapper" style="padding: 0;">
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" name="ships_separately" id="shipsSeparately" {% if product.ships_separately %}checked{% endif %}>
-                            <label class="form-check-label" for="shipsSeparately">Ships separately</label>
-                        </div>
-                        <span class="toggle-description">Additional shipping cost applies</span>
-                    </div>
-                </div>
-
-                <hr style="margin: 20px 0; border-color: #f1f5f9;">
-
-                <!-- Standard Shipping -->
-                <div class="toggle-wrapper" style="padding: 0;">
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" name="requires_shipping" {% if product.requires_shipping %}checked{% endif %} id="requiresShipping">
-                        <label class="form-check-label" for="requiresShipping">This product requires shipping</label>
-                    </div>
-                </div>
-
-                <div class="form-grid-4" style="margin-top: 16px;">
-                    <div class="form-group">
-                        <label>Weight</label>
-                        <input type="number" class="form-control" name="weight" value="{{ product.weight }}" step="0.01" min="0">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Weight Unit</label>
-                        <select class="form-select" name="weight_unit">
-                            <option value="kg" {% if product.weight_unit == 'kg' %}selected{% endif %}>kg</option>
-                            <option value="lb" {% if product.weight_unit == 'lb' %}selected{% endif %}>lb</option>
-                            <option value="oz" {% if product.weight_unit == 'oz' %}selected{% endif %}>oz</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Length (cm)</label>
-                        <input type="number" class="form-control" name="length" value="{{ product.length }}" step="0.01" min="0">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Width (cm)</label>
-                        <input type="number" class="form-control" name="width" value="{{ product.width }}" step="0.01" min="0">
-                    </div>
-                </div>
-
-                <div class="toggle-wrapper" style="padding: 0;">
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" name="free_shipping" {% if product.free_shipping %}checked{% endif %} id="freeShipping">
-                        <label class="form-check-label" for="freeShipping">Offer free shipping</label>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ====== CARD 6: SPECIFICATIONS ====== -->
-            <div class="form-card">
-                <div class="card-header">
-                    <div class="icon-wrapper"><i class="fas fa-list-ul"></i></div>
-                    <h3>Specifications</h3>
-                    <span class="badge">Optional</span>
-                </div>
-
-                <p class="card-description">
-                    <i class="fas fa-info-circle" style="color: #4361ee;"></i>
-                    Add key product details like material, warranty, dimensions, etc.
-                </p>
-
-                <div id="specificationsContainer">
-                    {% if specifications %}
-                        {% for spec in specifications %}
-                        <div class="spec-row" data-spec-id="{{ spec.id }}">
-                            <input type="text" class="form-control form-control-sm spec-title" name="spec_title[]" value="{{ spec.title }}" placeholder="e.g. Material">
-                            <input type="text" class="form-control form-control-sm spec-value" name="spec_value[]" value="{{ spec.value }}" placeholder="e.g. Cotton">
-                            <button type="button" class="remove-spec-btn" title="Remove">
-                                <i class="fas fa-times"></i>
-                            </button>
-                        </div>
-                        {% endfor %}
-                    {% else %}
-                        <div class="spec-row">
-                            <input type="text" class="form-control form-control-sm spec-title" name="spec_title[]" placeholder="e.g. Material">
-                            <input type="text" class="form-control form-control-sm spec-value" name="spec_value[]" placeholder="e.g. Cotton">
-                            <button type="button" class="remove-spec-btn" title="Remove">
-                                <i class="fas fa-times"></i>
-                            </button>
-                        </div>
-                    {% endif %}
-                </div>
-
-                <div class="d-flex justify-content-between align-items-center mt-3">
-                    <button type="button" class="btn btn-sm btn-outline-primary" id="addSpecRow">
-                        <i class="fas fa-plus me-1"></i> Add Specification
-                    </button>
-                    <span class="help-text" style="margin: 0;">
-                        <i class="fas fa-info-circle"></i> Unlimited specifications
-                    </span>
-                </div>
-
-                <!-- Suggested Specifications -->
-                <div style="margin-top: 16px;">
-                    <span class="help-text" style="margin-bottom: 8px; display: block;">Quick add:</span>
-                    <div class="suggestion-badges">
-                        <span class="suggestion-badge" onclick="addSuggestedSpec('Material', 'Cotton')">Material</span>
-                        <span class="suggestion-badge" onclick="addSuggestedSpec('Warranty', '2 Years')">Warranty</span>
-                        <span class="suggestion-badge" onclick="addSuggestedSpec('Weight', '500g')">Weight</span>
-                        <span class="suggestion-badge" onclick="addSuggestedSpec('Dimensions', '10x20x5 cm')">Dimensions</span>
-                        <span class="suggestion-badge" onclick="addSuggestedSpec('Color', 'Black/White')">Color</span>
-                        <span class="suggestion-badge" onclick="addSuggestedSpec('Country of Origin', 'China')">Country of Origin</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ====== CARD 7: SEO ====== -->
-            <div class="form-card">
-                <div class="card-header">
-                    <div class="icon-wrapper"><i class="fas fa-search"></i></div>
-                    <h3>SEO</h3>
-                    <span class="badge">Search Engine Optimization</span>
-                </div>
-
-                <p class="card-description">
-                    <i class="fas fa-info-circle" style="color: #4361ee;"></i>
-                    Help customers find your product in search engines.
-                </p>
-
-                <div class="form-group">
-                    <label>Page Title</label>
-                    <input type="text" class="form-control" name="meta_title" value="{{ product.meta_title }}" placeholder="Usually same as product title">
-                    <span class="help-text">Appears in search results and browser tab. Aim for 50-60 characters.</span>
-                </div>
-
-                <div class="form-group">
-                    <label>Meta Description</label>
-                    <textarea class="form-control" name="meta_description" rows="2" placeholder="Brief description for search engines...">{{ product.meta_description }}</textarea>
-                    <span class="help-text">Appears in search results. Aim for 150-160 characters.</span>
-                </div>
-
-                <div class="form-group">
-                    <label>URL Handle</label>
-                    <div class="input-group">
-                        <span class="input-group-text" style="background: #f8fafc; border-color: #e2e8f0; font-size: 13px; color: #64748b;">/products/</span>
-                        <input type="text" class="form-control" name="slug" value="{{ product.slug }}" placeholder="auto-generated-from-title">
-                    </div>
-                    <span class="help-text">Custom URL for this product. Auto-generated from title if left blank.</span>
-                </div>
-
-                <!-- SEO Preview -->
-                <div class="seo-preview">
-                    <span class="help-text" style="margin-bottom: 8px; display: block;">Search result preview:</span>
-                    <a href="#" class="seo-title" id="seoPreviewTitle">{{ product.meta_title|default:product.title }}</a>
-                    <span class="seo-url">{{ page.subdomain }}.bynup.store/products/{{ product.slug|default:product.title|slugify }}</span>
-                    <p class="seo-description" id="seoPreviewDescription">{{ product.meta_description|default:"No description provided" }}</p>
-                </div>
-            </div>
-
-            <!-- ====== CARD 8: DIGITAL (Conditional) ====== -->
-            <div class="form-card" id="digitalSettings" style="{% if product.type != 'digital' %}display: none;{% endif %}">
-                <div class="card-header">
-                    <div class="icon-wrapper"><i class="fas fa-file-download"></i></div>
-                    <h3>Digital Product Settings</h3>
-                    <span class="badge">Digital</span>
-                </div>
-
-                <div class="form-group">
-                    <label>Digital File</label>
-                    {% if product.digital_file %}
-                    <div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: #f8fafc; border-radius: 8px; margin-bottom: 12px;">
-                        <i class="fas fa-file-pdf" style="color: #ef4444; font-size: 24px;"></i>
-                        <div>
-                            <div style="font-weight: 500; font-size: 14px;">{{ product.digital_file.name|slice:"13:" }}</div>
-                            <div style="font-size: 12px; color: #64748b;">Current file</div>
-                        </div>
-                        <a href="{{ product.digital_file.url }}" target="_blank" class="btn btn-sm btn-outline-primary ms-auto">
-                            <i class="fas fa-download"></i> Download
-                        </a>
-                    </div>
-                    {% endif %}
-                    <input type="file" class="form-control" name="digital_file" accept=".pdf,.zip,.mp3,.mp4,.jpg,.png">
-                    <span class="help-text">File customers will download after purchase.</span>
-                </div>
-
-                <div class="form-grid-2">
-                    <div class="form-group">
-                        <label>Download Limit</label>
-                        <input type="number" class="form-control" name="download_limit" value="{{ product.download_limit }}" min="1">
-                        <span class="help-text">Number of times the file can be downloaded.</span>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Download Expiry (Days)</label>
-                        <input type="number" class="form-control" name="download_expiry" value="{{ product.download_expiry }}" min="1">
-                        <span class="help-text">Days until the download link expires.</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ====== STICKY FOOTER ====== -->
-            <div class="editor-footer">
-                <div class="save-status">
-                    <i class="fas fa-circle" style="font-size: 8px; color: #10b981;" id="saveStatusIcon"></i>
-                    <span id="saveStatusText">All changes saved</span>
-                    <span style="color: #94a3b8; font-size: 12px;">|</span>
-                    <span style="font-size: 12px; color: #94a3b8;">
-                        <span id="charCount">0</span> characters in description
-                    </span>
-                </div>
-                <div class="footer-actions">
-                    <a href="{% url 'manage_variants_simple' subdomain=page.subdomain product_id=product.id %}" class="btn-variants-footer">
-                        <i class="fas fa-cubes"></i> Manage Variants
-                        {% if variants.count > 0 %}
-                            <span class="variant-badge">{{ variants.count }}</span>
-                        {% endif %}
-                    </a>
-                    <button type="button" class="btn btn-secondary" onclick="window.location.href='{% url 'manage_products' subdomain=page.subdomain %}'">
-                        Cancel
-                    </button>
-                    <button type="button" class="btn btn-primary" id="saveProductBtn">
-                        <i class="fas fa-save me-2"></i> Save Product
-                    </button>
-                </div>
-            </div>
-        </form>
-    </div>
 </div>
+
+<div class="toast-stack" id="toastStack"></div>
 {% endblock %}
 
 {% block extra_js %}
 <script>
-    // ================================================================
-    // COMPLETE PRODUCT EDITOR JAVASCRIPT
-    // ================================================================
+(function () {
+    'use strict';
 
+    const form = document.getElementById('productForm');
+    const saveBtn = document.getElementById('saveProductBtn');
+    const saveStatus = document.getElementById('saveStatus');
+    const saveStatusText = document.getElementById('saveStatusText');
+    const lastSaved = document.getElementById('lastSavedTime');
+    const updateUrl = '{% url "update_product" subdomain=page.subdomain product_id=product.id %}';
+    const manageUrl = '{% url "manage_products" subdomain=page.subdomain %}';
+    const csrfToken = '{{ csrf_token }}';
+
+    let saveTimeout = null;
     let isSaving = false;
 
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log('🛍️ Product Editor initialized');
+    function toast(message, type = 'success') {
+        const stack = document.getElementById('toastStack');
+        const el = document.createElement('div');
+        el.className = `toast ${type}`;
+        const icon = type === 'error'
+            ? '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><path d="M8 5v3M8 11h.01"/></svg>'
+            : '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>';
+        el.innerHTML = `${icon}<span>${message}</span>`;
+        stack.appendChild(el);
+        setTimeout(() => {
+            el.style.transition = 'opacity 0.18s ease, transform 0.18s ease';
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(-8px)';
+            setTimeout(() => el.remove(), 220);
+        }, 3000);
+    }
 
-        setupAutoSave();
-        setupCharCounter();
-        setupImagePreview();
-        setupSpecifications();
-        setupProductTypeToggle();
-        setupShippingToggles();
-        setupSeoPreview();
-        setupSaveButton();
-        setupKeyboardShortcuts();
+    function setStatus(state, message) {
+        saveStatus.className = `save-status ${state}`;
+        saveStatusText.textContent = message;
+    }
 
-        console.log('✅ Product Editor ready');
-        console.log('💡 Tip: Ctrl+S to save, Escape to cancel');
+    async function saveProduct({ redirectAfter = false } = {}) {
+        if (isSaving) return;
+        isSaving = true;
+        setStatus('saving', 'Saving…');
+
+        try {
+            const response = await fetch(updateUrl, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { 'X-CSRFToken': csrfToken },
+            });
+            const data = await response.json();
+
+            if (data.success) {
+                setStatus('saved', 'All changes saved');
+                if (lastSaved) lastSaved.textContent = new Date().toLocaleTimeString();
+                if (redirectAfter) {
+                    toast('Product saved');
+                    setTimeout(() => { window.location.href = manageUrl; }, 400);
+                }
+            } else {
+                setStatus('error', data.error || 'Save failed');
+                toast(data.error || 'Save failed', 'error');
+            }
+        } catch (err) {
+            setStatus('error', 'Connection error');
+            toast('Connection error', 'error');
+        } finally {
+            isSaving = false;
+        }
+    }
+
+    function scheduleAutoSave(delay) {
+        clearTimeout(saveTimeout);
+        saveTimeout = setTimeout(() => saveProduct(), delay);
+    }
+
+    form.addEventListener('input', () => scheduleAutoSave(1500));
+    form.addEventListener('change', () => scheduleAutoSave(800));
+
+    saveBtn.addEventListener('click', () => {
+        const text = saveBtn.querySelector('.btn-text');
+        const original = text.textContent;
+        saveBtn.disabled = true;
+        text.textContent = 'Saving…';
+        clearTimeout(saveTimeout);
+        saveProduct({ redirectAfter: true }).finally(() => {
+            saveBtn.disabled = false;
+            text.textContent = original;
+        });
     });
 
-    // ================================================================
-    // AUTO-SAVE
-    // ================================================================
-
-    function setupAutoSave() {
-        const form = document.getElementById('productForm');
-        let saveTimeout;
-
-        function updateSaveStatus(status, message) {
-            const icon = document.getElementById('saveStatusIcon');
-            const text = document.getElementById('saveStatusText');
-
-            if (status === 'saving') {
-                icon.className = 'fas fa-circle';
-                icon.style.color = '#f59e0b';
-                text.textContent = 'Saving...';
-                text.className = 'saving';
-            } else if (status === 'saved') {
-                icon.className = 'fas fa-check-circle';
-                icon.style.color = '#10b981';
-                text.textContent = message || 'All changes saved';
-                text.className = 'saved';
-            } else if (status === 'error') {
-                icon.className = 'fas fa-exclamation-circle';
-                icon.style.color = '#ef4444';
-                text.textContent = message || 'Error saving';
-                text.className = 'error';
-            }
+    document.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+            e.preventDefault();
+            saveBtn.click();
         }
+    });
 
-        async function autoSave() {
-            if (isSaving) return;
+    window.previewImage = function (input) {
+        if (!input.files || !input.files[0]) return;
+        const area = input.closest('.image-upload-area');
+        const preview = document.getElementById('mainImagePreview');
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+            preview.innerHTML = `<img src="${ev.target.result}" alt="Preview" class="preview-image">`;
+            area.classList.add('has-image');
+        };
+        reader.readAsDataURL(input.files[0]);
+    };
 
-            const formData = new FormData(form);
-            isSaving = true;
-            updateSaveStatus('saving');
+    window.removeImage = function () {
+        const area = document.getElementById('mainImageUpload');
+        const input = document.getElementById('mainImageInput');
+        const preview = document.getElementById('mainImagePreview');
+        input.value = '';
+        preview.innerHTML = `
+            <div class="placeholder">
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15V5a2 2 0 012-2h10a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M3 13l4-4 5 5 3-3 2 2"/><circle cx="7.5" cy="7.5" r="1"/></svg>
+                <span>Click to upload</span>
+                <span class="hint">PNG, JPG or WEBP · max 5MB</span>
+            </div>
+        `;
+        area.classList.remove('has-image');
+    };
 
-            try {
-                const response = await fetch('{% url "update_product" subdomain=page.subdomain product_id=product.id %}', {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'X-CSRFToken': '{{ csrf_token }}'
-                    }
-                });
-
-                const data = await response.json();
-
-                if (data.success) {
-                    updateSaveStatus('saved');
-                    document.getElementById('lastSavedTime').textContent = new Date().toLocaleTimeString();
-                } else {
-                    updateSaveStatus('error', data.error || 'Failed to save');
-                }
-            } catch (error) {
-                console.error('Auto-save error:', error);
-                updateSaveStatus('error', 'Connection error');
-            } finally {
-                isSaving = false;
-            }
-        }
-
-        form.addEventListener('input', function() {
-            clearTimeout(saveTimeout);
-            saveTimeout = setTimeout(autoSave, 1500);
-        });
-
-        form.addEventListener('change', function() {
-            clearTimeout(saveTimeout);
-            saveTimeout = setTimeout(autoSave, 800);
+    const productType = document.getElementById('productType');
+    const digitalPanel = document.getElementById('digitalSettings');
+    if (productType) {
+        productType.addEventListener('change', () => {
+            digitalPanel.style.display = productType.value === 'digital' ? '' : 'none';
         });
     }
 
-    // ================================================================
-    // CHARACTER COUNTER
-    // ================================================================
+    const useCustom = document.getElementById('use_custom_shipping');
+    const customSettings = document.getElementById('customShippingSettings');
+    if (useCustom) {
+        useCustom.addEventListener('change', () => {
+            customSettings.style.display = useCustom.checked ? '' : 'none';
+        });
+    }
 
-    function setupCharCounter() {
-        const descriptionField = document.querySelector('textarea[name="description"]');
-        const charCount = document.getElementById('charCount');
+    const shippingType = document.getElementById('customShippingType');
+    if (shippingType) {
+        const flat = document.getElementById('flatShippingFields');
+        const perItem = document.getElementById('perItemShippingFields');
+        const free = document.getElementById('freeShippingFields');
+        shippingType.addEventListener('change', () => {
+            const v = shippingType.value;
+            flat.style.display = (v === 'flat' || v === 'calculated') ? '' : 'none';
+            perItem.style.display = v === 'per_item' ? '' : 'none';
+            free.style.display = v === 'free' ? '' : 'none';
+        });
+    }
 
-        if (descriptionField && charCount) {
-            function updateCharCount() {
-                charCount.textContent = descriptionField.value.length;
-            }
-            descriptionField.addEventListener('input', updateCharCount);
-            updateCharCount();
+    const specContainer = document.getElementById('specificationsContainer');
+    const removeSvg = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg>';
+
+    document.getElementById('addSpecRow').addEventListener('click', () => {
+        const row = document.createElement('div');
+        row.className = 'spec-row';
+        row.innerHTML = `
+            <input type="text" class="form-control spec-title" name="spec_title[]" placeholder="e.g. Material">
+            <input type="text" class="form-control spec-value" name="spec_value[]" placeholder="e.g. Cotton">
+            <button type="button" class="remove-spec-btn" title="Remove" aria-label="Remove specification">${removeSvg}</button>
+        `;
+        specContainer.appendChild(row);
+        row.querySelector('.spec-title').focus();
+    });
+
+    specContainer.addEventListener('click', (e) => {
+        const btn = e.target.closest('.remove-spec-btn');
+        if (!btn) return;
+        const row = btn.closest('.spec-row');
+        if (specContainer.children.length > 1) {
+            row.remove();
+        } else {
+            row.querySelectorAll('input').forEach((i) => (i.value = ''));
         }
-    }
+    });
 
-    // ================================================================
-    // IMAGE PREVIEW
-    // ================================================================
-
-    function setupImagePreview() {
-        window.previewImage = function(input, previewId) {
-            const preview = document.getElementById(previewId);
-            const area = input.closest('.image-upload-area');
-
-            if (input.files && input.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    preview.innerHTML = `<img src="${e.target.result}" alt="Preview" class="preview-image">`;
-                    area.classList.add('has-image');
-                    showToast('Image uploaded successfully!', 'success');
-                };
-                reader.readAsDataURL(input.files[0]);
+    window.addSuggestedSpec = function (title, value) {
+        const rows = specContainer.querySelectorAll('.spec-row');
+        let filled = false;
+        for (const row of rows) {
+            const t = row.querySelector('.spec-title');
+            const v = row.querySelector('.spec-value');
+            if (t && v && !t.value.trim() && !v.value.trim()) {
+                t.value = title;
+                v.value = value;
+                filled = true;
+                break;
             }
-        };
-
-        window.removeImage = function(previewId, inputId) {
-            const preview = document.getElementById(previewId);
-            const input = document.getElementById(inputId);
-            const area = input.closest('.image-upload-area');
-
-            preview.innerHTML = `
-                <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                <div class="upload-text">Click to upload main image</div>
-                <div class="upload-hint">PNG, JPG or WEBP (Max 5MB)</div>
-            `;
-            area.classList.remove('has-image');
-            input.value = '';
-        };
-    }
-
-    // ================================================================
-    // SPECIFICATIONS
-    // ================================================================
-
-    function setupSpecifications() {
-        const specContainer = document.getElementById('specificationsContainer');
-
-        document.getElementById('addSpecRow').addEventListener('click', function() {
+        }
+        if (!filled) {
             const row = document.createElement('div');
             row.className = 'spec-row';
             row.innerHTML = `
-                <input type="text" class="form-control form-control-sm spec-title" name="spec_title[]" placeholder="e.g. Material">
-                <input type="text" class="form-control form-control-sm spec-value" name="spec_value[]" placeholder="e.g. Cotton">
-                <button type="button" class="remove-spec-btn" title="Remove">
-                    <i class="fas fa-times"></i>
-                </button>
+                <input type="text" class="form-control spec-title" name="spec_title[]" value="${escapeAttr(title)}">
+                <input type="text" class="form-control spec-value" name="spec_value[]" value="${escapeAttr(value)}">
+                <button type="button" class="remove-spec-btn" title="Remove" aria-label="Remove specification">${removeSvg}</button>
             `;
             specContainer.appendChild(row);
+        }
+    };
+
+    const metaTitle = document.getElementById('metaTitle');
+    const metaDesc = document.getElementById('metaDescription');
+    const seoTitle = document.getElementById('seoPreviewTitle');
+    const seoDesc = document.getElementById('seoPreviewDescription');
+    const productTitleDefault = '{{ product.title|escapejs }}';
+
+    if (metaTitle) {
+        metaTitle.addEventListener('input', () => {
+            seoTitle.textContent = metaTitle.value || productTitleDefault;
         });
-
-        specContainer.addEventListener('click', function(e) {
-            const btn = e.target.closest('.remove-spec-btn');
-            if (!btn) return;
-
-            const row = btn.closest('.spec-row');
-            if (specContainer.children.length > 1) {
-                row.remove();
-            } else {
-                const inputs = row.querySelectorAll('input');
-                inputs.forEach(input => input.value = '');
-            }
-        });
-
-        window.addSuggestedSpec = function(title, value) {
-            const rows = specContainer.querySelectorAll('.spec-row');
-            let added = false;
-
-            for (let row of rows) {
-                const titleInput = row.querySelector('.spec-title');
-                const valueInput = row.querySelector('.spec-value');
-                if (titleInput && valueInput && !titleInput.value.trim() && !valueInput.value.trim()) {
-                    titleInput.value = title;
-                    valueInput.value = value;
-                    added = true;
-                    break;
-                }
-            }
-
-            if (!added) {
-                const row = document.createElement('div');
-                row.className = 'spec-row';
-                row.innerHTML = `
-                    <input type="text" class="form-control form-control-sm spec-title" name="spec_title[]" value="${title.replace(/"/g, '&quot;')}">
-                    <input type="text" class="form-control form-control-sm spec-value" name="spec_value[]" value="${value.replace(/"/g, '&quot;')}">
-                    <button type="button" class="remove-spec-btn" title="Remove">
-                        <i class="fas fa-times"></i>
-                    </button>
-                `;
-                specContainer.appendChild(row);
-            }
-        };
     }
-
-    // ================================================================
-    // PRODUCT TYPE TOGGLE
-    // ================================================================
-
-    function setupProductTypeToggle() {
-        const productType = document.getElementById('productType');
-        const digitalSettings = document.getElementById('digitalSettings');
-
-        if (productType) {
-            productType.addEventListener('change', function() {
-                digitalSettings.style.display = this.value === 'digital' ? 'block' : 'none';
-            });
-        }
-    }
-
-    // ================================================================
-    // SHIPPING TOGGLES
-    // ================================================================
-
-    function setupShippingToggles() {
-        const useCustomShipping = document.getElementById('use_custom_shipping');
-        const customShippingSettings = document.getElementById('customShippingSettings');
-
-        if (useCustomShipping) {
-            useCustomShipping.addEventListener('change', function() {
-                customShippingSettings.classList.toggle('collapsed', !this.checked);
-            });
-        }
-
-        const customShippingType = document.getElementById('customShippingType');
-        const flatFields = document.getElementById('flatShippingFields');
-        const perItemFields = document.getElementById('perItemShippingFields');
-        const freeFields = document.getElementById('freeShippingFields');
-
-        if (customShippingType) {
-            customShippingType.addEventListener('change', function() {
-                const type = this.value;
-                flatFields.style.display = (type === 'flat' || type === 'calculated') ? 'block' : 'none';
-                perItemFields.style.display = type === 'per_item' ? 'block' : 'none';
-                freeFields.style.display = type === 'free' ? 'block' : 'none';
-            });
-        }
-    }
-
-    // ================================================================
-    // SEO PREVIEW
-    // ================================================================
-
-    function setupSeoPreview() {
-        const metaTitle = document.querySelector('input[name="meta_title"]');
-        const metaDescription = document.querySelector('textarea[name="meta_description"]');
-        const seoTitle = document.getElementById('seoPreviewTitle');
-        const seoDesc = document.getElementById('seoPreviewDescription');
-
-        if (metaTitle) {
-            metaTitle.addEventListener('input', function() {
-                seoTitle.textContent = this.value || '{{ product.title }}';
-            });
-        }
-
-        if (metaDescription) {
-            metaDescription.addEventListener('input', function() {
-                seoDesc.textContent = this.value || 'No description provided';
-            });
-        }
-    }
-
-    // ================================================================
-    // SAVE BUTTON
-    // ================================================================
-
-    function setupSaveButton() {
-        document.getElementById('saveProductBtn').addEventListener('click', async function() {
-            const btn = this;
-            const originalHtml = btn.innerHTML;
-
-            btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Saving...';
-            btn.disabled = true;
-
-            try {
-                const formData = new FormData(document.getElementById('productForm'));
-                const response = await fetch('{% url "update_product" subdomain=page.subdomain product_id=product.id %}', {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'X-CSRFToken': '{{ csrf_token }}'
-                    }
-                });
-
-                const data = await response.json();
-
-                if (data.success) {
-                    showToast('Product saved successfully! ✅', 'success');
-                    document.getElementById('lastSavedTime').textContent = new Date().toLocaleTimeString();
-
-                    setTimeout(() => {
-                        window.location.href = '{% url "manage_products" subdomain=page.subdomain %}';
-                    }, 1500);
-                } else {
-                    throw new Error(data.error || 'Failed to save');
-                }
-            } catch (error) {
-                showToast('Error: ' + error.message, 'error');
-                btn.innerHTML = originalHtml;
-                btn.disabled = false;
-            }
+    if (metaDesc) {
+        metaDesc.addEventListener('input', () => {
+            seoDesc.textContent = metaDesc.value || 'No description provided.';
         });
     }
 
-    // ================================================================
-    // KEYBOARD SHORTCUTS
-    // ================================================================
-
-    function setupKeyboardShortcuts() {
-        document.addEventListener('keydown', function(e) {
-            if ((e.ctrlKey || e.metaKey) && e.key === 's') {
-                e.preventDefault();
-                document.getElementById('saveProductBtn').click();
-            }
-
-            if (e.key === 'Escape') {
-                if (confirm('Are you sure you want to cancel? Unsaved changes will be lost.')) {
-                    window.location.href = '{% url "manage_products" subdomain=page.subdomain %}';
-                }
-            }
-        });
+    function escapeAttr(str) {
+        return String(str).replace(/[&<>"']/g, (c) => ({
+            '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+        }[c]));
     }
-
-    // ================================================================
-    // HELPERS
-    // ================================================================
-
-    function showToast(message, type) {
-        const existing = document.querySelector('.toast-notification');
-        if (existing) existing.remove();
-
-        const toast = document.createElement('div');
-        toast.className = `toast-notification ${type}`;
-        toast.innerHTML = `
-            <span>${message}</span>
-            <button class="toast-close" onclick="this.closest('.toast-notification').remove()">✕</button>
-        `;
-        document.body.appendChild(toast);
-
-        setTimeout(() => toast.classList.add('show'), 10);
-
-        setTimeout(() => {
-            toast.classList.remove('show');
-            setTimeout(() => toast.remove(), 400);
-        }, 4000);
-    }
+})();
 </script>
 {% endblock %}

@@ -498,7 +498,66 @@
                             <div class="wishlist-item" id="section-207" data-product-id="{{ wishlist_item.product.id }}">
                                 <div class="wishlist-item-image">
                                     {% if image_customizations.33 %}
-                                        <img src="{{ image_customizations.33.image_url }}" alt="{{ image_customizations.33.alt_text|default:wishlist_item.product.title }}">
+                                        <img {% with video=video_customizations.33 %}
+    {% if video %}
+        {# ===== VIDEO EXISTS - RENDER VIDEO ===== #}
+        <div class="editable-video" 
+             data-image="33" 
+             data-is-video="true"
+             style="position: relative; overflow: hidden; display: inline-block; max-width: 100%; border-radius: 8px; cursor: pointer;">
+            
+            <video 
+                src="{{ video.video_url }}" 
+                poster="{{ video.poster_url|default:'' }}"
+                {% if video.autoplay %}autoplay{% endif %}
+                {% if video.loop %}loop{% endif %}
+                {% if video.muted %}muted{% endif %}
+                {% if video.controls %}controls{% endif %}
+                style="width: 100%; height: 100%; display: block; object-fit: cover;"
+            >
+                Your browser does not support the video tag.
+            </video>
+            
+            {# ===== PLAY BUTTON OVERLAY ===== #}
+            {% if video.show_play_button %}
+            <div class="video-overlay" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 24px;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            ">
+                <i class="fas fa-play"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+        {# ===== NO VIDEO - RENDER IMAGE ===== #}
+        {% if image_customizations.33 %}
+            <img src="{{ image_customizations.33.image_url }}" 
+                 alt="{{ image_customizations.33.alt_text|default:'{{ image_customizations.33.alt_text|default:wishlist_item.product.title }}' }}" 
+                 class="editable-image" 
+                 data-image="33">
+        {% else %}
+            <img src="https://images.pexels.com/photos/6311675/pexels-photo-6311675.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                 alt="{{ image_customizations.33.alt_text|default:wishlist_item.product.title }}" 
+                 class="editable-image" 
+                 data-image="33">
+        {% endif %}
+    {% endif %}
+{% endwith %} alt="{{ image_customizations.33.alt_text|default:wishlist_item.product.title }}">
                                     {% else %}
                                         <img src="https://cdn.pixabay.com/photo/2023/12/23/08/42/island-8465139_1280.png" alt="{{ wishlist_item.product.title }}">
                                     {% endif %}
@@ -585,7 +644,66 @@
                                 <div class="product-card" id="section-215">
                                     <div class="product-img">
                                         {% if image_customizations.34 %}
-                                            <img src="{{ image_customizations.34.image_url }}" alt="{{ image_customizations.34.alt_text|default:rvp.product.title }}">
+                                            <img {% with video=video_customizations.34 %}
+    {% if video %}
+        {# ===== VIDEO EXISTS - RENDER VIDEO ===== #}
+        <div class="editable-video" 
+             data-image="34" 
+             data-is-video="true"
+             style="position: relative; overflow: hidden; display: inline-block; max-width: 100%; border-radius: 8px; cursor: pointer;">
+            
+            <video 
+                src="{{ video.video_url }}" 
+                poster="{{ video.poster_url|default:'' }}"
+                {% if video.autoplay %}autoplay{% endif %}
+                {% if video.loop %}loop{% endif %}
+                {% if video.muted %}muted{% endif %}
+                {% if video.controls %}controls{% endif %}
+                style="width: 100%; height: 100%; display: block; object-fit: cover;"
+            >
+                Your browser does not support the video tag.
+            </video>
+            
+            {# ===== PLAY BUTTON OVERLAY ===== #}
+            {% if video.show_play_button %}
+            <div class="video-overlay" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 24px;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            ">
+                <i class="fas fa-play"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+        {# ===== NO VIDEO - RENDER IMAGE ===== #}
+        {% if image_customizations.34 %}
+            <img src="{{ image_customizations.34.image_url }}" 
+                 alt="{{ image_customizations.34.alt_text|default:'{{ image_customizations.33.alt_text|default:wishlist_item.product.title }}' }}" 
+                 class="editable-image" 
+                 data-image="34">
+        {% else %}
+            <img src="https://images.pexels.com/photos/6311675/pexels-photo-6311675.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                 alt="{{ image_customizations.33.alt_text|default:wishlist_item.product.title }}" 
+                 class="editable-image" 
+                 data-image="34">
+        {% endif %}
+    {% endif %}
+{% endwith %} alt="{{ image_customizations.34.alt_text|default:rvp.product.title }}">
                                         {% else %}
                                             <img src="https://cdn.pixabay.com/photo/2023/12/23/08/42/island-8465139_1280.png" alt="{{ rvp.product.title }}">
                                         {% endif %}

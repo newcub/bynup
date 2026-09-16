@@ -5,236 +5,1103 @@
 
 {% block extra_css %}
 <style>
-    .exempt-container {
-        max-width: 1200px;
-        margin: 0 auto;
+:root {
+    --n-0: #ffffff;
+    --n-50: #fafafa;
+    --n-100: #f4f4f5;
+    --n-200: #e4e4e7;
+    --n-300: #d4d4d8;
+    --n-400: #a1a1aa;
+    --n-500: #71717a;
+    --n-600: #52525b;
+    --n-700: #3f3f46;
+    --n-800: #27272a;
+    --n-900: #18181b;
+
+    --accent: var(--primary-color, #111827);
+    --accent-hover: #000000;
+
+    --success: #15803d;
+    --warning: #a16207;
+    --danger: #b91c1c;
+
+    --border: var(--n-200);
+    --border-strong: var(--n-300);
+    --text: var(--n-900);
+    --text-muted: var(--n-500);
+    --text-subtle: var(--n-400);
+
+    --radius-sm: 4px;
+    --radius: 6px;
+    --radius-lg: 10px;
+
+    --page-bg: #f6f7f9;
+    --surface-shadow: 0 1px 2px rgba(24, 24, 27, 0.04), 0 1px 1px rgba(24, 24, 27, 0.03);
+    --surface-shadow-hover: 0 4px 12px rgba(24, 24, 27, 0.06), 0 1px 2px rgba(24, 24, 27, 0.04);
+}
+
+/* ===== Shell — cooperates with sidebar.html ===== */
+.management-layout {
+    background: var(--page-bg);
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 13px;
+    color: var(--text);
+}
+
+.management-content { padding: 0; }
+
+.exempt-wrap {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem 2rem 4rem;
+}
+
+/* ===== Context breadcrumb ===== */
+.catalog-context {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.context-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.15s;
+    font-weight: 500;
+}
+
+.context-back:hover { color: var(--text); }
+.context-back svg { transition: transform 0.15s; }
+.context-back:hover svg { transform: translateX(-2px); }
+.context-sep { color: var(--n-300); }
+.context-current { color: var(--text); font-weight: 500; }
+
+/* ===== Title row ===== */
+.catalog-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.catalog-title-block { min-width: 0; }
+
+.catalog-title {
+    font-size: 1.625rem;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    color: var(--text);
+    margin: 0 0 0.375rem 0;
+    line-height: 1.15;
+}
+
+.catalog-sub {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    margin: 0;
+    font-variant-numeric: tabular-nums;
+}
+
+.catalog-sub strong {
+    color: var(--text);
+    font-weight: 600;
+}
+
+.catalog-actions {
+    display: flex;
+    gap: 0.375rem;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* ===== Buttons ===== */
+.btn {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    border-radius: var(--radius);
+    padding: 0.5rem 0.875rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    line-height: 1.25;
+    transition: background 0.15s, border-color 0.15s, color 0.15s, box-shadow 0.15s;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: inherit;
+}
+
+.btn-ghost {
+    background: var(--n-0);
+    border-color: var(--border);
+    color: var(--n-700);
+    box-shadow: 0 1px 2px rgba(24, 24, 27, 0.04);
+}
+
+.btn-ghost:hover {
+    background: var(--n-0);
+    border-color: var(--border-strong);
+    color: var(--text);
+    box-shadow: var(--surface-shadow);
+}
+
+.btn-accent {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+    box-shadow: 0 1px 2px rgba(24, 24, 27, 0.16);
+}
+
+.btn-accent:hover {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+    color: white;
+    box-shadow: 0 4px 12px rgba(24, 24, 27, 0.18);
+}
+
+/* ===== Toolbar ===== */
+.catalog-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    box-shadow: var(--surface-shadow);
+}
+
+.toolbar-search {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 0.625rem;
+    background: var(--n-50);
+    border: 1px solid transparent;
+    border-radius: var(--radius);
+    transition: border-color 0.15s, background 0.15s;
+    min-width: 200px;
+}
+
+.toolbar-search:focus-within {
+    background: var(--n-0);
+    border-color: var(--border-strong);
+}
+
+.toolbar-search svg {
+    color: var(--n-400);
+    flex-shrink: 0;
+}
+
+.toolbar-search input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: 0.8125rem;
+    color: var(--text);
+    outline: none;
+    min-width: 0;
+    font-family: inherit;
+}
+
+.toolbar-search input::placeholder { color: var(--n-400); }
+
+.toolbar-divider {
+    width: 1px;
+    height: 20px;
+    background: var(--border);
+    flex-shrink: 0;
+}
+
+.toolbar-filter { flex-shrink: 0; }
+
+.filter-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.4375rem 0.625rem;
+    background: transparent;
+    border: none;
+    color: var(--n-600);
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    transition: background 0.15s, color 0.15s;
+    font-family: inherit;
+    line-height: 1.2;
+}
+
+.filter-trigger:hover {
+    background: var(--n-100);
+    color: var(--text);
+}
+
+.filter-trigger svg {
+    color: var(--n-400);
+    transition: transform 0.15s;
+}
+
+.filter-trigger[aria-expanded="true"] svg {
+    transform: rotate(180deg);
+}
+
+.filter-trigger .filter-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+    background: var(--n-900);
+    color: white;
+    border-radius: 8px;
+    font-size: 0.625rem;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.filter-panel {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.15);
+    padding: 0.75rem;
+    min-width: 240px;
+    font-size: 0.8125rem;
+}
+
+.filter-panel .filter-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+}
+
+.filter-panel label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ===== Active filter pills ===== */
+.active-filters {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.active-filters-label {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    margin-right: 0.25rem;
+}
+
+.filter-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.5rem 0.25rem 0.625rem;
+    background: var(--n-100);
+    border-radius: 4px;
+    font-size: 0.6875rem;
+    color: var(--n-700);
+    font-weight: 500;
+}
+
+.filter-pill .pill-key { color: var(--text-muted); }
+.filter-pill .pill-value { color: var(--text); font-weight: 600; }
+
+.filter-pill .pill-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    color: var(--n-500);
+    cursor: pointer;
+    padding: 0;
+    margin-left: 0.125rem;
+    transition: background 0.15s, color 0.15s;
+}
+
+.filter-pill .pill-close:hover {
+    background: var(--n-300);
+    color: var(--text);
+}
+
+/* ===== Panel ===== */
+.panel {
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--surface-shadow);
+}
+
+.panel-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.875rem 1.125rem;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(to bottom, #ffffff, #fcfcfd);
+}
+
+.panel-title {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0;
+    letter-spacing: -0.005em;
+}
+
+.panel-meta {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+}
+
+/* ===== Customers list ===== */
+.customers-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.customer-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1rem 1.125rem;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.1s;
+}
+
+.customer-row:last-child { border-bottom: none; }
+.customer-row:hover { background: var(--n-50); }
+
+/* Avatar */
+.customer-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f4f4f5, #e9e9eb);
+    border: 1px solid var(--border);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--n-600);
+    flex-shrink: 0;
+    letter-spacing: -0.02em;
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+    user-select: none;
+}
+
+/* Body */
+.customer-body {
+    min-width: 0;
+}
+
+.customer-email {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0 0 0.375rem 0;
+    line-height: 1.3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.customer-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+    margin-bottom: 0.5rem;
+}
+
+.customer-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3125rem;
+    padding: 0.1875rem 0.5rem;
+    background: var(--n-100);
+    border-radius: 4px;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    color: var(--n-700);
+    line-height: 1.4;
+    max-width: 220px;
+}
+
+.customer-badge svg {
+    color: var(--n-500);
+    flex-shrink: 0;
+}
+
+.customer-badge span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.customer-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.customer-meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3125rem;
+}
+
+.customer-meta-item svg {
+    color: var(--text-subtle);
+    flex-shrink: 0;
+}
+
+/* Status dot */
+.status-dot {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.status-dot::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--n-400);
+    flex-shrink: 0;
+}
+
+.status-dot.active::before {
+    background: var(--success);
+    box-shadow: 0 0 0 2px rgba(21, 128, 61, 0.15);
+}
+
+.status-dot.expired::before { background: var(--danger); }
+.status-dot.pending::before { background: var(--warning); }
+.status-dot.inactive::before { background: var(--n-500); }
+
+/* Actions */
+.customer-actions {
+    display: flex;
+    gap: 0.375rem;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* Row action */
+.row-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--n-500);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.1s, color 0.1s, border-color 0.1s;
+    position: relative;
+}
+
+.row-action:hover {
+    background: var(--n-100);
+    color: var(--text);
+    border-color: var(--border);
+}
+
+.row-action.danger:hover {
+    background: #fef2f2;
+    color: var(--danger);
+    border-color: #fecaca;
+}
+
+.row-action[data-tip]:hover::after {
+    content: attr(data-tip);
+    position: absolute;
+    bottom: calc(100% + 6px);
+    right: 0;
+    background: var(--n-900);
+    color: white;
+    padding: 4px 9px;
+    border-radius: 4px;
+    font-size: 0.6875rem;
+    white-space: nowrap;
+    font-weight: 500;
+    z-index: 10;
+    pointer-events: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* ===== Empty state ===== */
+.empty-state {
+    text-align: center;
+    padding: 5rem 2rem;
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--surface-shadow);
+}
+
+.empty-state-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f4f4f5, #e9e9eb);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--n-500);
+    margin-bottom: 1.25rem;
+}
+
+.empty-state h5 {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0 0 0.4375rem 0;
+    letter-spacing: -0.015em;
+}
+
+.empty-state p {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin: 0 0 1.5rem 0;
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.55;
+}
+
+/* ===== Pagination ===== */
+.pagination {
+    gap: 0.25rem;
+    margin: 0;
+    justify-content: center;
+    display: flex;
+    list-style: none;
+    padding: 0.875rem 1.125rem;
+    border-top: 1px solid var(--border);
+}
+
+.pagination .page-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 32px;
+    padding: 0 0.5rem;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.8125rem;
+    border-radius: var(--radius-sm);
+    background: var(--n-0);
+    text-decoration: none;
+    transition: background 0.15s, border-color 0.15s, color 0.15s, box-shadow 0.15s;
+    font-variant-numeric: tabular-nums;
+    box-shadow: 0 1px 2px rgba(24, 24, 27, 0.03);
+}
+
+.pagination .page-link:hover {
+    background: var(--n-0);
+    color: var(--text);
+    border-color: var(--border-strong);
+    box-shadow: var(--surface-shadow);
+}
+
+.pagination .page-item.active .page-link {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+    box-shadow: 0 1px 2px rgba(24, 24, 27, 0.16);
+}
+
+/* ===== Toast ===== */
+.toast-stack {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    pointer-events: none;
+}
+
+.toast {
+    background: var(--n-900);
+    color: white;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15), 0 2px 6px rgba(0,0,0,0.08);
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    max-width: 360px;
+    pointer-events: auto;
+    animation: toastIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.toast.error { background: var(--danger); }
+
+@keyframes toastIn {
+    from { opacity: 0; transform: translateY(-10px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+    .exempt-wrap { padding: 1.5rem 1rem 3rem; }
+
+    .catalog-title-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
     }
 
-    .exempt-header {
-        background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
-        color: white;
-        padding: 2rem;
-        border-radius: 20px;
-        margin-bottom: 2rem;
-        box-shadow: 0 10px 30px rgba(243, 156, 18, 0.2);
+    .catalog-actions { justify-content: flex-start; flex-wrap: wrap; }
+
+    .catalog-toolbar {
+        flex-wrap: wrap;
+        padding: 0.5rem;
     }
 
-    .customer-card {
-        background: white;
-        border-radius: 16px;
-        padding: 1.5rem;
-        margin-bottom: 1rem;
-        border: 2px solid #eef2f6;
-        transition: all 0.3s ease;
+    .toolbar-search { width: 100%; }
+    .toolbar-divider { display: none; }
+
+    .customer-row {
+        grid-template-columns: auto 1fr;
     }
 
-    .customer-card:hover {
-        border-color: #f39c12;
-        box-shadow: 0 10px 25px rgba(243, 156, 18, 0.1);
+    .customer-actions {
+        grid-column: 1 / -1;
+        justify-content: flex-end;
+        padding-top: 0.75rem;
+        border-top: 1px solid var(--border);
+        margin-top: 0.25rem;
     }
+}
 
-    .customer-avatar {
-        width: 60px;
-        height: 60px;
-        background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 1.5rem;
-        font-weight: 600;
-    }
-
-    .exemption-badge {
-        background: #fef5e7;
-        color: #f39c12;
-        padding: 0.3rem 1rem;
-        border-radius: 30px;
-        font-size: 0.9rem;
-        font-weight: 500;
-        display: inline-block;
-    }
-
-    .expiry-badge {
-        background: #fee9e7;
-        color: #e74c3c;
-        padding: 0.2rem 0.8rem;
-        border-radius: 30px;
-        font-size: 0.8rem;
-    }
+@media (max-width: 640px) {
+    .catalog-title { font-size: 1.375rem; }
+}
 </style>
 {% endblock %}
 
 {% block content %}
-<div class="container py-4">
-    <div class="exempt-container">
-        <!-- Header -->
-        <div class="exempt-header d-flex justify-content-between align-items-center">
-            <div>
-                <h1 class="h3 mb-2">Tax Exempt Customers</h1>
-                <p class="mb-0 opacity-75">Manage customers who are exempt from paying taxes</p>
-            </div>
-            <div>
-                <a href="{% url 'payments:tax_dashboard' page.subdomain %}" class="btn btn-light me-2">
-                    <i class="fas fa-arrow-left me-2"></i>Back
-                </a>
-                <a href="{% url 'payments:tax_exempt_customer_create' page.subdomain %}" class="btn btn-light">
-                    <i class="fas fa-plus me-2"></i>Add Customer
-                </a>
-            </div>
-        </div>
 
-        <!-- Search -->
-        <div class="card mb-4">
-            <div class="card-body">
-                <form method="get" class="row g-3">
-                    <div class="col-md-4">
-                        <input type="text" class="form-control" name="search" 
-                               placeholder="Search by email or company" 
-                               value="{{ filters.search|default:'' }}">
-                    </div>
-                    <div class="col-md-3">
-                        <select name="status" class="form-select">
-                            <option value="">All Status</option>
-                            <option value="active" {% if filters.status == 'active' %}selected{% endif %}>Active</option>
-                            <option value="inactive" {% if filters.status == 'inactive' %}selected{% endif %}>Inactive</option>
-                            <option value="expired" {% if filters.status == 'expired' %}selected{% endif %}>Expired</option>
-                            <option value="pending" {% if filters.status == 'pending' %}selected{% endif %}>Pending Review</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3">
-                        <button type="submit" class="btn btn-primary w-100">
-                            <i class="fas fa-search me-2"></i>Search
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
+<div class="management-layout">
+    {% include 'builder/includes/sidebar.html' with active_menu='taxes' %}
 
-        <!-- Customers List -->
-        {% for customer in customers %}
-        <div class="customer-card">
-            <div class="row align-items-center">
-                <div class="col-auto">
-                    <div class="customer-avatar">
-                        {{ customer.email|first|upper }}
+    <div class="management-content">
+        <div class="exempt-wrap">
+
+            <div class="toast-stack" id="toastStack"></div>
+
+            <!-- Context -->
+            <div class="catalog-context">
+                <a href="{% url 'dashboard' %}" class="context-back">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    <span>Dashboard</span>
+                </a>
+                <span class="context-sep">/</span>
+                <a href="{% url 'payments:tax_dashboard' page.subdomain %}" class="context-back">
+                    <span>Tax</span>
+                </a>
+                <span class="context-sep">/</span>
+                <span class="context-current">Exempt customers</span>
+            </div>
+
+            <!-- Title -->
+            <div class="catalog-title-row">
+                <div class="catalog-title-block">
+                    <h1 class="catalog-title">Exempt customers</h1>
+                    <p class="catalog-sub">
+                        <strong>{{ customers.paginator.count|default:0 }}</strong>
+                        customer{{ customers.paginator.count|default:0|pluralize }} exempt from tax
+                    </p>
+                </div>
+                <div class="catalog-actions">
+                    <a href="{% url 'payments:tax_dashboard' page.subdomain %}" class="btn btn-ghost">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="{% url 'payments:tax_exempt_customer_create' page.subdomain %}" class="btn btn-accent">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 5v14M5 12h14"/>
+                        </svg>
+                        <span>Add customer</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Toolbar -->
+            <div class="catalog-toolbar">
+
+                <div class="toolbar-search">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"/>
+                        <path d="m21 21-4.3-4.3"/>
+                    </svg>
+                    <input type="search" id="customerSearch" placeholder="Search by email or company…"
+                           value="{{ filters.search|default:'' }}">
+                </div>
+
+                <div class="toolbar-divider"></div>
+
+                <!-- Status filter -->
+                <div class="toolbar-filter dropdown">
+                    <button class="filter-trigger" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span>Status</span>
+                        {% if filters.status %}<span class="filter-count">1</span>{% endif %}
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m6 9 6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="dropdown-menu filter-panel">
+                        <form method="get" id="statusFilterForm">
+                            <input type="hidden" name="search" value="{{ filters.search|default:'' }}">
+                            <div class="filter-row">
+                                <label>Status</label>
+                                <select name="status" class="form-select" onchange="document.getElementById('statusFilterForm').submit()">
+                                    <option value="">All statuses</option>
+                                    <option value="active" {% if filters.status == 'active' %}selected{% endif %}>Active</option>
+                                    <option value="inactive" {% if filters.status == 'inactive' %}selected{% endif %}>Inactive</option>
+                                    <option value="expired" {% if filters.status == 'expired' %}selected{% endif %}>Expired</option>
+                                    <option value="pending" {% if filters.status == 'pending' %}selected{% endif %}>Pending review</option>
+                                </select>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="d-flex justify-content-between align-items-start">
-                        <div>
-                            <h5 class="mb-1">{{ customer.email }}</h5>
-                            <div class="mb-2">
+
+            </div>
+
+            <!-- Active filters -->
+            {% if filters.search or filters.status %}
+            <div class="active-filters">
+                <span class="active-filters-label">Filters</span>
+
+                {% if filters.search %}
+                <span class="filter-pill">
+                    <span class="pill-key">Search</span>
+                    <span class="pill-value">"{{ filters.search|truncatechars:20 }}"</span>
+                    <a class="pill-close" href="?{% if filters.status %}status={{ filters.status }}{% endif %}" title="Remove">
+                        <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 6 6 18M6 6l12 12"/>
+                        </svg>
+                    </a>
+                </span>
+                {% endif %}
+
+                {% if filters.status %}
+                <span class="filter-pill">
+                    <span class="pill-key">Status</span>
+                    <span class="pill-value">{{ filters.status|title }}</span>
+                    <a class="pill-close" href="?{% if filters.search %}search={{ filters.search }}{% endif %}" title="Remove">
+                        <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 6 6 18M6 6l12 12"/>
+                        </svg>
+                    </a>
+                </span>
+                {% endif %}
+
+                <a href="{% url 'payments:tax_exempt_customers' page.subdomain %}" style="font-size: 0.6875rem; color: var(--text-muted); margin-left: 0.25rem; text-decoration: none; font-weight: 500;" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text-muted)'">
+                    Clear all
+                </a>
+            </div>
+            {% endif %}
+
+            <!-- Customers -->
+            {% if customers %}
+            <div class="panel">
+                <div class="panel-head">
+                    <h2 class="panel-title">Customers</h2>
+                    <span class="panel-meta">{{ customers.paginator.count }} result{{ customers.paginator.count|pluralize }}</span>
+                </div>
+
+                <div class="customers-list">
+                    {% for customer in customers %}
+                    <div class="customer-row">
+
+                        <!-- Avatar -->
+                        <div class="customer-avatar">
+                            {{ customer.email|first|upper }}
+                        </div>
+
+                        <!-- Body -->
+                        <div class="customer-body">
+                            <p class="customer-email">{{ customer.email }}</p>
+
+                            {% if customer.company_name or customer.tax_id %}
+                            <div class="customer-badges">
                                 {% if customer.company_name %}
-                                <span class="exemption-badge me-2">
-                                    <i class="fas fa-building me-1"></i>{{ customer.company_name }}
+                                <span class="customer-badge">
+                                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="4" y="2" width="16" height="20" rx="2" ry="2"/>
+                                        <path d="M9 22v-4h6v4M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01"/>
+                                    </svg>
+                                    <span>{{ customer.company_name }}</span>
                                 </span>
                                 {% endif %}
                                 {% if customer.tax_id %}
-                                <span class="exemption-badge">
-                                    <i class="fas fa-id-card me-1"></i>{{ customer.tax_id }}
+                                <span class="customer-badge">
+                                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="2" y="6" width="20" height="12" rx="2"/>
+                                        <circle cx="8" cy="12" r="2"/>
+                                        <path d="M14 10h4M14 14h4"/>
+                                    </svg>
+                                    <span>{{ customer.tax_id }}</span>
                                 </span>
                                 {% endif %}
                             </div>
-                            <div class="text-muted small">
-                                <span class="me-3">
-                                    <i class="fas fa-tag me-1"></i>{{ customer.get_exemption_reason_display|default:"No reason specified" }}
+                            {% endif %}
+
+                            <div class="customer-meta">
+                                <span class="customer-meta-item">
+                                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+                                        <line x1="7" y1="7" x2="7.01" y2="7"/>
+                                    </svg>
+                                    <span>{{ customer.get_exemption_reason_display|default:"No reason specified" }}</span>
                                 </span>
-                                <span class="me-3">
-                                    <i class="fas fa-calendar-plus me-1"></i>Added: {{ customer.created_at|date:"M d, Y" }}
+                                <span class="customer-meta-item">
+                                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                        <line x1="16" y1="2" x2="16" y2="6"/>
+                                        <line x1="8" y1="2" x2="8" y2="6"/>
+                                        <line x1="3" y1="10" x2="21" y2="10"/>
+                                    </svg>
+                                    <span>Added {{ customer.created_at|date:"M j, Y" }}</span>
                                 </span>
                                 {% if customer.exempt_until %}
-                                <span class="expiry-badge">
-                                    <i class="fas fa-hourglass-end me-1"></i>Expires: {{ customer.exempt_until|date:"M d, Y" }}
+                                <span class="customer-meta-item">
+                                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <path d="M12 6v6l4 2"/>
+                                    </svg>
+                                    <span>Expires {{ customer.exempt_until|date:"M j, Y" }}</span>
                                 </span>
                                 {% endif %}
                             </div>
                         </div>
-                        <div>
-                            <span class="badge {% if customer.is_currently_exempt %}bg-success{% else %}bg-secondary{% endif %} me-2">
+
+                        <!-- Actions -->
+                        <div class="customer-actions">
+                            <span class="status-dot {% if customer.is_currently_exempt %}active{% else %}inactive{% endif %}">
                                 {% if customer.is_currently_exempt %}Active{% else %}Inactive{% endif %}
                             </span>
-                            <div class="btn-group">
-                                <a href="{% url 'payments:tax_exempt_customer_edit' page.subdomain customer.id %}" 
-                                   class="btn btn-sm btn-outline-primary">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                                <button class="btn btn-sm btn-outline-danger" 
-                                        onclick="deleteCustomer({{ customer.id }}, '{{ customer.email }}')">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </div>
+
+                            <a href="{% url 'payments:tax_exempt_customer_edit' page.subdomain customer.id %}"
+                               class="row-action" data-tip="Edit">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
+                                </svg>
+                            </a>
+                            <button class="row-action danger"
+                                    data-tip="Remove"
+                                    onclick="deleteCustomer({{ customer.id }}, '{{ customer.email|escapejs }}')">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/>
+                                </svg>
+                            </button>
                         </div>
+
                     </div>
+                    {% endfor %}
                 </div>
+
+                <!-- Pagination -->
+                {% if customers.has_other_pages %}
+                <ul class="pagination">
+                    {% if customers.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ customers.previous_page_number }}{% if filters.search %}&search={{ filters.search }}{% endif %}{% if filters.status %}&status={{ filters.status }}{% endif %}">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m15 18-6-6 6-6"/>
+                            </svg>
+                        </a>
+                    </li>
+                    {% endif %}
+
+                    {% for i in customers.paginator.page_range %}
+                    {% if customers.number == i %}
+                    <li class="page-item active"><span class="page-link">{{ i }}</span></li>
+                    {% elif i > customers.number|add:'-3' and i < customers.number|add:'3' %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ i }}{% if filters.search %}&search={{ filters.search }}{% endif %}{% if filters.status %}&status={{ filters.status }}{% endif %}">{{ i }}</a>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+
+                    {% if customers.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ customers.next_page_number }}{% if filters.search %}&search={{ filters.search }}{% endif %}{% if filters.status %}&status={{ filters.status }}{% endif %}">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m9 18 6-6-6-6"/>
+                            </svg>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+                {% endif %}
             </div>
-        </div>
-        {% empty %}
-        <div class="text-center py-5">
-            <i class="fas fa-users fa-4x text-muted mb-3"></i>
-            <h5 class="text-muted">No Exempt Customers</h5>
-            <p class="text-muted">Add customers who should be exempt from paying taxes</p>
-            <a href="{% url 'payments:tax_exempt_customer_create' page.subdomain %}" class="btn btn-primary">
-                <i class="fas fa-plus me-2"></i>Add First Customer
-            </a>
-        </div>
-        {% endfor %}
 
-        <!-- Pagination -->
-        {% if customers.has_other_pages %}
-        <nav class="mt-4">
-            <ul class="pagination justify-content-center">
-                {% if customers.has_previous %}
-                <li class="page-item">
-                    <a class="page-link" href="?page={{ customers.previous_page_number }}{% if filters.search %}&search={{ filters.search }}{% endif %}{% if filters.status %}&status={{ filters.status }}{% endif %}">
-                        Previous
-                    </a>
-                </li>
-                {% endif %}
+            {% else %}
 
-                {% for i in customers.paginator.page_range %}
-                {% if customers.number == i %}
-                <li class="page-item active"><span class="page-link">{{ i }}</span></li>
+            <!-- Empty state -->
+            <div class="empty-state">
+                <div class="empty-state-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                </div>
+                <h5>
+                    {% if filters.search or filters.status %}
+                    No customers match your filters
+                    {% else %}
+                    No exempt customers yet
+                    {% endif %}
+                </h5>
+                <p>
+                    {% if filters.search or filters.status %}
+                    Try adjusting or clearing your filters to see more results.
+                    {% else %}
+                    Add customers who should be exempt from paying taxes at checkout.
+                    {% endif %}
+                </p>
+                {% if filters.search or filters.status %}
+                <a href="{% url 'payments:tax_exempt_customers' page.subdomain %}" class="btn btn-ghost">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 6 6 18M6 6l12 12"/>
+                    </svg>
+                    <span>Clear filters</span>
+                </a>
                 {% else %}
-                <li class="page-item">
-                    <a class="page-link" href="?page={{ i }}{% if filters.search %}&search={{ filters.search }}{% endif %}{% if filters.status %}&status={{ filters.status }}{% endif %}">{{ i }}</a>
-                </li>
+                <a href="{% url 'payments:tax_exempt_customer_create' page.subdomain %}" class="btn btn-accent">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 5v14M5 12h14"/>
+                    </svg>
+                    <span>Add first customer</span>
+                </a>
                 {% endif %}
-                {% endfor %}
+            </div>
 
-                {% if customers.has_next %}
-                <li class="page-item">
-                    <a class="page-link" href="?page={{ customers.next_page_number }}{% if filters.search %}&search={{ filters.search }}{% endif %}{% if filters.status %}&status={{ filters.status }}{% endif %}">
-                        Next
-                    </a>
-                </li>
-                {% endif %}
-            </ul>
-        </nav>
-        {% endif %}
+            {% endif %}
+
+        </div>
     </div>
 </div>
 
 <script>
-function deleteCustomer(customerId, email) {
-    if (confirm(`Remove ${email} from exemption list?`)) {
-        fetch(`/payments/tax/{{ page.subdomain }}/exempt/${customerId}/delete/`, {
-            method: 'POST',
-            headers: {
-                'X-CSRFToken': '{{ csrf_token }}',
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                location.reload();
-            } else {
-                alert('Error: ' + data.error);
-            }
+/* ============ Live search (debounced) ============ */
+document.addEventListener('DOMContentLoaded', function () {
+    const searchInput = document.getElementById('customerSearch');
+    if (searchInput) {
+        let timer = null;
+        searchInput.addEventListener('input', function () {
+            clearTimeout(timer);
+            timer = setTimeout(() => {
+                const url = new URL(window.location.href);
+                const val = searchInput.value.trim();
+                if (val) url.searchParams.set('search', val);
+                else url.searchParams.delete('search');
+                url.searchParams.delete('page');
+                window.location.href = url.toString();
+            }, 500);
         });
     }
+});
+
+/* ============ Delete customer ============ */
+function deleteCustomer(customerId, email) {
+    if (!confirm(`Remove ${email} from the exemption list?`)) return;
+
+    fetch(`/payments/tax/{{ page.subdomain }}/exempt/${customerId}/delete/`, {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': '{{ csrf_token }}',
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            location.reload();
+        } else {
+            toast('Error: ' + (data.error || 'Could not delete'), 'error');
+        }
+    })
+    .catch(() => toast('Network error', 'error'));
+}
+
+/* ============ Toast ============ */
+function toast(message, type = 'info') {
+    const stack = document.getElementById('toastStack');
+    if (!stack) return;
+
+    const el = document.createElement('div');
+    el.className = `toast ${type}`;
+    const icon = type === 'error'
+        ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>'
+        : '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+    el.innerHTML = `${icon}<span>${message}</span>`;
+    stack.appendChild(el);
+    setTimeout(() => {
+        el.style.transition = 'opacity 0.2s, transform 0.2s';
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(-8px)';
+        setTimeout(() => el.remove(), 200);
+    }, 3000);
 }
 </script>
+
 {% endblock %}

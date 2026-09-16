@@ -494,7 +494,66 @@
                             <div class="category-card" id="section-251" data-category="{{ category.slug|default:category.name|slugify }}">
                                 <div class="category-image">
                                     {% if image_customizations.35 %}
-                                        <img src="{{ image_customizations.35.image_url }}" alt="{{ image_customizations.35.alt_text|default:category.name }}">
+                                        <img {% with video=video_customizations.35 %}
+    {% if video %}
+        {# ===== VIDEO EXISTS - RENDER VIDEO ===== #}
+        <div class="editable-video" 
+             data-image="35" 
+             data-is-video="true"
+             style="position: relative; overflow: hidden; display: inline-block; max-width: 100%; border-radius: 8px; cursor: pointer;">
+            
+            <video 
+                src="{{ video.video_url }}" 
+                poster="{{ video.poster_url|default:'' }}"
+                {% if video.autoplay %}autoplay{% endif %}
+                {% if video.loop %}loop{% endif %}
+                {% if video.muted %}muted{% endif %}
+                {% if video.controls %}controls{% endif %}
+                style="width: 100%; height: 100%; display: block; object-fit: cover;"
+            >
+                Your browser does not support the video tag.
+            </video>
+            
+            {# ===== PLAY BUTTON OVERLAY ===== #}
+            {% if video.show_play_button %}
+            <div class="video-overlay" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 24px;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            ">
+                <i class="fas fa-play"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+        {# ===== NO VIDEO - RENDER IMAGE ===== #}
+        {% if image_customizations.35 %}
+            <img src="{{ image_customizations.35.image_url }}" 
+                 alt="{{ image_customizations.35.alt_text|default:'{{ image_customizations.35.alt_text|default:category.name }}' }}" 
+                 class="editable-image" 
+                 data-image="35">
+        {% else %}
+            <img src="https://images.pexels.com/photos/6311675/pexels-photo-6311675.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                 alt="{{ image_customizations.35.alt_text|default:category.name }}" 
+                 class="editable-image" 
+                 data-image="35">
+        {% endif %}
+    {% endif %}
+{% endwith %} alt="{{ image_customizations.35.alt_text|default:category.name }}">
                                     {% else %}
                                         <img src="https://cdn.pixabay.com/photo/2023/12/23/08/42/island-8465139_1280.png" alt="{{ category.name }}">
                                     {% endif %}
@@ -571,7 +630,66 @@
                 </div>
                 <div class="spotlight-image">
                     {% if image_customizations.36 %}
-                        <img src="{{ image_customizations.36.image_url }}" alt="{{ image_customizations.36.alt_text|default:'Audio Collection' }}">
+                        <img {% with video=video_customizations.36 %}
+    {% if video %}
+        {# ===== VIDEO EXISTS - RENDER VIDEO ===== #}
+        <div class="editable-video" 
+             data-image="36" 
+             data-is-video="true"
+             style="position: relative; overflow: hidden; display: inline-block; max-width: 100%; border-radius: 8px; cursor: pointer;">
+            
+            <video 
+                src="{{ video.video_url }}" 
+                poster="{{ video.poster_url|default:'' }}"
+                {% if video.autoplay %}autoplay{% endif %}
+                {% if video.loop %}loop{% endif %}
+                {% if video.muted %}muted{% endif %}
+                {% if video.controls %}controls{% endif %}
+                style="width: 100%; height: 100%; display: block; object-fit: cover;"
+            >
+                Your browser does not support the video tag.
+            </video>
+            
+            {# ===== PLAY BUTTON OVERLAY ===== #}
+            {% if video.show_play_button %}
+            <div class="video-overlay" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 24px;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            ">
+                <i class="fas fa-play"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+        {# ===== NO VIDEO - RENDER IMAGE ===== #}
+        {% if image_customizations.36 %}
+            <img src="{{ image_customizations.36.image_url }}" 
+                 alt="{{ image_customizations.36.alt_text|default:'{{ image_customizations.35.alt_text|default:category.name }}' }}" 
+                 class="editable-image" 
+                 data-image="36">
+        {% else %}
+            <img src="https://images.pexels.com/photos/6311675/pexels-photo-6311675.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                 alt="{{ image_customizations.35.alt_text|default:category.name }}" 
+                 class="editable-image" 
+                 data-image="36">
+        {% endif %}
+    {% endif %}
+{% endwith %} alt="{{ image_customizations.36.alt_text|default:'Audio Collection' }}">
                     {% else %}
                         <img src="https://cdn.pixabay.com/photo/2023/12/23/08/42/island-8465139_1280.png" alt="Audio Collection">
                     {% endif %}
@@ -604,7 +722,66 @@
                             <div class="product-card" id="section-269">
                                 <div class="product-img">
                                     {% if image_customizations.37 %}
-                                        <img src="{{ image_customizations.37.image_url }}" alt="{{ image_customizations.37.alt_text|default:product.title }}">
+                                        <img {% with video=video_customizations.37 %}
+    {% if video %}
+        {# ===== VIDEO EXISTS - RENDER VIDEO ===== #}
+        <div class="editable-video" 
+             data-image="37" 
+             data-is-video="true"
+             style="position: relative; overflow: hidden; display: inline-block; max-width: 100%; border-radius: 8px; cursor: pointer;">
+            
+            <video 
+                src="{{ video.video_url }}" 
+                poster="{{ video.poster_url|default:'' }}"
+                {% if video.autoplay %}autoplay{% endif %}
+                {% if video.loop %}loop{% endif %}
+                {% if video.muted %}muted{% endif %}
+                {% if video.controls %}controls{% endif %}
+                style="width: 100%; height: 100%; display: block; object-fit: cover;"
+            >
+                Your browser does not support the video tag.
+            </video>
+            
+            {# ===== PLAY BUTTON OVERLAY ===== #}
+            {% if video.show_play_button %}
+            <div class="video-overlay" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 24px;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            ">
+                <i class="fas fa-play"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+        {# ===== NO VIDEO - RENDER IMAGE ===== #}
+        {% if image_customizations.37 %}
+            <img src="{{ image_customizations.37.image_url }}" 
+                 alt="{{ image_customizations.37.alt_text|default:'{{ image_customizations.35.alt_text|default:category.name }}' }}" 
+                 class="editable-image" 
+                 data-image="37">
+        {% else %}
+            <img src="https://images.pexels.com/photos/6311675/pexels-photo-6311675.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                 alt="{{ image_customizations.35.alt_text|default:category.name }}" 
+                 class="editable-image" 
+                 data-image="37">
+        {% endif %}
+    {% endif %}
+{% endwith %} alt="{{ image_customizations.37.alt_text|default:product.title }}">
                                     {% else %}
                                         <img src="https://cdn.pixabay.com/photo/2023/12/23/08/42/island-8465139_1280.png" alt="{{ product.title }}">
                                     {% endif %}

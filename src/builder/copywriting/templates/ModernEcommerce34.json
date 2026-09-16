@@ -10,685 +10,1309 @@
       },
       {
         "id": "2",
-        "text": "Curations0",
-        "type": "button",
+        "text": "Our Story",
+        "type": "link",
         "customized": false
       },
       {
         "id": "3",
-        "text": "Basket0",
-        "type": "button",
+        "text": "The Pan",
+        "type": "link",
         "customized": false
       },
       {
         "id": "4",
-        "text": "Sign Up",
+        "text": "Community",
         "type": "link",
         "customized": false
       },
       {
         "id": "5",
-        "text": "Sign In",
+        "text": "FAQ",
         "type": "link",
         "customized": false
       },
       {
         "id": "6",
-        "text": "Orders",
-        "type": "link",
+        "text": "Saved0",
+        "type": "button",
         "customized": false
       },
       {
         "id": "7",
-        "text": "Logout",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "8",
-        "text": "Artisan Crafted",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "9",
-        "text": "Tools molded for theintentionalhome kitchen.",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "10",
-        "text": "Every piece in our collection celebrates true-weight cast iron, dense-fiber wood, and organic stoneware — designed to elevate your daily cooking ritual.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "11",
-        "text": "Explore Collection",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "12",
-        "text": "Get in Touch",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "13",
-        "text": "500+",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "14",
-        "text": "Happy Customers",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "15",
-        "text": "4.9★",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "16",
-        "text": "Average Rating",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "17",
-        "text": "100%",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "18",
-        "text": "Satisfaction Guarantee",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "19",
-        "text": "Premium Quality",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "20",
-        "text": "Free Shipping",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "21",
-        "text": "30-Day Returns",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "22",
-        "text": "The Active Collection",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "23",
-        "text": "✦ Curated for Performance",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "100",
-        "text": "⭐ Bestseller",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "101",
-        "text": "Cast Iron Griddle Plinth",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "102",
-        "text": "$175.00",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "103",
-        "text": "Inspect",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "104",
-        "text": "Stoneware Carafe",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "105",
-        "text": "$88.00",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "106",
-        "text": "🧰 Essential",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "107",
-        "text": "Walnut Chopping Deck",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "108",
-        "text": "$155.00",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "24",
-        "text": "Connect with Our Studio",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "25",
-        "text": "Looking to organize private testing loops, coordinate professional bulk kitchen setups, or book a seat at our upcoming seasonal workshop tables? Submit your message parameters into our registry desk.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "26",
-        "text": "desk@pantrymatrix.internal",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "27",
-        "text": "Studio Unit 12, Pier Baseline Grid",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "28",
-        "text": "Mon-Fri, 9am - 6pm EST",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "29",
-        "text": "Your Full Name",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "31",
-        "text": "Email Address",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "33",
-        "text": "Inquiry Type",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "34",
-        "text": "Reserve Workshop Seat",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "35",
-        "text": "Custom Equipment Sourcing",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "36",
-        "text": "General Inquiry & Support",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "37",
-        "text": "Your Message",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "39",
-        "text": "Send Message",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "40",
-        "text": "Frequently Asked",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "41",
-        "text": "We've got answers ✨",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "42",
-        "text": "What materials do you use?",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "43",
-        "text": "Every piece is crafted from premium, sustainable materials — cast iron, solid walnut, and natural stoneware. We never use synthetic coatings or harmful chemicals.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "44",
-        "text": "What's your return policy?",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "45",
-        "text": "We offer hassle-free returns within 30 days of purchase. If you're not completely satisfied, we'll make it right — no questions asked.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "46",
-        "text": "How fast is shipping?",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "47",
-        "text": "We ship within 1-2 business days. Standard delivery takes 3-5 business days, with expedited options available at checkout.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "48",
-        "text": "Add to Basket",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "49",
-        "text": "Buy Now",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "50",
-        "text": "Customer Feedback",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "52",
-        "text": "★★★★★ (Love it!)",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "53",
-        "text": "★★★★☆ (Great)",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "54",
-        "text": "★★★☆☆ (Good)",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "55",
-        "text": "★★☆☆☆ (Okay)",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "56",
-        "text": "★☆☆☆☆ (Needs work)",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "58",
-        "text": "Submit Review",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "59",
-        "text": "Your Basket",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "60",
-        "text": "Total:",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "61",
-        "text": "Secure Checkout",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "62",
-        "text": "Saved Items",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "63",
-        "text": "0Items",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "64",
-        "text": "View Basket",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "65",
-        "text": "Checkout",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "66",
-        "text": "{brand}",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "67",
-        "text": "Deliberate, textured culinary gear created to support clean cooking spaces, authentic materiality configurations, and unhurried home habits.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "68",
-        "text": "Quick Links",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "69",
-        "text": "Back to Top",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "70",
-        "text": "Shop Collection",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "71",
-        "text": "Contact Us",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "72",
-        "text": "© 2026 {brand} — Made withfor home cooks everywhere.",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "73",
-        "text": "Secure",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "74",
-        "text": "Sustainable",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "heading-79",
-        "text": "Tools molded for theintentionalhome kitchen.",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-80",
-        "text": "The Active Collection",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-81",
-        "text": "Cast Iron Griddle Plinth",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-82",
-        "text": "Stoneware Carafe",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-83",
-        "text": "Walnut Chopping Deck",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-84",
-        "text": "Connect with Our Studio",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-85",
-        "text": "Frequently Asked",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "target-modal-title",
-        "text": "Item Title",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-87",
-        "text": "Quick Links",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "paragraph-88",
-        "text": "Every piece in our collection celebrates true-weight cast iron, dense-fiber wood, and organic stoneware — designed to elevate your daily cooking ritual.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-89",
-        "text": "Looking to organize private testing loops, coordinate professional bulk kitchen setups, or book a seat at our upcoming seasonal workshop tables? Submit your message parameters into our registry desk.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-90",
-        "text": "Every piece is crafted from premium, sustainable materials — cast iron, solid walnut, and natural stoneware. We never use synthetic coatings or harmful chemicals.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-91",
-        "text": "We offer hassle-free returns within 30 days of purchase. If you're not completely satisfied, we'll make it right — no questions asked.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-92",
-        "text": "We ship within 1-2 business days. Standard delivery takes 3-5 business days, with expedited options available at checkout.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-93",
-        "text": "Deliberate, textured culinary gear created to support clean cooking spaces, authentic materiality configurations, and unhurried home habits.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "button-94",
-        "text": "Curations0",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "button-95",
         "text": "Basket0",
         "type": "button",
         "customized": false
       },
       {
-        "id": "button-96",
-        "text": "Explore Collection",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "button-97",
-        "text": "Get in Touch",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "button-98",
-        "text": "Inspect",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "button-99",
-        "text": "Inspect",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "button-100",
-        "text": "Inspect",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "button-101",
-        "text": "Send Message",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "button-102",
-        "text": "What materials do you use?",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "button-103",
-        "text": "What's your return policy?",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "button-104",
-        "text": "How fast is shipping?",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "modal-add-btn",
-        "text": "Add to Basket",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "modal-buy-btn",
-        "text": "Buy Now",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "button-107",
-        "text": "Submit Review",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "button-108",
-        "text": "Secure Checkout",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "button-109",
-        "text": "View Basket",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "button-110",
-        "text": "Checkout",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "link-111",
+        "id": "8",
         "text": "Sign Up",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-112",
+        "id": "9",
         "text": "Sign In",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-113",
+        "id": "10",
         "text": "Orders",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-114",
+        "id": "11",
         "text": "Logout",
         "type": "link",
         "customized": false
       },
       {
+        "id": "800",
+        "text": "One Pan. Endless Meals.",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "801",
+        "text": "The last pan you'll ever need tobuy.",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "802",
+        "text": "Forged from a single sheet of premium carbon steel and seasoned by hand, our signature pan replaces your entire cookware collection. One pan. Every technique. A lifetime of meals.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "803",
+        "text": "Get The Pan",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "804",
+        "text": "Read Our Story",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "805",
+        "text": "12,000+",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "806",
+        "text": "Happy Cooks",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "807",
+        "text": "4.9★",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "808",
+        "text": "Average Rating",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "809",
+        "text": "Lifetime",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "810",
+        "text": "Guarantee",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "820",
+        "text": "✦ Our Story",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "821",
+        "text": "Born from akitchen revelation.",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "822",
+        "text": "We spent three years perfecting a single piece of cookware. Not a collection. Not a set. Just one pan that could do everything a home cook needs — beautifully, sustainably, and forever.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "823",
+        "text": "The Forge",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "824",
+        "text": "Chapter One",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "825",
+        "text": "Wheresteelmeets soul",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "826",
+        "text": "\"Every pan carries the fingerprint of the artisan who shaped it.\"— Our Master Smith",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "827",
+        "text": "— Our Master Smith",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "828",
+        "text": "Our signature pan begins as a single sheet of 3mm carbon steel, cut and shaped by hand in our small-batch workshop. No coatings. No shortcuts. Just pure, honest metal that gets better with every meal.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "829",
+        "text": "Hand-Forged",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "830",
+        "text": "Pre-Seasoned",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "831",
+        "text": "Non-Toxic",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "832",
+        "text": "Chapter Two",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "833",
+        "text": "Tested inrealkitchens",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "834",
+        "text": "\"We gave 200 pans to 200 home cooks. They used them for a year. Not one failed.\"— Our Testing Team",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "835",
+        "text": "— Our Testing Team",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "836",
+        "text": "Before a single pan reaches your door, it survives six months of daily abuse in our test kitchen. Scrambled eggs, seared steaks, pan-fried dumplings, roasted vegetables — if it can be cooked, our pan has done it. Thousands of times.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "837",
+        "text": "Lab Tested",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "838",
+        "text": "Chef Approved",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "839",
+        "text": "1-Year Field Test",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "840",
+        "text": "The Test Kitchen",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "841",
+        "text": "A Lifetime of Meals",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "842",
+        "text": "Chapter Three",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "843",
+        "text": "Built to beinherited",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "844",
+        "text": "\"The best cookware isn't bought. It's passed down.\"— Our Founder",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "845",
+        "text": "— Our Founder",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "846",
+        "text": "Carbon steel doesn't wear out. It seasons. Every meal you cook adds another layer of character, another memory, another reason it will outlive every trendy non-stick pan you've ever owned. This is the pan your grandchildren will fight over.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "847",
+        "text": "Lifetime Warranty",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "848",
+        "text": "Zero Waste",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "849",
+        "text": "Made with Care",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "850",
+        "text": "✦ From Our Community",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "851",
+        "text": "Real cooks. Realmeals.",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "852",
+        "text": "Sunday morning eggs",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "853",
+        "text": "Perfect sear every time",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "854",
+        "text": "One pan, one dinner",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "855",
+        "text": "My new favorite pan",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "856",
+        "text": "The Only Pan You Need",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "857",
+        "text": "The Signature Pan",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "858",
+        "text": "(247 reviews)",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "859",
+        "text": "$175.00",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "860",
+        "text": "$220.00",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "861",
+        "text": "Save $45.00",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "862",
+        "text": "Forged from a single sheet of 3mm carbon steel, our signature pan replaces your entire cookware collection. Pre-seasoned, non-toxic, and built to last generations.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "863",
+        "text": "Choose Your Pack:",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "864",
+        "text": "Total Price:",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "865",
+        "text": "Packs:",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "866",
+        "text": "Add to Basket— $320.00",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "867",
+        "text": "Buy Now— $320.00",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "868",
+        "text": "Free Shipping",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "869",
+        "text": "Lifetime Guarantee",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "870",
+        "text": "Secure Checkout",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "871",
+        "text": "30-Day Returns",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "872",
+        "text": "Hand-Forged",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "873",
+        "text": "Every pan shaped by master artisans in small batches.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "874",
+        "text": "Non-Toxic",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "875",
+        "text": "Zero coatings. Zero chemicals. Just pure carbon steel.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "876",
+        "text": "Lifetime Warranty",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "877",
+        "text": "Built to outlast you. Guaranteed forever.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "878",
+        "text": "Happiness Guaranteed",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "879",
+        "text": "Love it or we'll make it right. No questions asked.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "880",
+        "text": "4.9",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "881",
+        "text": "(247 verified reviews)",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "882",
+        "text": "Write a Review",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "883",
+        "text": "\"This pan has completely replaced my entire cookware collection. The sear is unmatched — restaurant quality at home.\"",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "884",
+        "text": "James M.",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "885",
+        "text": "Verified Buyer",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "886",
+        "text": "\"I've had mine for two years. It just keeps getting better. This is the last pan I'll ever buy.\"",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "887",
+        "text": "Sarah K.",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "888",
+        "text": "Verified Buyer",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "889",
+        "text": "\"Worth every penny. The craftsmanship is incredible — you can feel the quality the moment you pick it up.\"",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "890",
+        "text": "Thomas L.",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "891",
+        "text": "Verified Buyer",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "892",
+        "text": "✦ Questions",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "893",
+        "text": "FrequentlyAsked",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "894",
+        "text": "Is carbon steel better than non-stick?",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "895",
+        "text": "Absolutely. Carbon steel gets naturally non-stick as it seasons, without any chemical coatings. It also sears better, browns better, and lasts forever — unlike non-stick pans which degrade within a few years.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "896",
+        "text": "How do I care for my pan?",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "897",
+        "text": "Rinse with hot water, scrub with a stiff brush, dry on the stove, and rub with a thin layer of oil. That's it. No soap needed, no dishwasher, no fuss. The more you use it, the better it gets.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "898",
+        "text": "What's your return policy?",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "899",
+        "text": "We offer hassle-free returns within 30 days of purchase. If you're not completely satisfied with your pan, we'll refund every penny — no questions asked. Your happiness is our priority.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "900",
+        "text": "How fast is shipping?",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "901",
+        "text": "We ship within 1-2 business days. Standard delivery takes 3-5 business days, and expedited options are available at checkout for when you need it sooner.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "902",
+        "text": "Will it work on my induction cooktop?",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "903",
+        "text": "Yes! Our carbon steel pan is compatible with all cooktops — induction, gas, electric, and even open fire. It's the most versatile piece of cookware you'll ever own.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "904",
+        "text": "✦ The Invitation",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "905",
+        "text": "Ready to cook withone panforever?",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "906",
+        "text": "Join 12,000+ home cooks who've simplified their kitchen and elevated their meals with our signature pan.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "907",
+        "text": "Get The Pan",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "908",
+        "text": "Our Workshop",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "909",
+        "text": "Email Us",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "910",
+        "text": "hello@panandpantry.com",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "911",
+        "text": "We're Here",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "912",
+        "text": "Mon-Fri: 9am - 6pm EST",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "913",
+        "text": "Visit Us",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "914",
+        "text": "Workshop 12, Artisan Quarter",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "915",
+        "text": "Send a Message",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "916",
+        "text": "Your Name",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "917",
+        "text": "Email Address",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "918",
+        "text": "Your Message",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "919",
+        "text": "Send Message",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "920",
+        "text": "The Signature Pan",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "921",
+        "text": "Add —",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "922",
+        "text": "Buy Now —",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "923",
+        "text": "Your Basket",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "924",
+        "text": "Total:",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "925",
+        "text": "Secure Checkout",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "926",
+        "text": "Saved Items",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "927",
+        "text": "View Basket",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "928",
+        "text": "Checkout",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "929",
+        "text": "{brand}",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "930",
+        "text": "One pan. Every technique. A lifetime of meals. Forged by hand, built to last, and designed to replace your entire cookware collection.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "931",
+        "text": "Explore",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "932",
+        "text": "Our Story",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "933",
+        "text": "The Pan",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "934",
+        "text": "Community",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "935",
+        "text": "FAQ",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "936",
+        "text": "Support",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "937",
+        "text": "Contact Us",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "938",
+        "text": "Shipping Policy",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "939",
+        "text": "Returns",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "940",
+        "text": "Warranty",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "941",
+        "text": "Stay Connected",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "942",
+        "text": "Subscribe for cooking tips, new recipes, and exclusive drops.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "943",
+        "text": "© 2026 {brand} — Made withfor home cooks everywhere.",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "944",
+        "text": "Secure  |Sustainable",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "heading-148",
+        "text": "The last pan you'll ever need tobuy.",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-149",
+        "text": "Born from akitchen revelation.",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-150",
+        "text": "Wheresteelmeets soul",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-151",
+        "text": "Tested inrealkitchens",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-152",
+        "text": "Built to beinherited",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-153",
+        "text": "Real cooks. Realmeals.",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-154",
+        "text": "The Signature Pan",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-155",
+        "text": "Hand-Forged",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-156",
+        "text": "Non-Toxic",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-157",
+        "text": "Lifetime Warranty",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-158",
+        "text": "Happiness Guaranteed",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-159",
+        "text": "FrequentlyAsked",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-160",
+        "text": "Ready to cook withone panforever?",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-161",
+        "text": "Email Us",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-162",
+        "text": "We're Here",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-163",
+        "text": "Visit Us",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-164",
+        "text": "Send a Message",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-165",
+        "text": "Explore",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-166",
+        "text": "Support",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-167",
+        "text": "Stay Connected",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "paragraph-168",
+        "text": "Forged from a single sheet of premium carbon steel and seasoned by hand, our signature pan replaces your entire cookware collection. One pan. Every technique. A lifetime of meals.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-169",
+        "text": "We spent three years perfecting a single piece of cookware. Not a collection. Not a set. Just one pan that could do everything a home cook needs — beautifully, sustainably, and forever.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-170",
+        "text": "Our signature pan begins as a single sheet of 3mm carbon steel, cut and shaped by hand in our small-batch workshop. No coatings. No shortcuts. Just pure, honest metal that gets better with every meal.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-171",
+        "text": "Before a single pan reaches your door, it survives six months of daily abuse in our test kitchen. Scrambled eggs, seared steaks, pan-fried dumplings, roasted vegetables — if it can be cooked, our pan has done it. Thousands of times.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-172",
+        "text": "Carbon steel doesn't wear out. It seasons. Every meal you cook adds another layer of character, another memory, another reason it will outlive every trendy non-stick pan you've ever owned. This is the pan your grandchildren will fight over.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-173",
+        "text": "Forged from a single sheet of 3mm carbon steel, our signature pan replaces your entire cookware collection. Pre-seasoned, non-toxic, and built to last generations.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-174",
+        "text": "Every pan shaped by master artisans in small batches.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-175",
+        "text": "Zero coatings. Zero chemicals. Just pure carbon steel.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-176",
+        "text": "Built to outlast you. Guaranteed forever.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-177",
+        "text": "Love it or we'll make it right. No questions asked.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-178",
+        "text": "\"This pan has completely replaced my entire cookware collection. The sear is unmatched — restaurant quality at home.\"",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-179",
+        "text": "\"I've had mine for two years. It just keeps getting better. This is the last pan I'll ever buy.\"",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-180",
+        "text": "\"Worth every penny. The craftsmanship is incredible — you can feel the quality the moment you pick it up.\"",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-181",
+        "text": "Absolutely. Carbon steel gets naturally non-stick as it seasons, without any chemical coatings. It also sears better, browns better, and lasts forever — unlike non-stick pans which degrade within a few years.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-182",
+        "text": "Rinse with hot water, scrub with a stiff brush, dry on the stove, and rub with a thin layer of oil. That's it. No soap needed, no dishwasher, no fuss. The more you use it, the better it gets.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-183",
+        "text": "We offer hassle-free returns within 30 days of purchase. If you're not completely satisfied with your pan, we'll refund every penny — no questions asked. Your happiness is our priority.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-184",
+        "text": "We ship within 1-2 business days. Standard delivery takes 3-5 business days, and expedited options are available at checkout for when you need it sooner.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-185",
+        "text": "Yes! Our carbon steel pan is compatible with all cooktops — induction, gas, electric, and even open fire. It's the most versatile piece of cookware you'll ever own.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-186",
+        "text": "Join 12,000+ home cooks who've simplified their kitchen and elevated their meals with our signature pan.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-187",
+        "text": "hello@panandpantry.com",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-188",
+        "text": "Mon-Fri: 9am - 6pm EST",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-189",
+        "text": "Workshop 12, Artisan Quarter",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-190",
+        "text": "One pan. Every technique. A lifetime of meals. Forged by hand, built to last, and designed to replace your entire cookware collection.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-191",
+        "text": "Subscribe for cooking tips, new recipes, and exclusive drops.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "button-192",
+        "text": "Saved0",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-193",
+        "text": "Basket0",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-194",
+        "text": "Get The Pan",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-195",
+        "text": "Read Our Story",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "add-to-cart-btn",
+        "text": "Add to Basket— $320.00",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "buy-now-btn",
+        "text": "Buy Now— $320.00",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-198",
+        "text": "Write a Review",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-199",
+        "text": "Is carbon steel better than non-stick?",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-200",
+        "text": "How do I care for my pan?",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-201",
+        "text": "What's your return policy?",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-202",
+        "text": "How fast is shipping?",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-203",
+        "text": "Will it work on my induction cooktop?",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-204",
+        "text": "Send Message",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-205",
+        "text": "Add —$320.00",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-206",
+        "text": "Buy Now —$320.00",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-207",
+        "text": "Secure Checkout",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-208",
+        "text": "View Basket",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-209",
+        "text": "Checkout",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "link-210",
+        "text": "Our Story",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-211",
+        "text": "The Pan",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-212",
+        "text": "Community",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-213",
+        "text": "FAQ",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-214",
+        "text": "Sign Up",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-215",
+        "text": "Sign In",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-216",
+        "text": "Orders",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-217",
+        "text": "Logout",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-218",
+        "text": "Get The Pan",
+        "type": "link",
+        "customized": false
+      },
+      {
         "id": "page-title",
-        "text": "{brand} — Artisanal Kitchen & Home",
+        "text": "Pan & Pantry — The One Pan That Does It All",
         "type": "title",
         "customized": false
       }
@@ -703,691 +1327,1315 @@
     },
     {
       "id": "2",
-      "text": "Curations0",
-      "type": "button",
+      "text": "Our Story",
+      "type": "link",
       "customized": false
     },
     {
       "id": "3",
-      "text": "Basket0",
-      "type": "button",
+      "text": "The Pan",
+      "type": "link",
       "customized": false
     },
     {
       "id": "4",
-      "text": "Sign Up",
+      "text": "Community",
       "type": "link",
       "customized": false
     },
     {
       "id": "5",
-      "text": "Sign In",
+      "text": "FAQ",
       "type": "link",
       "customized": false
     },
     {
       "id": "6",
-      "text": "Orders",
-      "type": "link",
+      "text": "Saved0",
+      "type": "button",
       "customized": false
     },
     {
       "id": "7",
-      "text": "Logout",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "8",
-      "text": "Artisan Crafted",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "9",
-      "text": "Tools molded for theintentionalhome kitchen.",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "10",
-      "text": "Every piece in our collection celebrates true-weight cast iron, dense-fiber wood, and organic stoneware — designed to elevate your daily cooking ritual.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "11",
-      "text": "Explore Collection",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "12",
-      "text": "Get in Touch",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "13",
-      "text": "500+",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "14",
-      "text": "Happy Customers",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "15",
-      "text": "4.9★",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "16",
-      "text": "Average Rating",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "17",
-      "text": "100%",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "18",
-      "text": "Satisfaction Guarantee",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "19",
-      "text": "Premium Quality",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "20",
-      "text": "Free Shipping",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "21",
-      "text": "30-Day Returns",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "22",
-      "text": "The Active Collection",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "23",
-      "text": "✦ Curated for Performance",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "100",
-      "text": "⭐ Bestseller",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "101",
-      "text": "Cast Iron Griddle Plinth",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "102",
-      "text": "$175.00",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "103",
-      "text": "Inspect",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "104",
-      "text": "Stoneware Carafe",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "105",
-      "text": "$88.00",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "106",
-      "text": "🧰 Essential",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "107",
-      "text": "Walnut Chopping Deck",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "108",
-      "text": "$155.00",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "24",
-      "text": "Connect with Our Studio",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "25",
-      "text": "Looking to organize private testing loops, coordinate professional bulk kitchen setups, or book a seat at our upcoming seasonal workshop tables? Submit your message parameters into our registry desk.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "26",
-      "text": "desk@pantrymatrix.internal",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "27",
-      "text": "Studio Unit 12, Pier Baseline Grid",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "28",
-      "text": "Mon-Fri, 9am - 6pm EST",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "29",
-      "text": "Your Full Name",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "31",
-      "text": "Email Address",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "33",
-      "text": "Inquiry Type",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "34",
-      "text": "Reserve Workshop Seat",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "35",
-      "text": "Custom Equipment Sourcing",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "36",
-      "text": "General Inquiry & Support",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "37",
-      "text": "Your Message",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "39",
-      "text": "Send Message",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "40",
-      "text": "Frequently Asked",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "41",
-      "text": "We've got answers ✨",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "42",
-      "text": "What materials do you use?",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "43",
-      "text": "Every piece is crafted from premium, sustainable materials — cast iron, solid walnut, and natural stoneware. We never use synthetic coatings or harmful chemicals.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "44",
-      "text": "What's your return policy?",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "45",
-      "text": "We offer hassle-free returns within 30 days of purchase. If you're not completely satisfied, we'll make it right — no questions asked.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "46",
-      "text": "How fast is shipping?",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "47",
-      "text": "We ship within 1-2 business days. Standard delivery takes 3-5 business days, with expedited options available at checkout.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "48",
-      "text": "Add to Basket",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "49",
-      "text": "Buy Now",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "50",
-      "text": "Customer Feedback",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "52",
-      "text": "★★★★★ (Love it!)",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "53",
-      "text": "★★★★☆ (Great)",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "54",
-      "text": "★★★☆☆ (Good)",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "55",
-      "text": "★★☆☆☆ (Okay)",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "56",
-      "text": "★☆☆☆☆ (Needs work)",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "58",
-      "text": "Submit Review",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "59",
-      "text": "Your Basket",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "60",
-      "text": "Total:",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "61",
-      "text": "Secure Checkout",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "62",
-      "text": "Saved Items",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "63",
-      "text": "0Items",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "64",
-      "text": "View Basket",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "65",
-      "text": "Checkout",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "66",
-      "text": "{brand}",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "67",
-      "text": "Deliberate, textured culinary gear created to support clean cooking spaces, authentic materiality configurations, and unhurried home habits.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "68",
-      "text": "Quick Links",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "69",
-      "text": "Back to Top",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "70",
-      "text": "Shop Collection",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "71",
-      "text": "Contact Us",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "72",
-      "text": "© 2026 {brand} — Made withfor home cooks everywhere.",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "73",
-      "text": "Secure",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "74",
-      "text": "Sustainable",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "heading-79",
-      "text": "Tools molded for theintentionalhome kitchen.",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-80",
-      "text": "The Active Collection",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-81",
-      "text": "Cast Iron Griddle Plinth",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-82",
-      "text": "Stoneware Carafe",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-83",
-      "text": "Walnut Chopping Deck",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-84",
-      "text": "Connect with Our Studio",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-85",
-      "text": "Frequently Asked",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "target-modal-title",
-      "text": "Item Title",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-87",
-      "text": "Quick Links",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "paragraph-88",
-      "text": "Every piece in our collection celebrates true-weight cast iron, dense-fiber wood, and organic stoneware — designed to elevate your daily cooking ritual.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-89",
-      "text": "Looking to organize private testing loops, coordinate professional bulk kitchen setups, or book a seat at our upcoming seasonal workshop tables? Submit your message parameters into our registry desk.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-90",
-      "text": "Every piece is crafted from premium, sustainable materials — cast iron, solid walnut, and natural stoneware. We never use synthetic coatings or harmful chemicals.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-91",
-      "text": "We offer hassle-free returns within 30 days of purchase. If you're not completely satisfied, we'll make it right — no questions asked.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-92",
-      "text": "We ship within 1-2 business days. Standard delivery takes 3-5 business days, with expedited options available at checkout.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-93",
-      "text": "Deliberate, textured culinary gear created to support clean cooking spaces, authentic materiality configurations, and unhurried home habits.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "button-94",
-      "text": "Curations0",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "button-95",
       "text": "Basket0",
       "type": "button",
       "customized": false
     },
     {
-      "id": "button-96",
-      "text": "Explore Collection",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "button-97",
-      "text": "Get in Touch",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "button-98",
-      "text": "Inspect",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "button-99",
-      "text": "Inspect",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "button-100",
-      "text": "Inspect",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "button-101",
-      "text": "Send Message",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "button-102",
-      "text": "What materials do you use?",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "button-103",
-      "text": "What's your return policy?",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "button-104",
-      "text": "How fast is shipping?",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "modal-add-btn",
-      "text": "Add to Basket",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "modal-buy-btn",
-      "text": "Buy Now",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "button-107",
-      "text": "Submit Review",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "button-108",
-      "text": "Secure Checkout",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "button-109",
-      "text": "View Basket",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "button-110",
-      "text": "Checkout",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "link-111",
+      "id": "8",
       "text": "Sign Up",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-112",
+      "id": "9",
       "text": "Sign In",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-113",
+      "id": "10",
       "text": "Orders",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-114",
+      "id": "11",
       "text": "Logout",
       "type": "link",
       "customized": false
     },
     {
+      "id": "800",
+      "text": "One Pan. Endless Meals.",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "801",
+      "text": "The last pan you'll ever need tobuy.",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "802",
+      "text": "Forged from a single sheet of premium carbon steel and seasoned by hand, our signature pan replaces your entire cookware collection. One pan. Every technique. A lifetime of meals.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "803",
+      "text": "Get The Pan",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "804",
+      "text": "Read Our Story",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "805",
+      "text": "12,000+",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "806",
+      "text": "Happy Cooks",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "807",
+      "text": "4.9★",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "808",
+      "text": "Average Rating",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "809",
+      "text": "Lifetime",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "810",
+      "text": "Guarantee",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "820",
+      "text": "✦ Our Story",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "821",
+      "text": "Born from akitchen revelation.",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "822",
+      "text": "We spent three years perfecting a single piece of cookware. Not a collection. Not a set. Just one pan that could do everything a home cook needs — beautifully, sustainably, and forever.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "823",
+      "text": "The Forge",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "824",
+      "text": "Chapter One",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "825",
+      "text": "Wheresteelmeets soul",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "826",
+      "text": "\"Every pan carries the fingerprint of the artisan who shaped it.\"— Our Master Smith",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "827",
+      "text": "— Our Master Smith",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "828",
+      "text": "Our signature pan begins as a single sheet of 3mm carbon steel, cut and shaped by hand in our small-batch workshop. No coatings. No shortcuts. Just pure, honest metal that gets better with every meal.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "829",
+      "text": "Hand-Forged",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "830",
+      "text": "Pre-Seasoned",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "831",
+      "text": "Non-Toxic",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "832",
+      "text": "Chapter Two",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "833",
+      "text": "Tested inrealkitchens",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "834",
+      "text": "\"We gave 200 pans to 200 home cooks. They used them for a year. Not one failed.\"— Our Testing Team",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "835",
+      "text": "— Our Testing Team",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "836",
+      "text": "Before a single pan reaches your door, it survives six months of daily abuse in our test kitchen. Scrambled eggs, seared steaks, pan-fried dumplings, roasted vegetables — if it can be cooked, our pan has done it. Thousands of times.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "837",
+      "text": "Lab Tested",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "838",
+      "text": "Chef Approved",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "839",
+      "text": "1-Year Field Test",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "840",
+      "text": "The Test Kitchen",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "841",
+      "text": "A Lifetime of Meals",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "842",
+      "text": "Chapter Three",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "843",
+      "text": "Built to beinherited",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "844",
+      "text": "\"The best cookware isn't bought. It's passed down.\"— Our Founder",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "845",
+      "text": "— Our Founder",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "846",
+      "text": "Carbon steel doesn't wear out. It seasons. Every meal you cook adds another layer of character, another memory, another reason it will outlive every trendy non-stick pan you've ever owned. This is the pan your grandchildren will fight over.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "847",
+      "text": "Lifetime Warranty",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "848",
+      "text": "Zero Waste",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "849",
+      "text": "Made with Care",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "850",
+      "text": "✦ From Our Community",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "851",
+      "text": "Real cooks. Realmeals.",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "852",
+      "text": "Sunday morning eggs",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "853",
+      "text": "Perfect sear every time",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "854",
+      "text": "One pan, one dinner",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "855",
+      "text": "My new favorite pan",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "856",
+      "text": "The Only Pan You Need",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "857",
+      "text": "The Signature Pan",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "858",
+      "text": "(247 reviews)",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "859",
+      "text": "$175.00",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "860",
+      "text": "$220.00",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "861",
+      "text": "Save $45.00",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "862",
+      "text": "Forged from a single sheet of 3mm carbon steel, our signature pan replaces your entire cookware collection. Pre-seasoned, non-toxic, and built to last generations.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "863",
+      "text": "Choose Your Pack:",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "864",
+      "text": "Total Price:",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "865",
+      "text": "Packs:",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "866",
+      "text": "Add to Basket— $320.00",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "867",
+      "text": "Buy Now— $320.00",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "868",
+      "text": "Free Shipping",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "869",
+      "text": "Lifetime Guarantee",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "870",
+      "text": "Secure Checkout",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "871",
+      "text": "30-Day Returns",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "872",
+      "text": "Hand-Forged",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "873",
+      "text": "Every pan shaped by master artisans in small batches.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "874",
+      "text": "Non-Toxic",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "875",
+      "text": "Zero coatings. Zero chemicals. Just pure carbon steel.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "876",
+      "text": "Lifetime Warranty",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "877",
+      "text": "Built to outlast you. Guaranteed forever.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "878",
+      "text": "Happiness Guaranteed",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "879",
+      "text": "Love it or we'll make it right. No questions asked.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "880",
+      "text": "4.9",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "881",
+      "text": "(247 verified reviews)",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "882",
+      "text": "Write a Review",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "883",
+      "text": "\"This pan has completely replaced my entire cookware collection. The sear is unmatched — restaurant quality at home.\"",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "884",
+      "text": "James M.",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "885",
+      "text": "Verified Buyer",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "886",
+      "text": "\"I've had mine for two years. It just keeps getting better. This is the last pan I'll ever buy.\"",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "887",
+      "text": "Sarah K.",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "888",
+      "text": "Verified Buyer",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "889",
+      "text": "\"Worth every penny. The craftsmanship is incredible — you can feel the quality the moment you pick it up.\"",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "890",
+      "text": "Thomas L.",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "891",
+      "text": "Verified Buyer",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "892",
+      "text": "✦ Questions",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "893",
+      "text": "FrequentlyAsked",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "894",
+      "text": "Is carbon steel better than non-stick?",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "895",
+      "text": "Absolutely. Carbon steel gets naturally non-stick as it seasons, without any chemical coatings. It also sears better, browns better, and lasts forever — unlike non-stick pans which degrade within a few years.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "896",
+      "text": "How do I care for my pan?",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "897",
+      "text": "Rinse with hot water, scrub with a stiff brush, dry on the stove, and rub with a thin layer of oil. That's it. No soap needed, no dishwasher, no fuss. The more you use it, the better it gets.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "898",
+      "text": "What's your return policy?",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "899",
+      "text": "We offer hassle-free returns within 30 days of purchase. If you're not completely satisfied with your pan, we'll refund every penny — no questions asked. Your happiness is our priority.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "900",
+      "text": "How fast is shipping?",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "901",
+      "text": "We ship within 1-2 business days. Standard delivery takes 3-5 business days, and expedited options are available at checkout for when you need it sooner.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "902",
+      "text": "Will it work on my induction cooktop?",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "903",
+      "text": "Yes! Our carbon steel pan is compatible with all cooktops — induction, gas, electric, and even open fire. It's the most versatile piece of cookware you'll ever own.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "904",
+      "text": "✦ The Invitation",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "905",
+      "text": "Ready to cook withone panforever?",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "906",
+      "text": "Join 12,000+ home cooks who've simplified their kitchen and elevated their meals with our signature pan.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "907",
+      "text": "Get The Pan",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "908",
+      "text": "Our Workshop",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "909",
+      "text": "Email Us",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "910",
+      "text": "hello@panandpantry.com",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "911",
+      "text": "We're Here",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "912",
+      "text": "Mon-Fri: 9am - 6pm EST",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "913",
+      "text": "Visit Us",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "914",
+      "text": "Workshop 12, Artisan Quarter",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "915",
+      "text": "Send a Message",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "916",
+      "text": "Your Name",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "917",
+      "text": "Email Address",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "918",
+      "text": "Your Message",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "919",
+      "text": "Send Message",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "920",
+      "text": "The Signature Pan",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "921",
+      "text": "Add —",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "922",
+      "text": "Buy Now —",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "923",
+      "text": "Your Basket",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "924",
+      "text": "Total:",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "925",
+      "text": "Secure Checkout",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "926",
+      "text": "Saved Items",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "927",
+      "text": "View Basket",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "928",
+      "text": "Checkout",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "929",
+      "text": "{brand}",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "930",
+      "text": "One pan. Every technique. A lifetime of meals. Forged by hand, built to last, and designed to replace your entire cookware collection.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "931",
+      "text": "Explore",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "932",
+      "text": "Our Story",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "933",
+      "text": "The Pan",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "934",
+      "text": "Community",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "935",
+      "text": "FAQ",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "936",
+      "text": "Support",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "937",
+      "text": "Contact Us",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "938",
+      "text": "Shipping Policy",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "939",
+      "text": "Returns",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "940",
+      "text": "Warranty",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "941",
+      "text": "Stay Connected",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "942",
+      "text": "Subscribe for cooking tips, new recipes, and exclusive drops.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "943",
+      "text": "© 2026 {brand} — Made withfor home cooks everywhere.",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "944",
+      "text": "Secure  |Sustainable",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "heading-148",
+      "text": "The last pan you'll ever need tobuy.",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-149",
+      "text": "Born from akitchen revelation.",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-150",
+      "text": "Wheresteelmeets soul",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-151",
+      "text": "Tested inrealkitchens",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-152",
+      "text": "Built to beinherited",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-153",
+      "text": "Real cooks. Realmeals.",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-154",
+      "text": "The Signature Pan",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-155",
+      "text": "Hand-Forged",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-156",
+      "text": "Non-Toxic",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-157",
+      "text": "Lifetime Warranty",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-158",
+      "text": "Happiness Guaranteed",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-159",
+      "text": "FrequentlyAsked",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-160",
+      "text": "Ready to cook withone panforever?",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-161",
+      "text": "Email Us",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-162",
+      "text": "We're Here",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-163",
+      "text": "Visit Us",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-164",
+      "text": "Send a Message",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-165",
+      "text": "Explore",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-166",
+      "text": "Support",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-167",
+      "text": "Stay Connected",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "paragraph-168",
+      "text": "Forged from a single sheet of premium carbon steel and seasoned by hand, our signature pan replaces your entire cookware collection. One pan. Every technique. A lifetime of meals.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-169",
+      "text": "We spent three years perfecting a single piece of cookware. Not a collection. Not a set. Just one pan that could do everything a home cook needs — beautifully, sustainably, and forever.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-170",
+      "text": "Our signature pan begins as a single sheet of 3mm carbon steel, cut and shaped by hand in our small-batch workshop. No coatings. No shortcuts. Just pure, honest metal that gets better with every meal.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-171",
+      "text": "Before a single pan reaches your door, it survives six months of daily abuse in our test kitchen. Scrambled eggs, seared steaks, pan-fried dumplings, roasted vegetables — if it can be cooked, our pan has done it. Thousands of times.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-172",
+      "text": "Carbon steel doesn't wear out. It seasons. Every meal you cook adds another layer of character, another memory, another reason it will outlive every trendy non-stick pan you've ever owned. This is the pan your grandchildren will fight over.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-173",
+      "text": "Forged from a single sheet of 3mm carbon steel, our signature pan replaces your entire cookware collection. Pre-seasoned, non-toxic, and built to last generations.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-174",
+      "text": "Every pan shaped by master artisans in small batches.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-175",
+      "text": "Zero coatings. Zero chemicals. Just pure carbon steel.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-176",
+      "text": "Built to outlast you. Guaranteed forever.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-177",
+      "text": "Love it or we'll make it right. No questions asked.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-178",
+      "text": "\"This pan has completely replaced my entire cookware collection. The sear is unmatched — restaurant quality at home.\"",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-179",
+      "text": "\"I've had mine for two years. It just keeps getting better. This is the last pan I'll ever buy.\"",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-180",
+      "text": "\"Worth every penny. The craftsmanship is incredible — you can feel the quality the moment you pick it up.\"",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-181",
+      "text": "Absolutely. Carbon steel gets naturally non-stick as it seasons, without any chemical coatings. It also sears better, browns better, and lasts forever — unlike non-stick pans which degrade within a few years.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-182",
+      "text": "Rinse with hot water, scrub with a stiff brush, dry on the stove, and rub with a thin layer of oil. That's it. No soap needed, no dishwasher, no fuss. The more you use it, the better it gets.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-183",
+      "text": "We offer hassle-free returns within 30 days of purchase. If you're not completely satisfied with your pan, we'll refund every penny — no questions asked. Your happiness is our priority.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-184",
+      "text": "We ship within 1-2 business days. Standard delivery takes 3-5 business days, and expedited options are available at checkout for when you need it sooner.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-185",
+      "text": "Yes! Our carbon steel pan is compatible with all cooktops — induction, gas, electric, and even open fire. It's the most versatile piece of cookware you'll ever own.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-186",
+      "text": "Join 12,000+ home cooks who've simplified their kitchen and elevated their meals with our signature pan.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-187",
+      "text": "hello@panandpantry.com",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-188",
+      "text": "Mon-Fri: 9am - 6pm EST",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-189",
+      "text": "Workshop 12, Artisan Quarter",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-190",
+      "text": "One pan. Every technique. A lifetime of meals. Forged by hand, built to last, and designed to replace your entire cookware collection.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-191",
+      "text": "Subscribe for cooking tips, new recipes, and exclusive drops.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "button-192",
+      "text": "Saved0",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-193",
+      "text": "Basket0",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-194",
+      "text": "Get The Pan",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-195",
+      "text": "Read Our Story",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "add-to-cart-btn",
+      "text": "Add to Basket— $320.00",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "buy-now-btn",
+      "text": "Buy Now— $320.00",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-198",
+      "text": "Write a Review",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-199",
+      "text": "Is carbon steel better than non-stick?",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-200",
+      "text": "How do I care for my pan?",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-201",
+      "text": "What's your return policy?",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-202",
+      "text": "How fast is shipping?",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-203",
+      "text": "Will it work on my induction cooktop?",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-204",
+      "text": "Send Message",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-205",
+      "text": "Add —$320.00",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-206",
+      "text": "Buy Now —$320.00",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-207",
+      "text": "Secure Checkout",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-208",
+      "text": "View Basket",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-209",
+      "text": "Checkout",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "link-210",
+      "text": "Our Story",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-211",
+      "text": "The Pan",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-212",
+      "text": "Community",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-213",
+      "text": "FAQ",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-214",
+      "text": "Sign Up",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-215",
+      "text": "Sign In",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-216",
+      "text": "Orders",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-217",
+      "text": "Logout",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-218",
+      "text": "Get The Pan",
+      "type": "link",
+      "customized": false
+    },
+    {
       "id": "page-title",
-      "text": "{brand} — Artisanal Kitchen & Home",
+      "text": "Pan & Pantry — The One Pan That Does It All",
       "type": "title",
       "customized": false
     }
   ],
   "metadata": {
-    "total_elements": 115,
+    "total_elements": 219,
     "pages_count": 1,
     "components_count": 0
   }

@@ -215,4 +215,8 @@ admin.site.register(SocialMedia)
 admin.site.register(TermsAndConditions)
 admin.site.register(PrivacyPolicy)
 admin.site.register(ContactSubmission)
+admin.site.register(VideoCustomization)
+admin.site.register(DomainRequest)
+admin.site.register(PurchasedDomain)
+admin.site.register(DomainAvailabilityCache)
 

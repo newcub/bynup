@@ -1,0 +1,1141 @@
+{% extends 'builder/base.html' %}
+{% load static %}
+
+{% block title %}Domains - {{ page.brand_name }}{% endblock %}
+
+{% block extra_css %}
+<style>
+:root {
+    --n-0: #ffffff;
+    --n-50: #fafafa;
+    --n-100: #f4f4f5;
+    --n-200: #e4e4e7;
+    --n-300: #d4d4d8;
+    --n-400: #a1a1aa;
+    --n-500: #71717a;
+    --n-600: #52525b;
+    --n-700: #3f3f46;
+    --n-800: #27272a;
+    --n-900: #18181b;
+
+    --accent: var(--primary-color, #111827);
+    --accent-hover: #000000;
+
+    --success: #15803d;
+    --warning: #a16207;
+    --danger: #b91c1c;
+
+    --border: var(--n-200);
+    --border-strong: var(--n-300);
+    --text: var(--n-900);
+    --text-muted: var(--n-500);
+    --text-subtle: var(--n-400);
+
+    --radius-sm: 4px;
+    --radius: 6px;
+    --radius-lg: 10px;
+}
+
+.management-layout {
+    display: flex;
+    min-height: calc(100vh - 120px);
+    background: var(--n-50);
+}
+
+.management-content {
+    flex: 1;
+    padding: 2.5rem 2rem 4rem;
+    max-width: 1280px;
+    width: 100%;
+}
+
+/* ===== Context breadcrumb ===== */
+.catalog-context {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.context-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.15s;
+    font-weight: 500;
+}
+
+.context-back:hover { color: var(--text); }
+.context-back svg { transition: transform 0.15s; }
+.context-back:hover svg { transform: translateX(-2px); }
+.context-sep { color: var(--n-300); }
+.context-current { color: var(--text); font-weight: 500; }
+
+/* ===== Title row ===== */
+.catalog-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.catalog-title-block { min-width: 0; }
+
+.catalog-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    color: var(--text);
+    margin: 0 0 0.25rem 0;
+    line-height: 1.15;
+}
+
+.catalog-sub {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    margin: 0;
+    font-variant-numeric: tabular-nums;
+}
+
+.catalog-sub strong {
+    color: var(--text);
+    font-weight: 600;
+}
+
+.usage-counter {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.25rem;
+    padding: 0.375rem 0.75rem;
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-variant-numeric: tabular-nums;
+}
+
+.usage-counter strong {
+    color: var(--text);
+    font-weight: 600;
+}
+
+.catalog-actions {
+    display: flex;
+    gap: 0.375rem;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* ===== Buttons ===== */
+.btn {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    border-radius: var(--radius);
+    padding: 0.5rem 0.875rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    line-height: 1.25;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: inherit;
+}
+
+.btn-ghost {
+    background: var(--n-0);
+    border-color: var(--border);
+    color: var(--n-700);
+}
+
+.btn-ghost:hover {
+    background: var(--n-50);
+    border-color: var(--border-strong);
+    color: var(--text);
+}
+
+.btn-accent {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+}
+
+.btn-accent:hover {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+    color: white;
+}
+
+/* ===== Search panel ===== */
+.search-panel {
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.125rem;
+    margin-bottom: 1rem;
+}
+
+.search-panel-label {
+    display: block;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+}
+
+.search-input-row {
+    display: flex;
+    gap: 0.5rem;
+    align-items: stretch;
+}
+
+.search-input-row input {
+    flex: 1;
+    height: 36px;
+    padding: 0 0.75rem;
+    font-size: 0.8125rem;
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--n-0);
+    color: var(--text);
+    transition: border-color 0.15s, box-shadow 0.15s;
+    line-height: 1.4;
+    min-width: 0;
+}
+
+.search-input-row input::placeholder {
+    color: var(--n-400);
+}
+
+.search-input-row input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+.search-hint {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+    line-height: 1.5;
+}
+
+.search-hint code {
+    background: var(--n-100);
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-size: 0.6875rem;
+    color: var(--n-700);
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+}
+
+/* ===== Eligibility banner ===== */
+.eligibility-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius);
+    font-size: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--border);
+    line-height: 1.5;
+}
+
+.eligibility-note.info {
+    background: var(--n-50);
+    color: var(--n-700);
+}
+
+.eligibility-note.warn {
+    background: #fefce8;
+    border-color: #fde68a;
+    color: #78350f;
+}
+
+.eligibility-note svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+/* ===== Section title ===== */
+.section-heading {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+}
+
+.section-heading span {
+    color: var(--text);
+    text-transform: none;
+    letter-spacing: 0;
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 0.75rem;
+}
+
+/* ===== Panels ===== */
+.panel {
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.panel-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.875rem 1.125rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.panel-title {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0;
+    letter-spacing: -0.005em;
+}
+
+.panel-sub {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    margin: 0.125rem 0 0 0;
+}
+
+/* ===== Results grid ===== */
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+/* ===== Domain card ===== */
+.domain-card {
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.125rem;
+    transition: border-color 0.15s;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.domain-card:hover {
+    border-color: var(--border-strong);
+}
+
+.domain-card.is-available {
+    border-color: #bbf7d0;
+    background: #fbfffd;
+}
+
+.domain-card.is-available:hover {
+    border-color: #6ee7b7;
+}
+
+.domain-card.is-taken {
+    opacity: 0.55;
+}
+
+.domain-card.is-unknown {
+    background: var(--n-50);
+}
+
+.domain-name {
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text);
+    letter-spacing: -0.01em;
+    word-break: break-all;
+    line-height: 1.4;
+}
+
+.domain-name .tld {
+    color: var(--text-subtle);
+}
+
+.domain-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    margin-top: 0.25rem;
+    line-height: 1.4;
+}
+
+.domain-price-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3125rem;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    color: var(--success);
+    letter-spacing: 0.01em;
+}
+
+.domain-price-tag.paid {
+    color: var(--text-muted);
+}
+
+.domain-price-tag .dot {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: currentColor;
+    flex-shrink: 0;
+}
+
+.domain-actions {
+    margin-top: auto;
+}
+
+.domain-actions button,
+.domain-actions a.btn-action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 32px;
+    padding: 0 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+    text-decoration: none;
+    font-family: inherit;
+    background: var(--n-0);
+    color: var(--n-700);
+}
+
+.domain-actions .btn-add {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+}
+
+.domain-actions .btn-add:hover {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+}
+
+.domain-actions .btn-add:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.domain-actions .btn-contact:hover {
+    background: var(--n-50);
+    border-color: var(--border-strong);
+    color: var(--text);
+}
+
+.domain-actions .btn-disabled {
+    background: var(--n-50);
+    color: var(--text-subtle);
+    border-color: var(--border);
+    cursor: not-allowed;
+}
+
+/* ===== Requests list ===== */
+.requests-list {
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.request-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.875rem 1.125rem;
+    border-bottom: 1px solid var(--border);
+    gap: 0.75rem;
+    min-width: 0;
+}
+
+.request-row:last-child { border-bottom: none; }
+.request-row:hover { background: var(--n-50); }
+
+.request-body {
+    min-width: 0;
+    flex: 1;
+}
+
+.request-domain {
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.request-meta {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    margin-top: 0.125rem;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Status tag */
+.status-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.1875rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    background: var(--n-100);
+    color: var(--n-700);
+    flex-shrink: 0;
+}
+
+.status-tag .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: currentColor;
+    flex-shrink: 0;
+}
+
+.status-tag.status-active {
+    background: #f0fdf4;
+    color: var(--success);
+}
+
+.status-tag.status-failed,
+.status-tag.status-rejected {
+    background: #fef2f2;
+    color: var(--danger);
+}
+
+.status-tag.status-configuring_dns {
+    background: var(--n-100);
+    color: var(--n-700);
+}
+
+.status-tag.status-cancelled {
+    background: var(--n-100);
+    color: var(--n-500);
+}
+
+/* ===== Empty state ===== */
+.empty-state {
+    padding: 3rem 1.5rem;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.8125rem;
+}
+
+.empty-state svg {
+    color: var(--n-300);
+    margin-bottom: 0.625rem;
+}
+
+/* ===== Loading ===== */
+.search-loading {
+    padding: 3rem 1.5rem;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.8125rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.625rem;
+}
+
+.search-loading-spinner {
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--n-200);
+    border-top-color: var(--n-700);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ===== Footer note ===== */
+.footer-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625rem;
+    padding: 0.875rem 1rem;
+    border-radius: var(--radius);
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 1.5rem;
+    line-height: 1.5;
+}
+
+.footer-note svg {
+    color: var(--text-subtle);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.footer-note a {
+    color: var(--text);
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-color: var(--border-strong);
+    text-underline-offset: 2px;
+}
+
+.footer-note a:hover {
+    text-decoration-color: var(--text);
+}
+
+/* ===== Toast ===== */
+.toast-stack {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    pointer-events: none;
+}
+
+.toast {
+    background: var(--n-900);
+    color: white;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    max-width: 360px;
+    pointer-events: auto;
+    animation: toastIn 0.2s ease;
+    line-height: 1.5;
+}
+
+.toast.error { background: var(--danger); }
+.toast.success { background: var(--n-900); }
+
+@keyframes toastIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+    .management-content { padding: 1.5rem 1rem 3rem; }
+
+    .catalog-title-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+
+    .catalog-actions { justify-content: flex-start; flex-wrap: wrap; }
+    .usage-counter { align-self: flex-start; }
+}
+
+@media (max-width: 640px) {
+    .catalog-title { font-size: 1.375rem; }
+    .search-input-row { flex-direction: column; }
+    .search-input-row button { height: 36px; }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="toast-stack" id="toastStack"></div>
+
+<div class="management-layout">
+    {% include 'builder/includes/sidebar.html' with active_menu='get_domain' %}
+
+    <div class="management-content">
+
+        <!-- Context -->
+        <div class="catalog-context">
+            <a href="{% url 'dashboard' %}" class="context-back">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                <span>Dashboard</span>
+            </a>
+            <span class="context-sep">/</span>
+            <a href="{% url 'manage_products' subdomain=page.subdomain %}" class="context-back">
+                <span>{{ page.brand_name }}</span>
+            </a>
+            <span class="context-sep">/</span>
+            <span class="context-current">Domains</span>
+        </div>
+
+        <!-- Title -->
+        <div class="catalog-title-row">
+            <div class="catalog-title-block">
+                <h1 class="catalog-title">Custom domains</h1>
+                <p class="catalog-sub">Find and register a domain for your store</p>
+            </div>
+            <div class="catalog-actions">
+                <div class="usage-counter">
+                    <strong id="domainsUsed">0</strong>
+                    <span>of</span>
+                    <strong id="domainsLimit">0</strong>
+                    <span>domains used</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Messages -->
+        {% if messages %}
+        {% for message in messages %}
+        <div class="eligibility-note {% if message.tags == 'error' %}warn{% else %}info{% endif %}" style="margin-bottom: 1rem;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 16v-4M12 8h.01"/>
+            </svg>
+            <span>{{ message }}</span>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        <!-- Eligibility banner -->
+        <div id="eligibilityBanner" class="eligibility-note info d-none">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 16v-4M12 8h.01"/>
+            </svg>
+            <span id="eligibilityMessage"></span>
+        </div>
+
+        <!-- Search -->
+        <div class="search-panel">
+            <label class="search-panel-label" for="domainSearchInput">Search for a domain</label>
+            <div class="search-input-row">
+                <input type="text"
+                       id="domainSearchInput"
+                       placeholder="yourbrand"
+                       autocomplete="off"
+                       autocapitalize="off"
+                       spellcheck="false"
+                       maxlength="63">
+                <button type="button" class="btn btn-accent" id="domainSearchBtn">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"/>
+                        <path d="m21 21-4.3-4.3"/>
+                    </svg>
+                    <span>Search</span>
+                </button>
+            </div>
+            <div class="search-hint">
+                Enter a name to see available extensions, or paste a full domain like
+                <code>yourbrand.store</code> to check a specific one.
+            </div>
+        </div>
+
+        <!-- Loading -->
+        <div id="domainSearchLoading" class="search-loading d-none">
+            <div class="search-loading-spinner"></div>
+            <span>Checking availability…</span>
+        </div>
+
+        <!-- Results -->
+        <div id="domainResults" class="d-none">
+            <div class="section-heading">Results for <span id="searchQueryEcho"></span></div>
+            <div class="results-grid" id="domainResultsList"></div>
+        </div>
+
+        <!-- Existing requests -->
+        <div style="margin-top: 1.5rem;">
+            <div class="section-heading">Your domains</div>
+            <div id="existingRequestsContainer" class="requests-list">
+                <div class="empty-state">Loading…</div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer-note">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 16v-4M12 8h.01"/>
+            </svg>
+            <div>
+                Already own a domain? You can connect it manually from the
+                <a href="{% url 'manage_domains' page.subdomain %}">advanced domain settings</a>.
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Domain result card template -->
+<template id="domainResultCardTemplate">
+    <div class="domain-card">
+        <div>
+            <div class="domain-name" data-field="domain_name"></div>
+            <div class="domain-meta" data-field="meta"></div>
+        </div>
+        <div class="domain-actions" data-field="actions"></div>
+    </div>
+</template>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+(function () {
+    'use strict';
+
+    const SUBDOMAIN = '{{ page.subdomain|escapejs }}';
+    const CSRF_TOKEN = '{{ csrf_token }}';
+    const URLS = {
+        search: '/builder/domains/search/' + SUBDOMAIN + '/',
+        request: '/builder/domains/request/' + SUBDOMAIN + '/',
+        list: '/builder/domains/list/' + SUBDOMAIN + '/',
+    };
+
+    const els = {
+        input: document.getElementById('domainSearchInput'),
+        searchBtn: document.getElementById('domainSearchBtn'),
+        results: document.getElementById('domainResults'),
+        resultsList: document.getElementById('domainResultsList'),
+        queryEcho: document.getElementById('searchQueryEcho'),
+        loading: document.getElementById('domainSearchLoading'),
+        requestsContainer: document.getElementById('existingRequestsContainer'),
+        domainsUsed: document.getElementById('domainsUsed'),
+        domainsLimit: document.getElementById('domainsLimit'),
+        eligibilityBanner: document.getElementById('eligibilityBanner'),
+        eligibilityMessage: document.getElementById('eligibilityMessage'),
+    };
+
+    function escapeHtml(str) {
+        if (!str) return '';
+        return String(str).replace(/[&<>"']/g, s => ({
+            '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+        }[s]));
+    }
+
+    /* ============ Toast ============ */
+    function toast(message, type = 'info', duration = 5000) {
+        const stack = document.getElementById('toastStack');
+        if (!stack) return;
+
+        const el = document.createElement('div');
+        el.className = `toast ${type}`;
+        const icon = type === 'error'
+            ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>'
+            : '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+        el.innerHTML = `${icon}<span>${escapeHtml(message)}</span>`;
+        stack.appendChild(el);
+        setTimeout(() => {
+            el.style.transition = 'opacity 0.2s, transform 0.2s';
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(-8px)';
+            setTimeout(() => el.remove(), 200);
+        }, duration);
+    }
+
+    /* ============ Loading helpers ============ */
+    function showLoading() {
+        els.loading.classList.remove('d-none');
+        els.results.classList.add('d-none');
+        els.searchBtn.disabled = true;
+    }
+    function hideLoading() {
+        els.loading.classList.add('d-none');
+        els.searchBtn.disabled = false;
+    }
+
+    /* ============ Search ============ */
+    async function performSearch() {
+        const q = (els.input.value || '').trim();
+        if (!q || q.length < 2) {
+            toast('Please enter at least 2 characters.', 'error');
+            return;
+        }
+        showLoading();
+        try {
+            const url = URLS.search + '?q=' + encodeURIComponent(q);
+            const resp = await fetch(url, {
+                headers: { 'X-Requested-With': 'XMLHttpRequest' }
+            });
+            const contentType = resp.headers.get('content-type') || '';
+            if (!contentType.includes('application/json')) {
+                hideLoading();
+                toast('Session expired. Please refresh and log in again.', 'error');
+                return;
+            }
+            const data = await resp.json();
+            hideLoading();
+            if (!data.success) {
+                toast(data.error || 'Search failed', 'error');
+                return;
+            }
+            renderResults(data);
+        } catch (err) {
+            hideLoading();
+            console.error('Search error:', err);
+            toast('Network error. Please try again.', 'error');
+        }
+    }
+
+    function renderResults(data) {
+        els.queryEcho.textContent = data.forced_tld
+            ? data.query + '.' + data.forced_tld
+            : data.query;
+
+        els.resultsList.innerHTML = '';
+
+        if (!data.results || data.results.length === 0) {
+            els.resultsList.innerHTML =
+                '<div class="empty-state" style="grid-column: 1/-1;">' +
+                'No results. Try a different name.</div>';
+            els.results.classList.remove('d-none');
+            return;
+        }
+
+        data.results.forEach(r => {
+            els.resultsList.appendChild(buildResultCard(r));
+        });
+        els.results.classList.remove('d-none');
+    }
+
+    function buildResultCard(r) {
+        const tpl = document.getElementById('domainResultCardTemplate');
+        const clone = tpl.content.cloneNode(true);
+        const card = clone.querySelector('.domain-card');
+
+        if (r.available === true) {
+            card.classList.add('is-available');
+        } else if (r.available === false) {
+            card.classList.add('is-taken');
+        } else {
+            card.classList.add('is-unknown');
+        }
+
+        const nameEl = clone.querySelector('[data-field="domain_name"]');
+        const lastDot = r.domain_name.lastIndexOf('.');
+        if (lastDot > 0) {
+            nameEl.innerHTML =
+                escapeHtml(r.domain_name.slice(0, lastDot)) +
+                '<span class="tld">' + escapeHtml(r.domain_name.slice(lastDot)) + '</span>';
+        } else {
+            nameEl.textContent = r.domain_name;
+        }
+
+        const metaEl = clone.querySelector('[data-field="meta"]');
+        let metaHtml = '';
+
+        if (r.available === true) {
+            if (r.is_free_on_plan) {
+                metaHtml += '<span class="domain-price-tag"><span class="dot"></span>Included in plan</span>';
+            } else {
+                metaHtml += '<span class="domain-price-tag paid"><span class="dot"></span>Contact for pricing</span>';
+            }
+        } else if (r.available === false) {
+            metaHtml += '<span>Registered</span>';
+        } else {
+            metaHtml += '<span>Unable to check</span>';
+        }
+        metaEl.innerHTML = metaHtml;
+
+        const actionsEl = clone.querySelector('[data-field="actions"]');
+
+        if (r.available === true && r.is_free_on_plan) {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'btn-add';
+            btn.textContent = 'Add to store';
+            btn.addEventListener('click', () => requestDomain(r, btn));
+            actionsEl.appendChild(btn);
+        } else if (r.available === true && !r.is_free_on_plan) {
+            const btn = document.createElement('a');
+            btn.className = 'btn-action btn-contact';
+            btn.href = 'mailto:info@bynup.store?subject=' +
+                encodeURIComponent('Domain inquiry: ' + r.domain_name);
+            btn.textContent = 'Contact us';
+            actionsEl.appendChild(btn);
+        } else if (r.available === false) {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'btn-disabled';
+            btn.disabled = true;
+            btn.textContent = 'Unavailable';
+            actionsEl.appendChild(btn);
+        } else {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'btn-action btn-contact';
+            btn.textContent = 'Retry';
+            btn.addEventListener('click', () => performSearch());
+            actionsEl.appendChild(btn);
+        }
+
+        return clone;
+    }
+
+    /* ============ Request domain ============ */
+    async function requestDomain(r, btn) {
+        const original = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Adding…';
+        try {
+            const resp = await fetch(URLS.request, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': CSRF_TOKEN,
+                    'X-Requested-With': 'XMLHttpRequest',
+                },
+                body: JSON.stringify({
+                    domain_name: r.domain_name,
+                    tld: r.tld,
+                }),
+            });
+            const data = await resp.json();
+            if (data.success) {
+                btn.textContent = 'Added';
+                btn.style.background = 'var(--success)';
+                btn.style.borderColor = 'var(--success)';
+                toast(data.message || 'Domain added', 'success');
+                refreshRequestsList();
+            } else {
+                btn.disabled = false;
+                btn.textContent = original;
+                toast(data.message || data.error || 'Could not add domain', 'error');
+            }
+        } catch (err) {
+            console.error('Request error:', err);
+            btn.disabled = false;
+            btn.textContent = original;
+            toast('Network error. Please try again.', 'error');
+        }
+    }
+
+    /* ============ Requests list ============ */
+    async function refreshRequestsList() {
+        try {
+            const resp = await fetch(URLS.list, {
+                headers: { 'X-Requested-With': 'XMLHttpRequest' }
+            });
+            const data = await resp.json();
+            if (!data.success) return;
+            renderRequestsList(data.requests || []);
+            updateLimitsDisplay(data.summary);
+            updateEligibilityBanner(data.summary);
+        } catch (err) {
+            console.error('Could not load requests:', err);
+        }
+    }
+
+    function renderRequestsList(requests) {
+        if (!requests.length) {
+            els.requestsContainer.innerHTML =
+                '<div class="empty-state">' +
+                '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">' +
+                '<circle cx="12" cy="12" r="10"/>' +
+                '<path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>' +
+                '</svg>' +
+                '<p style="margin: 0;">No domains yet. Search above to get started.</p>' +
+                '</div>';
+            return;
+        }
+
+        let html = '';
+        requests.forEach(r => {
+            const date = new Date(r.created_at).toLocaleDateString(undefined, {
+                month: 'short', day: 'numeric', year: 'numeric'
+            });
+            const isFree = r.is_free_tier ? ' · Included' : '';
+
+            html += `
+                <div class="request-row">
+                    <div class="request-body">
+                        <div class="request-domain">${escapeHtml(r.domain_name)}</div>
+                        <div class="request-meta">Added ${date}${isFree}</div>
+                    </div>
+                    <span class="status-tag status-${escapeHtml(r.status)}">
+                        <span class="dot"></span>${escapeHtml(r.status_display)}
+                    </span>
+                </div>
+            `;
+        });
+        els.requestsContainer.innerHTML = html;
+    }
+
+    function updateLimitsDisplay(summary) {
+        if (!summary) return;
+        if (els.domainsUsed) els.domainsUsed.textContent = summary.total_used;
+        if (els.domainsLimit) {
+            els.domainsLimit.textContent =
+                summary.limit === -1 ? '∞' : (summary.limit || 0);
+        }
+    }
+
+    function updateEligibilityBanner(summary) {
+        if (!summary) return;
+
+        if (summary.limit === 0) {
+            els.eligibilityBanner.classList.remove('d-none');
+            els.eligibilityBanner.classList.remove('info');
+            els.eligibilityBanner.classList.add('warn');
+            els.eligibilityMessage.textContent =
+                'Custom domains are not included in your current plan. Upgrade to add one.';
+            return;
+        }
+        if (summary.total_used >= summary.limit) {
+            els.eligibilityBanner.classList.remove('d-none');
+            els.eligibilityBanner.classList.remove('warn');
+            els.eligibilityBanner.classList.add('info');
+            els.eligibilityMessage.textContent =
+                "You've reached your plan's domain limit. Upgrade to add more.";
+            return;
+        }
+        els.eligibilityBanner.classList.add('d-none');
+    }
+
+    /* ============ Wire up ============ */
+    if (els.searchBtn) els.searchBtn.addEventListener('click', performSearch);
+    if (els.input) {
+        els.input.addEventListener('keydown', e => {
+            if (e.key === 'Enter') { e.preventDefault(); performSearch(); }
+        });
+    }
+
+    refreshRequestsList();
+})();
+</script>
+{% endblock %}

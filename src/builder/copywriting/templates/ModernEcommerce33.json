@@ -10,553 +10,1477 @@
       },
       {
         "id": "2",
-        "text": "Saved0",
-        "type": "button",
+        "text": "Cozy",
+        "type": "text",
         "customized": false
       },
       {
         "id": "3",
-        "text": "Cart0",
-        "type": "button",
+        "text": "Saved",
+        "type": "text",
         "customized": false
       },
       {
         "id": "4",
-        "text": "Sign Up",
-        "type": "link",
+        "text": "Cart",
+        "type": "text",
         "customized": false
       },
       {
         "id": "5",
-        "text": "Sign In",
+        "text": "Sign Up",
         "type": "link",
         "customized": false
       },
       {
         "id": "6",
-        "text": "Orders",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "7",
-        "text": "Logout",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "8",
-        "text": "Gentle Beginnings",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "500",
-        "text": "Nurturing comfort,designed with love",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "501",
-        "text": "designed with love",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "10",
-        "text": "Thoughtfully crafted essentials that bring warmth and joy to your daily parenting journey. \n                Every piece is made with care, using gentle materials that your little ones will adore.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "11",
-        "text": "Explore Collection",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "12",
-        "text": "Get in Touch",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "13",
-        "text": "Our Favorites",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "14",
-        "text": "✦ Curated with Care",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "100",
-        "text": "⭐ Best Seller",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "101",
-        "text": "Gentle Formula Station",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "102",
-        "text": "$210.00",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "103",
-        "text": "🌿 Cozy Choice",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "104",
-        "text": "Cozy Swaddle Nest",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "105",
-        "text": "$125.00",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "106",
-        "text": "🧸 Essential",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "107",
-        "text": "Gentle Feeder Set",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "108",
-        "text": "$64.00",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "15",
-        "text": "Choose Size:",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "16",
-        "text": "Choose Color:",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "37",
-        "text": "Let's Connect",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "38",
-        "text": "We'd love to hear from you ✨",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "39",
-        "text": "Say Hello!",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "40",
-        "text": "hello@{brand}.comMon-Fri, 9am - 6pm EST",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "42",
-        "text": "Your Name",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "44",
-        "text": "Email Address",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "46",
-        "text": "Your Message",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "47",
-        "text": "Send Message",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "48",
-        "text": "Frequently Asked",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "49",
-        "text": "We've got answers 💫",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "50",
-        "text": "Are your products safe for babies?",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "51",
-        "text": "Absolutely! Every product is crafted from medical-grade, BPA-free materials that are gentle on sensitive skin. \n                        All items undergo rigorous safety testing and are certified baby-safe.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "52",
-        "text": "What's your return policy?",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "53",
-        "text": "We offer hassle-free returns within 30 days of purchase. If you're not completely satisfied, \n                        we'll make it right — no questions asked. Your happiness is our priority!",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "54",
-        "text": "How fast is shipping?",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "55",
-        "text": "We ship within 1-2 business days! Standard delivery takes 3-5 business days, \n                        and expedited options are available at checkout for when you need it sooner.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "56",
-        "text": "Your Cart",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "57",
-        "text": "Total:",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "58",
-        "text": "Secure Checkout",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "59",
-        "text": "Saved Items",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "60",
-        "text": "View Cart",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "61",
-        "text": "Checkout",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "62",
-        "text": "{brand}",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "63",
-        "text": "Creating gentle, beautiful essentials for families who believe in thoughtful design \n                    and the power of a cozy home.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "64",
-        "text": "Quick Links",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "65",
-        "text": "Back to Top",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "66",
-        "text": "Shop All",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "67",
-        "text": "Contact Us",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "68",
-        "text": "© 2026 {brand} — Made withfor families everywhere.",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "69",
-        "text": "Secure  |Sustainable",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "text-57",
-        "text": "Nurturing comfort,designed with love",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-58",
-        "text": "Nurturing comfort,designed with love",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-59",
-        "text": "Our Favorites",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-60",
-        "text": "Gentle Formula Station",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-61",
-        "text": "Cozy Swaddle Nest",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-62",
-        "text": "Gentle Feeder Set",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "modal-product-title",
-        "text": "Product Name",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-64",
-        "text": "Parent Reviews",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-65",
-        "text": "Let's Connect",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-66",
-        "text": "Say Hello!",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-67",
-        "text": "Frequently Asked",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-68",
-        "text": "Quick Links",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "paragraph-69",
-        "text": "Thoughtfully crafted essentials that bring warmth and joy to your daily parenting journey. \n                Every piece is made with care, using gentle materials that your little ones will adore.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-70",
-        "text": "Whether you have questions about our products, need help choosing the perfect item, \n                            or just want to share your parenting journey — we're here for you.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-71",
-        "text": "Absolutely! Every product is crafted from medical-grade, BPA-free materials that are gentle on sensitive skin. \n                        All items undergo rigorous safety testing and are certified baby-safe.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-72",
-        "text": "We offer hassle-free returns within 30 days of purchase. If you're not completely satisfied, \n                        we'll make it right — no questions asked. Your happiness is our priority!",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-73",
-        "text": "We ship within 1-2 business days! Standard delivery takes 3-5 business days, \n                        and expedited options are available at checkout for when you need it sooner.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-74",
-        "text": "Creating gentle, beautiful essentials for families who believe in thoughtful design \n                    and the power of a cozy home.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "button-75",
-        "text": "Saved0",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "button-76",
-        "text": "Cart0",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "button-77",
-        "text": "Explore Collection",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "button-78",
-        "text": "Get in Touch",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "modal-add-btn",
-        "text": "Add to Cart",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "modal-buy-btn",
-        "text": "Buy Now",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "button-81",
-        "text": "Submit Review",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "button-82",
-        "text": "Send Message",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "button-83",
-        "text": "Are your products safe for babies?",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "button-84",
-        "text": "What's your return policy?",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "button-85",
-        "text": "How fast is shipping?",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "button-86",
-        "text": "Secure Checkout",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "button-87",
-        "text": "View Cart",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "button-88",
-        "text": "Checkout",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "link-89",
-        "text": "Sign Up",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-90",
         "text": "Sign In",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-91",
+        "id": "7",
         "text": "Orders",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-92",
+        "id": "8",
         "text": "Logout",
         "type": "link",
         "customized": false
       },
       {
-        "id": "page-title",
+        "id": "800",
+        "text": "Gentle Beginnings",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "801",
+        "text": "Nurturing comfort, designed with love",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "802",
+        "text": "The",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "803",
+        "text": "Cozy",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "804",
+        "text": "Collection",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "805",
+        "text": "Thoughtfully crafted essentials that bring warmth and joy to your daily parenting journey. Every piece is made with care, using gentle materials that your little ones will adore.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "806",
+        "text": "Explore The Collection",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "807",
+        "text": "Get in Touch",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "808",
+        "text": "4.9",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "809",
+        "text": "Parent Rating",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "810",
+        "text": "247",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "811",
+        "text": "Happy Families",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "812",
+        "text": "100",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "813",
+        "text": "% Safe",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "814",
+        "text": "Parent Approved",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "815",
+        "text": "100% Safe Materials",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "816",
+        "text": "Chapter One",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "817",
+        "text": "The Philosophy of",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "818",
+        "text": "Gentle Living",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "819",
+        "text": "\"Every product tells a story of comfort and care.\"— {brand}",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "820",
+        "text": "— {brand}",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "821",
+        "text": "We believe that the best products are those that feel like a warm embrace. Our journey began with a simple idea: create essentials that make parenting easier, more joyful, and infinitely more cozy.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "822",
+        "text": "Premium Materials",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "823",
+        "text": "Thoughtful Design",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "824",
+        "text": "Family Tested",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "825",
+        "text": "Thewarmthof thoughtful design",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "826",
+        "text": "Everystitchtells a story",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "827",
+        "text": "Chapter Two",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "828",
+        "text": "The Art of",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "829",
+        "text": "Craftsmanship",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "830",
+        "text": "\"Quality is not an act, it is a habit.\"— Our Atelier",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "831",
+        "text": "— Our Atelier",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "832",
+        "text": "Every product is meticulously crafted with attention to detail. From the selection of materials to the final stitch, we ensure that each piece meets the highest standards of quality and durability.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "833",
+        "text": "Hand-Finished",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "834",
+        "text": "Sustainable Sourcing",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "835",
+        "text": "Quality Assured",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "836",
+        "text": "Chapter Three",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "837",
+        "text": "Designed for",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "838",
+        "text": "Families",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "839",
+        "text": "\"Great design serves the whole family.\"— Our Team",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "840",
+        "text": "— Our Team",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "841",
+        "text": "We design with families in mind. Every detail is considered to make your life easier, more comfortable, and more joyful. Our products are built to be loved, shared, and passed down.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "842",
+        "text": "Family-Focused",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "843",
+        "text": "Built to Last",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "844",
+        "text": "Loved by All",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "845",
+        "text": "Creatingjoyfor the whole family",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "846",
+        "text": "Real families, real moments",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "847",
+        "text": "Community",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "848",
+        "text": "Stories",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "849",
+        "text": "Pure joy",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "850",
+        "text": "Cozy mornings",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "851",
+        "text": "Our favorite",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "852",
+        "text": "The perfect fit",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "853",
+        "text": "Best Seller",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "854",
+        "text": "The Cozy Essential",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "855",
+        "text": "247 reviews",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "856",
+        "text": "$49.99",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "857",
+        "text": "$69.99",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "858",
+        "text": "Save $20.00",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "859",
+        "text": "The Cozy Essential is crafted from the softest, most gentle materials, designed to bring warmth and comfort to your family's daily routine. Perfect for snuggles, playtime, and everything in between.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "860",
+        "text": "Choose Your Pack:",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "861",
+        "text": "1",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "862",
+        "text": "$49.99",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "863",
+        "text": "—",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "864",
+        "text": "Popular",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "865",
+        "text": "2",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "866",
+        "text": "$89.98",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "867",
+        "text": "Save $10.00",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "868",
+        "text": "🔥 Best Value",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "869",
+        "text": "3",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "870",
+        "text": "$119.97",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "871",
+        "text": "Save $29.99",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "872",
+        "text": "Total Price:",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "873",
+        "text": "Packs:",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "874",
+        "text": "Add to Bag— $89.98",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "875",
+        "text": "Secure Now— $89.98",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "876",
+        "text": "Free Shipping",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "877",
+        "text": "Lifetime Guarantee",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "878",
+        "text": "Secure Checkout",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "879",
+        "text": "30-Day Returns",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "880",
+        "text": "Made with Love",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "881",
+        "text": "Every product is crafted with care and attention to detail.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "882",
+        "text": "Sustainable Choices",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "883",
+        "text": "Eco-friendly materials and ethical production practices.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "884",
+        "text": "Baby Safe",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "885",
+        "text": "Rigorously tested and certified for your peace of mind.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "886",
+        "text": "Happiness Guaranteed",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "887",
+        "text": "Love it or we'll make it right. No questions asked.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "888",
+        "text": "4.9",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "889",
+        "text": "(247 reviews)",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "890",
+        "text": "Write a Review",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "891",
+        "text": "\"This product has been a game-changer for our family. The quality is unmatched and we love it!\"",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "892",
+        "text": "James M.",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "893",
+        "text": "Verified Parent",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "894",
+        "text": "\"The perfect addition to our daily routine. Our little one absolutely adores it.\"",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "895",
+        "text": "Sarah K.",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "896",
+        "text": "Verified Parent",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "897",
+        "text": "\"I've been searching for the perfect product for years. This is it. Worth every penny.\"",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "898",
+        "text": "Thomas L.",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "899",
+        "text": "Verified Parent",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "900",
+        "text": "Curious minds",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "901",
+        "text": "Frequently",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "902",
+        "text": "Asked",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "903",
+        "text": "Are your products safe for babies?",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "904",
+        "text": "Absolutely! Every product is crafted from medical-grade, BPA-free materials that are gentle on sensitive skin. All items undergo rigorous safety testing and are certified baby-safe.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "905",
+        "text": "What's your return policy?",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "906",
+        "text": "We offer hassle-free returns within 30 days of purchase. If you're not completely satisfied, we'll make it right — no questions asked. Your happiness is our priority!",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "907",
+        "text": "How fast is shipping?",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "908",
+        "text": "We ship within 1-2 business days! Standard delivery takes 3-5 business days, and expedited options are available at checkout for when you need it sooner.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "909",
+        "text": "Are your products sustainable?",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "910",
+        "text": "Yes! We're committed to sustainable practices. Our materials are ethically sourced, and we use eco-friendly packaging to minimize our environmental footprint.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "911",
+        "text": "The Invitation",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "912",
+        "text": "Ready to",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "913",
+        "text": "Cozy Up",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "914",
+        "text": "Your Family?",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "915",
+        "text": "Join thousands of happy families who've found comfort and joy in our products. The Cozy Collection is designed to be your family's most cherished piece.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "916",
+        "text": "Shop The Collection",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "917",
+        "text": "Our Cozy Corner",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "918",
+        "text": "Email Us",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "919",
+        "text": "hello@nestandnexus.com",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "920",
+        "text": "We're Here",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "921",
+        "text": "Mon-Fri: 9am - 6pm EST",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "922",
+        "text": "Always Listening",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "923",
+        "text": "Your feedback matters to us",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "924",
+        "text": "Send a Message",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "925",
+        "text": "Your Name",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "926",
+        "text": "Email Address",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "927",
+        "text": "Your Message",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "928",
+        "text": "Send Message",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "929",
+        "text": "The Cozy Essential",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "930",
+        "text": "2 units",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "931",
+        "text": "Add to Bag —",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "932",
+        "text": "Secure Now —",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "933",
+        "text": "Your Cart",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "934",
+        "text": "Your cart is cozy and empty. Let's find something you'll love!",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "935",
+        "text": "Total:",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "936",
+        "text": "Secure Checkout",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "937",
+        "text": "Saved Items",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "938",
+        "text": "No saved items yet. Start your wishlist!",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "939",
+        "text": "items",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "940",
+        "text": "View Cart",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "941",
+        "text": "Checkout",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "942",
         "text": "{brand}",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "943",
+        "text": "Creating gentle, beautiful essentials for families who believe in thoughtful design and the power of a cozy home.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "944",
+        "text": "Shop",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "945",
+        "text": "The Collection",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "946",
+        "text": "Community",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "947",
+        "text": "Reviews",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "948",
+        "text": "Guarantee",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "949",
+        "text": "Support",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "950",
+        "text": "FAQ",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "951",
+        "text": "Contact Us",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "952",
+        "text": "Shipping Policy",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "953",
+        "text": "Returns",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "954",
+        "text": "Size Guide",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "955",
+        "text": "Stay Cozy",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "956",
+        "text": "Subscribe for exclusive drops, early access, and special offers.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "958",
+        "text": "No spam. Unsubscribe anytime.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "959",
+        "text": "© 2026 {brand}. All rights reserved.",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "960",
+        "text": "Privacy Policy",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "961",
+        "text": "Terms of Service",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "962",
+        "text": "Cookie Policy",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "heading-171",
+        "text": "TheCozyCollection",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-172",
+        "text": "The Philosophy ofGentle Living",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-173",
+        "text": "The Art ofCraftsmanship",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-174",
+        "text": "Designed forFamilies",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-175",
+        "text": "CommunityStories",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-176",
+        "text": "The Cozy Essential",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-177",
+        "text": "Made with Love",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-178",
+        "text": "Sustainable Choices",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-179",
+        "text": "Baby Safe",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-180",
+        "text": "Happiness Guaranteed",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-181",
+        "text": "FrequentlyAsked",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-182",
+        "text": "Ready toCozy UpYour Family?",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-183",
+        "text": "Email Us",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-184",
+        "text": "We're Here",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-185",
+        "text": "Always Listening",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-186",
+        "text": "Send a Message",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-187",
+        "text": "Shop",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-188",
+        "text": "Support",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-189",
+        "text": "Stay Cozy",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "paragraph-190",
+        "text": "Thoughtfully crafted essentials that bring warmth and joy to your daily parenting journey. Every piece is made with care, using gentle materials that your little ones will adore.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-191",
+        "text": "We believe that the best products are those that feel like a warm embrace. Our journey began with a simple idea: create essentials that make parenting easier, more joyful, and infinitely more cozy.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-192",
+        "text": "Every product is meticulously crafted with attention to detail. From the selection of materials to the final stitch, we ensure that each piece meets the highest standards of quality and durability.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-193",
+        "text": "We design with families in mind. Every detail is considered to make your life easier, more comfortable, and more joyful. Our products are built to be loved, shared, and passed down.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-194",
+        "text": "The Cozy Essential is crafted from the softest, most gentle materials, designed to bring warmth and comfort to your family's daily routine. Perfect for snuggles, playtime, and everything in between.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-195",
+        "text": "Every product is crafted with care and attention to detail.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-196",
+        "text": "Eco-friendly materials and ethical production practices.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-197",
+        "text": "Rigorously tested and certified for your peace of mind.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-198",
+        "text": "Love it or we'll make it right. No questions asked.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-199",
+        "text": "\"This product has been a game-changer for our family. The quality is unmatched and we love it!\"",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-200",
+        "text": "\"The perfect addition to our daily routine. Our little one absolutely adores it.\"",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-201",
+        "text": "\"I've been searching for the perfect product for years. This is it. Worth every penny.\"",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-202",
+        "text": "Absolutely! Every product is crafted from medical-grade, BPA-free materials that are gentle on sensitive skin. All items undergo rigorous safety testing and are certified baby-safe.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-203",
+        "text": "We offer hassle-free returns within 30 days of purchase. If you're not completely satisfied, we'll make it right — no questions asked. Your happiness is our priority!",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-204",
+        "text": "We ship within 1-2 business days! Standard delivery takes 3-5 business days, and expedited options are available at checkout for when you need it sooner.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-205",
+        "text": "Yes! We're committed to sustainable practices. Our materials are ethically sourced, and we use eco-friendly packaging to minimize our environmental footprint.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-206",
+        "text": "Join thousands of happy families who've found comfort and joy in our products. The Cozy Collection is designed to be your family's most cherished piece.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-207",
+        "text": "hello@nestandnexus.com",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-208",
+        "text": "Mon-Fri: 9am - 6pm EST",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-209",
+        "text": "Your feedback matters to us",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-210",
+        "text": "Creating gentle, beautiful essentials for families who believe in thoughtful design and the power of a cozy home.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-211",
+        "text": "Subscribe for exclusive drops, early access, and special offers.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-212",
+        "text": "No spam. Unsubscribe anytime.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "button-213",
+        "text": "Saved0",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-214",
+        "text": "Cart0",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "add-to-cart-btn",
+        "text": "Add to Bag— $89.98",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "buy-now-btn",
+        "text": "Secure Now— $89.98",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-217",
+        "text": "Write a Review",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-218",
+        "text": "Are your products safe for babies?",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-219",
+        "text": "What's your return policy?",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-220",
+        "text": "How fast is shipping?",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-221",
+        "text": "Are your products sustainable?",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-222",
+        "text": "Send Message",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-223",
+        "text": "Add to Bag —$89.98",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-224",
+        "text": "Secure Now —$89.98",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-225",
+        "text": "Secure Checkout",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-226",
+        "text": "View Cart",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "button-227",
+        "text": "Checkout",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "link-228",
+        "text": "Sign Up",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-229",
+        "text": "Sign In",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-230",
+        "text": "Orders",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-231",
+        "text": "Logout",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-232",
+        "text": "Explore The Collection",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-233",
+        "text": "Get in Touch",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-234",
+        "text": "Shop The Collection",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-235",
+        "text": "The Collection",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-236",
+        "text": "Community",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-237",
+        "text": "Reviews",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-238",
+        "text": "Guarantee",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-239",
+        "text": "FAQ",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-240",
+        "text": "Contact Us",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-241",
+        "text": "Shipping Policy",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-242",
+        "text": "Returns",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-243",
+        "text": "Size Guide",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-244",
+        "text": "Privacy Policy",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-245",
+        "text": "Terms of Service",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "link-246",
+        "text": "Cookie Policy",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "page-title",
+        "text": "{brand} // The Cozy Collection",
         "type": "title",
         "customized": false
       }
@@ -571,559 +1495,1483 @@
     },
     {
       "id": "2",
-      "text": "Saved0",
-      "type": "button",
+      "text": "Cozy",
+      "type": "text",
       "customized": false
     },
     {
       "id": "3",
-      "text": "Cart0",
-      "type": "button",
+      "text": "Saved",
+      "type": "text",
       "customized": false
     },
     {
       "id": "4",
-      "text": "Sign Up",
-      "type": "link",
+      "text": "Cart",
+      "type": "text",
       "customized": false
     },
     {
       "id": "5",
-      "text": "Sign In",
+      "text": "Sign Up",
       "type": "link",
       "customized": false
     },
     {
       "id": "6",
-      "text": "Orders",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "7",
-      "text": "Logout",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "8",
-      "text": "Gentle Beginnings",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "500",
-      "text": "Nurturing comfort,designed with love",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "501",
-      "text": "designed with love",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "10",
-      "text": "Thoughtfully crafted essentials that bring warmth and joy to your daily parenting journey. \n                Every piece is made with care, using gentle materials that your little ones will adore.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "11",
-      "text": "Explore Collection",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "12",
-      "text": "Get in Touch",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "13",
-      "text": "Our Favorites",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "14",
-      "text": "✦ Curated with Care",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "100",
-      "text": "⭐ Best Seller",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "101",
-      "text": "Gentle Formula Station",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "102",
-      "text": "$210.00",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "103",
-      "text": "🌿 Cozy Choice",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "104",
-      "text": "Cozy Swaddle Nest",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "105",
-      "text": "$125.00",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "106",
-      "text": "🧸 Essential",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "107",
-      "text": "Gentle Feeder Set",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "108",
-      "text": "$64.00",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "15",
-      "text": "Choose Size:",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "16",
-      "text": "Choose Color:",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "37",
-      "text": "Let's Connect",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "38",
-      "text": "We'd love to hear from you ✨",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "39",
-      "text": "Say Hello!",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "40",
-      "text": "hello@{brand}.comMon-Fri, 9am - 6pm EST",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "42",
-      "text": "Your Name",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "44",
-      "text": "Email Address",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "46",
-      "text": "Your Message",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "47",
-      "text": "Send Message",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "48",
-      "text": "Frequently Asked",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "49",
-      "text": "We've got answers 💫",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "50",
-      "text": "Are your products safe for babies?",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "51",
-      "text": "Absolutely! Every product is crafted from medical-grade, BPA-free materials that are gentle on sensitive skin. \n                        All items undergo rigorous safety testing and are certified baby-safe.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "52",
-      "text": "What's your return policy?",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "53",
-      "text": "We offer hassle-free returns within 30 days of purchase. If you're not completely satisfied, \n                        we'll make it right — no questions asked. Your happiness is our priority!",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "54",
-      "text": "How fast is shipping?",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "55",
-      "text": "We ship within 1-2 business days! Standard delivery takes 3-5 business days, \n                        and expedited options are available at checkout for when you need it sooner.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "56",
-      "text": "Your Cart",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "57",
-      "text": "Total:",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "58",
-      "text": "Secure Checkout",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "59",
-      "text": "Saved Items",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "60",
-      "text": "View Cart",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "61",
-      "text": "Checkout",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "62",
-      "text": "{brand}",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "63",
-      "text": "Creating gentle, beautiful essentials for families who believe in thoughtful design \n                    and the power of a cozy home.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "64",
-      "text": "Quick Links",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "65",
-      "text": "Back to Top",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "66",
-      "text": "Shop All",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "67",
-      "text": "Contact Us",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "68",
-      "text": "© 2026 {brand} — Made withfor families everywhere.",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "69",
-      "text": "Secure  |Sustainable",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "text-57",
-      "text": "Nurturing comfort,designed with love",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-58",
-      "text": "Nurturing comfort,designed with love",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-59",
-      "text": "Our Favorites",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-60",
-      "text": "Gentle Formula Station",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-61",
-      "text": "Cozy Swaddle Nest",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-62",
-      "text": "Gentle Feeder Set",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "modal-product-title",
-      "text": "Product Name",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-64",
-      "text": "Parent Reviews",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-65",
-      "text": "Let's Connect",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-66",
-      "text": "Say Hello!",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-67",
-      "text": "Frequently Asked",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-68",
-      "text": "Quick Links",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "paragraph-69",
-      "text": "Thoughtfully crafted essentials that bring warmth and joy to your daily parenting journey. \n                Every piece is made with care, using gentle materials that your little ones will adore.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-70",
-      "text": "Whether you have questions about our products, need help choosing the perfect item, \n                            or just want to share your parenting journey — we're here for you.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-71",
-      "text": "Absolutely! Every product is crafted from medical-grade, BPA-free materials that are gentle on sensitive skin. \n                        All items undergo rigorous safety testing and are certified baby-safe.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-72",
-      "text": "We offer hassle-free returns within 30 days of purchase. If you're not completely satisfied, \n                        we'll make it right — no questions asked. Your happiness is our priority!",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-73",
-      "text": "We ship within 1-2 business days! Standard delivery takes 3-5 business days, \n                        and expedited options are available at checkout for when you need it sooner.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-74",
-      "text": "Creating gentle, beautiful essentials for families who believe in thoughtful design \n                    and the power of a cozy home.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "button-75",
-      "text": "Saved0",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "button-76",
-      "text": "Cart0",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "button-77",
-      "text": "Explore Collection",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "button-78",
-      "text": "Get in Touch",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "modal-add-btn",
-      "text": "Add to Cart",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "modal-buy-btn",
-      "text": "Buy Now",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "button-81",
-      "text": "Submit Review",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "button-82",
-      "text": "Send Message",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "button-83",
-      "text": "Are your products safe for babies?",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "button-84",
-      "text": "What's your return policy?",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "button-85",
-      "text": "How fast is shipping?",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "button-86",
-      "text": "Secure Checkout",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "button-87",
-      "text": "View Cart",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "button-88",
-      "text": "Checkout",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "link-89",
-      "text": "Sign Up",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-90",
       "text": "Sign In",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-91",
+      "id": "7",
       "text": "Orders",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-92",
+      "id": "8",
       "text": "Logout",
       "type": "link",
       "customized": false
     },
     {
-      "id": "page-title",
+      "id": "800",
+      "text": "Gentle Beginnings",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "801",
+      "text": "Nurturing comfort, designed with love",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "802",
+      "text": "The",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "803",
+      "text": "Cozy",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "804",
+      "text": "Collection",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "805",
+      "text": "Thoughtfully crafted essentials that bring warmth and joy to your daily parenting journey. Every piece is made with care, using gentle materials that your little ones will adore.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "806",
+      "text": "Explore The Collection",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "807",
+      "text": "Get in Touch",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "808",
+      "text": "4.9",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "809",
+      "text": "Parent Rating",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "810",
+      "text": "247",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "811",
+      "text": "Happy Families",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "812",
+      "text": "100",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "813",
+      "text": "% Safe",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "814",
+      "text": "Parent Approved",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "815",
+      "text": "100% Safe Materials",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "816",
+      "text": "Chapter One",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "817",
+      "text": "The Philosophy of",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "818",
+      "text": "Gentle Living",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "819",
+      "text": "\"Every product tells a story of comfort and care.\"— {brand}",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "820",
+      "text": "— {brand}",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "821",
+      "text": "We believe that the best products are those that feel like a warm embrace. Our journey began with a simple idea: create essentials that make parenting easier, more joyful, and infinitely more cozy.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "822",
+      "text": "Premium Materials",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "823",
+      "text": "Thoughtful Design",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "824",
+      "text": "Family Tested",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "825",
+      "text": "Thewarmthof thoughtful design",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "826",
+      "text": "Everystitchtells a story",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "827",
+      "text": "Chapter Two",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "828",
+      "text": "The Art of",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "829",
+      "text": "Craftsmanship",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "830",
+      "text": "\"Quality is not an act, it is a habit.\"— Our Atelier",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "831",
+      "text": "— Our Atelier",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "832",
+      "text": "Every product is meticulously crafted with attention to detail. From the selection of materials to the final stitch, we ensure that each piece meets the highest standards of quality and durability.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "833",
+      "text": "Hand-Finished",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "834",
+      "text": "Sustainable Sourcing",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "835",
+      "text": "Quality Assured",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "836",
+      "text": "Chapter Three",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "837",
+      "text": "Designed for",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "838",
+      "text": "Families",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "839",
+      "text": "\"Great design serves the whole family.\"— Our Team",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "840",
+      "text": "— Our Team",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "841",
+      "text": "We design with families in mind. Every detail is considered to make your life easier, more comfortable, and more joyful. Our products are built to be loved, shared, and passed down.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "842",
+      "text": "Family-Focused",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "843",
+      "text": "Built to Last",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "844",
+      "text": "Loved by All",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "845",
+      "text": "Creatingjoyfor the whole family",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "846",
+      "text": "Real families, real moments",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "847",
+      "text": "Community",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "848",
+      "text": "Stories",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "849",
+      "text": "Pure joy",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "850",
+      "text": "Cozy mornings",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "851",
+      "text": "Our favorite",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "852",
+      "text": "The perfect fit",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "853",
+      "text": "Best Seller",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "854",
+      "text": "The Cozy Essential",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "855",
+      "text": "247 reviews",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "856",
+      "text": "$49.99",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "857",
+      "text": "$69.99",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "858",
+      "text": "Save $20.00",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "859",
+      "text": "The Cozy Essential is crafted from the softest, most gentle materials, designed to bring warmth and comfort to your family's daily routine. Perfect for snuggles, playtime, and everything in between.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "860",
+      "text": "Choose Your Pack:",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "861",
+      "text": "1",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "862",
+      "text": "$49.99",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "863",
+      "text": "—",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "864",
+      "text": "Popular",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "865",
+      "text": "2",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "866",
+      "text": "$89.98",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "867",
+      "text": "Save $10.00",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "868",
+      "text": "🔥 Best Value",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "869",
+      "text": "3",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "870",
+      "text": "$119.97",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "871",
+      "text": "Save $29.99",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "872",
+      "text": "Total Price:",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "873",
+      "text": "Packs:",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "874",
+      "text": "Add to Bag— $89.98",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "875",
+      "text": "Secure Now— $89.98",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "876",
+      "text": "Free Shipping",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "877",
+      "text": "Lifetime Guarantee",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "878",
+      "text": "Secure Checkout",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "879",
+      "text": "30-Day Returns",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "880",
+      "text": "Made with Love",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "881",
+      "text": "Every product is crafted with care and attention to detail.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "882",
+      "text": "Sustainable Choices",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "883",
+      "text": "Eco-friendly materials and ethical production practices.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "884",
+      "text": "Baby Safe",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "885",
+      "text": "Rigorously tested and certified for your peace of mind.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "886",
+      "text": "Happiness Guaranteed",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "887",
+      "text": "Love it or we'll make it right. No questions asked.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "888",
+      "text": "4.9",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "889",
+      "text": "(247 reviews)",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "890",
+      "text": "Write a Review",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "891",
+      "text": "\"This product has been a game-changer for our family. The quality is unmatched and we love it!\"",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "892",
+      "text": "James M.",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "893",
+      "text": "Verified Parent",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "894",
+      "text": "\"The perfect addition to our daily routine. Our little one absolutely adores it.\"",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "895",
+      "text": "Sarah K.",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "896",
+      "text": "Verified Parent",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "897",
+      "text": "\"I've been searching for the perfect product for years. This is it. Worth every penny.\"",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "898",
+      "text": "Thomas L.",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "899",
+      "text": "Verified Parent",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "900",
+      "text": "Curious minds",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "901",
+      "text": "Frequently",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "902",
+      "text": "Asked",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "903",
+      "text": "Are your products safe for babies?",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "904",
+      "text": "Absolutely! Every product is crafted from medical-grade, BPA-free materials that are gentle on sensitive skin. All items undergo rigorous safety testing and are certified baby-safe.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "905",
+      "text": "What's your return policy?",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "906",
+      "text": "We offer hassle-free returns within 30 days of purchase. If you're not completely satisfied, we'll make it right — no questions asked. Your happiness is our priority!",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "907",
+      "text": "How fast is shipping?",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "908",
+      "text": "We ship within 1-2 business days! Standard delivery takes 3-5 business days, and expedited options are available at checkout for when you need it sooner.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "909",
+      "text": "Are your products sustainable?",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "910",
+      "text": "Yes! We're committed to sustainable practices. Our materials are ethically sourced, and we use eco-friendly packaging to minimize our environmental footprint.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "911",
+      "text": "The Invitation",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "912",
+      "text": "Ready to",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "913",
+      "text": "Cozy Up",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "914",
+      "text": "Your Family?",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "915",
+      "text": "Join thousands of happy families who've found comfort and joy in our products. The Cozy Collection is designed to be your family's most cherished piece.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "916",
+      "text": "Shop The Collection",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "917",
+      "text": "Our Cozy Corner",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "918",
+      "text": "Email Us",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "919",
+      "text": "hello@nestandnexus.com",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "920",
+      "text": "We're Here",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "921",
+      "text": "Mon-Fri: 9am - 6pm EST",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "922",
+      "text": "Always Listening",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "923",
+      "text": "Your feedback matters to us",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "924",
+      "text": "Send a Message",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "925",
+      "text": "Your Name",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "926",
+      "text": "Email Address",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "927",
+      "text": "Your Message",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "928",
+      "text": "Send Message",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "929",
+      "text": "The Cozy Essential",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "930",
+      "text": "2 units",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "931",
+      "text": "Add to Bag —",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "932",
+      "text": "Secure Now —",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "933",
+      "text": "Your Cart",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "934",
+      "text": "Your cart is cozy and empty. Let's find something you'll love!",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "935",
+      "text": "Total:",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "936",
+      "text": "Secure Checkout",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "937",
+      "text": "Saved Items",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "938",
+      "text": "No saved items yet. Start your wishlist!",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "939",
+      "text": "items",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "940",
+      "text": "View Cart",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "941",
+      "text": "Checkout",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "942",
       "text": "{brand}",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "943",
+      "text": "Creating gentle, beautiful essentials for families who believe in thoughtful design and the power of a cozy home.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "944",
+      "text": "Shop",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "945",
+      "text": "The Collection",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "946",
+      "text": "Community",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "947",
+      "text": "Reviews",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "948",
+      "text": "Guarantee",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "949",
+      "text": "Support",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "950",
+      "text": "FAQ",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "951",
+      "text": "Contact Us",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "952",
+      "text": "Shipping Policy",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "953",
+      "text": "Returns",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "954",
+      "text": "Size Guide",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "955",
+      "text": "Stay Cozy",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "956",
+      "text": "Subscribe for exclusive drops, early access, and special offers.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "958",
+      "text": "No spam. Unsubscribe anytime.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "959",
+      "text": "© 2026 {brand}. All rights reserved.",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "960",
+      "text": "Privacy Policy",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "961",
+      "text": "Terms of Service",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "962",
+      "text": "Cookie Policy",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "heading-171",
+      "text": "TheCozyCollection",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-172",
+      "text": "The Philosophy ofGentle Living",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-173",
+      "text": "The Art ofCraftsmanship",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-174",
+      "text": "Designed forFamilies",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-175",
+      "text": "CommunityStories",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-176",
+      "text": "The Cozy Essential",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-177",
+      "text": "Made with Love",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-178",
+      "text": "Sustainable Choices",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-179",
+      "text": "Baby Safe",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-180",
+      "text": "Happiness Guaranteed",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-181",
+      "text": "FrequentlyAsked",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-182",
+      "text": "Ready toCozy UpYour Family?",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-183",
+      "text": "Email Us",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-184",
+      "text": "We're Here",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-185",
+      "text": "Always Listening",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-186",
+      "text": "Send a Message",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-187",
+      "text": "Shop",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-188",
+      "text": "Support",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-189",
+      "text": "Stay Cozy",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "paragraph-190",
+      "text": "Thoughtfully crafted essentials that bring warmth and joy to your daily parenting journey. Every piece is made with care, using gentle materials that your little ones will adore.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-191",
+      "text": "We believe that the best products are those that feel like a warm embrace. Our journey began with a simple idea: create essentials that make parenting easier, more joyful, and infinitely more cozy.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-192",
+      "text": "Every product is meticulously crafted with attention to detail. From the selection of materials to the final stitch, we ensure that each piece meets the highest standards of quality and durability.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-193",
+      "text": "We design with families in mind. Every detail is considered to make your life easier, more comfortable, and more joyful. Our products are built to be loved, shared, and passed down.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-194",
+      "text": "The Cozy Essential is crafted from the softest, most gentle materials, designed to bring warmth and comfort to your family's daily routine. Perfect for snuggles, playtime, and everything in between.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-195",
+      "text": "Every product is crafted with care and attention to detail.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-196",
+      "text": "Eco-friendly materials and ethical production practices.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-197",
+      "text": "Rigorously tested and certified for your peace of mind.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-198",
+      "text": "Love it or we'll make it right. No questions asked.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-199",
+      "text": "\"This product has been a game-changer for our family. The quality is unmatched and we love it!\"",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-200",
+      "text": "\"The perfect addition to our daily routine. Our little one absolutely adores it.\"",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-201",
+      "text": "\"I've been searching for the perfect product for years. This is it. Worth every penny.\"",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-202",
+      "text": "Absolutely! Every product is crafted from medical-grade, BPA-free materials that are gentle on sensitive skin. All items undergo rigorous safety testing and are certified baby-safe.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-203",
+      "text": "We offer hassle-free returns within 30 days of purchase. If you're not completely satisfied, we'll make it right — no questions asked. Your happiness is our priority!",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-204",
+      "text": "We ship within 1-2 business days! Standard delivery takes 3-5 business days, and expedited options are available at checkout for when you need it sooner.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-205",
+      "text": "Yes! We're committed to sustainable practices. Our materials are ethically sourced, and we use eco-friendly packaging to minimize our environmental footprint.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-206",
+      "text": "Join thousands of happy families who've found comfort and joy in our products. The Cozy Collection is designed to be your family's most cherished piece.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-207",
+      "text": "hello@nestandnexus.com",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-208",
+      "text": "Mon-Fri: 9am - 6pm EST",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-209",
+      "text": "Your feedback matters to us",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-210",
+      "text": "Creating gentle, beautiful essentials for families who believe in thoughtful design and the power of a cozy home.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-211",
+      "text": "Subscribe for exclusive drops, early access, and special offers.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-212",
+      "text": "No spam. Unsubscribe anytime.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "button-213",
+      "text": "Saved0",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-214",
+      "text": "Cart0",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "add-to-cart-btn",
+      "text": "Add to Bag— $89.98",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "buy-now-btn",
+      "text": "Secure Now— $89.98",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-217",
+      "text": "Write a Review",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-218",
+      "text": "Are your products safe for babies?",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-219",
+      "text": "What's your return policy?",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-220",
+      "text": "How fast is shipping?",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-221",
+      "text": "Are your products sustainable?",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-222",
+      "text": "Send Message",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-223",
+      "text": "Add to Bag —$89.98",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-224",
+      "text": "Secure Now —$89.98",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-225",
+      "text": "Secure Checkout",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-226",
+      "text": "View Cart",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "button-227",
+      "text": "Checkout",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "link-228",
+      "text": "Sign Up",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-229",
+      "text": "Sign In",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-230",
+      "text": "Orders",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-231",
+      "text": "Logout",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-232",
+      "text": "Explore The Collection",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-233",
+      "text": "Get in Touch",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-234",
+      "text": "Shop The Collection",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-235",
+      "text": "The Collection",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-236",
+      "text": "Community",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-237",
+      "text": "Reviews",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-238",
+      "text": "Guarantee",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-239",
+      "text": "FAQ",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-240",
+      "text": "Contact Us",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-241",
+      "text": "Shipping Policy",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-242",
+      "text": "Returns",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-243",
+      "text": "Size Guide",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-244",
+      "text": "Privacy Policy",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-245",
+      "text": "Terms of Service",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "link-246",
+      "text": "Cookie Policy",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "page-title",
+      "text": "{brand} // The Cozy Collection",
       "type": "title",
       "customized": false
     }
   ],
   "metadata": {
-    "total_elements": 93,
+    "total_elements": 247,
     "pages_count": 1,
     "components_count": 0
   }

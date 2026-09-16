@@ -352,34 +352,78 @@ def create_order_from_cart(page, cart_data):
     
     return order
 
+
 @csrf_exempt
 def stripe_webhook(request, subdomain):
-    """Handle Stripe webhooks"""
+    """Handle Stripe webhooks (embedded checkout + payment intents)"""
+    if request.method != 'POST':
+        return HttpResponse(status=405)
+
     page = get_object_or_404(PublishedPage, subdomain=subdomain)
     stripe_gateway = get_object_or_404(PaymentGateway, page=page, gateway_type='stripe')
-    
+
     payload = request.body
     sig_header = request.META.get('HTTP_STRIPE_SIGNATURE')
-    
+
     try:
         service = StripePaymentService(stripe_gateway)
-        event = service.handle_webhook(payload, sig_header, stripe_gateway.webhook_secret)
-        
-        # Handle different event types
-        if event['type'] == 'payment_intent.succeeded':
-            handle_payment_success(event)
-        elif event['type'] == 'payment_intent.payment_failed':
-            handle_payment_failure(event)
-        
-        return HttpResponse(status=200)
-        
+        event = service.handle_webhook(
+            payload, sig_header, stripe_gateway.webhook_secret
+        )
     except Exception as e:
         return HttpResponse(str(e), status=400)
 
+    etype = event['type']
+    obj = event['data']['object']
+
+    if etype == 'checkout.session.completed':
+        # Embedded Checkout fires this
+        handle_checkout_session_completed(obj)
+    elif etype == 'payment_intent.succeeded':
+        handle_payment_success(event)
+    elif etype == 'payment_intent.payment_failed':
+        handle_payment_failure(event)
+
+    return HttpResponse(status=200)
+
+
+def handle_checkout_session_completed(session):
+    """Handle embedded Checkout completion."""
+    session_id = session.get('id')
+    order_number = (session.get('metadata') or {}).get('order_number')
+
+    tx = Transaction.objects.filter(gateway_transaction_id=session_id).first()
+    if not tx and order_number:
+        order = Order.objects.filter(order_number=order_number).first()
+        if order:
+            tx = order.transactions.first()
+
+    if not tx:
+        return
+
+    tx.status = 'success'
+    tx.gateway_response = session
+    tx.processed_at = timezone.now()
+    tx.save(update_fields=['status', 'gateway_response', 'processed_at'])
+
+    order = tx.order
+    if order.status != 'completed':
+        # --- TRIGGER CJ FULFILLMENT ---
+        try:
+            from builder.services.cj_fulfillment_service import fulfill_cj_order
+            fulfill_cj_order(order)
+        except Exception as e:
+            print(f"CJ fulfillment error: {e}")
+
+        order.status = 'completed'
+        order.paid_at = timezone.now()
+        order.save(update_fields=['status', 'paid_at'])
+
+
 def handle_payment_success(event):
-    """Handle successful payment"""
+    """Handle successful payment_intent (kept for backup path)."""
     payment_intent = event['data']['object']
-    
+
     try:
         transaction = Transaction.objects.get(
             gateway_payment_intent_id=payment_intent['id']
@@ -387,24 +431,39 @@ def handle_payment_success(event):
         transaction.status = 'success'
         transaction.gateway_response = payment_intent
         transaction.processed_at = timezone.now()
-        transaction.save()
-        
-        # Update order status
+        transaction.save(update_fields=['status', 'gateway_response', 'processed_at'])
+
         order = transaction.order
-        order.status = 'completed'
-        order.paid_at = timezone.now()
-        
+        if order.status != 'completed':
+            # --- TRIGGER CJ FULFILLMENT ---
+            try:
+                from builder.services.cj_fulfillment_service import fulfill_cj_order
+                fulfill_cj_order(order)
+            except Exception as e:
+                print(f"CJ fulfillment error: {e}")
 
-         # --- NEW: TRIGGER CJ FULFILLMENT ---
-        from builder.services.cj_fulfillment_service import fulfill_cj_order
-        fulfill_cj_order(order)
-        order.save()
+            order.status = 'completed'
+            order.paid_at = timezone.now()
+            order.save(update_fields=['status', 'paid_at'])
 
-        
     except Transaction.DoesNotExist:
-        # Log error - transaction not found
         pass
 
+
+def handle_payment_failure(event):
+    """Handle payment_intent.payment_failed."""
+    payment_intent = event['data']['object']
+    tx = Transaction.objects.filter(
+        gateway_payment_intent_id=payment_intent['id']
+    ).first()
+    if not tx:
+        return
+    tx.status = 'failed'
+    tx.gateway_response = payment_intent
+    tx.processed_at = timezone.now()
+    tx.save(update_fields=['status', 'gateway_response', 'processed_at'])
+
+    
 # def checkout_success(request, subdomain):
 #     """Checkout success page"""
 #     page = get_object_or_404(PublishedPage, subdomain=subdomain)
@@ -964,6 +1023,127 @@ def get_checkout_status(request, subdomain, order_number):
 #             'error': str(e)
 #         })
 
+
+# ============================================================
+# PayPal inline API endpoints (for the native buttons on checkout)
+# ============================================================
+
+@csrf_exempt
+def paypal_create_order_api(request, subdomain):
+    """
+    Called by the frontend when the user selects PayPal.
+    Creates a PayPal order server-side and returns:
+      - client_id (public, for the PayPal JS SDK)
+      - order_id  (the PayPal order identifier)
+    """
+    if request.method != 'POST':
+        return JsonResponse({'error': 'Invalid request method'}, status=405)
+
+    try:
+        page = get_object_or_404(PublishedPage, subdomain=subdomain, is_published=True)
+        data = json.loads(request.body)
+        order_data = data.get('order_data', {})
+
+        # Get active PayPal gateway
+        gateway = page.payment_gateways.filter(
+            gateway_type='paypal', is_active=True
+        ).first()
+        if not gateway:
+            return JsonResponse({'error': 'PayPal is not available'}, status=400)
+
+        # Build order + PayPal order using the existing CheckoutService
+        from .services.checkout_service import CheckoutService
+        service = CheckoutService(page=page, gateway=gateway)
+        result = service.create_checkout(
+            order_data,
+            order_data.get('customer', {}),
+            request,
+        )
+
+        return JsonResponse({
+            'success': True,
+            'client_id': result.get('client_id'),
+            'order_id': result.get('order_id'),
+            'order_number': result.get('order_number'),
+        })
+
+    except Exception as e:
+        return JsonResponse({'success': False, 'error': str(e)}, status=400)
+
+
+@csrf_exempt
+def paypal_capture_order_api(request, subdomain):
+    """
+    Called by the frontend after the user approves the payment in PayPal.
+    Captures the order and marks the transaction/order as paid.
+    """
+    if request.method != 'POST':
+        return JsonResponse({'error': 'Invalid request method'}, status=405)
+
+    try:
+        page = get_object_or_404(PublishedPage, subdomain=subdomain)
+        data = json.loads(request.body)
+        paypal_order_id = data.get('order_id')
+        payer_id = data.get('payer_id')
+
+        if not paypal_order_id:
+            return JsonResponse({'success': False, 'error': 'Missing order_id'}, status=400)
+
+        # Find the pending transaction by PayPal order id
+        transaction = Transaction.objects.filter(
+            gateway_transaction_id=paypal_order_id,
+            payment_gateway__page=page,
+            status='pending',
+        ).first()
+
+        if not transaction:
+            return JsonResponse({
+                'success': False,
+                'error': 'Transaction not found or already processed'
+            }, status=404)
+
+        # Capture via PayPal
+        from .services.paypal_service import PayPalService
+        paypal_service = PayPalService(transaction.payment_gateway)
+        capture_result = paypal_service.capture_order(paypal_order_id)
+
+        if capture_result.get('status') != 'COMPLETED':
+            return JsonResponse({
+                'success': False,
+                'error': f"PayPal capture status: {capture_result.get('status')}"
+            }, status=400)
+
+        # Idempotent update
+        transaction.status = 'success'
+        transaction.gateway_response = capture_result
+        transaction.processed_at = timezone.now()
+        transaction.save(update_fields=['status', 'gateway_response', 'processed_at'])
+
+        order = transaction.order
+        if order.status != 'completed':
+            # CJ fulfillment (same as your other success handlers)
+            try:
+                from builder.services.cj_service import CJManager
+                from builder.models import CJSettings
+                account = CJSettings.objects.filter(page=page).first()
+                if account and account.access_token:
+                    CJManager(token=account.access_token).fulfill_cj_order_corrected(order)
+            except Exception as e:
+                print(f"CJ fulfillment error: {e}")
+
+            order.status = 'completed'
+            order.paid_at = timezone.now()
+            order.save(update_fields=['status', 'paid_at'])
+
+        return JsonResponse({
+            'success': True,
+            'order_number': order.order_number,
+            'paypal_order_id': paypal_order_id,
+        })
+
+    except Exception as e:
+        return JsonResponse({'success': False, 'error': str(e)}, status=400)
+    
 @csrf_exempt
 def paypal_success(request, subdomain):
     """Handle successful PayPal payment with CJ fulfillment"""

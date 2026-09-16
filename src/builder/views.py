@@ -79,6 +79,21 @@ def manage_domains(request, subdomain):
     })
 
 @login_required
+@custom_domain_required
+def domains_page(request, subdomain):
+    """Render the new 'Get a Domain' page."""
+    page = get_object_or_404(
+        PublishedPage, subdomain=subdomain, user=request.user
+    )
+    limits = get_user_limits_status(request.user)
+    return render(request, 'builder/domains.html', {
+        'page': page,
+        'domain_limits': limits['domains'],
+        'SITE_DOMAIN': getattr(settings, 'SITE_DOMAIN', 'bynup.store'),
+    })
+
+
+@login_required
 def manage_blog_posts(request, subdomain):
     """Manage blog posts for a published page - user must own it"""
     page = get_object_or_404(PublishedPage, subdomain=subdomain, user=request.user)
@@ -443,6 +458,31 @@ def public_page(request):
     blog_posts = page.blog_posts.filter(is_published=True)
     tracking_codes = page.tracking_codes.filter(is_active=True)
 
+    # ===== LOAD VIDEO CUSTOMIZATIONS FROM DATABASE =====
+    video_customizations = {}
+    
+    # Get videos for the current page
+    video_objects = VideoCustomization.objects.filter(
+        page=page,
+        page_name=current_page
+    )
+    
+    print(f"🎥 Found {video_objects.count()} video customizations for page '{current_page}'")
+    
+    for video in video_objects:
+        video_customizations[video.element_id] = {
+            'video_url': video.video_file.url if video.video_file else video.video_url,
+            'poster_url': video.poster_image.url if video.poster_image else None,
+            'alt_text': video.alt_text or '',
+            'autoplay': video.autoplay,
+            'loop': video.loop,
+            'muted': video.muted,
+            'controls': video.controls,
+            'show_play_button': video.show_play_button,
+            'element_id': video.element_id
+        }
+        print(f"  ✅ Loaded video: {video.element_id}")
+
     # Load background images from database
     # ===== CRITICAL: Load background images from database =====
     background_images = {}
@@ -749,6 +789,7 @@ def public_page(request):
     # ============ TIERED PRICING - ONLY IF TIERS EXIST ============
     # ============ TIERED PRICING ============
     # Get the first product to use for tiered pricing
+
     first_product = page.products.filter(is_active=True, status='active').first()
 
     tiers = []
@@ -835,8 +876,10 @@ def public_page(request):
         'products': filtered_products if current_page == 'products' and filtered_products else products,
         # 'filtered_products': filtered_products,
         'categories':categories,
-
-        'variants':variants,
+# ===== VIDEO AND IMAGE CUSTOMIZATIONS =====
+        'video_customizations': video_customizations,
+        'image_customizations': image_customizations,
+        'home_image_customizations': home_image_customizations,        'variants':variants,
         'first_product': first_product,
         'tiers': tiers,  # Will be empty list if no tiers exist
 
@@ -5195,7 +5238,26 @@ def product_detail_page(request, product_slug):
     
 
     
+    # ===== LOAD VIDEO CUSTOMIZATIONS =====
+    video_customizations = {}
+    video_objects = VideoCustomization.objects.filter(
+        page=page,
+        page_name=page_key
+    )
     
+    for video in video_objects:
+        video_customizations[video.element_id] = {
+            'video_url': video.video_file.url if video.video_file else video.video_url,
+            'poster_url': video.poster_image.url if video.poster_image else None,
+            'alt_text': video.alt_text or '',
+            'autoplay': video.autoplay,
+            'loop': video.loop,
+            'muted': video.muted,
+            'controls': video.controls,
+            'show_play_button': video.show_play_button,
+            'element_id': video.element_id
+        }
+
     # Load background images from database
     background_images_db = {}
     bg_objects = page.background_images.all()
@@ -5291,6 +5353,10 @@ def product_detail_page(request, product_slug):
         'colors':colors,
         'sizes':sizes,
         'variants':variants,
+
+        # ===== VIDEO AND IMAGE CUSTOMIZATIONS =====
+        'video_customizations': video_customizations,
+        # 'image_customizations': image_customizations,
 
         'reviews': reviews,
         'review_count': review_count,
@@ -6533,7 +6599,7 @@ def cj_import_product(request, subdomain, pid):
     - Products without variants (simple products)
     - Image downloading and storage with compression
     - Variant images
-    - Stock quantities
+    - Stock quantities (using storageNum from stock API)
     - Review importing
     - Stock synchronization
     """
@@ -6581,11 +6647,89 @@ def cj_import_product(request, subdomain, pid):
     # Log first few variants for debugging
     for i, v in enumerate(variants_data[:3]):
         print(f"  Variant {i+1}: vid={v.get('vid')}, key={v.get('variantKey')}, sku={v.get('variantSku')}")
-        print(f"    Inventory: {v.get('inventoryNum', 'N/A')}")
-        if v.get('variantImage'):
-            print(f"    Image: {v.get('variantImage')[:50]}...")
     
-    # ===== 4. CREATE OR GET CATEGORY =====
+    # ===== 4. FETCH STOCK FOR EACH VARIANT =====
+    print("\n🔍 FETCHING STOCK FOR EACH VARIANT...")
+    
+    enriched_variants = []
+    total_product_stock = 0
+    
+    for idx, variant in enumerate(variants_data):
+        vid = variant.get('vid')
+        if not vid:
+            print(f"  ⚠️ Variant {idx+1}: No VID found, skipping")
+            continue
+        
+        print(f"\n  📦 Processing Variant {idx+1}: VID={vid}")
+        variant_stock = 0
+        
+        # ===== METHOD 1: Get stock from stock API endpoint =====
+        try:
+            stock_url = f"{service.BASE_URL}/product/stock/queryByVid"
+            params = {"vid": vid}
+            response = requests.get(stock_url, headers=service.headers, params=params, timeout=15)
+            data = response.json()
+            
+            if data.get('code') == 200:
+                stock_data = data.get('data', [])
+                if stock_data:
+                    for item in stock_data:
+                        # CJ returns stock in these fields:
+                        # - storageNum (primary)
+                        # - totalInventoryNum (total inventory)
+                        # - factoryInventoryNum (factory stock)
+                        stock_num = item.get('storageNum') or item.get('totalInventoryNum') or item.get('factoryInventoryNum') or 0
+                        try:
+                            variant_stock += int(stock_num)
+                        except (ValueError, TypeError):
+                            pass
+                    
+                    if variant_stock > 0:
+                        print(f"    ✅ Stock from API: {variant_stock}")
+                    else:
+                        print(f"    ⚠️ Stock API returned 0 for VID {vid}")
+        except Exception as e:
+            print(f"    ⚠️ Error getting stock from API for VID {vid}: {e}")
+        
+        # ===== METHOD 2: Check variant data for stock fields =====
+        if variant_stock == 0:
+            stock_fields = ['inventoryNum', 'stock', 'availableNum', 'quantity', 'listedNum']
+            for field in stock_fields:
+                value = variant.get(field)
+                if value is not None:
+                    try:
+                        variant_stock = int(value)
+                        if variant_stock > 0:
+                            print(f"    ✅ Stock from variant.{field}: {variant_stock}")
+                        break
+                    except (ValueError, TypeError):
+                        pass
+        
+        # ===== METHOD 3: Check product-level listedNum =====
+        if variant_stock == 0:
+            product_listed_num = product_data.get('listedNum', 0)
+            if product_listed_num and product_listed_num > 0:
+                variant_count = len(variants_data) or 1
+                variant_stock = max(1, product_listed_num // variant_count)
+                print(f"    ⚠️ Using product.listedNum ({product_listed_num}) distributed: {variant_stock}")
+        
+        # ===== METHOD 4: If product is active, use default stock =====
+        if variant_stock == 0:
+            product_status = product_data.get('status')
+            if product_status == 3:  # Active/Available
+                variant_stock = 10  # Default stock for active products
+                print(f"    ⚠️ Product active, using default stock: {variant_stock}")
+        
+        print(f"    📊 FINAL STOCK for VID {vid}: {variant_stock}")
+        
+        # Add stock to variant data
+        variant['_stock'] = variant_stock
+        total_product_stock += variant_stock
+        enriched_variants.append(variant)
+    
+    print(f"\n📊 TOTAL PRODUCT STOCK: {total_product_stock}")
+    
+    # ===== 5. CREATE OR GET CATEGORY =====
     raw_cat = product_data.get('categoryName', 'General')
     clean_cat_name = raw_cat.split('/')[-1].strip() if raw_cat else 'General'
     category_obj, _ = ProductCategory.objects.get_or_create(
@@ -6593,7 +6737,7 @@ def cj_import_product(request, subdomain, pid):
         page=page
     )
     
-    # ===== 5. CREATE UNIQUE SLUG =====
+    # ===== 6. CREATE UNIQUE SLUG =====
     base_slug = slugify(product_data.get('productNameEn', 'product'))
     slug = base_slug
     counter = 1
@@ -6601,7 +6745,7 @@ def cj_import_product(request, subdomain, pid):
         slug = f"{base_slug}-{counter}"
         counter += 1
     
-    # ===== 6. EXTRACT WEIGHT =====
+    # ===== 7. EXTRACT WEIGHT =====
     raw_weight = str(product_data.get('productWeight', '0'))
     if '-' in raw_weight:
         raw_weight = raw_weight.split('-')[-1].strip()
@@ -6610,7 +6754,7 @@ def cj_import_product(request, subdomain, pid):
     except ValueError:
         weight = 0.0
     
-    # ===== 7. PARSE PRICE =====
+    # ===== 8. PARSE PRICE =====
     price_str = product_data.get('sellPrice', '0')
     if '-' in str(price_str):
         price_str = str(price_str).split('-')[0].strip()
@@ -6627,7 +6771,7 @@ def cj_import_product(request, subdomain, pid):
     except ValueError:
         suggest_price = 0.0
     
-    # ===== 8. CREATE THE PRODUCT =====
+    # ===== 9. CREATE THE PRODUCT =====
     product, created = Product.objects.update_or_create(
         cj_pid=pid,
         defaults={
@@ -6639,24 +6783,23 @@ def cj_import_product(request, subdomain, pid):
             'category': category_obj,
             'price': Decimal(str(cj_price)),
             'compare_at_price': Decimal(str(suggest_price)) if suggest_price > 0 else None,
-            'status': 'active',
+            'status': 'active' if total_product_stock > 0 else 'out_of_stock',
             'weight': Decimal(str(weight)),
             'weight_unit': 'kg',
             'requires_shipping': True,
             'visible_on_store': True,
             'cj_vid': variants_data[0].get('vid') if variants_data else None,
             'has_variants': len(variants_data) > 1,
+            'quantity': total_product_stock,
         }
     )
     
     print(f"✅ Product {'created' if created else 'updated'}: {product.title}")
+    print(f"   Initial quantity set to: {total_product_stock}")
     
-    # ===== 9. HANDLE IMAGES WITH COMPRESSION =====
+    # ===== 10. HANDLE IMAGES =====
     def process_image(url, max_size_mb=8, is_variant=False):
-        """
-        Download and compress an image to stay under Cloudinary's 10MB limit.
-        Returns ContentFile or None.
-        """
+        """Download and compress an image to stay under Cloudinary's limit."""
         if not url:
             return None
         
@@ -6691,6 +6834,7 @@ def cj_import_product(request, subdomain, pid):
                 
                 try:
                     # Open image with PIL
+                    from PIL import Image
                     img = Image.open(io.BytesIO(content))
                     
                     # Convert to RGB if necessary (for PNG with alpha)
@@ -6803,37 +6947,142 @@ def cj_import_product(request, subdomain, pid):
             except Exception as e:
                 print(f"⚠️ Failed to save gallery image: {e}")
     
-    # ===== 10. SYNC VARIANTS =====
-    variant_stats = {'total': 0, 'created': 0, 'updated': 0, 'failed': 0}
+    # ===== 11. SYNC VARIANTS WITH STOCK =====
+    variant_stats = {'total': 0, 'created': 0, 'updated': 0, 'failed': 0, 'variants': []}
     
-    if variants_data:
-        print(f"🔄 Syncing {len(variants_data)} variants...")
-        variant_stats = manager.sync_all_variants(product, variants_data)
+    if enriched_variants:
+        print(f"\n🔄 Syncing {len(enriched_variants)} variants with stock data...")
         
-        # Update product with variant info
-        if variant_stats.get('total', 0) > 0:
-            product.has_variants = variant_stats['total'] > 1
-            
-            # Calculate total stock from variants
-            total_stock = 0
-            for variant in product.variants.all():
-                total_stock += variant.quantity if variant.quantity else 0
-            
-            product.quantity = total_stock
-            
-            if total_stock == 0:
-                product.status = 'out_of_stock'
-            else:
-                product.status = 'active'
-            
-            product.save()
-            print(f"📊 Updated product with {variant_stats['total']} variants, total stock: {total_stock}")
+        # Delete existing variants for this product to avoid duplicates
+        ProductVariant.objects.filter(product=product).delete()
+        
+        colors = set()
+        sizes = set()
+        total_stock = 0
+        
+        for variant_data in enriched_variants:
+            try:
+                vid = variant_data.get('vid')
+                if not vid:
+                    variant_stats['failed'] += 1
+                    continue
+                
+                # Get stock from enriched data
+                variant_stock = variant_data.get('_stock', 0)
+                
+                # Extract color and size
+                variant_key = variant_data.get('variantKey', '')
+                color_value, size_value = manager._extract_color_size(variant_key)
+                
+                if color_value:
+                    colors.add(color_value)
+                if size_value:
+                    sizes.add(size_value)
+                
+                # Parse price
+                variant_price = variant_data.get('variantSellPrice')
+                if variant_price is None:
+                    variant_price = variant_data.get('variantPrice', 0)
+                try:
+                    variant_price = float(variant_price)
+                except (ValueError, TypeError):
+                    variant_price = 0.0
+                
+                # Get variant image
+                variant_image_url = variant_data.get('variantImage', '')
+                
+                # Build options
+                options = {}
+                if color_value:
+                    options['Color'] = color_value
+                if size_value:
+                    options['Size'] = size_value
+                
+                # Determine SKU
+                sku = variant_data.get('variantSku', '')
+                if not sku:
+                    sku = f"VAR-{vid}"
+                
+                # ===== CREATE VARIANT WITH STOCK =====
+                variant = ProductVariant.objects.create(
+                    product=product,
+                    cj_vid=vid,
+                    options=options,
+                    option1=size_value or '',
+                    option2=color_value or '',
+                    sku=sku,
+                    price=Decimal(str(variant_price)) if variant_price else Decimal('0.00'),
+                    compare_at_price=product.compare_at_price,
+                    quantity=variant_stock,
+                    track_quantity=True,
+                    low_stock_threshold=5,
+                    barcode=variant_data.get('barcode', ''),
+                )
+                
+                total_stock += variant_stock
+                variant_stats['created'] += 1
+                variant_stats['total'] += 1
+                
+                variant_stats['variants'].append({
+                    'vid': vid,
+                    'created': True,
+                    'color': color_value,
+                    'size': size_value,
+                    'sku': sku,
+                    'price': variant_price,
+                    'stock': variant_stock,
+                    'has_image': bool(variant_image_url)
+                })
+                
+                print(f"  ✅ Variant {vid}: Color={color_value}, Size={size_value}, Stock={variant_stock}")
+                
+                # ===== SAVE VARIANT IMAGE =====
+                if variant_image_url:
+                    try:
+                        img_file = process_image(variant_image_url, max_size_mb=5, is_variant=True)
+                        if img_file:
+                            filename = f"variant_{vid}.jpg"
+                            variant.image.save(filename, img_file, save=True)
+                            print(f"    📸 Saved variant image for {vid}")
+                    except Exception as e:
+                        print(f"    ⚠️ Failed to save variant image for {vid}: {e}")
+                
+            except Exception as e:
+                print(f"  ❌ Error syncing variant {variant_data.get('vid')}: {e}")
+                variant_stats['failed'] += 1
+        
+        # Update product with color and size options
+        if colors:
+            product.colors = ', '.join(sorted(colors))
+        if sizes:
+            product.sizes = ', '.join(sorted(sizes))
+        
+        product.has_variants = len(enriched_variants) > 1
+        product.quantity = total_stock
+        
+        if total_stock == 0:
+            product.status = 'out_of_stock'
+        else:
+            product.status = 'active'
+        
+        product.save()
+        
+        print(f"\n📊 Variant sync complete:")
+        print(f"   Total variants: {variant_stats['total']}")
+        print(f"   Created: {variant_stats['created']}")
+        print(f"   Failed: {variant_stats['failed']}")
+        print(f"   Total stock: {total_stock}")
+        print(f"   Colors: {', '.join(sorted(colors)) if colors else 'None'}")
+        print(f"   Sizes: {', '.join(sorted(sizes)) if sizes else 'None'}")
+        
     else:
         print("ℹ️ No variants to sync - creating simple product")
         product.has_variants = False
+        product.quantity = 0
+        product.status = 'out_of_stock'
         product.save()
     
-    # ===== 11. IMPORT REVIEWS =====
+    # ===== 12. IMPORT REVIEWS =====
     review_count = 0
     try:
         reviews_data = service.get_product_reviews(pid)
@@ -6862,7 +7111,7 @@ def cj_import_product(request, subdomain, pid):
     except Exception as e:
         print(f"⚠️ Failed to import reviews: {e}")
     
-    # ===== 12. CREATE CJ PRODUCT RECORD =====
+    # ===== 13. CREATE CJ PRODUCT RECORD =====
     try:
         cj_product, cj_created = CJProduct.objects.update_or_create(
             page=page,
@@ -6870,13 +7119,13 @@ def cj_import_product(request, subdomain, pid):
             defaults={
                 'cj_pid': pid,
                 'local_product': product,
-                'cj_sku': variants_data[0].get('variantSku', '') if variants_data else '',
-                'cj_variant_id': variants_data[0].get('vid', '') if variants_data else '',
+                'cj_sku': enriched_variants[0].get('variantSku', '') if enriched_variants else '',
+                'cj_variant_id': enriched_variants[0].get('vid', '') if enriched_variants else '',
                 'cj_price_usd': Decimal(str(cj_price)),
                 'local_selling_price': product.price,
                 'cj_stock_quantity': product.quantity,
                 'local_stock_quantity': product.quantity,
-                'sync_status': 'synced' if variants_data else 'pending',
+                'sync_status': 'synced' if enriched_variants else 'pending',
                 'last_full_sync': timezone.now(),
                 'cj_data': product_data,
             }
@@ -6885,7 +7134,7 @@ def cj_import_product(request, subdomain, pid):
     except Exception as e:
         print(f"⚠️ Failed to create CJ product record: {e}")
     
-    # ===== 13. RETURN RESPONSE =====
+    # ===== 14. RETURN RESPONSE =====
     return JsonResponse({
         'status': 'success',
         'message': f'Successfully imported {product.title}',
@@ -6900,6 +7149,8 @@ def cj_import_product(request, subdomain, pid):
         },
         'has_variants': product.has_variants,
         'total_stock': product.quantity,
+        'colors': product.colors,
+        'sizes': product.sizes,
         'review_count': review_count,
         'image_count': len(raw_images),
         'variant_images': sum(1 for v in variant_stats.get('variants', []) if v.get('has_image', False))
@@ -12004,4 +12255,1055 @@ def memory_test_auth(request):
         'time': round(elapsed, 2),
         'message': 'This is an authenticated view'
     })
+
+
+
+@login_required
+@csrf_exempt
+@check_storage_before_upload('video')
+def upload_video(request):
+    """
+    Upload video file and poster image for editable elements
+    """
+    if request.method != 'POST':
+        return JsonResponse({'success': False, 'error': 'POST required'})
+    
+    try:
+        subdomain = request.POST.get('subdomain')
+        element_id = request.POST.get('element_id')
+        page_name = request.POST.get('page_name', 'home')
+        video_file = request.FILES.get('video')
+        poster_file = request.FILES.get('poster')
+        alt_text = request.POST.get('alt_text', '')
+        autoplay = request.POST.get('autoplay', 'false') == 'true'
+        loop = request.POST.get('loop', 'false') == 'true'
+        muted = request.POST.get('muted', 'true') == 'true'
+        controls = request.POST.get('controls', 'true') == 'true'
+        # ===== ADD THIS =====
+        show_play_button = request.POST.get('show_play_button', 'true') == 'true'
+        
+        if not all([subdomain, element_id, video_file]):
+            return JsonResponse({'success': False, 'error': 'Missing required fields'})
+        
+        page = get_object_or_404(PublishedPage, subdomain=subdomain, user=request.user)
+        
+        # Delete existing video if any
+        VideoCustomization.objects.filter(
+            page=page,
+            element_id=element_id,
+            page_name=page_name
+        ).delete()
+        
+        # Create video customization
+        video_customization = VideoCustomization.objects.create(
+            page=page,
+            element_id=element_id,
+            page_name=page_name,
+            video_file=video_file,
+            alt_text=alt_text,
+            autoplay=autoplay,
+            loop=loop,
+            muted=muted,
+            controls=controls,
+            show_play_button=show_play_button  # ===== ADD THIS =====
+        )
+        
+        # Handle poster image
+        poster_url = None
+        if poster_file:
+            video_customization.poster_image = poster_file
+            video_customization.save()
+            poster_url = video_customization.poster_image.url
+        
+        return JsonResponse({
+            'success': True,
+            'video_url': video_customization.video_file.url,
+            'poster_url': poster_url,
+            'element_id': element_id,
+            'show_play_button': show_play_button,  # ===== ADD THIS =====
+            'message': 'Video uploaded successfully'
+        })
+        
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return JsonResponse({'success': False, 'error': str(e)})
+
+@login_required
+@csrf_exempt
+def save_video_url(request):
+    """
+    Save video URL for editable elements (YouTube, Vimeo, etc.)
+    """
+    if request.method != 'POST':
+        return JsonResponse({'success': False, 'error': 'POST required'})
+    
+    try:
+        data = json.loads(request.body)
+        subdomain = data.get('subdomain')
+        element_id = data.get('element_id')
+        page_name = data.get('page_name', 'home')
+        video_url = data.get('video_url', '').strip()
+        alt_text = data.get('alt_text', '')
+        autoplay = data.get('autoplay', False)
+        loop = data.get('loop', False)
+        muted = data.get('muted', True)
+        controls = data.get('controls', True)
+        # ===== ADD THIS =====
+        show_play_button = data.get('show_play_button', True)
+        
+        if not all([subdomain, element_id, video_url]):
+            return JsonResponse({'success': False, 'error': 'Missing required fields'})
+        
+        page = get_object_or_404(PublishedPage, subdomain=subdomain, user=request.user)
+        
+        # Delete existing video
+        VideoCustomization.objects.filter(
+            page=page,
+            element_id=element_id,
+            page_name=page_name
+        ).delete()
+        
+        # Create video customization
+        video_customization = VideoCustomization.objects.create(
+            page=page,
+            element_id=element_id,
+            page_name=page_name,
+            video_url=video_url,
+            alt_text=alt_text,
+            autoplay=autoplay,
+            loop=loop,
+            muted=muted,
+            controls=controls,
+            show_play_button=show_play_button  # ===== ADD THIS =====
+        )
+        
+        return JsonResponse({
+            'success': True,
+            'video_url': video_url,
+            'element_id': element_id,
+            'show_play_button': show_play_button,  # ===== ADD THIS =====
+            'message': 'Video URL saved successfully'
+        })
+        
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return JsonResponse({'success': False, 'error': str(e)})
+
+
+@login_required
+@csrf_exempt
+def remove_video(request, subdomain):
+    """
+    Remove video from an element
+    """
+    if request.method != 'POST':
+        return JsonResponse({'success': False, 'error': 'POST required'})
+    
+    try:
+        data = json.loads(request.body)
+        element_id = data.get('element_id')
+        page_name = data.get('page_name', 'home')
+        
+        if not element_id:
+            return JsonResponse({'success': False, 'error': 'Element ID required'})
+        
+        page = get_object_or_404(PublishedPage, subdomain=subdomain, user=request.user)
+        
+        deleted_count, _ = VideoCustomization.objects.filter(
+            page=page,
+            element_id=element_id,
+            page_name=page_name
+        ).delete()
+        
+        return JsonResponse({
+            'success': True,
+            'message': 'Video removed successfully',
+            'deleted': deleted_count
+        })
+        
+    except Exception as e:
+        return JsonResponse({'success': False, 'error': str(e)})
+
+
+# ============================================================
+# DOMAIN SEARCH & REQUEST VIEWS
+# ============================================================
+
+from builder.utils.rdap import (
+    check_domain_availability,
+    check_multiple_domains,
+    get_supported_tlds,
+    is_tld_supported,
+)
+from builder.models import DomainRequest, PurchasedDomain
+from payments.decorators import (
+    check_domain_eligibility,
+    get_user_domain_summary,
+    get_user_limits_status,
+)
+import json as _json
+import re as _re
+
+
+@login_required
+def search_domain(request, subdomain):
+    """
+    AJAX endpoint: search for a domain name across one or more TLDs.
+
+    Accepts either:
+      - A base name (e.g. "jerase") → searches across the plan's free TLDs
+        plus a small set of popular TLDs.
+      - A full domain (e.g. "jerase.store") → searches only that specific TLD.
+
+    GET params:
+      q (required): the name or full domain to search
+      tlds (optional): comma-separated TLDs, overrides defaults
+
+    Response:
+      {
+        "success": True,
+        "query": "jerase",
+        "forced_tld": "store" | null,
+        "results": [
+           {"domain_name": "jerase.store", "tld": "store",
+            "available": True/False/None, "reason": "...",
+            "is_free_on_plan": True/False, "is_supported": True},
+           ...
+        ]
+      }
+    """
+    page = get_object_or_404(
+        PublishedPage, subdomain=subdomain, user=request.user
+    )
+
+    query = (request.GET.get('q') or '').strip().lower()
+    tlds_param = (request.GET.get('tlds') or '').strip()
+
+    if not query:
+        return JsonResponse({
+            'success': False,
+            'error': 'Search query is required',
+        }, status=400)
+
+    # ---- Smart parsing: detect a full domain in the input ----
+    raw_query = query
+    raw_query = _re.sub(r'^https?://', '', raw_query)
+    raw_query = _re.sub(r'^www\.', '', raw_query)
+    raw_query = raw_query.split('/')[0]
+    raw_query = raw_query.split('?')[0]
+
+    forced_tld = None
+    if '.' in raw_query:
+        parts = raw_query.split('.')
+        last = parts[-1]
+        # Only treat the last segment as a TLD if it looks real:
+        # alphabetic, 2-15 characters long
+        if last.isalpha() and 2 <= len(last) <= 15:
+            forced_tld = last
+            base_name = '.'.join(parts[:-1])
+        else:
+            base_name = raw_query
+    else:
+        base_name = raw_query
+
+    # Sanitize the base name
+    base_name = _re.sub(r'[^a-z0-9-]', '', base_name)
+    base_name = _re.sub(r'-+', '-', base_name).strip('-')
+
+    if not base_name or len(base_name) < 2:
+        return JsonResponse({
+            'success': False,
+            'error': 'Please enter at least 2 valid characters',
+        }, status=400)
+
+    # ---- Decide which TLDs to search ----
+    if forced_tld:
+        # User pasted a full domain — search only that TLD
+        tlds = [forced_tld]
+    elif tlds_param:
+        tlds = [t.strip().lstrip('.').lower() for t in tlds_param.split(',') if t.strip()]
+    else:
+        # Default: plan's free TLDs + a small set of popular paid TLDs
+        limits = get_user_limits_status(request.user)
+        free_tlds = limits['domains']['free_tlds'] or []
+
+        default_paid = ['com', 'store', 'org', 'net', 'shop', 'online', 'site', 'co']
+        seen = set()
+        tlds = []
+        for t in free_tlds + default_paid:
+            t = t.lower().lstrip('.')
+            if t and t not in seen:
+                seen.add(t)
+                tlds.append(t)
+
+    # Limit total queries (protection)
+    tlds = tlds[:10]
+
+    # ---- Run availability checks ----
+    raw_results = check_multiple_domains([base_name], tlds)
+
+    # Enrich with plan context
+    limits = get_user_limits_status(request.user)
+    free_tlds_set = set(limits['domains']['free_tlds'] or [])
+
+    results = []
+    for domain_name, data in raw_results.items():
+        tld = data.get('tld', '')
+        results.append({
+            'domain_name': domain_name,
+            'tld': tld,
+            'available': data.get('available'),  # True / False / None
+            'reason': data.get('reason', ''),
+            'is_supported': data.get('supported', False),
+            'is_free_on_plan': tld in free_tlds_set,
+            'cached': data.get('cached', False),
+        })
+
+    # Sort: available free-TLD first, then available paid, then unknown, then taken
+    def sort_key(r):
+        if r['available'] is True and r['is_free_on_plan']:
+            return (0, r['tld'])
+        if r['available'] is True:
+            return (1, r['tld'])
+        if r['available'] is None:
+            return (2, r['tld'])
+        return (3, r['tld'])
+
+    results.sort(key=sort_key)
+
+    return JsonResponse({
+        'success': True,
+        'query': base_name,
+        'forced_tld': forced_tld,
+        'results': results,
+    })
+
+
+@login_required
+@check_domain_eligibility
+def request_domain(request, subdomain):
+    """
+    AJAX POST: create a DomainRequest for the user.
+
+    Runs all eligibility checks via @check_domain_eligibility.
+    Expects POST/JSON body with:
+      domain_name (str, full domain e.g. "mystore.store")
+      tld (str, e.g. "store")
+
+    On success returns the created request with status.
+    """
+    if request.method != 'POST':
+        return JsonResponse({
+            'success': False,
+            'error': 'POST required',
+        }, status=405)
+
+    page = get_object_or_404(
+        PublishedPage, subdomain=subdomain, user=request.user
+    )
+
+    domain_name = request.domain_name
+    tld = request.domain_tld
+    is_free_tier = request.domain_is_free_tier
+
+    # Guard: prevent duplicate pending requests for the same domain
+    existing = DomainRequest.objects.filter(
+        user=request.user,
+        domain_name=domain_name,
+    ).exclude(
+        status__in=DomainRequest.TERMINAL_STATUSES
+    ).first()
+
+    if existing:
+        return JsonResponse({
+            'success': False,
+            'error': 'duplicate_request',
+            'message': (
+                f"You already have a pending request for {domain_name}. "
+                f"Please wait for it to be processed."
+            ),
+        }, status=400)
+
+    # Guard: ensure it's still actually available at request time.
+    # (We checked during search, but availability can change in seconds.
+    #  Also, users could POST directly to this endpoint.)
+    availability = check_domain_availability(domain_name)
+    if availability.get('available') is False:
+        return JsonResponse({
+            'success': False,
+            'error': 'domain_taken',
+            'message': (
+                f"{domain_name} has just been registered. "
+                f"Please try a different name."
+            ),
+        }, status=400)
+
+    # If availability is None, we allow the request but flag it for manual
+    # review — the admin will verify before purchasing.
+    # (This handles RDAP being temporarily down or rate-limited.)
+
+    # Create the request
+    domain_request = DomainRequest.objects.create(
+        user=request.user,
+        page=page,
+        domain_name=domain_name,
+        tld=tld,
+        is_free_tier=is_free_tier,
+        status='pending_review',
+    )
+
+    # Log to console (replace with proper logging in production)
+    print(
+        f"📥 [request_domain] New domain request: {domain_name} "
+        f"(user={request.user.username}, free={is_free_tier})"
+    )
+
+    return JsonResponse({
+        'success': True,
+        'message': (
+            f"{domain_name} has been added to your account. "
+            f"We're finalizing the setup and will notify you once it's live."       
+              ),
+        'request': {
+            'id': domain_request.id,
+            'domain_name': domain_request.domain_name,
+            'tld': domain_request.tld,
+            'status': domain_request.status,
+            'status_display': domain_request.get_status_display(),
+            'is_free_tier': domain_request.is_free_tier,
+            'created_at': domain_request.created_at.isoformat(),
+        }
+    })
+
+
+@login_required
+def list_domain_requests(request, subdomain):
+    """
+    AJAX GET: list the user's domain requests for this page.
+    Used to render the "Your Domains" section of the dashboard.
+    """
+    page = get_object_or_404(
+        PublishedPage, subdomain=subdomain, user=request.user
+    )
+
+    requests_qs = DomainRequest.objects.filter(
+        user=request.user
+    ).order_by('-created_at')
+
+    # Optional filter by page
+    if request.GET.get('page_only') == '1':
+        requests_qs = requests_qs.filter(page=page)
+
+    data = []
+    for req in requests_qs[:50]:
+        data.append({
+            'id': req.id,
+            'domain_name': req.domain_name,
+            'tld': req.tld,
+            'status': req.status,
+            'status_display': req.get_status_display(),
+            'is_free_tier': req.is_free_tier,
+            'created_at': req.created_at.isoformat(),
+            'activated_at': req.activated_at.isoformat() if req.activated_at else None,
+            'is_terminal': req.is_terminal,
+        })
+
+    return JsonResponse({
+        'success': True,
+        'requests': data,
+        'summary': get_user_domain_summary(request.user),
+    })
+
+
+"""
+Staff-only admin views for the domain fulfillment system.
+
+These views are staff-gated and handle:
+  - The review queue (pending requests)
+  - In-progress requests (approved → purchasing → purchased → configuring_dns)
+  - History (terminal states)
+  - Status transition actions (approve, reject, mark purchased, mark DNS, mark active, mark failed)
+"""
+
+from functools import wraps
+
+from django.conf import settings
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
+from django.db import transaction
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse
+from django.utils import timezone
+from django.views.decorators.http import require_http_methods
+
+from builder.models import DomainRequest, PurchasedDomain, PublishedPage
+from payments.decorators import get_user_domain_summary
+
+
+# ============================================================
+# STAFF ACCESS DECORATOR
+# ============================================================
+
+def staff_required(view_func):
+    """
+    Require request.user.is_staff == True.
+    Returns 404 (not 403) to non-staff, so the admin panel is not discoverable.
+    """
+    @wraps(view_func)
+    def wrapped(request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('accounts:login')
+        if not request.user.is_staff:
+            from django.http import Http404
+            raise Http404("Not found")
+        return view_func(request, *args, **kwargs)
+    return wrapped
+
+
+# ============================================================
+# QUEUE VIEW
+# ============================================================
+
+@login_required
+@staff_required
+def admin_domain_queue(request):
+    """
+    Show all pending_review domain requests, oldest first.
+    """
+    pending = DomainRequest.objects.filter(
+        status='pending_review'
+    ).select_related('user', 'page').order_by('created_at')
+
+    # Attach per-user context for the template (limit remaining, etc.)
+    enriched = []
+    for req in pending:
+        summary = get_user_domain_summary(req.user)
+        enriched.append({
+            'request': req,
+            'user_plan': summary,
+        })
+
+    context = {
+        'pending': enriched,
+        'pending_count': len(enriched),
+    }
+    return render(request, 'builder/admin/domains/queue.html', context)
+
+
+# ============================================================
+# IN-PROGRESS VIEW
+# ============================================================
+
+@login_required
+@staff_required
+def admin_domain_in_progress(request):
+    """
+    Show requests currently being worked on:
+    approved, purchasing, purchased, configuring_dns.
+    """
+    in_progress_statuses = ['approved', 'purchasing', 'purchased', 'configuring_dns']
+
+    requests_qs = DomainRequest.objects.filter(
+        status__in=in_progress_statuses
+    ).select_related('user', 'page').order_by('updated_at')
+
+    context = {
+        'requests': requests_qs,
+        'in_progress_count': requests_qs.count(),
+        'namecheap_url': 'https://www.namecheap.com/domains/registration/results/?domain=',
+    }
+    return render(request, 'builder/admin/domains/in_progress.html', context)
+
+
+# ============================================================
+# HISTORY VIEW
+# ============================================================
+
+@login_required
+@staff_required
+def admin_domain_history(request):
+    """
+    Show terminal requests: active, failed, rejected, cancelled.
+    Filterable by status and searchable by domain or user.
+    """
+    status_filter = request.GET.get('status', '')
+    search = (request.GET.get('q') or '').strip()
+
+    history_qs = DomainRequest.objects.filter(
+        status__in=DomainRequest.TERMINAL_STATUSES
+    ).select_related('user', 'page', 'reviewed_by').order_by('-updated_at')
+
+    if status_filter:
+        history_qs = history_qs.filter(status=status_filter)
+
+    if search:
+        from django.db.models import Q
+        history_qs = history_qs.filter(
+            Q(domain_name__icontains=search)
+            | Q(user__username__icontains=search)
+            | Q(user__email__icontains=search)
+        )
+
+    # Stats for the header
+    total = DomainRequest.objects.filter(
+        status__in=DomainRequest.TERMINAL_STATUSES
+    ).count()
+    active_count = DomainRequest.objects.filter(status='active').count()
+    failed_count = DomainRequest.objects.filter(status='failed').count()
+    rejected_count = DomainRequest.objects.filter(status='rejected').count()
+
+    context = {
+        'requests': history_qs[:200],
+        'total_count': total,
+        'active_count': active_count,
+        'failed_count': failed_count,
+        'rejected_count': rejected_count,
+        'current_status': status_filter,
+        'search': search,
+        'status_options': [
+            ('active', 'Active'),
+            ('failed', 'Failed'),
+            ('rejected', 'Rejected'),
+            ('cancelled', 'Cancelled'),
+        ],
+    }
+    return render(request, 'builder/admin/domains/history.html', context)
+
+
+# ============================================================
+# STATUS TRANSITION ACTIONS
+# ============================================================
+
+@login_required
+@staff_required
+@require_http_methods(["POST"])
+def admin_domain_action(request, request_id):
+    """
+    POST handler for all status transitions.
+    Expected POST field: 'action' with one of:
+      approve, reject, mark_purchasing, mark_purchased,
+      mark_dns_configured, mark_active, mark_failed, cancel
+    """
+    domain_request = get_object_or_404(DomainRequest, id=request_id)
+    action = (request.POST.get('action') or '').strip()
+    notes = (request.POST.get('admin_notes') or '').strip()
+
+    # Redirect target preserves the current page
+    return_to = request.POST.get('return_to') or reverse('admin_domain_queue')
+
+    try:
+        with transaction.atomic():
+            if action == 'approve':
+                _action_approve(domain_request, request.user, notes)
+            elif action == 'reject':
+                _action_reject(domain_request, request.user, notes)
+            elif action == 'mark_purchasing':
+                _action_mark_purchasing(domain_request, request.user, notes)
+            elif action == 'mark_purchased':
+                _action_mark_purchased(domain_request, request.user, notes, request.POST)
+            elif action == 'mark_dns_configured':
+                _action_mark_dns_configured(domain_request, request.user, notes)
+            elif action == 'mark_active':
+                _action_mark_active(domain_request, request.user, notes)
+            elif action == 'mark_failed':
+                _action_mark_failed(domain_request, request.user, notes)
+            elif action == 'cancel':
+                _action_cancel(domain_request, request.user, notes)
+            else:
+                messages.error(request, f"Unknown action: {action}")
+                return redirect(return_to)
+
+        messages.success(
+            request,
+            f"Request for {domain_request.domain_name} updated to "
+            f"{domain_request.get_status_display()}."
+        )
+    except Exception as exc:
+        messages.error(request, f"Action failed: {exc}")
+        # Log this properly in production
+        print(f"❌ [admin_domain_action] Error: {exc}")
+        import traceback
+        traceback.print_exc()
+
+    return redirect(return_to)
+
+
+# ============================================================
+# INDIVIDUAL ACTIONS
+# ============================================================
+
+def _log_note(domain_request, actor, note):
+    """Append a timestamped note to admin_notes."""
+    if not note:
+        return
+    stamp = timezone.now().strftime('%Y-%m-%d %H:%M')
+    prefix = f"[{stamp} by {actor.username}] "
+    domain_request.admin_notes = (
+        (domain_request.admin_notes + "\n" if domain_request.admin_notes else "")
+        + prefix + note
+    )
+
+
+def _action_approve(domain_request, actor, notes):
+    if domain_request.status != 'pending_review':
+        raise ValueError(f"Cannot approve from status '{domain_request.status}'")
+    domain_request.status = 'approved'
+    domain_request.reviewed_by = actor
+    domain_request.reviewed_at = timezone.now()
+    _log_note(domain_request, actor, notes or "Approved")
+    domain_request.save()
+    print(f"✅ Approved: {domain_request.domain_name}")
+
+
+def _action_reject(domain_request, actor, notes):
+    if domain_request.status in DomainRequest.TERMINAL_STATUSES:
+        raise ValueError(f"Cannot reject terminal request '{domain_request.status}'")
+    domain_request.status = 'rejected'
+    domain_request.reviewed_by = actor
+    domain_request.reviewed_at = timezone.now()
+    _log_note(domain_request, actor, notes or "Rejected")
+    domain_request.save()
+
+    # Notify user (non-blocking; failure to send email does not roll back)
+    _send_rejection_email(domain_request, notes)
+
+    print(f"❌ Rejected: {domain_request.domain_name}")
+
+
+def _action_mark_purchasing(domain_request, actor, notes):
+    domain_request.status = 'purchasing'
+    _log_note(domain_request, actor, notes or "Purchase started")
+    domain_request.save()
+
+
+def _action_mark_purchased(domain_request, actor, notes, post_data):
+    domain_request.status = 'purchased'
+    domain_request.registrar = (post_data.get('registrar') or 'namecheap').strip()
+    domain_request.registrar_order_id = (
+        post_data.get('registrar_order_id') or ''
+    ).strip()
+
+    cost = (post_data.get('purchase_cost') or '').strip()
+    if cost:
+        try:
+            from decimal import Decimal
+            domain_request.purchase_cost = Decimal(cost)
+        except Exception:
+            pass
+
+    domain_request.purchase_currency = (
+        post_data.get('purchase_currency') or 'USD'
+    ).strip()
+
+    domain_request.purchase_date = timezone.now()
+
+    expiry = (post_data.get('expiry_date') or '').strip()
+    if expiry:
+        try:
+            from datetime import datetime
+            domain_request.expiry_date = timezone.make_aware(
+                datetime.strptime(expiry, '%Y-%m-%d')
+            )
+        except Exception:
+            pass
+
+    _log_note(domain_request, actor, notes or "Domain purchased")
+    domain_request.save()
+
+    print(f"💳 Purchased: {domain_request.domain_name}")
+
+
+def _action_mark_dns_configured(domain_request, actor, notes):
+    domain_request.status = 'configuring_dns'
+    domain_request.dns_configured = True
+    domain_request.dns_verified_at = timezone.now()
+    _log_note(domain_request, actor, notes or "DNS configured")
+    domain_request.save()
+
+
+def _action_mark_active(domain_request, actor, notes):
+    """
+    The critical action. Sets the domain live on the user's page.
+    Side effects:
+      1. Set status to 'active'
+      2. Update PublishedPage.custom_domain / is_custom_domain_active
+      3. Create PurchasedDomain record
+      4. Set UserProfile.has_received_free_domain if applicable
+      5. Send activation email to the user
+    """
+    if not domain_request.page:
+        raise ValueError("Cannot activate a domain without a linked page")
+
+    page = domain_request.page
+
+    # 1. Set status
+    domain_request.status = 'active'
+    domain_request.activated_at = timezone.now()
+    _log_note(domain_request, actor, notes or "Activated")
+    domain_request.save()
+
+    # 2. Activate on the page
+    # Note: PublishedPage.custom_domain has unique=True. If the same domain
+    # is somehow already assigned to another page, this will raise an
+    # IntegrityError and the transaction will roll back.
+    page.custom_domain = domain_request.domain_name
+    page.is_custom_domain_active = True
+    page.save(update_fields=['custom_domain', 'is_custom_domain_active', 'updated_at'])
+
+    # 3. Create PurchasedDomain record (idempotent — skip if it exists)
+    purchased, created = PurchasedDomain.objects.update_or_create(
+        domain_name=domain_request.domain_name,
+        defaults={
+            'registrar': domain_request.registrar or 'namecheap',
+            'purchase_date': domain_request.purchase_date or timezone.now(),
+            'expiry_date': domain_request.expiry_date,
+            'purchase_cost': domain_request.purchase_cost or 0,
+            'currency': domain_request.purchase_currency or 'USD',
+            'assigned_page': page,
+            'source_request': domain_request,
+            'is_active': True,
+        }
+    )
+
+    # 4. Free domain flag
+    if domain_request.is_free_tier:
+        profile = getattr(domain_request.user, 'profile', None)
+        if profile and not profile.has_received_free_domain:
+            profile.has_received_free_domain = True
+            profile.save(update_fields=['has_received_free_domain'])
+
+    # 5. Activation email (non-blocking — we already saved; if it fails, log only)
+    _send_activation_email(domain_request)
+
+    print(
+        f"🎉 Activated: {domain_request.domain_name} → "
+        f"{page.subdomain} ({'created' if created else 'updated'} PurchasedDomain)"
+    )
+
+
+def _action_mark_failed(domain_request, actor, notes):
+    domain_request.status = 'failed'
+    _log_note(domain_request, actor, notes or "Marked as failed")
+    domain_request.save()
+    _send_failure_email(domain_request, notes)
+
+
+def _action_cancel(domain_request, actor, notes):
+    if domain_request.status == 'active':
+        raise ValueError("Cannot cancel an already-active domain")
+    domain_request.status = 'cancelled'
+    _log_note(domain_request, actor, notes or "Cancelled")
+    domain_request.save()
+
+
+# ============================================================
+# EMAIL NOTIFICATIONS
+# ============================================================
+
+def _send_activation_email(domain_request):
+    """Send the 'your domain is live' email."""
+    try:
+        user = domain_request.user
+        recipient = user.email
+        if not recipient:
+            return
+
+        domain = domain_request.domain_name
+        site_url = f"https://{domain}"
+
+        subject = f"🎉 Your domain {domain} is live!"
+        body = f"""Hi {user.first_name or user.username},
+
+Great news — your domain {domain} is now live!
+
+You can visit your store here:
+{site_url}
+
+It may take a few minutes for the change to be visible everywhere,
+but from our side everything is configured and ready to go.
+
+Thanks for using bynUp!
+— The bynUp Team
+"""
+        send_mail(
+            subject=subject,
+            message=body,
+            from_email=getattr(settings, 'DEFAULT_FROM_EMAIL', 'info@bynup.store'),
+            recipient_list=[recipient],
+            fail_silently=True,
+        )
+        print(f"📧 Activation email sent to {recipient}")
+    except Exception as exc:
+        print(f"⚠️ Activation email failed: {exc}")
+
+
+def _send_rejection_email(domain_request, notes):
+    try:
+        user = domain_request.user
+        if not user.email:
+            return
+        domain = domain_request.domain_name
+        subject = f"Update on your domain request: {domain}"
+        body = f"""Hi {user.first_name or user.username},
+
+Unfortunately we're unable to register {domain} for you at this time.
+
+{f'Reason: {notes}' if notes else ''}
+
+You can search for another domain from your dashboard. If you have
+questions, please reply to this email.
+
+— The bynUp Team
+"""
+        send_mail(
+            subject=subject,
+            message=body,
+            from_email=getattr(settings, 'DEFAULT_FROM_EMAIL', 'info@bynup.store'),
+            recipient_list=[user.email],
+            fail_silently=True,
+        )
+    except Exception as exc:
+        print(f"⚠️ Rejection email failed: {exc}")
+
+
+def _send_failure_email(domain_request, notes):
+    try:
+        user = domain_request.user
+        if not user.email:
+            return
+        domain = domain_request.domain_name
+        subject = f"⚠️ Issue with your domain request: {domain}"
+        body = f"""Hi {user.first_name or user.username},
+
+There was a problem setting up {domain}.
+
+{f'Details: {notes}' if notes else ''}
+
+We'll look into it and reach out. You can also contact support
+if you'd like to try a different domain.
+
+— The bynUp Team
+"""
+        send_mail(
+            subject=subject,
+            message=body,
+            from_email=getattr(settings, 'DEFAULT_FROM_EMAIL', 'info@bynup.store'),
+            recipient_list=[user.email],
+            fail_silently=True,
+        )
+    except Exception as exc:
+        print(f"⚠️ Failure email failed: {exc}")
+
+
+
+@login_required
+def manage_website(request, subdomain):
+    """
+    Store management page.
+    Shows a four-step setup checklist and a compact set of quick actions.
+    """
+    page = get_object_or_404(
+        PublishedPage, subdomain=subdomain, user=request.user
+    )
+
+    from builder.models import Product , DomainRequest
+    from payments.models import PaymentGateway
+
+    # --- Step 1: Add your first product ---
+    has_product = Product.objects.filter(
+        page=page, is_active=True
+    ).exists()
+
+    # --- Step 2: Set up a payment method ---
+    has_payment = PaymentGateway.objects.filter(
+        page=page, is_active=True
+    ).exists()
+
+    # --- Step 3: Connect a custom domain ---
+    has_domain = bool(page.custom_domain and page.is_custom_domain_active)
+
+    has_pending_domain = False
+    if not has_domain:
+        has_pending_domain = DomainRequest.objects.filter(
+            user=page.user,
+            status__in=[
+                'pending_review', 'approved', 'purchasing',
+                'purchased', 'configuring_dns',
+            ]
+        ).exists()
+
+    # --- Step 4: Publish your store ---
+    is_published = bool(page.is_published)
+
+    # --- Build the checklist ---
+    steps = [
+        {
+            'id': 'add_product',
+            'title': 'Add your first product',
+            'description': 'Products appear on your storefront and can be added to cart.',
+            'completed': has_product,
+            'in_progress': False,
+            'action_label': 'Add product',
+            'action_url': reverse('manage_products', kwargs={'subdomain': subdomain}),
+            'weight': 25,
+        },
+        {
+            'id': 'payment_method',
+            'title': 'Set up a payment method',
+            'description': 'Accept payments from customers at checkout.',
+            'completed': has_payment,
+            'in_progress': False,
+            'action_label': 'Set up payments',
+            'action_url': reverse('payments:manage_gateways', kwargs={'subdomain': subdomain}),            'weight': 25,
+        },
+        {
+            'id': 'custom_domain',
+            'title': 'Connect a custom domain',
+            'description': 'Give your store a professional, memorable web address.',
+            'completed': has_domain,
+            'in_progress': has_pending_domain,
+            'action_label': 'View status' if has_pending_domain else 'Connect',
+            'action_url': reverse('domains_page', kwargs={'subdomain': subdomain}),
+            'weight': 25,
+        },
+        {
+            'id': 'publish_store',
+            'title': 'Publish your store',
+            'description': 'Make your store visible to the world.',
+            'completed': is_published,
+            'in_progress': False,
+            'action_label': 'Go to editor',
+            'action_url': reverse(
+                'editor_with_page',
+                kwargs={
+                    'template_name': page.template_name,
+                    'subdomain': subdomain,
+                }
+            ),
+            'weight': 25,
+        },
+    ]
+
+    completed_count = sum(1 for s in steps if s['completed'])
+    total_weight = sum(s['weight'] for s in steps)
+    earned = sum(s['weight'] for s in steps if s['completed'])
+    percentage = int(round((earned / total_weight) * 100)) if total_weight else 0
+
+    checklist = {
+        'percentage': percentage,
+        'completed_count': completed_count,
+        'total_count': len(steps),
+        'is_complete': completed_count == len(steps),
+        'steps': steps,
+    }
+
+    context = {
+        'page': page,
+        'checklist': checklist,
+    }
+    return render(request, 'builder/manage_website.html', context)
 

@@ -6,715 +6,613 @@
         "id": "143",
         "text": "Home",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139216"
+        "customized": false
       },
       {
         "id": "144",
-        "text": "Our Legacy",
+        "text": "About Us",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139262"
+        "customized": false
       },
       {
         "id": "145",
-        "text": "Defining Timeless Style Since 1995",
+        "text": "Crafting Timeless Elegance Since 1995",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139279"
+        "customized": false
       },
       {
         "id": "146",
-        "text": "At JMAX, fashion is not just about clothing—it's about identity. For nearly three decades, we have curated collections that blend impeccable tailoring, premium fabrics, and visionary design to create wardrobes that transcend seasons.",
+        "text": "At {brand}, we believe luxury footwear should transcend trends. For nearly three decades, we've dedicated ourselves to creating shoes that combine exceptional craftsmanship, premium materials, and timeless design.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139292"
+        "customized": false
       },
       {
         "id": "147",
         "text": "28",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139303"
+        "customized": false
       },
       {
         "id": "148",
         "text": "Years of Excellence",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139314"
+        "customized": false
       },
       {
         "id": "149",
         "text": "50+",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139325"
+        "customized": false
       },
       {
         "id": "150",
-        "text": "Master Tailors",
+        "text": "Master Artisans",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139336"
+        "customized": false
       },
       {
         "id": "151",
         "text": "75+",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139347"
+        "customized": false
       },
       {
         "id": "152",
-        "text": "Countries Reached",
+        "text": "Countries Served",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139358"
+        "customized": false
       },
       {
         "id": "153",
-        "text": "Our Uncompromising Commitment",
+        "text": "Our Commitment to Excellence",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139369"
+        "customized": false
       },
       {
         "id": "154",
-        "text": "Superior Quality",
+        "text": "Uncompromising Quality",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139380"
+        "customized": false
       },
       {
         "id": "155",
-        "text": "We source the world's finest fabrics—from Italian wool to Egyptian cotton—ensuring every garment meets our exacting standards for texture, durability, and drape.",
+        "text": "We source only the finest materials from renowned European tanneries, ensuring every pair meets our rigorous standards for durability and beauty.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139391"
+        "customized": false
       },
       {
         "id": "156",
-        "text": "Artisanal Craftsmanship",
+        "text": "Artisan Craftsmanship",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139402"
+        "customized": false
       },
       {
         "id": "157",
-        "text": "Each piece is meticulously constructed by master tailors in our Milan atelier, honoring traditional techniques while embracing modern innovations for the perfect fit.",
+        "text": "Each pair is meticulously handcrafted by master artisans in Milan, honoring traditional techniques while incorporating modern innovations.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139412"
+        "customized": false
       },
       {
         "id": "158",
-        "text": "Conscious Luxury",
+        "text": "Sustainable Luxury",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139423"
+        "customized": false
       },
       {
         "id": "159",
-        "text": "We are committed to sustainable practices and ethical production, proving that true luxury respects both people and the planet.",
+        "text": "We're committed to ethical production and sustainable practices, ensuring our luxury doesn't come at the expense of people or planet.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139434"
+        "customized": false
       },
       {
         "id": "160",
         "text": "Our Story: From Atelier to Global Icon",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139445"
+        "customized": false
       },
       {
         "id": "161",
-        "text": "Our journey began in a small Milanese workshop, where master tailor Giovanni Rossi dedicated himself to reviving the lost art of bespoke tailoring.",
+        "text": "Founded in a small Milanese atelier by master cobbler Giovanni Rossi, {brand} began as a passion project dedicated to reviving the lost art of bespoke shoemaking.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139456"
+        "customized": false
       },
       {
         "id": "162",
-        "text": "What started as three artisans meticulously crafting custom garments for local clientele has grown into an internationally celebrated fashion house, while never losing sight of our artisanal roots.",
+        "text": "What started with three craftsmen meticulously creating custom orders for local clients has grown into an internationally recognized luxury brand, while never losing sight of our artisanal roots.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139467"
+        "customized": false
       },
       {
         "id": "163",
-        "text": "Today, Giovanni's grandchildren continue his legacy, blending time-honored techniques with contemporary design to create clothing that stands the test of time.",
+        "text": "Today, Giovanni's grandchildren continue the legacy, blending time-honored techniques with contemporary design to create footwear that stands the test of time.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139478"
+        "customized": false
       },
       {
         "id": "164",
-        "text": "The Art of Italian Tailoring",
+        "text": "The Art of Italian Craftsmanship",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139489"
+        "customized": false
       },
       {
         "id": "165",
-        "text": "Every JMAX garment undergoes a meticulous creation process, combining over 150 individual steps perfected through generations of tailoring tradition.",
+        "text": "Every {brand} shoe undergoes a meticulous 8-week creation process, combining over 200 individual steps perfected through generations of shoemaking tradition.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139500"
+        "customized": false
       },
       {
         "id": "166",
         "text": "1",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139511"
+        "customized": false
       },
       {
         "id": "167",
-        "text": "Fabric Selection",
+        "text": "Material Selection",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139522"
+        "customized": false
       },
       {
         "id": "168",
-        "text": "Only the finest Italian wool, Egyptian cotton, and sustainable fabrics meet our quality standards.",
+        "text": "Only premium full-grain leathers and suedes from Europe's finest tanneries meet our quality standards.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139533"
+        "customized": false
       },
       {
         "id": "169",
         "text": "2",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139543"
+        "customized": false
       },
       {
         "id": "170",
-        "text": "Precision Cutting",
+        "text": "Pattern Cutting",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139554"
+        "customized": false
       },
       {
         "id": "171",
         "text": "Each pattern is hand-cut with precision, ensuring optimal fit and minimal material waste.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139565"
+        "customized": false
       },
       {
         "id": "172",
         "text": "3",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139576"
+        "customized": false
       },
       {
         "id": "173",
-        "text": "Expert Stitching",
+        "text": "Hand Stitching",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139586"
+        "customized": false
       },
       {
         "id": "174",
-        "text": "Master tailors employ traditional stitching techniques for unparalleled durability and elegance.",
+        "text": "Master artisans employ traditional saddle stitching for unparalleled durability and flexibility.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139597"
+        "customized": false
       },
       {
         "id": "175",
         "text": "4",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139608"
+        "customized": false
       },
       {
         "id": "176",
-        "text": "Quality Assurance",
+        "text": "Quality Inspection",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139619"
+        "customized": false
       },
       {
         "id": "177",
-        "text": "Every garment undergoes rigorous quality control checks before leaving our workshop.",
+        "text": "Every pair undergoes 27-point quality control checks before leaving our workshop.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139630"
+        "customized": false
       },
       {
         "id": "178",
-        "text": "Meet Our Master Tailors",
+        "text": "Meet Our Master Artisans",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139641"
+        "customized": false
       },
       {
         "id": "179",
-        "text": "Our artisans average 25 years of experience, with skills passed down through generations. Each master specializes in a specific aspect of tailoring.",
+        "text": "Our craftsmen average 25 years of experience, with skills passed down through generations. Each artisan specializes in a specific aspect of shoemaking.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139652"
+        "customized": false
       },
       {
         "id": "180",
         "text": "Marco Bianchi",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139662"
+        "customized": false
       },
       {
         "id": "181",
-        "text": "Master Cutter · 32 Years Experience",
+        "text": "Head Pattern Cutter32 Years Experience",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139673"
+        "customized": false
       },
       {
         "id": "182",
         "text": "Isabella Conti",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139684"
+        "customized": false
       },
       {
         "id": "183",
-        "text": "Lead Stitcher · 28 Years Experience",
+        "text": "Lead Stitcher28 Years Experience",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139695"
+        "customized": false
       },
       {
         "id": "184",
         "text": "Antonio Ferrari",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139705"
+        "customized": false
       },
       {
         "id": "185",
-        "text": "Master Finisher · 35 Years Experience",
+        "text": "Master Finisher35 Years Experience",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139716"
+        "customized": false
       },
       {
         "id": "186",
         "text": "Chiara Romano",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139727"
+        "customized": false
       },
       {
         "id": "187",
-        "text": "Design Director · 15 Years Experience",
+        "text": "Design Director15 Years Experience",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139738"
+        "customized": false
       },
       {
         "id": "188",
         "text": "Our Core Values",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139748"
+        "customized": false
       },
       {
         "id": "189",
         "text": "Passion for Perfection",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139759"
+        "customized": false
       },
       {
         "id": "190",
-        "text": "We don't just make clothes—we create heirlooms. Every stitch, every detail reflects our dedication to excellence.",
+        "text": "We don't just make shoes—we create heirlooms. Every stitch, every detail reflects our dedication to excellence.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139770"
+        "customized": false
       },
       {
         "id": "191",
-        "text": "Respect for Craft",
+        "text": "Artisan Respect",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139781"
+        "customized": false
       },
       {
         "id": "192",
-        "text": "We honor our artisans with fair wages, excellent working conditions, and recognition for their invaluable skills.",
+        "text": "We honor our craftsmen with fair wages, excellent working conditions, and recognition for their invaluable skills.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139792"
+        "customized": false
       },
       {
         "id": "193",
         "text": "Sustainable Future",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139802"
+        "customized": false
       },
       {
         "id": "194",
         "text": "Luxury should endure. We're committed to sustainable practices that respect both people and the planet.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139813"
+        "customized": false
       },
       {
         "id": "195",
         "text": "Experience Timeless Craftsmanship",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139823"
+        "customized": false
       },
       {
         "id": "196",
-        "text": "Join thousands of discerning individuals who have chosen JMAX for clothing that transcends seasons and trends.",
+        "text": "Join thousands of discerning individuals who have chosen {brand} for footwear that transcends seasons and trends.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139834"
+        "customized": false
       },
       {
         "id": "197",
         "text": "Explore Collections",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139845"
+        "customized": false
       },
       {
         "id": "198",
         "text": "Visit Our Showroom",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139855"
+        "customized": false
       },
       {
         "id": "heading-57",
-        "text": "Defining Timeless Style Since 1995",
+        "text": "Crafting Timeless Elegance Since 1995",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139866"
+        "customized": false
       },
       {
         "id": "heading-58",
-        "text": "Our Uncompromising Commitment",
+        "text": "Our Commitment to Excellence",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139876"
+        "customized": false
       },
       {
         "id": "heading-59",
-        "text": "Superior Quality",
+        "text": "Uncompromising Quality",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139887"
+        "customized": false
       },
       {
         "id": "heading-60",
-        "text": "Artisanal Craftsmanship",
+        "text": "Artisan Craftsmanship",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139897"
+        "customized": false
       },
       {
         "id": "heading-61",
-        "text": "Conscious Luxury",
+        "text": "Sustainable Luxury",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139907"
+        "customized": false
       },
       {
         "id": "heading-62",
         "text": "Our Story: From Atelier to Global Icon",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139918"
+        "customized": false
       },
       {
         "id": "heading-63",
-        "text": "The Art of Italian Tailoring",
+        "text": "The Art of Italian Craftsmanship",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139928"
+        "customized": false
       },
       {
         "id": "heading-64",
-        "text": "Fabric Selection",
+        "text": "Material Selection",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139939"
+        "customized": false
       },
       {
         "id": "heading-65",
-        "text": "Precision Cutting",
+        "text": "Pattern Cutting",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139949"
+        "customized": false
       },
       {
         "id": "heading-66",
-        "text": "Expert Stitching",
+        "text": "Hand Stitching",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139959"
+        "customized": false
       },
       {
         "id": "heading-67",
-        "text": "Quality Assurance",
+        "text": "Quality Inspection",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139970"
+        "customized": false
       },
       {
         "id": "heading-68",
-        "text": "Meet Our Master Tailors",
+        "text": "Meet Our Master Artisans",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139980"
+        "customized": false
       },
       {
         "id": "heading-69",
         "text": "Marco Bianchi",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.139991"
+        "customized": false
       },
       {
         "id": "heading-70",
         "text": "Isabella Conti",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140001"
+        "customized": false
       },
       {
         "id": "heading-71",
         "text": "Antonio Ferrari",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140011"
+        "customized": false
       },
       {
         "id": "heading-72",
         "text": "Chiara Romano",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140022"
+        "customized": false
       },
       {
         "id": "heading-73",
         "text": "Our Core Values",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140032"
+        "customized": false
       },
       {
         "id": "heading-74",
         "text": "Passion for Perfection",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140043"
+        "customized": false
       },
       {
         "id": "heading-75",
-        "text": "Respect for Craft",
+        "text": "Artisan Respect",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140053"
+        "customized": false
       },
       {
         "id": "heading-76",
         "text": "Sustainable Future",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140063"
+        "customized": false
       },
       {
         "id": "heading-77",
         "text": "Experience Timeless Craftsmanship",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140074"
+        "customized": false
       },
       {
         "id": "paragraph-78",
-        "text": "At JMAX, fashion is not just about clothing—it's about identity. For nearly three decades, we have curated collections that blend impeccable tailoring, premium fabrics, and visionary design to create wardrobes that transcend seasons.",
+        "text": "At {brand}, we believe luxury footwear should transcend trends. For nearly three decades, we've dedicated ourselves to creating shoes that combine exceptional craftsmanship, premium materials, and timeless design.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140085"
+        "customized": false
       },
       {
         "id": "paragraph-79",
-        "text": "We source the world's finest fabrics—from Italian wool to Egyptian cotton—ensuring every garment meets our exacting standards for texture, durability, and drape.",
+        "text": "We source only the finest materials from renowned European tanneries, ensuring every pair meets our rigorous standards for durability and beauty.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140096"
+        "customized": false
       },
       {
         "id": "paragraph-80",
-        "text": "Each piece is meticulously constructed by master tailors in our Milan atelier, honoring traditional techniques while embracing modern innovations for the perfect fit.",
+        "text": "Each pair is meticulously handcrafted by master artisans in Milan, honoring traditional techniques while incorporating modern innovations.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140106"
+        "customized": false
       },
       {
         "id": "paragraph-81",
-        "text": "We are committed to sustainable practices and ethical production, proving that true luxury respects both people and the planet.",
+        "text": "We're committed to ethical production and sustainable practices, ensuring our luxury doesn't come at the expense of people or planet.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140117"
+        "customized": false
       },
       {
         "id": "paragraph-82",
-        "text": "Our journey began in a small Milanese workshop, where master tailor Giovanni Rossi dedicated himself to reviving the lost art of bespoke tailoring.",
+        "text": "Founded in a small Milanese atelier by master cobbler Giovanni Rossi, {brand} began as a passion project dedicated to reviving the lost art of bespoke shoemaking.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140127"
+        "customized": false
       },
       {
         "id": "paragraph-83",
-        "text": "What started as three artisans meticulously crafting custom garments for local clientele has grown into an internationally celebrated fashion house, while never losing sight of our artisanal roots.",
+        "text": "What started with three craftsmen meticulously creating custom orders for local clients has grown into an internationally recognized luxury brand, while never losing sight of our artisanal roots.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140138"
+        "customized": false
       },
       {
         "id": "paragraph-84",
-        "text": "Today, Giovanni's grandchildren continue his legacy, blending time-honored techniques with contemporary design to create clothing that stands the test of time.",
+        "text": "Today, Giovanni's grandchildren continue the legacy, blending time-honored techniques with contemporary design to create footwear that stands the test of time.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140148"
+        "customized": false
       },
       {
         "id": "paragraph-85",
-        "text": "Every JMAX garment undergoes a meticulous creation process, combining over 150 individual steps perfected through generations of tailoring tradition.",
+        "text": "Every {brand} shoe undergoes a meticulous 8-week creation process, combining over 200 individual steps perfected through generations of shoemaking tradition.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140159"
+        "customized": false
       },
       {
         "id": "paragraph-86",
-        "text": "Only the finest Italian wool, Egyptian cotton, and sustainable fabrics meet our quality standards.",
+        "text": "Only premium full-grain leathers and suedes from Europe's finest tanneries meet our quality standards.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140169"
+        "customized": false
       },
       {
         "id": "paragraph-87",
         "text": "Each pattern is hand-cut with precision, ensuring optimal fit and minimal material waste.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140180"
+        "customized": false
       },
       {
         "id": "paragraph-88",
-        "text": "Master tailors employ traditional stitching techniques for unparalleled durability and elegance.",
+        "text": "Master artisans employ traditional saddle stitching for unparalleled durability and flexibility.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140190"
+        "customized": false
       },
       {
         "id": "paragraph-89",
-        "text": "Every garment undergoes rigorous quality control checks before leaving our workshop.",
+        "text": "Every pair undergoes 27-point quality control checks before leaving our workshop.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140201"
+        "customized": false
       },
       {
         "id": "paragraph-90",
-        "text": "Our artisans average 25 years of experience, with skills passed down through generations. Each master specializes in a specific aspect of tailoring.",
+        "text": "Our craftsmen average 25 years of experience, with skills passed down through generations. Each artisan specializes in a specific aspect of shoemaking.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140211"
+        "customized": false
       },
       {
         "id": "paragraph-91",
-        "text": "Master Cutter · 32 Years Experience",
+        "text": "Head Pattern Cutter32 Years Experience",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140222"
+        "customized": false
       },
       {
         "id": "paragraph-92",
-        "text": "Lead Stitcher · 28 Years Experience",
+        "text": "Lead Stitcher28 Years Experience",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140232"
+        "customized": false
       },
       {
         "id": "paragraph-93",
-        "text": "Master Finisher · 35 Years Experience",
+        "text": "Master Finisher35 Years Experience",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140243"
+        "customized": false
       },
       {
         "id": "paragraph-94",
-        "text": "Design Director · 15 Years Experience",
+        "text": "Design Director15 Years Experience",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140253"
+        "customized": false
       },
       {
         "id": "paragraph-95",
-        "text": "We don't just make clothes—we create heirlooms. Every stitch, every detail reflects our dedication to excellence.",
+        "text": "We don't just make shoes—we create heirlooms. Every stitch, every detail reflects our dedication to excellence.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140263"
+        "customized": false
       },
       {
         "id": "paragraph-96",
-        "text": "We honor our artisans with fair wages, excellent working conditions, and recognition for their invaluable skills.",
+        "text": "We honor our craftsmen with fair wages, excellent working conditions, and recognition for their invaluable skills.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140274"
+        "customized": false
       },
       {
         "id": "paragraph-97",
         "text": "Luxury should endure. We're committed to sustainable practices that respect both people and the planet.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140284"
+        "customized": false
       },
       {
         "id": "paragraph-98",
-        "text": "Join thousands of discerning individuals who have chosen JMAX for clothing that transcends seasons and trends.",
+        "text": "Join thousands of discerning individuals who have chosen {brand} for footwear that transcends seasons and trends.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140295"
+        "customized": false
       },
       {
         "id": "link-99",
         "text": "Home",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140305"
+        "customized": false
       },
       {
         "id": "link-100",
         "text": "Explore Collections",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140315"
+        "customized": false
       },
       {
         "id": "link-101",
         "text": "Visit Our Showroom",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140326"
+        "customized": false
       },
       {
         "id": "page-title",
-        "text": "Our Legacy | JMAX",
+        "text": "About Us | {brand}",
         "type": "title",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140336"
+        "customized": false
       }
     ],
     "cart": [
@@ -722,330 +620,283 @@
         "id": "90",
         "text": "Home",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140341"
+        "customized": false
       },
       {
         "id": "91",
         "text": "Shop",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140347"
+        "customized": false
       },
       {
         "id": "92",
-        "text": "Your Cart",
+        "text": "Shopping Cart",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140353"
+        "customized": false
       },
       {
         "id": "93",
-        "text": "Your Shopping Cart",
+        "text": "Shopping Cart",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140359"
+        "customized": false
       },
       {
         "id": "94",
-        "text": "Review your selected pieces and proceed to secure checkout.",
+        "text": "Review your selected luxury footwear and proceed to checkout",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140366"
+        "customized": false
       },
       {
         "id": "95",
-        "text": "Classic Wool Blazer",
+        "text": "Classic Leather Loafers",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140372"
+        "customized": false
       },
       {
         "id": "96",
-        "text": "L",
+        "text": "9",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140378"
+        "customized": false
       },
       {
         "id": "97",
-        "text": "Navy Blue",
+        "text": "Chestnut Brown",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140384"
+        "customized": false
       },
       {
         "id": "98",
-        "text": "$485",
+        "text": "$385",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140390"
+        "customized": false
       },
       {
         "id": "99",
         "text": "Order Summary",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140396"
+        "customized": false
       },
       {
         "id": "100",
         "text": "Subtotal",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140402"
+        "customized": false
       },
       {
         "id": "101",
         "text": "Shipping",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140408"
+        "customized": false
       },
       {
         "id": "102",
         "text": "Tax",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140415"
+        "customized": false
       },
       {
         "id": "103",
         "text": "Total",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140421"
+        "customized": false
       },
       {
         "id": "104",
-        "text": "Proceed to Checkout",
+        "text": "PROCEED TO CHECKOUT",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140427"
+        "customized": false
       },
       {
         "id": "105",
         "text": "Continue Shopping",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140433"
+        "customized": false
       },
       {
         "id": "106",
         "text": "You May Also Like",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140439"
+        "customized": false
       },
       {
         "id": "107",
-        "text": "Luxury Cashmere Sweater",
+        "text": "Designer Luxury Sneakers",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140445"
+        "customized": false
       },
       {
         "id": "108",
-        "text": "$520",
+        "text": "$420",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140451"
+        "customized": false
       },
       {
         "id": "109",
         "text": "View Details",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140457"
+        "customized": false
       },
       {
         "id": "110",
         "text": "Your Cart is Empty",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140463"
+        "customized": false
       },
       {
         "id": "111",
-        "text": "It looks like you haven't added any luxury pieces to your cart yet.",
+        "text": "Looks like you haven't added any luxury footwear to your cart yet.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140470"
+        "customized": false
       },
       {
         "id": "112",
-        "text": "Continue Shopping",
+        "text": "CONTINUE SHOPPING",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140476"
+        "customized": false
       },
       {
         "id": "heading-24",
-        "text": "Your Shopping Cart",
+        "text": "Shopping Cart",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140482"
+        "customized": false
       },
       {
         "id": "heading-25",
-        "text": "Classic Wool Blazer",
+        "text": "Classic Leather Loafers",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140488"
+        "customized": false
       },
       {
         "id": "heading-26",
-        "text": "Silk Evening Dress",
+        "text": "Elegant Evening Heels",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140494"
+        "customized": false
       },
       {
         "id": "heading-27",
         "text": "Order Summary",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140500"
+        "customized": false
       },
       {
         "id": "heading-28",
         "text": "You May Also Like",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140506"
+        "customized": false
       },
       {
         "id": "heading-29",
-        "text": "Luxury Cashmere Sweater",
+        "text": "Designer Luxury Sneakers",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140512"
+        "customized": false
       },
       {
         "id": "heading-30",
-        "text": "Tailored Trousers",
+        "text": "Leather Ankle Boots",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140518"
+        "customized": false
       },
       {
         "id": "heading-31",
-        "text": "Classic White Shirt",
+        "text": "Classic Oxfords",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140524"
+        "customized": false
       },
       {
         "id": "heading-32",
-        "text": "Premium Linen Shirt",
+        "text": "Casual Suede Loafers",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140530"
+        "customized": false
       },
       {
         "id": "heading-33",
         "text": "Your Cart is Empty",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140536"
+        "customized": false
       },
       {
         "id": "paragraph-34",
-        "text": "Review your selected pieces and proceed to secure checkout.",
+        "text": "Review your selected luxury footwear and proceed to checkout",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140542"
+        "customized": false
       },
       {
         "id": "paragraph-35",
-        "text": "Size: L",
+        "text": "Size:9",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140549"
+        "customized": false
       },
       {
         "id": "paragraph-36",
-        "text": "Size: M",
+        "text": "Size: 8.5",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140555"
+        "customized": false
       },
       {
         "id": "paragraph-37",
-        "text": "It looks like you haven't added any luxury pieces to your cart yet.",
+        "text": "Looks like you haven't added any luxury footwear to your cart yet.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140561"
+        "customized": false
       },
       {
         "id": "button-38",
-        "text": "Proceed to Checkout",
+        "text": "PROCEED TO CHECKOUT",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140567"
+        "customized": false
       },
       {
         "id": "link-39",
         "text": "Home",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140573"
+        "customized": false
       },
       {
         "id": "link-40",
         "text": "Shop",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140579"
+        "customized": false
       },
       {
         "id": "link-41",
         "text": "Continue Shopping",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140585"
+        "customized": false
       },
       {
         "id": "link-42",
         "text": "View Details",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140591"
+        "customized": false
       },
       {
         "id": "link-43",
         "text": "View Details",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140597"
+        "customized": false
       },
       {
         "id": "link-44",
         "text": "View Details",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140603"
+        "customized": false
       },
       {
         "id": "link-45",
         "text": "View Details",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140609"
+        "customized": false
       },
       {
         "id": "link-46",
-        "text": "Continue Shopping",
+        "text": "CONTINUE SHOPPING",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140615"
+        "customized": false
       },
       {
         "id": "page-title",
-        "text": "Shopping Cart | JMAX",
+        "text": "Shopping Cart | {brand}",
         "type": "title",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140621"
+        "customized": false
       }
     ],
     "categories": [
@@ -1053,582 +904,499 @@
         "id": "255",
         "text": "Home",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140624"
+        "customized": false
       },
       {
         "id": "256",
         "text": "Shop",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140634"
+        "customized": false
       },
       {
         "id": "257",
-        "text": "Collections",
+        "text": "Categories",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140643"
+        "customized": false
       },
       {
         "id": "258",
-        "text": "Our Luxury Clothing Collections",
+        "text": "Luxury Footwear Collections",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140652"
+        "customized": false
       },
       {
         "id": "259",
-        "text": "Explore our curated collections, where each piece embodies the pinnacle of Italian craftsmanship and timeless design.",
+        "text": "Explore our curated categories of premium craftsmanship, where every collection tells a story of elegance, comfort, and timeless design.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140662"
+        "customized": false
       },
       {
         "id": "260",
-        "text": "Tailored Blazers",
+        "text": "Classic Loafers",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140671"
+        "customized": false
       },
       {
         "id": "261",
-        "text": "Tailored Blazers",
+        "text": "Classic Loafers",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140680"
+        "customized": false
       },
       {
         "id": "262",
-        "text": "Masterfully crafted blazers that define sophistication. Perfect for both professional and formal occasions.",
+        "text": "Timeless sophistication meets modern comfort in our collection of handcrafted loafers, perfect for discerning gentlemen.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140689"
+        "customized": false
       },
       {
         "id": "263",
         "text": "12 Products",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140699"
+        "customized": false
       },
       {
         "id": "264",
-        "text": "From $450",
+        "text": "From $350",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140708"
+        "customized": false
       },
       {
         "id": "265",
-        "text": "Italian Wool",
+        "text": "Italian Leather",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140717"
+        "customized": false
       },
       {
         "id": "266",
         "text": "Handcrafted",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140726"
+        "customized": false
       },
       {
         "id": "267",
         "text": "Versatile",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140735"
+        "customized": false
       },
       {
         "id": "268",
-        "text": "Explore Collection",
+        "text": "EXPLORE COLLECTION",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140744"
+        "customized": false
       },
       {
         "id": "269",
-        "text": "Evening Gowns",
+        "text": "Evening Heels",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140753"
+        "customized": false
       },
       {
         "id": "270",
-        "text": "Evening Gowns",
+        "text": "Evening Heels",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140763"
+        "customized": false
       },
       {
         "id": "271",
-        "text": "Elevate your evening wardrobe with gowns designed to captivate, crafted from luxurious silks with exquisite detailing.",
+        "text": "Elegant heels designed for special occasions, featuring premium materials and exquisite detailing.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140772"
+        "customized": false
       },
       {
         "id": "272",
         "text": "8 Products",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140781"
+        "customized": false
       },
       {
         "id": "273",
-        "text": "From $525",
+        "text": "From $425",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140790"
+        "customized": false
       },
       {
         "id": "274",
         "text": "Silk Satin",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140799"
+        "customized": false
       },
       {
         "id": "275",
         "text": "Crystal Details",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140808"
+        "customized": false
       },
       {
         "id": "276",
         "text": "Evening Wear",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140817"
+        "customized": false
       },
       {
         "id": "277",
-        "text": "Explore Collection",
+        "text": "EXPLORE COLLECTION",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140827"
+        "customized": false
       },
       {
         "id": "278",
-        "text": "Designer Knitwear",
+        "text": "Designer Sneakers",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140836"
+        "customized": false
       },
       {
         "id": "279",
-        "text": "Designer Knitwear",
+        "text": "Designer Sneakers",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140845"
+        "customized": false
       },
       {
         "id": "280",
-        "text": "The perfect fusion of comfort and luxury. Our knitwear is crafted for the discerning, modern lifestyle.",
+        "text": "Luxury sneakers that combine urban style with premium comfort for the modern lifestyle.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140854"
+        "customized": false
       },
       {
         "id": "281",
         "text": "10 Products",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140864"
+        "customized": false
       },
       {
         "id": "282",
         "text": "From $380",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140873"
+        "customized": false
       },
       {
         "id": "283",
-        "text": "Premium Cashmere",
+        "text": "Premium Calfskin",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140882"
+        "customized": false
       },
       {
         "id": "284",
-        "text": "Ethically Sourced",
+        "text": "Orthotic Support",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140891"
+        "customized": false
       },
       {
         "id": "285",
         "text": "Casual Luxury",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140900"
+        "customized": false
       },
       {
         "id": "286",
-        "text": "Explore Collection",
+        "text": "EXPLORE COLLECTION",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140909"
+        "customized": false
       },
       {
         "id": "287",
         "text": "Featured Products",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140918"
+        "customized": false
       },
       {
         "id": "288",
-        "text": "Premium Wool Overcoat",
+        "text": "Premium Leather Boots",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140927"
+        "customized": false
       },
       {
         "id": "289",
-        "text": "$595",
+        "text": "$495",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140936"
+        "customized": false
       },
       {
         "id": "290",
         "text": "Add to Cart",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140945"
+        "customized": false
       },
       {
         "id": "291",
-        "text": "Classic White Shirt",
+        "text": "Classic Oxford Shoes",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140954"
+        "customized": false
       },
       {
         "id": "292",
-        "text": "$310",
+        "text": "$410",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140963"
+        "customized": false
       },
       {
         "id": "293",
         "text": "Add to Cart",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140972"
+        "customized": false
       },
       {
         "id": "294",
-        "text": "Cashmere V-Neck Sweater",
+        "text": "Suede Casual Loafers",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140981"
+        "customized": false
       },
       {
         "id": "295",
-        "text": "$465",
+        "text": "$365",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.140991"
+        "customized": false
       },
       {
         "id": "296",
         "text": "Add to Cart",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141000"
+        "customized": false
       },
       {
         "id": "297",
-        "text": "Tailored Trousers",
+        "text": "Formal Dress Shoes",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141009"
+        "customized": false
       },
       {
         "id": "298",
         "text": "$430",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141018"
+        "customized": false
       },
       {
         "id": "299",
         "text": "Add to Cart",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141027"
+        "customized": false
       },
       {
         "id": "300",
         "text": "No Categories Available",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141036"
+        "customized": false
       },
       {
         "id": "301",
-        "text": "Start organizing your products by creating categories to help customers find their perfect pieces.",
+        "text": "Start organizing your products by creating categories to help customers find what they're looking for.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141045"
+        "customized": false
       },
       {
         "id": "302",
         "text": "Create Your First Category",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141054"
+        "customized": false
       },
       {
         "id": "303",
         "text": "No Featured Products",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141063"
+        "customized": false
       },
       {
         "id": "304",
         "text": "Highlight your best-selling or new arrival products in this section to attract customers.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141073"
+        "customized": false
       },
       {
         "id": "305",
         "text": "Add Featured Products",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141082"
+        "customized": false
       },
       {
         "id": "heading-52",
-        "text": "Our Luxury Clothing Collections",
+        "text": "Luxury Footwear Collections",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141091"
+        "customized": false
       },
       {
         "id": "heading-53",
-        "text": "Tailored Blazers",
+        "text": "Classic Loafers",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141100"
+        "customized": false
       },
       {
         "id": "heading-54",
-        "text": "Tailored Blazers",
+        "text": "Classic Loafers",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141109"
+        "customized": false
       },
       {
         "id": "heading-55",
-        "text": "Evening Gowns",
+        "text": "Evening Heels",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141118"
+        "customized": false
       },
       {
         "id": "heading-56",
-        "text": "Evening Gowns",
+        "text": "Evening Heels",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141127"
+        "customized": false
       },
       {
         "id": "heading-57",
-        "text": "Designer Knitwear",
+        "text": "Designer Sneakers",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141135"
+        "customized": false
       },
       {
         "id": "heading-58",
-        "text": "Designer Knitwear",
+        "text": "Designer Sneakers",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141144"
+        "customized": false
       },
       {
         "id": "heading-59",
         "text": "Featured Products",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141153"
+        "customized": false
       },
       {
         "id": "heading-60",
-        "text": "Premium Wool Overcoat",
+        "text": "Premium Leather Boots",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141162"
+        "customized": false
       },
       {
         "id": "heading-61",
-        "text": "Classic White Shirt",
+        "text": "Classic Oxford Shoes",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141171"
+        "customized": false
       },
       {
         "id": "heading-62",
-        "text": "Cashmere V-Neck Sweater",
+        "text": "Suede Casual Loafers",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141180"
+        "customized": false
       },
       {
         "id": "heading-63",
-        "text": "Tailored Trousers",
+        "text": "Formal Dress Shoes",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141189"
+        "customized": false
       },
       {
         "id": "heading-64",
         "text": "No Categories Available",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141198"
+        "customized": false
       },
       {
         "id": "heading-65",
         "text": "No Featured Products",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141207"
+        "customized": false
       },
       {
         "id": "paragraph-66",
-        "text": "Explore our curated collections, where each piece embodies the pinnacle of Italian craftsmanship and timeless design.",
+        "text": "Explore our curated categories of premium craftsmanship, where every collection tells a story of elegance, comfort, and timeless design.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141216"
+        "customized": false
       },
       {
         "id": "paragraph-67",
-        "text": "Masterfully crafted blazers that define sophistication. Perfect for both professional and formal occasions.",
+        "text": "Timeless sophistication meets modern comfort in our collection of handcrafted loafers, perfect for discerning gentlemen.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141225"
+        "customized": false
       },
       {
         "id": "paragraph-68",
-        "text": "Elevate your evening wardrobe with gowns designed to captivate, crafted from luxurious silks with exquisite detailing.",
+        "text": "Elegant heels designed for special occasions, featuring premium materials and exquisite detailing.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141234"
+        "customized": false
       },
       {
         "id": "paragraph-69",
-        "text": "The perfect fusion of comfort and luxury. Our knitwear is crafted for the discerning, modern lifestyle.",
+        "text": "Luxury sneakers that combine urban style with premium comfort for the modern lifestyle.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141242"
+        "customized": false
       },
       {
         "id": "paragraph-70",
-        "text": "Start organizing your products by creating categories to help customers find their perfect pieces.",
+        "text": "Start organizing your products by creating categories to help customers find what they're looking for.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141251"
+        "customized": false
       },
       {
         "id": "paragraph-71",
         "text": "Highlight your best-selling or new arrival products in this section to attract customers.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141260"
+        "customized": false
       },
       {
         "id": "button-72",
-        "text": "Explore Collection",
+        "text": "EXPLORE COLLECTION",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141269"
+        "customized": false
       },
       {
         "id": "button-73",
-        "text": "Explore Collection",
+        "text": "EXPLORE COLLECTION",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141278"
+        "customized": false
       },
       {
         "id": "button-74",
-        "text": "Explore Collection",
+        "text": "EXPLORE COLLECTION",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141287"
+        "customized": false
       },
       {
         "id": "button-75",
         "text": "Add to Cart",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141295"
+        "customized": false
       },
       {
         "id": "button-76",
         "text": "Add to Cart",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141304"
+        "customized": false
       },
       {
         "id": "button-77",
         "text": "Add to Cart",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141313"
+        "customized": false
       },
       {
         "id": "button-78",
         "text": "Add to Cart",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141322"
+        "customized": false
       },
       {
         "id": "link-79",
         "text": "Home",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141330"
+        "customized": false
       },
       {
         "id": "link-80",
         "text": "Shop",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141339"
+        "customized": false
       },
       {
         "id": "link-81",
         "text": "Create Your First Category",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141348"
+        "customized": false
       },
       {
         "id": "link-82",
         "text": "Add Featured Products",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141357"
+        "customized": false
       },
       {
         "id": "page-title",
-        "text": "Collections | JMAX",
+        "text": "Categories | {brand}",
         "type": "title",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141366"
+        "customized": false
       }
     ],
     "contact": [
@@ -1636,1690 +1404,1449 @@
         "id": "204",
         "text": "Home",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141369"
+        "customized": false
       },
       {
         "id": "205",
         "text": "Contact Us",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141378"
+        "customized": false
       },
       {
         "id": "206",
-        "text": "We're Here to Help",
+        "text": "Get in Touch",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141386"
+        "customized": false
       },
       {
         "id": "207",
-        "text": "Have a question about our luxury collections, an order, or need personalized styling advice? Our dedicated team is ready to assist.",
+        "text": "We're here to assist you with any questions about our luxury footwear, orders, or personalized styling advice. Reach out to our dedicated team.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141395"
+        "customized": false
       },
       {
         "id": "208",
-        "text": "Connect With Us",
+        "text": "Contact Information",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141404"
+        "customized": false
       },
       {
         "id": "209",
         "text": "Visit Our Showroom",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141413"
+        "customized": false
       },
       {
         "id": "210",
-        "text": "123 Luxury Avenue, Fashion District, Milan, Italy 20121",
+        "text": "123 Luxury Avenue, Fashion DistrictMilan, Italy 20121",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141421"
+        "customized": false
       },
       {
         "id": "211",
         "text": "Call Us",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141430"
+        "customized": false
       },
       {
         "id": "212",
-        "text": "Main: +39 02 1234 5678 | Customer Service: +39 02 9876 5432",
+        "text": "Main:+39 02 1234 5678Customer Service:+39 02 9876 5432",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141438"
+        "customized": false
       },
       {
         "id": "213",
         "text": "Email Us",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141447"
+        "customized": false
       },
       {
         "id": "214",
-        "text": "General Inquiries: info@jmaxfashion.com | Customer Support: support@jmaxfashion.com",
+        "text": "General Inquiries:info@velocefootwear.comCustomer Support:support@velocefootwear.com",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141456"
+        "customized": false
       },
       {
         "id": "215",
         "text": "Business Hours",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141464"
+        "customized": false
       },
       {
         "id": "216",
         "text": "Monday - Friday",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141473"
+        "customized": false
       },
       {
         "id": "217",
         "text": "9:00 AM - 7:00 PM",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141482"
+        "customized": false
       },
       {
         "id": "218",
         "text": "Saturday",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141490"
+        "customized": false
       },
       {
         "id": "219",
         "text": "10:00 AM - 6:00 PM",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141499"
+        "customized": false
       },
       {
         "id": "220",
         "text": "Sunday",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141507"
+        "customized": false
       },
       {
         "id": "221",
         "text": "Closed",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141516"
+        "customized": false
       },
       {
         "id": "222",
         "text": "Send Us a Message",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141525"
+        "customized": false
       },
       {
         "id": "223",
         "text": "First Name",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141533"
+        "customized": false
       },
       {
         "id": "224",
         "text": "Last Name",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141542"
+        "customized": false
       },
       {
         "id": "225",
         "text": "Email Address",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141550"
+        "customized": false
       },
       {
         "id": "226",
         "text": "Phone Number (Optional)",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141559"
+        "customized": false
       },
       {
         "id": "227",
         "text": "Subject",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141567"
+        "customized": false
       },
       {
         "id": "228",
         "text": "Select a subject",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141576"
+        "customized": false
       },
       {
         "id": "229",
         "text": "General Inquiry",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141585"
+        "customized": false
       },
       {
         "id": "230",
         "text": "Order Questions",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141593"
+        "customized": false
       },
       {
         "id": "231",
         "text": "Product Information",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141602"
+        "customized": false
       },
       {
         "id": "232",
         "text": "Sizing & Fit",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141611"
+        "customized": false
       },
       {
         "id": "233",
         "text": "Returns & Exchanges",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141619"
+        "customized": false
       },
       {
         "id": "234",
         "text": "Wholesale Inquiries",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141628"
+        "customized": false
       },
       {
         "id": "235",
         "text": "Your Message",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141636"
+        "customized": false
       },
       {
         "id": "236",
         "text": "Send Message",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141645"
+        "customized": false
       },
       {
         "id": "237",
         "text": "Visit Our Milan Showroom",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141654"
+        "customized": false
       },
       {
         "id": "238",
-        "text": "Experience the world of JMAX in person at our flagship boutique, located in the heart of Milan's prestigious fashion district.",
+        "text": "Experience luxury footwear in person at our flagship location in the heart of Milan's fashion district.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141663"
+        "customized": false
       },
       {
         "id": "239",
         "text": "Frequently Asked Questions",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141671"
+        "customized": false
       },
       {
         "id": "240",
         "text": "What is your return and exchange policy?",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141680"
+        "customized": false
       },
       {
         "id": "241",
-        "text": "We offer a 30-day return and exchange policy for all unworn items in their original condition with tags attached. Custom and personalized items are final sale. Returns are processed within 5-7 business days after we receive your item.",
+        "text": "We offer a 30-day return and exchange policy for all unworn items in original condition with tags attached. Custom and personalized items are final sale. Returns are processed within 5-7 business days after we receive your item.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141689"
+        "customized": false
       },
       {
         "id": "242",
-        "text": "How do I determine my correct size?",
+        "text": "How do I determine my correct shoe size?",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141697"
+        "customized": false
       },
       {
         "id": "243",
-        "text": "We recommend consulting our detailed sizing guide on each product page. For the best fit, measure your body and compare it to our size chart. Our customer service team is also available to provide personalized recommendations.",
+        "text": "We recommend referring to our detailed sizing guide available on each product page. For the most accurate fit, measure your foot length and compare it to our size chart. Our customer service team can also provide personalized sizing recommendations based on specific styles.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141706"
+        "customized": false
       },
       {
         "id": "244",
-        "text": "What materials are used in JMAX clothing?",
+        "text": "What materials are used in {brand} footwear?",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141715"
+        "customized": false
       },
       {
         "id": "245",
-        "text": "We exclusively use premium materials, including Italian wool, Egyptian cotton, cashmere, and sustainable alternatives. All fabrics are chosen for durability, comfort, and environmental responsibility.",
+        "text": "We exclusively use premium materials including full-grain Italian leather, suede from renowned European tanneries, and sustainable alternatives where appropriate. All materials are selected for durability, comfort, and environmental responsibility.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141724"
+        "customized": false
       },
       {
         "id": "246",
         "text": "Do you offer international shipping?",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141732"
+        "customized": false
       },
       {
         "id": "247",
-        "text": "Yes, we ship worldwide via express courier. Shipping costs and delivery times vary by destination. All international orders include tracking and may be subject to customs duties and taxes based on the recipient's country regulations.",
+        "text": "Yes, we ship worldwide via express courier services. Shipping costs and delivery times vary by destination. All international orders include tracking and may be subject to customs duties and taxes based on the recipient's country regulations.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141741"
+        "customized": false
       },
       {
         "id": "248",
-        "text": "How do I care for my luxury garments?",
+        "text": "How do I care for my luxury shoes?",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141749"
+        "customized": false
       },
       {
         "id": "249",
-        "text": "Each piece comes with specific care instructions. Generally, we recommend dry cleaning for tailored items and delicate hand washing for knitwear. Store your garments in their original garment bags to maintain their shape.",
+        "text": "Each pair comes with specific care instructions. Generally, we recommend using appropriate leather conditioners, suede protectors, and professional cleaning for stubborn stains. Store shoes in their original dust bags and use shoe trees to maintain shape.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141758"
+        "customized": false
       },
       {
         "id": "heading-47",
-        "text": "We're Here to Help",
+        "text": "Get in Touch",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141766"
+        "customized": false
       },
       {
         "id": "heading-48",
-        "text": "Connect With Us",
+        "text": "Contact Information",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141775"
+        "customized": false
       },
       {
         "id": "heading-49",
         "text": "Visit Our Showroom",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141783"
+        "customized": false
       },
       {
         "id": "heading-50",
         "text": "Call Us",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141792"
+        "customized": false
       },
       {
         "id": "heading-51",
         "text": "Email Us",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141800"
+        "customized": false
       },
       {
         "id": "heading-52",
         "text": "Business Hours",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141809"
+        "customized": false
       },
       {
         "id": "heading-53",
         "text": "Send Us a Message",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141817"
+        "customized": false
       },
       {
         "id": "heading-54",
         "text": "Visit Our Milan Showroom",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141825"
+        "customized": false
       },
       {
         "id": "heading-55",
         "text": "Frequently Asked Questions",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141834"
+        "customized": false
       },
       {
         "id": "heading-56",
         "text": "What is your return and exchange policy?",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141842"
+        "customized": false
       },
       {
         "id": "heading-57",
-        "text": "How do I determine my correct size?",
+        "text": "How do I determine my correct shoe size?",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141851"
+        "customized": false
       },
       {
         "id": "heading-58",
-        "text": "What materials are used in JMAX clothing?",
+        "text": "What materials are used in {brand} footwear?",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141859"
+        "customized": false
       },
       {
         "id": "heading-59",
         "text": "Do you offer international shipping?",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141868"
+        "customized": false
       },
       {
         "id": "heading-60",
-        "text": "How do I care for my luxury garments?",
+        "text": "How do I care for my luxury shoes?",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141876"
+        "customized": false
       },
       {
         "id": "paragraph-61",
-        "text": "Have a question about our luxury collections, an order, or need personalized styling advice? Our dedicated team is ready to assist.",
+        "text": "We're here to assist you with any questions about our luxury footwear, orders, or personalized styling advice. Reach out to our dedicated team.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141884"
+        "customized": false
       },
       {
         "id": "paragraph-62",
-        "text": "123 Luxury Avenue, Fashion District, Milan, Italy 20121",
+        "text": "123 Luxury Avenue, Fashion DistrictMilan, Italy 20121",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141893"
+        "customized": false
       },
       {
         "id": "paragraph-63",
-        "text": "Main: +39 02 1234 5678 | Customer Service: +39 02 9876 5432",
+        "text": "Main:+39 02 1234 5678Customer Service:+39 02 9876 5432",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141901"
+        "customized": false
       },
       {
         "id": "paragraph-64",
-        "text": "General Inquiries: info@jmaxfashion.com | Customer Support: support@jmaxfashion.com",
+        "text": "General Inquiries:info@velocefootwear.comCustomer Support:support@velocefootwear.com",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141910"
+        "customized": false
       },
       {
         "id": "paragraph-65",
-        "text": "Experience the world of JMAX in person at our flagship boutique, located in the heart of Milan's prestigious fashion district.",
+        "text": "Experience luxury footwear in person at our flagship location in the heart of Milan's fashion district.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141918"
+        "customized": false
       },
       {
         "id": "paragraph-66",
-        "text": "We offer a 30-day return and exchange policy for all unworn items in their original condition with tags attached. Custom and personalized items are final sale. Returns are processed within 5-7 business days after we receive your item.",
+        "text": "We offer a 30-day return and exchange policy for all unworn items in original condition with tags attached. Custom and personalized items are final sale. Returns are processed within 5-7 business days after we receive your item.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141927"
+        "customized": false
       },
       {
         "id": "paragraph-67",
-        "text": "We recommend consulting our detailed sizing guide on each product page. For the best fit, measure your body and compare it to our size chart. Our customer service team is also available to provide personalized recommendations.",
+        "text": "We recommend referring to our detailed sizing guide available on each product page. For the most accurate fit, measure your foot length and compare it to our size chart. Our customer service team can also provide personalized sizing recommendations based on specific styles.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141935"
+        "customized": false
       },
       {
         "id": "paragraph-68",
-        "text": "We exclusively use premium materials, including Italian wool, Egyptian cotton, cashmere, and sustainable alternatives. All fabrics are chosen for durability, comfort, and environmental responsibility.",
+        "text": "We exclusively use premium materials including full-grain Italian leather, suede from renowned European tanneries, and sustainable alternatives where appropriate. All materials are selected for durability, comfort, and environmental responsibility.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141944"
+        "customized": false
       },
       {
         "id": "paragraph-69",
-        "text": "Yes, we ship worldwide via express courier. Shipping costs and delivery times vary by destination. All international orders include tracking and may be subject to customs duties and taxes based on the recipient's country regulations.",
+        "text": "Yes, we ship worldwide via express courier services. Shipping costs and delivery times vary by destination. All international orders include tracking and may be subject to customs duties and taxes based on the recipient's country regulations.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141952"
+        "customized": false
       },
       {
         "id": "paragraph-70",
-        "text": "Each piece comes with specific care instructions. Generally, we recommend dry cleaning for tailored items and delicate hand washing for knitwear. Store your garments in their original garment bags to maintain their shape.",
+        "text": "Each pair comes with specific care instructions. Generally, we recommend using appropriate leather conditioners, suede protectors, and professional cleaning for stubborn stains. Store shoes in their original dust bags and use shoe trees to maintain shape.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141961"
+        "customized": false
       },
       {
         "id": "button-71",
         "text": "Send Message",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141969"
+        "customized": false
       },
       {
         "id": "link-72",
         "text": "Home",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141977"
+        "customized": false
       },
       {
         "id": "link-73",
         "text": "+39 02 1234 5678",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141985"
+        "customized": false
       },
       {
         "id": "link-74",
         "text": "+39 02 9876 5432",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.141994"
+        "customized": false
       },
       {
         "id": "link-75",
-        "text": "info@jmaxfashion.com",
+        "text": "info@velocefootwear.com",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142002"
+        "customized": false
       },
       {
         "id": "link-76",
-        "text": "support@jmaxfashion.com",
+        "text": "support@velocefootwear.com",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142010"
+        "customized": false
       },
       {
         "id": "page-title",
-        "text": "Contact Us | JMAX",
+        "text": "Contact Us | {brand}",
         "type": "title",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142019"
+        "customized": false
       }
     ],
     "home": [
       {
         "id": "800",
-        "text": "Free Shipping on orders over $200 — Use Code: JMAX10",
+        "text": "FREE SHIPPINGon orders over $200 —USE CODE: STEP10",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142022"
+        "customized": false
       },
       {
         "id": "1",
-        "text": "JMAX",
+        "text": "{brand}",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142041"
+        "customized": false
       },
       {
         "id": "2",
-        "text": "Home",
+        "text": "HOME",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142056"
+        "customized": false
       },
       {
         "id": "3",
-        "text": "Shop",
+        "text": "SHOP",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142071"
+        "customized": false
       },
       {
         "id": "4",
-        "text": "Collections",
+        "text": "COLLECTIONS",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142086"
+        "customized": false
       },
       {
         "id": "5",
-        "text": "About Us",
+        "text": "ABOUT US",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142100"
+        "customized": false
       },
       {
         "id": "6",
-        "text": "Contact",
+        "text": "CONTACT",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142115"
+        "customized": false
       },
       {
         "id": "7",
-        "text": "Sign In",
+        "text": "SIGN IN",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142130"
+        "customized": false
       },
       {
         "id": "8",
-        "text": "Where Style Meets Every Occasion",
+        "text": "Where Elegance Meets Every Step",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142145"
+        "customized": false
       },
       {
         "id": "9",
-        "text": "Discover luxury clothing designed for confidence, comfort, and timeless elegance. From tailored blazers to cashmere knitwear—elevate your wardrobe.",
+        "text": "Discover handcrafted luxury shoes designed for comfort, confidence, and timeless style.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142160"
+        "customized": false
       },
       {
         "id": "10",
-        "text": "Explore Collection",
+        "text": "EXPLORE COLLECTION",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142175"
+        "customized": false
       },
       {
         "id": "801",
-        "text": "Premium Fabrics",
+        "text": "Premium Leather",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142191"
+        "customized": false
       },
       {
         "id": "802",
-        "text": "Italian wool, Egyptian cotton, and more",
+        "text": "100% Italian full-grain leather",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142206"
+        "customized": false
       },
       {
         "id": "803",
-        "text": "Artisan Tailoring",
+        "text": "Handcrafted",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142222"
+        "customized": false
       },
       {
         "id": "804",
-        "text": "Handcrafted by master tailors",
+        "text": "Made by master artisans",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142237"
+        "customized": false
       },
       {
         "id": "805",
-        "text": "Perfect Fit",
+        "text": "Ultimate Comfort",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142253"
+        "customized": false
       },
       {
         "id": "806",
-        "text": "Designed for comfort and elegance",
+        "text": "Orthopedic-friendly design",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142268"
+        "customized": false
       },
       {
         "id": "807",
         "text": "Free Shipping",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142284"
+        "customized": false
       },
       {
         "id": "808",
         "text": "On all orders over $200",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142299"
+        "customized": false
       },
       {
         "id": "809",
         "text": "4.9★ Rating",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142315"
+        "customized": false
       },
       {
         "id": "810",
-        "text": "5,000+ satisfied customers",
+        "text": "5,000+ happy customers",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142331"
+        "customized": false
       },
       {
         "id": "811",
         "text": "Artisan Craft",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142346"
+        "customized": false
       },
       {
         "id": "812",
         "text": "The Craft",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142362"
+        "customized": false
       },
       {
         "id": "813",
-        "text": "Masterful Tailoring",
+        "text": "Masterful Shoemaking",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142377"
+        "customized": false
       },
       {
         "id": "814",
-        "text": "Every garment tells a story of dedication and precision.",
+        "text": "Every pair tells a story of dedication and precision.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142393"
+        "customized": false
       },
       {
         "id": "815",
-        "text": "Our master tailors pour their passion into every stitch, using techniques passed down through generations. Each piece takes 40+ hours to complete, ensuring unparalleled quality and elegance.",
+        "text": "Our master artisans pour their heart and soul into every stitch, using techniques passed down through generations. Each pair of shoes takes 80+ hours to complete, ensuring unparalleled quality and comfort.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142408"
+        "customized": false
       },
       {
         "id": "816",
         "text": "Hand-stitched for durability",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142424"
+        "customized": false
       },
       {
         "id": "817",
-        "text": "Premium Italian fabrics",
+        "text": "Premium Italian leather",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142439"
+        "customized": false
       },
       {
         "id": "818",
         "text": "Guaranteed for 2 years",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142454"
+        "customized": false
       },
       {
         "id": "819",
         "text": "Discover Our Craft →",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142470"
+        "customized": false
       },
       {
         "id": "820",
         "text": "Our Collection",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142485"
+        "customized": false
       },
       {
         "id": "821",
         "text": "Step Into Luxury",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142501"
+        "customized": false
       },
       {
         "id": "822",
-        "text": "Explore our most coveted pieces, each designed to elevate your style.",
+        "text": "Explore our most coveted styles, each designed to elevate your every step.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142516"
+        "customized": false
       },
       {
         "id": "823",
-        "text": "Wool Blazer",
+        "text": "Classic Loafers",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142532"
+        "customized": false
       },
       {
         "id": "824",
-        "text": "Timeless sophistication, modern cut",
+        "text": "Timeless elegance, modern comfort",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142547"
+        "customized": false
       },
       {
         "id": "825",
-        "text": "$485",
+        "text": "$385",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142563"
+        "customized": false
       },
       {
         "id": "826",
-        "text": "Silk Gown",
+        "text": "Elegant Heels",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142578"
+        "customized": false
       },
       {
         "id": "827",
-        "text": "The perfect statement piece",
+        "text": "The perfect finishing touch",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142594"
+        "customized": false
       },
       {
         "id": "828",
-        "text": "$550",
+        "text": "$450",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142609"
+        "customized": false
       },
       {
         "id": "829",
-        "text": "Cashmere Sweater",
+        "text": "Oxford Shoes",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142625"
+        "customized": false
       },
       {
         "id": "830",
-        "text": "Refined comfort",
+        "text": "Refined sophistication",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142640"
+        "customized": false
       },
       {
         "id": "831",
         "text": "$425",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142656"
+        "customized": false
       },
       {
         "id": "832",
-        "text": "Evening Dress",
+        "text": "Evening Sandals",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142671"
+        "customized": false
       },
       {
         "id": "833",
-        "text": "Glamour meets sophistication",
+        "text": "Glamour meets comfort",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142687"
+        "customized": false
       },
       {
         "id": "834",
-        "text": "$620",
+        "text": "$520",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142702"
+        "customized": false
       },
       {
         "id": "835",
         "text": "Premium Materials",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142718"
+        "customized": false
       },
       {
         "id": "836",
         "text": "The Materials",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142733"
+        "customized": false
       },
       {
         "id": "837",
         "text": "Sourced from the Best",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142748"
+        "customized": false
       },
       {
         "id": "838",
-        "text": "Only the finest fabrics make the cut.",
+        "text": "Only the finest materials make the cut.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142764"
+        "customized": false
       },
       {
         "id": "839",
-        "text": "We source our fabrics from the most prestigious mills in Italy and England, ensuring each piece offers unparalleled softness, durability, and a perfect drape that enhances your silhouette.",
+        "text": "We source our leather from the most prestigious tanneries in Italy and France, ensuring each pair offers unparalleled softness, durability, and a perfect fit that molds to your feet over time.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142780"
+        "customized": false
       },
       {
         "id": "840",
-        "text": "Italian wool & cashmere",
+        "text": "Full-grain Italian leather",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142795"
+        "customized": false
       },
       {
         "id": "841",
-        "text": "Sustainable sourcing",
+        "text": "Sustainable sourcing practices",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142811"
+        "customized": false
       },
       {
         "id": "842",
-        "text": "Premium inner linings",
+        "text": "Premium inner lining",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142826"
+        "customized": false
       },
       {
         "id": "843",
         "text": "Experience Quality →",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142842"
+        "customized": false
       },
       {
         "id": "844",
         "text": "Why Choose Us",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142857"
+        "customized": false
       },
       {
         "id": "845",
         "text": "Designed for You",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142873"
+        "customized": false
       },
       {
         "id": "846",
         "text": "Every detail is carefully considered to give you the best experience possible.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142888"
+        "customized": false
       },
       {
         "id": "847",
-        "text": "Made with Passion",
+        "text": "Made with Love",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142904"
+        "customized": false
       },
       {
         "id": "848",
-        "text": "Every piece is crafted with care by artisans who pour their passion into their work.",
+        "text": "Every pair is crafted with care by artisans who pour their passion into their work.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142919"
+        "customized": false
       },
       {
         "id": "849",
         "text": "Sustainably Made",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142935"
+        "customized": false
       },
       {
         "id": "850",
         "text": "Committed to eco-friendly practices and ethical production standards.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142950"
+        "customized": false
       },
       {
         "id": "851",
         "text": "Built to Last",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142965"
+        "customized": false
       },
       {
         "id": "852",
-        "text": "Premium construction that ensures your garments remain beautiful for years.",
+        "text": "Premium construction that ensures your shoes remain beautiful for years.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142981"
+        "customized": false
       },
       {
         "id": "853",
         "text": "★★★★★",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.142996"
+        "customized": false
       },
       {
         "id": "854",
-        "text": "\"These are hands down the most elegant and comfortable pieces I've ever owned. The quality is unmatched, and I receive compliments every time I wear them.\"",
+        "text": "\"These are hands down the most comfortable and elegant shoes I've ever owned. The quality is unmatched, and I receive compliments every time I wear them.\"",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143012"
+        "customized": false
       },
       {
         "id": "855",
         "text": "- Jessica Thompson",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143027"
+        "customized": false
       },
       {
         "id": "856",
         "text": ", Fashion Stylist & Long-time Customer",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143043"
+        "customized": false
       },
       {
         "id": "857",
         "text": "New Collection",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143058"
+        "customized": false
       },
       {
         "id": "858",
-        "text": "Find Your Perfect Piece",
+        "text": "Find Your Perfect Pair",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143074"
+        "customized": false
       },
       {
         "id": "859",
-        "text": "Join thousands of satisfied customers who have discovered the difference of luxury clothing.",
+        "text": "Join thousands of satisfied customers who have discovered the difference of luxury footwear.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143089"
+        "customized": false
       },
       {
         "id": "860",
         "text": "Shop the Collection →",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143105"
+        "customized": false
       },
       {
         "id": "861",
         "text": "10K+",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143121"
+        "customized": false
       },
       {
         "id": "862",
         "text": "Happy Customers",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143136"
+        "customized": false
       },
       {
         "id": "863",
         "text": "4.9★",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143151"
+        "customized": false
       },
       {
         "id": "864",
         "text": "Average Rating",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143167"
+        "customized": false
       },
       {
         "id": "865",
         "text": "100%",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143182"
+        "customized": false
       },
       {
         "id": "866",
         "text": "Satisfaction Guarantee",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143198"
+        "customized": false
       },
       {
         "id": "11",
         "text": "New Arrivals",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143213"
+        "customized": false
       },
       {
         "id": "12",
-        "text": "Experience the latest additions to our luxury clothing collection",
+        "text": "Experience the latest additions to our collection of luxury footwear",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143228"
+        "customized": false
       },
       {
         "id": "13",
-        "text": "Classic Wool Blazer",
+        "text": "Classic Leather Loafers",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143243"
+        "customized": false
       },
       {
         "id": "14",
-        "text": "Handcrafted Italian wool with a refined silhouette",
+        "text": "Handcrafted Italian leather with a refined silhouette",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143259"
+        "customized": false
       },
       {
         "id": "15",
-        "text": "$485",
+        "text": "$385",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143274"
+        "customized": false
       },
       {
         "id": "16",
         "text": "Add to Cart",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143289"
+        "customized": false
       },
       {
         "id": "17",
-        "text": "Silk Evening Dress",
+        "text": "Elegant Evening Heels",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143304"
+        "customized": false
       },
       {
         "id": "18",
-        "text": "Luxurious silk satin with elegant draping",
+        "text": "Silk satin with crystal embellishments",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143319"
+        "customized": false
       },
       {
         "id": "19",
-        "text": "$550",
+        "text": "$450",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143334"
+        "customized": false
       },
       {
         "id": "20",
         "text": "Add to Cart",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143349"
+        "customized": false
       },
       {
         "id": "21",
-        "text": "View All Products",
+        "text": "VIEW ALL PRODUCTS",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143364"
+        "customized": false
       },
       {
         "id": "22",
         "text": "Support",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143379"
+        "customized": false
       },
       {
         "id": "23",
         "text": "Contact",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143394"
+        "customized": false
       },
       {
         "id": "24",
         "text": "Our Team",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143409"
+        "customized": false
       },
       {
         "id": "25",
         "text": "Follow Us",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143424"
+        "customized": false
       },
       {
         "id": "26",
         "text": "Instagram",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143439"
+        "customized": false
       },
       {
         "id": "27",
         "text": "Pinterest",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143454"
+        "customized": false
       },
       {
         "id": "28",
-        "text": "© 2023 JMAX Luxury Clothing. All rights reserved.",
+        "text": "© 2023 {brand} Luxury Footwear. All rights reserved.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143469"
+        "customized": false
       },
       {
         "id": "867",
         "text": "Shop Now",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143485"
+        "customized": false
       },
       {
         "id": "heading-97",
-        "text": "Where Style Meets Every Occasion",
+        "text": "Where Elegance Meets Every Step",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143500"
+        "customized": false
       },
       {
         "id": "heading-98",
-        "text": "Premium Fabrics",
+        "text": "Premium Leather",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143515"
+        "customized": false
       },
       {
         "id": "heading-99",
-        "text": "Artisan Tailoring",
+        "text": "Handcrafted",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143530"
+        "customized": false
       },
       {
         "id": "heading-100",
-        "text": "Perfect Fit",
+        "text": "Ultimate Comfort",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143545"
+        "customized": false
       },
       {
         "id": "heading-101",
         "text": "Free Shipping",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143560"
+        "customized": false
       },
       {
         "id": "heading-102",
         "text": "4.9★ Rating",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143575"
+        "customized": false
       },
       {
         "id": "heading-103",
-        "text": "Masterful Tailoring",
+        "text": "Masterful Shoemaking",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143591"
+        "customized": false
       },
       {
         "id": "heading-104",
         "text": "Step Into Luxury",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143606"
+        "customized": false
       },
       {
         "id": "heading-105",
-        "text": "Wool Blazer",
+        "text": "Classic Loafers",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143621"
+        "customized": false
       },
       {
         "id": "heading-106",
-        "text": "Silk Gown",
+        "text": "Elegant Heels",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143636"
+        "customized": false
       },
       {
         "id": "heading-107",
-        "text": "Cashmere Sweater",
+        "text": "Oxford Shoes",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143651"
+        "customized": false
       },
       {
         "id": "heading-108",
-        "text": "Evening Dress",
+        "text": "Evening Sandals",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143666"
+        "customized": false
       },
       {
         "id": "heading-109",
         "text": "Sourced from the Best",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143681"
+        "customized": false
       },
       {
         "id": "heading-110",
         "text": "Designed for You",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143696"
+        "customized": false
       },
       {
         "id": "heading-111",
-        "text": "Made with Passion",
+        "text": "Made with Love",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143712"
+        "customized": false
       },
       {
         "id": "heading-112",
         "text": "Sustainably Made",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143727"
+        "customized": false
       },
       {
         "id": "heading-113",
         "text": "Built to Last",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143742"
+        "customized": false
       },
       {
         "id": "heading-114",
-        "text": "Find Your Perfect Piece",
+        "text": "Find Your Perfect Pair",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143757"
+        "customized": false
       },
       {
         "id": "heading-115",
         "text": "New Arrivals",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143772"
+        "customized": false
       },
       {
         "id": "heading-116",
-        "text": "Classic Wool Blazer",
+        "text": "Classic Leather Loafers",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143787"
+        "customized": false
       },
       {
         "id": "heading-117",
-        "text": "Silk Evening Dress",
+        "text": "Elegant Evening Heels",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143802"
+        "customized": false
       },
       {
         "id": "heading-118",
         "text": "Support",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143817"
+        "customized": false
       },
       {
         "id": "heading-119",
         "text": "Follow Us",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143833"
+        "customized": false
       },
       {
         "id": "paragraph-120",
-        "text": "Free Shipping on orders over $200 — Use Code: JMAX10",
+        "text": "FREE SHIPPINGon orders over $200 —USE CODE: STEP10",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143847"
+        "customized": false
       },
       {
         "id": "paragraph-121",
-        "text": "Discover luxury clothing designed for confidence, comfort, and timeless elegance. From tailored blazers to cashmere knitwear—elevate your wardrobe.",
+        "text": "Discover handcrafted luxury shoes designed for comfort, confidence, and timeless style.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143863"
+        "customized": false
       },
       {
         "id": "paragraph-122",
-        "text": "Italian wool, Egyptian cotton, and more",
+        "text": "100% Italian full-grain leather",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143878"
+        "customized": false
       },
       {
         "id": "paragraph-123",
-        "text": "Handcrafted by master tailors",
+        "text": "Made by master artisans",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143893"
+        "customized": false
       },
       {
         "id": "paragraph-124",
-        "text": "Designed for comfort and elegance",
+        "text": "Orthopedic-friendly design",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143908"
+        "customized": false
       },
       {
         "id": "paragraph-125",
         "text": "On all orders over $200",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143924"
+        "customized": false
       },
       {
         "id": "paragraph-126",
-        "text": "5,000+ satisfied customers",
+        "text": "5,000+ happy customers",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143939"
+        "customized": false
       },
       {
         "id": "paragraph-127",
-        "text": "Every garment tells a story of dedication and precision.",
+        "text": "Every pair tells a story of dedication and precision.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143954"
+        "customized": false
       },
       {
         "id": "paragraph-128",
-        "text": "Our master tailors pour their passion into every stitch, using techniques passed down through generations. Each piece takes 40+ hours to complete, ensuring unparalleled quality and elegance.",
+        "text": "Our master artisans pour their heart and soul into every stitch, using techniques passed down through generations. Each pair of shoes takes 80+ hours to complete, ensuring unparalleled quality and comfort.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143969"
+        "customized": false
       },
       {
         "id": "paragraph-129",
-        "text": "Explore our most coveted pieces, each designed to elevate your style.",
+        "text": "Explore our most coveted styles, each designed to elevate your every step.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143984"
+        "customized": false
       },
       {
         "id": "paragraph-130",
-        "text": "Timeless sophistication, modern cut",
+        "text": "Timeless elegance, modern comfort",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.143999"
+        "customized": false
       },
       {
         "id": "paragraph-131",
-        "text": "The perfect statement piece",
+        "text": "The perfect finishing touch",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144015"
+        "customized": false
       },
       {
         "id": "paragraph-132",
-        "text": "Refined comfort",
+        "text": "Refined sophistication",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144030"
+        "customized": false
       },
       {
         "id": "paragraph-133",
-        "text": "Glamour meets sophistication",
+        "text": "Glamour meets comfort",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144045"
+        "customized": false
       },
       {
         "id": "paragraph-134",
-        "text": "Only the finest fabrics make the cut.",
+        "text": "Only the finest materials make the cut.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144060"
+        "customized": false
       },
       {
         "id": "paragraph-135",
-        "text": "We source our fabrics from the most prestigious mills in Italy and England, ensuring each piece offers unparalleled softness, durability, and a perfect drape that enhances your silhouette.",
+        "text": "We source our leather from the most prestigious tanneries in Italy and France, ensuring each pair offers unparalleled softness, durability, and a perfect fit that molds to your feet over time.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144075"
+        "customized": false
       },
       {
         "id": "paragraph-136",
         "text": "Every detail is carefully considered to give you the best experience possible.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144090"
+        "customized": false
       },
       {
         "id": "paragraph-137",
-        "text": "Every piece is crafted with care by artisans who pour their passion into their work.",
+        "text": "Every pair is crafted with care by artisans who pour their passion into their work.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144106"
+        "customized": false
       },
       {
         "id": "paragraph-138",
         "text": "Committed to eco-friendly practices and ethical production standards.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144121"
+        "customized": false
       },
       {
         "id": "paragraph-139",
-        "text": "Premium construction that ensures your garments remain beautiful for years.",
+        "text": "Premium construction that ensures your shoes remain beautiful for years.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144136"
+        "customized": false
       },
       {
         "id": "paragraph-140",
-        "text": "Join thousands of satisfied customers who have discovered the difference of luxury clothing.",
+        "text": "Join thousands of satisfied customers who have discovered the difference of luxury footwear.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144152"
+        "customized": false
       },
       {
         "id": "paragraph-141",
-        "text": "Experience the latest additions to our luxury clothing collection",
+        "text": "Experience the latest additions to our collection of luxury footwear",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144167"
+        "customized": false
       },
       {
         "id": "paragraph-142",
-        "text": "Handcrafted Italian wool with a refined silhouette",
+        "text": "Handcrafted Italian leather with a refined silhouette",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144182"
+        "customized": false
       },
       {
         "id": "paragraph-143",
-        "text": "Luxurious silk satin with elegant draping",
+        "text": "Silk satin with crystal embellishments",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144197"
+        "customized": false
       },
       {
         "id": "paragraph-144",
-        "text": "© 2023 JMAX Luxury Clothing. All rights reserved.",
+        "text": "© 2023 {brand} Luxury Footwear. All rights reserved.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144212"
+        "customized": false
       },
       {
         "id": "button-145",
         "text": "Add to Cart",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144227"
+        "customized": false
       },
       {
         "id": "button-146",
         "text": "Add to Cart",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144242"
+        "customized": false
       },
       {
         "id": "link-147",
-        "text": "JMAX",
+        "text": "{brand}",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144257"
+        "customized": false
       },
       {
         "id": "link-148",
-        "text": "Home",
+        "text": "HOME",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144272"
+        "customized": false
       },
       {
         "id": "link-149",
-        "text": "Shop",
+        "text": "SHOP",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144288"
+        "customized": false
       },
       {
         "id": "link-150",
-        "text": "Collections",
+        "text": "COLLECTIONS",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144303"
+        "customized": false
       },
       {
         "id": "link-151",
-        "text": "About Us",
+        "text": "ABOUT US",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144318"
+        "customized": false
       },
       {
         "id": "link-152",
-        "text": "Contact",
+        "text": "CONTACT",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144333"
+        "customized": false
       },
       {
         "id": "link-153",
-        "text": "Sign In",
+        "text": "SIGN IN",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144348"
+        "customized": false
       },
       {
         "id": "link-154",
-        "text": "Explore Collection",
+        "text": "EXPLORE COLLECTION",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144363"
+        "customized": false
       },
       {
         "id": "link-155",
         "text": "Discover Our Craft →",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144378"
+        "customized": false
       },
       {
         "id": "link-156",
         "text": "Experience Quality →",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144393"
+        "customized": false
       },
       {
         "id": "link-157",
         "text": "Shop the Collection →",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144408"
+        "customized": false
       },
       {
         "id": "link-158",
-        "text": "View All Products",
+        "text": "VIEW ALL PRODUCTS",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144423"
+        "customized": false
       },
       {
         "id": "link-159",
         "text": "Contact",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144438"
+        "customized": false
       },
       {
         "id": "link-160",
         "text": "Our Team",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144453"
+        "customized": false
       },
       {
         "id": "link-161",
         "text": "Instagram",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144468"
+        "customized": false
       },
       {
         "id": "link-162",
         "text": "Pinterest",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144483"
+        "customized": false
       },
       {
         "id": "link-163",
         "text": "Shop Now",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144498"
+        "customized": false
       },
       {
         "id": "page-title",
-        "text": "JMAX",
+        "text": "{brand}",
         "type": "title",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144513"
+        "customized": false
       }
     ],
     "product-details": [
@@ -3327,556 +2854,477 @@
         "id": "52",
         "text": "Home",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144516"
+        "customized": false
       },
       {
         "id": "53",
         "text": "Shop",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144524"
+        "customized": false
       },
       {
         "id": "54",
-        "text": "Classic Wool Blazer",
+        "text": "Classic Leather Loafers",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144531"
+        "customized": false
       },
       {
         "id": "55",
-        "text": "Classic Wool Blazer",
+        "text": "Classic Leather Loafers",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144538"
+        "customized": false
       },
       {
         "id": "56",
         "text": "4.5 (128 Reviews)",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144545"
+        "customized": false
       },
       {
         "id": "57",
-        "text": "$485.00",
+        "text": "$385.00",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144552"
+        "customized": false
       },
       {
         "id": "58",
-        "text": "Experience the pinnacle of sophistication with our Classic Wool Blazer. Meticulously handcrafted in Italy from premium wool, it features a refined silhouette, fully lined interior, and hand-stitched lapels. The perfect choice for both formal occasions and elevated casual style.",
+        "text": "Experience unparalleled comfort and sophistication with our Classic Leather Loafers. Handcrafted in Italy from premium full-grain leather, these loafers feature a refined silhouette, cushioned footbed, and durable rubber sole. Perfect for both formal occasions and casual elegance.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144559"
+        "customized": false
       },
       {
         "id": "59",
         "text": "Color",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144566"
+        "customized": false
       },
       {
         "id": "60",
         "text": "Size",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144573"
+        "customized": false
       },
       {
         "id": "61",
-        "text": "Buy Now",
+        "text": "BUY NOW",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144580"
+        "customized": false
       },
       {
         "id": "62",
-        "text": "Add to Cart",
+        "text": "ADD TO CART",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144587"
+        "customized": false
       },
       {
         "id": "63",
         "text": "Material:",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144594"
+        "customized": false
       },
       {
         "id": "64",
-        "text": "Premium Italian Wool",
+        "text": "Premium Italian Leather",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144600"
+        "customized": false
       },
       {
         "id": "65",
         "text": "Origin:",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144607"
+        "customized": false
       },
       {
         "id": "66",
         "text": "Handcrafted in Italy",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144614"
+        "customized": false
       },
       {
         "id": "67",
         "text": "Warranty:",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144621"
+        "customized": false
       },
       {
         "id": "68",
         "text": "2 Years",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144628"
+        "customized": false
       },
       {
         "id": "69",
         "text": "Delivery:",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144635"
+        "customized": false
       },
       {
         "id": "70",
         "text": "Free Express Shipping",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144642"
+        "customized": false
       },
       {
         "id": "71",
         "text": "Customer Reviews",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144649"
+        "customized": false
       },
       {
         "id": "72",
         "text": "Write a Review",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144656"
+        "customized": false
       },
       {
         "id": "73",
         "text": "Your Rating",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144663"
+        "customized": false
       },
       {
         "id": "74",
         "text": "Your Name",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144669"
+        "customized": false
       },
       {
         "id": "75",
         "text": "Your Review",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144676"
+        "customized": false
       },
       {
         "id": "76",
-        "text": "Submit Review",
+        "text": "SUBMIT REVIEW",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144683"
+        "customized": false
       },
       {
         "id": "77",
         "text": "Recent Reviews",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144690"
+        "customized": false
       },
       {
         "id": "78",
         "text": "Michael R.",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144697"
+        "customized": false
       },
       {
         "id": "79",
         "text": "March 15, 2023",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144704"
+        "customized": false
       },
       {
         "id": "80",
-        "text": "Exceptional quality! This blazer is incredibly comfortable right out of the box. The wool is luxuriously soft and the craftsmanship is evident in every stitch. Perfect for both office wear and formal events.",
+        "text": "Exceptional quality! These loafers are incredibly comfortable right out of the box. The leather is supple and the craftsmanship is evident in every stitch. Perfect for both office wear and casual outings.",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144711"
+        "customized": false
       },
       {
         "id": "81",
         "text": "You May Also Like",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144718"
+        "customized": false
       },
       {
         "id": "82",
         "text": "No Reviews Yet",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144725"
+        "customized": false
       },
       {
         "id": "83",
         "text": "Be the first to share your experience with this product.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144732"
+        "customized": false
       },
       {
         "id": "84",
-        "text": "Write a Review",
+        "text": "WRITE A REVIEW",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144739"
+        "customized": false
       },
       {
         "id": "heading-34",
-        "text": "Classic Wool Blazer",
+        "text": "Classic Leather Loafers",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144745"
+        "customized": false
       },
       {
         "id": "heading-35",
         "text": "Color",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144752"
+        "customized": false
       },
       {
         "id": "heading-36",
         "text": "Size",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144759"
+        "customized": false
       },
       {
         "id": "heading-37",
         "text": "Customer Reviews",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144766"
+        "customized": false
       },
       {
         "id": "heading-38",
         "text": "Write a Review",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144773"
+        "customized": false
       },
       {
         "id": "heading-39",
         "text": "Recent Reviews",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144780"
+        "customized": false
       },
       {
         "id": "heading-40",
         "text": "Michael R.",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144786"
+        "customized": false
       },
       {
         "id": "heading-41",
         "text": "Sarah L.",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144793"
+        "customized": false
       },
       {
         "id": "heading-42",
         "text": "You May Also Like",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144800"
+        "customized": false
       },
       {
         "id": "heading-43",
-        "text": "Silk Evening Dress",
+        "text": "Elegant Evening Heels",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144807"
+        "customized": false
       },
       {
         "id": "heading-44",
-        "text": "Cashmere Sweater",
+        "text": "Designer Sneakers",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144814"
+        "customized": false
       },
       {
         "id": "heading-45",
-        "text": "Tailored Trousers",
+        "text": "Leather Ankle Boots",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144821"
+        "customized": false
       },
       {
         "id": "heading-46",
-        "text": "Classic White Shirt",
+        "text": "Classic Oxfords",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144827"
+        "customized": false
       },
       {
         "id": "heading-47",
         "text": "No Reviews Yet",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144834"
+        "customized": false
       },
       {
         "id": "paragraph-48",
-        "text": "Experience the pinnacle of sophistication with our Classic Wool Blazer. Meticulously handcrafted in Italy from premium wool, it features a refined silhouette, fully lined interior, and hand-stitched lapels. The perfect choice for both formal occasions and elevated casual style.",
+        "text": "Experience unparalleled comfort and sophistication with our Classic Leather Loafers. Handcrafted in Italy from premium full-grain leather, these loafers feature a refined silhouette, cushioned footbed, and durable rubber sole. Perfect for both formal occasions and casual elegance.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144841"
+        "customized": false
       },
       {
         "id": "paragraph-49",
         "text": "Be the first to share your experience with this product.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144848"
+        "customized": false
       },
       {
         "id": "button-50",
-        "text": "Buy Now",
+        "text": "BUY NOW",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144855"
+        "customized": false
       },
       {
         "id": "button-51",
-        "text": "Add to Cart",
+        "text": "ADD TO CART",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144861"
+        "customized": false
       },
       {
         "id": "button-52",
-        "text": "Submit Review",
+        "text": "SUBMIT REVIEW",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144868"
+        "customized": false
       },
       {
         "id": "button-53",
-        "text": "Write a Review",
+        "text": "WRITE A REVIEW",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144875"
+        "customized": false
       },
       {
         "id": "link-54",
         "text": "Home",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144881"
+        "customized": false
       },
       {
         "id": "link-55",
         "text": "Shop",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144888"
+        "customized": false
       },
       {
         "id": "page-title",
-        "text": "Product Details | JMAX",
+        "text": "Product Details | {brand}",
         "type": "title",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144895"
+        "customized": false
       }
     ],
     "products": [
       {
         "id": "30",
-        "text": "Our Luxury Clothing Collection",
+        "text": "Luxury Footwear Collection",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144898"
+        "customized": false
       },
       {
         "id": "31",
-        "text": "Discover our curated selection of handcrafted garments, where premium fabrics meet exceptional design.",
+        "text": "Discover our curated selection of handcrafted shoes, where premium materials meet exceptional design.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144902"
+        "customized": false
       },
       {
         "id": "32",
-        "text": "Browse Categories",
+        "text": "BROWSE CATEGORIES",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144907"
+        "customized": false
       },
       {
         "id": "33",
-        "text": "Classic Wool Blazer",
+        "text": "Classic Leather Loafers",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144911"
+        "customized": false
       },
       {
         "id": "34",
-        "text": "Handcrafted Italian wool with a refined silhouette, perfect for both casual and formal occasions.",
+        "text": "Handcrafted Italian leather with a refined silhouette, perfect for both casual and formal occasions.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144915"
+        "customized": false
       },
       {
         "id": "35",
-        "text": "$485",
+        "text": "$385",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144919"
+        "customized": false
       },
       {
         "id": "36",
         "text": "Add to Cart",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144923"
+        "customized": false
       },
       {
         "id": "heading-8",
-        "text": "Our Luxury Clothing Collection",
+        "text": "Luxury Footwear Collection",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144928"
+        "customized": false
       },
       {
         "id": "heading-9",
-        "text": "Classic Wool Blazer",
+        "text": "Classic Leather Loafers",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144932"
+        "customized": false
       },
       {
         "id": "heading-10",
-        "text": "Silk Evening Dress",
+        "text": "Elegant Evening Heels",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144936"
+        "customized": false
       },
       {
         "id": "heading-11",
-        "text": "Cashmere Sweater",
+        "text": "Designer Luxury Sneakers",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144940"
+        "customized": false
       },
       {
         "id": "heading-12",
-        "text": "Tailored Trousers",
+        "text": "Leather Ankle Boots",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144945"
+        "customized": false
       },
       {
         "id": "paragraph-13",
-        "text": "Discover our curated selection of handcrafted garments, where premium fabrics meet exceptional design.",
+        "text": "Discover our curated selection of handcrafted shoes, where premium materials meet exceptional design.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144949"
+        "customized": false
       },
       {
         "id": "paragraph-14",
-        "text": "Handcrafted Italian wool with a refined silhouette, perfect for both casual and formal occasions.",
+        "text": "Handcrafted Italian leather with a refined silhouette, perfect for both casual and formal occasions.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144953"
+        "customized": false
       },
       {
         "id": "paragraph-15",
-        "text": "Luxurious silk satin with elegant draping, designed for sophistication and comfort.",
+        "text": "Silk satin with crystal embellishments, designed for sophistication and comfort.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144958"
+        "customized": false
       },
       {
         "id": "paragraph-16",
-        "text": "Premium cashmere with a timeless design for all-day comfort.",
+        "text": "Premium calfskin with custom orthotic support for all-day comfort.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144962"
+        "customized": false
       },
       {
         "id": "paragraph-17",
-        "text": "Italian wool trousers with precision tailoring for enduring style.",
+        "text": "Weather-resistant leather with Italian craftsmanship for enduring style.",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144966"
+        "customized": false
       },
       {
         "id": "button-18",
         "text": "Add to Cart",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144971"
+        "customized": false
       },
       {
         "id": "button-19",
         "text": "Add to Cart",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144975"
+        "customized": false
       },
       {
         "id": "button-20",
         "text": "Add to Cart",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144979"
+        "customized": false
       },
       {
         "id": "button-21",
         "text": "Add to Cart",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144983"
+        "customized": false
       },
       {
         "id": "link-22",
-        "text": "Browse Categories",
+        "text": "BROWSE CATEGORIES",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144988"
+        "customized": false
       },
       {
         "id": "page-title",
-        "text": "Shop | JMAX",
+        "text": "Shop | {brand}",
         "type": "title",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144992"
+        "customized": false
       }
     ],
     "wishlist": [
@@ -3884,302 +3332,259 @@
         "id": "118",
         "text": "Home",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.144995"
+        "customized": false
       },
       {
         "id": "119",
         "text": "Shop",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145001"
+        "customized": false
       },
       {
         "id": "120",
         "text": "Wishlist",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145007"
+        "customized": false
       },
       {
         "id": "121",
         "text": "My Wishlist",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145012"
+        "customized": false
       },
       {
         "id": "122",
-        "text": "Save your favorite luxury pieces for later and never miss out on timeless style.",
+        "text": "Save your favorite luxury footwear for later and never miss out on timeless style",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145018"
+        "customized": false
       },
       {
         "id": "123",
-        "text": "Classic Wool Blazer",
+        "text": "Classic Leather Loafers",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145024"
+        "customized": false
       },
       {
         "id": "124",
-        "text": "Handcrafted Italian wool with a refined silhouette, perfect for sophisticated occasions.",
+        "text": "Handcrafted Italian leather with a refined silhouette, perfect for sophisticated occasions",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145030"
+        "customized": false
       },
       {
         "id": "125",
-        "text": "$485",
+        "text": "$385",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145036"
+        "customized": false
       },
       {
         "id": "126",
         "text": "Add to Cart",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145042"
+        "customized": false
       },
       {
         "id": "128",
         "text": "Recently Viewed",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145047"
+        "customized": false
       },
       {
         "id": "129",
-        "text": "Cashmere Sweater",
+        "text": "Designer Luxury Sneakers",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145053"
+        "customized": false
       },
       {
         "id": "130",
-        "text": "$425",
+        "text": "$420",
         "type": "text",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145059"
+        "customized": false
       },
       {
         "id": "131",
         "text": "Add",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145065"
+        "customized": false
       },
       {
         "id": "132",
         "text": "Your Wishlist is Empty",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145070"
+        "customized": false
       },
       {
         "id": "133",
-        "text": "Start saving your favorite luxury clothing by clicking the heart icon on any product.",
+        "text": "Start saving your favorite luxury footwear by clicking the heart icon on any product",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145076"
+        "customized": false
       },
       {
         "id": "134",
         "text": "Browse Collection",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145082"
+        "customized": false
       },
       {
         "id": "135",
         "text": "No Recently Viewed Items",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145088"
+        "customized": false
       },
       {
         "id": "136",
-        "text": "Products you view will appear here for easy access.",
+        "text": "Products you view will appear here for easy access",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145094"
+        "customized": false
       },
       {
         "id": "137",
         "text": "Start Browsing",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145099"
+        "customized": false
       },
       {
         "id": "heading-20",
         "text": "My Wishlist",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145105"
+        "customized": false
       },
       {
         "id": "heading-21",
-        "text": "Classic Wool Blazer",
+        "text": "Classic Leather Loafers",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145111"
+        "customized": false
       },
       {
         "id": "heading-22",
-        "text": "Silk Evening Dress",
+        "text": "Elegant Evening Heels",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145117"
+        "customized": false
       },
       {
         "id": "heading-23",
         "text": "Recently Viewed",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145123"
+        "customized": false
       },
       {
         "id": "heading-24",
-        "text": "Cashmere Sweater",
+        "text": "Designer Luxury Sneakers",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145128"
+        "customized": false
       },
       {
         "id": "heading-25",
-        "text": "Tailored Trousers",
+        "text": "Leather Ankle Boots",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145134"
+        "customized": false
       },
       {
         "id": "heading-26",
-        "text": "Classic White Shirt",
+        "text": "Classic Oxfords",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145140"
+        "customized": false
       },
       {
         "id": "heading-27",
         "text": "Your Wishlist is Empty",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145146"
+        "customized": false
       },
       {
         "id": "heading-28",
         "text": "No Recently Viewed Items",
         "type": "heading",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145151"
+        "customized": false
       },
       {
         "id": "paragraph-29",
-        "text": "Save your favorite luxury pieces for later and never miss out on timeless style.",
+        "text": "Save your favorite luxury footwear for later and never miss out on timeless style",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145157"
+        "customized": false
       },
       {
         "id": "paragraph-30",
-        "text": "Handcrafted Italian wool with a refined silhouette, perfect for sophisticated occasions.",
+        "text": "Handcrafted Italian leather with a refined silhouette, perfect for sophisticated occasions",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145163"
+        "customized": false
       },
       {
         "id": "paragraph-31",
-        "text": "Luxurious silk satin with elegant draping for special occasions.",
+        "text": "Silk satin with crystal embellishments for special occasions",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145169"
+        "customized": false
       },
       {
         "id": "paragraph-32",
-        "text": "Start saving your favorite luxury clothing by clicking the heart icon on any product.",
+        "text": "Start saving your favorite luxury footwear by clicking the heart icon on any product",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145174"
+        "customized": false
       },
       {
         "id": "paragraph-33",
-        "text": "Products you view will appear here for easy access.",
+        "text": "Products you view will appear here for easy access",
         "type": "paragraph",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145180"
+        "customized": false
       },
       {
         "id": "button-34",
         "text": "Add to Cart",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145186"
+        "customized": false
       },
       {
         "id": "button-35",
         "text": "Add to Cart",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145192"
+        "customized": false
       },
       {
         "id": "button-36",
         "text": "Add",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145197"
+        "customized": false
       },
       {
         "id": "button-37",
         "text": "Add",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145203"
+        "customized": false
       },
       {
         "id": "button-38",
         "text": "Add",
         "type": "button",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145209"
+        "customized": false
       },
       {
         "id": "link-39",
         "text": "Home",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145215"
+        "customized": false
       },
       {
         "id": "link-40",
         "text": "Shop",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145220"
+        "customized": false
       },
       {
         "id": "link-41",
         "text": "Browse Collection",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145226"
+        "customized": false
       },
       {
         "id": "link-42",
         "text": "Start Browsing",
         "type": "link",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145232"
+        "customized": false
       },
       {
         "id": "page-title",
-        "text": "Wishlist | JMAX",
+        "text": "Wishlist | {brand}",
         "type": "title",
-        "customized": true,
-        "customized_at": "2026-09-03T12:53:33.145238"
+        "customized": false
       }
     ]
   },
@@ -7759,7 +7164,5 @@
     "total_elements": 595,
     "pages_count": 8,
     "components_count": 0
-  },
-  "last_modified": "2026-09-03T12:53:33.145241",
-  "custom_version": 15
+  }
 }

@@ -192,16 +192,56 @@ class CheckoutService:
             raise ValidationError(f"Payment gateway {self.gateway.gateway_type} not implemented") 
            
     def setup_stripe(self):
-        """Configure Stripe with user's API keys"""
-        api_key = self.gateway.get_secret_key()
-        if not api_key:
-            raise ValidationError("Stripe secret key not configured")
-        
-        # Import stripe here to avoid circular imports
-        import stripe
-        stripe.api_key = api_key
-        self.stripe = stripe
+        """Configure Stripe with the merchant's keys (per-instance client)."""
+        from .stripe_service import StripePaymentService
+        self.stripe_service = StripePaymentService(self.gateway)
 
+    def _recompute_order_totals(self, order):
+        """
+        Recompute the order's totals from the DB product prices.
+        Prevents client-side price tampering.
+        """
+        from decimal import Decimal, InvalidOperation
+        from builder.models import Product
+
+        def _to_decimal(value):
+            """Safely coerce anything (float, int, Decimal, str, None) to Decimal."""
+            if value is None:
+                return Decimal('0.00')
+            if isinstance(value, Decimal):
+                return value
+            try:
+                return Decimal(str(value))
+            except (InvalidOperation, ValueError, TypeError):
+                return Decimal('0.00')
+
+        subtotal = Decimal('0.00')
+
+        for item in order.items.all():
+            db_price = None
+            if item.product_id:
+                try:
+                    product = Product.objects.get(id=item.product_id)
+                    db_price = _to_decimal(getattr(product, 'price', item.product_price))
+                except (Product.DoesNotExist, Exception):
+                    db_price = None
+
+            effective_price = db_price if db_price is not None else _to_decimal(item.product_price)
+
+            item.product_price = effective_price
+            item.total_price = (effective_price * _to_decimal(item.quantity)).quantize(Decimal('0.01'))
+            item.save(update_fields=['product_price', 'total_price'])
+
+            subtotal += item.total_price
+
+        tax = _to_decimal(order.tax_amount)
+        shipping = _to_decimal(order.shipping_amount)
+
+        order.subtotal = subtotal
+        order.total_amount = (subtotal + tax + shipping).quantize(Decimal('0.01'))
+        order.save(update_fields=['subtotal', 'total_amount'])
+
+        return order
     # def setup_paypal(self):
     #     """Configure PayPal - placeholder for future implementation"""
     #      # PayPal integration would go here
@@ -303,8 +343,7 @@ class CheckoutService:
             if order_data.get('checkout_type') == 'instant':
                 order = self.create_order_from_product(order_data.get('product', {}), customer_info)
             else:  # cart checkout
-                order = self.create_order_from_cart(order_data.get('cart', {}), customer_info)
-            
+                order = self.create_order_from_cart(order_data.get('cart', {}), customer_info, order_data)
             # Create Cryptomus checkout data
             checkout_data = self.cryptomus_service.create_checkout_data(order_data, customer_info, request)
             
@@ -438,70 +477,59 @@ class CheckoutService:
             
             return {
                 'order_id': paypal_result['order_id'],
-                'approval_url': paypal_result['approval_url'],
+                'approval_url': paypal_result['approval_url'],   # kept as fallback
+                'client_id': self.gateway.get_paypal_client_id(), # public — safe for frontend
                 'order_number': order.order_number,
+                'mode': 'inline',                                 # tells frontend to use SDK
                 'gateway': 'paypal'
-            }
-            
+            }            
         except Exception as e:
             raise ValidationError(f"PayPal checkout creation failed: {str(e)}")
     
     def create_stripe_checkout(self, order_data, customer_info, request):
-        """Create Stripe checkout session"""
+        """Create a PaymentIntent for embedded Elements checkout."""
         try:
-            # Determine checkout type and create order
             checkout_type = order_data.get('checkout_type', 'instant')
-            
+
             if checkout_type == 'instant':
-                order = self.create_order_from_product(order_data.get('product', {}), customer_info)
-                line_items = self.get_stripe_line_items_from_product(order_data.get('product', {}))
-            else:  # cart checkout
-                order = self.create_order_from_cart(order_data.get('cart', {}), customer_info)
-                line_items = self.get_stripe_line_items_from_cart(order_data.get('cart', {}))
-            
-            success_url = request.build_absolute_uri(
-                reverse('payments:checkout_success', args=[self.page.subdomain])
-            ) + f'?session_id={{CHECKOUT_SESSION_ID}}'
-            
-            cancel_url = request.build_absolute_uri(
-                reverse('payments:checkout_cancel', args=[self.page.subdomain])
+                order = self.create_order_from_product(
+                    order_data.get('product', {}), customer_info
+                )
+            else:
+                order = self.create_order_from_cart(
+                    order_data.get('cart', {}), customer_info, order_data
+                )
+
+            self._recompute_order_totals(order)
+
+            intent = self.stripe_service.create_embedded_payment_intent(
+                order,
+                metadata={'checkout_type': checkout_type},
             )
-            
-            session = self.stripe.checkout.Session.create(
-                payment_method_types=['card'],
-                line_items=line_items,
-                mode='payment',
-                success_url=success_url,
-                cancel_url=cancel_url,
-                customer_email=customer_info.get('email'),
-                metadata={
-                    'order_number': order.order_number,
-                    'page_id': str(self.page.id),
-                    'checkout_type': checkout_type
-                }
-            )
-            
-            # Create transaction record
+
             Transaction.objects.create(
                 order=order,
                 payment_gateway=self.gateway,
-                gateway_payment_intent_id=session.payment_intent or session.id,
-                gateway_transaction_id=session.id,
+                gateway_payment_intent_id=intent.id,
+                gateway_transaction_id=intent.id,
                 amount=order.total_amount,
+                currency=order.currency,
                 status='pending',
-                gateway_response={'session_id': session.id, 'status': 'created'}
+                gateway_response={'intent_id': intent.id, 'status': intent.status},
             )
-            
+
             return {
-                'session_id': session.id,
-                'public_key': self.gateway.get_public_key(),
+                'client_secret': intent.client_secret,
+                'publishable_key': self.gateway.get_public_key(),
                 'order_number': order.order_number,
-                'gateway': 'stripe'
+                'amount': float(order.total_amount),
+                'currency': order.currency.lower(),
+                'gateway': 'stripe',
+                'mode': 'elements',
             }
-            
         except Exception as e:
             raise ValidationError(f"Stripe checkout creation failed: {str(e)}")
-    
+        
     # Helper methods remain the same...
     def create_order_from_product(self, product_data, customer_info):
         """Create order from single product"""

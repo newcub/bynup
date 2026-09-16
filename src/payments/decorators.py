@@ -45,12 +45,17 @@ def get_user_plan(user):
         # Fallback defaults
         class FreePlan:
             tier = 'free'
+            name = 'Starter'
             max_websites = 1
             max_products = 10
             max_storage_mb = 100
             max_visitors = 1000
             max_form_submissions = 10
             max_emails = 0
+            # NEW:
+            max_domains = 0
+            free_domain_tlds = []
+            # Existing features
             custom_domain = False
             remove_branding = False
             advanced_seo = False
@@ -61,7 +66,7 @@ def get_user_plan(user):
             white_label = False
             custom_templates = False
         return FreePlan()
-    
+        
     return subscription.plan
 
 
@@ -95,6 +100,53 @@ def count_user_form_submissions_this_month(user):
         submitted_at__year=now.year,
         submitted_at__month=now.month
     ).count()
+
+def count_user_domains(user):
+    """
+    Count non-terminal domain requests across all of the user's pages.
+    Terminal statuses (active/failed/rejected/cancelled) don't count toward the limit.
+    """
+    from builder.models import DomainRequest
+    return DomainRequest.objects.filter(
+        user=user
+    ).exclude(
+        status__in=DomainRequest.TERMINAL_STATUSES
+    ).count()
+
+
+def count_user_active_domains(user):
+    """
+    Count of currently active domains for the user.
+    Useful for displaying on the dashboard ("You have 2 active domains").
+    """
+    from builder.models import DomainRequest
+    return DomainRequest.objects.filter(
+        user=user,
+        status='active'
+    ).count()
+
+
+def get_user_domain_summary(user):
+    """
+    Full summary of a user's domain status.
+    Returns a dict for use in views and the limits API.
+    """
+    plan = get_user_plan(user)
+    active_count = count_user_active_domains(user)
+    pending_count = count_user_domains(user) - active_count
+
+    return {
+        'active': active_count,
+        'pending': pending_count,
+        'total_used': active_count + pending_count,
+        'limit': plan.max_domains,
+        'free_tlds': plan.free_domain_tlds or [],
+        'has_received_free_domain': getattr(
+            getattr(user, 'profile', None),
+            'has_received_free_domain',
+            False
+        ),
+    }
 
 
 def get_user_storage_usage_bytes(user):
@@ -211,6 +263,31 @@ def can_upload_file(user, file_size_bytes):
         return False, remaining
     
     return True, limit_bytes - new_total
+
+def can_add_domain(user):
+    """
+    Check if user can request another domain.
+    Returns (bool, remaining_or_none, reason_str_or_none).
+    """
+    plan = get_user_plan(user)
+
+    # Unlimited domains (future-proofing; not used by current plans)
+    if plan.max_domains == -1:
+        return True, None, None
+
+    # Plan doesn't include domains at all
+    if plan.max_domains == 0:
+        return False, 0, "Your plan does not include custom domains."
+
+    current_count = count_user_domains(user)
+
+    if current_count >= plan.max_domains:
+        return False, 0, (
+            f"You've reached your plan's domain limit "
+            f"({current_count}/{plan.max_domains})."
+        )
+
+    return True, plan.max_domains - current_count, None
 
 
 def has_feature(user, feature_name):
@@ -522,6 +599,112 @@ def check_storage_before_upload(file_field='image'):
     return decorator
 
 
+def check_domain_eligibility(view_func):
+    """
+    Runs all eligibility checks before allowing a domain request.
+
+    Checks (in order):
+      1. User is authenticated
+      2. Subscription is active
+      3. Plan has domains available (max_domains > 0)
+      4. User hasn't hit their domain count limit
+      5. Requested TLD is in the plan's free_domain_tlds
+      6. User hasn't already received a free domain
+
+    On success, attaches to request:
+      - request.domain_plan
+      - request.domain_free_tlds
+      - request.domain_is_free_tier
+    """
+    @wraps(view_func)
+    def wrapped_view(request, *args, **kwargs):
+        import json as _json
+
+        if not request.user.is_authenticated:
+            if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+                return JsonResponse({'success': False, 'error': 'not_authenticated'})
+            return redirect('accounts:login')
+
+        def _error(msg, code='ineligible'):
+            if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+                return JsonResponse({'success': False, 'error': code, 'message': msg})
+            messages.error(request, msg)
+            return redirect('payments:pricing')
+
+        # --- Extract domain + tld from request (POST or JSON body) ---
+        domain_name = ''
+        tld = ''
+
+        if request.method == 'POST':
+            # Try form POST first
+            domain_name = (request.POST.get('domain_name') or '').strip().lower()
+            tld = (request.POST.get('tld') or '').strip().lower()
+
+            # Fall back to JSON body
+            if not domain_name:
+                try:
+                    data = _json.loads(request.body or b'{}')
+                    domain_name = (data.get('domain_name') or '').strip().lower()
+                    tld = (data.get('tld') or '').strip().lower()
+                except Exception:
+                    pass
+
+        if not domain_name or not tld:
+            return _error("Domain name and TLD are required.", 'invalid_input')
+
+        # --- 1. Subscription must be active ---
+        subscription = get_user_subscription(request.user)
+        if not subscription.is_active:
+            return _error(
+                "Your subscription is not active. Please renew to add domains.",
+                'subscription_inactive'
+            )
+
+        plan = subscription.plan or get_user_plan(request.user)
+
+        # --- 2. Plan must include domains ---
+        if not plan.max_domains or plan.max_domains == 0:
+            return _error(
+                "Upgrade to a paid plan to add a custom domain.",
+                'upgrade_required'
+            )
+
+        # --- 3. Domain count check ---
+        can_add, remaining, reason = can_add_domain(request.user)
+        if not can_add:
+            return _error(reason or "Domain limit reached.", 'limit_exceeded')
+
+        # --- 4. TLD eligibility ---
+        free_tlds = plan.free_domain_tlds or []
+        is_free_tier = tld in free_tlds
+
+        if not is_free_tier:
+            return _error(
+                f"'.{tld}' is not included in your plan. "
+                f"Please contact us for pricing.",
+                'tld_not_included'
+            )
+
+        # --- 5. Free domain history check ---
+        profile = getattr(request.user, 'profile', None)
+        if is_free_tier and profile and profile.has_received_free_domain:
+            return _error(
+                "You've already received a free domain on your account. "
+                "Contact support if you need additional domains.",
+                'free_domain_used'
+            )
+
+        # --- Attach validated context for the view ---
+        request.domain_plan = plan
+        request.domain_free_tlds = free_tlds
+        request.domain_is_free_tier = is_free_tier
+        request.domain_name = domain_name
+        request.domain_tld = tld
+
+        return view_func(request, *args, **kwargs)
+    return wrapped_view
+
+
 def custom_domain_required(view_func):
     """Require custom domain feature"""
     @wraps(view_func)
@@ -687,17 +870,18 @@ def custom_templates_required(view_func):
 def get_user_limits_status(user):
     """Get complete limits status for API responses"""
     plan = get_user_plan(user)
-    
+
     websites_current = count_user_websites(user)
     products_current = count_user_products(user)
     forms_current = count_user_form_submissions_this_month(user)
     storage_bytes = get_user_storage_usage_bytes(user)
-    
+    domain_summary = get_user_domain_summary(user)
+
     return {
         'tier': plan.tier,
         'plan_name': plan.name if hasattr(plan, 'name') else 'Free',
         'is_paid': get_tier_level(user) >= 1,
-        
+
         'websites': {
             'used': websites_current,
             'limit': plan.max_websites if plan.max_websites != -1 else 'Unlimited',
@@ -720,7 +904,20 @@ def get_user_limits_status(user):
             'remaining_bytes': None if plan.max_storage_mb == -1 else max(0, (plan.max_storage_mb * 1024 * 1024) - storage_bytes),
             'percentage': 0 if plan.max_storage_mb == -1 else round((storage_bytes / (plan.max_storage_mb * 1024 * 1024)) * 100, 1),
         },
-        
+
+        # NEW: Domains block
+        'domains': {
+            'active': domain_summary['active'],
+            'pending': domain_summary['pending'],
+            'used': domain_summary['total_used'],
+            'limit': domain_summary['limit'] if domain_summary['limit'] != -1 else 'Unlimited',
+            'remaining': None if domain_summary['limit'] == -1 else max(
+                0, domain_summary['limit'] - domain_summary['total_used']
+            ),
+            'free_tlds': domain_summary['free_tlds'],
+            'has_received_free_domain': domain_summary['has_received_free_domain'],
+        },
+
         'features': {
             'custom_domain': plan.custom_domain,
             'remove_branding': plan.remove_branding,

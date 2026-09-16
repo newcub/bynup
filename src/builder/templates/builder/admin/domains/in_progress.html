@@ -1,0 +1,190 @@
+{% extends 'builder/admin/domains/base.html' %}
+
+{% block admin_title %}In Progress{% endblock %}
+{% block tab_in_progress %}active{% endblock %}
+
+{% block admin_content %}
+
+{% if not requests %}
+<div class="card border-0 shadow-sm" style="border-radius: 12px;">
+    <div class="card-body text-center py-5">
+        <i class="fas fa-inbox fa-3x text-muted mb-3"></i>
+        <h5>No requests in progress</h5>
+        <p class="text-muted mb-0">Approved requests will appear here.</p>
+    </div>
+</div>
+{% else %}
+
+<div class="mb-3">
+    <strong>{{ in_progress_count }}</strong> request{{ in_progress_count|pluralize }} in progress
+</div>
+
+{% for req in requests %}
+<div class="card border-0 shadow-sm mb-3" style="border-radius: 12px;">
+    <div class="card-body">
+        <div class="row g-3">
+
+            <div class="col-lg-4">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                    <h5 class="fw-bold mb-0">
+                        <i class="fas fa-globe text-primary me-2"></i>
+                        {{ req.domain_name }}
+                    </h5>
+                    <span class="status-badge status-{{ req.status }}">
+                        {{ req.get_status_display }}
+                    </span>
+                </div>
+                <div class="small text-muted">
+                    User: <strong>{{ req.user.username }}</strong><br>
+                    {% if req.page %}
+                    Store: {{ req.page.brand_name }} ({{ req.page.subdomain }})<br>
+                    {% endif %}
+                    Updated {{ req.updated_at|timesince }} ago
+                </div>
+            </div>
+
+            <div class="col-lg-8">
+
+                {# --- STAGE: approved → show purchase button --- #}
+                {% if req.status == 'approved' %}
+                <div class="alert alert-info mb-2 small">
+                    <i class="fas fa-info-circle me-1"></i>
+                    Next step: purchase the domain on Namecheap.
+                </div>
+                <div class="d-flex gap-2 flex-wrap">
+                    <a href="{{ namecheap_url }}{{ req.domain_name }}"
+                       target="_blank" rel="noopener"
+                       class="btn btn-outline-secondary btn-sm">
+                        <i class="fas fa-external-link-alt me-1"></i>Open on Namecheap
+                    </a>
+                    <form method="post" action="{% url 'admin_domain_action' req.id %}" class="d-inline">
+                        {% csrf_token %}
+                        <input type="hidden" name="action" value="mark_purchasing">
+                        <input type="hidden" name="return_to" value="{% url 'admin_domain_in_progress' %}">
+                        <button class="btn btn-primary btn-sm">
+                            <i class="fas fa-arrow-right me-1"></i>Mark as Purchasing
+                        </button>
+                    </form>
+                    <button type="button" class="btn btn-outline-danger btn-sm"
+                            data-bs-toggle="modal" data-bs-target="#failModal{{ req.id }}">
+                        <i class="fas fa-times me-1"></i>Fail
+                    </button>
+                </div>
+                {% endif %}
+
+                {# --- STAGE: purchasing → capture order details --- #}
+                {% if req.status == 'purchasing' %}
+                <form method="post" action="{% url 'admin_domain_action' req.id %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="action" value="mark_purchased">
+                    <input type="hidden" name="return_to" value="{% url 'admin_domain_in_progress' %}">
+
+                    <div class="row g-2 mb-2">
+                        <div class="col-md-4">
+                            <label class="form-label small mb-1">Registrar</label>
+                            <input type="text" name="registrar" value="namecheap" class="form-control form-control-sm">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label small mb-1">Order ID</label>
+                            <input type="text" name="registrar_order_id" class="form-control form-control-sm"
+                                   placeholder="Namecheap order #">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label small mb-1">Cost (USD)</label>
+                            <input type="number" step="0.01" name="purchase_cost"
+                                   class="form-control form-control-sm" placeholder="12.98">
+                        </div>
+                    </div>
+                    <div class="row g-2 mb-2">
+                        <div class="col-md-4">
+                            <label class="form-label small mb-1">Expiry date</label>
+                            <input type="date" name="expiry_date" class="form-control form-control-sm">
+                        </div>
+                        <div class="col-md-8">
+                            <label class="form-label small mb-1">Notes</label>
+                            <input type="text" name="admin_notes" class="form-control form-control-sm"
+                                   placeholder="Optional">
+                        </div>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-primary btn-sm">
+                            <i class="fas fa-check me-1"></i>Save as Purchased
+                        </button>
+                        <button type="button" class="btn btn-outline-danger btn-sm"
+                                data-bs-toggle="modal" data-bs-target="#failModal{{ req.id }}">
+                            <i class="fas fa-times me-1"></i>Fail
+                        </button>
+                    </div>
+                </form>
+                {% endif %}
+
+                {# --- STAGE: purchased → ready to configure DNS --- #}
+                {% if req.status == 'purchased' %}
+                <div class="alert alert-info mb-2 small">
+                    <i class="fas fa-info-circle me-1"></i>
+                    Purchased on {{ req.purchase_date|date:"M j, Y" }}.
+                    Next: configure DNS to point to your server.
+                </div>
+                <form method="post" action="{% url 'admin_domain_action' req.id %}" class="d-inline">
+                    {% csrf_token %}
+                    <input type="hidden" name="action" value="mark_dns_configured">
+                    <input type="hidden" name="return_to" value="{% url 'admin_domain_in_progress' %}">
+                    <button class="btn btn-primary btn-sm">
+                        <i class="fas fa-network-wired me-1"></i>Mark DNS Configured
+                    </button>
+                </form>
+                {% endif %}
+
+                {# --- STAGE: configuring_dns → activate --- #}
+                {% if req.status == 'configuring_dns' %}
+                <div class="alert alert-info mb-2 small">
+                    <i class="fas fa-info-circle me-1"></i>
+                    DNS configured. Verify it resolves, then activate.
+                </div>
+                <form method="post" action="{% url 'admin_domain_action' req.id %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="action" value="mark_active">
+                    <input type="hidden" name="return_to" value="{% url 'admin_domain_in_progress' %}">
+                    <input type="text" name="admin_notes" class="form-control form-control-sm mb-2"
+                           placeholder="Optional note">
+                    <button class="btn btn-success btn-sm"
+                            onclick="return confirm('Activate {{ req.domain_name }}? This will make the store live on this domain.');">
+                        <i class="fas fa-rocket me-1"></i>Activate Domain
+                    </button>
+                </form>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Fail modal -->
+<div class="modal fade" id="failModal{{ req.id }}" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post" action="{% url 'admin_domain_action' req.id %}">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="mark_failed">
+                <input type="hidden" name="return_to" value="{% url 'admin_domain_in_progress' %}">
+                <div class="modal-header">
+                    <h5 class="modal-title">Mark {{ req.domain_name }} as failed?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <label class="form-label">Reason (optional)</label>
+                    <textarea name="admin_notes" class="form-control" rows="3"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Mark as Failed</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endif %}
+
+{% endblock %}

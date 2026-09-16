@@ -4,960 +4,1194 @@
     "home": [
       {
         "id": "1",
-        "text": "NORTH/01",
+        "text": "Added to your rotation.",
         "type": "text",
         "customized": false
       },
       {
         "id": "2",
-        "text": "Home",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "3",
-        "text": "Shop",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "4",
-        "text": "Story",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "5",
-        "text": "Details",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "6",
-        "text": "Reviews",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "7",
-        "text": "FAQ",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "8",
-        "text": "Buy Now",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "9",
-        "text": "NORTH/01",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "10",
-        "text": "Home",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "11",
-        "text": "Shop",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "12",
-        "text": "Story",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "13",
-        "text": "Details",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "14",
-        "text": "Reviews",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "15",
-        "text": "FAQ",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "16",
-        "text": "Buy Now",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "17",
-        "text": "Watch the Film",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "18",
-        "text": "NORTH/01 — SIGNATURE SERIES",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "19",
-        "text": "MADE FOR THE EVERYDAY.",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "20",
-        "text": "A heavyweight essential engineered for comfort, structure and everyday movement.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "21",
-        "text": "4.9/5 • 2,400+ verified customers",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "22",
-        "text": "Shop Now",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "23",
-        "text": "Watch the Film",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "24",
-        "text": "Free shipping",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "25",
-        "text": "Easy returns",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "26",
-        "text": "Secure checkout",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "27",
-        "text": "Heavyweight Fabric",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "28",
-        "text": "Premium structured cotton blend.",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "29",
-        "text": "Built to Last",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "30",
-        "text": "Designed for repeated everyday wear.",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "31",
-        "text": "Easy Returns",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "32",
-        "text": "30-day hassle-free returns.",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "33",
-        "text": "Secure Checkout",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "34",
-        "text": "Encrypted and trusted payment.",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "35",
-        "text": "Size",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "36",
-        "text": "XS",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "37",
-        "text": "S",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "38",
-        "text": "M",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "39",
-        "text": "L",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "40",
-        "text": "XL",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "41",
-        "text": "XXL",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "42",
-        "text": "View Size Guide",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "43",
-        "text": "Color",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "44",
-        "text": "-",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "45",
-        "text": "1",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "46",
-        "text": "+",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "47",
-        "text": "Add to Cart",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "48",
-        "text": "Buy Now",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "49",
-        "text": "Why NORTH/01",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "50",
-        "text": "Most hoodies are either comfortableorwell-structured. We wanted both.",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "51",
-        "text": "We believe everyday clothing shouldn't feel ordinary. The Signature Hoodie is built with a structured heavyweight fabric, refined oversized fit, and reinforced construction—designed to outlast the moment.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "52",
-        "text": "Ordinary Hoodie✕ Loses shape✕ Lightweight fabric✕ Generic fit",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "53",
-        "text": "NORTH/01✓ Structured heavyweight✓ Refined oversized fit✓ Reinforced construction",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "54",
-        "text": "Shop Now",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "55",
-        "text": "Anatomy",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "56",
-        "text": "Built with intention.",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "57",
-        "text": "1",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "58",
-        "text": "2",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "59",
-        "text": "3",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "60",
-        "text": "4",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "61",
-        "text": "5",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "62",
-        "text": "6",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "63",
-        "text": "7",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "64",
-        "text": "① Heavyweight fabric② Reinforced seams③ Structured hood④ Drawstrings⑤ Ribbed cuffs⑥ Pocket⑦ Embroidered logo",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "65",
-        "text": "Gallery",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "66",
-        "text": "The Signature.",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "67",
-        "text": "Worn your way",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "68",
-        "text": "Real people, real hoodie.",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "69",
-        "text": "Unboxing • Lifestyle • Reviews",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "70",
-        "text": "\"Perfect fit, amazing quality\"",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "71",
-        "text": "\"Best hoodie I've owned\"",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "72",
-        "text": "\"Unreal fabric quality\"",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "73",
-        "text": "Reviews",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "74",
-        "text": "4.9 / 5",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "75",
-        "text": "2,400+ verified reviews",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "76",
-        "text": "Write a Review",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "77",
-        "text": "\"Best hoodie I've ever owned. The weight is perfect.\"Alex M.✓ Verified2 days ago",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "78",
-        "text": "\"Incredible quality and the fit is exactly what I wanted.\"Jordan K.✓ Verified1 week ago",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "79",
-        "text": "\"Almost perfect. The fabric is premium, will buy again.\"Sam R.✓ Verified3 weeks ago",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "80",
-        "text": "FAQ",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "81",
-        "text": "Questions? We've got answers.",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "82",
-        "text": "What size should I choose?",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "83",
-        "text": "We recommend ordering your usual size. The hoodie has a refined oversized fit—size down for a slimmer look.",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "84",
-        "text": "Is the hoodie oversized?",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "85",
-        "text": "Yes, it's designed with a relaxed, structured oversized fit that still feels tailored.",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "86",
-        "text": "What material is it made from?",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "87",
-        "text": "Heavyweight 100% structured cotton blend, 450gsm for durability and comfort.",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "88",
-        "text": "How should I wash it?",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "89",
-        "text": "Machine wash cold inside out, hang dry to maintain structure and color.",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "90",
-        "text": "How long does shipping take?",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "91",
-        "text": "Standard shipping 3-5 business days. Express available at checkout.",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "92",
-        "text": "What is your return policy?",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "93",
-        "text": "30-day hassle-free returns on unworn items with tags.",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "94",
-        "text": "YOUR EVERYDAY, UPGRADED.",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "95",
-        "text": "One hoodie. Built properly.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "96",
-        "text": "Shop Now",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "97",
-        "text": "Get in touch",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "98",
-        "text": "We'd love to hear from you.",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "99",
-        "text": "Have questions about sizing, shipping, or just want to say hello? Reach out anytime.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "100",
-        "text": "hello@north01.com",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "101",
-        "text": "+1 (800) 555‑0199",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "102",
-        "text": "New York, NY",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "103",
-        "text": "Full Name",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "105",
-        "text": "Email Address",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "107",
-        "text": "Subject",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "109",
-        "text": "Message",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "111",
-        "text": "Send Message",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "112",
-        "text": "NORTH/01",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "113",
-        "text": "Built for the city. Designed to outlast the moment.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "114",
-        "text": "Navigate",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "115",
-        "text": "Home",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "116",
-        "text": "Shop",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "117",
-        "text": "Story",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "118",
-        "text": "Details",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "119",
-        "text": "Reviews",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "120",
-        "text": "FAQ",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "121",
-        "text": "Customer Care",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "122",
-        "text": "Contact",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "123",
-        "text": "Shipping",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "124",
-        "text": "Returns",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "125",
-        "text": "Size Guide",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "126",
-        "text": "Connect",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "127",
-        "text": "Instagram",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "128",
-        "text": "TikTok",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "129",
-        "text": "X",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "130",
-        "text": "© 2025 NORTH/01. All rights reserved. Privacy • Terms",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "131",
-        "text": "NORTH/01 Signature Hoodie",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "132",
-        "text": "$89",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "133",
-        "text": "M",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "134",
-        "text": "Add",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "135",
-        "text": "Buy",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "heading-132",
         "text": "Your rotation",
         "type": "heading",
         "customized": false
       },
       {
-        "id": "heading-133",
-        "text": "MADE FOR THE EVERYDAY.",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-134",
-        "text": "NORTH/01 Signature Hoodie",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-135",
-        "text": "Most hoodies are either comfortableorwell-structured. We wanted both.",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-136",
-        "text": "Ordinary Hoodie",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-137",
-        "text": "NORTH/01",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-138",
-        "text": "Built with intention.",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-139",
-        "text": "The Signature.",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-140",
-        "text": "Real people, real hoodie.",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-141",
-        "text": "4.9 / 5",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-142",
-        "text": "Questions? We've got answers.",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-143",
-        "text": "YOUR EVERYDAY, UPGRADED.",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-144",
-        "text": "We'd love to hear from you.",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-145",
-        "text": "NORTH/01",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-146",
-        "text": "Navigate",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-147",
-        "text": "Customer Care",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-148",
-        "text": "Connect",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "paragraph-149",
+        "id": "3",
         "text": "Your rotation starts here.",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "paragraph-150",
+        "id": "4",
+        "text": "Shop the hoodie",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "5",
+        "text": "Subtotal",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "6",
+        "text": "Shipping",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "7",
+        "text": "Free",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "8",
+        "text": "Total",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "9",
+        "text": "Checkout Securely",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "10",
+        "text": "{brand}",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "11",
+        "text": "Home",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "12",
+        "text": "Shop",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "13",
+        "text": "Story",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "14",
+        "text": "Details",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "15",
+        "text": "Reviews",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "16",
+        "text": "FAQ",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "17",
+        "text": "Cart",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "18",
+        "text": "Buy Now",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "19",
+        "text": "{brand}",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "20",
+        "text": "Home",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "21",
+        "text": "Shop",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "22",
+        "text": "Story",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "23",
+        "text": "Details",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "24",
+        "text": "Reviews",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "25",
+        "text": "FAQ",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "26",
+        "text": "Buy Now",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "27",
+        "text": "Watch the Film",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "28",
+        "text": "{brand} — SIGNATURE SERIES",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "29",
+        "text": "MADE FOR THE EVERYDAY.",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "30",
         "text": "A heavyweight essential engineered for comfort, structure and everyday movement.",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "paragraph-151",
+        "id": "31",
+        "text": "4.9/5 • 2,400+ verified customers",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "32",
+        "text": "Shop Now",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "33",
+        "text": "Watch the Film",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "34",
+        "text": "Free shipping",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "35",
+        "text": "Easy returns",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "36",
+        "text": "Secure checkout",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "37",
+        "text": "Heavyweight Fabric",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "38",
+        "text": "Premium structured cotton blend.",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "39",
+        "text": "Built to Last",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "40",
+        "text": "Designed for repeated everyday wear.",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "41",
+        "text": "Easy Returns",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "42",
+        "text": "30-day hassle-free returns.",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "43",
+        "text": "Secure Checkout",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "44",
+        "text": "Encrypted and trusted payment.",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "45",
+        "text": "The Signature",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "46",
+        "text": "{brand} Signature Hoodie",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "47",
+        "text": "$89",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "48",
+        "text": "1 Hoodie",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "49",
+        "text": "2 HoodiesSave $18",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "50",
+        "text": "3 HoodiesSave $42",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "51",
+        "text": "Size",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "52",
+        "text": "XS",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "53",
+        "text": "S",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "54",
+        "text": "M",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "55",
+        "text": "L",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "56",
+        "text": "XL",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "57",
+        "text": "XXL",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "58",
+        "text": "View Size Guide",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "59",
+        "text": "Color",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "60",
+        "text": "-",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "61",
+        "text": "1",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "62",
+        "text": "+",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "63",
+        "text": "Add to Cart",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "64",
+        "text": "Buy Now",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "65",
+        "text": "Why {brand}",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "66",
+        "text": "Most hoodies are either comfortableorwell-structured. We wanted both.",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "67",
         "text": "We believe everyday clothing shouldn't feel ordinary. The Signature Hoodie is built with a structured heavyweight fabric, refined oversized fit, and reinforced construction—designed to outlast the moment.",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "paragraph-152",
+        "id": "68",
+        "text": "Ordinary Hoodie",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "69",
+        "text": "✕ Loses shape",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "70",
+        "text": "✕ Lightweight fabric",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "71",
+        "text": "✕ Generic fit",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "72",
+        "text": "{brand}",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "73",
+        "text": "✓ Structured heavyweight",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "74",
+        "text": "✓ Refined oversized fit",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "75",
+        "text": "✓ Reinforced construction",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "76",
+        "text": "Shop Now",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "77",
+        "text": "Anatomy",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "78",
+        "text": "Built with intention.",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "79",
+        "text": "1",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "80",
+        "text": "2",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "81",
+        "text": "3",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "82",
+        "text": "4",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "83",
+        "text": "5",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "84",
+        "text": "6",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "85",
+        "text": "7",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "86",
+        "text": "① Heavyweight fabric② Reinforced seams③ Structured hood④ Drawstrings⑤ Ribbed cuffs⑥ Pocket⑦ Embroidered logo",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "87",
+        "text": "Gallery",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "88",
+        "text": "The Signature.",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "89",
+        "text": "Worn your way",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "90",
+        "text": "Real people, real hoodie.",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "91",
         "text": "Unboxing • Lifestyle • Reviews",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "paragraph-153",
+        "id": "92",
+        "text": "\"Perfect fit, amazing quality\"",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "93",
+        "text": "✓ Verified",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "94",
+        "text": "@citydweller",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "95",
+        "text": "\"Best hoodie I've owned\"",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "96",
+        "text": "✓ Verified",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "97",
+        "text": "@minimal.movement",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "98",
+        "text": "\"Unreal fabric quality\"",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "99",
+        "text": "✓ Verified",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "100",
+        "text": "@studio.mono",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "101",
+        "text": "Reviews",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "102",
+        "text": "4.9 / 5",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "103",
         "text": "2,400+ verified reviews",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "paragraph-154",
+        "id": "104",
+        "text": "Write a Review",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "105",
         "text": "\"Best hoodie I've ever owned. The weight is perfect.\"",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "paragraph-155",
+        "id": "106",
+        "text": "Alex M.",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "107",
+        "text": "✓ Verified",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "108",
+        "text": "2 days ago",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "109",
         "text": "\"Incredible quality and the fit is exactly what I wanted.\"",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "paragraph-156",
+        "id": "110",
+        "text": "Jordan K.",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "111",
+        "text": "✓ Verified",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "112",
+        "text": "1 week ago",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "113",
         "text": "\"Almost perfect. The fabric is premium, will buy again.\"",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "paragraph-157",
+        "id": "114",
+        "text": "Sam R.",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "115",
+        "text": "✓ Verified",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "116",
+        "text": "3 weeks ago",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "117",
+        "text": "FAQ",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "118",
+        "text": "Questions? We've got answers.",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "119",
+        "text": "What size should I choose?",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "120",
+        "text": "We recommend ordering your usual size. The hoodie has a refined oversized fit—size down for a slimmer look.",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "121",
+        "text": "Is the hoodie oversized?",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "122",
+        "text": "Yes, it's designed with a relaxed, structured oversized fit that still feels tailored.",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "123",
+        "text": "What material is it made from?",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "124",
+        "text": "Heavyweight 100% structured cotton blend, 450gsm for durability and comfort.",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "125",
+        "text": "How should I wash it?",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "126",
+        "text": "Machine wash cold inside out, hang dry to maintain structure and color.",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "127",
+        "text": "How long does shipping take?",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "128",
+        "text": "Standard shipping 3-5 business days. Express available at checkout.",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "129",
+        "text": "What is your return policy?",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "130",
+        "text": "30-day hassle-free returns on unworn items with tags.",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "131",
+        "text": "YOUR EVERYDAY, UPGRADED.",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "132",
         "text": "One hoodie. Built properly.",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "paragraph-158",
+        "id": "133",
+        "text": "Shop Now",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "134",
+        "text": "Get in touch",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "135",
+        "text": "We'd love to hear from you.",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "136",
         "text": "Have questions about sizing, shipping, or just want to say hello? Reach out anytime.",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "paragraph-159",
+        "id": "137",
+        "text": "hello@north01.com",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "138",
+        "text": "+1 (800) 555‑0199",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "139",
+        "text": "New York, NY",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "140",
+        "text": "Full Name",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "141",
+        "text": "Email Address",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "142",
+        "text": "Subject",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "143",
+        "text": "Message",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "144",
+        "text": "Send Message",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "145",
+        "text": "Thanks! We'll get back to you within 24 hours.",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "146",
+        "text": "Please fill in all fields correctly.",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "147",
+        "text": "{brand}",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "148",
         "text": "Built for the city. Designed to outlast the moment.",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "button-160",
+        "id": "149",
+        "text": "Navigate",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "150",
+        "text": "Home",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "151",
+        "text": "Shop",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "152",
+        "text": "Story",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "153",
+        "text": "Details",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "154",
+        "text": "Reviews",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "155",
+        "text": "FAQ",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "156",
+        "text": "Customer Care",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "157",
+        "text": "Contact",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "158",
+        "text": "Shipping",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "159",
+        "text": "Returns",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "160",
+        "text": "Size Guide",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "161",
+        "text": "Connect",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "162",
+        "text": "Instagram",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "163",
+        "text": "TikTok",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "164",
+        "text": "X",
+        "type": "link",
+        "customized": false
+      },
+      {
+        "id": "165",
+        "text": "© 2025 {brand}. All rights reserved. Privacy • Terms",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "166",
+        "text": "{brand} Signature Hoodie",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "167",
+        "text": "$89",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "168",
+        "text": "M",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "169",
+        "text": "Add",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "170",
+        "text": "Buy",
+        "type": "button",
+        "customized": false
+      },
+      {
+        "id": "heading-171",
+        "text": "Your rotation",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-172",
+        "text": "MADE FOR THE EVERYDAY.",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-173",
+        "text": "{brand} Signature Hoodie",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-174",
+        "text": "Most hoodies are either comfortableorwell-structured. We wanted both.",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-175",
+        "text": "Ordinary Hoodie",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-176",
+        "text": "{brand}",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-177",
+        "text": "Built with intention.",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-178",
+        "text": "The Signature.",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-179",
+        "text": "Real people, real hoodie.",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-180",
+        "text": "4.9 / 5",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-181",
+        "text": "Questions? We've got answers.",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-182",
+        "text": "YOUR EVERYDAY, UPGRADED.",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-183",
+        "text": "We'd love to hear from you.",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-184",
+        "text": "{brand}",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-185",
+        "text": "Navigate",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-186",
+        "text": "Customer Care",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "heading-187",
+        "text": "Connect",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "paragraph-188",
+        "text": "Your rotation starts here.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-189",
+        "text": "A heavyweight essential engineered for comfort, structure and everyday movement.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-190",
+        "text": "We believe everyday clothing shouldn't feel ordinary. The Signature Hoodie is built with a structured heavyweight fabric, refined oversized fit, and reinforced construction—designed to outlast the moment.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-191",
+        "text": "Unboxing • Lifestyle • Reviews",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-192",
+        "text": "2,400+ verified reviews",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-193",
+        "text": "\"Best hoodie I've ever owned. The weight is perfect.\"",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-194",
+        "text": "\"Incredible quality and the fit is exactly what I wanted.\"",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-195",
+        "text": "\"Almost perfect. The fabric is premium, will buy again.\"",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-196",
+        "text": "One hoodie. Built properly.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-197",
+        "text": "Have questions about sizing, shipping, or just want to say hello? Reach out anytime.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "paragraph-198",
+        "text": "Built for the city. Designed to outlast the moment.",
+        "type": "paragraph",
+        "customized": false
+      },
+      {
+        "id": "button-199",
         "text": "Checkout Securely",
         "type": "button",
         "customized": false
@@ -969,37 +1203,37 @@
         "customized": false
       },
       {
-        "id": "button-162",
+        "id": "button-201",
         "text": "1 Hoodie",
         "type": "button",
         "customized": false
       },
       {
-        "id": "button-163",
+        "id": "button-202",
         "text": "2 HoodiesSave $18",
         "type": "button",
         "customized": false
       },
       {
-        "id": "button-164",
+        "id": "button-203",
         "text": "3 HoodiesSave $42",
         "type": "button",
         "customized": false
       },
       {
-        "id": "button-165",
+        "id": "button-204",
         "text": "XS",
         "type": "button",
         "customized": false
       },
       {
-        "id": "button-166",
+        "id": "button-205",
         "text": "XL",
         "type": "button",
         "customized": false
       },
       {
-        "id": "button-167",
+        "id": "button-206",
         "text": "XXL",
         "type": "button",
         "customized": false
@@ -1029,7 +1263,7 @@
         "customized": false
       },
       {
-        "id": "button-172",
+        "id": "button-211",
         "text": "Send Message",
         "type": "button",
         "customized": false
@@ -1047,194 +1281,194 @@
         "customized": false
       },
       {
-        "id": "link-175",
+        "id": "link-214",
         "text": "Shop the hoodie",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-176",
+        "id": "link-215",
         "text": "Home",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-177",
+        "id": "link-216",
         "text": "Shop",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-178",
+        "id": "link-217",
         "text": "Story",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-179",
+        "id": "link-218",
         "text": "Details",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-180",
+        "id": "link-219",
         "text": "Reviews",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-181",
+        "id": "link-220",
         "text": "FAQ",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-182",
+        "id": "link-221",
         "text": "Buy Now",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-183",
-        "text": "NORTH/01",
+        "id": "link-222",
+        "text": "{brand}",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-184",
+        "id": "link-223",
         "text": "Home",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-185",
+        "id": "link-224",
         "text": "Shop",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-186",
+        "id": "link-225",
         "text": "Story",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-187",
+        "id": "link-226",
         "text": "Details",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-188",
+        "id": "link-227",
         "text": "Reviews",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-189",
+        "id": "link-228",
         "text": "FAQ",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-190",
+        "id": "link-229",
         "text": "Buy Now",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-191",
+        "id": "link-230",
         "text": "Shop Now",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-192",
+        "id": "link-231",
         "text": "Shop Now",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-193",
+        "id": "link-232",
         "text": "Shop Now",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-194",
+        "id": "link-233",
         "text": "Home",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-195",
+        "id": "link-234",
         "text": "Shop",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-196",
+        "id": "link-235",
         "text": "Story",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-197",
+        "id": "link-236",
         "text": "Details",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-198",
+        "id": "link-237",
         "text": "Reviews",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-199",
+        "id": "link-238",
         "text": "FAQ",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-200",
+        "id": "link-239",
         "text": "Contact",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-201",
+        "id": "link-240",
         "text": "Shipping",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-202",
+        "id": "link-241",
         "text": "Returns",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-203",
+        "id": "link-242",
         "text": "Size Guide",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-204",
+        "id": "link-243",
         "text": "Instagram",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-205",
+        "id": "link-244",
         "text": "TikTok",
         "type": "link",
         "customized": false
       },
       {
         "id": "page-title",
-        "text": "NORTH/01 — Signature Hoodie",
+        "text": "{brand} — Signature Hoodie",
         "type": "title",
         "customized": false
       }
@@ -1243,960 +1477,1194 @@
   "global_texts": [
     {
       "id": "1",
-      "text": "NORTH/01",
+      "text": "Added to your rotation.",
       "type": "text",
       "customized": false
     },
     {
       "id": "2",
-      "text": "Home",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "3",
-      "text": "Shop",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "4",
-      "text": "Story",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "5",
-      "text": "Details",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "6",
-      "text": "Reviews",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "7",
-      "text": "FAQ",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "8",
-      "text": "Buy Now",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "9",
-      "text": "NORTH/01",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "10",
-      "text": "Home",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "11",
-      "text": "Shop",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "12",
-      "text": "Story",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "13",
-      "text": "Details",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "14",
-      "text": "Reviews",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "15",
-      "text": "FAQ",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "16",
-      "text": "Buy Now",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "17",
-      "text": "Watch the Film",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "18",
-      "text": "NORTH/01 — SIGNATURE SERIES",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "19",
-      "text": "MADE FOR THE EVERYDAY.",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "20",
-      "text": "A heavyweight essential engineered for comfort, structure and everyday movement.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "21",
-      "text": "4.9/5 • 2,400+ verified customers",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "22",
-      "text": "Shop Now",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "23",
-      "text": "Watch the Film",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "24",
-      "text": "Free shipping",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "25",
-      "text": "Easy returns",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "26",
-      "text": "Secure checkout",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "27",
-      "text": "Heavyweight Fabric",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "28",
-      "text": "Premium structured cotton blend.",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "29",
-      "text": "Built to Last",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "30",
-      "text": "Designed for repeated everyday wear.",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "31",
-      "text": "Easy Returns",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "32",
-      "text": "30-day hassle-free returns.",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "33",
-      "text": "Secure Checkout",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "34",
-      "text": "Encrypted and trusted payment.",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "35",
-      "text": "Size",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "36",
-      "text": "XS",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "37",
-      "text": "S",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "38",
-      "text": "M",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "39",
-      "text": "L",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "40",
-      "text": "XL",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "41",
-      "text": "XXL",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "42",
-      "text": "View Size Guide",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "43",
-      "text": "Color",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "44",
-      "text": "-",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "45",
-      "text": "1",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "46",
-      "text": "+",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "47",
-      "text": "Add to Cart",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "48",
-      "text": "Buy Now",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "49",
-      "text": "Why NORTH/01",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "50",
-      "text": "Most hoodies are either comfortableorwell-structured. We wanted both.",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "51",
-      "text": "We believe everyday clothing shouldn't feel ordinary. The Signature Hoodie is built with a structured heavyweight fabric, refined oversized fit, and reinforced construction—designed to outlast the moment.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "52",
-      "text": "Ordinary Hoodie✕ Loses shape✕ Lightweight fabric✕ Generic fit",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "53",
-      "text": "NORTH/01✓ Structured heavyweight✓ Refined oversized fit✓ Reinforced construction",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "54",
-      "text": "Shop Now",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "55",
-      "text": "Anatomy",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "56",
-      "text": "Built with intention.",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "57",
-      "text": "1",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "58",
-      "text": "2",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "59",
-      "text": "3",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "60",
-      "text": "4",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "61",
-      "text": "5",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "62",
-      "text": "6",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "63",
-      "text": "7",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "64",
-      "text": "① Heavyweight fabric② Reinforced seams③ Structured hood④ Drawstrings⑤ Ribbed cuffs⑥ Pocket⑦ Embroidered logo",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "65",
-      "text": "Gallery",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "66",
-      "text": "The Signature.",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "67",
-      "text": "Worn your way",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "68",
-      "text": "Real people, real hoodie.",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "69",
-      "text": "Unboxing • Lifestyle • Reviews",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "70",
-      "text": "\"Perfect fit, amazing quality\"",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "71",
-      "text": "\"Best hoodie I've owned\"",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "72",
-      "text": "\"Unreal fabric quality\"",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "73",
-      "text": "Reviews",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "74",
-      "text": "4.9 / 5",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "75",
-      "text": "2,400+ verified reviews",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "76",
-      "text": "Write a Review",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "77",
-      "text": "\"Best hoodie I've ever owned. The weight is perfect.\"Alex M.✓ Verified2 days ago",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "78",
-      "text": "\"Incredible quality and the fit is exactly what I wanted.\"Jordan K.✓ Verified1 week ago",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "79",
-      "text": "\"Almost perfect. The fabric is premium, will buy again.\"Sam R.✓ Verified3 weeks ago",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "80",
-      "text": "FAQ",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "81",
-      "text": "Questions? We've got answers.",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "82",
-      "text": "What size should I choose?",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "83",
-      "text": "We recommend ordering your usual size. The hoodie has a refined oversized fit—size down for a slimmer look.",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "84",
-      "text": "Is the hoodie oversized?",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "85",
-      "text": "Yes, it's designed with a relaxed, structured oversized fit that still feels tailored.",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "86",
-      "text": "What material is it made from?",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "87",
-      "text": "Heavyweight 100% structured cotton blend, 450gsm for durability and comfort.",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "88",
-      "text": "How should I wash it?",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "89",
-      "text": "Machine wash cold inside out, hang dry to maintain structure and color.",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "90",
-      "text": "How long does shipping take?",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "91",
-      "text": "Standard shipping 3-5 business days. Express available at checkout.",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "92",
-      "text": "What is your return policy?",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "93",
-      "text": "30-day hassle-free returns on unworn items with tags.",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "94",
-      "text": "YOUR EVERYDAY, UPGRADED.",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "95",
-      "text": "One hoodie. Built properly.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "96",
-      "text": "Shop Now",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "97",
-      "text": "Get in touch",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "98",
-      "text": "We'd love to hear from you.",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "99",
-      "text": "Have questions about sizing, shipping, or just want to say hello? Reach out anytime.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "100",
-      "text": "hello@north01.com",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "101",
-      "text": "+1 (800) 555‑0199",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "102",
-      "text": "New York, NY",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "103",
-      "text": "Full Name",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "105",
-      "text": "Email Address",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "107",
-      "text": "Subject",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "109",
-      "text": "Message",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "111",
-      "text": "Send Message",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "112",
-      "text": "NORTH/01",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "113",
-      "text": "Built for the city. Designed to outlast the moment.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "114",
-      "text": "Navigate",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "115",
-      "text": "Home",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "116",
-      "text": "Shop",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "117",
-      "text": "Story",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "118",
-      "text": "Details",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "119",
-      "text": "Reviews",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "120",
-      "text": "FAQ",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "121",
-      "text": "Customer Care",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "122",
-      "text": "Contact",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "123",
-      "text": "Shipping",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "124",
-      "text": "Returns",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "125",
-      "text": "Size Guide",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "126",
-      "text": "Connect",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "127",
-      "text": "Instagram",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "128",
-      "text": "TikTok",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "129",
-      "text": "X",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "130",
-      "text": "© 2025 NORTH/01. All rights reserved. Privacy • Terms",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "131",
-      "text": "NORTH/01 Signature Hoodie",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "132",
-      "text": "$89",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "133",
-      "text": "M",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "134",
-      "text": "Add",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "135",
-      "text": "Buy",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "heading-132",
       "text": "Your rotation",
       "type": "heading",
       "customized": false
     },
     {
-      "id": "heading-133",
-      "text": "MADE FOR THE EVERYDAY.",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-134",
-      "text": "NORTH/01 Signature Hoodie",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-135",
-      "text": "Most hoodies are either comfortableorwell-structured. We wanted both.",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-136",
-      "text": "Ordinary Hoodie",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-137",
-      "text": "NORTH/01",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-138",
-      "text": "Built with intention.",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-139",
-      "text": "The Signature.",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-140",
-      "text": "Real people, real hoodie.",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-141",
-      "text": "4.9 / 5",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-142",
-      "text": "Questions? We've got answers.",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-143",
-      "text": "YOUR EVERYDAY, UPGRADED.",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-144",
-      "text": "We'd love to hear from you.",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-145",
-      "text": "NORTH/01",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-146",
-      "text": "Navigate",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-147",
-      "text": "Customer Care",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-148",
-      "text": "Connect",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "paragraph-149",
+      "id": "3",
       "text": "Your rotation starts here.",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "paragraph-150",
+      "id": "4",
+      "text": "Shop the hoodie",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "5",
+      "text": "Subtotal",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "6",
+      "text": "Shipping",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "7",
+      "text": "Free",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "8",
+      "text": "Total",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "9",
+      "text": "Checkout Securely",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "10",
+      "text": "{brand}",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "11",
+      "text": "Home",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "12",
+      "text": "Shop",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "13",
+      "text": "Story",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "14",
+      "text": "Details",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "15",
+      "text": "Reviews",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "16",
+      "text": "FAQ",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "17",
+      "text": "Cart",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "18",
+      "text": "Buy Now",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "19",
+      "text": "{brand}",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "20",
+      "text": "Home",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "21",
+      "text": "Shop",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "22",
+      "text": "Story",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "23",
+      "text": "Details",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "24",
+      "text": "Reviews",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "25",
+      "text": "FAQ",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "26",
+      "text": "Buy Now",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "27",
+      "text": "Watch the Film",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "28",
+      "text": "{brand} — SIGNATURE SERIES",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "29",
+      "text": "MADE FOR THE EVERYDAY.",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "30",
       "text": "A heavyweight essential engineered for comfort, structure and everyday movement.",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "paragraph-151",
+      "id": "31",
+      "text": "4.9/5 • 2,400+ verified customers",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "32",
+      "text": "Shop Now",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "33",
+      "text": "Watch the Film",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "34",
+      "text": "Free shipping",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "35",
+      "text": "Easy returns",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "36",
+      "text": "Secure checkout",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "37",
+      "text": "Heavyweight Fabric",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "38",
+      "text": "Premium structured cotton blend.",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "39",
+      "text": "Built to Last",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "40",
+      "text": "Designed for repeated everyday wear.",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "41",
+      "text": "Easy Returns",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "42",
+      "text": "30-day hassle-free returns.",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "43",
+      "text": "Secure Checkout",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "44",
+      "text": "Encrypted and trusted payment.",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "45",
+      "text": "The Signature",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "46",
+      "text": "{brand} Signature Hoodie",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "47",
+      "text": "$89",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "48",
+      "text": "1 Hoodie",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "49",
+      "text": "2 HoodiesSave $18",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "50",
+      "text": "3 HoodiesSave $42",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "51",
+      "text": "Size",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "52",
+      "text": "XS",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "53",
+      "text": "S",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "54",
+      "text": "M",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "55",
+      "text": "L",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "56",
+      "text": "XL",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "57",
+      "text": "XXL",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "58",
+      "text": "View Size Guide",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "59",
+      "text": "Color",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "60",
+      "text": "-",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "61",
+      "text": "1",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "62",
+      "text": "+",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "63",
+      "text": "Add to Cart",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "64",
+      "text": "Buy Now",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "65",
+      "text": "Why {brand}",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "66",
+      "text": "Most hoodies are either comfortableorwell-structured. We wanted both.",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "67",
       "text": "We believe everyday clothing shouldn't feel ordinary. The Signature Hoodie is built with a structured heavyweight fabric, refined oversized fit, and reinforced construction—designed to outlast the moment.",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "paragraph-152",
+      "id": "68",
+      "text": "Ordinary Hoodie",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "69",
+      "text": "✕ Loses shape",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "70",
+      "text": "✕ Lightweight fabric",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "71",
+      "text": "✕ Generic fit",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "72",
+      "text": "{brand}",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "73",
+      "text": "✓ Structured heavyweight",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "74",
+      "text": "✓ Refined oversized fit",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "75",
+      "text": "✓ Reinforced construction",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "76",
+      "text": "Shop Now",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "77",
+      "text": "Anatomy",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "78",
+      "text": "Built with intention.",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "79",
+      "text": "1",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "80",
+      "text": "2",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "81",
+      "text": "3",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "82",
+      "text": "4",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "83",
+      "text": "5",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "84",
+      "text": "6",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "85",
+      "text": "7",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "86",
+      "text": "① Heavyweight fabric② Reinforced seams③ Structured hood④ Drawstrings⑤ Ribbed cuffs⑥ Pocket⑦ Embroidered logo",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "87",
+      "text": "Gallery",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "88",
+      "text": "The Signature.",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "89",
+      "text": "Worn your way",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "90",
+      "text": "Real people, real hoodie.",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "91",
       "text": "Unboxing • Lifestyle • Reviews",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "paragraph-153",
+      "id": "92",
+      "text": "\"Perfect fit, amazing quality\"",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "93",
+      "text": "✓ Verified",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "94",
+      "text": "@citydweller",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "95",
+      "text": "\"Best hoodie I've owned\"",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "96",
+      "text": "✓ Verified",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "97",
+      "text": "@minimal.movement",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "98",
+      "text": "\"Unreal fabric quality\"",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "99",
+      "text": "✓ Verified",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "100",
+      "text": "@studio.mono",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "101",
+      "text": "Reviews",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "102",
+      "text": "4.9 / 5",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "103",
       "text": "2,400+ verified reviews",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "paragraph-154",
+      "id": "104",
+      "text": "Write a Review",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "105",
       "text": "\"Best hoodie I've ever owned. The weight is perfect.\"",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "paragraph-155",
+      "id": "106",
+      "text": "Alex M.",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "107",
+      "text": "✓ Verified",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "108",
+      "text": "2 days ago",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "109",
       "text": "\"Incredible quality and the fit is exactly what I wanted.\"",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "paragraph-156",
+      "id": "110",
+      "text": "Jordan K.",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "111",
+      "text": "✓ Verified",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "112",
+      "text": "1 week ago",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "113",
       "text": "\"Almost perfect. The fabric is premium, will buy again.\"",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "paragraph-157",
+      "id": "114",
+      "text": "Sam R.",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "115",
+      "text": "✓ Verified",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "116",
+      "text": "3 weeks ago",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "117",
+      "text": "FAQ",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "118",
+      "text": "Questions? We've got answers.",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "119",
+      "text": "What size should I choose?",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "120",
+      "text": "We recommend ordering your usual size. The hoodie has a refined oversized fit—size down for a slimmer look.",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "121",
+      "text": "Is the hoodie oversized?",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "122",
+      "text": "Yes, it's designed with a relaxed, structured oversized fit that still feels tailored.",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "123",
+      "text": "What material is it made from?",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "124",
+      "text": "Heavyweight 100% structured cotton blend, 450gsm for durability and comfort.",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "125",
+      "text": "How should I wash it?",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "126",
+      "text": "Machine wash cold inside out, hang dry to maintain structure and color.",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "127",
+      "text": "How long does shipping take?",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "128",
+      "text": "Standard shipping 3-5 business days. Express available at checkout.",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "129",
+      "text": "What is your return policy?",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "130",
+      "text": "30-day hassle-free returns on unworn items with tags.",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "131",
+      "text": "YOUR EVERYDAY, UPGRADED.",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "132",
       "text": "One hoodie. Built properly.",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "paragraph-158",
+      "id": "133",
+      "text": "Shop Now",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "134",
+      "text": "Get in touch",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "135",
+      "text": "We'd love to hear from you.",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "136",
       "text": "Have questions about sizing, shipping, or just want to say hello? Reach out anytime.",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "paragraph-159",
+      "id": "137",
+      "text": "hello@north01.com",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "138",
+      "text": "+1 (800) 555‑0199",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "139",
+      "text": "New York, NY",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "140",
+      "text": "Full Name",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "141",
+      "text": "Email Address",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "142",
+      "text": "Subject",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "143",
+      "text": "Message",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "144",
+      "text": "Send Message",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "145",
+      "text": "Thanks! We'll get back to you within 24 hours.",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "146",
+      "text": "Please fill in all fields correctly.",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "147",
+      "text": "{brand}",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "148",
       "text": "Built for the city. Designed to outlast the moment.",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "button-160",
+      "id": "149",
+      "text": "Navigate",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "150",
+      "text": "Home",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "151",
+      "text": "Shop",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "152",
+      "text": "Story",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "153",
+      "text": "Details",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "154",
+      "text": "Reviews",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "155",
+      "text": "FAQ",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "156",
+      "text": "Customer Care",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "157",
+      "text": "Contact",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "158",
+      "text": "Shipping",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "159",
+      "text": "Returns",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "160",
+      "text": "Size Guide",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "161",
+      "text": "Connect",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "162",
+      "text": "Instagram",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "163",
+      "text": "TikTok",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "164",
+      "text": "X",
+      "type": "link",
+      "customized": false
+    },
+    {
+      "id": "165",
+      "text": "© 2025 {brand}. All rights reserved. Privacy • Terms",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "166",
+      "text": "{brand} Signature Hoodie",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "167",
+      "text": "$89",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "168",
+      "text": "M",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "169",
+      "text": "Add",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "170",
+      "text": "Buy",
+      "type": "button",
+      "customized": false
+    },
+    {
+      "id": "heading-171",
+      "text": "Your rotation",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-172",
+      "text": "MADE FOR THE EVERYDAY.",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-173",
+      "text": "{brand} Signature Hoodie",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-174",
+      "text": "Most hoodies are either comfortableorwell-structured. We wanted both.",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-175",
+      "text": "Ordinary Hoodie",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-176",
+      "text": "{brand}",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-177",
+      "text": "Built with intention.",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-178",
+      "text": "The Signature.",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-179",
+      "text": "Real people, real hoodie.",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-180",
+      "text": "4.9 / 5",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-181",
+      "text": "Questions? We've got answers.",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-182",
+      "text": "YOUR EVERYDAY, UPGRADED.",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-183",
+      "text": "We'd love to hear from you.",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-184",
+      "text": "{brand}",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-185",
+      "text": "Navigate",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-186",
+      "text": "Customer Care",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "heading-187",
+      "text": "Connect",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "paragraph-188",
+      "text": "Your rotation starts here.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-189",
+      "text": "A heavyweight essential engineered for comfort, structure and everyday movement.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-190",
+      "text": "We believe everyday clothing shouldn't feel ordinary. The Signature Hoodie is built with a structured heavyweight fabric, refined oversized fit, and reinforced construction—designed to outlast the moment.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-191",
+      "text": "Unboxing • Lifestyle • Reviews",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-192",
+      "text": "2,400+ verified reviews",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-193",
+      "text": "\"Best hoodie I've ever owned. The weight is perfect.\"",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-194",
+      "text": "\"Incredible quality and the fit is exactly what I wanted.\"",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-195",
+      "text": "\"Almost perfect. The fabric is premium, will buy again.\"",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-196",
+      "text": "One hoodie. Built properly.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-197",
+      "text": "Have questions about sizing, shipping, or just want to say hello? Reach out anytime.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "paragraph-198",
+      "text": "Built for the city. Designed to outlast the moment.",
+      "type": "paragraph",
+      "customized": false
+    },
+    {
+      "id": "button-199",
       "text": "Checkout Securely",
       "type": "button",
       "customized": false
@@ -2208,37 +2676,37 @@
       "customized": false
     },
     {
-      "id": "button-162",
+      "id": "button-201",
       "text": "1 Hoodie",
       "type": "button",
       "customized": false
     },
     {
-      "id": "button-163",
+      "id": "button-202",
       "text": "2 HoodiesSave $18",
       "type": "button",
       "customized": false
     },
     {
-      "id": "button-164",
+      "id": "button-203",
       "text": "3 HoodiesSave $42",
       "type": "button",
       "customized": false
     },
     {
-      "id": "button-165",
+      "id": "button-204",
       "text": "XS",
       "type": "button",
       "customized": false
     },
     {
-      "id": "button-166",
+      "id": "button-205",
       "text": "XL",
       "type": "button",
       "customized": false
     },
     {
-      "id": "button-167",
+      "id": "button-206",
       "text": "XXL",
       "type": "button",
       "customized": false
@@ -2268,7 +2736,7 @@
       "customized": false
     },
     {
-      "id": "button-172",
+      "id": "button-211",
       "text": "Send Message",
       "type": "button",
       "customized": false
@@ -2286,200 +2754,200 @@
       "customized": false
     },
     {
-      "id": "link-175",
+      "id": "link-214",
       "text": "Shop the hoodie",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-176",
+      "id": "link-215",
       "text": "Home",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-177",
+      "id": "link-216",
       "text": "Shop",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-178",
+      "id": "link-217",
       "text": "Story",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-179",
+      "id": "link-218",
       "text": "Details",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-180",
+      "id": "link-219",
       "text": "Reviews",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-181",
+      "id": "link-220",
       "text": "FAQ",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-182",
+      "id": "link-221",
       "text": "Buy Now",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-183",
-      "text": "NORTH/01",
+      "id": "link-222",
+      "text": "{brand}",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-184",
+      "id": "link-223",
       "text": "Home",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-185",
+      "id": "link-224",
       "text": "Shop",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-186",
+      "id": "link-225",
       "text": "Story",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-187",
+      "id": "link-226",
       "text": "Details",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-188",
+      "id": "link-227",
       "text": "Reviews",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-189",
+      "id": "link-228",
       "text": "FAQ",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-190",
+      "id": "link-229",
       "text": "Buy Now",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-191",
+      "id": "link-230",
       "text": "Shop Now",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-192",
+      "id": "link-231",
       "text": "Shop Now",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-193",
+      "id": "link-232",
       "text": "Shop Now",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-194",
+      "id": "link-233",
       "text": "Home",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-195",
+      "id": "link-234",
       "text": "Shop",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-196",
+      "id": "link-235",
       "text": "Story",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-197",
+      "id": "link-236",
       "text": "Details",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-198",
+      "id": "link-237",
       "text": "Reviews",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-199",
+      "id": "link-238",
       "text": "FAQ",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-200",
+      "id": "link-239",
       "text": "Contact",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-201",
+      "id": "link-240",
       "text": "Shipping",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-202",
+      "id": "link-241",
       "text": "Returns",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-203",
+      "id": "link-242",
       "text": "Size Guide",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-204",
+      "id": "link-243",
       "text": "Instagram",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-205",
+      "id": "link-244",
       "text": "TikTok",
       "type": "link",
       "customized": false
     },
     {
       "id": "page-title",
-      "text": "NORTH/01 — Signature Hoodie",
+      "text": "{brand} — Signature Hoodie",
       "type": "title",
       "customized": false
     }
   ],
   "metadata": {
-    "total_elements": 206,
+    "total_elements": 245,
     "pages_count": 1,
     "components_count": 0
   }

@@ -1,408 +1,1093 @@
-<!-- payments/templates/payments/upgrade.html -->
 {% extends 'builder/base.html' %}
 {% load static %}
 
-{% block title %}Upgrade to {{ plan_name }}{% endblock %}
+{% block title %}Upgrade to {{ plan_name }} - {{ page.brand_name }}{% endblock %}
 
 {% block extra_css %}
 <style>
-    .upgrade-container {
-        max-width: 700px;
-        margin: 0 auto;
+:root {
+    --n-0: #ffffff;
+    --n-50: #fafafa;
+    --n-100: #f4f4f5;
+    --n-200: #e4e4e7;
+    --n-300: #d4d4d8;
+    --n-400: #a1a1aa;
+    --n-500: #71717a;
+    --n-600: #52525b;
+    --n-700: #3f3f46;
+    --n-800: #27272a;
+    --n-900: #18181b;
+
+    --accent: var(--primary-color, #111827);
+    --accent-hover: #000000;
+
+    --success: #15803d;
+    --warning: #a16207;
+    --danger: #b91c1c;
+
+    --border: var(--n-200);
+    --border-strong: var(--n-300);
+    --text: var(--n-900);
+    --text-muted: var(--n-500);
+    --text-subtle: var(--n-400);
+
+    --radius-sm: 4px;
+    --radius: 6px;
+    --radius-lg: 10px;
+
+    --page-bg: #f6f7f9;
+    --surface-shadow: 0 1px 2px rgba(24, 24, 27, 0.04), 0 1px 1px rgba(24, 24, 27, 0.03);
+    --surface-shadow-hover: 0 4px 12px rgba(24, 24, 27, 0.06), 0 1px 2px rgba(24, 24, 27, 0.04);
+}
+
+/* ===== Shell ===== */
+.management-layout {
+    background: var(--page-bg);
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 13px;
+    color: var(--text);
+}
+
+.management-content { padding: 0; }
+
+.upgrade-wrap {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2rem 2rem 4rem;
+}
+
+/* ===== Breadcrumb ===== */
+.catalog-context {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.context-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.15s;
+    font-weight: 500;
+}
+
+.context-back:hover { color: var(--text); }
+.context-back svg { transition: transform 0.15s; }
+.context-back:hover svg { transform: translateX(-2px); }
+.context-sep { color: var(--n-300); }
+.context-current { color: var(--text); font-weight: 500; }
+
+/* ===== Title row ===== */
+.catalog-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.catalog-title-block { min-width: 0; }
+
+.catalog-title {
+    font-size: 1.625rem;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    color: var(--text);
+    margin: 0 0 0.375rem 0;
+    line-height: 1.15;
+}
+
+.catalog-sub {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.catalog-actions {
+    display: flex;
+    gap: 0.375rem;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* ===== Buttons ===== */
+.btn {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    border-radius: var(--radius);
+    padding: 0.5rem 0.875rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4375rem;
+    line-height: 1.25;
+    transition: background 0.15s, border-color 0.15s, color 0.15s, box-shadow 0.15s;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: inherit;
+}
+
+.btn-ghost {
+    background: var(--n-0);
+    border-color: var(--border);
+    color: var(--n-700);
+    box-shadow: 0 1px 2px rgba(24, 24, 27, 0.04);
+}
+
+.btn-ghost:hover {
+    background: var(--n-0);
+    border-color: var(--border-strong);
+    color: var(--text);
+    box-shadow: var(--surface-shadow);
+}
+
+.btn-accent {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+    box-shadow: 0 1px 2px rgba(24, 24, 27, 0.16);
+}
+
+.btn-accent:hover {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+    color: white;
+    box-shadow: 0 4px 12px rgba(24, 24, 27, 0.18);
+}
+
+.btn-accent:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.btn-full {
+    width: 100%;
+    justify-content: center;
+}
+
+/* ===== Panels ===== */
+.panel {
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: 1rem;
+    box-shadow: var(--surface-shadow);
+}
+
+.panel-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.875rem 1.125rem;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(to bottom, #ffffff, #fcfcfd);
+}
+
+.panel-title {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0;
+    letter-spacing: -0.005em;
+}
+
+.panel-sub {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    margin: 0.125rem 0 0 0;
+}
+
+.panel-body {
+    padding: 1.125rem;
+}
+
+/* ===== Plan summary ===== */
+.plan-summary {
+    padding: 1.5rem 1.5rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+    background: linear-gradient(to bottom, #fafafa, #ffffff);
+}
+
+.plan-summary-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+}
+
+.plan-summary-eyebrow::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.1);
+}
+
+.plan-summary-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: var(--text);
+    margin: 0 0 0.375rem;
+}
+
+.plan-summary-desc {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    margin: 0 0 1.25rem;
+    line-height: 1.5;
+}
+
+.plan-summary-price {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.375rem;
+    flex-wrap: wrap;
+}
+
+.plan-summary-amount {
+    font-size: 2.25rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+}
+
+.plan-summary-period {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.plan-summary-save {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--success);
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+/* ===== Info banner ===== */
+.info-banner {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625rem;
+    padding: 0.875rem 1rem;
+    background: var(--n-50);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 0.8125rem;
+    color: var(--n-700);
+    line-height: 1.55;
+    margin-bottom: 1rem;
+}
+
+.info-banner svg {
+    color: var(--n-500);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.info-banner strong {
+    color: var(--text);
+    font-weight: 600;
+}
+
+/* ===== Payment options ===== */
+.payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.125rem;
+}
+
+/* Crypto card is a distinct primary CTA — bordered accent */
+.payment-option.crypto {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    padding: 0.875rem 1rem;
+    background: var(--n-0);
+    border: 1px solid var(--accent);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: var(--text);
+    transition: background 0.15s, border-color 0.15s, box-shadow 0.15s;
+    box-shadow: var(--surface-shadow);
+    position: relative;
+}
+
+.payment-option.crypto:hover {
+    background: #fcfcfd;
+    border-color: var(--accent);
+    box-shadow: var(--surface-shadow-hover);
+}
+
+.payment-option.crypto .payment-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.4375rem 0.875rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    background: var(--accent);
+    border: 1px solid var(--accent);
+    color: var(--n-0);
+    border-radius: var(--radius-sm);
+    white-space: nowrap;
+    box-shadow: 0 1px 2px rgba(24, 24, 27, 0.16);
+    transition: background 0.15s, box-shadow 0.15s;
+}
+
+.payment-option.crypto:hover .payment-cta {
+    background: var(--accent-hover);
+    box-shadow: 0 4px 12px rgba(24, 24, 27, 0.18);
+}
+
+/* Radio-style selectable payment options */
+.payment-option.selectable {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    padding: 0.875rem 1rem;
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background 0.1s, border-color 0.1s, box-shadow 0.15s;
+    box-shadow: 0 1px 2px rgba(24, 24, 27, 0.02);
+}
+
+.payment-option.selectable:hover {
+    background: #fdfdfe;
+    border-color: var(--border-strong);
+    box-shadow: var(--surface-shadow);
+}
+
+.payment-option.selectable.selected {
+    border-color: var(--accent);
+    background: #fcfcfd;
+    box-shadow: var(--surface-shadow);
+}
+
+.payment-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-sm);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: var(--n-100);
+    border: 1px solid var(--border);
+    color: var(--n-700);
+}
+
+.payment-icon svg {
+    width: 16px;
+    height: 16px;
+}
+
+.payment-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.payment-name {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text);
+    margin: 0 0 0.125rem;
+    line-height: 1.3;
+}
+
+.payment-desc {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.4;
+}
+
+.payment-chevron {
+    color: var(--text-subtle);
+    flex-shrink: 0;
+}
+
+/* Radio indicator inside selectable options */
+.payment-radio {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid var(--border-strong);
+    border-radius: 50%;
+    background: var(--n-0);
+    cursor: pointer;
+    flex-shrink: 0;
+    position: relative;
+    transition: background 0.14s ease, border-color 0.14s ease;
+}
+
+.payment-option.selectable:hover .payment-radio { border-color: var(--n-500); }
+
+.payment-option.selectable.selected .payment-radio {
+    border-color: var(--accent);
+    background: var(--accent);
+}
+
+.payment-option.selectable.selected .payment-radio::after {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border-radius: 50%;
+    background: var(--n-0);
+}
+
+/* ===== Message preview ===== */
+.message-panel {
+    border-top: 1px solid var(--border);
+    padding: 1.125rem;
+    background: var(--n-50);
+}
+
+.message-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    gap: 0.5rem;
+}
+
+.message-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0;
+}
+
+.copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3125rem;
+    padding: 0.25rem 0.625rem;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    color: var(--n-700);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.14s ease, border-color 0.14s ease, color 0.14s ease;
+}
+
+.copy-btn:hover {
+    background: var(--n-0);
+    border-color: var(--border-strong);
+    color: var(--text);
+}
+
+.copy-btn.copied {
+    color: var(--success);
+    border-color: var(--success);
+    background: #f0fdf4;
+}
+
+.message-body {
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.875rem 1rem;
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 0.75rem;
+    line-height: 1.65;
+    color: var(--n-700);
+    white-space: pre-wrap;
+    word-break: break-word;
+    max-height: 340px;
+    overflow-y: auto;
+}
+
+/* ===== Send button ===== */
+.send-btn-wrap {
+    padding: 0 1.125rem 1.125rem;
+}
+
+.send-btn {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.6875rem 1rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    font-family: inherit;
+    background: var(--accent);
+    color: var(--n-0);
+    border: 1px solid var(--accent);
+    border-radius: var(--radius);
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(24, 24, 27, 0.16);
+    transition: background 0.15s, box-shadow 0.15s;
+}
+
+.send-btn:hover {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+    box-shadow: 0 4px 12px rgba(24, 24, 27, 0.18);
+}
+
+.send-btn.saved {
+    background: var(--success);
+    border-color: var(--success);
+    box-shadow: 0 1px 2px rgba(21, 128, 61, 0.2);
+}
+
+/* ===== Next steps list ===== */
+.steps-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: step;
+}
+
+.steps-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.625rem 1.125rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.8125rem;
+    color: var(--n-700);
+    line-height: 1.5;
+}
+
+.steps-list li:last-child { border-bottom: none; }
+
+.steps-list li::before {
+    counter-increment: step;
+    content: counter(step);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--n-100);
+    color: var(--n-700);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+/* ===== Toasts ===== */
+.toast-stack {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    pointer-events: none;
+}
+
+.toast {
+    background: var(--n-900);
+    color: white;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15), 0 2px 6px rgba(0,0,0,0.08);
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    max-width: 360px;
+    pointer-events: auto;
+    animation: toastIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.toast svg { width: 14px; height: 14px; flex-shrink: 0; }
+.toast.error { background: var(--danger); }
+
+@keyframes toastIn {
+    from { opacity: 0; transform: translateY(-10px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+    .upgrade-wrap { padding: 1.5rem 1rem 3rem; }
+
+    .catalog-title-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
     }
-    .plan-summary {
-        background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
-        color: white;
-        border-radius: 16px;
-        padding: 30px;
-        margin-bottom: 30px;
-    }
-    .payment-option {
-        background: white;
-        border: 2px solid #e1e5eb;
-        border-radius: 16px;
-        padding: 20px;
-        margin-bottom: 15px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-    .payment-option:hover {
-        border-color: #4361ee;
-        transform: translateY(-2px);
-        box-shadow: 0 8px 24px rgba(67, 97, 238, 0.15);
-    }
-    .payment-option.selected {
-        border-color: #4361ee;
-        background: #f8faff;
-    }
-    .payment-icon {
-        width: 50px;
-        height: 50px;
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 24px;
-    }
-    .whatsapp { background: #25D366; color: white; }
-    .telegram { background: #26A5E4; color: white; }
-    .email { background: #EA4335; color: white; }
-    .message-box {
-        background: #f8f9fa;
-        border-radius: 12px;
-        padding: 20px;
-        margin-top: 20px;
-        border-left: 4px solid #4361ee;
-    }
-    .price-large {
-        font-size: 2.5rem;
-        font-weight: 700;
-    }
-    .copy-btn.copied {
-        background: #10b981 !important;
-        color: white !important;
-    }
-    .loading-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0,0,0,0.5);
-        display: none;
-        align-items: center;
-        justify-content: center;
-        z-index: 9999;
-    }
-    .loading-spinner {
-        background: white;
-        padding: 30px;
-        border-radius: 16px;
-        text-align: center;
-    }
+
+    .catalog-actions { justify-content: flex-start; flex-wrap: wrap; }
+}
+
+@media (max-width: 640px) {
+    .catalog-title { font-size: 1.375rem; }
+    .plan-summary-amount { font-size: 1.875rem; }
+}
 </style>
 {% endblock %}
 
 {% block content %}
-<div class="container py-5">
-    <div class="upgrade-container">
-        
-        <!-- Plan Summary -->
-        <div class="plan-summary text-center">
-            <h2 class="mb-2">{{ plan_name }} Plan</h2>
-            <p class="mb-3 opacity-75">{{ plan_description }}</p>
-            <div class="price-large">${{ amount }}</div>
-            <small>{{ billing_period|title }}</small>
-            {% if billing_period == 'yearly' %}
-                <span class="badge bg-success ms-2">Save 25%</span>
-            {% endif %}
-        </div>
-        
-        <!-- Friendly Message -->
-        <div class="alert alert-success border-0 rounded-4 p-4 mb-4">
-            <i class="fas fa-check-circle me-2"></i>
-            <strong>Simple process:</strong> Choose how to contact us → We'll save your request → Send the pre-filled message → We'll reply with payment details → Pay → Your account is upgraded!
-        </div>
-        
-        <!-- Payment Options -->
-        <h5 class="mb-3">How would you like to pay?</h5>
-        
-        <!-- Hidden form for CSRF -->
-        <form id="paymentForm" method="post" action="{% url 'payments:submit_payment' plan_tier %}" style="display: none;">
-            {% csrf_token %}
-            <input type="hidden" name="billing_period" id="billingPeriodInput" value="{{ billing_period }}">
-            <input type="hidden" name="payment_method" id="paymentMethodInput" value="">
-            <input type="hidden" name="payment_reference" id="paymentReferenceInput" value="">
-            <input type="hidden" name="payment_notes" id="paymentNotesInput" value="">
-        </form>
 
-        <!-- payments/templates/payments/upgrade.html -->
-        <!-- Add this payment option -->
+<div class="management-layout">
+    {% include 'builder/includes/sidebar.html' with active_menu='subscription' %}
 
-        <div class="payment-option" style="border: 2px solid #f7931a;">
-            <div class="d-flex align-items-center">
-                <div class="payment-icon" style="background: #f7931a; color: white;">
-                    <i class="fab fa-bitcoin"></i>
-                </div>
-                <div class="flex-grow-1">
-                    <h6 class="mb-1">Pay with Cryptocurrency</h6>
-                    <small class="text-muted">BTC, ETH, USDT + more • Instant activation</small>
-                </div>
-                <a href="{% url 'payments:cryptomus_checkout' plan_tier %}" 
-                class="btn btn-success">
-                    Pay Now
+    <div class="management-content">
+        <div class="upgrade-wrap">
+
+            <div class="toast-stack" id="toastStack"></div>
+
+            <!-- Breadcrumb -->
+            <div class="catalog-context">
+                <a href="{% url 'dashboard' %}" class="context-back">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    <span>Dashboard</span>
                 </a>
+                <span class="context-sep">/</span>
+                <a href="{% url 'payments:pricing' %}" class="context-back">
+                    <span>Plans</span>
+                </a>
+                <span class="context-sep">/</span>
+                <span class="context-current">Upgrade</span>
             </div>
-        </div>
-        
-        <div class="payment-option" data-method="whatsapp">
-            <div class="d-flex align-items-center">
-                <div class="payment-icon whatsapp me-3">
-                    <i class="fab fa-whatsapp"></i>
-                </div>
-                <div class="flex-grow-1">
-                    <h6 class="mb-1">Pay via WhatsApp</h6>
-                    <small class="text-muted">Fast response • Most popular</small>
-                </div>
-                <i class="fas fa-chevron-right text-muted"></i>
-            </div>
-        </div>
-        
-        <div class="payment-option" data-method="telegram">
-            <div class="d-flex align-items-center">
-                <div class="payment-icon telegram me-3">
-                    <i class="fab fa-telegram-plane"></i>
-                </div>
-                <div class="flex-grow-1">
-                    <h6 class="mb-1">Pay via Telegram</h6>
-                    <small class="text-muted">Secure • Private</small>
-                </div>
-                <i class="fas fa-chevron-right text-muted"></i>
-            </div>
-        </div>
-        
-        <div class="payment-option" data-method="email">
-            <div class="d-flex align-items-center">
-                <div class="payment-icon email me-3">
-                    <i class="fas fa-envelope"></i>
-                </div>
-                <div class="flex-grow-1">
-                    <h6 class="mb-1">Pay via Email</h6>
-                    <small class="text-muted">We'll reply within 2 hours</small>
-                </div>
-                <i class="fas fa-chevron-right text-muted"></i>
-            </div>
-        </div>
-        
-        <!-- Message Preview (Hidden until selection) -->
-        <div id="messagePreview" class="message-box d-none">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <h6 class="mb-0"><i class="fas fa-paper-plane me-2"></i>Your Message</h6>
-                <button class="btn btn-sm btn-outline-primary copy-btn" onclick="copyMessage()">
-                    <i class="fas fa-copy me-1"></i>Copy
-                </button>
-            </div>
-            <div id="messageContent" class="bg-white p-3 rounded-3" style="font-family: monospace; font-size: 13px; white-space: pre-wrap;">
-                <!-- Message appears here -->
-            </div>
-            <button id="sendButton" class="btn btn-primary w-100 mt-3">
-                <i class="fab fa-whatsapp me-2"></i>
-                <span id="buttonText">Send Message & Save Request</span>
-            </button>
-        </div>
-        
-        <!-- What happens next -->
-        <div class="mt-4 p-4 bg-light rounded-4">
-            <h6 class="mb-3">📋 What happens next?</h6>
-            <ol class="small mb-0">
-                <li>Click on your preferred payment method</li>
-                <li>We'll save your upgrade request</li>
-                <li>Send us the pre-filled message</li>
-                <li>We'll reply with payment details</li>
-                <li>Make the payment and send us confirmation</li>
-                <li>We'll activate your subscription within 2-4 hours</li>
-            </ol>
-        </div>
-        
-        <!-- Back link -->
-        <div class="text-center mt-4">
-            <a href="{% url 'payments:pricing' %}" class="text-muted">
-                <i class="fas fa-arrow-left me-1"></i>Back to pricing
-            </a>
-        </div>
-    </div>
-</div>
 
-<!-- Loading Overlay -->
-<div class="loading-overlay" id="loadingOverlay">
-    <div class="loading-spinner">
-        <div class="spinner-border text-primary mb-3" role="status">
-            <span class="visually-hidden">Loading...</span>
+            <!-- Title -->
+            <div class="catalog-title-row">
+                <div class="catalog-title-block">
+                    <h1 class="catalog-title">Upgrade to {{ plan_name }}</h1>
+                    <p class="catalog-sub">Choose how you'd like to complete this upgrade</p>
+                </div>
+                <div class="catalog-actions">
+                    <a href="{% url 'payments:pricing' %}" class="btn btn-ghost">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        <span>Back to plans</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- ===== Plan summary ===== -->
+            <div class="panel" style="margin-bottom: 1rem;">
+                <div class="plan-summary">
+                    <span class="plan-summary-eyebrow">Selected plan</span>
+                    <h2 class="plan-summary-title">{{ plan_name }}</h2>
+                    <p class="plan-summary-desc">{{ plan_description }}</p>
+                    <div class="plan-summary-price">
+                        <span class="plan-summary-amount">${{ amount }}</span>
+                        <span class="plan-summary-period">/ {{ billing_period }}</span>
+                        {% if billing_period == 'yearly' %}
+                        <span class="plan-summary-save">
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 6 9 17l-5-5"/>
+                            </svg>
+                            Save 25%
+                        </span>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Info banner -->
+                <div style="padding: 1.125rem 1.125rem 0;">
+                    <div class="info-banner" style="margin-bottom: 0;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 16v-4M12 8h.01"/>
+                        </svg>
+                        <span>
+                            <strong>Simple process.</strong> Choose how you want to contact us. We'll save your upgrade request, then open the pre-filled message in the app you chose. Reply with confirmation once you've paid, and we'll activate your plan.
+                        </span>
+                    </div>
+                </div>
+
+                <!-- ===== Payment options ===== -->
+                <div class="payment-options">
+
+                    <!-- Hidden form for CSRF -->
+                    <form id="paymentForm" method="post" action="{% url 'payments:submit_payment' plan_tier %}" style="display: none;">
+                        {% csrf_token %}
+                        <input type="hidden" name="billing_period" id="billingPeriodInput" value="{{ billing_period }}">
+                        <input type="hidden" name="payment_method" id="paymentMethodInput" value="">
+                        <input type="hidden" name="payment_reference" id="paymentReferenceInput" value="">
+                        <input type="hidden" name="payment_notes" id="paymentNotesInput" value="">
+                    </form>
+
+                    <!-- Crypto — instant activation CTA -->
+                    <a href="{% url 'payments:cryptomus_checkout' plan_tier %}" class="payment-option crypto">
+                        <span class="payment-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M9.5 9.5c0-1.1.9-2 2-2h2a2 2 0 0 1 0 4h-3M9.5 11.5h4a2 2 0 0 1 0 4h-2a2 2 0 0 1-2-2"/>
+                            </svg>
+                        </span>
+                        <div class="payment-body">
+                            <p class="payment-name">Pay with cryptocurrency</p>
+                            <p class="payment-desc">BTC, ETH, USDT & more · Instant activation</p>
+                        </div>
+                        <span class="payment-cta">
+                            Pay now
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </span>
+                    </a>
+
+                    <!-- WhatsApp -->
+                    <div class="payment-option selectable" data-method="whatsapp">
+                        <span class="payment-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                            </svg>
+                        </span>
+                        <div class="payment-body">
+                            <p class="payment-name">Pay via WhatsApp</p>
+                            <p class="payment-desc">Fastest response · Most popular</p>
+                        </div>
+                        <input type="radio" name="payment_method_choice" value="whatsapp" class="payment-radio" tabindex="-1">
+                    </div>
+
+                    <!-- Telegram -->
+                    <div class="payment-option selectable" data-method="telegram">
+                        <span class="payment-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                            </svg>
+                        </span>
+                        <div class="payment-body">
+                            <p class="payment-name">Pay via Telegram</p>
+                            <p class="payment-desc">Secure · Private</p>
+                        </div>
+                        <input type="radio" name="payment_method_choice" value="telegram" class="payment-radio" tabindex="-1">
+                    </div>
+
+                    <!-- Email -->
+                    <div class="payment-option selectable" data-method="email">
+                        <span class="payment-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                                <path d="m22 7-10 6L2 7"/>
+                            </svg>
+                        </span>
+                        <div class="payment-body">
+                            <p class="payment-name">Pay via email</p>
+                            <p class="payment-desc">We'll reply within 2 hours</p>
+                        </div>
+                        <input type="radio" name="payment_method_choice" value="email" class="payment-radio" tabindex="-1">
+                    </div>
+
+                </div>
+
+                <!-- ===== Message preview (hidden until a method is selected) ===== -->
+                <div id="messagePreview" class="message-panel" style="display: none;">
+                    <div class="message-head">
+                        <span class="message-title">Your message</span>
+                        <button type="button" class="copy-btn" onclick="copyMessage()">
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                            </svg>
+                            <span>Copy</span>
+                        </button>
+                    </div>
+                    <div id="messageContent" class="message-body"></div>
+                </div>
+
+                <!-- ===== Send button (hidden until a method is selected) ===== -->
+                <div id="sendWrap" class="send-btn-wrap" style="display: none;">
+                    <button type="button" id="sendButton" class="send-btn">
+                        <span class="btn-text">Save request &amp; open</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ===== What happens next ===== -->
+            <div class="panel">
+                <div class="panel-head">
+                    <div>
+                        <h2 class="panel-title">What happens next</h2>
+                        <p class="panel-sub">The upgrade process in six steps</p>
+                    </div>
+                </div>
+                <ol class="steps-list">
+                    <li>Choose your preferred contact method above.</li>
+                    <li>We save your upgrade request to your account.</li>
+                    <li>We open the pre-filled message in the app you chose.</li>
+                    <li>Send us the message — we'll reply with payment details.</li>
+                    <li>Make the payment and send us the confirmation.</li>
+                    <li>We activate your subscription within 2–4 hours.</li>
+                </ol>
+            </div>
+
         </div>
-        <h5>Saving your request...</h5>
-        <p class="text-muted mb-0">Please wait a moment</p>
     </div>
 </div>
 
 <script>
-// YOUR CONTACT INFO
-const WHATSAPP_NUMBER = '+237680044151';
-const TELEGRAM_USERNAME = 'MJerase';
-const SUPPORT_EMAIL = 'bynupteam@protonmail.com';
+/* ============================================================
+   TOASTS
+   ============================================================ */
+function toast(message, type = 'success') {
+    const stack = document.getElementById('toastStack');
+    if (!stack) return;
+    const el = document.createElement('div');
+    el.className = `toast ${type}`;
+    const icon = type === 'error'
+        ? '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><path d="M8 5v3M8 11h.01"/></svg>'
+        : '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>';
+    el.innerHTML = `${icon}<span>${message}</span>`;
+    stack.appendChild(el);
+    setTimeout(() => {
+        el.style.transition = 'opacity 0.18s ease, transform 0.18s ease';
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(-8px)';
+        setTimeout(() => el.remove(), 220);
+    }, 3000);
+}
 
-// Plan details from Django
-const planDetails = {
-    name: '{{ plan_name }}',
-    tier: '{{ plan_tier }}',
-    amount: '{{ amount }}',
-    period: '{{ billing_period }}',
-    userName: '{{ user_name }}',
-    userEmail: '{{ user_email }}'
+function getCsrfToken() {
+    return document.querySelector('input[name="csrfmiddlewaretoken"]')?.value ||
+           document.cookie.match(/csrftoken=([^;]+)/)?.[1] || '';
+}
+
+/* ============================================================
+   CONFIG
+   ============================================================ */
+const CONTACT = {
+    whatsapp: '+237680044151',
+    telegram: 'MJerase',
+    email: 'bynupteam@protonmail.com',
+};
+
+const PLAN = {
+    name: '{{ plan_name|escapejs }}',
+    tier: '{{ plan_tier|escapejs }}',
+    amount: '{{ amount|escapejs }}',
+    period: '{{ billing_period|escapejs }}',
+    userName: '{{ user_name|escapejs }}',
+    userEmail: '{{ user_email|escapejs }}',
 };
 
 let selectedMethod = null;
 
-// Generate unique reference
 function generateReference() {
-    return 'BYN-' + Date.now().toString(36).toUpperCase() + '-' + Math.random().toString(36).substring(2, 6).toUpperCase();
+    return 'BYN-' +
+        Date.now().toString(36).toUpperCase() +
+        '-' +
+        Math.random().toString(36).substring(2, 6).toUpperCase();
 }
 
-// Create message based on method
-function getMessage(method, reference) {
-    return `Hello bynUp team! I would like to upgrade to the ${planDetails.name} Plan.
+function buildMessage(reference) {
+    return `Hello bynUp team! I would like to upgrade to the ${PLAN.name} plan.
 
-📋 Plan Details:
-• Plan: ${planDetails.name}
-• Billing: ${planDetails.period} ($${planDetails.amount})
-• Name: ${planDetails.userName}
-• Email: ${planDetails.userEmail}
+Plan details:
+• Plan: ${PLAN.name}
+• Billing: ${PLAN.period} — $${PLAN.amount}
+• Name: ${PLAN.userName}
+• Email: ${PLAN.userEmail}
 • Reference: ${reference}
 
 Please send me the payment details so I can complete my subscription.
 
-Thank you!`;
+Thank you.`;
 }
 
-// Get link based on method
-function getLink(method, message) {
-    const encodedMessage = encodeURIComponent(message);
-    
+function buildLink(method, message) {
+    const encoded = encodeURIComponent(message);
     if (method === 'whatsapp') {
-        return `https://wa.me/${WHATSAPP_NUMBER.replace(/\D/g, '')}?text=${encodedMessage}`;
-    } else if (method === 'telegram') {
-        return `https://t.me/${TELEGRAM_USERNAME}?text=${encodedMessage}`;
-    } else {
-        const subject = encodeURIComponent(`Upgrade to ${planDetails.name} Plan - ${planDetails.userName}`);
-        return `mailto:${SUPPORT_EMAIL}?subject=${subject}&body=${encodedMessage}`;
+        return `https://wa.me/${CONTACT.whatsapp.replace(/\D/g, '')}?text=${encoded}`;
     }
+    if (method === 'telegram') {
+        return `https://t.me/${CONTACT.telegram}?text=${encoded}`;
+    }
+    const subject = encodeURIComponent(`Upgrade to ${PLAN.name} — ${PLAN.userName}`);
+    return `mailto:${CONTACT.email}?subject=${subject}&body=${encoded}`;
 }
 
-// Save subscription to backend
+function getSendLabel(method) {
+    if (method === 'whatsapp') return 'Save request & open WhatsApp';
+    if (method === 'telegram') return 'Save request & open Telegram';
+    return 'Save request & open email';
+}
+
+/* ============================================================
+   SAVE SUBSCRIPTION TO BACKEND
+   ============================================================ */
 async function saveSubscription(method, reference) {
     const form = document.getElementById('paymentForm');
     const formData = new FormData(form);
-    
     formData.set('payment_method', method);
     formData.set('payment_reference', reference);
     formData.set('payment_notes', `User selected ${method} payment`);
-    
+
     try {
         const response = await fetch(form.action, {
             method: 'POST',
             body: formData,
             headers: {
                 'X-Requested-With': 'XMLHttpRequest',
-                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
-            }
+                'X-CSRFToken': getCsrfToken(),
+            },
         });
-        
-        if (response.ok) {
-            const data = await response.json().catch(() => ({}));
-            console.log('Subscription saved:', data);
-            return { success: true };
-        } else {
-            console.error('Failed to save subscription');
-            return { success: false, error: 'Failed to save' };
-        }
-    } catch (error) {
-        console.error('Error saving subscription:', error);
-        return { success: false, error: error.message };
+        return { success: response.ok };
+    } catch (err) {
+        return { success: false, error: err.message };
     }
 }
 
-// Handle send button click
+/* ============================================================
+   SEND HANDLER
+   ============================================================ */
 async function handleSend() {
     if (!selectedMethod) {
-        alert('Please select a payment method first');
+        toast('Select a payment method first', 'error');
         return;
     }
-    
+
+    const sendBtn = document.getElementById('sendButton');
+    const btnText = sendBtn.querySelector('.btn-text');
+    const originalText = btnText.textContent;
+    sendBtn.disabled = true;
+    btnText.textContent = 'Saving request…';
+
     const reference = generateReference();
-    const message = getMessage(selectedMethod, reference);
-    const link = getLink(selectedMethod, message);
-    
-    // Show loading
-    document.getElementById('loadingOverlay').style.display = 'flex';
-    
-    // Save to backend
+    const message = buildMessage(reference);
+    const link = buildLink(selectedMethod, message);
+
     const result = await saveSubscription(selectedMethod, reference);
-    
-    // Hide loading
-    document.getElementById('loadingOverlay').style.display = 'none';
-    
+
     if (result.success) {
-        // Update button to show success
-        const sendBtn = document.getElementById('sendButton');
-        sendBtn.innerHTML = '<i class="fas fa-check me-2"></i><span>Request Saved! Opening ' + selectedMethod + '...</span>';
-        sendBtn.classList.add('btn-success');
-        sendBtn.classList.remove('btn-primary');
-        
-        // Open the link after a short delay
+        sendBtn.classList.add('saved');
+        btnText.textContent = 'Request saved — opening…';
+        toast('Request saved');
         setTimeout(() => {
-            window.open(link, '_blank');
-            
-            // Reset button after 3 seconds
+            window.open(link, '_blank', 'noopener');
             setTimeout(() => {
-                const icons = { whatsapp: 'whatsapp', telegram: 'telegram-plane', email: 'envelope' };
-                const texts = { whatsapp: 'Open WhatsApp', telegram: 'Open Telegram', email: 'Send Email' };
-                sendBtn.innerHTML = `
-                    <i class="fab fa-${icons[selectedMethod]} me-2"></i>
-                    <span>${texts[selectedMethod]}</span>
-                `;
-                sendBtn.classList.remove('btn-success');
-                sendBtn.classList.add('btn-primary');
-            }, 3000);
-        }, 500);
+                sendBtn.disabled = false;
+                sendBtn.classList.remove('saved');
+                btnText.textContent = originalText;
+            }, 2200);
+        }, 400);
     } else {
-        alert('There was an issue saving your request. Please try again or contact support.');
+        toast('Could not save your request. Please try again.', 'error');
+        sendBtn.disabled = false;
+        btnText.textContent = originalText;
     }
 }
 
-// Handle option selection
-document.querySelectorAll('.payment-option[data-method]').forEach(option => {
-    option.addEventListener('click', function() {
-        // Remove selected from all
-        document.querySelectorAll('.payment-option').forEach(o => o.classList.remove('selected'));
-        this.classList.add('selected');
-        
-        selectedMethod = this.dataset.method;
+/* ============================================================
+   SELECTION
+   ============================================================ */
+document.querySelectorAll('.payment-option.selectable').forEach(option => {
+    option.addEventListener('click', (e) => {
+        // Let the radio handle its own click without double-firing
+        if (e.target.classList.contains('payment-radio')) return;
+
+        document.querySelectorAll('.payment-option.selectable').forEach(o => {
+            o.classList.remove('selected');
+            const r = o.querySelector('.payment-radio');
+            if (r) r.checked = false;
+        });
+        option.classList.add('selected');
+        const radio = option.querySelector('.payment-radio');
+        if (radio) radio.checked = true;
+
+        selectedMethod = option.dataset.method;
+
         const reference = generateReference();
-        const message = getMessage(selectedMethod, reference);
-        
-        // Update preview
-        document.getElementById('messagePreview').classList.remove('d-none');
+        const message = buildMessage(reference);
+
+        document.getElementById('messagePreview').style.display = '';
         document.getElementById('messageContent').textContent = message;
-        
-        // Update button icon and text
-        const icons = { whatsapp: 'whatsapp', telegram: 'telegram-plane', email: 'envelope' };
-        const texts = { whatsapp: 'Open WhatsApp', telegram: 'Open Telegram', email: 'Send Email' };
-        
-        document.getElementById('sendButton').innerHTML = `
-            <i class="fab fa-${icons[selectedMethod]} me-2"></i>
-            <span id="buttonText">${texts[selectedMethod]}</span>
-        `;
-        
-        // Scroll to preview
+
+        const sendBtn = document.getElementById('sendButton');
+        sendBtn.querySelector('.btn-text').textContent = getSendLabel(selectedMethod);
+        document.getElementById('sendWrap').style.display = '';
+
         document.getElementById('messagePreview').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     });
 });
 
-// Attach send handler
-document.getElementById('sendButton').addEventListener('click', handleSend);
-
-// Copy message function
+/* ============================================================
+   COPY
+   ============================================================ */
 function copyMessage() {
     const content = document.getElementById('messageContent').textContent;
     const btn = document.querySelector('.copy-btn');
-    
-    navigator.clipboard.writeText(content).then(() => {
+    if (!content) return;
+
+    const done = () => {
         btn.classList.add('copied');
-        btn.innerHTML = '<i class="fas fa-check me-1"></i>Copied!';
+        btn.innerHTML = '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Copied</span>';
         setTimeout(() => {
             btn.classList.remove('copied');
-            btn.innerHTML = '<i class="fas fa-copy me-1"></i>Copy';
-        }, 2000);
-    });
+            btn.innerHTML = '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span>Copy</span>';
+        }, 1800);
+    };
+
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(content).then(done).catch(() => fallbackCopy(content, done));
+    } else {
+        fallbackCopy(content, done);
+    }
 }
+
+function fallbackCopy(text, cb) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); cb(); } catch (e) {}
+    document.body.removeChild(ta);
+}
+
+/* ============================================================
+   INIT
+   ============================================================ */
+document.getElementById('sendButton').addEventListener('click', handleSend);
 </script>
+
 {% endblock %}

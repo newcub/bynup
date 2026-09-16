@@ -2,325 +2,582 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms & Conditions • {{ page.brand_name }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Terms &amp; Conditions · {{ page.brand_name }}</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+
     <style>
-        * {
+        /* ============================================================
+           DESIGN TOKENS
+           ============================================================ */
+        :root {
+            --n-0:  #ffffff;
+            --n-50: #fafafa;
+            --n-100:#f4f4f5;
+            --n-200:#e4e4e7;
+            --n-300:#d4d4d8;
+            --n-400:#a1a1aa;
+            --n-500:#71717a;
+            --n-600:#52525b;
+            --n-700:#3f3f46;
+            --n-800:#27272a;
+            --n-900:#18181b;
+
+            /* Store accent — inherited from the merchant's brand color */
+            --accent: {{ page.primary_color|default:"#111827" }};
+            --accent-hover: {{ page.primary_color_hover|default:"#000000" }};
+
+            --success: #15803d;
+            --warning: #a16207;
+            --danger:  #b91c1c;
+
+            --page-bg: #f6f7f9;
+            --border: var(--n-200);
+            --border-strong: var(--n-300);
+            --text: var(--n-900);
+            --text-muted: var(--n-500);
+            --text-subtle: var(--n-400);
+
+            --radius-sm: 4px;
+            --radius: 6px;
+            --radius-lg: 10px;
+
+            --surface-shadow: 0 1px 2px rgba(24, 24, 27, 0.04), 0 1px 1px rgba(24, 24, 27, 0.03);
+            --surface-shadow-hover: 0 4px 12px rgba(24, 24, 27, 0.06), 0 1px 2px rgba(24, 24, 27, 0.04);
+
+            --text-xs:  0.75rem;
+            --text-sm:  0.8125rem;
+            --text-base:0.875rem;
+            --text-lg:  1rem;
+            --text-xl:  1.125rem;
+            --text-2xl: clamp(1.375rem, 3vw, 1.75rem);
+            --text-3xl: clamp(1.75rem, 4vw, 2.25rem);
+        }
+
+        /* ============================================================
+           RESET
+           ============================================================ */
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        :root {
-            --primary: #2C3E50;
-            --secondary: #E8C07D;
-            --accent: #D4AF37;
-            --background: #F9F6F0;
-            --surface: #FFFFFF;
-            --text-primary: #2C3E50;
-            --text-secondary: #6B7A8A;
-            --border: #E5D9CC;
-            --shadow-sm: 0 4px 20px rgba(44, 62, 80, 0.05);
-            --shadow-md: 0 8px 30px rgba(44, 62, 80, 0.08);
-            --shadow-lg: 0 20px 40px rgba(44, 62, 80, 0.12);
-        }
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: var(--background);
-            color: var(--text-primary);
-            line-height: 1.6;
-            min-height: 100vh;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: var(--text-base);
+            line-height: 1.55;
+            color: var(--text);
+            background: var(--page-bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
         }
 
-        .policy-wrapper {
-            max-width: 1000px;
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', 'Inter', serif;
+            font-weight: 600;
+            letter-spacing: -0.015em;
+            line-height: 1.2;
+            color: var(--text);
+        }
+
+        p { overflow-wrap: break-word; }
+        img { max-width: 100%; height: auto; display: block; }
+
+        ::selection {
+            background: var(--accent);
+            color: var(--n-0);
+        }
+
+        *:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+            border-radius: var(--radius-sm);
+        }
+
+        /* ============================================================
+           SHELL
+           ============================================================ */
+        .policy-shell {
+            max-width: 820px;
             margin: 0 auto;
-            padding: 2rem 1.5rem;
+            padding: 3rem 1.5rem 4rem;
         }
 
-        /* Header */
-        .policy-header {
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
+        @media (max-width: 640px) {
+            .policy-shell { padding: 2rem 1rem 3rem; }
         }
 
-        .policy-header h1 {
+        /* ============================================================
+           TOP BAR — brand + back
+           ============================================================ */
+        .top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.625rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .brand-mark {
+            width: 32px;
+            height: 32px;
+            border-radius: var(--radius);
+            background: var(--accent);
+            color: var(--n-0);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2rem, 5vw, 3rem);
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .policy-header h1 span {
-            color: var(--secondary);
-        }
-
-        .store-name {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-        }
-
-        .store-name i {
-            color: var(--secondary);
-            margin-right: 0.5rem;
+            font-size: 1.0625rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
         }
 
         .back-link {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1.5rem;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 50px;
-            color: var(--text-primary);
+            gap: 0.375rem;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--text-muted);
             text-decoration: none;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            margin-bottom: 2rem;
+            padding: 0.4375rem 0.75rem;
+            border-radius: var(--radius);
+            border: 1px solid transparent;
+            transition: color 0.15s, background 0.15s, border-color 0.15s;
         }
 
         .back-link:hover {
-            background: var(--primary);
-            color: var(--surface);
-            border-color: var(--primary);
+            color: var(--text);
+            background: var(--n-0);
+            border-color: var(--border);
         }
 
-        /* Main Card */
-        .policy-card {
-            background: var(--surface);
-            border-radius: 30px;
-            box-shadow: var(--shadow-lg);
-            overflow: hidden;
+        .back-link svg { transition: transform 0.15s; }
+        .back-link:hover svg { transform: translateX(-2px); }
+
+        /* ============================================================
+           PAGE HEADER
+           ============================================================ */
+        .page-header {
+            margin-bottom: 2.5rem;
+            max-width: 640px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4375rem;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 0.875rem;
+            padding: 0.25rem 0.625rem 0.25rem 0.5rem;
+            border-radius: 999px;
+            background: var(--n-0);
             border: 1px solid var(--border);
         }
 
-        .policy-hero {
-            background: linear-gradient(135deg, var(--primary) 0%, #1A2A38 100%);
-            padding: 3rem 2rem;
-            text-align: center;
-            color: var(--surface);
+        .eyebrow::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            flex-shrink: 0;
         }
 
-        .policy-hero h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            margin-bottom: 0.5rem;
+        .page-title {
+            font-size: var(--text-3xl);
+            margin-bottom: 0.625rem;
         }
 
-        .policy-hero p {
-            opacity: 0.9;
+        .page-lede {
             font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.55;
+            max-width: 560px;
         }
 
-        .policy-content {
-            padding: 3rem 2rem;
+        /* ============================================================
+           DOCUMENT CARD
+           ============================================================ */
+        .document {
+            background: var(--n-0);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--surface-shadow);
+            overflow: hidden;
         }
 
-        /* Content Styles */
-        .terms-content {
-            color: var(--text-primary);
+        .document-inner {
+            padding: 2rem 2.25rem;
         }
 
-        .terms-content h1,
-        .terms-content h2,
-        .terms-content h3 {
+        @media (max-width: 640px) {
+            .document-inner { padding: 1.5rem 1.25rem; }
+        }
+
+        /* ============================================================
+           LEGAL PROSE — applied to rich text and rendered sections
+           ============================================================ */
+        .legal h1,
+        .legal h2,
+        .legal h3,
+        .legal h4 {
             font-family: 'Cormorant Garamond', serif;
-            color: var(--primary);
-            margin: 2rem 0 1rem;
+            color: var(--text);
+            letter-spacing: -0.015em;
+            line-height: 1.25;
+            margin: 2rem 0 0.75rem;
         }
 
-        .terms-content h2 {
-            font-size: 1.8rem;
-            border-bottom: 2px solid var(--secondary);
-            padding-bottom: 0.5rem;
-            display: inline-block;
+        .legal h1:first-child,
+        .legal h2:first-child,
+        .legal h3:first-child,
+        .legal h4:first-child { margin-top: 0; }
+
+        .legal h1 { font-size: var(--text-3xl); }
+        .legal h2 { font-size: var(--text-2xl); }
+        .legal h3 { font-size: var(--text-xl); }
+        .legal h4 { font-size: var(--text-lg); }
+
+        .legal p {
+            font-size: 0.9375rem;
+            line-height: 1.75;
+            color: var(--n-700);
+            margin: 0 0 1rem;
         }
 
-        .terms-content h3 {
-            font-size: 1.4rem;
+        .legal p:last-child { margin-bottom: 0; }
+
+        .legal strong { color: var(--text); font-weight: 600; }
+        .legal em { font-style: italic; }
+
+        .legal ul,
+        .legal ol {
+            margin: 0.75rem 0 1.25rem 1.25rem;
+            color: var(--n-700);
+            font-size: 0.9375rem;
         }
 
-        .terms-content p {
-            margin-bottom: 1rem;
-            color: var(--text-secondary);
-            line-height: 1.8;
+        .legal li {
+            padding: 0.25rem 0;
+            line-height: 1.7;
         }
 
-        .terms-content ul,
-        .terms-content ol {
-            margin: 1rem 0 1rem 2rem;
-            color: var(--text-secondary);
+        .legal li::marker {
+            color: var(--accent);
         }
 
-        .terms-content li {
-            margin-bottom: 0.5rem;
-        }
-
-        .terms-content a {
-            color: var(--secondary);
-            text-decoration: none;
-        }
-
-        .terms-content a:hover {
+        .legal a {
+            color: var(--accent);
             text-decoration: underline;
+            text-decoration-color: color-mix(in srgb, var(--accent) 40%, transparent);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.15s;
         }
 
-        .terms-section {
-            margin-bottom: 2.5rem;
+        .legal a:hover {
+            text-decoration-color: var(--accent);
         }
 
-        .terms-section:last-child {
-            margin-bottom: 0;
-        }
-
-        /* Last Updated */
-        .last-updated {
-            margin-top: 3rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border);
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+        .legal blockquote {
+            margin: 1.25rem 0;
+            padding: 0.75rem 1rem;
+            border-left: 2px solid var(--border);
+            color: var(--text-muted);
             font-style: italic;
         }
 
-        .last-updated i {
-            color: var(--secondary);
-            margin-right: 0.3rem;
+        .legal code {
+            font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+            font-size: 0.8125rem;
+            background: var(--n-100);
+            padding: 1px 5px;
+            border-radius: 3px;
+            color: var(--n-700);
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .policy-content {
-                padding: 2rem 1.5rem;
+        .legal hr {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 1.75rem 0;
+        }
+
+        /* Section separators between rendered sections */
+        .legal-section + .legal-section {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        /* ============================================================
+           EMPTY STATE
+           ============================================================ */
+        .document-empty {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        .document-empty-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f4f4f5, #e9e9eb);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--n-500);
+            margin-bottom: 1rem;
+        }
+
+        .document-empty-title {
+            font-size: var(--text-xl);
+            margin: 0 0 0.375rem;
+        }
+
+        .document-empty-desc {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            max-width: 360px;
+            margin: 0 auto;
+            line-height: 1.55;
+        }
+
+        /* ============================================================
+           FOOTER (last updated)
+           ============================================================ */
+        .document-footer {
+            padding: 0.875rem 2.25rem;
+            border-top: 1px solid var(--border);
+            background: var(--n-50);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 640px) {
+            .document-footer { padding: 0.75rem 1.25rem; }
+        }
+
+        .document-footer svg {
+            color: var(--text-subtle);
+            flex-shrink: 0;
+            margin-right: 0.375rem;
+            vertical-align: -2px;
+        }
+
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
+        @media (max-width: 640px) {
+            .top-bar { margin-bottom: 1.75rem; }
+            .page-header { margin-bottom: 2rem; }
+        }
+
+        /* ============================================================
+           PRINT
+           ============================================================ */
+        @media print {
+            body { background: #fff; }
+            .top-bar, .back-link { display: none; }
+            .policy-shell { padding: 0; max-width: none; }
+            .document {
+                box-shadow: none;
+                border-color: #ddd;
+            }
+            .document-footer { background: #fff; }
+            .page-title, .legal h1, .legal h2, .legal h3 { color: #000; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
             }
         }
     </style>
 </head>
 <body>
-    <div class="policy-wrapper">
-        <!-- Header -->
-        <div class="policy-header">
-            <h1>{{ page.brand_name }} <span>•</span></h1>
-            <div class="store-name">
-                <i class="fas fa-gavel"></i>
-                Terms & Conditions
-            </div>
-            <a href="../../?page=home" class="back-link">
-                <i class="fas fa-arrow-left"></i>
-                Back to Store
-            </a>
-        </div>
 
-        <!-- Main Card -->
-        <div class="policy-card">
-            <div class="policy-hero">
-                <h2>Terms & Conditions</h2>
-                <p>Please read these terms carefully before using our store</p>
-            </div>
+<div class="policy-shell">
 
-            <div class="policy-content">
-                {% if terms %}
-                    {% if terms.content %}
-                        <div class="terms-content">
-                            {{ terms.content|safe }}
-                        </div>
-                    {% else %}
-                        <div class="terms-content">
-                            {% if terms.introduction %}
-                            <div class="terms-section">
-                                <h2>Introduction</h2>
-                                {{ terms.introduction|linebreaks }}
-                            </div>
-                            {% endif %}
+    <!-- ============================================================
+         TOP BAR
+         ============================================================ -->
+    <div class="top-bar">
+        <a href="../../?page=home" class="brand">
+            <span class="brand-mark">{{ page.brand_name|first|upper }}</span>
+            <span>{{ page.brand_name }}</span>
+        </a>
+        <a href="../../?page=home" class="back-link">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            <span>Back to store</span>
+        </a>
+    </div>
 
-                            {% if terms.agreement_to_terms %}
-                            <div class="terms-section">
-                                <h2>Agreement to Terms</h2>
-                                {{ terms.agreement_to_terms|linebreaks }}
-                            </div>
-                            {% endif %}
+    <!-- ============================================================
+         PAGE HEADER
+         ============================================================ -->
+    <header class="page-header">
+        <span class="eyebrow">Legal</span>
+        <h1 class="page-title">Terms &amp; Conditions</h1>
+        <p class="page-lede">Please read these terms carefully before using our store. By continuing, you agree to be bound by them.</p>
+    </header>
 
-                            {% if terms.intellectual_property %}
-                            <div class="terms-section">
-                                <h2>Intellectual Property</h2>
-                                {{ terms.intellectual_property|linebreaks }}
-                            </div>
-                            {% endif %}
+    <!-- ============================================================
+         DOCUMENT
+         ============================================================ -->
+    <article class="document">
+        <div class="document-inner">
 
-                            {% if terms.user_responsibilities %}
-                            <div class="terms-section">
-                                <h2>User Responsibilities</h2>
-                                {{ terms.user_responsibilities|linebreaks }}
-                            </div>
-                            {% endif %}
+            {% if terms %}
 
-                            {% if terms.prohibited_activities %}
-                            <div class="terms-section">
-                                <h2>Prohibited Activities</h2>
-                                {{ terms.prohibited_activities|linebreaks }}
-                            </div>
-                            {% endif %}
-
-                            {% if terms.termination %}
-                            <div class="terms-section">
-                                <h2>Termination</h2>
-                                {{ terms.termination|linebreaks }}
-                            </div>
-                            {% endif %}
-
-                            {% if terms.governing_law %}
-                            <div class="terms-section">
-                                <h2>Governing Law</h2>
-                                {{ terms.governing_law|linebreaks }}
-                            </div>
-                            {% endif %}
-
-                            {% if terms.disputes %}
-                            <div class="terms-section">
-                                <h2>Dispute Resolution</h2>
-                                {{ terms.disputes|linebreaks }}
-                            </div>
-                            {% endif %}
-
-                            {% if terms.limitations %}
-                            <div class="terms-section">
-                                <h2>Limitations of Liability</h2>
-                                {{ terms.limitations|linebreaks }}
-                            </div>
-                            {% endif %}
-
-                            {% if terms.contact_info %}
-                            <div class="terms-section">
-                                <h2>Contact Information</h2>
-                                {{ terms.contact_info|linebreaks }}
-                            </div>
-                            {% endif %}
-                        </div>
-                    {% endif %}
-
-                    <div class="last-updated">
-                        <i class="fas fa-clock"></i>
-                        Last updated: {{ terms.last_updated|date:"F j, Y" }}
+                {% if terms.content %}
+                    {# Rich HTML content from the merchant #}
+                    <div class="legal">
+                        {{ terms.content|safe }}
                     </div>
-
                 {% else %}
-                    <div class="terms-content">
-                        <p style="text-align: center; color: var(--text-secondary);">
-                            Terms and conditions have not been published yet.
-                        </p>
+                    {# Structured sections rendered from individual fields #}
+                    <div class="legal">
+
+                        {% if terms.introduction %}
+                        <section class="legal-section">
+                            <h2>Introduction</h2>
+                            {{ terms.introduction|linebreaks }}
+                        </section>
+                        {% endif %}
+
+                        {% if terms.agreement_to_terms %}
+                        <section class="legal-section">
+                            <h2>Agreement to terms</h2>
+                            {{ terms.agreement_to_terms|linebreaks }}
+                        </section>
+                        {% endif %}
+
+                        {% if terms.intellectual_property %}
+                        <section class="legal-section">
+                            <h2>Intellectual property</h2>
+                            {{ terms.intellectual_property|linebreaks }}
+                        </section>
+                        {% endif %}
+
+                        {% if terms.user_responsibilities %}
+                        <section class="legal-section">
+                            <h2>User responsibilities</h2>
+                            {{ terms.user_responsibilities|linebreaks }}
+                        </section>
+                        {% endif %}
+
+                        {% if terms.prohibited_activities %}
+                        <section class="legal-section">
+                            <h2>Prohibited activities</h2>
+                            {{ terms.prohibited_activities|linebreaks }}
+                        </section>
+                        {% endif %}
+
+                        {% if terms.termination %}
+                        <section class="legal-section">
+                            <h2>Termination</h2>
+                            {{ terms.termination|linebreaks }}
+                        </section>
+                        {% endif %}
+
+                        {% if terms.governing_law %}
+                        <section class="legal-section">
+                            <h2>Governing law</h2>
+                            {{ terms.governing_law|linebreaks }}
+                        </section>
+                        {% endif %}
+
+                        {% if terms.disputes %}
+                        <section class="legal-section">
+                            <h2>Dispute resolution</h2>
+                            {{ terms.disputes|linebreaks }}
+                        </section>
+                        {% endif %}
+
+                        {% if terms.limitations %}
+                        <section class="legal-section">
+                            <h2>Limitations of liability</h2>
+                            {{ terms.limitations|linebreaks }}
+                        </section>
+                        {% endif %}
+
+                        {% if terms.contact_info %}
+                        <section class="legal-section">
+                            <h2>Contact information</h2>
+                            {{ terms.contact_info|linebreaks }}
+                        </section>
+                        {% endif %}
+
                     </div>
                 {% endif %}
-            </div>
+
+            {% else %}
+
+                <div class="document-empty">
+                    <div class="document-empty-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="8" y1="13" x2="16" y2="13"/>
+                            <line x1="8" y1="17" x2="13" y2="17"/>
+                        </svg>
+                    </div>
+                    <h2 class="document-empty-title">Terms not yet published</h2>
+                    <p class="document-empty-desc">The store owner hasn't published terms and conditions for this store yet.</p>
+                </div>
+
+            {% endif %}
+
         </div>
-    </div>
+
+        {% if terms and terms.last_updated %}
+        <footer class="document-footer">
+            <span>
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 6v6l4 2"/>
+                </svg>
+                Last updated · {{ terms.last_updated|date:"F j, Y" }}
+            </span>
+            <span style="color: var(--text-subtle);">{{ page.brand_name }}</span>
+        </footer>
+        {% endif %}
+    </article>
+
+</div>
+
 </body>
 </html>

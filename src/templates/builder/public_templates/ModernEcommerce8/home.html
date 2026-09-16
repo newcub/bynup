@@ -1587,7 +1587,66 @@
         <div class="container">
             <div class="story-image-wrapper" id="section-816">
                 {% if image_customizations.20 %}
-                    <img src="{{ image_customizations.20.image_url }}" alt="{{ image_customizations.20.alt_text|default:'Interior design vision' }}">
+                    <img {% with video=video_customizations.20 %}
+    {% if video %}
+        {# ===== VIDEO EXISTS - RENDER VIDEO ===== #}
+        <div class="editable-video" 
+             data-image="20" 
+             data-is-video="true"
+             style="position: relative; overflow: hidden; display: inline-block; max-width: 100%; border-radius: 8px; cursor: pointer;">
+            
+            <video 
+                src="{{ video.video_url }}" 
+                poster="{{ video.poster_url|default:'' }}"
+                {% if video.autoplay %}autoplay{% endif %}
+                {% if video.loop %}loop{% endif %}
+                {% if video.muted %}muted{% endif %}
+                {% if video.controls %}controls{% endif %}
+                style="width: 100%; height: 100%; display: block; object-fit: cover;"
+            >
+                Your browser does not support the video tag.
+            </video>
+            
+            {# ===== PLAY BUTTON OVERLAY ===== #}
+            {% if video.show_play_button %}
+            <div class="video-overlay" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 24px;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            ">
+                <i class="fas fa-play"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+        {# ===== NO VIDEO - RENDER IMAGE ===== #}
+        {% if image_customizations.20 %}
+            <img src="{{ image_customizations.20.image_url }}" 
+                 alt="{{ image_customizations.20.alt_text|default:'{{ image_customizations.20.alt_text|default:' }}" 
+                 class="editable-image" 
+                 data-image="20">
+        {% else %}
+            <img src="https://images.pexels.com/photos/6311675/pexels-photo-6311675.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                 alt="{{ image_customizations.20.alt_text|default:" 
+                 class="editable-image" 
+                 data-image="20">
+        {% endif %}
+    {% endif %}
+{% endwith %} alt="{{ image_customizations.20.alt_text|default:'Interior design vision' }}">
                 {% else %}
                     <img src="https://images.pexels.com/photos/1571459/pexels-photo-1571459.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Interior design vision">
                 {% endif %}
@@ -1623,7 +1682,66 @@
     <!-- ======================================== -->
     <section class="story-full" id="section-827">
         {% if image_customizations.21 %}
-            <img src="{{ image_customizations.21.image_url }}" alt="{{ image_customizations.21.alt_text|default:'Luxury home interior' }}" class="full-image" data-image="21">
+            {% with video=video_customizations.21 %}
+    {% if video %}
+        {# ===== VIDEO EXISTS - RENDER VIDEO ===== #}
+        <div class="editable-video" 
+             data-image="21" 
+             data-is-video="true"
+             style="position: relative; overflow: hidden; display: inline-block; max-width: 100%; border-radius: 8px; cursor: pointer;">
+            
+            <video 
+                src="{{ video.video_url }}" 
+                poster="{{ video.poster_url|default:'' }}"
+                {% if video.autoplay %}autoplay{% endif %}
+                {% if video.loop %}loop{% endif %}
+                {% if video.muted %}muted{% endif %}
+                {% if video.controls %}controls{% endif %}
+                style="width: 100%; height: 100%; display: block; object-fit: cover;"
+            >
+                Your browser does not support the video tag.
+            </video>
+            
+            {# ===== PLAY BUTTON OVERLAY ===== #}
+            {% if video.show_play_button %}
+            <div class="video-overlay" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 24px;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            ">
+                <i class="fas fa-play"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+        {# ===== NO VIDEO - RENDER IMAGE ===== #}
+        {% if image_customizations.21 %}
+            <img src="{{ image_customizations.21.image_url }}" 
+                 alt="{{ image_customizations.21.alt_text|default:'{{ image_customizations.21.alt_text|default:' }}" 
+                 class="editable-image" 
+                 data-image="21">
+        {% else %}
+            <img src="https://images.pexels.com/photos/6311675/pexels-photo-6311675.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                 alt="{{ image_customizations.21.alt_text|default:" 
+                 class="editable-image" 
+                 data-image="21">
+        {% endif %}
+    {% endif %}
+{% endwith %}
         {% else %}
             <img src="https://images.pexels.com/photos/1571458/pexels-photo-1571458.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Luxury home interior" class="full-image" data-image="21">
         {% endif %}
@@ -1652,7 +1770,66 @@
             <div class="comparison-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0; width: 100%; min-height: 450px;">
                 <div class="comparison-item" id="section-833">
                     {% if image_customizations.22 %}
-                        <img src="{{ image_customizations.22.image_url }}" alt="{{ image_customizations.22.alt_text|default:'Before transformation' }}">
+                        <img {% with video=video_customizations.22 %}
+    {% if video %}
+        {# ===== VIDEO EXISTS - RENDER VIDEO ===== #}
+        <div class="editable-video" 
+             data-image="22" 
+             data-is-video="true"
+             style="position: relative; overflow: hidden; display: inline-block; max-width: 100%; border-radius: 8px; cursor: pointer;">
+            
+            <video 
+                src="{{ video.video_url }}" 
+                poster="{{ video.poster_url|default:'' }}"
+                {% if video.autoplay %}autoplay{% endif %}
+                {% if video.loop %}loop{% endif %}
+                {% if video.muted %}muted{% endif %}
+                {% if video.controls %}controls{% endif %}
+                style="width: 100%; height: 100%; display: block; object-fit: cover;"
+            >
+                Your browser does not support the video tag.
+            </video>
+            
+            {# ===== PLAY BUTTON OVERLAY ===== #}
+            {% if video.show_play_button %}
+            <div class="video-overlay" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 24px;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            ">
+                <i class="fas fa-play"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+        {# ===== NO VIDEO - RENDER IMAGE ===== #}
+        {% if image_customizations.22 %}
+            <img src="{{ image_customizations.22.image_url }}" 
+                 alt="{{ image_customizations.22.alt_text|default:'{{ image_customizations.20.alt_text|default:' }}" 
+                 class="editable-image" 
+                 data-image="22">
+        {% else %}
+            <img src="https://images.pexels.com/photos/6311675/pexels-photo-6311675.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                 alt="{{ image_customizations.20.alt_text|default:" 
+                 class="editable-image" 
+                 data-image="22">
+        {% endif %}
+    {% endif %}
+{% endwith %} alt="{{ image_customizations.22.alt_text|default:'Before transformation' }}">
                     {% else %}
                         <img src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Before transformation">
                     {% endif %}
@@ -1660,7 +1837,66 @@
                 </div>
                 <div class="comparison-item" id="section-835">
                     {% if image_customizations.23 %}
-                        <img src="{{ image_customizations.23.image_url }}" alt="{{ image_customizations.23.alt_text|default:'After transformation' }}">
+                        <img {% with video=video_customizations.23 %}
+    {% if video %}
+        {# ===== VIDEO EXISTS - RENDER VIDEO ===== #}
+        <div class="editable-video" 
+             data-image="23" 
+             data-is-video="true"
+             style="position: relative; overflow: hidden; display: inline-block; max-width: 100%; border-radius: 8px; cursor: pointer;">
+            
+            <video 
+                src="{{ video.video_url }}" 
+                poster="{{ video.poster_url|default:'' }}"
+                {% if video.autoplay %}autoplay{% endif %}
+                {% if video.loop %}loop{% endif %}
+                {% if video.muted %}muted{% endif %}
+                {% if video.controls %}controls{% endif %}
+                style="width: 100%; height: 100%; display: block; object-fit: cover;"
+            >
+                Your browser does not support the video tag.
+            </video>
+            
+            {# ===== PLAY BUTTON OVERLAY ===== #}
+            {% if video.show_play_button %}
+            <div class="video-overlay" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 24px;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            ">
+                <i class="fas fa-play"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+        {# ===== NO VIDEO - RENDER IMAGE ===== #}
+        {% if image_customizations.23 %}
+            <img src="{{ image_customizations.23.image_url }}" 
+                 alt="{{ image_customizations.23.alt_text|default:'{{ image_customizations.20.alt_text|default:' }}" 
+                 class="editable-image" 
+                 data-image="23">
+        {% else %}
+            <img src="https://images.pexels.com/photos/6311675/pexels-photo-6311675.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                 alt="{{ image_customizations.20.alt_text|default:" 
+                 class="editable-image" 
+                 data-image="23">
+        {% endif %}
+    {% endif %}
+{% endwith %} alt="{{ image_customizations.23.alt_text|default:'After transformation' }}">
                     {% else %}
                         <img src="https://images.pexels.com/photos/1571461/pexels-photo-1571461.jpeg?auto=compress&cs=tinysrgb&w=800" alt="After transformation">
                     {% endif %}

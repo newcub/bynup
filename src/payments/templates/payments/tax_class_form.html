@@ -5,206 +5,649 @@
 
 {% block extra_css %}
 <style>
-    .class-form-container {
-        max-width: 700px;
-        margin: 0 auto;
+:root {
+    --n-0: #ffffff;
+    --n-50: #fafafa;
+    --n-100: #f4f4f5;
+    --n-200: #e4e4e7;
+    --n-300: #d4d4d8;
+    --n-400: #a1a1aa;
+    --n-500: #71717a;
+    --n-600: #52525b;
+    --n-700: #3f3f46;
+    --n-800: #27272a;
+    --n-900: #18181b;
+
+    --accent: var(--primary-color, #111827);
+    --accent-hover: #000000;
+
+    --success: #15803d;
+    --warning: #a16207;
+    --danger: #b91c1c;
+
+    --border: var(--n-200);
+    --border-strong: var(--n-300);
+    --text: var(--n-900);
+    --text-muted: var(--n-500);
+    --text-subtle: var(--n-400);
+
+    --radius-sm: 4px;
+    --radius: 6px;
+    --radius-lg: 10px;
+
+    --page-bg: #f6f7f9;
+    --surface-shadow: 0 1px 2px rgba(24, 24, 27, 0.04), 0 1px 1px rgba(24, 24, 27, 0.03);
+    --surface-shadow-hover: 0 4px 12px rgba(24, 24, 27, 0.06), 0 1px 2px rgba(24, 24, 27, 0.04);
+}
+
+/* ===== Shell — cooperates with sidebar.html ===== */
+.management-layout {
+    background: var(--page-bg);
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 13px;
+    color: var(--text);
+}
+
+.management-content { padding: 0; }
+
+.tax-form-wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2rem 2rem 4rem;
+}
+
+/* ===== Context breadcrumb ===== */
+.catalog-context {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.context-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.15s;
+    font-weight: 500;
+}
+
+.context-back:hover { color: var(--text); }
+.context-back svg { transition: transform 0.15s; }
+.context-back:hover svg { transform: translateX(-2px); }
+.context-sep { color: var(--n-300); }
+.context-current { color: var(--text); font-weight: 500; }
+
+/* ===== Title row ===== */
+.catalog-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.catalog-title-block { min-width: 0; }
+
+.catalog-title {
+    font-size: 1.625rem;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    color: var(--text);
+    margin: 0 0 0.375rem 0;
+    line-height: 1.15;
+}
+
+.catalog-sub {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.catalog-actions {
+    display: flex;
+    gap: 0.375rem;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* ===== Buttons ===== */
+.btn {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    border-radius: var(--radius);
+    padding: 0.5rem 0.875rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    line-height: 1.25;
+    transition: background 0.15s, border-color 0.15s, color 0.15s, box-shadow 0.15s;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: inherit;
+}
+
+.btn-ghost {
+    background: var(--n-0);
+    border-color: var(--border);
+    color: var(--n-700);
+    box-shadow: 0 1px 2px rgba(24, 24, 27, 0.04);
+}
+
+.btn-ghost:hover {
+    background: var(--n-0);
+    border-color: var(--border-strong);
+    color: var(--text);
+    box-shadow: var(--surface-shadow);
+}
+
+.btn-accent {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+    box-shadow: 0 1px 2px rgba(24, 24, 27, 0.16);
+}
+
+.btn-accent:hover {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+    color: white;
+    box-shadow: 0 4px 12px rgba(24, 24, 27, 0.18);
+}
+
+/* ===== Panels ===== */
+.panel {
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: 1rem;
+    box-shadow: var(--surface-shadow);
+}
+
+.panel-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.875rem 1.125rem;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(to bottom, #ffffff, #fcfcfd);
+}
+
+.panel-title {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0;
+    letter-spacing: -0.005em;
+}
+
+.panel-sub {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    margin: 0.125rem 0 0 0;
+}
+
+.panel-body {
+    padding: 1.125rem;
+}
+
+/* ===== Fields ===== */
+.field {
+    margin-bottom: 1rem;
+}
+
+.field:last-child {
+    margin-bottom: 0;
+}
+
+.field-label {
+    display: block;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--n-700);
+    margin-bottom: 0.375rem;
+}
+
+.field-label .req {
+    color: var(--danger);
+    font-weight: 400;
+}
+
+.field-help {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    margin-top: 0.375rem;
+    line-height: 1.5;
+}
+
+.form-control,
+.form-select {
+    width: 100%;
+    font-size: 0.8125rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.5rem 0.75rem;
+    background: var(--n-0);
+    color: var(--text);
+    font-family: inherit;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    line-height: 1.4;
+}
+
+.form-control:hover,
+.form-select:hover {
+    border-color: var(--border-strong);
+}
+
+.form-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2371717a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.625rem center;
+    padding-right: 2rem;
+    cursor: pointer;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(17, 24, 39, 0.06);
+    outline: none;
+}
+
+textarea.form-control {
+    resize: vertical;
+    line-height: 1.5;
+}
+
+.form-control.mono {
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 0.75rem;
+}
+
+/* ===== Check-card ===== */
+.check-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.875rem 1rem;
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background 0.1s, border-color 0.1s, box-shadow 0.15s;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 1px 2px rgba(24, 24, 27, 0.02);
+}
+
+.check-card:last-child {
+    margin-bottom: 0;
+}
+
+.check-card:hover {
+    background: #fdfdfe;
+    border-color: var(--border-strong);
+    box-shadow: var(--surface-shadow);
+}
+
+.check-card:has(input:checked) {
+    border-color: var(--accent);
+    background: #fcfcfd;
+}
+
+.check-card input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    accent-color: var(--n-900);
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.check-card-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.check-card-title {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.3;
+    margin: 0 0 0.125rem 0;
+}
+
+.check-card-desc {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* ===== Feature summary ===== */
+.features-summary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+    padding: 0.75rem 1.125rem;
+    background: var(--n-50);
+    border-top: 1px solid var(--border);
+}
+
+.feature-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.625rem;
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    color: var(--n-700);
+    line-height: 1.4;
+    box-shadow: 0 1px 2px rgba(24, 24, 27, 0.03);
+}
+
+.feature-chip svg {
+    color: var(--text-muted);
+    flex-shrink: 0;
+}
+
+/* ===== Sticky footer ===== */
+.form-footer {
+    position: sticky;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1.125rem;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: saturate(180%) blur(12px);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    margin-top: 1rem;
+    flex-wrap: wrap;
+    z-index: 10;
+    box-shadow: 0 -1px 0 rgba(24, 24, 27, 0.04), 0 -8px 24px rgba(24, 24, 27, 0.04);
+}
+
+.form-footer-msg {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+}
+
+.form-footer-actions {
+    display: flex;
+    gap: 0.375rem;
+    align-items: center;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+    .tax-form-wrap { padding: 1.5rem 1rem 3rem; }
+
+    .catalog-title-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
     }
 
-    .class-form-header {
-        background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
-        color: white;
-        padding: 2rem;
-        border-radius: 20px;
-        margin-bottom: 2rem;
-        box-shadow: 0 10px 30px rgba(52, 152, 219, 0.2);
-    }
+    .catalog-actions { justify-content: flex-start; flex-wrap: wrap; }
 
-    .class-form-card {
-        background: white;
-        border-radius: 20px;
-        padding: 2rem;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-        border: 1px solid #eef2f6;
+    .form-footer {
+        flex-direction: column;
+        align-items: stretch;
     }
+    .form-footer-actions {
+        justify-content: stretch;
+    }
+    .form-footer-actions .btn {
+        flex: 1;
+        justify-content: center;
+    }
+}
 
-    .form-label {
-        font-weight: 500;
-        color: #2c3e50;
-        margin-bottom: 0.5rem;
-    }
-
-    .form-control, .form-select {
-        border-radius: 12px;
-        border: 2px solid #eef2f6;
-        padding: 0.7rem 1rem;
-    }
-
-    .form-control:focus, .form-select:focus {
-        border-color: #3498db;
-        box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
-    }
-
-    .form-check-input {
-        width: 1.2rem;
-        height: 1.2rem;
-        margin-right: 0.5rem;
-        border: 2px solid #cbd5e1;
-    }
-
-    .form-check-input:checked {
-        background-color: #3498db;
-        border-color: #3498db;
-    }
-
-    .btn-save {
-        background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
-        color: white;
-        padding: 0.8rem 2rem;
-        border-radius: 12px;
-        border: none;
-        font-weight: 500;
-    }
-
-    .btn-save:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
-    }
-
-    .feature-badge {
-        background: #e8f0fe;
-        color: #3498db;
-        padding: 0.3rem 0.8rem;
-        border-radius: 30px;
-        font-size: 0.8rem;
-        display: inline-block;
-        margin-right: 0.5rem;
-        margin-bottom: 0.5rem;
-    }
+@media (max-width: 640px) {
+    .catalog-title { font-size: 1.375rem; }
+}
 </style>
 {% endblock %}
 
 {% block content %}
-<div class="container py-4">
-    <div class="class-form-container">
-        <!-- Header -->
-        <div class="class-form-header">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <h1 class="h3 mb-2">{{ form_title }}</h1>
-                    <p class="mb-0 opacity-75">{{ page.brand_name }}</p>
-                </div>
-                <a href="{% url 'payments:tax_classes_list' page.subdomain %}" class="btn btn-light">
-                    <i class="fas fa-arrow-left me-2"></i>Back
-                </a>
-            </div>
-        </div>
 
-        <!-- Form -->
-        <div class="class-form-card">
+<div class="management-layout">
+    {% include 'builder/includes/sidebar.html' with active_menu='taxes' %}
+
+    <div class="management-content">
+        <div class="tax-form-wrap">
+
+            <!-- Context -->
+            <div class="catalog-context">
+                <a href="{% url 'dashboard' %}" class="context-back">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    <span>Dashboard</span>
+                </a>
+                <span class="context-sep">/</span>
+                <a href="{% url 'payments:tax_classes_list' page.subdomain %}" class="context-back">
+                    <span>Tax classes</span>
+                </a>
+                <span class="context-sep">/</span>
+                <span class="context-current">{% if tax_class %}Edit{% else %}New{% endif %}</span>
+            </div>
+
+            <!-- Title -->
+            <div class="catalog-title-row">
+                <div class="catalog-title-block">
+                    <h1 class="catalog-title">{{ form_title }}</h1>
+                    <p class="catalog-sub">
+                        {% if tax_class %}
+                            Update the details for this tax class
+                        {% else %}
+                            Define a new tax class for your products
+                        {% endif %}
+                    </p>
+                </div>
+                <div class="catalog-actions">
+                    <a href="{% url 'payments:tax_classes_list' page.subdomain %}" class="btn btn-ghost">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        <span>Back</span>
+                    </a>
+                </div>
+            </div>
+
             <form method="post">
                 {% csrf_token %}
 
-                <div class="mb-4">
-                    <label class="form-label">Class Name *</label>
-                    <input type="text" class="form-control" name="name" 
-                           value="{{ tax_class.name|default:'' }}" required
-                           placeholder="e.g., Standard, Reduced, Food">
-                    <div class="form-text">Give your tax class a descriptive name</div>
-                </div>
-
-                <div class="mb-4">
-                    <label class="form-label">Slug</label>
-                    <input type="text" class="form-control" name="slug" 
-                           value="{{ tax_class.slug|default:'' }}"
-                           placeholder="e.g., standard-tax">
-                    <div class="form-text">URL-friendly version of the name (auto-generated if empty)</div>
-                </div>
-
-                <div class="mb-4">
-                    <label class="form-label">Description</label>
-                    <textarea class="form-control" name="description" rows="3"
-                              placeholder="Internal description for this tax class">{{ tax_class.description|default:'' }}</textarea>
-                </div>
-
-                <div class="mb-4">
-                    <label class="form-label">Calculation Type</label>
-                    <select class="form-select" name="calculation_type">
-                        <option value="percentage" {% if tax_class.calculation_type == 'percentage' %}selected{% endif %}>
-                            Percentage (%)
-                        </option>
-                        <option value="fixed" {% if tax_class.calculation_type == 'fixed' %}selected{% endif %}>
-                            Fixed Amount
-                        </option>
-                    </select>
-                </div>
-
-                <div class="mb-4">
-                    <div class="form-check mb-3">
-                        <input class="form-check-input" type="checkbox" name="is_default" 
-                               id="isDefault" {% if tax_class.is_default %}checked{% endif %}>
-                        <label class="form-check-label fw-medium" for="isDefault">
-                            Set as default tax class
-                        </label>
-                        <div class="form-text">This tax class will be automatically applied to new products</div>
+                <!-- Basic info -->
+                <div class="panel">
+                    <div class="panel-head">
+                        <div>
+                            <h2 class="panel-title">Basic information</h2>
+                            <p class="panel-sub">Name and description</p>
+                        </div>
                     </div>
+                    <div class="panel-body">
 
-                    <div class="form-check mb-3">
-                        <input class="form-check-input" type="checkbox" name="is_shipping_taxable" 
-                               id="isShippingTaxable" {% if tax_class.is_shipping_taxable %}checked{% endif %}>
-                        <label class="form-check-label fw-medium" for="isShippingTaxable">
-                            Apply tax to shipping
-                        </label>
-                        <div class="form-text">Charge tax on shipping costs for this tax class</div>
-                    </div>
+                        <div class="field">
+                            <label class="field-label" for="name">Class name <span class="req">*</span></label>
+                            <input type="text"
+                                   class="form-control"
+                                   id="name"
+                                   name="name"
+                                   value="{{ tax_class.name|default:'' }}"
+                                   required
+                                   placeholder="e.g., Standard, Reduced, Food">
+                            <div class="field-help">Give your tax class a descriptive name.</div>
+                        </div>
 
-                    <div class="form-check mb-3">
-                        <input class="form-check-input" type="checkbox" name="is_compound" 
-                               id="isCompound" {% if tax_class.is_compound %}checked{% endif %}>
-                        <label class="form-check-label fw-medium" for="isCompound">
-                            Compound tax
-                        </label>
-                        <div class="form-text">Apply this tax on top of other taxes</div>
+                        <div class="field">
+                            <label class="field-label" for="slug">Slug</label>
+                            <input type="text"
+                                   class="form-control mono"
+                                   id="slug"
+                                   name="slug"
+                                   value="{{ tax_class.slug|default:'' }}"
+                                   placeholder="e.g., standard-tax">
+                            <div class="field-help">URL-friendly version of the name. Auto-generated if left empty.</div>
+                        </div>
+
+                        <div class="field">
+                            <label class="field-label" for="description">Description</label>
+                            <textarea class="form-control"
+                                      id="description"
+                                      name="description"
+                                      rows="3"
+                                      placeholder="Internal description for this tax class">{{ tax_class.description|default:'' }}</textarea>
+                        </div>
+
+                        <div class="field">
+                            <label class="field-label" for="calculation_type">Calculation type</label>
+                            <select class="form-select" id="calculation_type" name="calculation_type">
+                                <option value="percentage" {% if tax_class.calculation_type == 'percentage' %}selected{% endif %}>
+                                    Percentage (%)
+                                </option>
+                                <option value="fixed" {% if tax_class.calculation_type == 'fixed' %}selected{% endif %}>
+                                    Fixed amount
+                                </option>
+                            </select>
+                        </div>
+
                     </div>
                 </div>
 
-                <!-- Preview Features -->
-                <div class="mb-4 p-3 bg-light rounded-3">
-                    <strong class="d-block mb-2">Features Summary:</strong>
-                    <div>
-                        <span class="feature-badge">
-                            <i class="fas fa-calculator me-1"></i>
+                <!-- Behavior -->
+                <div class="panel">
+                    <div class="panel-head">
+                        <div>
+                            <h2 class="panel-title">Behavior</h2>
+                            <p class="panel-sub">How this class applies to orders</p>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+
+                        <label class="check-card" for="isDefault">
+                            <input type="checkbox"
+                                   name="is_default"
+                                   id="isDefault"
+                                   {% if tax_class.is_default %}checked{% endif %}>
+                            <div class="check-card-body">
+                                <p class="check-card-title">Set as default tax class</p>
+                                <p class="check-card-desc">This class will be automatically applied to new products.</p>
+                            </div>
+                        </label>
+
+                        <label class="check-card" for="isShippingTaxable">
+                            <input type="checkbox"
+                                   name="is_shipping_taxable"
+                                   id="isShippingTaxable"
+                                   {% if tax_class.is_shipping_taxable %}checked{% endif %}>
+                            <div class="check-card-body">
+                                <p class="check-card-title">Apply tax to shipping</p>
+                                <p class="check-card-desc">Charge tax on shipping costs for this class.</p>
+                            </div>
+                        </label>
+
+                        <label class="check-card" for="isCompound">
+                            <input type="checkbox"
+                                   name="is_compound"
+                                   id="isCompound"
+                                   {% if tax_class.is_compound %}checked{% endif %}>
+                            <div class="check-card-body">
+                                <p class="check-card-title">Compound tax</p>
+                                <p class="check-card-desc">Apply this tax on top of other taxes.</p>
+                            </div>
+                        </label>
+
+                    </div>
+
+                    <!-- Features summary -->
+                    <div class="features-summary">
+                        <span class="feature-chip">
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="8" y1="12" x2="16" y2="12"/>
+                            </svg>
                             {{ tax_class.get_calculation_type_display|default:"Percentage" }}
                         </span>
                         {% if tax_class.is_default %}
-                        <span class="feature-badge">
-                            <i class="fas fa-star me-1"></i>Default
+                        <span class="feature-chip">
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.77 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/>
+                            </svg>
+                            Default
                         </span>
                         {% endif %}
                         {% if tax_class.is_shipping_taxable %}
-                        <span class="feature-badge">
-                            <i class="fas fa-truck me-1"></i>Shipping Taxable
+                        <span class="feature-chip">
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/>
+                                <path d="M15 18H9"/>
+                                <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/>
+                                <circle cx="17" cy="18" r="2"/>
+                                <circle cx="7" cy="18" r="2"/>
+                            </svg>
+                            Shipping taxable
                         </span>
                         {% endif %}
                         {% if tax_class.is_compound %}
-                        <span class="feature-badge">
-                            <i class="fas fa-layer-group me-1"></i>Compound
+                        <span class="feature-chip">
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                                <polyline points="2 17 12 22 22 17"/>
+                                <polyline points="2 12 12 17 22 12"/>
+                            </svg>
+                            Compound
                         </span>
                         {% endif %}
                     </div>
                 </div>
 
-                <!-- Form Actions -->
-                <div class="d-flex gap-3 justify-content-end">
-                    <a href="{% url 'payments:tax_classes_list' page.subdomain %}" class="btn btn-outline-secondary">
-                        Cancel
-                    </a>
-                    <button type="submit" class="btn-save">
-                        <i class="fas fa-save me-2"></i>
-                        {% if tax_class %}Update{% else %}Create{% endif %} Tax Class
-                    </button>
+                <!-- Sticky footer -->
+                <div class="form-footer">
+                    <span class="form-footer-msg">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 16v-4M12 8h.01"/>
+                        </svg>
+                        Changes apply immediately
+                    </span>
+                    <div class="form-footer-actions">
+                        <a href="{% url 'payments:tax_classes_list' page.subdomain %}" class="btn btn-ghost">
+                            <span>Cancel</span>
+                        </a>
+                        <button type="submit" class="btn btn-accent">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 6 9 17l-5-5"/>
+                            </svg>
+                            <span>{% if tax_class %}Update{% else %}Create{% endif %} tax class</span>
+                        </button>
+                    </div>
                 </div>
+
             </form>
+
         </div>
     </div>
 </div>
+
 {% endblock %}

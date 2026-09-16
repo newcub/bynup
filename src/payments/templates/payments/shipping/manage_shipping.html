@@ -5,393 +5,944 @@
 
 {% block extra_css %}
 <style>
-    /* Management Layout */
-    .management-layout {
-        display: flex;
-        min-height: 100vh;
+:root {
+    --n-0: #ffffff;
+    --n-50: #fafafa;
+    --n-100: #f4f4f5;
+    --n-200: #e4e4e7;
+    --n-300: #d4d4d8;
+    --n-400: #a1a1aa;
+    --n-500: #71717a;
+    --n-600: #52525b;
+    --n-700: #3f3f46;
+    --n-800: #27272a;
+    --n-900: #18181b;
+
+    --accent: var(--primary-color, #111827);
+    --accent-hover: #000000;
+
+    --success: #15803d;
+    --warning: #a16207;
+    --danger: #b91c1c;
+
+    --border: var(--n-200);
+    --border-strong: var(--n-300);
+    --text: var(--n-900);
+    --text-muted: var(--n-500);
+    --text-subtle: var(--n-400);
+
+    --radius-sm: 4px;
+    --radius: 6px;
+    --radius-lg: 10px;
+}
+
+.management-layout {
+    display: flex;
+    min-height: calc(100vh - 120px);
+    background: var(--n-50);
+}
+
+.management-content {
+    flex: 1;
+    padding: 2.5rem 2rem 4rem;
+    max-width: 1280px;
+    width: 100%;
+}
+
+.shipping-container {
+    max-width: 100%;
+}
+
+/* ===== Context breadcrumb ===== */
+.catalog-context {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.context-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.15s;
+    font-weight: 500;
+}
+
+.context-back:hover { color: var(--text); }
+.context-back svg { transition: transform 0.15s; }
+.context-back:hover svg { transform: translateX(-2px); }
+.context-sep { color: var(--n-300); }
+.context-current { color: var(--text); font-weight: 500; }
+
+/* ===== Title row ===== */
+.catalog-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.catalog-title-block { min-width: 0; }
+
+.catalog-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    color: var(--text);
+    margin: 0 0 0.25rem 0;
+    line-height: 1.15;
+}
+
+.catalog-sub {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.catalog-actions {
+    display: flex;
+    gap: 0.375rem;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* ===== Buttons ===== */
+.btn {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    border-radius: var(--radius);
+    padding: 0.5rem 0.875rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    line-height: 1.25;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: inherit;
+}
+
+.btn-ghost {
+    background: var(--n-0);
+    border-color: var(--border);
+    color: var(--n-700);
+}
+
+.btn-ghost:hover {
+    background: var(--n-50);
+    border-color: var(--border-strong);
+    color: var(--text);
+}
+
+.btn-accent {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+}
+
+.btn-accent:hover {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+    color: white;
+}
+
+.btn-icon {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.btn-danger-ghost {
+    background: transparent;
+    border-color: var(--border);
+    color: var(--n-700);
+}
+
+.btn-danger-ghost:hover {
+    background: #fef2f2;
+    border-color: var(--danger);
+    color: var(--danger);
+}
+
+/* ===== Stats bar ===== */
+.stats-bar {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0.875rem 1.125rem;
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    margin-bottom: 1.5rem;
+}
+
+.stats-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding-right: 1.5rem;
+    border-right: 1px solid var(--border);
+}
+
+.stats-grid {
+    flex: 1;
+    display: flex;
+    gap: 2rem;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    min-width: 0;
+}
+
+.stat-value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+}
+
+.stat-label {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+}
+
+/* ===== Zones panel ===== */
+.zones-panel {
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.zone-card {
+    border-bottom: 1px solid var(--border);
+}
+
+.zone-card:last-child {
+    border-bottom: none;
+}
+
+/* Zone header */
+.zone-header {
+    padding: 1rem 1.125rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    transition: background 0.1s;
+    user-select: none;
+}
+
+.zone-header:hover {
+    background: var(--n-50);
+}
+
+.zone-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.zone-badge {
+    font-size: 0.6875rem;
+    padding: 0.1875rem 0.5rem;
+    border-radius: 4px;
+    background: var(--n-100);
+    color: var(--n-700);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+.zone-badge.inactive {
+    background: #fefce8;
+    color: var(--warning);
+}
+
+.zone-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    flex-shrink: 0;
+}
+
+.zone-count {
+    font-variant-numeric: tabular-nums;
+}
+
+.zone-chevron {
+    color: var(--n-400);
+    transition: transform 0.2s ease;
+}
+
+.zone-chevron.expanded {
+    transform: rotate(180deg);
+}
+
+/* Zone content */
+.zone-content {
+    padding: 1.125rem;
+    background: var(--n-50);
+    border-top: 1px solid var(--border);
+    display: none;
+}
+
+.zone-content.expanded {
+    display: block;
+}
+
+/* Zone details */
+.zone-details {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 1rem;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.zone-details-label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.zone-details-actions {
+    display: flex;
+    gap: 0.375rem;
+    flex-shrink: 0;
+}
+
+.country-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+}
+
+.country-tag {
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    padding: 0.1875rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.6875rem;
+    color: var(--n-700);
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.country-tag.empty {
+    background: transparent;
+    border-style: dashed;
+    color: var(--text-subtle);
+    font-style: italic;
+}
+
+/* Rates */
+.rates-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.rates-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0;
+}
+
+.rates-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.rate-item {
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.875rem 1rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    gap: 1rem;
+    align-items: center;
+}
+
+.rate-info {
+    min-width: 0;
+}
+
+.rate-name {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text);
+    margin: 0 0 0.125rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.rate-badge-inactive {
+    font-size: 0.625rem;
+    padding: 0.125rem 0.375rem;
+    border-radius: 3px;
+    background: #fefce8;
+    color: var(--warning);
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.rate-details {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.rate-details .sep { color: var(--n-300); }
+
+.rate-price {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    text-align: right;
+}
+
+.rate-actions {
+    display: flex;
+    gap: 0.125rem;
+}
+
+.rate-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border: none;
+    background: transparent;
+    color: var(--n-500);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background 0.1s, color 0.1s;
+    font-size: 0.75rem;
+}
+
+.rate-action:hover {
+    background: var(--n-100);
+    color: var(--text);
+}
+
+.rate-action.danger:hover {
+    background: #fef2f2;
+    color: var(--danger);
+}
+
+/* Empty rates state */
+.rates-empty {
+    padding: 1.5rem 1rem;
+    text-align: center;
+    background: var(--n-0);
+    border: 1px dashed var(--border);
+    border-radius: var(--radius);
+}
+
+.rates-empty p {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    margin: 0 0 0.625rem 0;
+}
+
+/* Empty state (whole page) */
+.empty-state {
+    text-align: center;
+    padding: 5rem 2rem;
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+}
+
+.empty-state-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--n-100);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--n-500);
+    margin-bottom: 1.25rem;
+}
+
+.empty-state h5 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0 0 0.375rem 0;
+}
+
+.empty-state p {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin: 0 0 1.5rem 0;
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5;
+}
+
+/* ===== Modals ===== */
+.modal-content {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 1.25rem;
+}
+
+.modal-title { font-size: 0.9375rem; font-weight: 600; }
+
+.modal-body { padding: 1.25rem; }
+
+.modal-footer {
+    border-top: 1px solid var(--border);
+    padding: 0.875rem 1.25rem;
+    background: var(--n-50);
+}
+
+.form-label {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--n-700);
+    margin-bottom: 0.375rem;
+    display: block;
+}
+
+.form-control,
+.form-select {
+    width: 100%;
+    font-size: 0.8125rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.5rem 0.75rem;
+    background: var(--n-0);
+    color: var(--text);
+    font-family: inherit;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    line-height: 1.4;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+    outline: none;
+}
+
+textarea.form-control {
+    resize: vertical;
+    line-height: 1.5;
+}
+
+.form-text {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    margin-top: 0.375rem;
+    line-height: 1.5;
+}
+
+.form-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625rem;
+    padding: 0.75rem;
+    background: var(--n-50);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+    transition: background 0.1s;
+}
+
+.form-check:hover { background: var(--n-100); }
+
+.form-check-input {
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    accent-color: var(--n-900);
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.form-check-label {
+    font-size: 0.8125rem;
+    color: var(--text);
+    font-weight: 500;
+    cursor: pointer;
+    line-height: 1.3;
+}
+
+/* Tier row */
+.tier-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr 1fr auto;
+    gap: 0.5rem;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.tier-row input {
+    min-width: 0;
+}
+
+.tier-row .tier-sep {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+}
+
+/* ===== Toast ===== */
+.toast-stack {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    pointer-events: none;
+}
+
+.toast {
+    background: var(--n-900);
+    color: white;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    max-width: 360px;
+    pointer-events: auto;
+    animation: toastIn 0.2s ease;
+}
+
+.toast.error { background: var(--danger); }
+.toast.success { background: var(--n-900); }
+
+@keyframes toastIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+    .management-content { padding: 1.5rem 1rem 3rem; }
+
+    .catalog-title-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
     }
 
-    .management-content {
-        flex: 1;
-        padding: 1.5rem;
-        background: #f8f9fa;
-        min-height: 100vh;
-        overflow-y: auto;
+    .catalog-actions { justify-content: flex-start; flex-wrap: wrap; }
+
+    .stats-bar {
+        flex-wrap: wrap;
+        gap: 1rem;
     }
 
-    .shipping-container {
-        max-width: 1400px;
-        margin: 0 auto;
+    .stats-label {
+        border-right: none;
+        padding-right: 0;
+        width: 100%;
     }
-    
-    .zone-card {
-        border: 1px solid #e1e5eb;
-        border-radius: 12px;
-        margin-bottom: 24px;
-        background: white;
-        transition: all 0.3s ease;
-    }
-    
-    .zone-card:hover {
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    }
-    
-    .zone-header {
-        padding: 20px 24px;
-        background: #f8f9fa;
-        border-radius: 12px 12px 0 0;
-        border-bottom: 1px solid #e1e5eb;
-        cursor: pointer;
-        display: flex;
+
+    .stats-grid {
+        width: 100%;
         justify-content: space-between;
-        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
     }
-    
-    .zone-header:hover {
-        background: #f1f3f5;
+
+    .zone-details {
+        grid-template-columns: 1fr;
     }
-    
-    .zone-title {
-        font-size: 18px;
-        font-weight: 600;
-        color: #212529;
-        margin: 0;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-    }
-    
-    .zone-badge {
-        font-size: 12px;
-        padding: 4px 8px;
-        border-radius: 20px;
-        background: #e7f0ff;
-        color: #4361ee;
-    }
-    
-    .zone-content {
-        padding: 20px 24px;
-        display: none;
-    }
-    
-    .zone-content.expanded {
-        display: block;
-    }
-    
+
     .rate-item {
-        background: #f8f9fa;
-        border-radius: 8px;
-        padding: 16px;
-        margin-bottom: 12px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 12px;
-    }
-    
-    .rate-info {
-        flex: 1;
-        min-width: 200px;
-    }
-    
-    .rate-name {
-        font-weight: 600;
-        margin-bottom: 4px;
-    }
-    
-    .rate-details {
-        font-size: 13px;
-        color: #6c757d;
-    }
-    
-    .rate-price {
-        font-weight: 600;
-        color: #28a745;
-        margin-right: 16px;
-        min-width: 80px;
-    }
-    
-    .rate-actions {
-        display: flex;
-        gap: 8px;
-    }
-    
-    .country-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-        margin-top: 8px;
-    }
-    
-    .country-tag {
-        background: #e9ecef;
-        padding: 4px 10px;
-        border-radius: 20px;
-        font-size: 12px;
-        color: #495057;
-    }
-    
-    .modal-lg-custom {
-        max-width: 700px;
-    }
-    
-    .tier-row {
-        display: flex;
-        gap: 12px;
-        margin-bottom: 12px;
-        align-items: center;
-        flex-wrap: wrap;
-    }
-    
-    .tier-row input {
-        flex: 1;
-        min-width: 100px;
-    }
-    
-    .empty-state {
-        text-align: center;
-        padding: 48px;
-        background: #f8f9fa;
-        border-radius: 12px;
-    }
-    
-    .empty-state i {
-        font-size: 48px;
-        color: #dee2e6;
-        margin-bottom: 16px;
-    }
-    
-    .shipping-rate-option {
-        border: 2px solid #e9ecef;
-        border-radius: 8px;
-        margin-bottom: 0.75rem;
-        transition: all 0.2s ease;
-        cursor: pointer;
-    }
-    .shipping-rate-option:hover {
-        border-color: #4361ee;
-        background-color: #f8f9ff;
-    }
-    .shipping-rate-option.selected {
-        border-color: #4361ee;
-        background-color: #f0f4ff;
-    }
-    .shipping-rate-radio {
-        display: none;
-    }
-    .shipping-rate-label {
-        display: block;
-        padding: 1rem;
-        cursor: pointer;
-        margin: 0;
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
     }
 
-    /* Responsive */
-    @media (max-width: 768px) {
-        .management-layout {
-            flex-direction: column;
-        }
-        
-        .management-content {
-            width: 100%;
-            padding: 1rem;
-        }
-        
-        .container.py-5 {
-            padding-top: 1rem !important;
-            padding-bottom: 2rem !important;
-        }
-        
-        .zone-header {
-            flex-direction: column;
-            gap: 12px;
-            align-items: flex-start;
-        }
-        
-        .rate-item {
-            flex-direction: column;
-            align-items: flex-start;
-        }
-        
-        .rate-price {
-            margin-right: 0;
-        }
-        
-        .tier-row {
-            flex-direction: column;
-        }
-        
-        .tier-row input {
-            width: 100%;
-        }
-        
-        .modal-lg-custom {
-            margin: 0.5rem;
-        }
+    .rate-price {
+        text-align: left;
     }
+
+    .rate-actions {
+        justify-content: flex-start;
+    }
+
+    .tier-row {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .tier-row .tier-sep {
+        display: none;
+    }
+}
+
+@media (max-width: 640px) {
+    .catalog-title { font-size: 1.375rem; }
+}
 </style>
 {% endblock %}
 
 {% block content %}
-<div class="container-fluid py-4">
-    <!-- Management Layout with Sidebar -->
-    <div class="management-layout">
-        <!-- Include Sidebar Snippet with active_menu='shipping' -->
-        {% include 'builder/includes/sidebar.html' with active_menu='shipping' %}
-        
-        <!-- Main Content -->
-        <div class="management-content">
-            <div class="shipping-container">
-                <!-- Header -->
-                <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
-                    <div>
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
-                                <li class="breadcrumb-item"><a href="{% url 'manage_products' page.subdomain %}">{{ page.brand_name }}</a></li>
-                                <li class="breadcrumb-item active">Shipping Settings</li>
-                            </ol>
-                        </nav>
-                        <h1 class="fw-bold text-primary mb-2">Shipping Settings</h1>
-                        <p class="text-muted">Manage shipping zones and rates for your store</p>
-                    </div>
-                    <div>
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addZoneModal">
-                            <i class="fas fa-plus me-2"></i>Add Shipping Zone
-                        </button>
-                    </div>
+
+<div class="toast-stack" id="toastStack"></div>
+
+<div class="management-layout">
+    {% include 'builder/includes/sidebar.html' with active_menu='shipping' %}
+
+    <div class="management-content">
+        <div class="shipping-container">
+
+            <!-- Context -->
+            <div class="catalog-context">
+                <a href="{% url 'dashboard' %}" class="context-back">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    <span>Dashboard</span>
+                </a>
+                <span class="context-sep">/</span>
+                <a href="{% url 'manage_products' page.subdomain %}" class="context-back">
+                    <span>{{ page.brand_name }}</span>
+                </a>
+                <span class="context-sep">/</span>
+                <span class="context-current">Shipping</span>
+            </div>
+
+            <!-- Title -->
+            <div class="catalog-title-row">
+                <div class="catalog-title-block">
+                    <h1 class="catalog-title">Shipping settings</h1>
+                    <p class="catalog-sub">
+                        {{ zones|length }} zone{{ zones|length|pluralize }} ·
+                        Manage where you ship and how much it costs
+                    </p>
                 </div>
-                
-                <!-- Shipping Zones -->
-                <div id="zones-container">
-                    {% if zones %}
+                <div class="catalog-actions">
+                    <button class="btn btn-accent" data-bs-toggle="modal" data-bs-target="#addZoneModal">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 5v14M5 12h14"/>
+                        </svg>
+                        <span>Add zone</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Zones -->
+            <div id="zones-container">
+                {% if zones %}
+
+                    <div class="zones-panel">
                         {% for zone in zones %}
                         <div class="zone-card" data-zone-id="{{ zone.id }}">
                             <div class="zone-header" onclick="toggleZone({{ zone.id }})">
                                 <div class="zone-title">
-                                    <i class="fas fa-globe"></i>
-                                    {{ zone.name }}
+                                    <span>{{ zone.name }}</span>
                                     <span class="zone-badge">{{ zone.get_zone_type_display }}</span>
                                     {% if not zone.is_active %}
-                                    <span class="badge bg-secondary">Inactive</span>
+                                    <span class="zone-badge inactive">Inactive</span>
                                     {% endif %}
                                 </div>
-                                <div class="d-flex gap-2">
-                                    <span class="badge bg-light text-dark">{{ zone.rates.count }} rate(s)</span>
-                                    <i class="fas fa-chevron-down" id="zone-chevron-{{ zone.id }}"></i>
+                                <div class="zone-meta">
+                                    <span class="zone-count">{{ zone.rates.count }} rate{{ zone.rates.count|pluralize }}</span>
+                                    <svg class="zone-chevron" id="zone-chevron-{{ zone.id }}" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="m6 9 6 6 6-6"/>
+                                    </svg>
                                 </div>
                             </div>
+
                             <div class="zone-content" id="zone-content-{{ zone.id }}">
-                                <!-- Zone Details -->
-                                <div class="mb-4">
-                                    <h6 class="fw-bold mb-3">Zone Details</h6>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label class="text-muted small">Countries</label>
-                                            <div class="country-tags" id="countries-{{ zone.id }}">
-                                                {% for country in zone.get_country_names %}
-                                                <span class="country-tag">{{ country }}</span>
-                                                {% empty %}
-                                                <span class="text-muted small">All countries</span>
-                                                {% endfor %}
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 text-md-end mt-3 mt-md-0">
-                                            <button class="btn btn-sm btn-outline-secondary" onclick="editZone({{ zone.id }})">
-                                                <i class="fas fa-edit me-1"></i>Edit Zone
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-danger ms-2" onclick="deleteZone({{ zone.id }})">
-                                                <i class="fas fa-trash me-1"></i>Delete
-                                            </button>
+
+                                <!-- Zone details -->
+                                <div class="zone-details">
+                                    <div>
+                                        <span class="zone-details-label">Countries</span>
+                                        <div class="country-tags" id="countries-{{ zone.id }}">
+                                            {% for country in zone.get_country_names %}
+                                            <span class="country-tag">{{ country }}</span>
+                                            {% empty %}
+                                            <span class="country-tag empty">All countries</span>
+                                            {% endfor %}
                                         </div>
                                     </div>
-                                </div>
-                                
-                                <!-- Shipping Rates -->
-                                <div class="mt-4">
-                                    <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
-                                        <h6 class="fw-bold mb-0">Shipping Rates</h6>
-                                        <button class="btn btn-sm btn-primary" onclick="addRate({{ zone.id }})">
-                                            <i class="fas fa-plus me-1"></i>Add Rate
+                                    <div class="zone-details-actions">
+                                        <button class="btn btn-ghost" onclick="editZone({{ zone.id }})">
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
+                                            </svg>
+                                            <span>Edit zone</span>
+                                        </button>
+                                        <button class="btn btn-danger-ghost" onclick="deleteZone({{ zone.id }})">
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/>
+                                            </svg>
+                                            <span>Delete</span>
                                         </button>
                                     </div>
-                                    
-                                    <div id="rates-container-{{ zone.id }}">
+                                </div>
+
+                                <!-- Rates -->
+                                <div>
+                                    <div class="rates-head">
+                                        <span class="rates-title">Shipping rates</span>
+                                        <button class="btn btn-ghost" onclick="addRate({{ zone.id }})">
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M12 5v14M5 12h14"/>
+                                            </svg>
+                                            <span>Add rate</span>
+                                        </button>
+                                    </div>
+
+                                    <div class="rates-list" id="rates-container-{{ zone.id }}">
                                         {% for rate in zone.rates.all %}
                                         <div class="rate-item" data-rate-id="{{ rate.id }}">
                                             <div class="rate-info">
-                                                <div class="rate-name">
+                                                <p class="rate-name">
                                                     {{ rate.name }}
                                                     {% if not rate.is_active %}
-                                                    <span class="badge bg-secondary ms-2">Inactive</span>
+                                                    <span class="rate-badge-inactive">Inactive</span>
                                                     {% endif %}
-                                                </div>
+                                                </p>
                                                 <div class="rate-details">
-                                                    {{ rate.get_rate_type_display }}
-                                                    {% if rate.rate_type == 'flat' %}
-                                                        - ${{ rate.price }}
-                                                    {% elif rate.rate_type == 'free' %}
-                                                        - Free Shipping
-                                                    {% endif %}
+                                                    <span>{{ rate.get_rate_type_display }}</span>
                                                     {% if rate.delivery_min_days %}
-                                                        • Delivers in {{ rate.get_delivery_estimate }}
+                                                    <span class="sep">·</span>
+                                                    <span>{{ rate.get_delivery_estimate }}</span>
                                                     {% endif %}
                                                     {% if rate.carrier %}
-                                                        • {{ rate.carrier }}
+                                                    <span class="sep">·</span>
+                                                    <span>{{ rate.carrier }}</span>
                                                     {% endif %}
                                                 </div>
                                             </div>
                                             <div class="rate-price">
-                                                {% if rate.rate_type != 'free' %}
-                                                ${{ rate.price }}
-                                                {% else %}
-                                                Free
-                                                {% endif %}
+                                                {% if rate.rate_type != 'free' %}${{ rate.price }}{% else %}Free{% endif %}
                                             </div>
                                             <div class="rate-actions">
-                                                <button class="btn btn-sm btn-outline-secondary" onclick="editRate({{ rate.id }})">
-                                                    <i class="fas fa-edit"></i>
+                                                <button class="rate-action" onclick="editRate({{ rate.id }})" title="Edit">
+                                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
+                                                    </svg>
                                                 </button>
-                                                <button class="btn btn-sm btn-outline-danger" onclick="deleteRate({{ rate.id }})">
-                                                    <i class="fas fa-trash"></i>
+                                                <button class="rate-action danger" onclick="deleteRate({{ rate.id }})" title="Delete">
+                                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/>
+                                                    </svg>
                                                 </button>
                                             </div>
                                         </div>
                                         {% empty %}
-                                        <div class="text-center py-4 text-muted">
-                                            <i class="fas fa-truck fa-2x mb-2"></i>
-                                            <p>No shipping rates added yet</p>
-                                            <button class="btn btn-sm btn-outline-primary" onclick="addRate({{ zone.id }})">
-                                                Add your first rate
+                                        <div class="rates-empty">
+                                            <p>No shipping rates yet.</p>
+                                            <button class="btn btn-ghost" onclick="addRate({{ zone.id }})">
+                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M12 5v14M5 12h14"/>
+                                                </svg>
+                                                <span>Add first rate</span>
                                             </button>
                                         </div>
                                         {% endfor %}
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                         {% endfor %}
-                    {% else %}
-                        <div class="empty-state">
-                            <i class="fas fa-truck"></i>
-                            <h5>No Shipping Zones Yet</h5>
-                            <p class="text-muted">Create your first shipping zone to start offering shipping rates</p>
-                            <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#addZoneModal">
-                                <i class="fas fa-plus me-2"></i>Create Shipping Zone
-                            </button>
+                    </div>
+
+                {% else %}
+
+                    <div class="empty-state">
+                        <div class="empty-state-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/>
+                                <path d="M15 18H9"/>
+                                <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/>
+                                <circle cx="17" cy="18" r="2"/>
+                                <circle cx="7" cy="18" r="2"/>
+                            </svg>
                         </div>
-                    {% endif %}
-                </div>
+                        <h5>No shipping zones yet</h5>
+                        <p>Create your first zone to start offering shipping to specific countries or regions.</p>
+                        <button class="btn btn-accent" data-bs-toggle="modal" data-bs-target="#addZoneModal">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 5v14M5 12h14"/>
+                            </svg>
+                            <span>Create zone</span>
+                        </button>
+                    </div>
+
+                {% endif %}
             </div>
+
         </div>
     </div>
 </div>
 
-<!-- Add/Edit Zone Modal -->
-<!-- Add/Edit Zone Modal - Simpler Version -->
+<!-- ============ ZONE MODAL ============ -->
 <div class="modal fade" id="zoneModal" tabindex="-1" aria-labelledby="zoneModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg-custom">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 640px;">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="zoneModalTitle">Add Shipping Zone</h5>
@@ -401,12 +952,12 @@
                 <form id="zoneForm">
                     <input type="hidden" id="zoneId" value="">
                     <div class="mb-3">
-                        <label class="form-label">Zone Name *</label>
+                        <label class="form-label">Zone name</label>
                         <input type="text" class="form-control" id="zoneName" required>
-                        <div class="form-text">e.g., Domestic, International, Europe</div>
+                        <div class="form-text">e.g., Domestic, International, Europe.</div>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Zone Type</label>
+                        <label class="form-label">Zone type</label>
                         <select class="form-select" id="zoneType">
                             <option value="domestic">Domestic</option>
                             <option value="regional">Regional</option>
@@ -421,28 +972,31 @@
                             <option value="{{ country.code }}">{{ country.name }}</option>
                             {% endfor %}
                         </select>
-                        <div class="form-text">Hold Ctrl/Cmd to select multiple countries</div>
+                        <div class="form-text">Hold Ctrl / Cmd to select multiple.</div>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Description (Optional)</label>
+                        <label class="form-label">Description <span style="color: var(--text-subtle); font-weight: 400;">— optional</span></label>
                         <textarea class="form-control" id="zoneDescription" rows="2"></textarea>
                     </div>
-                    <div class="form-check mb-3">
+                    <label class="form-check" for="zoneActive">
                         <input class="form-check-input" type="checkbox" id="zoneActive" checked>
-                        <label class="form-check-label">Active</label>
-                    </div>
+                        <span class="form-check-label">Active</span>
+                    </label>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary" id="saveZoneBtn">Create Zone</button>
+                <button type="button" class="btn btn-ghost" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-accent" id="saveZoneBtn">
+                    <span class="btn-text">Create zone</span>
+                </button>
             </div>
         </div>
     </div>
 </div>
-<!-- Add/Edit Rate Modal -->
+
+<!-- ============ RATE MODAL ============ -->
 <div class="modal fade" id="rateModal" tabindex="-1">
-    <div class="modal-dialog modal-lg-custom">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 640px;">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="rateModalTitle">Add Shipping Rate</h5>
@@ -452,15 +1006,15 @@
                 <form id="rateForm">
                     <input type="hidden" id="rateId" value="">
                     <input type="hidden" id="rateZoneId" value="">
-                    
+
                     <div class="mb-3">
-                        <label class="form-label">Rate Name</label>
+                        <label class="form-label">Rate name</label>
                         <input type="text" class="form-control" id="rateName" required>
-                        <div class="form-text">e.g., Standard Shipping, Express, Free Shipping</div>
+                        <div class="form-text">e.g., Standard Shipping, Express, Free Shipping.</div>
                     </div>
-                    
+
                     <div class="mb-3">
-                        <label class="form-label">Rate Type</label>
+                        <label class="form-label">Rate type</label>
                         <select class="form-select" id="rateType" onchange="toggleRateFields()">
                             <option value="flat">Flat Rate</option>
                             <option value="calculated">Calculated by Weight/Price</option>
@@ -468,50 +1022,53 @@
                             <option value="local_pickup">Local Pickup</option>
                         </select>
                     </div>
-                    
+
                     <!-- Flat Rate Fields -->
                     <div id="flatRateFields" class="mb-3">
                         <label class="form-label">Price</label>
                         <input type="number" class="form-control" id="ratePrice" step="0.01" min="0">
                     </div>
-                    
+
                     <!-- Calculated Rate Fields -->
                     <div id="calculatedRateFields" style="display: none;">
                         <div class="mb-3">
-                            <label class="form-label">Calculate By</label>
+                            <label class="form-label">Calculate by</label>
                             <select class="form-select" id="rateConditionType" onchange="toggleTiers()">
                                 <option value="price">Order Price</option>
                                 <option value="weight">Order Weight</option>
                             </select>
                         </div>
-                        
+
                         <div class="mb-3">
                             <label class="form-label">Tiers</label>
                             <div id="tiersContainer"></div>
-                            <button type="button" class="btn btn-sm btn-outline-secondary mt-2" onclick="addTier()">
-                                <i class="fas fa-plus me-1"></i>Add Tier
+                            <button type="button" class="btn btn-ghost" style="margin-top: 0.5rem;" onclick="addTier()">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 5v14M5 12h14"/>
+                                </svg>
+                                <span>Add tier</span>
                             </button>
                         </div>
                     </div>
-                    
+
                     <!-- Free Shipping Fields -->
                     <div id="freeShippingFields" style="display: none;">
                         <div class="mb-3">
-                            <label class="form-label">Minimum Order Price (Optional)</label>
+                            <label class="form-label">Minimum order price <span style="color: var(--text-subtle); font-weight: 400;">— optional</span></label>
                             <input type="number" class="form-control" id="freeMinPrice" step="0.01" min="0">
-                            <div class="form-text">Free shipping applies when order total reaches this amount</div>
+                            <div class="form-text">Free shipping applies when order total reaches this amount.</div>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Minimum Order Weight (kg) (Optional)</label>
+                            <label class="form-label">Minimum order weight (kg) <span style="color: var(--text-subtle); font-weight: 400;">— optional</span></label>
                             <input type="number" class="form-control" id="freeMinWeight" step="0.01" min="0">
                         </div>
                     </div>
-                    
-                    <hr>
-                    
-                    <div class="row">
+
+                    <hr style="border-color: var(--border); margin: 1.25rem 0;">
+
+                    <div class="row g-3">
                         <div class="col-md-6 mb-3">
-                            <label class="form-label">Delivery Estimate (days)</label>
+                            <label class="form-label">Delivery estimate (days)</label>
                             <div class="row g-2">
                                 <div class="col-6">
                                     <input type="number" class="form-control" id="deliveryMin" placeholder="Min" value="3">
@@ -522,49 +1079,51 @@
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label class="form-label">Carrier (Optional)</label>
+                            <label class="form-label">Carrier <span style="color: var(--text-subtle); font-weight: 400;">— optional</span></label>
                             <input type="text" class="form-control" id="rateCarrier" placeholder="e.g., USPS, FedEx">
                         </div>
                     </div>
-                    
+
                     <div class="mb-3">
-                        <label class="form-label">Description (Optional)</label>
+                        <label class="form-label">Description <span style="color: var(--text-subtle); font-weight: 400;">— optional</span></label>
                         <textarea class="form-control" id="rateDescription" rows="2"></textarea>
                     </div>
-                    
-                    <div class="form-check mb-3">
+
+                    <label class="form-check" for="rateActive">
                         <input class="form-check-input" type="checkbox" id="rateActive" checked>
-                        <label class="form-check-label">Active</label>
-                    </div>
-                    
-                    <div class="form-check">
+                        <span class="form-check-label">Active</span>
+                    </label>
+
+                    <label class="form-check" for="rateTaxable">
                         <input class="form-check-input" type="checkbox" id="rateTaxable" checked>
-                        <label class="form-check-label">Taxable (apply tax to shipping)</label>
-                    </div>
+                        <span class="form-check-label">Taxable — apply tax to shipping</span>
+                    </label>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary" onclick="saveRate()">Save Rate</button>
+                <button type="button" class="btn btn-ghost" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-accent" onclick="saveRate()">
+                    <span class="btn-text">Save rate</span>
+                </button>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-// Zone Management Functions
+// ============ ZONE MANAGEMENT ============
 let currentZoneId = null;
 
 function toggleZone(zoneId) {
     const content = document.getElementById(`zone-content-${zoneId}`);
     const chevron = document.getElementById(`zone-chevron-${zoneId}`);
-    
+
     if (content.classList.contains('expanded')) {
         content.classList.remove('expanded');
-        chevron.className = 'fas fa-chevron-down';
+        chevron.classList.remove('expanded');
     } else {
         content.classList.add('expanded');
-        chevron.className = 'fas fa-chevron-up';
+        chevron.classList.add('expanded');
     }
 }
 
@@ -572,50 +1131,41 @@ function getCsrfToken() {
     return document.querySelector('[name=csrfmiddlewaretoken]')?.value || '';
 }
 
-// ============ ZONE FUNCTIONS ============
-
 function openZoneModal(zoneId = null) {
     currentZoneId = zoneId;
     const modalElement = document.getElementById('zoneModal');
-    
+
     if (!modalElement) {
         console.error('Modal element not found');
         return;
     }
-    
-    // Reset form
+
     document.getElementById('zoneForm').reset();
     document.getElementById('zoneId').value = '';
     document.getElementById('zoneActive').checked = true;
-    
+
     if (zoneId) {
-        // Edit mode - populate form with existing data
         document.getElementById('zoneModalTitle').textContent = 'Edit Shipping Zone';
         const zoneCard = document.querySelector(`.zone-card[data-zone-id="${zoneId}"]`);
-        
+
         if (zoneCard) {
-            const zoneName = zoneCard.querySelector('.zone-title').childNodes[0].nodeValue.trim();
+            const zoneName = zoneCard.querySelector('.zone-title span').textContent.trim();
             const zoneBadge = zoneCard.querySelector('.zone-badge')?.textContent || '';
-            
-            // Get countries from the zone
-            const countryTags = document.querySelectorAll(`#countries-${zoneId} .country-tag`);
-            const selectedCountries = Array.from(countryTags).map(tag => tag.textContent);
-            
-            // Map country names back to codes
+
+            const countryTags = document.querySelectorAll(`#countries-${zoneId} .country-tag:not(.empty)`);
+            const selectedCountries = Array.from(countryTags).map(tag => tag.textContent.trim());
+
             const countrySelect = document.getElementById('zoneCountries');
             const options = Array.from(countrySelect.options);
             const countryCodes = options
                 .filter(opt => selectedCountries.includes(opt.text))
                 .map(opt => opt.value);
-            
+
             document.getElementById('zoneName').value = zoneName;
-            
-            // Set zone type
+
             const typeMap = {'Domestic': 'domestic', 'Regional': 'regional', 'International': 'international', 'Custom': 'custom'};
-            const zoneTypeSelect = document.getElementById('zoneType');
-            zoneTypeSelect.value = typeMap[zoneBadge] || 'custom';
-            
-            // Set selected countries
+            document.getElementById('zoneType').value = typeMap[zoneBadge] || 'custom';
+
             Array.from(countrySelect.options).forEach(opt => {
                 opt.selected = countryCodes.includes(opt.value);
             });
@@ -623,8 +1173,7 @@ function openZoneModal(zoneId = null) {
     } else {
         document.getElementById('zoneModalTitle').textContent = 'Add Shipping Zone';
     }
-    
-    // Show modal using Bootstrap
+
     const modal = new bootstrap.Modal(modalElement);
     modal.show();
 }
@@ -632,7 +1181,7 @@ function openZoneModal(zoneId = null) {
 async function saveZone() {
     const zoneId = document.getElementById('zoneId').value;
     const isEdit = zoneId !== '';
-    
+
     const zoneData = {
         name: document.getElementById('zoneName').value.trim(),
         zone_type: document.getElementById('zoneType').value,
@@ -640,22 +1189,21 @@ async function saveZone() {
         description: document.getElementById('zoneDescription').value,
         is_active: document.getElementById('zoneActive').checked,
     };
-    
+
     if (!zoneData.name) {
-        alert('Please enter a zone name');
+        toast('Please enter a zone name', 'error');
         return;
     }
-    
-    const url = isEdit 
+
+    const url = isEdit
         ? `/payments/shipping/zone/update/{{ page.subdomain }}/${zoneId}/`
         : `/payments/shipping/zone/add/{{ page.subdomain }}/`;
-    
-    // Show loading state on the save button
+
     const saveBtn = document.getElementById('saveZoneBtn');
     const originalText = saveBtn.innerHTML;
-    saveBtn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Saving...';
+    saveBtn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Saving…';
     saveBtn.disabled = true;
-    
+
     try {
         const response = await fetch(url, {
             method: 'POST',
@@ -665,24 +1213,20 @@ async function saveZone() {
             },
             body: JSON.stringify(zoneData),
         });
-        
+
         const result = await response.json();
-        
+
         if (result.success) {
-            // Close modal
             const modalElement = document.getElementById('zoneModal');
             const modal = bootstrap.Modal.getInstance(modalElement);
-            if (modal) {
-                modal.hide();
-            }
-            // Reload page to show new zone
+            if (modal) modal.hide();
             location.reload();
         } else {
-            alert('Error: ' + (result.error || 'Unknown error'));
+            toast('Error: ' + (result.error || 'Unknown error'), 'error');
         }
     } catch (error) {
         console.error('Error:', error);
-        alert('An error occurred: ' + error.message);
+        toast('An error occurred: ' + error.message, 'error');
     } finally {
         saveBtn.innerHTML = originalText;
         saveBtn.disabled = false;
@@ -693,62 +1237,35 @@ async function deleteZone(zoneId) {
     if (!confirm('Are you sure you want to delete this shipping zone? All rates in this zone will also be deleted.')) {
         return;
     }
-    
+
     try {
         const response = await fetch(`/payments/shipping/zone/delete/{{ page.subdomain }}/${zoneId}/`, {
             method: 'POST',
-            headers: {
-                'X-CSRFToken': getCsrfToken(),
-            },
+            headers: { 'X-CSRFToken': getCsrfToken() },
         });
-        
+
         const result = await response.json();
-        
+
         if (result.success) {
             location.reload();
         } else {
-            alert('Error: ' + (result.error || 'Unknown error'));
+            toast('Error: ' + (result.error || 'Unknown error'), 'error');
         }
     } catch (error) {
         console.error('Error:', error);
-        alert('An error occurred: ' + error.message);
+        toast('An error occurred: ' + error.message, 'error');
     }
 }
 
-// Initialize on page load
-document.addEventListener('DOMContentLoaded', function() {
-    // Get the Add Zone button and attach click handler
-    const addZoneBtn = document.querySelector('[data-bs-target="#addZoneModal"]');
-    if (addZoneBtn) {
-        // Replace the existing modal trigger
-        addZoneBtn.removeAttribute('data-bs-target');
-        addZoneBtn.removeAttribute('data-bs-toggle');
-        addZoneBtn.onclick = function(e) {
-            e.preventDefault();
-            openZoneModal();
-        };
-    }
-    
-    // Attach save button handler
-    const saveZoneBtn = document.getElementById('saveZoneBtn');
-    if (saveZoneBtn) {
-        saveZoneBtn.onclick = saveZone;
-    }
-    
-    // Expand zones that have rates
-    {% for zone in zones %}
-        {% if zone.rates.exists %}
-            toggleZone({{ zone.id }});
-        {% endif %}
-    {% endfor %}
-});
+// ============ RATE MANAGEMENT ============
+
 function toggleRateFields() {
     const rateType = document.getElementById('rateType').value;
-    
+
     document.getElementById('flatRateFields').style.display = 'none';
     document.getElementById('calculatedRateFields').style.display = 'none';
     document.getElementById('freeShippingFields').style.display = 'none';
-    
+
     if (rateType === 'flat') {
         document.getElementById('flatRateFields').style.display = 'block';
     } else if (rateType === 'calculated') {
@@ -759,7 +1276,7 @@ function toggleRateFields() {
 }
 
 function toggleTiers() {
-    // Will be implemented for tiered pricing
+    // Reserved for future use
 }
 
 function addTier() {
@@ -767,16 +1284,18 @@ function addTier() {
     const tierCount = container.children.length;
     const conditionType = document.getElementById('rateConditionType').value;
     const unit = conditionType === 'price' ? '$' : 'kg';
-    
+
     const tierDiv = document.createElement('div');
     tierDiv.className = 'tier-row';
     tierDiv.innerHTML = `
         <input type="number" class="form-control" placeholder="Min ${unit}" name="tier_min_${tierCount}" step="0.01">
-        <span>-</span>
+        <span class="tier-sep">–</span>
         <input type="number" class="form-control" placeholder="Max ${unit}" name="tier_max_${tierCount}" step="0.01">
-        <input type="number" class="form-control" placeholder="Price" name="tier_price_${tierCount}" step="0.01" style="width: 100px;">
-        <button type="button" class="btn btn-sm btn-outline-danger" onclick="this.parentElement.remove()">
-            <i class="fas fa-times"></i>
+        <input type="number" class="form-control" placeholder="Price" name="tier_price_${tierCount}" step="0.01">
+        <button type="button" class="btn btn-ghost btn-icon" onclick="this.parentElement.remove()">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 6 6 18M6 6l12 12"/>
+            </svg>
         </button>
     `;
     container.appendChild(tierDiv);
@@ -798,55 +1317,9 @@ function collectTiers() {
     return tiers;
 }
 
-function getCsrfToken() {
-    return document.querySelector('[name=csrfmiddlewaretoken]')?.value || '';
-}
-
-// ============ ZONE FUNCTIONS ============
-
 function editZone(zoneId) {
-    // Fetch zone details and populate modal for editing
-    const zoneCard = document.querySelector(`.zone-card[data-zone-id="${zoneId}"]`);
-    const zoneName = zoneCard.querySelector('.zone-title').childNodes[0].nodeValue.trim();
-    const zoneBadge = zoneCard.querySelector('.zone-badge').textContent;
-    
-    // Get countries from the zone
-    const countryTags = document.querySelectorAll(`#countries-${zoneId} .country-tag`);
-    const selectedCountries = Array.from(countryTags).map(tag => tag.textContent);
-    
-    // Map country names back to codes (simplified - in production you'd store the codes)
-    const countrySelect = document.getElementById('zoneCountries');
-    const options = Array.from(countrySelect.options);
-    const countryCodes = options
-        .filter(opt => selectedCountries.includes(opt.text))
-        .map(opt => opt.value);
-    
-    // Populate modal
-    document.getElementById('zoneModalTitle').textContent = 'Edit Shipping Zone';
-    document.getElementById('zoneId').value = zoneId;
-    document.getElementById('zoneName').value = zoneName;
-    
-    // Set zone type
-    const zoneTypeSelect = document.getElementById('zoneType');
-    const typeMap = {'Domestic': 'domestic', 'Regional': 'regional', 'International': 'international', 'Custom': 'custom'};
-    zoneTypeSelect.value = typeMap[zoneBadge] || 'custom';
-    
-    // Set selected countries
-    Array.from(countrySelect.options).forEach(opt => {
-        opt.selected = countryCodes.includes(opt.value);
-    });
-    
-    // Get description and active status (you'd need to store these in data attributes)
-    const description = zoneCard.querySelector('.zone-content .mb-4')?.dataset.description || '';
-    document.getElementById('zoneDescription').value = description;
-    document.getElementById('zoneActive').checked = true;
-    
-    // Show modal
-    new bootstrap.Modal(document.getElementById('zoneModal')).show();
+    openZoneModal(zoneId);
 }
-
-
-// ============ RATE FUNCTIONS ============
 
 function addRate(zoneId) {
     currentZoneId = zoneId;
@@ -856,35 +1329,30 @@ function addRate(zoneId) {
     document.getElementById('rateZoneId').value = zoneId;
     document.getElementById('tiersContainer').innerHTML = '';
     toggleRateFields();
-    
+
     new bootstrap.Modal(document.getElementById('rateModal')).show();
 }
 
 function editRate(rateId) {
-    // Find the rate element and extract its data
     const rateElement = document.querySelector(`.rate-item[data-rate-id="${rateId}"]`);
     if (!rateElement) {
         console.error('Rate element not found for ID:', rateId);
         return;
     }
-    
-    // Get the zone ID from the parent zone card
+
     const zoneCard = rateElement.closest('.zone-card');
     const zoneId = zoneCard.dataset.zoneId;
-    
-    // Extract rate details from the displayed element
+
     const rateName = rateElement.querySelector('.rate-name').childNodes[0].nodeValue.trim();
     const rateDetails = rateElement.querySelector('.rate-details').textContent;
     const ratePriceSpan = rateElement.querySelector('.rate-price');
     let ratePrice = ratePriceSpan ? ratePriceSpan.textContent.replace('$', '').replace('Free', '0').trim() : '0';
-    
-    // Parse rate type from details
+
     let rateType = 'flat';
     if (rateDetails.includes('Free Shipping')) rateType = 'free';
     else if (rateDetails.includes('Calculated')) rateType = 'calculated';
     else if (rateDetails.includes('Local Pickup')) rateType = 'local_pickup';
-    
-    // Get delivery estimate from rate details
+
     let deliveryMin = 3;
     let deliveryMax = 7;
     const deliveryMatch = rateDetails.match(/Delivers in (\d+)-(\d+) business days/);
@@ -892,15 +1360,13 @@ function editRate(rateId) {
         deliveryMin = parseInt(deliveryMatch[1]);
         deliveryMax = parseInt(deliveryMatch[2]);
     }
-    
-    // Get carrier from rate details
+
     let carrier = '';
-    const carrierMatch = rateDetails.match(/• (USPS|FedEx|UPS|DHL|Canada Post)/);
+    const carrierMatch = rateDetails.match(/· (USPS|FedEx|UPS|DHL|Canada Post)/);
     if (carrierMatch) {
         carrier = carrierMatch[1];
     }
-    
-    // Populate the modal with basic info
+
     document.getElementById('rateModalTitle').textContent = 'Edit Shipping Rate';
     document.getElementById('rateId').value = rateId;
     document.getElementById('rateZoneId').value = zoneId;
@@ -909,10 +1375,9 @@ function editRate(rateId) {
     document.getElementById('deliveryMin').value = deliveryMin;
     document.getElementById('deliveryMax').value = deliveryMax;
     document.getElementById('rateCarrier').value = carrier;
-    
-    // Now fetch the full rate details from the server to get tiers
+
     fetchRateDetails(rateId);
-    
+
     toggleRateFields();
     new bootstrap.Modal(document.getElementById('rateModal')).show();
 }
@@ -921,11 +1386,10 @@ async function fetchRateDetails(rateId) {
     try {
         const response = await fetch(`/payments/shipping/rate/details/{{ page.subdomain }}/${rateId}/`);
         const result = await response.json();
-        
+
         if (result.success && result.rate) {
             const rate = result.rate;
-            
-            // Populate fields with fetched data
+
             if (rate.rate_type === 'flat') {
                 document.getElementById('ratePrice').value = rate.price;
             } else if (rate.rate_type === 'free') {
@@ -933,24 +1397,20 @@ async function fetchRateDetails(rateId) {
                 document.getElementById('freeMinWeight').value = rate.free_shipping_min_weight || '';
             } else if (rate.rate_type === 'calculated') {
                 document.getElementById('rateConditionType').value = rate.condition_type || 'price';
-                
-                // Populate tiers
+
                 const tiers = rate.condition_type === 'price' ? rate.price_tiers : rate.weight_tiers;
                 if (tiers && tiers.length > 0) {
                     populateTiers(tiers);
                 }
             }
-            
-            // Set description
+
             if (rate.description) {
                 document.getElementById('rateDescription').value = rate.description;
             }
-            
-            // Set active and taxable
+
             document.getElementById('rateActive').checked = rate.is_active;
             document.getElementById('rateTaxable').checked = rate.taxable;
-            
-            // Trigger field visibility
+
             toggleRateFields();
         }
     } catch (error) {
@@ -961,17 +1421,19 @@ async function fetchRateDetails(rateId) {
 function populateTiers(tiers) {
     const container = document.getElementById('tiersContainer');
     container.innerHTML = '';
-    
+
     tiers.forEach(tier => {
         const tierDiv = document.createElement('div');
         tierDiv.className = 'tier-row';
         tierDiv.innerHTML = `
             <input type="number" class="form-control" placeholder="Min" value="${tier.min}" step="0.01">
-            <span>-</span>
+            <span class="tier-sep">–</span>
             <input type="number" class="form-control" placeholder="Max" value="${tier.max || ''}" step="0.01">
-            <input type="number" class="form-control" placeholder="Price" value="${tier.price}" step="0.01" style="width: 100px;">
-            <button type="button" class="btn btn-sm btn-outline-danger" onclick="this.parentElement.remove()">
-                <i class="fas fa-times"></i>
+            <input type="number" class="form-control" placeholder="Price" value="${tier.price}" step="0.01">
+            <button type="button" class="btn btn-ghost btn-icon" onclick="this.parentElement.remove()">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 6 6 18M6 6l12 12"/>
+                </svg>
             </button>
         `;
         container.appendChild(tierDiv);
@@ -982,7 +1444,7 @@ async function saveRate() {
     const rateId = document.getElementById('rateId').value;
     const isEdit = rateId !== '';
     const zoneId = document.getElementById('rateZoneId').value;
-    
+
     const rateData = {
         name: document.getElementById('rateName').value,
         rate_type: document.getElementById('rateType').value,
@@ -993,7 +1455,7 @@ async function saveRate() {
         is_active: document.getElementById('rateActive').checked,
         taxable: document.getElementById('rateTaxable').checked,
     };
-    
+
     if (rateData.rate_type === 'flat') {
         rateData.price = document.getElementById('ratePrice').value;
     } else if (rateData.rate_type === 'free') {
@@ -1003,19 +1465,15 @@ async function saveRate() {
         rateData.condition_type = document.getElementById('rateConditionType').value;
         if (rateData.condition_type === 'price') {
             rateData.price_tiers = collectTiers();
-            console.log('📊 Saving price tiers:', rateData.price_tiers);
         } else {
             rateData.weight_tiers = collectTiers();
-            console.log('⚖️ Saving weight tiers:', rateData.weight_tiers);
         }
     }
-    
-    console.log('📦 Saving rate data:', rateData);
-    
-    const url = isEdit 
+
+    const url = isEdit
         ? `/payments/shipping/rate/update/{{ page.subdomain }}/${rateId}/`
         : `/payments/shipping/rate/add/{{ page.subdomain }}/${zoneId}/`;
-    
+
     try {
         const response = await fetch(url, {
             method: 'POST',
@@ -1025,60 +1483,73 @@ async function saveRate() {
             },
             body: JSON.stringify(rateData),
         });
-        
+
         const result = await response.json();
-        
+
         if (result.success) {
             location.reload();
         } else {
-            alert('Error: ' + result.error);
+            toast('Error: ' + result.error, 'error');
         }
     } catch (error) {
         console.error('Error:', error);
-        alert('An error occurred');
+        toast('An error occurred', 'error');
     }
 }
 
 async function deleteRate(rateId) {
-    if (!confirm('Are you sure you want to delete this shipping rate?')) {
-        return;
-    }
-    
+    if (!confirm('Are you sure you want to delete this shipping rate?')) return;
+
     try {
         const response = await fetch(`/payments/shipping/rate/delete/{{ page.subdomain }}/${rateId}/`, {
             method: 'POST',
-            headers: {
-                'X-CSRFToken': getCsrfToken(),
-            },
+            headers: { 'X-CSRFToken': getCsrfToken() },
         });
-        
+
         const result = await response.json();
-        
+
         if (result.success) {
             location.reload();
         } else {
-            alert('Error: ' + result.error);
+            toast('Error: ' + result.error, 'error');
         }
     } catch (error) {
         console.error('Error:', error);
-        alert('An error occurred');
+        toast('An error occurred', 'error');
     }
 }
 
-// Expand zones that have rates
-document.addEventListener('DOMContentLoaded', function() {
+// ============ INITIALIZATION ============
+document.addEventListener('DOMContentLoaded', function () {
+    // Hook add zone button
+    const addZoneBtn = document.querySelector('[data-bs-target="#addZoneModal"]');
+    if (addZoneBtn) {
+        addZoneBtn.removeAttribute('data-bs-target');
+        addZoneBtn.removeAttribute('data-bs-toggle');
+        addZoneBtn.onclick = function (e) {
+            e.preventDefault();
+            openZoneModal();
+        };
+    }
+
+    // Attach save zone handler
+    const saveZoneBtn = document.getElementById('saveZoneBtn');
+    if (saveZoneBtn) {
+        saveZoneBtn.onclick = saveZone;
+    }
+
+    // Auto-expand zones with rates
     {% for zone in zones %}
         {% if zone.rates.exists %}
             toggleZone({{ zone.id }});
         {% endif %}
     {% endfor %}
-    
-    // Reset zone modal when opened for adding (not editing)
+
+    // Reset zone modal when opened for adding
     const zoneModal = document.getElementById('zoneModal');
     if (zoneModal) {
-        zoneModal.addEventListener('show.bs.modal', function(event) {
+        zoneModal.addEventListener('show.bs.modal', function (event) {
             if (!event.relatedTarget || !event.relatedTarget.closest('.btn')) {
-                // Reset for add
                 document.getElementById('zoneModalTitle').textContent = 'Add Shipping Zone';
                 document.getElementById('zoneId').value = '';
                 document.getElementById('zoneForm').reset();
@@ -1086,12 +1557,26 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
-    // Add modal ID reference for the add zone button
-    const addZoneModal = document.getElementById('addZoneModal');
-    if (addZoneModal) {
-        addZoneModal.id = 'addZoneModal';
-    }
 });
+
+// ============ TOAST ============
+function toast(message, type = 'info') {
+    const stack = document.getElementById('toastStack');
+    if (!stack) return;
+
+    const el = document.createElement('div');
+    el.className = `toast ${type}`;
+    const icon = type === 'error'
+        ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>'
+        : '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+    el.innerHTML = `${icon}<span>${message}</span>`;
+    stack.appendChild(el);
+    setTimeout(() => {
+        el.style.transition = 'opacity 0.2s, transform 0.2s';
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(-8px)';
+        setTimeout(() => el.remove(), 200);
+    }, 3000);
+}
 </script>
 {% endblock %}

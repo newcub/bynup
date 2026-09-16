@@ -4,6 +4,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils.crypto import get_random_string
 import uuid
+from django.utils import timezone
 
 class UserType(models.Model):
     """Different types of users in the system"""
@@ -40,7 +41,11 @@ class UserProfile(models.Model):
     # Additional fields
     date_of_birth = models.DateField(blank=True, null=True)
     website = models.URLField(blank=True)
-    
+    has_received_free_domain = models.BooleanField(
+        default=False,
+        help_text="Set to True when the user's first free domain is activated. Prevents double-claiming."
+    )
+
     class Meta:
         verbose_name = "User Profile"
         verbose_name_plural = "User Profiles"

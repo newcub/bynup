@@ -7,781 +7,1558 @@
 
 {% block extra_css %}
 <style>
-.order-detail-card {
-    border-radius: 10px;
-    transition: all 0.3s ease;
+:root {
+    --n-0: #ffffff;
+    --n-50: #fafafa;
+    --n-100: #f4f4f5;
+    --n-200: #e4e4e7;
+    --n-300: #d4d4d8;
+    --n-400: #a1a1aa;
+    --n-500: #71717a;
+    --n-600: #52525b;
+    --n-700: #3f3f46;
+    --n-800: #27272a;
+    --n-900: #18181b;
+
+    --accent: var(--primary-color, #111827);
+    --accent-hover: #000000;
+
+    --success: #15803d;
+    --warning: #a16207;
+    --danger: #b91c1c;
+
+    --border: var(--n-200);
+    --border-strong: var(--n-300);
+    --text: var(--n-900);
+    --text-muted: var(--n-500);
+    --text-subtle: var(--n-400);
+
+    --radius-sm: 4px;
+    --radius: 6px;
+    --radius-lg: 10px;
 }
-.timeline {
-    position: relative;
-    padding-left: 2rem;
+
+/* ===== Layout wrapper ===== */
+.order-wrap {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem 2rem 4rem;
 }
-.timeline::before {
-    content: '';
-    position: absolute;
-    left: 15px;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: #e9ecef;
+
+/* ===== Context breadcrumb ===== */
+.catalog-context {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
 }
-.timeline-item {
-    position: relative;
+
+.context-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.15s;
+    font-weight: 500;
+}
+
+.context-back:hover { color: var(--text); }
+.context-back svg { transition: transform 0.15s; }
+.context-back:hover svg { transform: translateX(-2px); }
+.context-sep { color: var(--n-300); }
+.context-current { color: var(--text); font-weight: 500; }
+
+/* ===== Title row ===== */
+.order-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
+    margin-bottom: 1.75rem;
     padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
 }
-.timeline-item:last-child {
-    padding-bottom: 0;
+
+.order-title-block { min-width: 0; }
+
+.order-title {
+    font-size: 1.625rem;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    color: var(--text);
+    margin: 0 0 0.5rem 0;
+    line-height: 1.15;
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
 }
-.timeline-dot {
-    position: absolute;
-    left: -1.7rem;
-    top: 0;
-    width: 30px;
-    height: 30px;
+
+.order-title .order-num {
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-weight: 500;
+    color: var(--text);
+    letter-spacing: -0.02em;
+}
+
+.order-sub {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    flex-wrap: wrap;
+}
+
+.order-sub .sep {
+    color: var(--n-300);
+}
+
+/* ===== Status chips ===== */
+.status-chips {
+    display: flex;
+    gap: 0.375rem;
+    margin-top: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.625rem;
+    border-radius: 4px;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    background: var(--n-100);
+    color: var(--n-700);
+    line-height: 1.4;
+}
+
+.chip::before {
+    content: '';
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
-    border: 3px solid white;
+    background: var(--n-400);
+}
+
+.chip.paid::before { background: var(--success); }
+.chip.pending::before { background: var(--warning); }
+.chip.failed::before, .chip.cancelled::before { background: var(--danger); }
+.chip.processing::before, .chip.shipped::before { background: var(--n-700); }
+.chip.refunded::before { background: var(--n-500); }
+
+/* ===== Actions row ===== */
+.order-actions {
+    display: flex;
+    gap: 0.375rem;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.btn {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    border-radius: var(--radius);
+    padding: 0.5rem 0.875rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    line-height: 1.25;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.btn-ghost {
+    background: var(--n-0);
+    border-color: var(--border);
+    color: var(--n-700);
+}
+
+.btn-ghost:hover {
+    background: var(--n-50);
+    border-color: var(--border-strong);
+    color: var(--text);
+}
+
+.btn-accent {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+}
+
+.btn-accent:hover {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+    color: white;
+}
+
+.btn-icon {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    justify-content: center;
+}
+
+/* ===== Grid: main + rail ===== */
+.order-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+    gap: 1rem;
+    align-items: start;
+}
+
+.order-rail {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: sticky;
+    top: 20px;
+    align-self: start;
+}
+
+.order-main {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-width: 0;
+}
+
+/* ===== Panels ===== */
+.panel {
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.panel-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.875rem 1.125rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.panel-title {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0;
+    letter-spacing: -0.005em;
+}
+
+.panel-body {
+    padding: 1.125rem;
+}
+
+.panel-body-flush {
+    padding: 0;
+}
+
+/* ===== Address blocks ===== */
+.address-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+}
+
+.address-label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.address-name {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 0.125rem;
+}
+
+.address-lines {
+    font-size: 0.8125rem;
+    color: var(--n-700);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.address-lines a {
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    transition: border-color 0.15s;
+}
+
+.address-lines a:hover {
+    border-color: var(--n-700);
+}
+
+.address-lines-empty {
+    font-size: 0.8125rem;
+    color: var(--text-subtle);
+    font-style: italic;
+}
+
+/* ===== Items table ===== */
+.items-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8125rem;
+}
+
+.items-table th {
+    text-align: left;
+    font-weight: 500;
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.625rem 1.125rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--n-50);
+    white-space: nowrap;
+}
+
+.items-table th:last-child,
+.items-table td:last-child {
+    text-align: right;
+}
+
+.items-table td {
+    padding: 0.875rem 1.125rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+}
+
+.items-table tbody tr:last-child td {
+    border-bottom: 1px solid var(--border);
+}
+
+.item-cell {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    min-width: 0;
+}
+
+.item-thumb {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius);
+    background: var(--n-100);
+    overflow: hidden;
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1;
+    color: var(--n-400);
+    border: 1px solid var(--border);
 }
-.product-image {
-    width: 80px;
-    height: 80px;
+
+.item-thumb img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    border-radius: 8px;
+    display: block;
 }
-.status-badge-lg {
-    font-size: 0.9rem;
-    padding: 0.5rem 1rem;
+
+.item-info {
+    min-width: 0;
 }
-.action-buttons {
-    position: sticky;
+
+.item-title {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text);
+    margin: 0 0 0.125rem 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.item-meta {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+.item-sku {
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 0.6875rem;
+    color: var(--text-subtle);
+}
+
+.item-amount {
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.item-qty {
+    font-variant-numeric: tabular-nums;
+    color: var(--text-muted);
+}
+
+/* ===== Totals block ===== */
+.totals-block {
+    padding: 1rem 1.125rem;
+    background: var(--n-50);
+    border-top: 1px solid var(--border);
+}
+
+.totals-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.375rem 0;
+    font-size: 0.8125rem;
+    color: var(--n-700);
+}
+
+.totals-row .label {
+    color: var(--text-muted);
+}
+
+.totals-row .value {
+    font-variant-numeric: tabular-nums;
+    font-weight: 500;
+    color: var(--text);
+}
+
+.totals-row.discount .value {
+    color: var(--danger);
+}
+
+.totals-row.grand {
+    padding-top: 0.75rem;
+    margin-top: 0.5rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.9375rem;
+}
+
+.totals-row.grand .label {
+    color: var(--text);
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+.totals-row.grand .value {
+    font-weight: 700;
+    color: var(--text);
+    font-size: 1rem;
+}
+
+/* ===== Transactions table ===== */
+.tx-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8125rem;
+}
+
+.tx-table th {
+    text-align: left;
+    font-weight: 500;
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.625rem 1.125rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--n-50);
+    white-space: nowrap;
+}
+
+.tx-table td {
+    padding: 0.75rem 1.125rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+}
+
+.tx-table tr:last-child td {
+    border-bottom: none;
+}
+
+.tx-id {
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+}
+
+.tx-amount {
+    font-variant-numeric: tabular-nums;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* ===== Status dot (shared) ===== */
+.status-dot {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.status-dot::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--n-400);
+    flex-shrink: 0;
+}
+
+.status-dot.paid::before,
+.status-dot.completed::before { background: var(--success); }
+.status-dot.pending::before { background: var(--warning); }
+.status-dot.failed::before,
+.status-dot.cancelled::before { background: var(--danger); }
+.status-dot.processing::before,
+.status-dot.shipped::before { background: var(--n-700); }
+.status-dot.refunded::before { background: var(--n-500); }
+
+/* ===== Notes block ===== */
+.notes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    padding: 1.125rem;
+}
+
+.note-col-title {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.note-content {
+    font-size: 0.8125rem;
+    color: var(--n-700);
+    line-height: 1.6;
+    background: var(--n-50);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.75rem;
+    min-height: 60px;
+    margin: 0;
+}
+
+.note-content p { margin: 0 0 0.5rem 0; }
+.note-content p:last-child { margin-bottom: 0; }
+
+.note-empty {
+    font-size: 0.8125rem;
+    color: var(--text-subtle);
+    font-style: italic;
+    background: var(--n-50);
+    border: 1px dashed var(--border);
+    border-radius: var(--radius);
+    padding: 0.75rem;
+    margin: 0;
+}
+
+.note-form {
+    margin-top: 0.75rem;
+}
+
+/* ===== Rail: Quick actions ===== */
+.rail-panel {
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.rail-section {
+    padding: 1rem 1.125rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.rail-section:last-child { border-bottom: none; }
+
+.rail-label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.form-select,
+.form-control {
+    font-size: 0.8125rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.5rem 0.75rem;
+    background: var(--n-0);
+    width: 100%;
+    color: var(--text);
+    transition: border-color 0.15s, box-shadow 0.15s;
+    font-family: inherit;
+}
+
+.form-select:focus,
+.form-control:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+    outline: none;
+}
+
+.form-select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2371717a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.625rem center;
+    padding-right: 2rem;
+    appearance: none;
+}
+
+.rail-btn {
+    width: 100%;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+.rail-actions-row {
+    display: flex;
+    gap: 0.375rem;
+    margin-top: 0.5rem;
+}
+
+.rail-actions-row .btn {
+    flex: 1;
+    justify-content: center;
+    padding: 0.5rem 0.625rem;
+}
+
+.btn-danger-ghost {
+    background: transparent;
+    border-color: var(--border);
+    color: var(--n-700);
+}
+
+.btn-danger-ghost:hover {
+    background: #fef2f2;
+    border-color: var(--danger);
+    color: var(--danger);
+}
+
+.btn-warning-ghost {
+    background: transparent;
+    border-color: var(--border);
+    color: var(--n-700);
+}
+
+.btn-warning-ghost:hover {
+    background: #fefce8;
+    border-color: var(--warning);
+    color: var(--warning);
+}
+
+/* ===== Timeline ===== */
+.timeline {
+    padding: 1.125rem;
+    position: relative;
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 1.75rem;
+    padding-bottom: 1.125rem;
+}
+
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 14px;
+    bottom: -4px;
+    width: 1px;
+    background: var(--border);
+}
+
+.timeline-item:last-child::before {
+    display: none;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: 0;
+    top: 4px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--n-300);
+    border: 2px solid var(--n-0);
+    box-shadow: 0 0 0 1px var(--border);
+}
+
+.timeline-dot.active {
+    background: var(--n-900);
+    box-shadow: 0 0 0 1px var(--n-900), 0 0 0 3px rgba(24, 24, 27, 0.1);
+}
+
+.timeline-dot.success { background: var(--success); box-shadow: 0 0 0 1px var(--success); }
+.timeline-dot.warning { background: var(--warning); box-shadow: 0 0 0 1px var(--warning); }
+.timeline-dot.danger  { background: var(--danger);  box-shadow: 0 0 0 1px var(--danger); }
+
+.timeline-title {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text);
+    margin: 0 0 0.125rem 0;
+    line-height: 1.3;
+}
+
+.timeline-time {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    margin: 0;
+    font-variant-numeric: tabular-nums;
+}
+
+.timeline-note {
+    font-size: 0.75rem;
+    color: var(--n-700);
+    background: var(--n-50);
+    border-radius: var(--radius-sm);
+    padding: 0.375rem 0.5rem;
+    margin-top: 0.375rem;
+    line-height: 1.5;
+}
+
+/* ===== Metadata ===== */
+.meta-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.5rem 1.125rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.75rem;
+    min-width: 0;
+}
+
+.meta-row:last-child { border-bottom: none; }
+
+.meta-key {
+    color: var(--text-muted);
+    flex-shrink: 0;
+}
+
+.meta-value {
+    color: var(--text);
+    font-weight: 500;
+    text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+}
+
+.meta-value.mono {
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 0.6875rem;
+    font-weight: 400;
+}
+
+/* ===== Toast ===== */
+.toast-stack {
+    position: fixed;
     top: 20px;
+    right: 20px;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    pointer-events: none;
+}
+
+.toast {
+    background: var(--n-900);
+    color: white;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    max-width: 360px;
+    pointer-events: auto;
+    animation: toastIn 0.2s ease;
+}
+
+.toast.error { background: var(--danger); }
+.toast.warning { background: var(--warning); }
+
+@keyframes toastIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1000px) {
+    .order-grid {
+        grid-template-columns: 1fr;
+    }
+    .order-rail {
+        position: static;
+    }
+}
+
+@media (max-width: 900px) {
+    .order-wrap { padding: 1.5rem 1rem 3rem; }
+
+    .order-title-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+
+    .order-actions { justify-content: flex-start; flex-wrap: wrap; }
+
+    .address-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .notes-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .order-title { font-size: 1.25rem; }
+    .items-table th:nth-child(2),
+    .items-table td:nth-child(2),
+    .items-table th:nth-child(3),
+    .items-table td:nth-child(3) {
+        display: none;
+    }
+    .tx-table th:nth-child(5),
+    .tx-table td:nth-child(5) {
+        display: none;
+    }
+}
+
+/* ===== Print ===== */
+@media print {
+    .order-actions,
+    .order-rail,
+    .toast-stack { display: none; }
+    .order-grid { grid-template-columns: 1fr; }
+    .order-wrap { padding: 0; max-width: none; }
+    .panel { border-color: #000; box-shadow: none; }
 }
 </style>
 {% endblock %}
 
 {% block payment_content %}
-<div class="container-fluid">
-    <!-- Header -->
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <div>
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{% url 'payments:order_dashboard' page.subdomain %}">Dashboard</a></li>
-                    <li class="breadcrumb-item"><a href="{% url 'payments:order_list' page.subdomain %}">Orders</a></li>
-                    <li class="breadcrumb-item active">Order {{ order.order_number }}</li>
-                </ol>
-            </nav>
-            <h1 class="h3 mb-0">Order {{ order.order_number }}</h1>
-            <p class="text-muted">Placed on {{ order.created_at|date:"F j, Y, g:i a" }}</p>
+
+<div class="toast-stack" id="toastStack"></div>
+
+<div class="order-wrap">
+
+    <!-- Context -->
+    <div class="catalog-context">
+        <a href="{% url 'payments:order_dashboard' page.subdomain %}" class="context-back">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            <span>Orders</span>
+        </a>
+        <span class="context-sep">/</span>
+        <span class="context-current">{{ order.order_number }}</span>
+    </div>
+
+    <!-- Title row -->
+    <div class="order-title-row">
+        <div class="order-title-block">
+            <h1 class="order-title">
+                Order <span class="order-num">#{{ order.order_number }}</span>
+            </h1>
+            <div class="order-sub">
+                <span>{{ order.created_at|date:"F j, Y" }}</span>
+                <span class="sep">·</span>
+                <span>{{ order.created_at|date:"g:i a" }}</span>
+                <span class="sep">·</span>
+                <span>{{ order.items.count }} item{{ order.items.count|pluralize }}</span>
+            </div>
+
+            <!-- Status chips -->
+            <div class="status-chips">
+                <span class="chip {{ order.status }}">
+                    {{ order.get_status_display }}
+                </span>
+                <span class="chip {{ order.payment_status }}">
+                    {{ order.get_payment_status_display }}
+                </span>
+            </div>
         </div>
-        <div class="btn-group">
-            <a href="{% url 'payments:order_list' page.subdomain %}" class="btn btn-outline-primary">
-                <i class="fas fa-arrow-left me-2"></i>Back to Orders
+        <div class="order-actions">
+            <a href="{% url 'payments:order_list' page.subdomain %}" class="btn btn-ghost">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                <span>All orders</span>
             </a>
-            <button onclick="window.print()" class="btn btn-outline-secondary">
-                <i class="fas fa-print me-2"></i>Print
+            <button onclick="window.print()" class="btn btn-ghost btn-icon" title="Print">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+                    <path d="M6 9V2h12v7M6 14h12v8H6z"/>
+                </svg>
             </button>
         </div>
     </div>
 
-    <div class="row">
-        <!-- Left Column: Order Details -->
-        <div class="col-lg-8">
-            <!-- Order Summary -->
-            <div class="card order-detail-card mb-4">
-                <div class="card-header bg-light d-flex justify-content-between align-items-center">
-                    <h5 class="card-title mb-0">Order Summary</h5>
-                    <div>
-                        <span class="badge status-badge-lg bg-{{ order.get_status_display_class }}">
-                            {{ order.get_status_display }}
-                        </span>
-                        <span class="badge status-badge-lg bg-{{ order.get_payment_status_display_class }} ms-2">
-                            {{ order.get_payment_status_display }}
-                        </span>
-                    </div>
+    <!-- Main grid -->
+    <div class="order-grid">
+
+        <!-- LEFT: main content -->
+        <div class="order-main">
+
+            <!-- Addresses -->
+            <div class="panel">
+                <div class="panel-head">
+                    <h2 class="panel-title">Customer</h2>
                 </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h6>Customer Information</h6>
-                            <div class="mb-3">
-                                <strong>{{ order.customer_name }}</strong><br>
+                <div class="panel-body">
+                    <div class="address-grid">
+
+                        <div>
+                            <span class="address-label">Contact</span>
+                            <div class="address-name">{{ order.customer_name }}</div>
+                            <p class="address-lines">
+                                {% if order.customer_email %}
                                 <a href="mailto:{{ order.customer_email }}">{{ order.customer_email }}</a><br>
-                                {% if order.customer_phone %}
-                                <a href="tel:{{ order.customer_phone }}">{{ order.customer_phone }}</a><br>
                                 {% endif %}
-                            </div>
-                            
-                            {% if order.customer_address %}
-                            <h6>Billing Address</h6>
-                            <address class="mb-3">
-                                {{ order.customer_address }}<br>
-                                {% if order.customer_city %}{{ order.customer_city }}, {% endif %}
-                                {% if order.customer_state %}{{ order.customer_state }} {% endif %}
-                                {% if order.customer_zip %}{{ order.customer_zip }}<br>{% endif %}
-                                {{ order.customer_country }}
-                            </address>
-                            {% endif %}
-                        </div>
-                        
-                        <div class="col-md-6">
-                            <h6>Delivery Information</h6>
-                            {% if order.delivery_address %}
-                            <address class="mb-3">
-                                {{ order.delivery_address }}<br>
-                                {% if order.delivery_city %}{{ order.delivery_city }}, {% endif %}
-                                {% if order.delivery_state %}{{ order.delivery_state }} {% endif %}
-                                {% if order.delivery_zip %}{{ order.delivery_zip }}<br>{% endif %}
-                                {{ order.delivery_country }}
-                            </address>
-                            {% endif %}
-                            
-                            {% if order.delivery_notes %}
-                            <h6>Delivery Notes</h6>
-                            <p class="mb-3">{{ order.delivery_notes }}</p>
-                            {% endif %}
-                            
-                            {% if order.delivery_date %}
-                            <h6>Delivery Date</h6>
-                            <p class="mb-0">
-                                {{ order.delivery_date|date:"F j, Y" }}
-                                {% if order.delivery_time_slot %}
-                                <br><small>{{ order.delivery_time_slot }}</small>
+                                {% if order.customer_phone %}
+                                <a href="tel:{{ order.customer_phone }}">{{ order.customer_phone }}</a>
                                 {% endif %}
                             </p>
+                        </div>
+
+                        <div>
+                            <span class="address-label">Billing</span>
+                            {% if order.customer_address %}
+                            <p class="address-lines">
+                                {{ order.customer_address }}<br>
+                                {% if order.customer_city %}{{ order.customer_city }}{% if order.customer_state %}, {{ order.customer_state }}{% endif %}<br>{% endif %}
+                                {% if order.customer_zip %}{{ order.customer_zip }}<br>{% endif %}
+                                {% if order.customer_country %}{{ order.customer_country }}{% endif %}
+                            </p>
+                            {% else %}
+                            <p class="address-lines-empty">Not provided</p>
                             {% endif %}
                         </div>
+
+                        <div>
+                            <span class="address-label">Shipping</span>
+                            {% if order.delivery_address %}
+                            <p class="address-lines">
+                                {{ order.delivery_address }}<br>
+                                {% if order.delivery_city %}{{ order.delivery_city }}{% if order.delivery_state %}, {{ order.delivery_state }}{% endif %}<br>{% endif %}
+                                {% if order.delivery_zip %}{{ order.delivery_zip }}<br>{% endif %}
+                                {% if order.delivery_country %}{{ order.delivery_country }}{% endif %}
+                            </p>
+                            {% else %}
+                            <p class="address-lines-empty">Same as billing</p>
+                            {% endif %}
+                        </div>
+
+                        <div>
+                            <span class="address-label">Delivery</span>
+                            {% if order.delivery_date %}
+                            <p class="address-lines">
+                                {{ order.delivery_date|date:"F j, Y" }}
+                                {% if order.delivery_time_slot %}<br>{{ order.delivery_time_slot }}{% endif %}
+                            </p>
+                            {% endif %}
+                            {% if order.delivery_notes %}
+                            <p class="address-lines" style="margin-top: 0.5rem; color: var(--text-muted);">
+                                {{ order.delivery_notes }}
+                            </p>
+                            {% endif %}
+                            {% if not order.delivery_date and not order.delivery_notes %}
+                            <p class="address-lines-empty">No delivery info</p>
+                            {% endif %}
+                        </div>
+
                     </div>
                 </div>
             </div>
 
-            <!-- Order Items -->
-            <div class="card order-detail-card mb-4">
-                <div class="card-header bg-light">
-                    <h5 class="card-title mb-0">Order Items</h5>
+            <!-- Order items -->
+            <div class="panel">
+                <div class="panel-head">
+                    <h2 class="panel-title">Items</h2>
+                    <span style="font-size: 0.75rem; color: var(--text-muted);">
+                        {{ order.items.count }} item{{ order.items.count|pluralize }}
+                    </span>
                 </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Product</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Total</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for item in order.items.all %}
-                                <tr>
-                                    <td>
-                                        <div class="d-flex align-items-center">
+                <div class="panel-body-flush">
+
+                    <table class="items-table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Qty</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in order.items.all %}
+                            <tr>
+                                <td>
+                                    <div class="item-cell">
+                                        <div class="item-thumb">
                                             {% if item.product_image %}
-                                            <img src="{{ item.product_image }}" alt="{{ item.product_title }}" 
-                                                 class="product-image me-3">
+                                            <img src="{{ item.product_image }}" alt="">
+                                            {% else %}
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/>
+                                                <path d="m3.3 7 8.7 5 8.7-5M12 22V12"/>
+                                            </svg>
                                             {% endif %}
-                                            <div>
-                                                <strong>{{ item.product_title }}</strong>
-                                                {% if item.product_variant %}
-                                                <br><small class="text-muted">{{ item.product_variant }}</small>
-                                                {% endif %}
-                                                {% if item.product_description %}
-                                                <br><small>{{ item.product_description|truncatechars:100 }}</small>
-                                                {% endif %}
-                                                {% if item.product_sku %}
-                                                <br><small class="text-muted">SKU: {{ item.product_sku }}</small>
-                                                {% endif %}
-                                            </div>
                                         </div>
-                                    </td>
-                                    <td>{{ item.product_price|currency:page }}</td>
-                                    <td>{{ item.quantity }}</td>
-                                    <td>{{ item.total_price|currency:page }}</td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <td colspan="3" class="text-end"><strong>Subtotal:</strong></td>
-                                    <td><strong>{{ order.subtotal|currency:page }}</strong></td>
-                                </tr>
-                                {% if order.tax_amount > 0 %}
-                                <tr>
-                                    <td colspan="3" class="text-end">Tax:</td>
-                                    <td>{{ order.tax_amount|currency:page }}</td>
-                                </tr>
-                                {% endif %}
-                                {% if order.shipping_amount > 0 %}
-                                <tr>
-                                    <td colspan="3" class="text-end">Shipping:</td>
-                                    <td>{{ order.shipping_amount|currency:page }}</td>
-                                </tr>
-                                {% endif %}
-                                {% if order.discount_amount > 0 %}
-                                <tr>
-                                    <td colspan="3" class="text-end">Discount:</td>
-                                    <td class="text-danger">-{{ order.discount_amount|currency:page }}</td>
-                                </tr>
-                                {% endif %}
-                                <tr class="table-active">
-                                    <td colspan="3" class="text-end"><h5 class="mb-0">Total:</h5></td>
-                                    <td><h5 class="mb-0">{{ order.total_amount|currency:page }}</h5></td>
-                                </tr>
-                            </tfoot>
-                        </table>
+                                        <div class="item-info">
+                                            <p class="item-title">{{ item.product_title }}</p>
+                                            {% if item.product_variant %}
+                                            <div class="item-meta">{{ item.product_variant }}</div>
+                                            {% endif %}
+                                            {% if item.product_sku %}
+                                            <div class="item-sku">{{ item.product_sku }}</div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="item-amount">{{ item.product_price|currency:page }}</span></td>
+                                <td><span class="item-qty">{{ item.quantity }}</span></td>
+                                <td><span class="item-amount">{{ item.total_price|currency:page }}</span></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <!-- Totals -->
+                    <div class="totals-block">
+                        <div class="totals-row">
+                            <span class="label">Subtotal</span>
+                            <span class="value">{{ order.subtotal|currency:page }}</span>
+                        </div>
+                        {% if order.tax_amount > 0 %}
+                        <div class="totals-row">
+                            <span class="label">Tax</span>
+                            <span class="value">{{ order.tax_amount|currency:page }}</span>
+                        </div>
+                        {% endif %}
+                        {% if order.shipping_amount > 0 %}
+                        <div class="totals-row">
+                            <span class="label">Shipping</span>
+                            <span class="value">{{ order.shipping_amount|currency:page }}</span>
+                        </div>
+                        {% endif %}
+                        {% if order.discount_amount > 0 %}
+                        <div class="totals-row discount">
+                            <span class="label">Discount</span>
+                            <span class="value">−{{ order.discount_amount|currency:page }}</span>
+                        </div>
+                        {% endif %}
+                        <div class="totals-row grand">
+                            <span class="label">Total</span>
+                            <span class="value">{{ order.total_amount|currency:page }}</span>
+                        </div>
                     </div>
+
                 </div>
             </div>
 
             <!-- Transactions -->
             {% if transactions %}
-            <div class="card order-detail-card mb-4">
-                <div class="card-header bg-light">
-                    <h5 class="card-title mb-0">Payment Transactions</h5>
+            <div class="panel">
+                <div class="panel-head">
+                    <h2 class="panel-title">Transactions</h2>
                 </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-sm">
-                            <thead>
-                                <tr>
-                                    <th>Transaction ID</th>
-                                    <th>Date</th>
-                                    <th>Amount</th>
-                                    <th>Status</th>
-                                    <th>Gateway</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for transaction in transactions %}
-                                <tr>
-                                    <td>
-                                        <small>{{ transaction.gateway_transaction_id|default:"N/A" }}</small>
-                                    </td>
-                                    <td>{{ transaction.created_at|date:"M d, Y H:i" }}</td>
-                                    <td>{{ transaction.amount|currency:page }}</td>
-                                    <td>
-                                        <span class="badge bg-{{ transaction.status }}">
-                                            {{ transaction.get_status_display }}
-                                        </span>
-                                    </td>
-                                    <td>{{ transaction.payment_gateway.get_gateway_type_display }}</td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="panel-body-flush">
+                    <table class="tx-table">
+                        <thead>
+                            <tr>
+                                <th>Transaction ID</th>
+                                <th>Date</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Gateway</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for transaction in transactions %}
+                            <tr>
+                                <td><span class="tx-id">{{ transaction.gateway_transaction_id|default:"—" }}</span></td>
+                                <td style="color: var(--text-muted); font-size: 0.75rem; white-space: nowrap;">
+                                    {{ transaction.created_at|date:"M d, Y" }}
+                                </td>
+                                <td><span class="tx-amount">{{ transaction.amount|currency:page }}</span></td>
+                                <td>
+                                    <span class="status-dot {{ transaction.status }}">
+                                        {{ transaction.get_status_display }}
+                                    </span>
+                                </td>
+                                <td style="color: var(--text-muted); font-size: 0.75rem;">
+                                    {{ transaction.payment_gateway.get_gateway_type_display }}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
                 </div>
             </div>
             {% endif %}
 
             <!-- Notes -->
-            <div class="card order-detail-card">
-                <div class="card-header bg-light">
-                    <h5 class="card-title mb-0">Notes</h5>
+            <div class="panel">
+                <div class="panel-head">
+                    <h2 class="panel-title">Notes</h2>
                 </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h6>Customer Notes</h6>
-                            {% if order.customer_notes %}
-                            <div class="alert alert-light">
-                                {{ order.customer_notes|linebreaks }}
-                            </div>
-                            {% else %}
-                            <p class="text-muted">No customer notes</p>
-                            {% endif %}
-                        </div>
-                        <div class="col-md-6">
-                            <h6>Internal Notes</h6>
-                            {% if order.internal_notes %}
-                            <div class="alert alert-light">
-                                {{ order.internal_notes|linebreaks }}
-                            </div>
-                            {% else %}
-                            <p class="text-muted">No internal notes</p>
-                            {% endif %}
-                            
-                            <form id="addNoteForm" class="mt-3">
-                                <div class="mb-3">
-                                    <label for="noteType" class="form-label">Add Note</label>
-                                    <select class="form-select" id="noteType">
-                                        <option value="internal">Internal Note</option>
-                                        <option value="customer">Customer Note</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <textarea class="form-control" id="noteContent" rows="3" 
-                                              placeholder="Enter your note here..."></textarea>
-                                </div>
-                                <button type="submit" class="btn btn-primary btn-sm">
-                                    <i class="fas fa-plus me-1"></i>Add Note
-                                </button>
-                            </form>
-                        </div>
+                <div class="notes-grid">
+
+                    <div>
+                        <span class="note-col-title">Customer notes</span>
+                        {% if order.customer_notes %}
+                        <div class="note-content">{{ order.customer_notes|linebreaks }}</div>
+                        {% else %}
+                        <p class="note-empty">No customer notes</p>
+                        {% endif %}
                     </div>
+
+                    <div>
+                        <span class="note-col-title">Internal notes</span>
+                        {% if order.internal_notes %}
+                        <div class="note-content">{{ order.internal_notes|linebreaks }}</div>
+                        {% else %}
+                        <p class="note-empty">No internal notes</p>
+                        {% endif %}
+
+                        <form id="addNoteForm" class="note-form">
+                            <select class="form-select" id="noteType" style="margin-bottom: 0.5rem;">
+                                <option value="internal">Internal note</option>
+                                <option value="customer">Customer note</option>
+                            </select>
+                            <textarea class="form-control" id="noteContent" rows="3"
+                                      placeholder="Write a note…" style="margin-bottom: 0.5rem;"></textarea>
+                            <button type="submit" class="btn btn-ghost" style="width: 100%; justify-content: center;">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 5v14M5 12h14"/>
+                                </svg>
+                                <span>Add note</span>
+                            </button>
+                        </form>
+                    </div>
+
                 </div>
             </div>
+
         </div>
 
-        <!-- Right Column: Actions & Timeline -->
-        <div class="col-lg-4">
-            <!-- Quick Actions -->
-            <div class="card order-detail-card mb-4 action-buttons">
-                <div class="card-header bg-light">
-                    <h5 class="card-title mb-0">Quick Actions</h5>
-                </div>
-                <div class="card-body">
-                    <div class="d-grid gap-2">
-                        <!-- Status Update -->
-                        <div class="mb-3">
-                            <label for="statusSelect" class="form-label">Update Status</label>
-                            <select class="form-select" id="statusSelect">
-                                {% for status, display in status_choices %}
-                                <option value="{{ status }}" {% if order.status == status %}selected{% endif %}>
-                                    {{ display }}
-                                </option>
-                                {% endfor %}
-                            </select>
-                            <textarea id="statusNote" class="form-control mt-2" rows="2" 
-                                      placeholder="Optional note for status change"></textarea>
-                            <button id="updateStatusBtn" class="btn btn-primary w-100 mt-2">
-                                <i class="fas fa-sync me-1"></i>Update Status
-                            </button>
-                        </div>
+        <!-- RIGHT: rail -->
+        <aside class="order-rail">
 
-                        <!-- Payment Status Update -->
-                        <div class="mb-3">
-                            <label for="paymentStatusSelect" class="form-label">Update Payment Status</label>
-                            <select class="form-select" id="paymentStatusSelect">
-                                {% for status, display in payment_status_choices %}
-                                <option value="{{ status }}" {% if order.payment_status == status %}selected{% endif %}>
-                                    {{ display }}
-                                </option>
-                                {% endfor %}
-                            </select>
-                            <button id="updatePaymentStatusBtn" class="btn btn-outline-primary w-100 mt-2">
-                                <i class="fas fa-dollar-sign me-1"></i>Update Payment
-                            </button>
-                        </div>
+            <!-- Quick actions -->
+            <div class="rail-panel">
 
-                        <!-- Action Buttons -->
-                        <div class="btn-group w-100">
-                            {% if order.can_cancel %}
-                            <button class="btn btn-outline-danger" id="cancelOrderBtn">
-                                <i class="fas fa-times me-1"></i>Cancel
-                            </button>
-                            {% endif %}
-                            {% if order.can_refund %}
-                            <button class="btn btn-outline-warning" id="refundOrderBtn">
-                                <i class="fas fa-undo me-1"></i>Refund
-                            </button>
-                            {% endif %}
-                        </div>
-
-                        <!-- Additional Actions -->
-                        <div class="dropdown mt-2">
-                            <button class="btn btn-outline-secondary w-100 dropdown-toggle" 
-                                    type="button" data-bs-toggle="dropdown">
-                                <i class="fas fa-cog me-1"></i>More Actions
-                            </button>
-                            <ul class="dropdown-menu w-100">
-                                <li>
-                                    <a class="dropdown-item" href="#" id="resendEmailBtn">
-                                        <i class="fas fa-envelope me-2"></i>Resend Confirmation
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#" id="duplicateOrderBtn">
-                                        <i class="fas fa-copy me-2"></i>Duplicate Order
-                                    </a>
-                                </li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li>
-                                    <a class="dropdown-item text-danger" href="#" id="deleteOrderBtn">
-                                        <i class="fas fa-trash me-2"></i>Delete Order
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Order Timeline -->
-            <div class="card order-detail-card">
-                <div class="card-header bg-light">
-                    <h5 class="card-title mb-0">Order Timeline</h5>
-                </div>
-                <div class="card-body">
-                    <div class="timeline">
-                        <!-- Current Status -->
-                        <div class="timeline-item">
-                            <div class="timeline-dot bg-{{ order.get_status_display_class }}">
-                                <i class="fas fa-shopping-cart text-white"></i>
-                            </div>
-                            <div>
-                                <h6 class="mb-1">Current: {{ order.get_status_display }}</h6>
-                                <p class="text-muted small mb-0">
-                                    {{ order.updated_at|date:"M d, Y H:i" }}
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Status History -->
-                        {% for entry in timeline|slice:"-5:"|dictsortreversed:"timestamp" %}
-                        <div class="timeline-item">
-                            <div class="timeline-dot bg-light border">
-                                <i class="fas fa-history text-muted"></i>
-                            </div>
-                            <div>
-                                <h6 class="mb-1">{{ entry.status|title }}</h6>
-                                <p class="text-muted small mb-0">
-                                    {{ entry.timestamp|slice:":10" }} {{ entry.timestamp|slice:"11:16" }}
-                                    {% if entry.note %}
-                                    <br><small>{{ entry.note }}</small>
-                                    {% endif %}
-                                </p>
-                            </div>
-                        </div>
+                <div class="rail-section">
+                    <span class="rail-label">Order status</span>
+                    <select class="form-select" id="statusSelect">
+                        {% for status, display in status_choices %}
+                        <option value="{{ status }}" {% if order.status == status %}selected{% endif %}>
+                            {{ display }}
+                        </option>
                         {% endfor %}
+                    </select>
+                    <textarea id="statusNote" class="form-control" rows="2"
+                              placeholder="Optional note…" style="margin-top: 0.5rem;"></textarea>
+                    <button id="updateStatusBtn" class="btn btn-accent rail-btn">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 6 9 17l-5-5"/>
+                        </svg>
+                        <span class="btn-text">Update status</span>
+                        <span class="spinner-border spinner-border-sm d-none" role="status"></span>
+                    </button>
+                </div>
 
-                        <!-- Order Created -->
-                        <div class="timeline-item">
-                            <div class="timeline-dot bg-success">
-                                <i class="fas fa-plus text-white"></i>
-                            </div>
-                            <div>
-                                <h6 class="mb-1">Order Created</h6>
-                                <p class="text-muted small mb-0">
-                                    {{ order.created_at|date:"M d, Y H:i" }}
-                                </p>
-                            </div>
-                        </div>
+                <div class="rail-section">
+                    <span class="rail-label">Payment status</span>
+                    <select class="form-select" id="paymentStatusSelect">
+                        {% for status, display in payment_status_choices %}
+                        <option value="{{ status }}" {% if order.payment_status == status %}selected{% endif %}>
+                            {{ display }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                    <button id="updatePaymentStatusBtn" class="btn btn-ghost rail-btn">
+                        <span class="btn-text">Update payment</span>
+                        <span class="spinner-border spinner-border-sm d-none" role="status"></span>
+                    </button>
+                </div>
+
+                {% if order.can_cancel or order.can_refund %}
+                <div class="rail-section">
+                    <span class="rail-label">Danger zone</span>
+                    <div class="rail-actions-row">
+                        {% if order.can_cancel %}
+                        <button class="btn btn-danger-ghost" id="cancelOrderBtn">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 6 6 18M6 6l12 12"/>
+                            </svg>
+                            <span>Cancel</span>
+                        </button>
+                        {% endif %}
+                        {% if order.can_refund %}
+                        <button class="btn btn-warning-ghost" id="refundOrderBtn">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                                <path d="M3 3v5h5"/>
+                            </svg>
+                            <span>Refund</span>
+                        </button>
+                        {% endif %}
                     </div>
                 </div>
+                {% endif %}
+
+                <div class="rail-section" style="padding: 0.5rem;">
+                    <div class="dropdown">
+                        <button class="btn btn-ghost" style="width: 100%; justify-content: center;"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                            <span>More actions</span>
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m6 9 6 6 6-6"/>
+                            </svg>
+                        </button>
+                        <ul class="dropdown-menu" style="width: 100%; border: 1px solid var(--border); border-radius: var(--radius); box-shadow: 0 8px 24px -8px rgba(0,0,0,0.15); padding: 0.25rem; font-size: 0.8125rem;">
+                            <li>
+                                <a class="dropdown-item" href="#" id="resendEmailBtn" style="border-radius: var(--radius-sm); padding: 0.4375rem 0.625rem;">
+                                    Resend confirmation
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#" id="duplicateOrderBtn" style="border-radius: var(--radius-sm); padding: 0.4375rem 0.625rem;">
+                                    Duplicate order
+                                </a>
+                            </li>
+                            <li><hr class="dropdown-divider" style="margin: 0.25rem 0; border-color: var(--border);"></li>
+                            <li>
+                                <a class="dropdown-item" href="#" id="deleteOrderBtn" style="border-radius: var(--radius-sm); padding: 0.4375rem 0.625rem; color: var(--danger);">
+                                    Delete order
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
             </div>
 
-            <!-- Order Metadata -->
-            <div class="card order-detail-card mt-4">
-                <div class="card-header bg-light">
-                    <h5 class="card-title mb-0">Metadata</h5>
+            <!-- Timeline -->
+            <div class="rail-panel">
+                <div class="panel-head">
+                    <h2 class="panel-title">Timeline</h2>
                 </div>
-                <div class="card-body">
-                    <dl class="row mb-0">
-                        <dt class="col-sm-6">Order Number:</dt>
-                        <dd class="col-sm-6">{{ order.order_number }}</dd>
+                <div class="timeline">
 
-                        <dt class="col-sm-6">Payment Method:</dt>
-                        <dd class="col-sm-6">{{ order.get_payment_method_display }}</dd>
-
-                        {% if order.ip_address %}
-                        <dt class="col-sm-6">IP Address:</dt>
-                        <dd class="col-sm-6">{{ order.ip_address }}</dd>
+                    {% for entry in timeline|slice:"-5:"|dictsortreversed:"timestamp" %}
+                    <div class="timeline-item">
+                        <span class="timeline-dot"></span>
+                        <p class="timeline-title">{{ entry.status|title }}</p>
+                        <p class="timeline-time">
+                            {{ entry.timestamp|slice:":10" }} {{ entry.timestamp|slice:"11:16" }}
+                        </p>
+                        {% if entry.note %}
+                        <div class="timeline-note">{{ entry.note }}</div>
                         {% endif %}
+                    </div>
+                    {% endfor %}
 
-                        {% if order.referrer %}
-                        <dt class="col-sm-6">Referrer:</dt>
-                        <dd class="col-sm-6">{{ order.referrer|truncatechars:30 }}</dd>
-                        {% endif %}
+                    <div class="timeline-item">
+                        <span class="timeline-dot success"></span>
+                        <p class="timeline-title">Order created</p>
+                        <p class="timeline-time">{{ order.created_at|date:"M d, Y H:i" }}</p>
+                    </div>
 
-                        {% if order.utm_source %}
-                        <dt class="col-sm-6">UTM Source:</dt>
-                        <dd class="col-sm-6">{{ order.utm_source }}</dd>
-                        {% endif %}
-
-                        <dt class="col-sm-6">Created:</dt>
-                        <dd class="col-sm-6">{{ order.created_at|date:"M d, Y H:i" }}</dd>
-
-                        {% if order.paid_at %}
-                        <dt class="col-sm-6">Paid:</dt>
-                        <dd class="col-sm-6">{{ order.paid_at|date:"M d, Y H:i" }}</dd>
-                        {% endif %}
-
-                        {% if order.processed_at %}
-                        <dt class="col-sm-6">Processed:</dt>
-                        <dd class="col-sm-6">{{ order.processed_at|date:"M d, Y H:i" }}</dd>
-                        {% endif %}
-                    </dl>
                 </div>
             </div>
-        </div>
+
+            <!-- Metadata -->
+            <div class="rail-panel">
+                <div class="panel-head">
+                    <h2 class="panel-title">Metadata</h2>
+                </div>
+                <div class="meta-list">
+                    <div class="meta-row">
+                        <span class="meta-key">Payment</span>
+                        <span class="meta-value">{{ order.get_payment_method_display }}</span>
+                    </div>
+                    {% if order.paid_at %}
+                    <div class="meta-row">
+                        <span class="meta-key">Paid</span>
+                        <span class="meta-value">{{ order.paid_at|date:"M d, Y H:i" }}</span>
+                    </div>
+                    {% endif %}
+                    {% if order.processed_at %}
+                    <div class="meta-row">
+                        <span class="meta-key">Processed</span>
+                        <span class="meta-value">{{ order.processed_at|date:"M d, Y H:i" }}</span>
+                    </div>
+                    {% endif %}
+                    {% if order.ip_address %}
+                    <div class="meta-row">
+                        <span class="meta-key">IP</span>
+                        <span class="meta-value mono">{{ order.ip_address }}</span>
+                    </div>
+                    {% endif %}
+                    {% if order.utm_source %}
+                    <div class="meta-row">
+                        <span class="meta-key">UTM source</span>
+                        <span class="meta-value">{{ order.utm_source }}</span>
+                    </div>
+                    {% endif %}
+                    {% if order.referrer %}
+                    <div class="meta-row">
+                        <span class="meta-key">Referrer</span>
+                        <span class="meta-value" title="{{ order.referrer }}">{{ order.referrer|truncatechars:24 }}</span>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+        </aside>
+
     </div>
+
 </div>
 
-<!-- Modals -->
-<div class="modal fade" id="statusUpdateModal" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Update Status</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                <div id="statusUpdateMessage"></div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-{%csrf_token%}
+{% csrf_token %}
 {% endblock %}
-
 
 {% block extra_js %}
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const csrfToken = getCSRFToken();
     const orderId = {{ order.id }};
     const subdomain = '{{ page.subdomain }}';
-    
-    // Update Status
-    document.getElementById('updateStatusBtn').addEventListener('click', async function() {
+
+    /* ============ Update status ============ */
+    document.getElementById('updateStatusBtn').addEventListener('click', async function () {
         const newStatus = document.getElementById('statusSelect').value;
         const note = document.getElementById('statusNote').value;
-        
-        this.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i>Updating...';
-        this.disabled = true;
-        
+        const btn = this;
+        const text = btn.querySelector('.btn-text');
+        const spin = btn.querySelector('.spinner-border');
+
+        btn.disabled = true;
+        text.textContent = 'Updating…';
+        spin.classList.remove('d-none');
+
         try {
-            const response = await fetch(`/payments/orders/update-status/${subdomain}/${orderId}/`, {
+            const res = await fetch(`/payments/orders/update-status/${subdomain}/${orderId}/`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': csrfToken,
-                },
+                headers: { 'Content-Type': 'application/json', 'X-CSRFToken': csrfToken },
                 body: JSON.stringify({ status: newStatus, note: note })
             });
+            const data = await res.json();
 
-            const data = await response.json();
-            
             if (data.success) {
-                // Update UI - Fix: Use the status class returned from the server
-                const statusBadge = document.querySelector('.status-badge-lg:first-child');
-                if (statusBadge) {
-                    // Remove all bg-* classes
-                    statusBadge.className = statusBadge.className.replace(/\bbg-\S+/g, '');
-                    // Add new bg class
-                    statusBadge.classList.add(`bg-${data.status_class}`);
-                    statusBadge.textContent = data.new_status_display;
-                }
-                
-                // Show success message
-                showMessage('Status updated successfully!', 'success');
-                
-                // Clear note
+                toast('Status updated', 'success');
                 document.getElementById('statusNote').value = '';
-                
-                // Reload page to update timeline
-                setTimeout(() => window.location.reload(), 1500);
+                setTimeout(() => window.location.reload(), 900);
             } else {
                 throw new Error(data.error || 'Update failed');
             }
-            
-        } catch (error) {
-            showMessage('Error: ' + error.message, 'danger');
-        } finally {
-            this.innerHTML = '<i class="fas fa-sync me-1"></i>Update Status';
-            this.disabled = false;
+        } catch (err) {
+            toast(err.message, 'error');
+            btn.disabled = false;
+            text.textContent = 'Update status';
+            spin.classList.add('d-none');
         }
     });
-    
-    // Update Payment Status
-    document.getElementById('updatePaymentStatusBtn').addEventListener('click', async function() {
+
+    /* ============ Update payment status ============ */
+    document.getElementById('updatePaymentStatusBtn').addEventListener('click', async function () {
         const newStatus = document.getElementById('paymentStatusSelect').value;
-        
-        this.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i>Updating...';
-        this.disabled = true;
-        
+        const btn = this;
+        const text = btn.querySelector('.btn-text');
+        const spin = btn.querySelector('.spinner-border');
+
+        btn.disabled = true;
+        text.textContent = 'Updating…';
+        spin.classList.remove('d-none');
+
         try {
-            const response = await fetch(`/payments/orders/update-payment-status/${subdomain}/${orderId}/`, {
+            const res = await fetch(`/payments/orders/update-payment-status/${subdomain}/${orderId}/`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': csrfToken,
-                },
+                headers: { 'Content-Type': 'application/json', 'X-CSRFToken': csrfToken },
                 body: JSON.stringify({ status: newStatus, note: '' })
             });
-            
-            const data = await response.json();
-            
+            const data = await res.json();
+
             if (data.success) {
-                // Update UI - Fix: Select the payment status badge (second badge)
-                const paymentBadges = document.querySelectorAll('.status-badge-lg');
-                if (paymentBadges.length > 1) {
-                    const paymentBadge = paymentBadges[1];
-                    // Remove all bg-* classes
-                    paymentBadge.className = paymentBadge.className.replace(/\bbg-\S+/g, '');
-                    // Add new bg class
-                    paymentBadge.classList.add(`bg-${data.status_class}`);
-                    paymentBadge.textContent = data.new_status_display;
-                }
-                
-                showMessage('Payment status updated successfully!', 'success');
-                setTimeout(() => window.location.reload(), 1500);
+                toast('Payment status updated', 'success');
+                setTimeout(() => window.location.reload(), 900);
             } else {
                 throw new Error(data.error || 'Update failed');
             }
-            
-        } catch (error) {
-            showMessage('Error: ' + error.message, 'danger');
-        } finally {
-            this.innerHTML = '<i class="fas fa-dollar-sign me-1"></i>Update Payment';
-            this.disabled = false;
+        } catch (err) {
+            toast(err.message, 'error');
+            btn.disabled = false;
+            text.textContent = 'Update payment';
+            spin.classList.add('d-none');
         }
     });
-    
-    // Add Note
-    document.getElementById('addNoteForm').addEventListener('submit', async function(e) {
+
+    /* ============ Add note ============ */
+    document.getElementById('addNoteForm').addEventListener('submit', async function (e) {
         e.preventDefault();
-        
+
         const noteType = document.getElementById('noteType').value;
         const content = document.getElementById('noteContent').value;
-        
+
         if (!content.trim()) {
-            showMessage('Please enter note content', 'warning');
+            toast('Please write something first', 'warning');
             return;
         }
-        
+
         const submitBtn = this.querySelector('button[type="submit"]');
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i>Adding...';
         submitBtn.disabled = true;
-        
+
         try {
-            const response = await fetch(`/payments/orders/add-note/${subdomain}/${orderId}/`, {
+            const res = await fetch(`/payments/orders/add-note/${subdomain}/${orderId}/`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': csrfToken,
-                },
+                headers: { 'Content-Type': 'application/json', 'X-CSRFToken': csrfToken },
                 body: JSON.stringify({ type: noteType, content: content })
             });
-            
-            const responseText = await response.text();
-            
-            if (responseText.trim().startsWith('<!DOCTYPE') || responseText.trim().startsWith('<html')) {
-                throw new Error('Server returned HTML instead of JSON. Check the API endpoint URL.');
+
+            const text = await res.text();
+            if (text.trim().startsWith('<')) {
+                throw new Error('Server returned HTML — check the API endpoint');
             }
-            
-            const data = JSON.parse(responseText);
-            
+
+            const data = JSON.parse(text);
+
             if (data.success) {
-                showMessage('Note added successfully!', 'success');
+                toast('Note added', 'success');
                 document.getElementById('noteContent').value = '';
-                
-                // Reload to show new note
-                setTimeout(() => window.location.reload(), 1000);
+                setTimeout(() => window.location.reload(), 900);
             } else {
                 throw new Error(data.error || 'Failed to add note');
             }
-            
-        } catch (error) {
-            showMessage('Error: ' + error.message, 'danger');
+        } catch (err) {
+            toast(err.message, 'error');
         } finally {
-            submitBtn.innerHTML = '<i class="fas fa-plus me-1"></i>Add Note';
             submitBtn.disabled = false;
         }
     });
-    
-    // Cancel Order
+
+    /* ============ Cancel order ============ */
     const cancelBtn = document.getElementById('cancelOrderBtn');
     if (cancelBtn) {
-        cancelBtn.addEventListener('click', function() {
-            if (confirm('Are you sure you want to cancel this order?')) {
+        cancelBtn.addEventListener('click', function () {
+            if (confirm('Cancel this order? This cannot be undone.')) {
                 updateOrderStatus('cancelled', 'Order cancelled by admin');
             }
         });
     }
-    
-    // Resend Email
+
+    /* ============ Resend confirmation ============ */
     const resendBtn = document.getElementById('resendEmailBtn');
     if (resendBtn) {
-        resendBtn.addEventListener('click', async function(e) {
+        resendBtn.addEventListener('click', async function (e) {
             e.preventDefault();
-            
             try {
-                const response = await fetch(`/payments/api/orders/${orderId}/resend-email/`, {
+                const res = await fetch(`/payments/api/orders/${orderId}/resend-email/`, {
                     method: 'POST',
-                    headers: {
-                        'X-CSRFToken': csrfToken,
-                    }
+                    headers: { 'X-CSRFToken': csrfToken }
                 });
-                
-                const data = await response.json();
-                
+                const data = await res.json();
                 if (data.success) {
-                    showMessage('Confirmation email resent!', 'success');
+                    toast('Confirmation resent', 'success');
                 } else {
-                    throw new Error(data.error || 'Failed to resend email');
+                    throw new Error(data.error || 'Failed to resend');
                 }
-                
-            } catch (error) {
-                showMessage('Error: ' + error.message, 'danger');
+            } catch (err) {
+                toast(err.message, 'error');
             }
         });
     }
-    
-    // Helper functions
+
+    /* ============ Helpers ============ */
     function getCSRFToken() {
-        const cookieValue = document.cookie
-            .split('; ')
-            .find(row => row.startsWith('csrftoken='))
-            ?.split('=')[1];
-        return cookieValue || '';
+        const m = document.cookie.match(/csrftoken=([^;]+)/);
+        return m ? m[1] : '';
     }
-    
-    function showMessage(message, type) {
-        // Create toast
-        const toast = document.createElement('div');
-        toast.className = `toast align-items-center text-white bg-${type} border-0 position-fixed bottom-0 end-0 m-3`;
-        toast.style.zIndex = '1060';
-        toast.setAttribute('role', 'alert');
-        toast.setAttribute('aria-live', 'assertive');
-        toast.setAttribute('aria-atomic', 'true');
-        
-        toast.innerHTML = `
-            <div class="d-flex">
-                <div class="toast-body">
-                    ${message}
-                </div>
-                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-        `;
-        
-        document.body.appendChild(toast);
-        const bsToast = new bootstrap.Toast(toast);
-        bsToast.show();
-        
-        toast.addEventListener('hidden.bs.toast', function() {
-            toast.remove();
-        });
+
+    function toast(message, type = 'info') {
+        const stack = document.getElementById('toastStack');
+        const el = document.createElement('div');
+        el.className = `toast ${type}`;
+        const icon = type === 'error'
+            ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>'
+            : type === 'warning'
+            ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4M12 17h.01"/></svg>'
+            : '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+        el.innerHTML = `${icon}<span>${message}</span>`;
+        stack.appendChild(el);
+        setTimeout(() => {
+            el.style.transition = 'opacity 0.2s, transform 0.2s';
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(-8px)';
+            setTimeout(() => el.remove(), 200);
+        }, 3000);
     }
-    
+
     async function updateOrderStatus(status, note) {
         try {
-            const response = await fetch(`/payments/orders/update-status/${subdomain}/${orderId}/`, {
+            const res = await fetch(`/payments/orders/update-status/${subdomain}/${orderId}/`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': csrfToken,
-                },
-                body: JSON.stringify({ status: status, note: note })
+                headers: { 'Content-Type': 'application/json', 'X-CSRFToken': csrfToken },
+                body: JSON.stringify({ status, note })
             });
-            
-            const data = await response.json();
-            
+            const data = await res.json();
             if (data.success) {
-                showMessage(`Order ${status} successfully!`, 'success');
-                setTimeout(() => window.location.reload(), 1500);
+                toast('Order updated', 'success');
+                setTimeout(() => window.location.reload(), 900);
             } else {
                 throw new Error(data.error || 'Operation failed');
             }
-            
-        } catch (error) {
-            showMessage('Error: ' + error.message, 'danger');
+        } catch (err) {
+            toast(err.message, 'error');
         }
     }
 });

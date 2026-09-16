@@ -2,178 +2,359 @@
 
 <!-- Sidebar HTML Structure -->
 <div class="management-sidebar" id="managementSidebar">
-    <div class="sidebar-header d-flex justify-content-between align-items-center mb-3 d-lg-none">
-        <h6 class="text-uppercase text-muted small fw-bold mb-0">Menu</h6>
+    <div class="sidebar-header d-flex justify-content-between align-items-center d-lg-none">
+        <h6 class="text-uppercase text-muted small fw-semibold mb-0">Menu</h6>
         <button type="button" class="btn-close" id="closeSidebarBtn"></button>
     </div>
-    
+
     <div class="sidebar-nav-wrapper">
         <div class="sidebar-nav">
-            <h6 class="text-uppercase text-muted small fw-bold mb-3 d-none d-lg-block">Store Management</h6>
-            
-            <a href="{% url 'manage_products' subdomain=page.subdomain %}" 
-               class="nav-link {% if active_menu == 'products' %}active{% endif %}">
-                <i class="fas fa-box"></i>Products
-            </a>
-            
-            <a href="{% url 'manage_product_categories' subdomain=page.subdomain %}" 
-               class="nav-link {% if active_menu == 'categories' %}active{% endif %}">
-                <i class="fas fa-tags"></i>Categories
-            </a>
 
-             <!-- ADD THIS COPYWRITING BUTTON -->
-        <a href="{% url 'copy_editor' subdomain=page.subdomain %}" class="btn btn-outline-info btn-sm">
-            <i class="fas fa-pen-fancy me-1"></i>Copy
-        </a>
-            
-            <a href="{% url 'cj_dashboard' subdomain=page.subdomain %}" 
-               class="nav-link {% if active_menu == 'cj_dropshipping' %}active{% endif %}">
-                <i class="fas fa-dolly"></i>CJ Dropshipping
-            </a>
+            <!-- ==================== SELL ==================== -->
+            <div class="sidebar-section">
+                <h6 class="sidebar-section-title d-none d-lg-block">Sell</h6>
 
-            <a href="{% url 'payments:order_dashboard' page.subdomain %}" 
-               class="nav-link {% if active_menu == 'orders' %}active{% endif %}">
-                <i class="fas fa-shopping-cart"></i>Orders
-            </a>
-            
-            <a href="{% url 'currency_settings' subdomain=page.subdomain %}" 
-               class="nav-link {% if active_menu == 'currency' %}active{% endif %}">
-                <i class="fas fa-coins"></i>Currency Settings
-            </a>
+                <a href="{% url 'manage_products' subdomain=page.subdomain %}"
+                   class="nav-link {% if active_menu == 'products' %}active{% endif %}">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2.5 5.5l1-2.5h9l1 2.5v6.5a1 1 0 01-1 1h-9a1 1 0 01-1-1V5.5z"/>
+                        <path d="M2.5 5.5h11"/>
+                        <path d="M6.5 8.5h3"/>
+                    </svg>
+                    <span>Products</span>
+                </a>
 
-            <a href="{% url 'payments:manage_shipping' subdomain=page.subdomain %}" 
-                class="nav-link {% if active_menu == 'shipping' %}active{% endif %}" >
-                <i class="fas fa-truck me-2"></i>Shipping Settings
-            </a>
-            
-            <a href="{% url 'payments:tax_dashboard' page.subdomain %}" 
-               class="nav-link {% if active_menu == 'taxes' %}active{% endif %}" onclick="return checkPlanAccess('business')">
-                <i class="fas fa-percent"></i>Configure Taxes
-                {% if not limits.features.abandoned_cart %}
-                    <span class="badge bg-secondary float-end">Business</span>
-                {% endif %}
-            </a>
+                <a href="{% url 'manage_product_categories' subdomain=page.subdomain %}"
+                   class="nav-link {% if active_menu == 'categories' %}active{% endif %}">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2.5" y="2.5" width="4.5" height="4.5" rx="0.75"/>
+                        <rect x="9" y="2.5" width="4.5" height="4.5" rx="0.75"/>
+                        <rect x="2.5" y="9" width="4.5" height="4.5" rx="0.75"/>
+                        <rect x="9" y="9" width="4.5" height="4.5" rx="0.75"/>
+                    </svg>
+                    <span>Categories</span>
+                </a>
 
-            <a href="{% url 'analytics_dashboard' page.subdomain %}" onclick="return checkPlanAccess('business')"
-               class="nav-link {% if active_menu == 'analytics' %}active{% endif %}">
-                <i class="fas fa-chart-bar"></i>Analytics
-                {% if not limits.features.abandoned_cart %}
-                    <span class="badge bg-secondary float-end">Business</span>
-                {% endif %}
-            </a>
-            <a href="#" class="nav-link" onclick="return checkPlanAccess('business')">
-                <i class="fas fa-shopping-cart me-2"></i>Abandoned Cart Recovery
-                {% if not limits.features.abandoned_cart %}
-                    <span class="badge bg-secondary float-end">Business</span>
-                {% endif %}
-            </a>
-            <a href="#" class="nav-link" onclick="return checkPlanAccess('business')">
-                <i class="fas fa-tags me-2"></i>Discount Codes
-                {% if not limits.features.discount_codes %}
-                    <span class="badge bg-secondary float-end">Business</span>
-                {% endif %}
-            </a>
-            
-            <!-- Referral Program -->
-            <a href="#" class="nav-link" onclick="return checkPlanAccess('business')">
-                <i class="fas fa-hand-holding-usd me-2"></i>Referral Program
-                {% if not limits.features.discount_codes %}
-                    <span class="badge bg-secondary float-end">Business</span>
-                {% endif %}
-            </a>
+                <a href="{% url 'payments:order_dashboard' page.subdomain %}"
+                   class="nav-link {% if active_menu == 'orders' %}active{% endif %}">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2 3h2l1.5 8.5h7L14 5H5"/>
+                        <circle cx="6.5" cy="13" r="0.75"/>
+                        <circle cx="11.5" cy="13" r="0.75"/>
+                    </svg>
+                    <span>Orders</span>
+                </a>
 
-            <a href="#" class="nav-link" onclick="return checkPlanAccess('business')">
-                <i class="fas fa-envelope-open-text me-2"></i>Email Marketing
-                {% if not limits.features.email_marketing %}
-                    <span class="badge bg-secondary float-end">Business</span>
-                {% endif %}
-            </a>
+                <a href="{% url 'cj_dashboard' subdomain=page.subdomain %}"
+                   class="nav-link {% if active_menu == 'cj_dropshipping' %}active{% endif %}">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2 5.5h12v7a1 1 0 01-1 1H3a1 1 0 01-1-1v-7z"/>
+                        <path d="M2 5.5l2-3h8l2 3"/>
+                        <path d="M6 9h4"/>
+                    </svg>
+                    <span>CJ Dropshipping</span>
+                </a>
+            </div>
 
-            <hr class="my-3">
+            <!-- ==================== PAYMENTS ==================== -->
+            <div class="sidebar-section">
+                <h6 class="sidebar-section-title d-none d-lg-block">Payments</h6>
 
-            <h6 class="text-uppercase text-muted small fw-bold mb-3 d-none d-lg-block">Site Settings</h6>
-            
-            <a href="{% url 'manage_domains' subdomain=page.subdomain %}" 
-               class="nav-link {% if active_menu == 'domains' %}active{% endif %}" onclick="return checkPlanAccess('pro')">
-                <i class="fas fa-globe"></i>Domains
-                {% if not limits.features.custom_domain %}
-                    <span class="badge bg-secondary float-end"> Pro</span>
-                {% endif %}
-            </a>
-            
-            <a href="{% url 'edit_terms' subdomain=page.subdomain %}" 
-               class="nav-link {% if active_menu == 'terms' %}active{% endif %}" onclick="return checkPlanAccess('pro')">
-                <i class="fas fa-gavel"></i>Set Terms & Conditions
-                {% if not limits.features.custom_domain %}
-                    <span class="badge bg-secondary float-end"> Pro</span>
-                {% endif %}
-            </a>
-            
-            <a href="{% url 'edit_privacy' subdomain=page.subdomain %}" 
-               class="nav-link {% if active_menu == 'privacy' %}active{% endif %}" onclick="return checkPlanAccess('pro')">
-                <i class="fas fa-shield-alt"></i>Set Privacy Policy
-                {% if not limits.features.custom_domain %}
-                    <span class="badge bg-secondary float-end"> Pro</span>
-                {% endif %}
-            </a>
+                <a href="{% url 'payments:manage_gateways' subdomain=page.subdomain %}"
+                   class="nav-link {% if active_menu == 'gateways' %}active{% endif %}">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="4" width="12" height="8" rx="1.5"/>
+                        <path d="M2 7h12"/>
+                        <path d="M5 10h2"/>
+                    </svg>
+                    <span>Payment Gateways</span>
+                </a>
 
-            <a href="{% url 'edit_shipping_policy' subdomain=page.subdomain %}" 
-               class="nav-link {% if active_menu == 'shipping' %}active{% endif %}" onclick="return checkPlanAccess('pro')">
-                <i class="fas fa-right-left"></i>Set Shipping & Returns Policy
-                {% if not limits.features.custom_domain %}
-                    <span class="badge bg-secondary float-end"> Pro</span>
-                {% endif %}
-            </a>
+                <a href="{% url 'currency_settings' subdomain=page.subdomain %}"
+                   class="nav-link {% if active_menu == 'currency' %}active{% endif %}">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="8" cy="8" r="5.5"/>
+                        <path d="M8 5v6M6.5 6.5h2.25a1.25 1.25 0 010 2.5H6.5h2.75"/>
+                    </svg>
+                    <span>Currency</span>
+                </a>
 
-            <a href="{% url 'manage_social_media' subdomain=page.subdomain %}" 
-               class="nav-link {% if active_menu == 'social' %}active{% endif %}">
-                <i class="fas fa-share-alt"></i>Add Social Media Handles
-            </a>
+                <a href="{% url 'payments:manage_shipping' subdomain=page.subdomain %}"
+                   class="nav-link {% if active_menu == 'shipping' %}active{% endif %}">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M1.5 4.5h8v6h-8z"/>
+                        <path d="M9.5 6.5h3l2 2v2h-5z"/>
+                        <circle cx="4.5" cy="11.5" r="1"/>
+                        <circle cx="11.5" cy="11.5" r="1"/>
+                    </svg>
+                    <span>Shipping</span>
+                </a>
 
-            <a href="{% url 'manage_form_submissions' subdomain=page.subdomain %}" 
-               class="nav-link {% if active_menu == 'forms' %}active{% endif %}">
-                <i class="fas fa-envelope"></i>Form Submissions
-            </a>
+                <a href="{% url 'payments:tax_dashboard' page.subdomain %}"
+                   class="nav-link {% if active_menu == 'taxes' %}active{% endif %}"
+                   onclick="return checkPlanAccess('business')">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="5" cy="5" r="1.5"/>
+                        <circle cx="11" cy="11" r="1.5"/>
+                        <path d="M11.5 4.5l-7 7"/>
+                    </svg>
+                    <span>Taxes</span>
+                    {% if not limits.features.discount_codes %}
+                    <span class="sidebar-plan-tag">Business</span>
+                    {% endif %}
+                </a>
 
-            <!-- <a href="{% url 'payments:manage_pod_orders' page.subdomain %}" 
-               class="nav-link {% if active_menu == 'pod_orders' %}active{% endif %}">
-                <i class="fas fa-truck"></i>POD Orders
-            </a> -->
+                <a href="{% url 'payments:configure_pod' page.subdomain %}"
+                   class="nav-link {% if active_menu == 'pod_settings' %}active{% endif %}">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="10" height="10" rx="1"/>
+                        <path d="M6 6h4M6 8h4M6 10h2"/>
+                    </svg>
+                    <span>Pay on Delivery</span>
+                </a>
+            </div>
 
-            <a href="{% url 'payments:configure_pod' page.subdomain %}" 
-               class="nav-link {% if active_menu == 'pod_settings' %}active{% endif %}">
-                <i class="fas fa-cog"></i>POD Settings
-            </a>
+            <!-- ==================== MARKETING ==================== -->
+            <div class="sidebar-section">
+                <h6 class="sidebar-section-title d-none d-lg-block">Marketing</h6>
 
-            <a href="{% url 'payments:manage_gateways' subdomain=page.subdomain %}" 
-               class="nav-link {% if active_menu == 'gateways' %}active{% endif %}">
-                <i class="fas fa-credit-card"></i>Payment Gateways
-            </a>
+                <a href="#" class="nav-link {% if active_menu == 'discounts' %}active{% endif %}"
+                   onclick="return checkPlanAccess('business')">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M8.5 2.5H13v4.5L7 13l-4.5-4.5L8.5 2.5z"/>
+                        <circle cx="10.5" cy="5.5" r="0.75"/>
+                    </svg>
+                    <span>Discount Codes</span>
+                    {% if not limits.features.discount_codes %}
+                    <span class="sidebar-plan-tag">Business</span>
+                    {% endif %}
+                </a>
 
-            <hr class="my-3">
+                <a href="#" class="nav-link {% if active_menu == 'abandoned_cart' %}active{% endif %}"
+                   onclick="return checkPlanAccess('business')">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2.5 3.5h2l1.25 7h6.5l1.25-5H5"/>
+                        <circle cx="6" cy="13" r="0.75"/>
+                        <circle cx="11" cy="13" r="0.75"/>
+                        <path d="M9 3l2 2M11 3l-2 2"/>
+                    </svg>
+                    <span>Abandoned Carts</span>
+                    {% if not limits.features.abandoned_cart %}
+                    <span class="sidebar-plan-tag">Business</span>
+                    {% endif %}
+                </a>
 
-            <a href="{% url 'editor_with_page' page.template.name page.subdomain %}" 
-               class="nav-link {% if active_menu == 'editor' %}active{% endif %}">
-                <i class="fas fa-edit"></i>Edit Website
-            </a>
-            
-            <a href="{{ page.get_absolute_url }}" target="_blank" 
-               class="nav-link {% if active_menu == 'live' %}active{% endif %}">
-                <i class="fas fa-eye"></i>View Live Site
-            </a>
+                <a href="#" class="nav-link {% if active_menu == 'email_marketing' %}active{% endif %}"
+                   onclick="return checkPlanAccess('business')">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="3.5" width="12" height="9" rx="1.5"/>
+                        <path d="M2.5 4.5l5.5 4 5.5-4"/>
+                    </svg>
+                    <span>Email Marketing</span>
+                    {% if not limits.features.email_marketing %}
+                    <span class="sidebar-plan-tag">Business</span>
+                    {% endif %}
+                </a>
 
-            <a href="{% url 'onboarding' %}" class="nav-link">
-                <i class="fas fa-palette me-2"></i>New Store
-            </a>
-            <a href="{% url 'payments:subscription_detail' %}" class="nav-link">
-                <i class="fas fa-crown me-2"></i>My Subscription
-                <span class="badge bg-{{ limits.is_paid|yesno:'success,secondary' }} float-end">
-                    {{ limits.plan_name }}
-                </span>
-            </a>
-            <a href="{% url 'support' %}" class="nav-link">
-                <i class="fas fa-headset me-2"></i>Support
-            </a>
+                <a href="#" class="nav-link {% if active_menu == 'referrals' %}active{% endif %}"
+                   onclick="return checkPlanAccess('business')">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="5.5" cy="6.5" r="2"/>
+                        <circle cx="11" cy="6.5" r="2"/>
+                        <path d="M2 12.5c0-1.5 1.5-2.5 3.5-2.5s3.5 1 3.5 2.5"/>
+                        <path d="M8.5 12.5c0-1 1-2 2.5-2s2.5 1 2.5 2"/>
+                    </svg>
+                    <span>Referral Program</span>
+                    {% if not limits.features.discount_codes %}
+                    <span class="sidebar-plan-tag">Business</span>
+                    {% endif %}
+                </a>
+            </div>
+
+            <!-- ==================== CONTENT ==================== -->
+            <div class="sidebar-section">
+                <h6 class="sidebar-section-title d-none d-lg-block">Content</h6>
+
+                <a href="{% url 'editor_with_page' page.template.name page.subdomain %}"
+                   class="nav-link {% if active_menu == 'editor' %}active{% endif %}">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M11 2.5l2.5 2.5-8.5 8.5-3 1 1-3z"/>
+                        <path d="M9 4.5l2.5 2.5"/>
+                    </svg>
+                    <span>Edit Website</span>
+                </a>
+
+                <a href="{% url 'copy_editor' subdomain=page.subdomain %}"
+                   class="nav-link {% if active_menu == 'copy' %}active{% endif %}">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5.5 2.5h6l2 2v8a1 1 0 01-1 1h-8a1 1 0 01-1-1v-9a1 1 0 011-1h1z"/>
+                        <path d="M5.5 2.5v3h6"/>
+                        <path d="M4.5 8.5h6M4.5 10.5h4"/>
+                    </svg>
+                    <span>Copy Editor</span>
+                </a>
+
+                <a href="{% url 'manage_blog_posts' subdomain=page.subdomain %}"
+                   class="nav-link {% if active_menu == 'blog' %}active{% endif %}">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3.5 2.5h6l3 3v8a1 1 0 01-1 1h-8a1 1 0 01-1-1v-10a1 1 0 011-1z"/>
+                        <path d="M9.5 2.5v3.5h3.5"/>
+                        <path d="M5 9h6M5 11h4"/>
+                    </svg>
+                    <span>Blog Posts</span>
+                </a>
+
+                <a href="{% url 'manage_form_submissions' subdomain=page.subdomain %}"
+                   class="nav-link {% if active_menu == 'forms' %}active{% endif %}">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2.5" y="3" width="11" height="10" rx="1.5"/>
+                        <path d="M4.5 5.5h7M4.5 8h7M4.5 10.5h4"/>
+                    </svg>
+                    <span>Form Submissions</span>
+                </a>
+
+                <a href="{% url 'manage_social_media' subdomain=page.subdomain %}"
+                   class="nav-link {% if active_menu == 'social' %}active{% endif %}">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="4" cy="8" r="1.75"/>
+                        <circle cx="12" cy="4" r="1.75"/>
+                        <circle cx="12" cy="12" r="1.75"/>
+                        <path d="M5.5 7l5-2M5.5 9l5 2"/>
+                    </svg>
+                    <span>Social Media</span>
+                </a>
+            </div>
+
+            <!-- ==================== DOMAIN ==================== -->
+            <div class="sidebar-section">
+                <h6 class="sidebar-section-title d-none d-lg-block">Domain</h6>
+
+                <a href="{% url 'domains_page' page.subdomain %}"
+                   class="nav-link {% if active_menu == 'get_domain' %}active{% endif %}">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="8" cy="8" r="5.5"/>
+                        <path d="M2.5 8h11"/>
+                        <path d="M8 2.5c1.5 1.75 2.25 3.5 2.25 5.5S9.5 11.75 8 13.5C6.5 11.75 5.75 10 5.75 8S6.5 4.25 8 2.5z"/>
+                    </svg>
+                    <span>Get a Domain</span>
+                </a>
+
+                <a href="{% url 'manage_domains' page.subdomain %}"
+                   class="nav-link {% if active_menu == 'domains' %}active{% endif %}">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 9.5l4-3"/>
+                        <path d="M5 6.5L3.5 8a2.5 2.5 0 003.5 3.5l1.5-1.5"/>
+                        <path d="M11 9.5L12.5 8A2.5 2.5 0 009 4.5L7.5 6"/>
+                    </svg>
+                    <span>Connect Existing</span>
+                </a>
+            </div>
+
+            <!-- ==================== SETTINGS ==================== -->
+            <div class="sidebar-section">
+                <h6 class="sidebar-section-title d-none d-lg-block">Settings</h6>
+
+                <a href="{% url 'edit_terms' subdomain=page.subdomain %}"
+                   class="nav-link {% if active_menu == 'terms' %}active{% endif %}"
+                   onclick="return checkPlanAccess('pro')">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 2.5h6l2.5 2.5v8a1 1 0 01-1 1H4a1 1 0 01-1-1v-9.5a1 1 0 011-1z"/>
+                        <path d="M6 8h4M6 10h3"/>
+                    </svg>
+                    <span>Terms &amp; Conditions</span>
+                    {% if not limits.features.custom_domain %}
+                    <span class="sidebar-plan-tag">Pro</span>
+                    {% endif %}
+                </a>
+
+                <a href="{% url 'edit_privacy' subdomain=page.subdomain %}"
+                   class="nav-link {% if active_menu == 'privacy' %}active{% endif %}"
+                   onclick="return checkPlanAccess('pro')">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M8 2l5 2v4c0 3-2 5-5 6-3-1-5-3-5-6V4l5-2z"/>
+                        <path d="M6 8l1.5 1.5L10.5 6.5"/>
+                    </svg>
+                    <span>Privacy Policy</span>
+                    {% if not limits.features.custom_domain %}
+                    <span class="sidebar-plan-tag">Pro</span>
+                    {% endif %}
+                </a>
+
+                <a href="{% url 'edit_shipping_policy' subdomain=page.subdomain %}"
+                   class="nav-link {% if active_menu == 'shipping_policy' %}active{% endif %}"
+                   onclick="return checkPlanAccess('pro')">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2.5 3.5h7M2.5 6.5h5"/>
+                        <path d="M9 3.5h4.5v9a1 1 0 01-1 1H9"/>
+                        <path d="M3 9l2 2-2 2"/>
+                    </svg>
+                    <span>Shipping &amp; Returns</span>
+                    {% if not limits.features.custom_domain %}
+                    <span class="sidebar-plan-tag">Pro</span>
+                    {% endif %}
+                </a>
+
+                <a href="{% url 'analytics_dashboard' page.subdomain %}"
+                   class="nav-link {% if active_menu == 'analytics' %}active{% endif %}"
+                   onclick="return checkPlanAccess('business')">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 13V6M7 13V3M11 13V9"/>
+                        <path d="M2 13h12"/>
+                    </svg>
+                    <span>Analytics</span>
+                    {% if not limits.features.abandoned_cart %}
+                    <span class="sidebar-plan-tag">Business</span>
+                    {% endif %}
+                </a>
+            </div>
+
+            <!-- ==================== ACCOUNT ==================== -->
+            <div class="sidebar-section">
+                <h6 class="sidebar-section-title d-none d-lg-block">Account</h6>
+
+                <a href="{% url 'payments:subscription_detail' %}"
+                   class="nav-link {% if active_menu == 'subscription' %}active{% endif %}">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2.5 11.5l1.5-7h8l1.5 7"/>
+                        <path d="M2.5 11.5h11v1a1 1 0 01-1 1h-9a1 1 0 01-1-1v-1z"/>
+                        <path d="M5.5 4.5v-.5a2.5 2.5 0 015 0v.5"/>
+                    </svg>
+                    <span>Subscription</span>
+                    <span class="sidebar-plan-tag {% if limits.is_paid %}is-active{% endif %}">
+                        {{ limits.plan_name }}
+                    </span>
+                </a>
+
+                <a href="{% url 'onboarding' %}"
+                   class="nav-link {% if active_menu == 'new_store' %}active{% endif %}">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="8" cy="8" r="5.5"/>
+                        <path d="M8 5.5v5M5.5 8h5"/>
+                    </svg>
+                    <span>New Store</span>
+                </a>
+
+                <a href="{% url 'support' %}"
+                   class="nav-link {% if active_menu == 'support' %}active{% endif %}">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="8" cy="8" r="5.5"/>
+                        <path d="M6.25 6.5a1.75 1.75 0 013.5 0c0 1-1.75 1.25-1.75 2.5"/>
+                        <circle cx="8" cy="11.25" r="0.5" fill="currentColor" stroke="none"/>
+                    </svg>
+                    <span>Support</span>
+                </a>
+
+                <a href="{{ page.get_absolute_url }}" target="_blank" rel="noopener"
+                   class="nav-link {% if active_menu == 'live' %}active{% endif %}">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9.5 2.5h4v4"/>
+                        <path d="M13.5 2.5L8 8"/>
+                        <path d="M12 9v3.5a1 1 0 01-1 1H3.5a1 1 0 01-1-1V5a1 1 0 011-1H7"/>
+                    </svg>
+                    <span>View Live Site</span>
+                </a>
+            </div>
+
         </div>
     </div>
 </div>
@@ -182,204 +363,230 @@
 <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
 <!-- Mobile Sidebar Toggle Button -->
-<button class="mobile-sidebar-toggle" id="mobileSidebarToggle">
-    <i class="fas fa-bars"></i>
+<button class="mobile-sidebar-toggle" id="mobileSidebarToggle" aria-label="Open menu">
+    <svg viewBox="0 0 16 16" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 4.5h10M3 8h10M3 11.5h10"/>
+    </svg>
 </button>
 
 <!-- Sidebar CSS -->
 <style>
-/* Sidebar Styles - Fixed with Independent Scroll */
+/* ---------- Shell ---------- */
 .management-sidebar {
-    width: 280px;
-    background: #f8f9fa;
-    border-right: 1px solid #dee2e6;
+    width: 260px;
+    background: #ffffff;
+    border-right: 1px solid #e8ebef;
     position: sticky;
     top: 0;
     height: 100vh;
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    flex-shrink: 0;
 }
 
 .sidebar-nav-wrapper {
     flex: 1;
     overflow-y: auto;
     overflow-x: hidden;
-    padding: 1.5rem 1rem;
-}
-
-/* Custom Scrollbar Styling */
-.sidebar-nav-wrapper::-webkit-scrollbar {
-    width: 6px;
-}
-
-.sidebar-nav-wrapper::-webkit-scrollbar-track {
-    background: #e9ecef;
-    border-radius: 3px;
-}
-
-.sidebar-nav-wrapper::-webkit-scrollbar-thumb {
-    background: #cbd5e1;
-    border-radius: 3px;
-}
-
-.sidebar-nav-wrapper::-webkit-scrollbar-thumb:hover {
-    background: #94a3b8;
-}
-
-/* Firefox Scrollbar */
-.sidebar-nav-wrapper {
+    padding: 1.25rem 0.75rem 1.5rem;
     scrollbar-width: thin;
-    scrollbar-color: #cbd5e1 #e9ecef;
+    scrollbar-color: #d1d5db transparent;
+}
+.sidebar-nav-wrapper::-webkit-scrollbar { width: 6px; }
+.sidebar-nav-wrapper::-webkit-scrollbar-track { background: transparent; }
+.sidebar-nav-wrapper::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 3px;
+}
+.sidebar-nav-wrapper::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+
+/* ---------- Section headings ---------- */
+.sidebar-section {
+    margin-bottom: 1.25rem;
+}
+.sidebar-section:last-child {
+    margin-bottom: 0;
+}
+.sidebar-section-title {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #9ca3af;
+    padding: 0 0.75rem;
+    margin: 0 0 0.375rem;
 }
 
+/* ---------- Nav links ---------- */
 .sidebar-nav .nav-link {
-    color: #495057;
-    padding: 0.75rem 1rem;
+    color: #4b5563;
+    padding: 0.5rem 0.75rem;
     border-radius: 6px;
-    margin-bottom: 0.25rem;
-    transition: all 0.2s ease;
+    margin-bottom: 1px;
+    transition: background 0.12s, color 0.12s;
     text-decoration: none;
     display: flex;
     align-items: center;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.35;
+    gap: 0.625rem;
 }
-
 .sidebar-nav .nav-link:hover {
-    background: #e9ecef;
-    color: #4361ee;
+    background: #f3f4f6;
+    color: #0f1419;
 }
-
 .sidebar-nav .nav-link.active {
-    background: #4361ee;
-    color: white;
+    background: #eef2ff;
+    color: #4338ca;
+    font-weight: 600;
+}
+.sidebar-nav .nav-link svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: #9ca3af;
+    transition: color 0.12s;
+}
+.sidebar-nav .nav-link:hover svg { color: #4b5563; }
+.sidebar-nav .nav-link.active svg { color: #4338ca; }
+
+.sidebar-nav .nav-link span {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
-.sidebar-nav .nav-link i {
-    width: 20px;
-    margin-right: 0.5rem;
+/* ---------- Plan tags ---------- */
+.sidebar-plan-tag {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: #f3f4f6;
+    color: #9ca3af;
+    flex-shrink: 0;
+    line-height: 1;
+    height: 18px;
+}
+.sidebar-plan-tag.is-active {
+    background: #ecfdf5;
+    color: #059669;
 }
 
-.sidebar-nav hr {
-    margin: 1rem 0;
+/* ---------- Mobile header ---------- */
+.sidebar-header {
+    display: none;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid #e8ebef;
+    margin: 0;
+}
+.sidebar-header h6 {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
 }
 
-/* Mobile Sidebar Button */
+/* ---------- Mobile toggle ---------- */
 .mobile-sidebar-toggle {
     display: none;
     position: fixed;
     bottom: 20px;
     right: 20px;
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
-    background: #4361ee;
+    background: #0f1419;
     color: white;
     border: none;
-    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15), 0 4px 10px rgba(0, 0, 0, 0.08);
     z-index: 1000;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: transform 0.15s, background 0.15s;
     align-items: center;
     justify-content: center;
 }
-
 .mobile-sidebar-toggle:hover {
-    transform: scale(1.1);
-    background: #3730a3;
+    transform: scale(1.05);
+    background: #1f2937;
 }
 
-/* Sidebar Overlay */
+/* ---------- Overlay ---------- */
 .sidebar-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
+    inset: 0;
+    background: rgba(15, 20, 25, 0.4);
     z-index: 998;
     display: none;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.25s ease;
+    backdrop-filter: blur(2px);
 }
-
 .sidebar-overlay.active {
     display: block;
     opacity: 1;
 }
 
-/* Desktop Layout */
+/* ---------- Desktop layout ---------- */
 @media (min-width: 769px) {
     .management-layout {
         display: flex;
         min-height: 100vh;
     }
-    
     .management-sidebar {
         position: sticky;
         top: 0;
         height: 100vh;
         z-index: 1;
     }
-    
     .management-content {
         flex: 1;
-        padding: 1.5rem;
-        background: white;
         min-height: 100vh;
         overflow-y: auto;
-    }
-    
-    .sidebar-header {
-        display: none;
+        min-width: 0;
     }
 }
 
-/* Mobile Layout */
+/* ---------- Mobile layout ---------- */
 @media (max-width: 768px) {
     .management-layout {
         position: relative;
         min-height: 100vh;
+        display: block;
     }
-    
     .management-sidebar {
         position: fixed;
         top: 0;
         left: 0;
         bottom: 0;
         width: 280px;
-        background: white;
+        max-width: 85vw;
+        background: #ffffff;
         z-index: 999;
         transform: translateX(-100%);
-        box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-        transition: transform 0.3s ease-in-out;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
         height: 100vh;
+        border-right: none;
     }
-    
     .management-sidebar.active {
         transform: translateX(0);
     }
-    
+    .sidebar-header {
+        display: flex !important;
+    }
     .mobile-sidebar-toggle {
         display: flex;
     }
-    
-    .sidebar-header {
-        padding: 1rem;
-        border-bottom: 1px solid #e2e8f0;
-        margin: 0;
-        display: flex !important;
-    }
-    
-    .sidebar-nav-wrapper {
-        padding: 1rem;
-    }
-}
-
-/* Ensure main content has proper spacing on mobile */
-@media (max-width: 768px) {
     .management-content {
         width: 100%;
-        padding: 1rem;
         min-height: 100vh;
     }
 }
@@ -388,50 +595,35 @@
 <!-- Sidebar JavaScript -->
 <script>
 (function() {
-    // Initialize sidebar functionality when DOM is ready
     function initSidebar() {
         const sidebar = document.getElementById('managementSidebar');
         const overlay = document.getElementById('sidebarOverlay');
         const toggleBtn = document.getElementById('mobileSidebarToggle');
         const closeBtn = document.getElementById('closeSidebarBtn');
-        
+
         if (!sidebar) return;
-        
+
         function openSidebar() {
             sidebar.classList.add('active');
             if (overlay) overlay.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
-        
         function closeSidebar() {
             sidebar.classList.remove('active');
             if (overlay) overlay.classList.remove('active');
             document.body.style.overflow = '';
         }
-        
-        // Toggle sidebar on button click
-        if (toggleBtn) {
-            toggleBtn.addEventListener('click', openSidebar);
-        }
-        
-        // Close sidebar with close button
-        if (closeBtn) {
-            closeBtn.addEventListener('click', closeSidebar);
-        }
-        
-        // Close sidebar when clicking overlay
-        if (overlay) {
-            overlay.addEventListener('click', closeSidebar);
-        }
-        
-        // Close sidebar on escape key
+
+        if (toggleBtn) toggleBtn.addEventListener('click', openSidebar);
+        if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
+        if (overlay) overlay.addEventListener('click', closeSidebar);
+
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && sidebar.classList.contains('active')) {
                 closeSidebar();
             }
         });
-        
-        // Auto-close sidebar when a link is clicked on mobile
+
         const sidebarLinks = sidebar.querySelectorAll('.nav-link');
         sidebarLinks.forEach(link => {
             link.addEventListener('click', function() {
@@ -440,21 +632,15 @@
                 }
             });
         });
-        
-        // Handle window resize
+
         window.addEventListener('resize', function() {
             if (window.innerWidth > 768) {
-                if (sidebar.classList.contains('active')) {
-                    sidebar.classList.remove('active');
-                }
-                if (overlay && overlay.classList.contains('active')) {
-                    overlay.classList.remove('active');
-                }
+                if (sidebar.classList.contains('active')) sidebar.classList.remove('active');
+                if (overlay && overlay.classList.contains('active')) overlay.classList.remove('active');
                 document.body.style.overflow = '';
             }
         });
-        
-        // Optional: Add active link to viewport on page load (for desktop)
+
         if (window.innerWidth > 768) {
             const activeLink = sidebar.querySelector('.nav-link.active');
             if (activeLink) {
@@ -462,9 +648,6 @@
                 if (wrapper) {
                     const linkTop = activeLink.offsetTop;
                     const wrapperHeight = wrapper.clientHeight;
-                    const linkHeight = activeLink.clientHeight;
-                    
-                    // Scroll to bring active link into view if needed
                     if (linkTop > wrapperHeight) {
                         wrapper.scrollTop = linkTop - wrapperHeight / 2;
                     }
@@ -472,8 +655,7 @@
             }
         }
     }
-    
-    // Run initialization when DOM is ready
+
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initSidebar);
     } else {
@@ -482,79 +664,56 @@
 })();
 </script>
 
-<!-- builder/templates/builder/dashboard.html -->
-<!-- Find your existing sidebar links and add onclick handlers -->
-<!-- Tier check modal -->
-
 <!-- Upgrade Modal -->
 <div class="modal fade" id="upgradeModal" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="upgradeTitle">Upgrade Required</h5>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0" style="border-radius: 12px; overflow: hidden;">
+            <div class="modal-header border-0 pb-0">
+                <h5 class="modal-title fw-semibold" id="upgradeTitle">Upgrade required</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
-            <div class="modal-body">
-                <div class="text-center mb-3">
-                    <i id="upgradeFeatureIcon" class="fas fa-crown fa-3x text-warning"></i>
+            <div class="modal-body text-center pt-2 pb-4">
+                <div class="mb-3">
+                    <i id="upgradeFeatureIcon" class="fas fa-crown fa-2x text-warning"></i>
                 </div>
-                <p id="upgradeMessage" class="text-center"></p>
-                <p id="upgradeFeature" class="text-center text-muted small"></p>
-                <div class="text-center mt-3">
-                    <span id="upgradePlanBadge" class="badge"></span>
-                </div>
+                <p id="upgradeMessage" class="mb-2 text-muted"></p>
+                <p id="upgradeFeature" class="small text-muted mb-3"></p>
+                <span id="upgradePlanBadge" class="badge px-3 py-2"></span>
             </div>
-            <div class="modal-footer">
-                <a href="{% url 'payments:pricing' %}" class="btn btn-primary">View Plans</a>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <div class="modal-footer border-0 pt-0 justify-content-center">
+                <a href="{% url 'payments:pricing' %}" class="btn btn-primary px-4">View plans</a>
+                <button type="button" class="btn btn-link text-muted" data-bs-dismiss="modal">Not now</button>
             </div>
         </div>
     </div>
 </div>
+
 <script>
 function checkPlanAccess(requiredTier) {
     const tierLevels = {'free': 0, 'pro': 1, 'business': 2, 'agency': 3};
     const currentTier = '{{ limits.tier|default:"free" }}';
-    const isPaid = {{ limits.is_paid|yesno:"true,false" }};
     const currentLevel = tierLevels[currentTier] || 0;
     const requiredLevel = tierLevels[requiredTier] || 0;
-    
-    // Check if user already has access
-    if (currentLevel >= requiredLevel) {
-        // User has access - allow navigation to proceed
-        return true;
-    }
-    
-    // User doesn't have access - show upgrade modal and prevent navigation
+
+    if (currentLevel >= requiredLevel) return true;
+
     const planNames = {'pro': 'Pro', 'business': 'Business', 'agency': 'Agency'};
     const planName = planNames[requiredTier] || requiredTier;
     const displayName = requiredTier.charAt(0).toUpperCase() + requiredTier.slice(1);
-    
-    // Set modal content
+
     document.getElementById('upgradeTitle').textContent = 'Upgrade to ' + planName;
     document.getElementById('upgradeMessage').textContent = displayName + ' features require the ' + planName + ' plan or higher.';
     document.getElementById('upgradeFeature').textContent = 'Your current plan: ' + '{{ limits.plan_name|default:"Free" }}';
-    
-    // Set plan badge
+
     const planBadge = document.getElementById('upgradePlanBadge');
     planBadge.textContent = planName + ' Plan';
-    planBadge.className = 'badge px-3 py-2 fs-6';
-    
-    if (requiredTier === 'pro') {
-        planBadge.classList.add('bg-primary');
-        document.getElementById('upgradeFeatureIcon').className = 'fas fa-star fa-2x text-white';
-    } else if (requiredTier === 'business') {
-        planBadge.classList.add('bg-purple');
-        document.getElementById('upgradeFeatureIcon').className = 'fas fa-briefcase fa-2x text-white';
-    } else if (requiredTier === 'agency') {
-        planBadge.classList.add('bg-danger');
-        document.getElementById('upgradeFeatureIcon').className = 'fas fa-building fa-2x text-white';
-    }
-    
-    // Show modal
+    planBadge.className = 'badge px-3 py-2';
+    if (requiredTier === 'pro') planBadge.classList.add('bg-primary');
+    else if (requiredTier === 'business') planBadge.classList.add('bg-dark');
+    else if (requiredTier === 'agency') planBadge.classList.add('bg-danger');
+
     const modal = new bootstrap.Modal(document.getElementById('upgradeModal'));
     modal.show();
-    
-    return false; // Prevent navigation
+    return false;
 }
 </script>

@@ -536,10 +536,66 @@
             <div class="hero-container">
                 <div class="hero-image-container" id="section-184">
                     {% if image_customizations.67 %}
-                    <img src="{{ image_customizations.67.image_url }}" 
-                         alt="{{ image_customizations.67.alt_text|default:'Luxe Essence Atelier' }}" 
-                         class="hero-image" 
-                         data-image="67">
+                    {% with video=video_customizations.67 %}
+    {% if video %}
+        {# ===== VIDEO EXISTS - RENDER VIDEO ===== #}
+        <div class="editable-video" 
+             data-image="67" 
+             data-is-video="true"
+             style="position: relative; overflow: hidden; display: inline-block; max-width: 100%; border-radius: 8px; cursor: pointer;">
+            
+            <video 
+                src="{{ video.video_url }}" 
+                poster="{{ video.poster_url|default:'' }}"
+                {% if video.autoplay %}autoplay{% endif %}
+                {% if video.loop %}loop{% endif %}
+                {% if video.muted %}muted{% endif %}
+                {% if video.controls %}controls{% endif %}
+                style="width: 100%; height: 100%; display: block; object-fit: cover;"
+            >
+                Your browser does not support the video tag.
+            </video>
+            
+            {# ===== PLAY BUTTON OVERLAY ===== #}
+            {% if video.show_play_button %}
+            <div class="video-overlay" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 24px;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            ">
+                <i class="fas fa-play"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+        {# ===== NO VIDEO - RENDER IMAGE ===== #}
+        {% if image_customizations.67 %}
+            <img src="{{ image_customizations.67.image_url }}" 
+                 alt="{{ image_customizations.67.alt_text|default:'{{ image_customizations.67.alt_text|default:' }}" 
+                 class="editable-image" 
+                 data-image="67">
+        {% else %}
+            <img src="https://images.pexels.com/photos/6311675/pexels-photo-6311675.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                 alt="{{ image_customizations.67.alt_text|default:" 
+                 class="editable-image" 
+                 data-image="67">
+        {% endif %}
+    {% endif %}
+{% endwith %}
                     {% else %}
                     <img src="https://cdn.pixabay.com/photo/2023/12/23/08/42/island-8465139_1280.png" 
                          alt="Luxe Essence Atelier" 
@@ -686,10 +742,66 @@
                 <div class="team-card" id="section-226">
                     <div class="team-image-container" id="section-227">
                         {% if image_customizations.68 %}
-                        <img src="{{ image_customizations.68.image_url }}" 
-                             alt="{{ image_customizations.68.alt_text|default:'Isabella Moreau' }}" 
-                             class="team-image" 
-                             data-image="68">
+                        {% with video=video_customizations.68 %}
+    {% if video %}
+        {# ===== VIDEO EXISTS - RENDER VIDEO ===== #}
+        <div class="editable-video" 
+             data-image="68" 
+             data-is-video="true"
+             style="position: relative; overflow: hidden; display: inline-block; max-width: 100%; border-radius: 8px; cursor: pointer;">
+            
+            <video 
+                src="{{ video.video_url }}" 
+                poster="{{ video.poster_url|default:'' }}"
+                {% if video.autoplay %}autoplay{% endif %}
+                {% if video.loop %}loop{% endif %}
+                {% if video.muted %}muted{% endif %}
+                {% if video.controls %}controls{% endif %}
+                style="width: 100%; height: 100%; display: block; object-fit: cover;"
+            >
+                Your browser does not support the video tag.
+            </video>
+            
+            {# ===== PLAY BUTTON OVERLAY ===== #}
+            {% if video.show_play_button %}
+            <div class="video-overlay" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 24px;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            ">
+                <i class="fas fa-play"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+        {# ===== NO VIDEO - RENDER IMAGE ===== #}
+        {% if image_customizations.68 %}
+            <img src="{{ image_customizations.68.image_url }}" 
+                 alt="{{ image_customizations.68.alt_text|default:'{{ image_customizations.68.alt_text|default:' }}" 
+                 class="editable-image" 
+                 data-image="68">
+        {% else %}
+            <img src="https://images.pexels.com/photos/6311675/pexels-photo-6311675.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                 alt="{{ image_customizations.68.alt_text|default:" 
+                 class="editable-image" 
+                 data-image="68">
+        {% endif %}
+    {% endif %}
+{% endwith %}
                         {% else %}
                         <img src="https://cdn.pixabay.com/photo/2023/12/23/08/42/island-8465139_1280.png" 
                              alt="Isabella Moreau" 
@@ -706,10 +818,66 @@
                 <div class="team-card" id="section-231">
                     <div class="team-image-container" id="section-232">
                         {% if image_customizations.69 %}
-                        <img src="{{ image_customizations.69.image_url }}" 
-                             alt="{{ image_customizations.69.alt_text|default:'Alexander Chen' }}" 
-                             class="team-image" 
-                             data-image="69">
+                        {% with video=video_customizations.69 %}
+    {% if video %}
+        {# ===== VIDEO EXISTS - RENDER VIDEO ===== #}
+        <div class="editable-video" 
+             data-image="69" 
+             data-is-video="true"
+             style="position: relative; overflow: hidden; display: inline-block; max-width: 100%; border-radius: 8px; cursor: pointer;">
+            
+            <video 
+                src="{{ video.video_url }}" 
+                poster="{{ video.poster_url|default:'' }}"
+                {% if video.autoplay %}autoplay{% endif %}
+                {% if video.loop %}loop{% endif %}
+                {% if video.muted %}muted{% endif %}
+                {% if video.controls %}controls{% endif %}
+                style="width: 100%; height: 100%; display: block; object-fit: cover;"
+            >
+                Your browser does not support the video tag.
+            </video>
+            
+            {# ===== PLAY BUTTON OVERLAY ===== #}
+            {% if video.show_play_button %}
+            <div class="video-overlay" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 24px;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            ">
+                <i class="fas fa-play"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+        {# ===== NO VIDEO - RENDER IMAGE ===== #}
+        {% if image_customizations.69 %}
+            <img src="{{ image_customizations.69.image_url }}" 
+                 alt="{{ image_customizations.69.alt_text|default:'{{ image_customizations.69.alt_text|default:' }}" 
+                 class="editable-image" 
+                 data-image="69">
+        {% else %}
+            <img src="https://images.pexels.com/photos/6311675/pexels-photo-6311675.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                 alt="{{ image_customizations.69.alt_text|default:" 
+                 class="editable-image" 
+                 data-image="69">
+        {% endif %}
+    {% endif %}
+{% endwith %}
                         {% else %}
                         <img src="https://cdn.pixabay.com/photo/2023/12/23/08/42/island-8465139_1280.png" 
                              alt="Alexander Chen" 
@@ -726,10 +894,66 @@
                 <div class="team-card" id="section-236">
                     <div class="team-image-container" id="section-237">
                         {% if image_customizations.70 %}
-                        <img src="{{ image_customizations.70.image_url }}" 
-                             alt="{{ image_customizations.70.alt_text|default:'Sophie Laurent' }}" 
-                             class="team-image" 
-                             data-image="70">
+                        {% with video=video_customizations.70 %}
+    {% if video %}
+        {# ===== VIDEO EXISTS - RENDER VIDEO ===== #}
+        <div class="editable-video" 
+             data-image="70" 
+             data-is-video="true"
+             style="position: relative; overflow: hidden; display: inline-block; max-width: 100%; border-radius: 8px; cursor: pointer;">
+            
+            <video 
+                src="{{ video.video_url }}" 
+                poster="{{ video.poster_url|default:'' }}"
+                {% if video.autoplay %}autoplay{% endif %}
+                {% if video.loop %}loop{% endif %}
+                {% if video.muted %}muted{% endif %}
+                {% if video.controls %}controls{% endif %}
+                style="width: 100%; height: 100%; display: block; object-fit: cover;"
+            >
+                Your browser does not support the video tag.
+            </video>
+            
+            {# ===== PLAY BUTTON OVERLAY ===== #}
+            {% if video.show_play_button %}
+            <div class="video-overlay" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 24px;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            ">
+                <i class="fas fa-play"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+        {# ===== NO VIDEO - RENDER IMAGE ===== #}
+        {% if image_customizations.70 %}
+            <img src="{{ image_customizations.70.image_url }}" 
+                 alt="{{ image_customizations.70.alt_text|default:'{{ image_customizations.70.alt_text|default:' }}" 
+                 class="editable-image" 
+                 data-image="70">
+        {% else %}
+            <img src="https://images.pexels.com/photos/6311675/pexels-photo-6311675.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                 alt="{{ image_customizations.70.alt_text|default:" 
+                 class="editable-image" 
+                 data-image="70">
+        {% endif %}
+    {% endif %}
+{% endwith %}
                         {% else %}
                         <img src="https://cdn.pixabay.com/photo/2023/12/23/08/42/island-8465139_1280.png" 
                              alt="Sophie Laurent" 

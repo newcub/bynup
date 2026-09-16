@@ -1638,7 +1638,66 @@
     <div class="container hero-grid">
       <div class="hero-image" id="section-20">
         {% if image_customizations.1 %}
-          <img src="{{ image_customizations.1.image_url }}" alt="{{ image_customizations.1.alt_text|default:'Happy dog with premium pet products' }}" data-image="1" loading="lazy" />
+          {% with video=video_customizations.1 %}
+    {% if video %}
+        {# ===== VIDEO EXISTS - RENDER VIDEO ===== #}
+        <div class="editable-video" 
+             data-image="1" 
+             data-is-video="true"
+             style="position: relative; overflow: hidden; display: inline-block; max-width: 100%; border-radius: 8px; cursor: pointer;">
+            
+            <video 
+                src="{{ video.video_url }}" 
+                poster="{{ video.poster_url|default:'' }}"
+                {% if video.autoplay %}autoplay{% endif %}
+                {% if video.loop %}loop{% endif %}
+                {% if video.muted %}muted{% endif %}
+                {% if video.controls %}controls{% endif %}
+                style="width: 100%; height: 100%; display: block; object-fit: cover;"
+            >
+                Your browser does not support the video tag.
+            </video>
+            
+            {# ===== PLAY BUTTON OVERLAY ===== #}
+            {% if video.show_play_button %}
+            <div class="video-overlay" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 24px;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            ">
+                <i class="fas fa-play"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+        {# ===== NO VIDEO - RENDER IMAGE ===== #}
+        {% if image_customizations.1 %}
+            <img src="{{ image_customizations.1.image_url }}" 
+                 alt="{{ image_customizations.1.alt_text|default:'{{ image_customizations.1.alt_text|default:' }}" 
+                 class="editable-image" 
+                 data-image="1">
+        {% else %}
+            <img src="https://images.pexels.com/photos/6311675/pexels-photo-6311675.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                 alt="{{ image_customizations.1.alt_text|default:" 
+                 class="editable-image" 
+                 data-image="1">
+        {% endif %}
+    {% endif %}
+{% endwith %}
         {% else %}
           <img src="https://images.unsplash.com/photo-1545249390-6bdfa286032f?w=800&h=600&fit=crop&crop=center&auto=format" alt="Happy dog with premium pet products" data-image="1" loading="lazy" />
         {% endif %}
@@ -1703,7 +1762,66 @@
       <div class="product-grid">
         <div class="product-gallery" id="section-35">
           {% if image_customizations.2 %}
-            <img id="mainProductImage" src="{{ image_customizations.2.image_url }}" alt="{{ image_customizations.2.alt_text|default:'Premium pet treats' }}" data-image="2" loading="lazy" />
+            {% with video=video_customizations.2 %}
+    {% if video %}
+        {# ===== VIDEO EXISTS - RENDER VIDEO ===== #}
+        <div class="editable-video" 
+             data-image="2" 
+             data-is-video="true"
+             style="position: relative; overflow: hidden; display: inline-block; max-width: 100%; border-radius: 8px; cursor: pointer;">
+            
+            <video 
+                src="{{ video.video_url }}" 
+                poster="{{ video.poster_url|default:'' }}"
+                {% if video.autoplay %}autoplay{% endif %}
+                {% if video.loop %}loop{% endif %}
+                {% if video.muted %}muted{% endif %}
+                {% if video.controls %}controls{% endif %}
+                style="width: 100%; height: 100%; display: block; object-fit: cover;"
+            >
+                Your browser does not support the video tag.
+            </video>
+            
+            {# ===== PLAY BUTTON OVERLAY ===== #}
+            {% if video.show_play_button %}
+            <div class="video-overlay" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 24px;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            ">
+                <i class="fas fa-play"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+        {# ===== NO VIDEO - RENDER IMAGE ===== #}
+        {% if image_customizations.2 %}
+            <img src="{{ image_customizations.2.image_url }}" 
+                 alt="{{ image_customizations.2.alt_text|default:'{{ image_customizations.2.alt_text|default:' }}" 
+                 class="editable-image" 
+                 data-image="2">
+        {% else %}
+            <img src="https://images.pexels.com/photos/6311675/pexels-photo-6311675.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                 alt="{{ image_customizations.2.alt_text|default:" 
+                 class="editable-image" 
+                 data-image="2">
+        {% endif %}
+    {% endif %}
+{% endwith %}
           {% else %}
             <img id="mainProductImage" src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=800&h=800&fit=crop&crop=center&auto=format" alt="Premium pet treats" data-image="2" loading="lazy" />
           {% endif %}
@@ -1776,7 +1894,66 @@
       <div class="story-grid">
         <div class="story-image" id="section-55">
           {% if image_customizations.3 %}
-            <img src="{{ image_customizations.3.image_url }}" alt="{{ image_customizations.3.alt_text|default:'Dog and owner bonding' }}" data-image="3" loading="lazy" />
+            {% with video=video_customizations.3 %}
+    {% if video %}
+        {# ===== VIDEO EXISTS - RENDER VIDEO ===== #}
+        <div class="editable-video" 
+             data-image="3" 
+             data-is-video="true"
+             style="position: relative; overflow: hidden; display: inline-block; max-width: 100%; border-radius: 8px; cursor: pointer;">
+            
+            <video 
+                src="{{ video.video_url }}" 
+                poster="{{ video.poster_url|default:'' }}"
+                {% if video.autoplay %}autoplay{% endif %}
+                {% if video.loop %}loop{% endif %}
+                {% if video.muted %}muted{% endif %}
+                {% if video.controls %}controls{% endif %}
+                style="width: 100%; height: 100%; display: block; object-fit: cover;"
+            >
+                Your browser does not support the video tag.
+            </video>
+            
+            {# ===== PLAY BUTTON OVERLAY ===== #}
+            {% if video.show_play_button %}
+            <div class="video-overlay" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 24px;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            ">
+                <i class="fas fa-play"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+        {# ===== NO VIDEO - RENDER IMAGE ===== #}
+        {% if image_customizations.3 %}
+            <img src="{{ image_customizations.3.image_url }}" 
+                 alt="{{ image_customizations.3.alt_text|default:'{{ image_customizations.3.alt_text|default:' }}" 
+                 class="editable-image" 
+                 data-image="3">
+        {% else %}
+            <img src="https://images.pexels.com/photos/6311675/pexels-photo-6311675.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                 alt="{{ image_customizations.3.alt_text|default:" 
+                 class="editable-image" 
+                 data-image="3">
+        {% endif %}
+    {% endif %}
+{% endwith %}
           {% else %}
             <img src="https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=600&h=600&fit=crop&crop=center&auto=format" alt="Dog and owner bonding" data-image="3" loading="lazy" />
           {% endif %}
@@ -1839,7 +2016,66 @@
       <div class="community-grid">
         <div class="community-card" id="section-74">
           {% if image_customizations.4 %}
-            <img src="{{ image_customizations.4.image_url }}" alt="{{ image_customizations.4.alt_text|default:'Happy dog' }}" data-image="4" loading="lazy" />
+            {% with video=video_customizations.4 %}
+    {% if video %}
+        {# ===== VIDEO EXISTS - RENDER VIDEO ===== #}
+        <div class="editable-video" 
+             data-image="4" 
+             data-is-video="true"
+             style="position: relative; overflow: hidden; display: inline-block; max-width: 100%; border-radius: 8px; cursor: pointer;">
+            
+            <video 
+                src="{{ video.video_url }}" 
+                poster="{{ video.poster_url|default:'' }}"
+                {% if video.autoplay %}autoplay{% endif %}
+                {% if video.loop %}loop{% endif %}
+                {% if video.muted %}muted{% endif %}
+                {% if video.controls %}controls{% endif %}
+                style="width: 100%; height: 100%; display: block; object-fit: cover;"
+            >
+                Your browser does not support the video tag.
+            </video>
+            
+            {# ===== PLAY BUTTON OVERLAY ===== #}
+            {% if video.show_play_button %}
+            <div class="video-overlay" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 24px;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            ">
+                <i class="fas fa-play"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+        {# ===== NO VIDEO - RENDER IMAGE ===== #}
+        {% if image_customizations.4 %}
+            <img src="{{ image_customizations.4.image_url }}" 
+                 alt="{{ image_customizations.4.alt_text|default:'{{ image_customizations.4.alt_text|default:' }}" 
+                 class="editable-image" 
+                 data-image="4">
+        {% else %}
+            <img src="https://images.pexels.com/photos/6311675/pexels-photo-6311675.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                 alt="{{ image_customizations.4.alt_text|default:" 
+                 class="editable-image" 
+                 data-image="4">
+        {% endif %}
+    {% endif %}
+{% endwith %}
           {% else %}
             <img src="https://images.unsplash.com/photo-1545249390-6bdfa286032f?w=800&h=400&fit=crop&crop=center&auto=format" alt="Happy dog" data-image="4" loading="lazy" />
           {% endif %}
@@ -1850,7 +2086,66 @@
         </div>
         <div class="community-card" id="section-76">
           {% if image_customizations.5 %}
-            <img src="{{ image_customizations.5.image_url }}" alt="{{ image_customizations.5.alt_text|default:'Cat with treat' }}" data-image="5" loading="lazy" />
+            {% with video=video_customizations.5 %}
+    {% if video %}
+        {# ===== VIDEO EXISTS - RENDER VIDEO ===== #}
+        <div class="editable-video" 
+             data-image="5" 
+             data-is-video="true"
+             style="position: relative; overflow: hidden; display: inline-block; max-width: 100%; border-radius: 8px; cursor: pointer;">
+            
+            <video 
+                src="{{ video.video_url }}" 
+                poster="{{ video.poster_url|default:'' }}"
+                {% if video.autoplay %}autoplay{% endif %}
+                {% if video.loop %}loop{% endif %}
+                {% if video.muted %}muted{% endif %}
+                {% if video.controls %}controls{% endif %}
+                style="width: 100%; height: 100%; display: block; object-fit: cover;"
+            >
+                Your browser does not support the video tag.
+            </video>
+            
+            {# ===== PLAY BUTTON OVERLAY ===== #}
+            {% if video.show_play_button %}
+            <div class="video-overlay" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 24px;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            ">
+                <i class="fas fa-play"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+        {# ===== NO VIDEO - RENDER IMAGE ===== #}
+        {% if image_customizations.5 %}
+            <img src="{{ image_customizations.5.image_url }}" 
+                 alt="{{ image_customizations.5.alt_text|default:'{{ image_customizations.5.alt_text|default:' }}" 
+                 class="editable-image" 
+                 data-image="5">
+        {% else %}
+            <img src="https://images.pexels.com/photos/6311675/pexels-photo-6311675.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                 alt="{{ image_customizations.5.alt_text|default:" 
+                 class="editable-image" 
+                 data-image="5">
+        {% endif %}
+    {% endif %}
+{% endwith %}
           {% else %}
             <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=400&h=400&fit=crop&crop=center&auto=format" alt="Cat with treat" data-image="5" loading="lazy" />
           {% endif %}
@@ -1861,7 +2156,66 @@
         </div>
         <div class="community-card" id="section-78">
           {% if image_customizations.6 %}
-            <img src="{{ image_customizations.6.image_url }}" alt="{{ image_customizations.6.alt_text|default:'Dog playing' }}" data-image="6" loading="lazy" />
+            {% with video=video_customizations.6 %}
+    {% if video %}
+        {# ===== VIDEO EXISTS - RENDER VIDEO ===== #}
+        <div class="editable-video" 
+             data-image="6" 
+             data-is-video="true"
+             style="position: relative; overflow: hidden; display: inline-block; max-width: 100%; border-radius: 8px; cursor: pointer;">
+            
+            <video 
+                src="{{ video.video_url }}" 
+                poster="{{ video.poster_url|default:'' }}"
+                {% if video.autoplay %}autoplay{% endif %}
+                {% if video.loop %}loop{% endif %}
+                {% if video.muted %}muted{% endif %}
+                {% if video.controls %}controls{% endif %}
+                style="width: 100%; height: 100%; display: block; object-fit: cover;"
+            >
+                Your browser does not support the video tag.
+            </video>
+            
+            {# ===== PLAY BUTTON OVERLAY ===== #}
+            {% if video.show_play_button %}
+            <div class="video-overlay" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 24px;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            ">
+                <i class="fas fa-play"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+        {# ===== NO VIDEO - RENDER IMAGE ===== #}
+        {% if image_customizations.6 %}
+            <img src="{{ image_customizations.6.image_url }}" 
+                 alt="{{ image_customizations.6.alt_text|default:'{{ image_customizations.6.alt_text|default:' }}" 
+                 class="editable-image" 
+                 data-image="6">
+        {% else %}
+            <img src="https://images.pexels.com/photos/6311675/pexels-photo-6311675.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                 alt="{{ image_customizations.6.alt_text|default:" 
+                 class="editable-image" 
+                 data-image="6">
+        {% endif %}
+    {% endif %}
+{% endwith %}
           {% else %}
             <img src="https://images.unsplash.com/photo-1561037404-61cd46aa615b?w=400&h=400&fit=crop&crop=center&auto=format" alt="Dog playing" data-image="6" loading="lazy" />
           {% endif %}

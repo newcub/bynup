@@ -1,18 +1,18 @@
+<!-- builder/templates/ModernEcommerce18/home.html -->
+<!-- Editable version for "AETHERIA" — One-Product Olfactive Artifact Brand -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{brand}</title>
-    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts for Surrealist Art Contrast -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Plus+Jakarta+Sans:wght@200;300;400;500&family=DM+Mono&display=swap" rel="stylesheet">
     
     <style>
-        /* ================= WELCOMING ARTISTIC PALETTE ================= */
         :root {
             --text: #f9f6f0;
             --background: #e3dcd2;
@@ -20,25 +20,16 @@
             --primary: #7e8f80;
             --secondary: #1e2221;
             --accent: #ffffff;
-            
             --font-artistic: 'Cormorant Garamond', serif;
             --font-structural: 'Plus Jakarta Sans', sans-serif;
             --font-gallery: 'DM Mono', monospace;
-            
             --transition-art: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        header,main,footer {
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--text); color: var(--secondary); }
+        header, main, footer {
             font-family: var(--font-structural);
             background-color: var(--text);
             color: var(--secondary);
@@ -47,25 +38,16 @@
         }
 
         .pigment-stain-1 {
-            position: fixed;
-            top: -5%;
-            right: -5%;
-            width: 45vw;
-            height: 45vw;
+            position: fixed; top: -5%; right: -5%;
+            width: 45vw; height: 45vw;
             background: radial-gradient(circle, rgba(198,138,107,0.12) 0%, rgba(0,0,0,0) 70%);
-            z-index: -1;
-            pointer-events: none;
+            z-index: -1; pointer-events: none;
         }
-
         .pigment-stain-2 {
-            position: fixed;
-            bottom: 5%;
-            left: -10%;
-            width: 55vw;
-            height: 55vw;
+            position: fixed; bottom: 5%; left: -10%;
+            width: 55vw; height: 55vw;
             background: radial-gradient(circle, rgba(126,143,128,0.15) 0%, rgba(0,0,0,0) 70%);
-            z-index: -1;
-            pointer-events: none;
+            z-index: -1; pointer-events: none;
         }
 
         ::-webkit-scrollbar { width: 6px; }
@@ -82,432 +64,876 @@
             margin-bottom: 20px;
         }
 
-        /* ================= FLOATING GLASS NAVIGATION ================= */
+        /* ================= NAVIGATION ================= */
         .art-nav {
-            position: fixed;
-            top: 25px;
-            left: 50%;
+            position: fixed; top: 25px; left: 50%;
             transform: translateX(-50%);
             width: calc(100% - 60px);
-            max-width: 1400px;
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 40px;
-            z-index: 100;
+            max-width: 1400px; height: 70px;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 40px; z-index: 100;
             background: rgba(249, 246, 240, 0.75);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(30, 34, 33, 0.05);
             border-radius: 50px;
         }
-
         .nav-brand {
             font-family: var(--font-artistic);
-            font-size: 28px;
-            letter-spacing: 4px;
-            color: var(--secondary);
-            text-decoration: none;
+            font-size: 28px; letter-spacing: 4px;
+            color: var(--secondary); text-decoration: none;
             font-weight: 400;
         }
-
-        .nav-menu {
-            display: flex;
-            gap: 40px;
-        }
-
+        .nav-menu { display: flex; gap: 40px; }
         .nav-menu a {
             font-family: var(--font-structural);
-            font-weight: 400;
-            font-size: 13px;
-            color: var(--secondary);
-            text-decoration: none;
-            letter-spacing: 0.5px;
-            transition: var(--transition-art);
+            font-weight: 400; font-size: 13px;
+            color: var(--secondary); text-decoration: none;
+            letter-spacing: 0.5px; transition: var(--transition-art);
         }
-
-        .nav-menu a:hover {
-            color: var(--heading);
-            transform: translateY(-1px);
-        }
-
-        .nav-meta-actions {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-        }
-
+        .nav-menu a:hover { color: var(--heading); transform: translateY(-1px); }
+        .nav-meta-actions { display: flex; align-items: center; gap: 25px; }
         .nav-icon-btn {
-            background: none;
-            border: none;
-            color: var(--secondary);
-            font-size: 18px;
-            cursor: pointer;
-            position: relative;
+            background: none; border: none;
+            color: var(--secondary); font-size: 18px;
+            cursor: pointer; position: relative;
             transition: var(--transition-art);
         }
-
         .badge-dot {
-            position: absolute;
-            top: -2px;
-            right: -3px;
-            width: 7px;
-            height: 7px;
+            position: absolute; top: -2px; right: -3px;
+            width: 7px; height: 7px;
             background-color: var(--heading);
-            border-radius: 50%;
-            display: none;
+            border-radius: 50%; display: none;
         }
 
-        /* ================= ASYMMETRICAL EDITORIAL HERO ================= */
+        /* ================= HERO ================= */
         .hero-canvas {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            padding: 160px 60px 80px 60px;
+            min-height: 100vh; display: flex; align-items: center;
+            position: relative; padding: 160px 60px 80px 60px;
         }
-
         .hero-layout {
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            width: 100%;
-            max-width: 1300px;
-            margin: 0 auto;
-            align-items: center;
-            gap: 40px;
+            display: grid; grid-template-columns: 1.1fr 0.9fr;
+            width: 100%; max-width: 1300px; margin: 0 auto;
+            align-items: center; gap: 40px;
         }
-
-        .hero-statement-box {
-            z-index: 5;
-            padding-right: 20px;
-        }
-
+        .hero-statement-box { z-index: 5; padding-right: 20px; }
         .hero-statement-box h1 {
             font-family: var(--font-artistic);
-            font-size: 5.2vw;
-            line-height: 1.1;
-            font-weight: 300;
-            color: var(--secondary);
+            font-size: 5.2vw; line-height: 1.1;
+            font-weight: 300; color: var(--secondary);
             margin-bottom: 45px;
         }
-
         .hero-statement-box h1 em {
             font-family: var(--font-artistic);
-            font-style: italic;
-            font-weight: 300;
+            font-style: italic; font-weight: 300;
             color: var(--heading);
         }
-
         .art-cta-link {
             font-family: var(--font-gallery);
-            font-size: 12px;
-            color: var(--secondary);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 15px;
+            font-size: 12px; color: var(--secondary);
+            text-decoration: none; display: inline-flex;
+            align-items: center; gap: 15px;
             border: 1px solid rgba(30, 34, 33, 0.15);
-            padding: 18px 38px;
-            border-radius: 40px;
+            padding: 18px 38px; border-radius: 40px;
             transition: var(--transition-art);
-            position: relative;
-            background-color: transparent;
-            z-index: 1;
+            position: relative; background-color: transparent;
+            z-index: 1; cursor: pointer;
         }
-
         .art-cta-link::before {
-            content: '';
-            position: absolute;
+            content: ''; position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             background-color: var(--secondary);
-            border-radius: 40px;
-            z-index: -1;
-            transform: scale(0);
-            transition: var(--transition-art);
+            border-radius: 40px; z-index: -1;
+            transform: scale(0); transition: var(--transition-art);
         }
-
-        .art-cta-link:hover {
-            color: var(--text);
-            border-color: var(--secondary);
-        }
-
-        .art-cta-link:hover::before {
-            transform: scale(1);
-        }
-
+        .art-cta-link:hover { color: var(--text); border-color: var(--secondary); }
+        .art-cta-link:hover::before { transform: scale(1); }
         .hero-sculpture-frame {
-            position: relative;
-            height: 70vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            position: relative; height: 70vh;
+            display: flex; justify-content: center; align-items: center;
         }
-
         .sculpture-bg-panel {
-            position: absolute;
-            width: 90%;
-            height: 100%;
+            position: absolute; width: 90%; height: 100%;
             background: var(--background);
             border-radius: 120px 40px 100px 40px;
-            z-index: 1;
-            transform: rotate(-2deg);
+            z-index: 1; transform: rotate(-2deg);
         }
-
         .sculpture-img {
-            width: 80%;
-            height: 90%;
-            object-fit: cover;
-            border-radius: 8px;
-            z-index: 2;
+            width: 80%; height: 90%; object-fit: cover;
+            border-radius: 8px; z-index: 2;
             box-shadow: 0 30px 60px rgba(30, 34, 33, 0.08);
             transition: var(--transition-art);
         }
-
         .hero-sculpture-frame:hover .sculpture-img {
             transform: scale(1.03) rotate(1deg);
         }
 
-        /* ================= EXHIBITION PORTFOLIO GALLERY ================= */
-        .portfolio-canvas {
+        /* ================= SCROLL ANIMATIONS ================= */
+        .fade-in-up, .fade-in-left, .fade-in-right {
+            opacity: 1; transform: none;
+            transition: opacity 0.9s cubic-bezier(0.25, 1, 0.5, 1),
+                        transform 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .js-ready .fade-in-up { opacity: 0; transform: translateY(50px); }
+        .js-ready .fade-in-left { opacity: 0; transform: translateX(-60px); }
+        .js-ready .fade-in-right { opacity: 0; transform: translateX(60px); }
+        .js-ready .fade-in-up.is-visible,
+        .js-ready .fade-in-left.is-visible,
+        .js-ready .fade-in-right.is-visible {
+            opacity: 1; transform: translate(0, 0);
+        }
+
+        /* ================= STORYTELLING ================= */
+        .story-canvas {
             padding: 140px 60px;
-            max-width: 1400px;
+            max-width: 1300px;
             margin: 0 auto;
         }
-
-        .portfolio-intro {
-            margin-bottom: 100px;
-            max-width: 600px;
+        .story-intro {
+            max-width: 700px; margin: 0 auto 100px;
+            text-align: center;
         }
-
-        .portfolio-intro h2 {
+        .story-intro h2 {
             font-family: var(--font-artistic);
-            font-size: 3.8rem;
-            font-weight: 300;
+            font-size: 3.8rem; font-weight: 300;
+            line-height: 1.1; margin-bottom: 20px;
+        }
+        .story-intro h2 em {
+            color: var(--heading); font-style: italic;
+        }
+        .story-intro p {
+            font-size: 15px; color: #5c6260;
+            font-weight: 300; line-height: 1.9;
+        }
+        .story-chapter {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px; align-items: center;
+            margin-bottom: 140px;
+        }
+        .story-chapter:last-child { margin-bottom: 0; }
+        .story-chapter.reverse { direction: rtl; }
+        .story-chapter.reverse > * { direction: ltr; }
+        @media (max-width: 900px) {
+            .story-chapter { grid-template-columns: 1fr; gap: 40px; margin-bottom: 80px; }
+            .story-chapter.reverse { direction: ltr; }
+        }
+        .story-media {
+            position: relative; aspect-ratio: 4/5;
+            overflow: hidden; border-radius: 8px;
+            box-shadow: 0 30px 60px rgba(30, 34, 33, 0.06);
+        }
+        .story-media img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: var(--transition-art);
+        }
+        .story-media:hover img { transform: scale(1.03); }
+        .story-media .chapter-number {
+            position: absolute; top: 20px; right: 20px;
+            font-family: var(--font-artistic);
+            font-size: 5rem; font-weight: 300;
+            color: var(--text); opacity: 0.9;
+            line-height: 1; letter-spacing: -2px;
+        }
+        .story-media .media-tag {
+            position: absolute; bottom: 20px; left: 20px;
+            background: rgba(249, 246, 240, 0.92);
+            backdrop-filter: blur(8px);
+            padding: 10px 20px; border-radius: 40px;
+            font-family: var(--font-gallery);
+            font-size: 10px; letter-spacing: 2px;
+            text-transform: uppercase; color: var(--secondary);
+        }
+        .story-content { display: flex; flex-direction: column; gap: 24px; }
+        .story-content .eyebrow {
+            font-family: var(--font-gallery);
+            font-size: 11px; color: var(--heading);
+            letter-spacing: 3px; text-transform: uppercase;
+        }
+        .story-content h3 {
+            font-family: var(--font-artistic);
+            font-size: 3rem; font-weight: 300;
+            line-height: 1.15;
+        }
+        .story-content h3 em { color: var(--heading); font-style: italic; }
+        .story-content .pull-quote {
+            font-family: var(--font-artistic);
+            font-size: 1.4rem; font-style: italic;
+            color: var(--secondary); line-height: 1.5;
+            padding: 20px 0 20px 25px;
+            border-left: 2px solid var(--heading);
+        }
+        .story-content .pull-quote .attr {
+            display: block;
+            font-family: var(--font-gallery);
+            font-size: 10px; font-style: normal;
+            color: var(--primary); margin-top: 12px;
+            letter-spacing: 2px; text-transform: uppercase;
+        }
+        .story-content p {
+            font-size: 15px; color: #5c6260;
+            font-weight: 300; line-height: 1.9;
+        }
+        .story-features {
+            display: flex; flex-wrap: wrap; gap: 10px;
+            margin-top: 8px;
+        }
+        .story-features span {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 10px 18px;
+            background: var(--accent);
+            border: 1px solid rgba(30, 34, 33, 0.08);
+            border-radius: 40px;
+            font-family: var(--font-gallery);
+            font-size: 10px; letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--secondary);
+        }
+        .story-features span i { color: var(--heading); }
+
+        /* ================= UGC ================= */
+        .ugc-canvas {
+            background-color: #ede7de;
+            padding: 140px 60px;
+        }
+        .ugc-inner {
+            max-width: 1300px; margin: 0 auto;
+        }
+        .ugc-intro {
+            text-align: center; max-width: 700px;
+            margin: 0 auto 80px;
+        }
+        .ugc-intro h2 {
+            font-family: var(--font-artistic);
+            font-size: 3.8rem; font-weight: 300;
             line-height: 1.1;
         }
-
-        .exhibition-deck {
+        .ugc-intro h2 em { color: var(--heading); font-style: italic; }
+        .ugc-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 60px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
         }
-
-        .exhibition-deck .art-card:nth-child(2) {
-            transform: translateY(50px);
-        }
-        .exhibition-deck .art-card:nth-child(3) {
-            transform: translateY(-30px);
-        }
-
-        .art-card {
-            background: transparent;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .art-card-viewport {
-            width: 100%;
-            aspect-ratio: 3 / 4;
-            background-color: var(--background);
-            overflow: hidden;
+        @media (max-width: 1024px) { .ugc-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .ugc-grid { grid-template-columns: 1fr 1fr; gap: 12px; } }
+        .ugc-item {
             position: relative;
+            aspect-ratio: 1;
+            overflow: hidden;
             border-radius: 6px;
-            box-shadow: 0 15px 35px rgba(30, 34, 33, 0.03);
-        }
-
-        .art-card-viewport img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .art-card:hover .art-card-viewport img {
-            transform: scale(1.06);
-        }
-
-        .art-card-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(243, 238, 230, 0.4);
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-            opacity: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            transition: var(--transition-art);
-            z-index: 3;
-        }
-
-        .art-card:hover .art-card-overlay {
-            opacity: 1;
-        }
-
-        .circular-action-btn {
-            width: 54px;
-            height: 54px;
-            border-radius: 50%;
-            border: 1px solid var(--secondary);
-            background: var(--accent);
-            color: var(--secondary);
-            font-size: 15px;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             transition: var(--transition-art);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        }
+        .ugc-item:hover { transform: scale(1.02); }
+        .ugc-item img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: var(--transition-art);
+        }
+        .ugc-item:hover img { transform: scale(1.06); }
+        .ugc-overlay {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(30, 34, 33, 0.75));
+            color: var(--text);
+            opacity: 0; transform: translateY(15px);
+            transition: var(--transition-art);
+        }
+        .ugc-item:hover .ugc-overlay { opacity: 1; transform: translateY(0); }
+        .ugc-overlay .user {
+            font-family: var(--font-gallery);
+            font-size: 10px; letter-spacing: 2px;
+            text-transform: uppercase;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .ugc-overlay .caption-text {
+            font-family: var(--font-artistic);
+            font-size: 1rem; font-style: italic;
+            margin-top: 4px; opacity: 0.9;
         }
 
-        .circular-action-btn:hover {
+        /* ================= PRODUCT SHOWCASE ================= */
+        .product-canvas {
+            padding: 140px 60px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        .product-header {
+            text-align: center;
+            max-width: 700px; margin: 0 auto 80px;
+        }
+        .product-header h2 {
+            font-family: var(--font-artistic);
+            font-size: 3.8rem; font-weight: 300;
+            line-height: 1.1;
+        }
+        .product-header h2 em { color: var(--heading); font-style: italic; }
+
+        .product-wrap {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 80px;
+            align-items: start;
+        }
+        @media (max-width: 1024px) { .product-wrap { grid-template-columns: 1fr; gap: 50px; } }
+
+        .product-gallery-wrap {
+            position: sticky; top: 120px;
+        }
+        @media (max-width: 1024px) { .product-gallery-wrap { position: static; } }
+
+        .main-frame {
+            width: 100%;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            border-radius: 8px;
+            background: var(--background);
+            box-shadow: 0 30px 60px rgba(30, 34, 33, 0.08);
+            transition: var(--transition-art);
+        }
+        .thumb-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px; margin-top: 20px;
+        }
+        .thumb-strip .thumb {
+            aspect-ratio: 1;
+            overflow: hidden;
+            border-radius: 6px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: var(--transition-art);
+            background: var(--background);
+        }
+        .thumb-strip .thumb:hover { transform: scale(1.03); }
+        .thumb-strip .thumb.active { border-color: var(--secondary); }
+        .thumb-strip .thumb img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+        }
+
+        .product-info { display: flex; flex-direction: column; gap: 24px; }
+        .product-info .badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--heading);
+            color: var(--text);
+            border-radius: 40px;
+            font-family: var(--font-gallery);
+            font-size: 10px; letter-spacing: 3px;
+            text-transform: uppercase;
+            align-self: flex-start;
+        }
+        .product-info h1 {
+            font-family: var(--font-artistic);
+            font-size: 3.4rem; font-weight: 300;
+            line-height: 1.1;
+        }
+        .rating-row {
+            display: flex; align-items: center; gap: 16px;
+            font-family: var(--font-gallery); font-size: 11px;
+            color: var(--primary); letter-spacing: 1px;
+        }
+        .rating-row .stars {
+            color: var(--heading); font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+        .price-row {
+            display: flex; align-items: baseline; gap: 16px;
+            flex-wrap: wrap;
+            padding: 20px 0;
+            border-top: 1px solid rgba(30, 34, 33, 0.1);
+            border-bottom: 1px solid rgba(30, 34, 33, 0.1);
+        }
+        .price-row .current {
+            font-family: var(--font-artistic);
+            font-size: 2.6rem; font-weight: 400;
+            color: var(--secondary);
+        }
+        .price-row .original {
+            font-family: var(--font-gallery);
+            font-size: 14px; color: #8a908e;
+            text-decoration: line-through;
+        }
+        .price-row .save-tag {
+            padding: 6px 14px;
+            background: var(--primary);
+            color: var(--text);
+            border-radius: 40px;
+            font-family: var(--font-gallery);
+            font-size: 10px; letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .desc-text {
+            font-size: 15px; color: #5c6260;
+            font-weight: 300; line-height: 1.9;
+        }
+
+        /* VARIANT SELECTOR */
+        .variant-section { display: flex; flex-direction: column; gap: 10px; }
+        .variant-label {
+            font-family: var(--font-gallery);
+            font-size: 10px; color: #8a908e;
+            letter-spacing: 2px; text-transform: uppercase;
+        }
+        .variant-options { display: flex; flex-wrap: wrap; gap: 10px; }
+        .variant-option-btn {
+            padding: 10px 22px;
+            background: var(--accent);
+            border: 1px solid rgba(30, 34, 33, 0.12);
+            color: var(--secondary);
+            font-family: var(--font-structural);
+            font-size: 12px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition-art);
+        }
+        .variant-option-btn:hover { border-color: var(--secondary); }
+        .variant-option-btn.active {
             background-color: var(--secondary);
             color: var(--text);
-            transform: scale(1.1);
+            border-color: var(--secondary);
         }
-
-        .art-card-details {
-            padding-top: 25px;
+        .swatch-circle {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            border: 2px solid rgba(30, 34, 33, 0.12);
+            cursor: pointer;
+            transition: var(--transition-art);
+            display: flex; align-items: center; justify-content: center;
+            background-size: cover; background-position: center;
         }
-
-        .art-card-header-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 10px;
+        .swatch-circle:hover { transform: scale(1.08); }
+        .swatch-circle.active {
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(198, 138, 107, 0.2);
         }
+        .swatch-circle .checkmark {
+            display: none; color: white;
+            font-size: 0.7rem;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        }
+        .swatch-circle.active .checkmark { display: block; }
+        .swatch-wrapper {
+            display: flex; flex-direction: column;
+            align-items: center; gap: 4px; cursor: pointer;
+        }
+        .swatch-label {
+            font-family: var(--font-gallery);
+            font-size: 8px; color: var(--primary);
+            text-transform: uppercase; letter-spacing: 1px;
+            max-width: 50px; text-align: center;
+            overflow: hidden; text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .selected-options-display {
+            padding: 12px 18px;
+            background: var(--accent);
+            border: 1px solid rgba(30, 34, 33, 0.08);
+            border-radius: 6px;
+            font-size: 12px; color: #5c6260;
+            display: none;
+        }
+        .selected-options-display.visible { display: block; }
+        .selected-options-display strong { color: var(--secondary); }
+        .variant-error {
+            color: #b04141; font-size: 11px;
+            letter-spacing: 1px; text-transform: uppercase;
+            display: none; font-family: var(--font-gallery);
+        }
+        .variant-error.show { display: block; }
 
-        .art-card-title {
+        /* TIERED PRICING */
+        .tier-group .tier-label {
+            font-family: var(--font-gallery);
+            font-size: 10px; color: #8a908e;
+            letter-spacing: 2px; text-transform: uppercase;
+            display: block; margin-bottom: 12px;
+        }
+        .tier-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        @media (max-width: 600px) { .tier-grid { grid-template-columns: 1fr 1fr; } }
+        .tier-grid .tier-card {
+            padding: 16px 10px;
+            background: var(--accent);
+            border: 1px solid rgba(30, 34, 33, 0.08);
+            border-radius: 6px;
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+            transition: var(--transition-art);
+        }
+        .tier-grid .tier-card:hover { border-color: var(--heading); transform: translateY(-3px); }
+        .tier-grid .tier-card.active {
+            background: var(--secondary);
+            color: var(--text);
+            border-color: var(--secondary);
+        }
+        .tier-grid .tier-card .tier-badge {
+            position: absolute; top: -9px; right: -6px;
+            background: var(--heading); color: var(--text);
+            font-family: var(--font-gallery);
+            font-size: 8px; padding: 3px 10px;
+            border-radius: 20px; letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .tier-grid .tier-card .tier-qty {
             font-family: var(--font-artistic);
-            font-size: 28px;
-            font-weight: 400;
+            font-size: 1.3rem; display: block;
+        }
+        .tier-grid .tier-card .tier-price {
+            font-family: var(--font-gallery);
+            font-size: 11px; display: block; margin-top: 4px;
+        }
+        .tier-grid .tier-card .tier-save {
+            font-family: var(--font-gallery);
+            font-size: 9px; display: block; margin-top: 4px;
+            color: var(--primary); letter-spacing: 1px;
+        }
+        .tier-grid .tier-card.active .tier-save { color: var(--heading); }
+
+        /* TOTAL PRICE */
+        .total-price-display {
+            display: flex; justify-content: space-between;
+            align-items: center;
+            padding: 18px 22px;
+            background: var(--secondary);
+            color: var(--text);
+            border-radius: 8px;
+        }
+        .total-price-display .label {
+            font-family: var(--font-gallery);
+            font-size: 10px; letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--heading);
+        }
+        .total-price-display .value {
+            font-family: var(--font-artistic);
+            font-size: 1.6rem;
+        }
+        .total-price-display .value .sub {
+            font-family: var(--font-gallery);
+            font-size: 10px; opacity: 0.7;
+            margin-left: 6px;
+        }
+
+        /* QUANTITY & ACTIONS */
+        .qty-row {
+            display: flex; align-items: center; gap: 16px;
+            flex-wrap: wrap;
+        }
+        .qty-row .qty-label {
+            font-family: var(--font-gallery);
+            font-size: 10px; letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #8a908e;
+        }
+        .qty-box {
+            display: flex; align-items: center;
+            border: 1px solid rgba(30, 34, 33, 0.15);
+            border-radius: 40px;
+            overflow: hidden;
+        }
+        .qty-box button {
+            padding: 10px 18px;
+            background: transparent;
+            border: none;
+            font-size: 1.1rem;
             color: var(--secondary);
             cursor: pointer;
-            text-decoration: none;
-            transition: color 0.3s ease;
+            transition: var(--transition-art);
         }
-
-        .art-card-title:hover {
-            color: var(--heading);
-        }
-
-        .art-card-price {
+        .qty-box button:hover { background: rgba(30, 34, 33, 0.05); }
+        .qty-box span {
+            padding: 10px 20px;
             font-family: var(--font-gallery);
-            font-size: 13px;
-            color: var(--primary);
-            font-weight: 500;
+            font-size: 13px; font-weight: 500;
         }
 
-        .art-card-desc {
-            font-size: 13.5px;
-            color: #5c6260;
-            font-weight: 300;
-            line-height: 1.6;
+        .action-row {
+            display: flex; gap: 12px;
+            flex-wrap: wrap; margin-top: 8px;
         }
-
-        /* ================= THE POETIC MANIFESTO (ABOUT US) ================= */
-        .about-canvas {
-            background-color: #ede7de;
-            color: var(--secondary);
-            position: relative;
-            padding: 160px 0;
-            margin-top: 100px;
-        }
-
-        .about-split-layout {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 40px;
-            display: grid;
-            grid-template-columns: 0.9fr 1.1fr;
-            gap: 100px;
+        .action-row .btn-cart {
+            flex: 2;
+            padding: 18px 30px;
+            background: var(--secondary);
+            color: var(--text);
+            border: none;
+            border-radius: 40px;
+            font-family: var(--font-gallery);
+            font-size: 11px; letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: flex;
             align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: var(--transition-art);
+        }
+        .action-row .btn-cart:hover {
+            background: var(--heading);
+            transform: translateY(-2px);
+        }
+        .action-row .btn-buy {
+            flex: 1.5;
+            padding: 18px 30px;
+            background: var(--heading);
+            color: var(--text);
+            border: none;
+            border-radius: 40px;
+            font-family: var(--font-gallery);
+            font-size: 11px; letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: var(--transition-art);
+        }
+        .action-row .btn-buy:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+        .action-row .btn-wish {
+            padding: 18px 20px;
+            background: var(--accent);
+            color: var(--secondary);
+            border: 1px solid rgba(30, 34, 33, 0.15);
+            border-radius: 40px;
+            cursor: pointer;
+            min-width: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-art);
+        }
+        .action-row .btn-wish:hover {
+            border-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+        .action-row .btn-wish.active {
+            background: var(--heading);
+            color: var(--text);
+            border-color: var(--heading);
         }
 
-        .about-manifesto-sticky h2 {
-            font-family: var(--font-artistic);
-            font-size: 4.5rem;
-            font-weight: 300;
-            line-height: 1.1;
+        .trust-badges {
+            display: flex; flex-wrap: wrap; gap: 12px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(30, 34, 33, 0.08);
+            margin-top: 12px;
         }
-
-        .about-narrative-block {
-            font-size: 17px;
-            font-weight: 300;
-            line-height: 1.9;
-            color: #383d3b;
+        .trust-badges span {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-family: var(--font-gallery);
+            font-size: 10px; letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #5c6260;
         }
+        .trust-badges span i { color: var(--heading); }
 
-        .about-narrative-block p {
-            margin-bottom: 30px;
+        /* ================= PLEDGE ================= */
+        .pledge-canvas {
+            background: var(--secondary);
+            color: var(--text);
+            padding: 100px 60px;
         }
-
-        .about-narrative-block p:first-of-type::first-letter {
-            font-family: var(--font-artistic);
-            font-size: 90px;
-            float: left;
-            line-height: 60px;
-            padding-top: 4px;
-            padding-right: 15px;
+        .pledge-inner {
+            max-width: 1300px; margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        @media (max-width: 1024px) { .pledge-inner { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .pledge-inner { grid-template-columns: 1fr; } }
+        .pledge-item {
+            text-align: center;
+            padding: 30px 20px;
+            border: 1px solid rgba(249, 246, 240, 0.1);
+            border-radius: 8px;
+            transition: var(--transition-art);
+        }
+        .pledge-item:hover {
+            background: rgba(198, 138, 107, 0.06);
+            border-color: rgba(198, 138, 107, 0.3);
+            transform: translateY(-4px);
+        }
+        .pledge-item .icon-box {
+            width: 60px; height: 60px;
+            margin: 0 auto 18px;
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(198, 138, 107, 0.15);
+            border-radius: 50%;
+            font-size: 1.4rem;
             color: var(--heading);
         }
+        .pledge-item h4 {
+            font-family: var(--font-artistic);
+            font-size: 1.3rem; font-weight: 400;
+            margin-bottom: 8px;
+        }
+        .pledge-item p {
+            font-size: 12px;
+            color: rgba(249, 246, 240, 0.6);
+            font-weight: 300; line-height: 1.7;
+        }
 
-        /* ================= THE VERITIES STACK (FAQ) ================= */
+        /* ================= REVIEWS ================= */
+        .reviews-canvas {
+            padding: 140px 60px;
+            background: var(--text);
+            max-width: 1300px; margin: 0 auto;
+        }
+        .reviews-header {
+            display: flex; justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap; gap: 20px;
+            margin-bottom: 60px;
+        }
+        .reviews-header .rating-block {
+            display: flex; align-items: center; gap: 24px;
+        }
+        .reviews-header .rating-block .big {
+            font-family: var(--font-artistic);
+            font-size: 3.5rem; font-weight: 300;
+            line-height: 1;
+        }
+        .reviews-header .rating-block .stars-display {
+            color: var(--heading);
+            font-size: 1rem; letter-spacing: 3px;
+        }
+        .reviews-header .rating-block .total {
+            font-family: var(--font-gallery);
+            font-size: 11px; color: #8a908e;
+            letter-spacing: 1px; margin-top: 6px;
+        }
+        .write-review-btn {
+            padding: 14px 28px;
+            background: var(--secondary);
+            color: var(--text);
+            border: none;
+            border-radius: 40px;
+            font-family: var(--font-gallery);
+            font-size: 11px; letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center; gap: 10px;
+            transition: var(--transition-art);
+        }
+        .write-review-btn:hover { background: var(--heading); transform: translateY(-2px); }
+
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        @media (max-width: 1024px) { .review-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .review-grid { grid-template-columns: 1fr; } }
+        .review-card {
+            background: var(--accent);
+            border: 1px solid rgba(30, 34, 33, 0.06);
+            border-radius: 8px;
+            padding: 30px;
+            transition: var(--transition-art);
+        }
+        .review-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(30, 34, 33, 0.06);
+            border-color: var(--heading);
+        }
+        .review-card .stars {
+            color: var(--heading);
+            font-size: 0.85rem; letter-spacing: 2px;
+            margin-bottom: 14px;
+        }
+        .review-card .quote {
+            font-family: var(--font-artistic);
+            font-size: 1.1rem; font-style: italic;
+            line-height: 1.6;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        .review-card .author {
+            display: flex; align-items: center; gap: 12px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(30, 34, 33, 0.08);
+        }
+        .review-card .avatar {
+            width: 40px; height: 40px;
+            background: var(--heading);
+            color: var(--text);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-family: var(--font-gallery);
+            font-size: 12px; letter-spacing: 1px;
+        }
+        .review-card .name {
+            font-weight: 500; font-size: 14px;
+        }
+        .review-card .role {
+            font-family: var(--font-gallery);
+            font-size: 10px; color: var(--primary);
+            letter-spacing: 1px; text-transform: uppercase;
+        }
+
+        /* ================= FAQ ================= */
         .faq-canvas {
-            padding: 160px 60px;
+            padding: 100px 60px 140px;
             max-width: 1000px;
             margin: 0 auto;
         }
-
-        .faq-accordion-stack {
-            margin-top: 60px;
+        .faq-intro {
+            text-align: center;
+            margin-bottom: 60px;
         }
-
+        .faq-intro h2 {
+            font-family: var(--font-artistic);
+            font-size: 3.4rem; font-weight: 300;
+            line-height: 1.1;
+        }
+        .faq-intro h2 em { color: var(--heading); font-style: italic; }
+        .faq-accordion-stack { margin-top: 40px; }
         .faq-art-node {
             border-bottom: 1px solid rgba(30, 34, 33, 0.1);
             padding: 35px 0;
         }
-
+        .faq-art-node:first-child {
+            border-top: 1px solid rgba(30, 34, 33, 0.1);
+        }
         .faq-art-trigger {
             width: 100%;
-            background: none;
-            border: none;
+            background: none; border: none;
             text-align: left;
-            display: flex;
-            justify-content: space-between;
+            display: flex; justify-content: space-between;
             align-items: center;
             cursor: pointer;
             color: var(--secondary);
             font-family: var(--font-artistic);
             font-size: 30px;
         }
-
         .faq-art-trigger span:first-child {
-            display: flex;
-            align-items: center;
-            gap: 25px;
+            display: flex; align-items: center; gap: 25px;
         }
-
         .faq-index {
             font-family: var(--font-gallery);
-            font-size: 12px;
-            color: var(--primary);
+            font-size: 12px; color: var(--primary);
         }
-
         .faq-icon-indicator {
             font-size: 15px;
             transition: transform 0.4s ease;
             color: var(--heading);
         }
-
         .faq-art-body {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
-
         .faq-art-body p {
             padding: 20px 0 0 55px;
             font-size: 14.5px;
@@ -516,13 +942,63 @@
             line-height: 1.7;
         }
 
-        /* ================= CONCIERGE LINK SYSTEM (CONTACT) ================= */
+        /* ================= CTA ================= */
+        .cta-canvas {
+            padding: 140px 60px;
+            background: linear-gradient(135deg, var(--heading) 0%, #a86a4c 100%);
+            color: var(--text);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-canvas::before {
+            content: ''; position: absolute;
+            top: -30%; left: -20%; width: 60%; height: 160%;
+            background: radial-gradient(ellipse, rgba(249, 246, 240, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .cta-inner {
+            position: relative; z-index: 2;
+            max-width: 700px; margin: 0 auto;
+        }
+        .cta-inner h2 {
+            font-family: var(--font-artistic);
+            font-size: 4rem; font-weight: 300;
+            line-height: 1.1; margin-bottom: 20px;
+        }
+        .cta-inner h2 em { color: var(--secondary); font-style: italic; }
+        .cta-inner p {
+            font-family: var(--font-artistic);
+            font-size: 1.2rem; font-style: italic;
+            opacity: 0.85; margin-bottom: 40px;
+        }
+        .cta-btn {
+            display: inline-flex;
+            align-items: center; gap: 12px;
+            padding: 20px 44px;
+            background: var(--secondary);
+            color: var(--text);
+            border: none;
+            border-radius: 40px;
+            font-family: var(--font-gallery);
+            font-size: 11px; letter-spacing: 3px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: var(--transition-art);
+            text-decoration: none;
+        }
+        .cta-btn:hover {
+            background: var(--text);
+            color: var(--secondary);
+            transform: translateY(-4px);
+        }
+
+        /* ================= CONTACT ================= */
         .contact-canvas {
-            padding: 100px 60px 160px 60px;
+            padding: 100px 60px 160px;
             max-width: 1200px;
             margin: 0 auto;
         }
-
         .contact-card-box {
             display: grid;
             grid-template-columns: 0.8fr 1.2fr;
@@ -532,39 +1008,36 @@
             box-shadow: 0 40px 80px rgba(30, 34, 33, 0.03);
             overflow: hidden;
         }
-
+        @media (max-width: 900px) { .contact-card-box { grid-template-columns: 1fr; } }
         .contact-aesthetic-sidebar {
             padding: 50px;
             border-right: 1px solid rgba(30, 34, 33, 0.08);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            display: flex; flex-direction: column;
+            justify-content: space-between; gap: 40px;
             background-color: #f5f0e6;
         }
-
+        @media (max-width: 900px) {
+            .contact-aesthetic-sidebar {
+                border-right: none;
+                border-bottom: 1px solid rgba(30, 34, 33, 0.08);
+            }
+        }
         .contact-aesthetic-sidebar h3 {
             font-family: var(--font-artistic);
-            font-size: 36px;
-            line-height: 1.1;
+            font-size: 36px; line-height: 1.1;
             font-weight: 400;
         }
-
         .studio-coordinates {
             font-family: var(--font-gallery);
-            font-size: 12px;
-            line-height: 2;
+            font-size: 12px; line-height: 2;
             color: #5c6260;
         }
-
-        .contact-form-pane {
-            padding: 60px;
-        }
-
+        .contact-form-pane { padding: 60px; }
+        @media (max-width: 600px) { .contact-form-pane { padding: 30px 24px; } }
         .art-form-group {
             position: relative;
             margin-bottom: 45px;
         }
-
         .art-form-group input,
         .art-form-group select,
         .art-form-group textarea {
@@ -579,34 +1052,24 @@
             outline: none;
             transition: var(--transition-art);
         }
-
         .art-form-group label {
-            position: absolute;
-            left: 0;
-            top: 12px;
+            position: absolute; left: 0; top: 12px;
             font-family: var(--font-structural);
-            font-size: 12px;
-            color: #8a908e;
+            font-size: 12px; color: #8a908e;
             text-transform: uppercase;
             letter-spacing: 1px;
             pointer-events: none;
             transition: var(--transition-art);
         }
-
         .art-form-group input:focus ~ label,
         .art-form-group input:not(:placeholder-shown) ~ label,
         .art-form-group textarea:focus ~ label,
         .art-form-group textarea:not(:placeholder-shown) ~ label {
-            top: -15px;
-            font-size: 10px;
+            top: -15px; font-size: 10px;
             color: var(--heading);
         }
-
         .art-form-group input:focus,
-        .art-form-group textarea:focus {
-            border-bottom-color: var(--heading);
-        }
-
+        .art-form-group textarea:focus { border-bottom-color: var(--heading); }
         .art-submit-btn {
             background: var(--secondary);
             color: var(--text);
@@ -621,440 +1084,275 @@
             border-radius: 40px;
             transition: var(--transition-art);
         }
-
         .art-submit-btn:hover {
             background-color: var(--heading);
             color: var(--accent);
             transform: translateY(-2px);
         }
 
-        /* ================= SIDE PANEL DRAWERS ================= */
+        /* ================= DRAWERS ================= */
         .slider-backdrop {
-            position: fixed;
-            inset: 0;
+            position: fixed; inset: 0;
             background-color: rgba(30, 34, 33, 0.2);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             z-index: 200;
             display: none;
         }
-
         .art-sidebar {
-            position: fixed;
-            top: 0;
-            right: 0;
+            position: fixed; top: 0; right: 0;
             height: 100%;
-            width: 100%;
-            max-width: 480px;
+            width: 100%; max-width: 480px;
             background-color: var(--text);
             border-left: 1px solid rgba(30, 34, 33, 0.08);
             z-index: 210;
             transform: translateX(100%);
             transition: var(--transition-art);
-            display: flex;
-            flex-direction: column;
+            display: flex; flex-direction: column;
             justify-content: space-between;
             padding: 40px;
         }
-
-        .art-sidebar.active {
-            transform: translateX(0);
-        }
-
+        .art-sidebar.active { transform: translateX(0); }
         .sidebar-top {
-            display: flex;
-            justify-content: space-between;
+            display: flex; justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid rgba(30, 34, 33, 0.08);
             padding-bottom: 20px;
         }
-
         .sidebar-top h3 {
             font-family: var(--font-artistic);
             font-size: 32px;
         }
-
         .close-sidebar-btn {
-            background: none;
-            border: none;
+            background: none; border: none;
             color: #8a908e;
-            font-size: 20px;
-            cursor: pointer;
+            font-size: 20px; cursor: pointer;
             transition: var(--transition-art);
         }
-
         .close-sidebar-btn:hover { color: var(--secondary); }
-
         .sidebar-scroll-zone {
-            flex-grow: 1;
-            overflow-y: auto;
+            flex-grow: 1; overflow-y: auto;
             padding: 20px 0;
         }
-
         .basket-item {
-            display: flex;
-            gap: 20px;
+            display: flex; gap: 20px;
             align-items: center;
             padding-bottom: 20px;
             margin-bottom: 20px;
             border-bottom: 1px solid rgba(30, 34, 33, 0.06);
         }
-
         .basket-item-img {
-            width: 70px;
-            height: 90px;
-            object-fit: cover;
-            border-radius: 4px;
+            width: 70px; height: 90px;
+            object-fit: cover; border-radius: 4px;
         }
-
-        .basket-item-info {
-            flex-grow: 1;
-        }
-
+        .basket-item-info { flex-grow: 1; }
         .basket-item-info h4 {
             font-family: var(--font-artistic);
             font-size: 22px;
         }
-
         .basket-item-meta {
             font-family: var(--font-gallery);
-            font-size: 11px;
-            color: #7a807e;
+            font-size: 11px; color: #7a807e;
         }
-
         .basket-item-price {
             font-family: var(--font-gallery);
-            font-size: 12px;
-            color: var(--heading);
+            font-size: 12px; color: var(--heading);
             margin-top: 4px;
         }
-
         .remove-basket-btn {
-            background: none;
-            border: none;
-            color: #a0a6a4;
-            cursor: pointer;
+            background: none; border: none;
+            color: #a0a6a4; cursor: pointer;
             transition: var(--transition-art);
         }
-
         .remove-basket-btn:hover { color: #b04141; }
-
         .sidebar-footer {
             border-top: 1px solid rgba(30, 34, 33, 0.08);
             padding-top: 25px;
         }
-
         .total-ledger-row {
-            display: flex;
-            justify-content: space-between;
+            display: flex; justify-content: space-between;
             font-family: var(--font-gallery);
-            font-size: 14px;
-            margin-bottom: 25px;
+            font-size: 14px; margin-bottom: 25px;
         }
 
-        /* ================= SENSORY EXPLORATION MODAL ================= */
-        .modal-overlay {
+        /* ================= STICKY BUY BAR ================= */
+        .sticky-buy-bar {
             position: fixed;
-            inset: 0;
-            background-color: rgba(30, 34, 33, 0.4);
+            bottom: -100px; left: 0; right: 0;
+            background: rgba(249, 246, 240, 0.96);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            z-index: 300;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 40px;
+            border-top: 1px solid rgba(30, 34, 33, 0.08);
+            padding: 14px 24px;
+            z-index: 90;
+            box-shadow: 0 -6px 30px rgba(30, 34, 33, 0.04);
+            transition: bottom 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
-
-        .art-modal-container {
-            background-color: var(--text);
-            border: 1px solid rgba(30, 34, 33, 0.08);
-            max-width: 1100px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            border-radius: 12px;
-            box-shadow: 0 50px 100px rgba(0,0,0,0.1);
+        .sticky-buy-bar.visible { bottom: 0; }
+        .sticky-buy-layout {
+            max-width: 1300px; margin: 0 auto;
+            display: flex; justify-content: space-between;
+            align-items: center; gap: 20px;
+            flex-wrap: wrap;
         }
-
-        .modal-dismiss {
-            position: absolute;
-            top: 25px;
-            right: 25px;
-            background: none;
-            border: none;
-            color: var(--secondary);
-            font-size: 22px;
-            cursor: pointer;
-            z-index: 10;
+        .sticky-buy-info {
+            display: flex; align-items: center; gap: 16px;
         }
-
-        .modal-gallery-pane {
-            background-color: var(--background);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 60px;
-        }
-
-        .modal-gallery-pane img {
-            width: 100%;
-            max-height: 480px;
-            object-fit: cover;
-            border-radius: 6px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-        }
-
-        .modal-curator-pane {
-            padding: 60px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .modal-product-title {
+        .sticky-buy-info .sticky-name {
             font-family: var(--font-artistic);
-            font-size: 42px;
-            line-height: 1.1;
-            margin-bottom: 5px;
+            font-size: 1.1rem;
         }
-
-        .modal-product-price {
+        .sticky-buy-info .sticky-price {
             font-family: var(--font-gallery);
-            font-size: 16px;
-            color: var(--heading);
-            margin-bottom: 30px;
+            font-size: 13px; color: var(--heading);
+            font-weight: 600;
         }
-
-        .config-label {
+        .sticky-buy-actions {
+            display: flex; gap: 10px;
+        }
+        .sticky-btn {
+            padding: 12px 24px;
+            border-radius: 40px;
             font-family: var(--font-gallery);
-            font-size: 10px;
-            color: #8a908e;
+            font-size: 10px; letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 12px;
-            display: block;
-            letter-spacing: 1px;
-        }
-
-        .modal-variant-row {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 35px;
-        }
-
-        .art-capsule-btn {
-            background: var(--accent);
-            border: 1px solid rgba(30, 34, 33, 0.12);
-            color: var(--secondary);
-            padding: 10px 22px;
-            font-family: var(--font-structural);
-            font-size: 12px;
-            border-radius: 30px;
             cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center; gap: 8px;
             transition: var(--transition-art);
         }
-
-        .art-capsule-btn.active {
-            background-color: var(--secondary);
+        .sticky-btn-cart {
+            background: var(--secondary);
             color: var(--text);
-            border-color: var(--secondary);
         }
-
-        .composition-breakdown {
-            list-style: none;
-            margin-bottom: 40px;
+        .sticky-btn-cart:hover { background: var(--heading); }
+        .sticky-btn-buy {
+            background: var(--heading);
+            color: var(--text);
         }
+        .sticky-btn-buy:hover { background: var(--secondary); }
 
-        .composition-breakdown li {
-            font-size: 13.5px;
-            color: #434846;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(30, 34, 33, 0.06);
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .composition-breakdown li span:last-child {
-            font-family: var(--font-gallery);
-            font-size: 12px;
-            color: var(--primary);
-        }
-
-        /* --- Nested Ledger Book Reviews --- */
-        .notebook-reviews-container {
-            border-top: 1px solid rgba(30, 34, 33, 0.08);
-            padding-top: 30px;
-            margin-top: 20px;
-        }
-
-        .notebook-scroll {
-            max-height: 140px;
-            overflow-y: auto;
-            margin-bottom: 25px;
-        }
-
-        .notebook-entry {
-            font-size: 12.5px;
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px dashed rgba(30, 34, 33, 0.08);
-        }
-
-        .entry-meta {
-            font-family: var(--font-gallery);
-            font-size: 10px;
-            color: var(--primary);
-            margin-bottom: 4px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .entry-text {
-            color: #434846;
-            font-style: italic;
-        }
-
-        .notebook-form-box input, 
-        .notebook-form-box textarea {
-            background: var(--accent);
-            border: 1px solid rgba(30, 34, 33, 0.1);
-            padding: 10px;
-            color: var(--secondary);
-            font-size: 12px;
-            outline: none;
-            width: 100%;
-            margin-bottom: 10px;
-            border-radius: 4px;
-        }
-
-        /* ================= MONOCHROMATIC ART FOOTER ================= */
+        /* ================= FOOTER ================= */
         .art-footer {
             background-color: #ede7de;
             border-top: 1px solid rgba(30, 34, 33, 0.05);
-            padding: 100px 60px 40px 60px;
+            padding: 100px 60px 40px;
         }
-
         .footer-universe-grid {
-            max-width: 1300px;
-            margin: 0 auto;
+            max-width: 1300px; margin: 0 auto;
             display: grid;
             grid-template-columns: 1.5fr 1fr 1fr;
-            gap: 100px;
+            gap: 80px;
             margin-bottom: 80px;
         }
-
+        @media (max-width: 900px) {
+            .footer-universe-grid { grid-template-columns: 1fr; gap: 50px; }
+        }
         .footer-quote h3 {
             font-family: var(--font-artistic);
-            font-size: 38px;
-            font-weight: 400;
-            line-height: 1.1;
-            margin-bottom: 20px;
+            font-size: 38px; font-weight: 400;
+            line-height: 1.1; margin-bottom: 20px;
         }
-
         .footer-heading {
             font-family: var(--font-gallery);
-            font-size: 11px;
-            text-transform: uppercase;
+            font-size: 11px; text-transform: uppercase;
             color: var(--heading);
-            margin-bottom: 25px;
-            letter-spacing: 2px;
+            margin-bottom: 25px; letter-spacing: 2px;
         }
-
-        .footer-nav-list {
-            list-style: none;
-        }
-
-        .footer-nav-list li {
-            margin-bottom: 14px;
-        }
-
+        .footer-nav-list { list-style: none; }
+        .footer-nav-list li { margin-bottom: 14px; }
         .footer-nav-list a {
             font-size: 13.5px;
             color: #5c6260;
             text-decoration: none;
             transition: var(--transition-art);
         }
-
         .footer-nav-list a:hover {
             color: var(--secondary);
             padding-left: 4px;
         }
-
         .art-socials-row {
-            display: flex;
-            gap: 20px;
+            display: flex; gap: 20px;
             margin-top: 25px;
         }
-
         .art-socials-row a {
             color: #8a908e;
             font-size: 18px;
             transition: var(--transition-art);
         }
-
         .art-socials-row a:hover { color: var(--secondary); }
-
         .footer-bottom-curator {
-            max-width: 1300px;
-            margin: 0 auto;
+            max-width: 1300px; margin: 0 auto;
             border-top: 1px solid rgba(30, 34, 33, 0.08);
             padding-top: 30px;
-            display: flex;
-            justify-content: space-between;
+            display: flex; justify-content: space-between;
             align-items: center;
             font-family: var(--font-gallery);
             font-size: 11px;
             color: #8a908e;
+            flex-wrap: wrap;
+            gap: 12px;
         }
 
-        /* ================= RESPONSIVE ADAPTATIONS ================= */
+        /* ================= NOTIFICATION ================= */
+        .custom-notification {
+            position: fixed;
+            top: 110px; right: 20px;
+            background: var(--secondary);
+            color: var(--text);
+            padding: 14px 24px;
+            border-radius: 4px;
+            z-index: 10000;
+            font-family: var(--font-gallery);
+            font-size: 11px; letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+            animation: slideInRight 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            max-width: 400px;
+        }
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* ================= RESPONSIVE ================= */
         @media (max-width: 1024px) {
-            .exhibition-deck { grid-template-columns: 1fr; gap: 60px; }
-            .exhibition-deck .art-card:nth-child(2),
-            .exhibition-deck .art-card:nth-child(3) { transform: translateY(0); }
             .hero-layout { grid-template-columns: 1fr; gap: 40px; }
             .hero-sculpture-frame { height: 50vh; }
-            .about-split-layout { grid-template-columns: 1fr; gap: 50px; }
-            .art-modal-container { grid-template-columns: 1fr; }
-            .footer-universe-grid { grid-template-columns: 1fr; gap: 50px; }
         }
-
         @media (max-width: 768px) {
             .art-nav { padding: 0 25px; width: calc(100% - 30px); }
-            .nav-menu { display: none; } 
+            .nav-menu { display: none; }
             .hero-canvas { padding: 140px 30px 40px 30px; }
             .hero-statement-box h1 { font-size: 8vw; }
-            .contact-card-box { grid-template-columns: 1fr; }
-            .contact-aesthetic-sidebar { border-right: none; border-bottom: 1px solid rgba(30,34,33,0.08); }
+            .story-canvas, .product-canvas, .reviews-canvas, .faq-canvas { padding: 80px 30px; }
+            .ugc-canvas, .pledge-canvas { padding: 80px 30px; }
+            .cta-canvas, .contact-canvas { padding: 80px 30px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Light Fluid Background Stains -->
+    <!-- Background Pigment Stains -->
     <div class="pigment-stain-1"></div>
     <div class="pigment-stain-2"></div>
 
-    <!-- ================= FLOATING GLASS NAVIGATION ================= -->
+    <!-- ================= NAVIGATION ================= -->
     <nav class="art-nav editable-section" data-section="1">
-        <a href="#canvas" class="nav-brand editable-text editable-section" data-section="2" data-text="1">{brand}</a>
-        
+        <a href="#canvas" class="nav-brand editable-text editable-section no-drop-zone" data-section="2" data-text="1">{brand}</a>
         <div class="nav-menu">
-            <a href="#exhibition" class="editable-text editable-section" data-section="3" data-text="2">Exhibits</a>
-            <a href="#manifesto" class="editable-text editable-section" data-section="4" data-text="3">The Philosophy</a>
-            <a href="#curations" class="editable-text editable-section" data-section="5" data-text="4">Inquiries</a>
-            <a href="#contact" class="editable-text editable-section" data-section="6" data-text="5">Coordinates</a>
+            <a href="#story" class="editable-text editable-section no-drop-zone" data-section="3" data-text="2">The Narrative</a>
+            <a href="#artifact" class="editable-text editable-section no-drop-zone" data-section="4" data-text="3">The Artifact</a>
+            <a href="#gallery" class="editable-text editable-section no-drop-zone" data-section="5" data-text="4">Collective</a>
+            <a href="#contact" class="editable-text editable-section no-drop-zone" data-section="6" data-text="5">Coordinates</a>
         </div>
-
         <div class="nav-meta-actions">
             <button class="nav-icon-btn editable-section no-drop-zone" data-section="7" onclick="openSidebar('desires-drawer')" aria-label="View desires">
                 <i class="fa-regular fa-star editable-icon" data-icon="101" data-default-class="fa-regular fa-star"></i>
                 <span id="desires-dot" class="badge-dot"></span>
             </button>
-            
             <button class="nav-icon-btn editable-section no-drop-zone" data-section="8" onclick="openSidebar('collector-drawer')" aria-label="View collector bag">
                 <i class="fa-solid fa-fingerprint editable-icon" data-icon="120" data-default-class="fa-solid fa-fingerprint"></i>
                 <span id="collector-dot" class="badge-dot"></span>
@@ -1062,554 +1360,1059 @@
         </div>
     </nav>
 
-    <!-- ================= HERO LAYER ================= -->
+    <!-- ================= HERO ================= -->
     <header id="canvas" class="hero-canvas editable-section" data-section="9">
         <div class="hero-layout">
             <div class="hero-statement-box editable-section no-drop-zone" data-section="10">
-                <span class="gallery-tag editable-text editable-section" data-section="11" data-text="6">Olfactive Anthology // Vol. I</span>
-                <h1><span class="editable-text editable-section" data-section="12" data-text="7">Liquid textures mapped to construct</span> <em class="editable-text editable-section" data-section="13" data-text="8">invisible art fields</em>.</h1>
-                <a href="#exhibition" class="art-cta-link editable-text editable-section" data-section="14" data-text="9">
-                    <span>Explore Gallery Exhibits</span>
-                    <i class="fa-solid fa-arrow-right-long"></i>
+                <span class="gallery-tag editable-text editable-section no-drop-zone" data-section="11" data-text="6">Olfactive Anthology // Singular Edition</span>
+                <h1><span class="editable-text editable-section no-drop-zone" data-section="12" data-text="7">One artisan fragrance. Constructed from</span> <em class="editable-text editable-section no-drop-zone" data-section="13" data-text="8">invisible desert field memory</em>.</h1>
+                <a href="#artifact" class="art-cta-link editable-text editable-section no-drop-zone" data-section="14" data-text="9">
+                    <span>Discover The Artifact</span>
+                    <i class="fa-solid fa-arrow-right-long editable-icon" data-icon="102" data-default-class="fa-solid fa-arrow-right-long"></i>
                 </a>
             </div>
-            
-            <div class="hero-sculpture-frame">
+            <div class="hero-sculpture-frame editable-section no-drop-zone" data-section="15">
                 <div class="sculpture-bg-panel"></div>
-                <img src="https://cdn.pixabay.com/photo/2023/12/23/08/42/island-8465139_1280.png" alt="Ethereal abstract sculpture" class="sculpture-img editable-image" data-image="1">
+                <img src="https://cdn.pixabay.com/photo/2023/12/23/08/42/island-8465139_1280.png" alt="Signature olfactive artifact" class="sculpture-img editable-image" data-image="1">
             </div>
         </div>
     </header>
 
     <main>
-        <!-- ================= ACTIVE PORTFOLIO GALLERY ================= -->
-    <section id="exhibition" class="portfolio-canvas editable-section" data-section="15">
-        <div class="portfolio-intro editable-section no-drop-zone" data-section="16">
-            <span class="gallery-tag editable-text editable-section" data-section="17" data-text="10">Current Exhibitions</span>
-            <h2 class="editable-text editable-section" data-section="18" data-text="11">Olfactive Artifacts Available for Capture.</h2>
-        </div>
 
-        <div id="exhibition-deck-target" class="exhibition-deck editable-text editable-section" data-section="699" data-text="699">
-            <!-- ============================================================ -->
-            <!-- PRODUCTS RENDERED INLINE - INJECT FROM BACKEND                -->
-            <!-- ============================================================ -->
-            
-            <!-- Product 1: Clay & Saffron -->
-            <div class="art-card editable-text editable-section" data-section="700" data-text="700" data-product-id="101">
-                <div class="art-card-viewport" onclick="triggerOpenModal(101)">
-                    <img src="https://cdn.pixabay.com/photo/2023/12/23/08/42/island-8465139_1280.png" alt="Clay & Saffron">
-                    <div class="art-card-overlay editable-text editable-section" data-section="701" data-text="701">
-                        <button class="circular-action-btn editable-text editable-section" data-section="702" data-text="702" onclick="event.stopPropagation(); immediateBasketPush(101)"><i class="fa-solid fa-plus editable-icon" data-icon="700"></i></button>
-                        <button class="circular-action-btn editable-text editable-section" data-section="703" data-text="703" onclick="event.stopPropagation(); alternateDesiresToggle(101)" id="desire-icon-card-101 "><i class="fa-regular fa-star editable-icon" data-icon="701"></i></button>
-                    </div>
+        <!-- ================= STORYTELLING SCROLL ================= -->
+        <section id="story" class="story-canvas editable-section" data-section="16">
+            <div class="story-intro fade-in-up editable-section no-drop-zone" data-section="17">
+                <span class="gallery-tag editable-text no-drop-zone" data-section="18" data-text="10">The Narrative Scroll</span>
+                <h2 class="editable-text no-drop-zone" data-section="19" data-text="11">A single scent. <em>An entire journey.</em></h2>
+                <p class="editable-text no-drop-zone" data-section="20" data-text="12">We did not create a collection. We created one singular artifact, distilled across four years of field research across three continents.</p>
+            </div>
+
+            <!-- Chapter 1 -->
+            <div class="story-chapter">
+                <div class="story-media fade-in-left editable-section no-drop-zone" data-section="21">
+                    <span class="chapter-number">01</span>
+                    <img src="https://images.pexels.com/photos/8148577/pexels-photo-8148577.jpeg?auto=compress&cs=tinysrgb&w=800" alt="The Harvest" class="editable-image" data-image="2">
+                    <span class="media-tag editable-text no-drop-zone" data-section="22" data-text="13">The Harvest</span>
                 </div>
-                <div class="art-card-details editable-text editable-section" data-section="704" data-text="704">
-                    <div class="art-card-header-row editable-text editable-section" data-section="705" data-text="705">
-                        <a href="#exhibition" class="art-card-title editable-text editable-section" data-section="706" data-text="706" onclick="triggerOpenModal(101)">Clay & Saffron</a>
-                        <span class="art-card-price editable-text editable-section" data-section="707" data-text="707">$290</span>
+                <div class="story-content fade-in-right editable-section no-drop-zone" data-section="23">
+                    <span class="eyebrow editable-text no-drop-zone" data-section="24" data-text="14">Chapter One</span>
+                    <h3 class="editable-text no-drop-zone" data-section="25" data-text="15">Where <em>sun-baked earth</em> meets silk</h3>
+                    <div class="pull-quote editable-text no-drop-zone" data-section="26" data-text="16">
+                        "Every drop carries the fingerprint of the wind that shaped it."
+                        <div class="attr editable-text no-drop-zone" data-section="27" data-text="17">— Our Master Perfumer</div>
                     </div>
-                    <p class="art-card-desc editable-text editable-section" data-section="708" data-text="708">An earthy, sun-baked opening of warm Iranian saffron, wet terra-cotta powder, and raw golden resins.</p>
+                    <p class="editable-text no-drop-zone" data-section="28" data-text="18">The signature artifact begins its life in the arid highlands of Iranian saffron fields. Every petal is hand-picked at dawn, before the desert heat dissipates the volatile oils that make this single scent truly unrepeatable.</p>
+                    <div class="story-features">
+                        <span><i class="fa-solid fa-seedling editable-icon" data-icon="103" data-default-class="fa-solid fa-seedling"></i> <span class="editable-text no-drop-zone" data-section="29" data-text="19">Wild Harvested</span></span>
+                        <span><i class="fa-solid fa-sun editable-icon" data-icon="104" data-default-class="fa-solid fa-sun"></i> <span class="editable-text no-drop-zone" data-section="30" data-text="20">Sun-Baked Oils</span></span>
+                        <span><i class="fa-solid fa-flask editable-icon" data-icon="105" data-default-class="fa-solid fa-flask"></i> <span class="editable-text no-drop-zone" data-section="31" data-text="21">Cold Extracted</span></span>
+                    </div>
                 </div>
             </div>
 
-            <!-- Product 2: Alabaster Iris -->
-            <div class="art-card" data-product-id="102">
-                <div class="art-card-viewport" onclick="triggerOpenModal(102)">
-                    <img src="https://cdn.pixabay.com/photo/2023/12/23/08/42/island-8465139_1280.png" alt="Alabaster Iris">
-                    <div class="art-card-overlay">
-                        <button class="circular-action-btn" onclick="event.stopPropagation(); immediateBasketPush(102)"><i class="fa-solid fa-plus"></i></button>
-                        <button class="circular-action-btn" onclick="event.stopPropagation(); alternateDesiresToggle(102)" id="desire-icon-card-102"><i class="fa-regular fa-star"></i></button>
+            <!-- Chapter 2 -->
+            <div class="story-chapter reverse">
+                <div class="story-content fade-in-left editable-section no-drop-zone" data-section="32">
+                    <span class="eyebrow editable-text no-drop-zone" data-section="33" data-text="22">Chapter Two</span>
+                    <h3 class="editable-text no-drop-zone" data-section="34" data-text="23">Aged in <em>Venetian silence</em></h3>
+                    <div class="pull-quote editable-text no-drop-zone" data-section="35" data-text="24">
+                        "Time is our rarest ingredient. We cannot rush what must mature."
+                        <div class="attr editable-text no-drop-zone" data-section="36" data-text="25">— Our Cellar Master</div>
+                    </div>
+                    <p class="editable-text no-drop-zone" data-section="37" data-text="26">After extraction, the concentrated essence matures inside hand-blown Venetian glass for a minimum of eighteen months. This slow aging allows the molecular structure to evolve into the deep amber character our patrons have come to recognize as the mark of authenticity.</p>
+                    <div class="story-features">
+                        <span><i class="fa-solid fa-hourglass-half editable-icon" data-icon="106" data-default-class="fa-solid fa-hourglass-half"></i> <span class="editable-text no-drop-zone" data-section="38" data-text="27">18-Month Age</span></span>
+                        <span><i class="fa-solid fa-wine-bottle editable-icon" data-icon="107" data-default-class="fa-solid fa-wine-bottle"></i> <span class="editable-text no-drop-zone" data-section="39" data-text="28">Hand-Blown Glass</span></span>
+                        <span><i class="fa-solid fa-gem editable-icon" data-icon="108" data-default-class="fa-solid fa-gem"></i> <span class="editable-text no-drop-zone" data-section="40" data-text="29">Small Batch</span></span>
                     </div>
                 </div>
-                <div class="art-card-details">
-                    <div class="art-card-header-row">
-                        <a href="#exhibition" class="art-card-title" onclick="triggerOpenModal(102)">Alabaster Iris</a>
-                        <span class="art-card-price">$315</span>
-                    </div>
-                    <p class="art-card-desc">A fragile, translucent cloud composed of pulverized white marble dust, cool iris root, and warm almond milk.</p>
+                <div class="story-media fade-in-right editable-section no-drop-zone" data-section="41">
+                    <span class="chapter-number">02</span>
+                    <img src="https://images.pexels.com/photos/9657315/pexels-photo-9657315.jpeg?auto=compress&cs=tinysrgb&w=800" alt="The Cellar" class="editable-image" data-image="3">
+                    <span class="media-tag editable-text no-drop-zone" data-section="42" data-text="30">The Cellar</span>
                 </div>
             </div>
 
-            <!-- Product 3: Moss Continuum -->
-            <div class="art-card" data-product-id="103">
-                <div class="art-card-viewport" onclick="triggerOpenModal(103)">
-                    <img src="https://cdn.pixabay.com/photo/2023/12/23/08/42/island-8465139_1280.png" alt="Moss Continuum">
-                    <div class="art-card-overlay">
-                        <button class="circular-action-btn" onclick="event.stopPropagation(); immediateBasketPush(103)"><i class="fa-solid fa-plus"></i></button>
-                        <button class="circular-action-btn" onclick="event.stopPropagation(); alternateDesiresToggle(103)" id="desire-icon-card-103"><i class="fa-regular fa-star"></i></button>
+            <!-- Chapter 3 -->
+            <div class="story-chapter">
+                <div class="story-media fade-in-left editable-section no-drop-zone" data-section="43">
+                    <span class="chapter-number">03</span>
+                    <img src="https://images.pexels.com/photos/6721421/pexels-photo-6721421.jpeg?auto=compress&cs=tinysrgb&w=800" alt="The Wearer" class="editable-image" data-image="4">
+                    <span class="media-tag editable-text no-drop-zone" data-section="44" data-text="31">The Wearer</span>
+                </div>
+                <div class="story-content fade-in-right editable-section no-drop-zone" data-section="45">
+                    <span class="eyebrow editable-text no-drop-zone" data-section="46" data-text="32">Chapter Three</span>
+                    <h3 class="editable-text no-drop-zone" data-section="47" data-text="33">Worn only by <em>the few</em></h3>
+                    <div class="pull-quote editable-text no-drop-zone" data-section="48" data-text="34">
+                        "The most enduring artifacts are not purchased. They are inherited."
+                        <div class="attr editable-text no-drop-zone" data-section="49" data-text="35">— Our Founder</div>
+                    </div>
+                    <p class="editable-text no-drop-zone" data-section="50" data-text="36">When applied to skin, the artifact reacts uniquely to each wearer. What emerges is a scent that cannot be replicated, cannot be photographed, and cannot be sold to anyone else. This is why we produced only one thousand vessels — each one numbered, each one singular.</p>
+                    <div class="story-features">
+                        <span><i class="fa-solid fa-fingerprint editable-icon" data-icon="109" data-default-class="fa-solid fa-fingerprint"></i> <span class="editable-text no-drop-zone" data-section="51" data-text="37">Skin Unique</span></span>
+                        <span><i class="fa-solid fa-hashtag editable-icon" data-icon="110" data-default-class="fa-solid fa-hashtag"></i> <span class="editable-text no-drop-zone" data-section="52" data-text="38">Numbered Editions</span></span>
+                        <span><i class="fa-solid fa-infinity editable-icon" data-icon="111" data-default-class="fa-solid fa-infinity"></i> <span class="editable-text no-drop-zone" data-section="53" data-text="39">Lifetime Archive</span></span>
                     </div>
                 </div>
-                <div class="art-card-details">
-                    <div class="art-card-header-row">
-                        <a href="#exhibition" class="art-card-title" onclick="triggerOpenModal(103)">Moss Continuum</a>
-                        <span class="art-card-price">$340</span>
+            </div>
+        </section>
+
+        <!-- ================= UGC GALLERY ================= -->
+        <section id="gallery" class="ugc-canvas editable-section" data-section="54">
+            <div class="ugc-inner">
+                <div class="ugc-intro fade-in-up editable-section no-drop-zone" data-section="55">
+                    <span class="gallery-tag editable-text no-drop-zone" data-section="56" data-text="40">Worn By The Collective</span>
+                    <h2 class="editable-text no-drop-zone" data-section="57" data-text="41">Real patrons. <em>Real impressions.</em></h2>
+                </div>
+                <div class="ugc-grid">
+                    <div class="ugc-item fade-in-up editable-section no-drop-zone" data-section="58">
+                        <img src="https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Patron reflection" class="editable-image" data-image="5">
+                        <div class="ugc-overlay">
+                            <span class="user"><i class="fa-regular fa-user editable-icon" data-icon="112" data-default-class="fa-regular fa-user"></i> @l.k._arts</span>
+                            <div class="caption-text editable-text" data-section="59" data-text="42">Like sunlight on old paper.</div>
+                        </div>
                     </div>
-                    <p class="art-card-desc">A damp green landscape tracing fresh wild moss fields trapped inside sealed ancient limestone brick walls.</p>
+                    <div class="ugc-item fade-in-up editable-section no-drop-zone" data-section="60">
+                        <img src="https://images.pexels.com/photos/2774893/pexels-photo-2774893.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Patron reflection" class="editable-image" data-image="6">
+                        <div class="ugc-overlay">
+                            <span class="user"><i class="fa-regular fa-user editable-icon" data-icon="112" data-default-class="fa-regular fa-user"></i> @m.r._studio</span>
+                            <div class="caption-text editable-text" data-section="61" data-text="43">Quiet, mineral, unforgettable.</div>
+                        </div>
+                    </div>
+                    <div class="ugc-item fade-in-up editable-section no-drop-zone" data-section="62">
+                        <img src="https://images.pexels.com/photos/1704488/pexels-photo-1704488.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Patron reflection" class="editable-image" data-image="7">
+                        <div class="ugc-overlay">
+                            <span class="user"><i class="fa-regular fa-user editable-icon" data-icon="112" data-default-class="fa-regular fa-user"></i> @t.s._archive</span>
+                            <div class="caption-text editable-text" data-section="63" data-text="44">A green imprint, no sweetness.</div>
+                        </div>
+                    </div>
+                    <div class="ugc-item fade-in-up editable-section no-drop-zone" data-section="64">
+                        <img src="https://images.pexels.com/photos/3184311/pexels-photo-3184311.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Patron reflection" class="editable-image" data-image="8">
+                        <div class="ugc-overlay">
+                            <span class="user"><i class="fa-regular fa-user editable-icon" data-icon="112" data-default-class="fa-regular fa-user"></i> @a.w._atelier</span>
+                            <div class="caption-text editable-text" data-section="65" data-text="45">My signature scent forever.</div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-            <!-- ============================================================ -->
-            <!-- END PRODUCTS RENDERED INLINE                                  -->
-            <!-- ============================================================ -->
-        </div>
-    </section>
+        </section>
 
-    <!-- ================= ABOUT US SECTION ================= -->
-    <section id="manifesto" class="about-canvas editable-section" data-section="19">
-        <div class="about-split-layout">
-            <div class="about-manifesto-sticky editable-section no-drop-zone" data-section="20">
-                <span class="gallery-tag editable-text editable-section" data-section="21" data-text="12">The Anthology Manifesto</span>
-                <h2 class="editable-text editable-section" data-section="22" data-text="13">We are not perfumers.<br>We are chroniclers.</h2>
+        <!-- ================= PRODUCT SHOWCASE ================= -->
+        <section id="artifact" class="product-canvas editable-section" data-section="66">
+            <div class="product-header fade-in-up editable-section no-drop-zone" data-section="67">
+                <span class="gallery-tag editable-text no-drop-zone" data-section="68" data-text="46">The Singular Artifact</span>
+                <h2 class="editable-text no-drop-zone" data-section="69" data-text="47">Available for <em>immediate capture</em>.</h2>
             </div>
-            
-            <div class="about-narrative-block editable-section no-drop-zone" data-section="23">
-                <p class="editable-text editable-section" data-section="24" data-text="14">{brand} was founded not in a commercial laboratory, but in the intersection of poetry and chemical expressionism. We believe that fragrance is an architectural layer worn over the human spirit—an immersive landscape that reconstructs environments, long-lost moments, and deep tactile art fields.</p>
-                
-                <p class="editable-text editable-section" data-section="25" data-text="15">Every single dynamic compound is gathered manually across specialized micro-climates, ensuring wild-harvested botanicals remain pure. Our glass bottles are blown by hand by Venetian masters, celebrating physical imperfections. To look at an {brand} artifact is to look at a singular human timestamp that will never happen the exact same way again.</p>
-                
-                <p class="editable-text editable-section" data-section="26" data-text="16">We work outside the traditional laws of commercial styling. We collaborate directly with sculptors, painters, and composers to construct sensory definitions for concepts that cannot be parsed by sight alone. Welcome to the alternative olfactive paradigm.</p>
-            </div>
-        </div>
-    </section>
 
-    <!-- ================= INQUIRIES SECTION ================= -->
-    <section id="curations" class="faq-canvas editable-section" data-section="27">
-        <span class="gallery-tag editable-text editable-section" data-section="28" data-text="17">Curatorial Protocols</span>
-        <h2 style="font-family: var(--font-artistic); font-size: 3.5rem; font-weight: 300; margin-bottom: 20px;" class="editable-text editable-section" data-section="29" data-text="18">Queries & Verities</h2>
-        
-        <div class="faq-accordion-stack">
-            <div class="faq-art-node editable-section no-drop-zone" data-section="30">
-                <button class="faq-art-trigger" onclick="toggleArtAccordion(this)">
-                    <span><span class="faq-index editable-text editable-section" data-section="31" data-text="19">01//</span><span class="editable-text editable-section" data-section="32" data-text="20">Are these configurations unisexual?</span></span>
-                    <i class="faq-icon-indicator fa-solid fa-plus"></i>
+            <div class="product-wrap">
+                <!-- Gallery -->
+                <div class="product-gallery-wrap fade-in-left editable-section no-drop-zone" data-section="70">
+                    <img id="mainProductImage" src="https://images.pexels.com/photos/8148577/pexels-photo-8148577.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Signature Olfactive Artifact" class="main-frame editable-image" data-image="9">
+                    <div class="thumb-strip" id="thumbnailStrip">
+                        <div class="thumb active editable-section no-drop-zone" data-section="71">
+                            <img src="https://images.pexels.com/photos/8148577/pexels-photo-8148577.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Front" class="editable-image" data-image="10" data-main="https://images.pexels.com/photos/8148577/pexels-photo-8148577.jpeg?auto=compress&cs=tinysrgb&w=800">
+                        </div>
+                        <div class="thumb editable-section no-drop-zone" data-section="72">
+                            <img src="https://images.pexels.com/photos/9657315/pexels-photo-9657315.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Detail" class="editable-image" data-image="11" data-main="https://images.pexels.com/photos/9657315/pexels-photo-9657315.jpeg?auto=compress&cs=tinysrgb&w=800">
+                        </div>
+                        <div class="thumb editable-section no-drop-zone" data-section="73">
+                            <img src="https://images.pexels.com/photos/6721421/pexels-photo-6721421.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Mood" class="editable-image" data-image="12" data-main="https://images.pexels.com/photos/6721421/pexels-photo-6721421.jpeg?auto=compress&cs=tinysrgb&w=800">
+                        </div>
+                        <div class="thumb editable-section no-drop-zone" data-section="74">
+                            <img src="https://images.pexels.com/photos/3184311/pexels-photo-3184311.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Detail" class="editable-image" data-image="13" data-main="https://images.pexels.com/photos/3184311/pexels-photo-3184311.jpeg?auto=compress&cs=tinysrgb&w=800">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Details -->
+                <div class="product-info fade-in-right editable-section no-drop-zone" data-section="75">
+                    <span class="badge editable-text no-drop-zone" data-section="76" data-text="48">Limited to 1,000 Vessels</span>
+                    <h1 class="editable-text no-drop-zone" data-section="77" data-text="49">Clay &amp; Saffron — The Signature Artifact</h1>
+
+                    <div class="rating-row">
+                        <span class="stars editable-icon" data-icon="113" data-default-class="fas fa-star">★★★★★</span>
+                        <span class="editable-text no-drop-zone" data-section="78" data-text="50">4.9 / 5 · 2,400+ Patron Logs</span>
+                    </div>
+
+                    <div class="price-row">
+                        <span class="current editable-text no-drop-zone" id="product-price-display" data-section="79" data-text="51">$290.00</span>
+                        <span class="original editable-text no-drop-zone" id="product-compare-price" data-section="80" data-text="52">$365.00</span>
+                        <span class="save-tag editable-text no-drop-zone" id="product-save-tag" data-section="81" data-text="53">Save $75</span>
+                    </div>
+
+                    <p class="desc-text editable-text no-drop-zone" data-section="82" data-text="54">An earthy, sun-baked opening of warm Iranian saffron, wet terra-cotta powder, and raw golden resins — matured for eighteen months in hand-blown Venetian glass and numbered individually for its sole owner.</p>
+
+                    <!-- VARIANT SELECTOR -->
+                    <div id="variant-attributes-container"></div>
+
+                    <!-- Selected options display -->
+                    <div class="selected-options-display" id="selected-options-display">
+                        <span class="label">Selected:</span>
+                        <span class="value" id="selected-options-text"></span>
+                    </div>
+                    <div class="variant-error" id="variant-error">Please select all options before acquiring.</div>
+
+                    <!-- TIERED PRICING -->
+                    <div class="tier-group editable-section no-drop-zone" data-section="83">
+                        <span class="tier-label editable-text no-drop-zone" data-section="84" data-text="55">Select Vessel Volume:</span>
+                        <div class="tier-grid" id="tier-grid">
+                            <div class="tier-card" data-tier="1" data-quantity="1" data-total-price="290.00" data-per-unit="290.00" data-savings="0" onclick="selectTier(this)">
+                                <span class="tier-qty">1</span>
+                                <span class="tier-price">$290.00</span>
+                                <span class="tier-save">—</span>
+                            </div>
+                            <div class="tier-card active" data-tier="2" data-quantity="2" data-total-price="550.00" data-per-unit="275.00" data-savings="30.00" onclick="selectTier(this)">
+                                <span class="tier-badge">Most Captured</span>
+                                <span class="tier-qty">2</span>
+                                <span class="tier-price">$550.00</span>
+                                <span class="tier-save">Save $30</span>
+                            </div>
+                            <div class="tier-card" data-tier="3" data-quantity="3" data-total-price="780.00" data-per-unit="260.00" data-savings="90.00" onclick="selectTier(this)">
+                                <span class="tier-badge">Collector Trio</span>
+                                <span class="tier-qty">3</span>
+                                <span class="tier-price">$780.00</span>
+                                <span class="tier-save">Save $90</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TOTAL PRICE -->
+                    <div class="total-price-display editable-section no-drop-zone" data-section="85" id="total-price-display">
+                        <span class="label editable-text no-drop-zone" data-section="86" data-text="56">Total Value</span>
+                        <span class="value" id="total-price-value">
+                            $<span id="total-price-amount">550.00</span>
+                            <span class="sub" id="total-price-sub">(2 vessels)</span>
+                        </span>
+                    </div>
+
+                    <!-- QUANTITY -->
+                    <div class="qty-row">
+                        <span class="qty-label editable-text no-drop-zone" data-section="87" data-text="57">Bundles:</span>
+                        <div class="qty-box">
+                            <button id="decrementQty">−</button>
+                            <span id="quantityDisplay">1</span>
+                            <button id="incrementQty">+</button>
+                        </div>
+                        <input type="hidden" id="quantityInput" value="1">
+                    </div>
+
+                    <!-- ACTIONS -->
+                    <div class="action-row editable-section no-drop-zone" data-section="88">
+                        <button class="btn-cart editable-text no-drop-zone" id="add-to-cart-btn" data-section="89" data-text="58" data-product-id="1">
+                            <i class="fa-solid fa-fingerprint editable-icon" data-icon="120" data-default-class="fa-solid fa-fingerprint"></i>
+                            <span>Add To Collection</span>
+                        </button>
+                        <button class="btn-buy editable-text no-drop-zone" id="buy-now-btn" data-section="90" data-text="59" data-product-id="1">
+                            <i class="fa-solid fa-bolt editable-icon" data-icon="114" data-default-class="fa-solid fa-bolt"></i>
+                            <span>Acquire Now</span>
+                        </button>
+                        <button class="btn-wish editable-section no-drop-zone" id="wishlistBtn" data-section="91" data-add-to-wishlist="1">
+                            <i class="fa-regular fa-star editable-icon" data-icon="115" data-default-class="fa-regular fa-star"></i>
+                        </button>
+                    </div>
+
+                    <!-- TRUST BADGES -->
+                    <div class="trust-badges editable-section no-drop-zone" data-section="92">
+                        <span><i class="fa-solid fa-truck editable-icon" data-icon="116" data-default-class="fa-solid fa-truck"></i> <span class="editable-text no-drop-zone" data-section="93" data-text="60">Free Dispatch</span></span>
+                        <span><i class="fa-solid fa-shield-halved editable-icon" data-icon="117" data-default-class="fa-solid fa-shield-halved"></i> <span class="editable-text no-drop-zone" data-section="94" data-text="61">Lifetime Seal</span></span>
+                        <span><i class="fa-solid fa-lock editable-icon" data-icon="118" data-default-class="fa-solid fa-lock"></i> <span class="editable-text no-drop-zone" data-section="95" data-text="62">Secure Escrow</span></span>
+                        <span><i class="fa-solid fa-rotate-left editable-icon" data-icon="119" data-default-class="fa-solid fa-rotate-left"></i> <span class="editable-text no-drop-zone" data-section="96" data-text="63">30-Day Return</span></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PLEDGE ================= -->
+        <section class="pledge-canvas editable-section" data-section="97">
+            <div class="pledge-inner">
+                <div class="pledge-item fade-in-up editable-section no-drop-zone" data-section="98">
+                    <div class="icon-box"><i class="fa-solid fa-seedling editable-icon" data-icon="103" data-default-class="fa-solid fa-seedling"></i></div>
+                    <h4 class="editable-text no-drop-zone" data-section="99" data-text="64">Wild Harvested</h4>
+                    <p class="editable-text no-drop-zone" data-section="100" data-text="65">Every botanical compound sourced from its native micro-climate.</p>
+                </div>
+                <div class="pledge-item fade-in-up editable-section no-drop-zone" data-section="101">
+                    <div class="icon-box"><i class="fa-solid fa-wine-bottle editable-icon" data-icon="107" data-default-class="fa-solid fa-wine-bottle"></i></div>
+                    <h4 class="editable-text no-drop-zone" data-section="102" data-text="66">Hand-Blown Vessels</h4>
+                    <p class="editable-text no-drop-zone" data-section="103" data-text="67">Murano masters shape each glass, celebrating natural imperfections.</p>
+                </div>
+                <div class="pledge-item fade-in-up editable-section no-drop-zone" data-section="104">
+                    <div class="icon-box"><i class="fa-solid fa-hashtag editable-icon" data-icon="110" data-default-class="fa-solid fa-hashtag"></i></div>
+                    <h4 class="editable-text no-drop-zone" data-section="105" data-text="68">Numbered Editions</h4>
+                    <p class="editable-text no-drop-zone" data-section="106" data-text="69">Only 1,000 vessels produced, each archival-numbered for its owner.</p>
+                </div>
+                <div class="pledge-item fade-in-up editable-section no-drop-zone" data-section="107">
+                    <div class="icon-box"><i class="fa-solid fa-infinity editable-icon" data-icon="111" data-default-class="fa-solid fa-infinity"></i></div>
+                    <h4 class="editable-text no-drop-zone" data-section="108" data-text="70">Lifetime Archive</h4>
+                    <p class="editable-text no-drop-zone" data-section="109" data-text="71">Refill service and archival repurchasing rights for the original holder.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= REVIEWS ================= -->
+        <section class="reviews-canvas editable-section" data-section="110">
+            <div class="reviews-header">
+                <div class="rating-block">
+                    <span class="big editable-text no-drop-zone" data-section="111" data-text="72">4.9</span>
+                    <div>
+                        <div class="stars-display editable-icon" data-icon="113" data-default-class="fas fa-star">★★★★★</div>
+                        <div class="total editable-text no-drop-zone" data-section="112" data-text="73">2,400+ archived patron logs</div>
+                    </div>
+                </div>
+                <button class="write-review-btn editable-section no-drop-zone" data-section="113">
+                    <i class="fa-regular fa-pen-to-square editable-icon" data-icon="121" data-default-class="fa-regular fa-pen-to-square"></i>
+                    <span class="editable-text no-drop-zone" data-section="114" data-text="74">Write A Log</span>
                 </button>
-                <div class="faq-art-body">
-                    <p class="editable-text editable-section" data-section="33" data-text="21">Art holds no structural gender. Our compositions react uniquely to individual skin chemistry, establishing an intimate profile designed without arbitrary industrial labels.</p>
-                </div>
             </div>
-
-            <div class="faq-art-node editable-section no-drop-zone" data-section="34">
-                <button class="faq-art-trigger" onclick="toggleArtAccordion(this)">
-                    <span><span class="faq-index editable-text editable-section" data-section="35" data-text="22">02//</span><span class="editable-text editable-section" data-section="36" data-text="23">How does fluid aging alter the profile?</span></span>
-                    <i class="faq-icon-indicator fa-solid fa-plus"></i>
-                </button>
-                <div class="faq-art-body">
-                    <p class="editable-text editable-section" data-section="37" data-text="24">Because we implement high concentrations of live botanical extractions, our formulations evolve across time. Dark elements grow increasingly deep and ambery, altering character over decades like fine oils.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ================= CONCIERGE FORM INTERFACE ================= -->
-    <section id="contact" class="contact-canvas editable-section" data-section="38">
-        <div class="contact-card-box editable-section no-drop-zone" data-section="39">
-            <div class="contact-aesthetic-sidebar editable-section no-drop-zone" data-section="40">
-                <div>
-                    <span class="gallery-tag editable-text editable-section" data-section="41" data-text="25">Telemetry</span>
-                    <h3 class="editable-text editable-section" data-section="42" data-text="26">Establish Studio Link</h3>
-                </div>
-                <div class="studio-coordinates editable-text editable-section" data-section="43" data-text="27">
-                    Atelier {brand}<br>
-                    Quai des Orfèvres, No. 19<br>
-                    Paris Archive Branch<br>
-                    <span style="color: var(--heading);">studio@aetheria.art</span>
-                </div>
-            </div>
-
-            <div class="contact-form-pane editable-section no-drop-zone" data-section="44">
-                <form id="artTelemetryForm" onsubmit="transmitTelemetryDocument(event)">
-                    <div class="art-form-group">
-                        <input type="text" id="senderName" class="editable-text editable-section" data-section="45" data-text="28" placeholder=" " required>
-                        <label for="senderName" class="editable-text editable-section" data-section="46" data-text="29">Patron Identification Signature</label>
+            <div class="review-grid">
+                <div class="review-card fade-in-up editable-section no-drop-zone" data-section="115">
+                    <div class="stars editable-icon" data-icon="113" data-default-class="fas fa-star">★★★★★</div>
+                    <p class="quote editable-text no-drop-zone" data-section="116" data-text="75">"It smells genuinely like warm dust and fine old book binding after an afternoon in an artist's studio."</p>
+                    <div class="author">
+                        <div class="avatar">LK</div>
+                        <div>
+                            <div class="name editable-text no-drop-zone" data-section="117" data-text="76">L. K.</div>
+                            <div class="role editable-text no-drop-zone" data-section="118" data-text="77">Verified Patron</div>
+                        </div>
                     </div>
-
-                    <div class="art-form-group">
-                        <input type="email" id="senderEmail" class="editable-text editable-section" data-section="47" data-text="30" placeholder=" " required>
-                        <label for="senderEmail" class="editable-text editable-section" data-section="48" data-text="31">Digital Communication Matrix</label>
+                </div>
+                <div class="review-card fade-in-up editable-section no-drop-zone" data-section="119">
+                    <div class="stars editable-icon" data-icon="113" data-default-class="fas fa-star">★★★★★</div>
+                    <p class="quote editable-text no-drop-zone" data-section="120" data-text="78">"Quiet, perfectly mineral, and incredibly unique. It catches people entirely off guard."</p>
+                    <div class="author">
+                        <div class="avatar">MR</div>
+                        <div>
+                            <div class="name editable-text no-drop-zone" data-section="121" data-text="79">M. R.</div>
+                            <div class="role editable-text no-drop-zone" data-section="122" data-text="80">Verified Patron</div>
+                        </div>
                     </div>
-
-                    <div class="art-form-group">
-                        <textarea id="messageText" rows="4" class="editable-text editable-section" data-section="49" data-text="32" placeholder=" " required></textarea>
-                        <label for="messageText" class="editable-text editable-section" data-section="50" data-text="33">Conceptual Transcript Manifest</label>
+                </div>
+                <div class="review-card fade-in-up editable-section no-drop-zone" data-section="123">
+                    <div class="stars editable-icon" data-icon="113" data-default-class="fas fa-star">★★★★★</div>
+                    <p class="quote editable-text no-drop-zone" data-section="124" data-text="81">"A breathtakingly realistic crisp green imprint completely free of mainstream sweetness."</p>
+                    <div class="author">
+                        <div class="avatar">TS</div>
+                        <div>
+                            <div class="name editable-text no-drop-zone" data-section="125" data-text="82">T. S.</div>
+                            <div class="role editable-text no-drop-zone" data-section="126" data-text="83">Verified Patron</div>
+                        </div>
                     </div>
-
-                    <button type="submit" class="art-submit-btn editable-text editable-section" data-section="51" data-text="34">Transmit Document</button>
-                </form>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ================= DRAWERS OVERLAYS ================= -->
+        <!-- ================= FAQ ================= -->
+        <section class="faq-canvas editable-section" data-section="127">
+            <div class="faq-intro fade-in-up editable-section no-drop-zone" data-section="128">
+                <span class="gallery-tag editable-text no-drop-zone" data-section="129" data-text="84">Curatorial Protocols</span>
+                <h2 class="editable-text no-drop-zone" data-section="130" data-text="85">Queries &amp; <em>Verities</em></h2>
+            </div>
+            <div class="faq-accordion-stack">
+                <div class="faq-art-node fade-in-up editable-section no-drop-zone" data-section="131">
+                    <button class="faq-art-trigger" onclick="toggleArtAccordion(this)">
+                        <span><span class="faq-index editable-text no-drop-zone" data-section="132" data-text="86">01//</span><span class="editable-text no-drop-zone" data-section="133" data-text="87">Is this configuration unisex?</span></span>
+                        <i class="faq-icon-indicator fa-solid fa-plus editable-icon" data-icon="122" data-default-class="fa-solid fa-plus"></i>
+                    </button>
+                    <div class="faq-art-body">
+                        <p class="editable-text no-drop-zone" data-section="134" data-text="88">Art holds no structural gender. Our composition reacts uniquely to individual skin chemistry, establishing an intimate profile designed without arbitrary industrial labels.</p>
+                    </div>
+                </div>
+                <div class="faq-art-node fade-in-up editable-section no-drop-zone" data-section="135">
+                    <button class="faq-art-trigger" onclick="toggleArtAccordion(this)">
+                        <span><span class="faq-index editable-text no-drop-zone" data-section="136" data-text="89">02//</span><span class="editable-text no-drop-zone" data-section="137" data-text="90">How does fluid aging alter the profile?</span></span>
+                        <i class="faq-icon-indicator fa-solid fa-plus editable-icon" data-icon="122" data-default-class="fa-solid fa-plus"></i>
+                    </button>
+                    <div class="faq-art-body">
+                        <p class="editable-text no-drop-zone" data-section="138" data-text="91">Because we implement high concentrations of live botanical extractions, our formulation evolves across time. Dark elements grow increasingly deep and ambery, altering character over decades like fine oils.</p>
+                    </div>
+                </div>
+                <div class="faq-art-node fade-in-up editable-section no-drop-zone" data-section="139">
+                    <button class="faq-art-trigger" onclick="toggleArtAccordion(this)">
+                        <span><span class="faq-index editable-text no-drop-zone" data-section="140" data-text="92">03//</span><span class="editable-text no-drop-zone" data-section="141" data-text="93">How long does dispatch take?</span></span>
+                        <i class="faq-icon-indicator fa-solid fa-plus editable-icon" data-icon="122" data-default-class="fa-solid fa-plus"></i>
+                    </button>
+                    <div class="faq-art-body">
+                        <p class="editable-text no-drop-zone" data-section="142" data-text="94">Every artifact is dispatched within three business days, wrapped in archival tissue and sealed in wax-stamped linen casing to protect its molecular integrity during transit.</p>
+                    </div>
+                </div>
+                <div class="faq-art-node fade-in-up editable-section no-drop-zone" data-section="143">
+                    <button class="faq-art-trigger" onclick="toggleArtAccordion(this)">
+                        <span><span class="faq-index editable-text no-drop-zone" data-section="144" data-text="95">04//</span><span class="editable-text no-drop-zone" data-section="145" data-text="96">Can I return an artifact?</span></span>
+                        <i class="faq-icon-indicator fa-solid fa-plus editable-icon" data-icon="122" data-default-class="fa-solid fa-plus"></i>
+                    </button>
+                    <div class="faq-art-body">
+                        <p class="editable-text no-drop-zone" data-section="146" data-text="97">Yes. We offer a thirty-day return window on unopened vessels. If the seal remains untouched, we will refund the total value including dispatch, no questions asked.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= FINAL CTA ================= -->
+        <section class="cta-canvas editable-section" data-section="147">
+            <div class="cta-inner fade-in-up editable-section no-drop-zone" data-section="148">
+                <span class="gallery-tag editable-text no-drop-zone" data-section="149" data-text="98" style="color: rgba(249,246,240,0.7);">The Invitation</span>
+                <h2 class="editable-text no-drop-zone" data-section="150" data-text="99">Ready to wear <em>the invisible</em>?</h2>
+                <p class="editable-text no-drop-zone" data-section="151" data-text="100">Join the fewer than 1,000 patrons who will ever hold this artifact.</p>
+                <a href="#artifact" class="cta-btn editable-section no-drop-zone" data-section="152">
+                    <span class="editable-text no-drop-zone" data-section="153" data-text="101">Acquire The Artifact</span>
+                    <i class="fa-solid fa-arrow-right-long editable-icon" data-icon="102" data-default-class="fa-solid fa-arrow-right-long"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- ================= CONTACT ================= -->
+        <section id="contact" class="contact-canvas editable-section" data-section="154">
+            <div class="contact-card-box editable-section no-drop-zone" data-section="155">
+                <div class="contact-aesthetic-sidebar editable-section no-drop-zone" data-section="156">
+                    <div>
+                        <span class="gallery-tag editable-text no-drop-zone" data-section="157" data-text="102">Telemetry</span>
+                        <h3 class="editable-text no-drop-zone" data-section="158" data-text="103">Establish Studio Link</h3>
+                    </div>
+                    <div class="studio-coordinates editable-text no-drop-zone" data-section="159" data-text="104">
+                        Atelier {brand}<br>
+                        Quai des Orfèvres, No. 19<br>
+                        Paris Archive Branch<br>
+                        <span style="color: var(--heading);">studio@aetheria.art</span>
+                    </div>
+                </div>
+
+                <div class="contact-form-pane editable-section no-drop-zone" data-section="160">
+                    <form id="artTelemetryForm" onsubmit="transmitTelemetryDocument(event)">
+                        <div class="art-form-group">
+                            <input type="text" id="senderName" placeholder=" " required>
+                            <label for="senderName" class="editable-text no-drop-zone" data-section="161" data-text="105">Patron Identification Signature</label>
+                        </div>
+                        <div class="art-form-group">
+                            <input type="email" id="senderEmail" placeholder=" " required>
+                            <label for="senderEmail" class="editable-text no-drop-zone" data-section="162" data-text="106">Digital Communication Matrix</label>
+                        </div>
+                        <div class="art-form-group">
+                            <textarea id="messageText" rows="4" placeholder=" " required></textarea>
+                            <label for="messageText" class="editable-text no-drop-zone" data-section="163" data-text="107">Conceptual Transcript Manifest</label>
+                        </div>
+                        <button type="submit" class="art-submit-btn editable-text editable-section no-drop-zone" data-section="164" data-text="108">Transmit Document</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ================= DRAWERS ================= -->
     <div id="slider-backdrop-layer" class="slider-backdrop" onclick="closeAllDrawers()"></div>
 
-    <!-- Collection Bag Sidebar -->
+    <!-- Collector Bag Drawer -->
     <div id="collector-drawer" class="art-sidebar">
         <div class="sidebar-top">
-            <h3 class="editable-text editable-section" data-section="52" data-text="35">Your Assemblage</h3>
-            <button class="close-sidebar-btn" onclick="closeAllDrawers()"><i class="fa-solid fa-xmark"></i></button>
+            <h3 class="editable-text editable-section no-drop-zone" data-section="165" data-text="109">Your Assemblage</h3>
+            <button class="close-sidebar-btn" onclick="closeAllDrawers()"><i class="fa-solid fa-xmark editable-icon" data-icon="123" data-default-class="fa-solid fa-xmark"></i></button>
         </div>
         <div id="collector-items-target" class="sidebar-scroll-zone"></div>
         <div class="sidebar-footer">
             <div class="total-ledger-row">
-                <span class="editable-text editable-section" data-section="53" data-text="36">Value Ledger Total</span>
+                <span class="editable-text editable-section no-drop-zone" data-section="166" data-text="110">Value Ledger Total</span>
                 <span id="ledger-total-display">$0.00</span>
             </div>
-            <button class="art-submit-btn" style="width: 100%; text-align: center;" onclick="concludeAcquisitionSequence()" class="editable-text editable-section" data-section="54" data-text="37">Acquire Matrix Collection</button>
+            <button class="art-submit-btn editable-text editable-section no-drop-zone" data-section="167" data-text="111" style="width: 100%; text-align: center;" onclick="concludeAcquisitionSequence()">Acquire Matrix Collection</button>
         </div>
     </div>
 
-    <!-- Desires Curated Sidebar -->
+    <!-- Desires Drawer -->
     <div id="desires-drawer" class="art-sidebar">
         <div class="sidebar-top">
-            <h3 class="editable-text editable-section" data-section="55" data-text="38">Curated Desires</h3>
-            <button class="close-sidebar-btn" onclick="closeAllDrawers()"><i class="fa-solid fa-xmark"></i></button>
+            <h3 class="editable-text editable-section no-drop-zone" data-section="168" data-text="112">Curated Desires</h3>
+            <button class="close-sidebar-btn" onclick="closeAllDrawers()"><i class="fa-solid fa-xmark editable-icon" data-icon="123" data-default-class="fa-solid fa-xmark"></i></button>
         </div>
         <div id="desires-items-target" class="sidebar-scroll-zone"></div>
     </div>
 
-    <!-- ================= DETAIL MODAL OVERLAY ================= -->
-    <div id="detail-focus-modal" class="modal-overlay" onclick="handleOutsideModalClick(event)">
-        <div class="art-modal-container">
-            <button class="modal-dismiss" onclick="closeFocusModal()"><i class="fa-solid fa-xmark"></i></button>
-            
-            <div class="modal-gallery-pane">
-                <img id="modal-image-node" src="" alt="">
+    <!-- ================= STICKY BUY BAR ================= -->
+    <div class="sticky-buy-bar" id="stickyBuyBar">
+        <div class="sticky-buy-layout">
+            <div class="sticky-buy-info">
+                <span class="sticky-name editable-text editable-section no-drop-zone" data-section="169" data-text="113">Clay &amp; Saffron</span>
+                <span class="sticky-price" id="sticky-price-display">$550.00</span>
             </div>
-
-            <div class="modal-curator-pane">
-                <div>
-                    <h3 id="modal-title-node" class="modal-product-title">Artifact</h3>
-                    <p id="modal-price-node" class="modal-product-price">$0.00</p>
-                    
-                    <span class="config-label editable-text editable-section" data-section="56" data-text="39">Vessel Volume Scale</span>
-                    <div id="modal-volumes-target" class="modal-variant-row"></div>
-
-                    <span class="config-label editable-text editable-section" data-section="57" data-text="40">Elemental Note Architecture</span>
-                    <ul id="modal-notes-target" class="composition-breakdown"></ul>
-                </div>
-
-                <div>
-                    <button id="modal-primary-action-btn" class="art-submit-btn editable-text editable-section" data-section="58" data-text="41" style="width: 100%; margin-bottom: 25px;">Acquire Immediate Ownership</button>
-                    
-                    <div class="notebook-reviews-container">
-                        <span class="config-label editable-text editable-section" data-section="59" data-text="42">Patron Logs & Assays</span>
-                        <div id="modal-notebook-scroll-node" class="notebook-scroll"></div>
-
-                        <form id="modal-notebook-subform" class="notebook-form-box" onsubmit="appendNotebookLog(event)">
-                            <input type="text" id="log-author" class="editable-text editable-section" data-section="60" data-text="43" placeholder="Patron Initials" required>
-                            <textarea id="log-text" class="editable-text editable-section" data-section="61" data-text="44" rows="2" placeholder="Record physical sensory assay response..." required></textarea>
-                            <button type="submit" class="art-capsule-btn editable-text editable-section" data-section="62" data-text="45" style="font-size: 11px; padding: 6px 14px;">Seal Log Entry</button>
-                        </form>
-                    </div>
-                </div>
+            <div class="sticky-buy-actions">
+                <button class="sticky-btn sticky-btn-cart editable-text editable-section no-drop-zone" data-section="170" onclick="addToCartFromProduct()">
+                    <i class="fa-solid fa-fingerprint editable-icon" data-icon="120" data-default-class="fa-solid fa-fingerprint"></i> <span data-section="171" data-text="114">Add</span>
+                </button>
+                <button class="sticky-btn sticky-btn-buy editable-text editable-section no-drop-zone" data-section="172" onclick="buyNowFromProduct()">
+                    <i class="fa-solid fa-bolt editable-icon" data-icon="114" data-default-class="fa-solid fa-bolt"></i> <span data-section="173" data-text="115">Acquire</span>
+                </button>
             </div>
         </div>
     </div>
 
-    </main>
     <!-- ================= FOOTER ================= -->
-    <footer class="art-footer editable-section" data-section="63">
+    <footer class="art-footer editable-section" data-section="174">
         <div class="footer-universe-grid">
-            <div class="footer-quote editable-section no-drop-zone" data-section="64">
-                <h3 style="font-family: var(--font-artistic); letter-spacing: 3px;" class="editable-text editable-section" data-section="65" data-text="46">{brand}</h3>
-                <p style="color: var(--primary); font-size: 13.5px; line-height: 1.7; max-width: 320px;" class="editable-text editable-section" data-section="66" data-text="47">An unconventional landscape mapping brand built for minds that prioritize invisible aesthetics.</p>
+            <div class="footer-quote editable-section no-drop-zone" data-section="175">
+                <h3 style="font-family: var(--font-artistic); letter-spacing: 3px;" class="editable-text no-drop-zone" data-section="176" data-text="116">{brand}</h3>
+                <p style="color: var(--primary); font-size: 13.5px; line-height: 1.7; max-width: 320px;" class="editable-text no-drop-zone" data-section="177" data-text="117">An unconventional landscape mapping brand built for minds that prioritize invisible aesthetics.</p>
                 <div class="art-socials-row">
-                    <a href="#" class="editable-icon" data-icon="102"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" class="editable-icon" data-icon="103"><i class="fa-brands fa-vimeo-v"></i></a>
-                    <a href="#" class="editable-icon" data-icon="104"><i class="fa-brands fa-soundcloud"></i></a>
+                    <a href="#" data-icon="200" class="editable-icon" data-icon="200" data-default-class="fab fa-instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" data-icon="201" class="editable-icon" data-icon="201" data-default-class="fab fa-vimeo-v"><i class="fab fa-vimeo-v"></i></a>
+                    <a href="#" data-icon="202" class="editable-icon" data-icon="202" data-default-class="fab fa-soundcloud"><i class="fab fa-soundcloud"></i></a>
                 </div>
             </div>
-            <div class="editable-section no-drop-zone" data-section="67">
-                <h4 class="footer-heading editable-text editable-section" data-section="68" data-text="48">Navigational Paths</h4>
+            <div class="editable-section no-drop-zone" data-section="178">
+                <h4 class="footer-heading editable-text no-drop-zone" data-section="179" data-text="118">Navigational Paths</h4>
                 <ul class="footer-nav-list">
-                    <li><a href="#canvas" class="editable-text editable-section" data-section="69" data-text="49">Top Canvas Layer</a></li>
-                    <li><a href="#exhibition" class="editable-text editable-section" data-section="70" data-text="50">Active Gallery Exhibits</a></li>
-                    <li><a href="#manifesto" class="editable-text editable-section" data-section="71" data-text="51">The Philosophy Creed</a></li>
+                    <li><a href="#canvas" class="editable-text no-drop-zone" data-section="180" data-text="119">Top Canvas Layer</a></li>
+                    <li><a href="#story" class="editable-text no-drop-zone" data-section="181" data-text="120">The Narrative Scroll</a></li>
+                    <li><a href="#artifact" class="editable-text no-drop-zone" data-section="182" data-text="121">The Singular Artifact</a></li>
+                    <li><a href="#gallery" class="editable-text no-drop-zone" data-section="183" data-text="122">Worn By The Collective</a></li>
                 </ul>
             </div>
-            <div class="editable-section no-drop-zone" data-section="72">
-                <h4 class="footer-heading editable-text editable-section" data-section="73" data-text="52">Legal Memorandums</h4>
+            <div class="editable-section no-drop-zone" data-section="184">
+                <h4 class="footer-heading editable-text no-drop-zone" data-section="185" data-text="123">Legal Memorandums</h4>
                 <ul class="footer-nav-list">
-                    <li><a href="#" class="editable-text editable-section" data-section="74" data-text="53" onclick="alert('Accessing Charter...')">Botanical Origin Charter</a></li>
-                    <li><a href="#" class="editable-text editable-section" data-section="75" data-text="54" onclick="alert('Accessing Protocols...')">Client Isolation Protocols</a></li>
+                    <li><a href="#" class="editable-text no-drop-zone" data-section="186" data-text="124">Botanical Origin Charter</a></li>
+                    <li><a href="#" class="editable-text no-drop-zone" data-section="187" data-text="125">Client Isolation Protocols</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom-curator">
-            <span class="editable-text editable-section" data-section="76" data-text="55">&copy; 2026 {brand} Atelier House. Constructed as organic layout architecture.</span>
-            <span class="editable-text editable-section" data-section="77" data-text="56">Coordinates: 48.8566° N, 2.3522° E</span>
+            <span class="editable-text editable-section no-drop-zone" data-section="188" data-text="126">&copy; 2026 {brand} Atelier House. Constructed as organic layout architecture.</span>
+            <span class="editable-text editable-section no-drop-zone" data-section="189" data-text="127">Coordinates: 48.8566° N, 2.3522° E</span>
         </div>
     </footer>
 
     <script>
-        const ART_CATALOGUE = [
-            {
-                id: 101,
-                title: "Clay & Saffron",
-                price: 290,
-                desc: "An earthy, sun-baked opening of warm Iranian saffron, wet terra-cotta powder, and raw golden resins.",
-                volumes: ["50mL Vessel", "100mL Monolith"],
-                imgUrl: "https://images.pexels.com/photos/8148577/pexels-photo-8148577.jpeg?auto=compress&cs=tinysrgb&w=800",
-                notes: [
-                    { name: "Top Architecture", intensity: "Sun-Baked Saffron" },
-                    { name: "Core Solid Mass", intensity: "Crushed Ochre & Clay" },
-                    { name: "Residual Trail", intensity: "Dry Amber & Linen" }
-                ],
-                logs: [{ author: "L. K.", text: "It smells genuinely like warm dust and fine old book binding after an afternoon in an artist's studio." }]
-            },
-            {
-                id: 102,
-                title: "Alabaster Iris",
-                price: 315,
-                desc: "A fragile, translucent cloud composed of pulverized white marble dust, cool iris root, and warm almond milk.",
-                volumes: ["30mL Vial", "90mL Glass Sculpture"],
-                imgUrl: "https://images.pexels.com/photos/9657315/pexels-photo-9657315.jpeg?auto=compress&cs=tinysrgb&w=800",
-                notes: [
-                    { name: "Top Architecture", intensity: "Chalk & Cold Aldehydes" },
-                    { name: "Core Solid Mass", intensity: "Iris Florentina Concrete" },
-                    { name: "Residual Trail", intensity: "Sandalwood Cream" }
-                ],
-                logs: [{ author: "M. R.", text: "Quiet, perfectly mineral, and incredibly unique. It catches people entirely off guard." }]
-            },
-            {
-                id: 103,
-                title: "Moss Continuum",
-                price: 340,
-                desc: "A damp green landscape tracing fresh wild moss fields trapped inside sealed ancient limestone brick walls.",
-                volumes: ["100mL Monolith"],
-                imgUrl: "https://images.pexels.com/photos/6721421/pexels-photo-6721421.jpeg?auto=compress&cs=tinysrgb&w=800",
-                notes: [
-                    { name: "Top Architecture", intensity: "Crushed Ivy Leaf" },
-                    { name: "Core Solid Mass", intensity: "Wet Limestone Slab" },
-                    { name: "Residual Trail", intensity: "French Oakmoss Resin" }
-                ],
-                logs: [{ author: "T. S.", text: "A breathtakingly realistic crisp green imprint completely free of mainstream sweetness." }]
-            }
-        ];
+        // ============================================
+        // PRODUCT DATA — SINGLE ARTIFACT
+        // ============================================
+        const THE_ARTIFACT = {
+            id: 101,
+            title: "Clay & Saffron — The Signature Artifact",
+            price: 290.00,
+            desc: "An earthy, sun-baked opening of warm Iranian saffron, wet terra-cotta powder, and raw golden resins.",
+            image: "https://images.pexels.com/photos/8148577/pexels-photo-8148577.jpeg?auto=compress&cs=tinysrgb&w=800",
+            variants: [
+                {
+                    id: 1,
+                    options: { "Volume": "50mL Vessel", "Concentration": "Extrait de Parfum" },
+                    price: 290.00,
+                    compare_price: 365.00,
+                    quantity: 12,
+                    image: "https://images.pexels.com/photos/8148577/pexels-photo-8148577.jpeg?auto=compress&cs=tinysrgb&w=800",
+                    color_hex: "#c68a6b"
+                },
+                {
+                    id: 2,
+                    options: { "Volume": "100mL Monolith", "Concentration": "Extrait de Parfum" },
+                    price: 490.00,
+                    compare_price: 620.00,
+                    quantity: 8,
+                    image: "https://images.pexels.com/photos/9657315/pexels-photo-9657315.jpeg?auto=compress&cs=tinysrgb&w=800",
+                    color_hex: "#7e8f80"
+                },
+                {
+                    id: 3,
+                    options: { "Volume": "50mL Vessel", "Concentration": "Eau de Parfum" },
+                    price: 220.00,
+                    compare_price: 280.00,
+                    quantity: 20,
+                    image: "https://images.pexels.com/photos/6721421/pexels-photo-6721421.jpeg?auto=compress&cs=tinysrgb&w=800",
+                    color_hex: "#c68a6b"
+                },
+                {
+                    id: 4,
+                    options: { "Volume": "100mL Monolith", "Concentration": "Eau de Parfum" },
+                    price: 380.00,
+                    compare_price: 480.00,
+                    quantity: 6,
+                    image: "https://images.pexels.com/photos/3184311/pexels-photo-3184311.jpeg?auto=compress&cs=tinysrgb&w=800",
+                    color_hex: "#7e8f80"
+                }
+            ]
+        };
 
-        let ENGINE_STATE = { basket: [], desires: [], activeModalId: null, activeVolumeSelected: "" };
+        // ============================================
+        // STATE
+        // ============================================
+        let BASKET = [];
+        let DESIRES = [];
+        let variantSelections = {};
+        let currentQuantity = 1;
+        let currentTier = { quantity: 2, price: 550.00, perUnit: 275.00, savings: 30.00 };
 
-        // Remove renderExhibitionDeck function - products are rendered inline
-
-        function openSidebar(id) {
-            document.getElementById("slider-backdrop-layer").style.display = "block";
-            document.getElementById(id).classList.add("active");
-            document.body.style.overflow = "hidden";
-        }
-
-        function closeAllDrawers() {
-            document.getElementById("slider-backdrop-layer").style.display = "none";
-            document.getElementById("collector-drawer").classList.remove("active");
-            document.getElementById("desires-drawer").classList.remove("active");
-            document.body.style.overflow = "auto";
-        }
-
-        function immediateBasketPush(id) {
-            const item = ART_CATALOGUE.find(p => p.id === id);
-            const compositeHash = `${item.id}-${item.volumes[0]}`;
-            const matchedDuplicate = ENGINE_STATE.basket.find(b => b.compositeHash === compositeHash);
-
-            if(matchedDuplicate) { matchedDuplicate.qty++; } 
-            else {
-                ENGINE_STATE.basket.push({
-                    compositeHash, id: item.id, title: item.title, price: item.price, volume: item.volumes[0], img: item.imgUrl, qty: 1
+        // ============================================
+        // VARIANT SYSTEM
+        // ============================================
+        function getAttributeNames(product) {
+            var names = []; var seen = {};
+            if (product.variants) {
+                product.variants.forEach(function(v) {
+                    if (v.options) for (var k in v.options) {
+                        if (!seen[k]) { seen[k] = true; names.push(k); }
+                    }
                 });
             }
-            synchronizeBasketInterface();
-            openSidebar("collector-drawer");
+            return names;
         }
-
-        function removeBasketItem(compositeHash) {
-            ENGINE_STATE.basket = ENGINE_STATE.basket.filter(b => b.compositeHash !== compositeHash);
-            synchronizeBasketInterface();
-        }
-
-        function alternateDesiresToggle(id) {
-            const item = ART_CATALOGUE.find(p => p.id === id);
-            const lookUpIdx = ENGINE_STATE.desires.findIndex(d => d.id === id);
-            const cardBtn = document.getElementById(`desire-icon-card-${id}`);
-
-            if(lookUpIdx > -1) {
-                ENGINE_STATE.desires.splice(lookUpIdx, 1);
-                if(cardBtn) cardBtn.innerHTML = `<i class="fa-regular fa-star"></i>`;
-            } else {
-                ENGINE_STATE.desires.push(item);
-                if(cardBtn) cardBtn.innerHTML = `<i class="fa-solid fa-star" style="color: var(--heading);"></i>`;
+        function getAttributeValues(product, attrName) {
+            var values = []; var seen = {};
+            if (product.variants) {
+                product.variants.forEach(function(v) {
+                    if (v.options && v.options[attrName] && !seen[v.options[attrName]]) {
+                        seen[v.options[attrName]] = true;
+                        values.push(v.options[attrName]);
+                    }
+                });
             }
-            synchronizeDesiresInterface();
+            return values;
         }
-
-        function synchronizeBasketInterface() {
-            const wrapper = document.getElementById("collector-items-target");
-            const dotIndicator = document.getElementById("collector-dot");
-            const subtotalLabel = document.getElementById("ledger-total-display");
-            
-            let financialLedger = 0;
-
-            if(ENGINE_STATE.basket.length === 0) {
-                wrapper.innerHTML = `<p style="text-align:center; font-family:var(--font-gallery); font-size:11px; color:#8a908e; padding:50px 0;">Collector portfolio is currently vacant.</p>`;
-                dotIndicator.style.display = "none";
-            } else {
-                wrapper.innerHTML = ENGINE_STATE.basket.map(b => {
-                    financialLedger += (b.price * b.qty);
-                    return `
-                        <div class="basket-item">
-                            <img src="${b.img}" class="basket-item-img" alt="">
-                            <div class="basket-item-info">
-                                <h4>${b.title}</h4>
-                                <div class="basket-item-meta">${b.volume} (x${b.qty})</div>
-                                <div class="basket-item-price">$${b.price * b.qty}</div>
-                            </div>
-                            <button class="remove-basket-btn" onclick="removeBasketItem('${b.compositeHash}')"><i class="fa-solid fa-trash-can"></i></button>
-                        </div>
-                    `;
-                }).join('');
-                dotIndicator.style.display = "block";
-            }
-            subtotalLabel.textContent = `$${financialLedger.toFixed(2)}`;
-        }
-
-        function synchronizeDesiresInterface() {
-            const wrapper = document.getElementById("desires-items-target");
-            const dotIndicator = document.getElementById("desires-dot");
-
-            if(ENGINE_STATE.desires.length === 0) {
-                wrapper.innerHTML = `<p style="text-align:center; font-family:var(--font-gallery); font-size:11px; color:#8a908e; padding:50px 0;">No exhibition layouts yet saved.</p>`;
-                dotIndicator.style.display = "none";
-            } else {
-                wrapper.innerHTML = ENGINE_STATE.desires.map(d => `
-                    <div class="basket-item" style="justify-content: space-between;">
-                        <div style="display:flex; gap:15px; align-items:center;">
-                            <img src="${d.imgUrl}" class="basket-item-img" alt="">
-                            <div>
-                                <h4 style="font-size:20px;">${d.title}</h4>
-                                <div class="basket-item-price">$${d.price}</div>
-                            </div>
-                        </div>
-                        <button class="art-capsule-btn" style="padding:6px 12px; font-size:10px;" onclick="immediateBasketPush(${d.id}); alternateDesiresToggle(${d.id});">Capture</button>
-                    </div>
-                `).join('');
-                dotIndicator.style.display = "block";
-            }
-        }
-
-        function triggerOpenModal(id) {
-            const art = ART_CATALOGUE.find(p => p.id === id);
-            ENGINE_STATE.activeModalId = id;
-            ENGINE_STATE.activeVolumeSelected = art.volumes[0];
-
-            document.getElementById("modal-title-node").textContent = art.title;
-            document.getElementById("modal-price-node").textContent = `$${art.price}`;
-            document.getElementById("modal-image-node").src = art.imgUrl;
-
-            const volumeContainer = document.getElementById("modal-volumes-target");
-            volumeContainer.innerHTML = art.volumes.map(v => `
-                <button id="vol-capsule-${v}" class="art-capsule-btn" onclick="updateModalActiveVolume('${v}')">${v}</button>
-            `).join('');
-
-            const noteContainer = document.getElementById("modal-notes-target");
-            noteContainer.innerHTML = art.notes.map(n => `
-                <li><span>${n.name}</span><span>${n.intensity}</span></li>
-            `).join('');
-
-            syncModalStateVisualClasses();
-            renderModalNotebookEntries();
-
-            document.getElementById("detail-focus-modal").style.display = "flex";
-            document.body.style.overflow = "hidden";
-        }
-
-        function closeFocusModal() {
-            document.getElementById("detail-focus-modal").style.display = "none";
-            document.body.style.overflow = "auto";
-            ENGINE_STATE.activeModalId = null;
-        }
-
-        function handleOutsideModalClick(e) {
-            if(e.target.id === "detail-focus-modal") closeFocusModal();
-        }
-
-        function updateModalActiveVolume(v) {
-            ENGINE_STATE.activeVolumeSelected = v;
-            syncModalStateVisualClasses();
-        }
-
-        function syncModalStateVisualClasses() {
-            const art = ART_CATALOGUE.find(p => p.id === ENGINE_STATE.activeModalId);
-            art.volumes.forEach(v => {
-                const node = document.getElementById(`vol-capsule-${v}`);
-                if(v === ENGINE_STATE.activeVolumeSelected) node.classList.add("active");
-                else node.classList.remove("active");
-            });
-
-            document.getElementById("modal-primary-action-btn").onclick = function() {
-                const compositeHash = `${art.id}-${ENGINE_STATE.activeVolumeSelected}`;
-                const matchedDuplicate = ENGINE_STATE.basket.find(b => b.compositeHash === compositeHash);
-
-                if(matchedDuplicate) { matchedDuplicate.qty++; } 
-                else {
-                    ENGINE_STATE.basket.push({
-                        compositeHash, id: art.id, title: art.title, price: art.price, volume: ENGINE_STATE.activeVolumeSelected, img: art.imgUrl, qty: 1
-                    });
+        function findVariant(product, selectedOptions) {
+            if (!product.variants) return null;
+            for (var i = 0; i < product.variants.length; i++) {
+                var v = product.variants[i];
+                if (!v.options) continue;
+                var match = true;
+                for (var key in selectedOptions) {
+                    if (v.options[key] !== selectedOptions[key]) { match = false; break; }
                 }
-                synchronizeBasketInterface();
-                closeFocusModal();
-                openSidebar("collector-drawer");
-            };
+                if (match) return v;
+            }
+            return null;
+        }
+        function isColorAttribute(name) {
+            var l = name.toLowerCase();
+            return l.indexOf('color') !== -1 || l.indexOf('colour') !== -1 || l.indexOf('tone') !== -1;
         }
 
-        function renderModalNotebookEntries() {
-            const art = ART_CATALOGUE.find(p => p.id === ENGINE_STATE.activeModalId);
-            const container = document.getElementById("modal-notebook-scroll-node");
-            container.innerHTML = art.logs.map(l => `
-                <div class="notebook-entry">
-                    <div class="entry-meta"><span>Recorder: ${l.author}</span></div>
-                    <p class="entry-text">"${l.text}"</p>
-                </div>
-            `).join('');
-        }
-
-        function appendNotebookLog(e) {
-            e.preventDefault();
-            const art = ART_CATALOGUE.find(p => p.id === ENGINE_STATE.activeModalId);
-            const author = document.getElementById("log-author").value.trim();
-            const text = document.getElementById("log-text").value.trim();
-
-            art.logs.unshift({ author, text });
-            renderModalNotebookEntries();
-            document.getElementById("modal-notebook-subform").reset();
-        }
-
-        function toggleArtAccordion(btn) {
-            const body = btn.nextElementSibling;
-            const indicator = btn.querySelector(".faq-icon-indicator");
-            if(body.style.maxHeight && body.style.maxHeight !== "0px") {
-                body.style.maxHeight = "0px";
-                indicator.className = "faq-icon-indicator fa-solid fa-plus";
-            } else {
-                body.style.maxHeight = body.scrollHeight + "px";
-                indicator.className = "faq-icon-indicator fa-solid fa-minus";
+        function renderVariantSelector(product) {
+            var container = document.getElementById('variant-attributes-container');
+            if (!container) return;
+            var optionNames = getAttributeNames(product);
+            if (optionNames.length === 0) { container.innerHTML = ''; return; }
+            if (!variantSelections[product.id]) variantSelections[product.id] = {};
+            var html = '';
+            optionNames.forEach(function(optionName) {
+                var values = getAttributeValues(product, optionName);
+                var isColor = isColorAttribute(optionName);
+                var currentValue = variantSelections[product.id][optionName] || '';
+                html += '<div class="variant-section">';
+                html += '<span class="variant-label">' + escapeHtml(optionName) + ':</span>';
+                html += '<div class="variant-options">';
+                values.forEach(function(value) {
+                    var isSelected = (currentValue === value);
+                    if (isColor) {
+                        var hex = '#c68a6b';
+                        product.variants.forEach(function(v) {
+                            if (v.options && v.options[optionName] === value && v.color_hex) hex = v.color_hex;
+                        });
+                        html += '<div class="swatch-wrapper" onclick="selectVariantOption(this, \'' + optionName + '\', \'' + value + '\')">';
+                        html += '<div class="swatch-circle' + (isSelected ? ' active' : '') + '" style="background:' + hex + ';">';
+                        if (isSelected) html += '<span class="checkmark">✓</span>';
+                        html += '</div>';
+                        html += '<span class="swatch-label">' + escapeHtml(value) + '</span>';
+                        html += '</div>';
+                    } else {
+                        html += '<button class="variant-option-btn' + (isSelected ? ' active' : '') + '" onclick="selectVariantOption(this, \'' + optionName + '\', \'' + value + '\')">' + escapeHtml(value) + '</button>';
+                    }
+                });
+                html += '</div></div>';
+            });
+            container.innerHTML = html;
+            if (!variantSelections[product.id] || Object.keys(variantSelections[product.id]).length === 0) {
+                var first = {};
+                optionNames.forEach(function(o) {
+                    var vals = getAttributeValues(product, o);
+                    if (vals.length > 0) first[o] = vals[0];
+                });
+                variantSelections[product.id] = first;
+                updateVariantUI(product);
             }
         }
 
+        function selectVariantOption(el, optionName, value) {
+            var product = THE_ARTIFACT;
+            if (!variantSelections[product.id]) variantSelections[product.id] = {};
+            var currentValue = variantSelections[product.id][optionName];
+            if (currentValue === value) delete variantSelections[product.id][optionName];
+            else variantSelections[product.id][optionName] = value;
+            renderVariantSelector(product);
+            updateVariantUI(product);
+        }
+
+        function updateVariantUI(product) {
+            var selectedOptions = variantSelections[product.id] || {};
+            var variant = findVariant(product, selectedOptions);
+            var display = document.getElementById('selected-options-display');
+            var text = document.getElementById('selected-options-text');
+            if (display && text) {
+                var parts = [];
+                var optionNames = getAttributeNames(product);
+                optionNames.forEach(function(o) {
+                    if (selectedOptions[o]) parts.push('<strong>' + escapeHtml(o) + ':</strong> ' + escapeHtml(selectedOptions[o]));
+                });
+                if (parts.length > 0) {
+                    text.innerHTML = parts.join(' | ');
+                    display.classList.add('visible');
+                } else {
+                    display.classList.remove('visible');
+                }
+            }
+            if (variant && variant.image) {
+                var mainImg = document.getElementById('mainProductImage');
+                if (mainImg) mainImg.src = variant.image;
+            }
+            if (variant) {
+                var priceEl = document.getElementById('product-price-display');
+                if (priceEl) priceEl.textContent = getCurrencySymbol() + variant.price.toFixed(2);
+                var compareEl = document.getElementById('product-compare-price');
+                if (compareEl && variant.compare_price) compareEl.textContent = getCurrencySymbol() + variant.compare_price.toFixed(2);
+            }
+        }
+
+        // ============================================
+        // TIER SELECTION
+        // ============================================
+        function selectTier(el) {
+            document.querySelectorAll('.tier-card').forEach(function(c) { c.classList.remove('active'); });
+            el.classList.add('active');
+            currentTier = {
+                quantity: parseInt(el.dataset.quantity),
+                price: parseFloat(el.dataset.totalPrice),
+                perUnit: parseFloat(el.dataset.perUnit),
+                savings: parseFloat(el.dataset.savings),
+                tier: parseInt(el.dataset.tier)
+            };
+            updatePriceDisplay();
+        }
+
+        function updatePriceDisplay() {
+            var total = currentTier.price * currentQuantity;
+            var units = currentTier.quantity * currentQuantity;
+            var amountEl = document.getElementById('total-price-amount');
+            var subEl = document.getElementById('total-price-sub');
+            if (amountEl) amountEl.textContent = total.toFixed(2);
+            if (subEl) subEl.textContent = '(' + units + ' vessel' + (units > 1 ? 's' : '') + ')';
+            var stickyPrice = document.getElementById('sticky-price-display');
+            if (stickyPrice) stickyPrice.textContent = getCurrencySymbol() + total.toFixed(2);
+        }
+
+        // ============================================
+        // QUANTITY
+        // ============================================
+        function initQuantity() {
+            var input = document.getElementById('quantityInput');
+            var display = document.getElementById('quantityDisplay');
+            var dec = document.getElementById('decrementQty');
+            var inc = document.getElementById('incrementQty');
+            if (!input || !display) return;
+            function sync() {
+                var val = parseInt(input.value) || 1;
+                if (val < 1) val = 1;
+                input.value = val;
+                display.textContent = val;
+                currentQuantity = val;
+                updatePriceDisplay();
+            }
+            if (dec) dec.addEventListener('click', function() {
+                var val = parseInt(input.value) || 1;
+                if (val > 1) { input.value = val - 1; sync(); }
+            });
+            if (inc) inc.addEventListener('click', function() {
+                var val = parseInt(input.value) || 1;
+                input.value = val + 1; sync();
+            });
+            sync();
+        }
+
+        // ============================================
+        // GALLERY THUMBNAILS
+        // ============================================
+        function initGallery() {
+            var thumbs = document.querySelectorAll('.thumb');
+            thumbs.forEach(function(t) {
+                t.addEventListener('click', function() {
+                    var img = this.querySelector('img');
+                    if (!img) return;
+                    var main = document.getElementById('mainProductImage');
+                    if (main && img.dataset.main) main.src = img.dataset.main;
+                    thumbs.forEach(function(x) { x.classList.remove('active'); });
+                    this.classList.add('active');
+                });
+            });
+        }
+
+        // ============================================
+        // CART
+        // ============================================
+        function updateBasketUI() {
+            var container = document.getElementById('collector-items-target');
+            var dot = document.getElementById('collector-dot');
+            var total = document.getElementById('ledger-total-display');
+            if (!container) return;
+            if (BASKET.length === 0) {
+                container.innerHTML = '<p style="text-align:center; font-family:var(--font-gallery); font-size:11px; color:#8a908e; padding:50px 0;">Collector portfolio is currently vacant.</p>';
+                if (dot) dot.style.display = 'none';
+            } else {
+                var html = ''; var ledger = 0;
+                BASKET.forEach(function(b) {
+                    ledger += b.price * b.qty;
+                    html += '<div class="basket-item">' +
+                        '<img src="' + b.img + '" class="basket-item-img" alt="">' +
+                        '<div class="basket-item-info">' +
+                        '<h4>' + escapeHtml(b.title) + '</h4>' +
+                        '<div class="basket-item-meta">' + escapeHtml(b.volume) + ' (x' + b.qty + ')</div>' +
+                        '<div class="basket-item-price">' + getCurrencySymbol() + (b.price * b.qty).toFixed(2) + '</div>' +
+                        '</div>' +
+                        '<button class="remove-basket-btn" onclick="removeFromBasket(' + b.id + ')"><i class="fa-solid fa-trash-can"></i></button>' +
+                        '</div>';
+                });
+                container.innerHTML = html;
+                if (dot) dot.style.display = 'block';
+            }
+            if (total) total.textContent = getCurrencySymbol() + (BASKET.reduce(function(a,b){return a+b.price*b.qty;},0)).toFixed(2);
+        }
+
+        function removeFromBasket(id) {
+            BASKET = BASKET.filter(function(b) { return b.id !== id; });
+            updateBasketUI();
+        }
+
+        function addToBasket() {
+            var variant = findVariant(THE_ARTIFACT, variantSelections[THE_ARTIFACT.id] || {});
+            var volume = variant ? variant.options.Volume : '50mL Vessel';
+            var price = variant ? variant.price : THE_ARTIFACT.price;
+            var img = variant && variant.image ? variant.image : THE_ARTIFACT.image;
+            var qty = currentTier.quantity * currentQuantity;
+            var existing = BASKET.find(function(b) { return b.id === THE_ARTIFACT.id && b.volume === volume; });
+            if (existing) existing.qty += qty;
+            else BASKET.push({ id: THE_ARTIFACT.id, title: THE_ARTIFACT.title, price: price, volume: volume, img: img, qty: qty });
+            updateBasketUI();
+            showNotification('Added to your collection');
+            setTimeout(function() { openSidebar('collector-drawer'); }, 300);
+        }
+
+        function addToCartFromProduct() { addToBasket(); }
+        function buyNowFromProduct() {
+            addToBasket();
+            setTimeout(function() { concludeAcquisitionSequence(); }, 500);
+        }
+
+        // ============================================
+        // WISHLIST
+        // ============================================
+        function toggleWishlist() {
+            var btn = document.getElementById('wishlistBtn');
+            if (!btn) return;
+            var icon = btn.querySelector('i');
+            var isActive = btn.classList.contains('active');
+            var existing = DESIRES.findIndex(function(d) { return d.id === THE_ARTIFACT.id; });
+            if (isActive && existing > -1) {
+                DESIRES.splice(existing, 1);
+                btn.classList.remove('active');
+                icon.className = 'fa-regular fa-star';
+                showNotification('Removed from desires');
+            } else {
+                DESIRES.push({ id: THE_ARTIFACT.id, title: THE_ARTIFACT.title, price: THE_ARTIFACT.price, img: THE_ARTIFACT.image });
+                btn.classList.add('active');
+                icon.className = 'fa-solid fa-star';
+                showNotification('Saved to desires');
+            }
+            updateDesiresUI();
+        }
+
+        function updateDesiresUI() {
+            var container = document.getElementById('desires-items-target');
+            var dot = document.getElementById('desires-dot');
+            if (!container) return;
+            if (DESIRES.length === 0) {
+                container.innerHTML = '<p style="text-align:center; font-family:var(--font-gallery); font-size:11px; color:#8a908e; padding:50px 0;">No saved artifacts yet.</p>';
+                if (dot) dot.style.display = 'none';
+            } else {
+                var html = '';
+                DESIRES.forEach(function(d) {
+                    html += '<div class="basket-item" style="justify-content:space-between;">' +
+                        '<div style="display:flex; gap:15px; align-items:center;">' +
+                        '<img src="' + d.img + '" class="basket-item-img" alt="">' +
+                        '<div><h4 style="font-size:20px;">' + escapeHtml(d.title) + '</h4>' +
+                        '<div class="basket-item-price">' + getCurrencySymbol() + d.price.toFixed(2) + '</div></div>' +
+                        '</div>' +
+                        '<button class="art-capsule-btn" style="padding:6px 12px; font-size:10px;" onclick="addToCartFromProduct();">Capture</button>' +
+                        '</div>';
+                });
+                container.innerHTML = html;
+                if (dot) dot.style.display = 'block';
+            }
+        }
+
+        // ============================================
+        // DRAWERS
+        // ============================================
+        function openSidebar(id) {
+            var backdrop = document.getElementById('slider-backdrop-layer');
+            var el = document.getElementById(id);
+            if (backdrop) backdrop.style.display = 'block';
+            if (el) el.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeAllDrawers() {
+            var backdrop = document.getElementById('slider-backdrop-layer');
+            if (backdrop) backdrop.style.display = 'none';
+            document.getElementById('collector-drawer').classList.remove('active');
+            document.getElementById('desires-drawer').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // ============================================
+        // FAQ
+        // ============================================
+        function toggleArtAccordion(btn) {
+            var body = btn.nextElementSibling;
+            var icon = btn.querySelector('.faq-icon-indicator');
+            var isOpen = body.style.maxHeight && body.style.maxHeight !== "0px";
+            document.querySelectorAll('.faq-art-body').forEach(function(b) { b.style.maxHeight = "0px"; });
+            document.querySelectorAll('.faq-icon-indicator').forEach(function(i) { i.className = 'faq-icon-indicator fa-solid fa-plus'; });
+            if (!isOpen) {
+                body.style.maxHeight = body.scrollHeight + "px";
+                icon.className = 'faq-icon-indicator fa-solid fa-minus';
+            }
+        }
+
+        // ============================================
+        // CONTACT FORM
+        // ============================================
         function transmitTelemetryDocument(e) {
             e.preventDefault();
-            alert("Telemetry Document Transmission successful.");
-            document.getElementById("artTelemetryForm").reset();
+            var name = document.getElementById('senderName').value.trim();
+            var email = document.getElementById('senderEmail').value.trim();
+            var message = document.getElementById('messageText').value.trim();
+            if (!name || !email || !message || email.indexOf('@') === -1) {
+                showNotification('Please complete all fields correctly');
+                return;
+            }
+            showNotification('Document transmitted successfully');
+            document.getElementById('artTelemetryForm').reset();
         }
 
+        // ============================================
+        // CHECKOUT
+        // ============================================
         function concludeAcquisitionSequence() {
-            alert("Acquisition sequence verified.");
-            ENGINE_STATE.basket = [];
-            synchronizeBasketInterface();
+            if (BASKET.length === 0) { showNotification('Your collection is empty'); return; }
+            showNotification('Acquisition sequence verified');
+            BASKET = [];
+            updateBasketUI();
             closeAllDrawers();
         }
 
-        window.addEventListener("DOMContentLoaded", () => {
-            // renderExhibitionDeck() removed - products are inline
-            synchronizeBasketInterface();
-            synchronizeDesiresInterface();
+        // ============================================
+        // SCROLL ANIMATIONS
+        // ============================================
+        function initScrollAnimations() {
+            document.body.classList.add('js-ready');
+            var els = document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right');
+            if (!('IntersectionObserver' in window)) {
+                els.forEach(function(el) { el.classList.add('is-visible'); });
+                return;
+            }
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(e) {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('is-visible');
+                        observer.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+            els.forEach(function(el) { observer.observe(el); });
+        }
+
+        // ============================================
+        // STICKY BAR
+        // ============================================
+        function initStickyBar() {
+            var bar = document.getElementById('stickyBuyBar');
+            if (!bar) return;
+            var visible = false;
+            var section = document.getElementById('artifact');
+            var top = section ? section.offsetTop - 100 : 1200;
+            window.addEventListener('scroll', function() {
+                var y = window.scrollY;
+                if (y > top && !visible) { bar.classList.add('visible'); visible = true; }
+                else if (y <= top && visible) { bar.classList.remove('visible'); visible = false; }
+            });
+        }
+
+        // ============================================
+        // HELPERS
+        // ============================================
+        function getCurrencySymbol() {
+            return document.body.getAttribute('data-currency-symbol') || '$';
+        }
+        function escapeHtml(s) {
+            if (!s) return '';
+            return String(s).replace(/[&<>"]/g, function(m) {
+                if (m === '&') return '&amp;';
+                if (m === '<') return '&lt;';
+                if (m === '>') return '&gt;';
+                if (m === '"') return '&quot;';
+                return m;
+            });
+        }
+        function showNotification(msg) {
+            document.querySelectorAll('.custom-notification').forEach(function(n) { n.remove(); });
+            var n = document.createElement('div');
+            n.className = 'custom-notification';
+            n.innerHTML = '<i class="fas fa-check-circle" style="margin-right:8px;"></i> ' + msg;
+            document.body.appendChild(n);
+            setTimeout(function() {
+                if (n) {
+                    n.style.opacity = '0';
+                    n.style.transition = 'opacity 0.3s';
+                    setTimeout(function() { n.remove(); }, 300);
+                }
+            }, 2600);
+        }
+
+        // ============================================
+        // INIT
+        // ============================================
+        document.addEventListener('DOMContentLoaded', function() {
+            initScrollAnimations();
+            initGallery();
+            initQuantity();
+            initStickyBar();
+            renderVariantSelector(THE_ARTIFACT);
+            updateVariantUI(THE_ARTIFACT);
+            updateBasketUI();
+            updateDesiresUI();
+
+            // Default tier active
+            var defaultTier = document.querySelector('.tier-card.active');
+            if (defaultTier) selectTier(defaultTier);
+
+            // Action buttons
+            var addBtn = document.getElementById('add-to-cart-btn');
+            if (addBtn) addBtn.addEventListener('click', function(e) { e.preventDefault(); addToBasket(); });
+
+            var buyBtn = document.getElementById('buy-now-btn');
+            if (buyBtn) buyBtn.addEventListener('click', function(e) { e.preventDefault(); addToBasket(); setTimeout(function() { concludeAcquisitionSequence(); }, 500); });
+
+            var wishBtn = document.getElementById('wishlistBtn');
+            if (wishBtn) wishBtn.addEventListener('click', function(e) { e.preventDefault(); toggleWishlist(); });
+
+            updatePriceDisplay();
+            console.log('✅ AETHERIA single-artifact edition initialized');
         });
+
+        // Globals
+        window.openSidebar = openSidebar;
+        window.closeAllDrawers = closeAllDrawers;
+        window.selectTier = selectTier;
+        window.selectVariantOption = selectVariantOption;
+        window.toggleArtAccordion = toggleArtAccordion;
+        window.transmitTelemetryDocument = transmitTelemetryDocument;
+        window.concludeAcquisitionSequence = concludeAcquisitionSequence;
+        window.removeFromBasket = removeFromBasket;
+        window.addToCartFromProduct = addToCartFromProduct;
+        window.buyNowFromProduct = buyNowFromProduct;
+        window.showNotification = showNotification;
     </script>
 </body>
 </html>

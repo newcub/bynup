@@ -259,3 +259,19 @@ def brand_context(request):
     
     return context
 
+
+def pending_domain_requests(request):
+    """
+    Make the pending domain request count available to all templates
+    for staff users. Non-staff users get 0 (never causes a query for them).
+    """
+    if not request.user.is_authenticated or not request.user.is_staff:
+        return {'pending_domain_requests_count': 0}
+
+    try:
+        from builder.models import DomainRequest
+        count = DomainRequest.objects.filter(status='pending_review').count()
+        return {'pending_domain_requests_count': count}
+    except Exception:
+        return {'pending_domain_requests_count': 0}
+

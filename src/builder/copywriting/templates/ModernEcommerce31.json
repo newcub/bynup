@@ -4,49 +4,49 @@
     "home": [
       {
         "id": "1",
-        "text": "KINETIK",
+        "text": "{brand}//LAB",
         "type": "text",
         "customized": false
       },
       {
         "id": "2",
-        "text": "▲",
+        "text": "{brand}",
         "type": "text",
         "customized": false
       },
       {
         "id": "3",
-        "text": "LAB",
+        "text": "//",
         "type": "text",
         "customized": false
       },
       {
         "id": "4",
-        "text": "The Vision",
-        "type": "link",
+        "text": "LAB",
+        "type": "text",
         "customized": false
       },
       {
         "id": "5",
-        "text": "Community",
+        "text": "Catalog",
         "type": "link",
         "customized": false
       },
       {
         "id": "6",
-        "text": "The System",
+        "text": "The Lab",
         "type": "link",
         "customized": false
       },
       {
         "id": "7",
-        "text": "Reviews",
+        "text": "Intel",
         "type": "link",
         "customized": false
       },
       {
         "id": "8",
-        "text": "Contact",
+        "text": "Base Station",
         "type": "link",
         "customized": false
       },
@@ -64,19 +64,19 @@
       },
       {
         "id": "12",
-        "text": "Apply",
+        "text": "Verify",
         "type": "button",
         "customized": false
       },
       {
         "id": "13",
-        "text": "Subtotal",
+        "text": "Subtotal Manifest",
         "type": "text",
         "customized": false
       },
       {
         "id": "14",
-        "text": "System Discount",
+        "text": "System Discount Applied (20%)",
         "type": "text",
         "customized": false
       },
@@ -105,1364 +105,536 @@
         "customized": false
       },
       {
-        "id": "800",
+        "id": "19",
         "text": "Drop Matrix 4.26",
         "type": "text",
         "customized": false
       },
       {
-        "id": "801",
-        "text": "The future of propulsion",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "802",
+        "id": "20",
         "text": "Footwear",
         "type": "text",
         "customized": false
       },
       {
-        "id": "803",
+        "id": "21",
         "text": "Engineering",
         "type": "text",
         "customized": false
       },
       {
-        "id": "804",
+        "id": "22",
         "text": "Evolved.",
         "type": "text",
         "customized": false
       },
       {
-        "id": "805",
-        "text": "Kinetic impact absorption grids combined with hyper-breathable matrix knit weaves. Forged for multi-directional velocity and structural speed performance. The most advanced propulsion system ever created.",
+        "id": "23",
+        "text": "Kinetic impact absorption grids combined with hyper-breathable matrix knit weaves. Forged for multi-directional velocity and structural speed performance.",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "806",
-        "text": "12",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "807",
-        "text": "Tech Innovations",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "808",
-        "text": "4.9",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "809",
-        "text": "Star Rating",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "810",
-        "text": "247",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "811",
-        "text": "Verified Reviews",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "812",
-        "text": "Explore The System",
+        "id": "24",
+        "text": "Explore Hardware",
         "type": "link",
         "customized": false
       },
       {
-        "id": "813",
-        "text": "Read Reviews",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "814",
-        "text": "Quantum-Grid™",
+        "id": "25",
+        "text": "Active",
         "type": "text",
         "customized": false
       },
       {
-        "id": "815",
-        "text": "Proprietary propulsion technology",
+        "id": "26",
+        "text": "Hardware Inventory",
         "type": "text",
         "customized": false
       },
       {
-        "id": "816",
-        "text": "Chapter One",
+        "id": "100",
+        "text": "Velo-Knit Matrix Alpha",
         "type": "text",
         "customized": false
       },
       {
-        "id": "817",
-        "text": "The science of",
+        "id": "101",
+        "text": "Volt Orange Grid",
         "type": "text",
         "customized": false
       },
       {
-        "id": "818",
-        "text": "movement",
+        "id": "102",
+        "text": "$160.00",
         "type": "text",
         "customized": false
       },
       {
-        "id": "819",
-        "text": "\"We don't build shoes. We engineer propulsion systems.\"— KINETIK Lab",
+        "id": "103",
+        "text": "Apex Carbon Torsion Trainer",
         "type": "text",
         "customized": false
       },
       {
-        "id": "820",
-        "text": "— KINETIK Lab",
+        "id": "104",
+        "text": "Phantom Charcoal Stone",
         "type": "text",
         "customized": false
       },
       {
-        "id": "821",
-        "text": "For two years, our biomechanical engineers worked alongside Olympic athletes to deconstruct the physics of human movement. The result is a footwear system that doesn't just support — it amplifies.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "822",
-        "text": "Every curve, every material, every millimeter of the Quantum-Grid™ midsole is calibrated to convert kinetic energy into forward propulsion. This isn't a shoe. It's a performance multiplier.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "823",
-        "text": "Quantum-Grid™ midsole",
+        "id": "105",
+        "text": "$185.00",
         "type": "text",
         "customized": false
       },
       {
-        "id": "824",
-        "text": "Hyper-breathable matrix knit",
+        "id": "106",
+        "text": "Strata Element Trail Runner",
         "type": "text",
         "customized": false
       },
       {
-        "id": "825",
-        "text": "Carbon-fiber torsion plate",
+        "id": "107",
+        "text": "Alpine Dusk Earth",
         "type": "text",
         "customized": false
       },
       {
-        "id": "826",
-        "text": "12 months of biomechanical research in our propulsion lab",
+        "id": "108",
+        "text": "$190.00",
         "type": "text",
         "customized": false
       },
       {
-        "id": "827",
-        "text": "The Kinetik Paradigm",
+        "id": "109",
+        "text": "Neon Flux Hyper-Light Aero",
         "type": "text",
         "customized": false
       },
       {
-        "id": "828",
-        "text": "Where technology meetsperformance",
+        "id": "110",
+        "text": "Chroma Coral Laser",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "111",
+        "text": "$155.00",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "27",
+        "text": "The {brand}",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "28",
+        "text": "Lab Paradigm",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "29",
+        "text": "Anatomical Support. Responsive Energy.",
         "type": "heading",
         "customized": false
       },
       {
-        "id": "829",
-        "text": "Quantum-Grid™",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "830",
-        "text": "Proprietary geometric hollow cells that convert impact into forward propulsion with 94% energy return efficiency.",
+        "id": "30",
+        "text": "We approach footwear production through a technical engineering framework. Our team completely strips down traditional shoe structures, removing unnecessary weight to deliver unmatched energy return matrix components.",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "831",
-        "text": "Thermo-Knit Matrix",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "832",
-        "text": "Hyper-breathable 3D-knitted upper that adapts to foot temperature while maintaining structural integrity.",
+        "id": "31",
+        "text": "Every single arc line calculation, dual-density responsive compound foam assembly, and carbon-fiber torsion plate configuration is subjected to high-stress laboratory simulations. We build gear designed to excel under real-world performance demands.",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "833",
-        "text": "Carbon-Fiber Plate",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "834",
-        "text": "Lightweight torsion plate that provides explosive toe-off and stabilizes each stride.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "835",
-        "text": "Real athletes, real results",
+        "id": "32",
+        "text": "Technical",
         "type": "text",
         "customized": false
       },
       {
-        "id": "836",
-        "text": "Community",
+        "id": "33",
+        "text": "Intel Logs",
         "type": "text",
         "customized": false
       },
       {
-        "id": "837",
-        "text": "Performance",
+        "id": "34",
+        "text": "How does the proprietary Quantum-Grid midsole function?",
         "type": "text",
         "customized": false
       },
       {
-        "id": "838",
-        "text": "PR on my 10K",
+        "id": "35",
+        "text": "Our unique Quantum-Grid setup features structural geometric hollow cells that deform on vertical impact. This smoothly converts kinetic downward pressure directly into forward propulsion force energy.",
         "type": "text",
         "customized": false
       },
       {
-        "id": "839",
-        "text": "Game changer",
+        "id": "36",
+        "text": "What sizing framework does {brand} utilize?",
         "type": "text",
         "customized": false
       },
       {
-        "id": "840",
-        "text": "Unreal energy return",
+        "id": "37",
+        "text": "All model variations run true to size according to standard international performance specifications. If you have wider foot profiles, we recommend ordering a half-size larger for optimal structural comfort.",
         "type": "text",
         "customized": false
       },
       {
-        "id": "841",
-        "text": "Perfect for race day",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "842",
-        "text": "My go-to trainers",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "843",
-        "text": "Next level",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "844",
-        "text": "Worth every penny",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "845",
-        "text": "Built for speed",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "846",
-        "text": "Best Seller",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "847",
-        "text": "The Propulsion System",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "848",
-        "text": "(247 reviews)",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "849",
-        "text": "$0.00",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "850",
-        "text": "$0.00",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "851",
-        "text": "Save $0.00",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "852",
-        "text": "High-density adaptive knit system equipped with mechanical carbon energy-return plates.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "853",
-        "text": "Choose Your Pack:",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "854",
-        "text": "Total Price:",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "855",
-        "text": "Packs:",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "856",
-        "text": "Add to Manifest— $0.00",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "857",
-        "text": "Secure Now— $0.00",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "858",
-        "text": "Complimentary Shipping",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "859",
-        "text": "Lifetime Guarantee",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "860",
-        "text": "Secure Routing",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "861",
-        "text": "30-Day Performance Trial",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "862",
-        "text": "Quantum-Grid™",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "863",
-        "text": "Proprietary propulsion technology with 94% energy return.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "864",
-        "text": "Lifetime Guarantee",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "865",
-        "text": "Built to last. If it ever fails, we'll replace it.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "866",
-        "text": "Complimentary Shipping",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "867",
-        "text": "Global delivery with full tracking and insurance.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "868",
-        "text": "30-Day Performance Trial",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "869",
-        "text": "Experience the difference. Return if not satisfied.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "870",
-        "text": "4.9",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "871",
-        "text": "(247 verified reviews)",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "872",
-        "text": "Write a Review",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "873",
-        "text": "Technical Intel",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "874",
-        "text": "FrequentlyAsked",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "875",
-        "text": "How does the Quantum-Grid™ midsole function?",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "876",
-        "text": "Our proprietary Quantum-Grid™ features structural geometric hollow cells that deform on vertical impact, converting kinetic downward pressure directly into forward propulsion force energy with 94% efficiency.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "877",
-        "text": "What sizing does KINETIK use?",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "878",
-        "text": "All models run true to size according to international performance specifications. For wider foot profiles, we recommend ordering a half-size larger for optimal comfort.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "879",
+        "id": "38",
         "text": "Are the technical knit components waterproof?",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "880",
-        "text": "The standard line maximizes airflow and ventilation while featuring a hydrophobic water-repellent coating that handles sudden weather changes or light rain conditions effortlessly.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "881",
-        "text": "What is the return policy?",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "882",
-        "text": "We offer a 30-day performance trial. If the system doesn't meet your expectations, return it in original condition for a full refund. No questions asked.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "883",
-        "text": "Ready to",
         "type": "text",
         "customized": false
       },
       {
-        "id": "884",
-        "text": "propel",
+        "id": "39",
+        "text": "The standard line maximizes airflow and ventilation. However, they are treated with a light, hydrophobic water-repellent coating that easily handles sudden weather changes or light rain conditions.",
         "type": "text",
         "customized": false
       },
       {
-        "id": "885",
-        "text": "your performance?",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "886",
-        "text": "Join thousands of athletes who've experienced the KINETIK difference. The Propulsion System is engineered to be the last performance shoe you'll ever need.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "887",
-        "text": "Secure Your System",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "888",
-        "text": "The Lab",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "889",
-        "text": "Connect withus",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "890",
+        "id": "40",
         "text": "Lab Coordinates",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "891",
-        "text": "Main Research Facility",
         "type": "heading",
         "customized": false
       },
       {
-        "id": "892",
+        "id": "41",
+        "text": "Main Server Facility",
+        "type": "heading",
+        "customized": false
+      },
+      {
+        "id": "42",
         "text": "Sector 7-A, Terminal Block 88Silicon Innovation Core, CA",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "893",
+        "id": "43",
         "text": "Uplink Protocol",
         "type": "heading",
         "customized": false
       },
       {
-        "id": "894",
-        "text": "protocols@kinetiklab.io",
+        "id": "44",
+        "text": "protocols@{brand}lab.io",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "895",
-        "text": "Lab Hours",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "896",
-        "text": "Mon-Fri: 9AM - 6PM PST",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "897",
-        "text": "Send a Message",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "898",
+        "id": "45",
         "text": "Operator Identity",
         "type": "text",
         "customized": false
       },
       {
-        "id": "900",
+        "id": "47",
         "text": "Routing Email",
         "type": "text",
         "customized": false
       },
       {
-        "id": "902",
-        "text": "Transmission Payload",
+        "id": "49",
+        "text": "Transmission Payload Data",
         "type": "text",
         "customized": false
       },
       {
-        "id": "904",
+        "id": "51",
         "text": "Deploy Link Signal",
         "type": "button",
         "customized": false
       },
       {
-        "id": "905",
-        "text": "KINETIK▲",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "906",
-        "text": "▲",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "907",
-        "text": "Structural performance hardware. Engineered for the future of movement.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "908",
-        "text": "Shop",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "909",
-        "text": "The System",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "910",
-        "text": "Community",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "911",
-        "text": "Reviews",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "912",
-        "text": "Guarantee",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "913",
-        "text": "Support",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "914",
-        "text": "FAQ",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "915",
-        "text": "Contact Us",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "916",
-        "text": "Shipping Policy",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "917",
-        "text": "Returns",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "918",
-        "text": "Size Guide",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "919",
-        "text": "Stay Updated",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "920",
-        "text": "Subscribe for exclusive drops, early access, and special offers.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "923",
-        "text": "No spam. Unsubscribe anytime.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "924",
-        "text": "© 2026 KINETIK. All rights reserved.",
-        "type": "text",
-        "customized": false
-      },
-      {
-        "id": "925",
-        "text": "Privacy Policy",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "926",
-        "text": "Terms of Service",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "927",
-        "text": "Cookie Policy",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "928",
+        "id": "200",
         "text": "Write a Review",
         "type": "heading",
         "customized": false
       },
       {
-        "id": "929",
+        "id": "201",
         "text": "Your Name",
         "type": "text",
         "customized": false
       },
       {
-        "id": "930",
+        "id": "203",
         "text": "Rating",
         "type": "text",
         "customized": false
       },
       {
-        "id": "931",
+        "id": "204",
+        "text": "★",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "205",
+        "text": "★",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "206",
+        "text": "★",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "207",
+        "text": "★",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "208",
+        "text": "★",
+        "type": "text",
+        "customized": false
+      },
+      {
+        "id": "209",
         "text": "Review Title",
         "type": "text",
         "customized": false
       },
       {
-        "id": "932",
+        "id": "211",
         "text": "Your Review",
         "type": "text",
         "customized": false
       },
       {
-        "id": "933",
+        "id": "213",
         "text": "Submit Review",
         "type": "button",
         "customized": false
       },
       {
-        "id": "934",
+        "id": "214",
         "text": "Cancel",
         "type": "button",
         "customized": false
       },
       {
-        "id": "935",
-        "text": "The Propulsion System",
-        "type": "text",
+        "id": "52",
+        "text": "© 2026{brand} OS. Structural performance hardware. All node rights reserved.",
+        "type": "paragraph",
         "customized": false
       },
       {
-        "id": "936",
-        "text": "Add to Manifest —$0.00",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "937",
-        "text": "Secure Now —$0.00",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "heading-151",
+        "id": "heading-73",
         "text": "Saved Hardware",
         "type": "heading",
         "customized": false
       },
       {
-        "id": "heading-152",
+        "id": "heading-74",
         "text": "Manifest Bag",
         "type": "heading",
         "customized": false
       },
       {
-        "id": "heading-153",
+        "id": "heading-75",
         "text": "FootwearEngineeringEvolved.",
         "type": "heading",
         "customized": false
       },
       {
-        "id": "heading-154",
-        "text": "The science ofmovement",
+        "id": "heading-76",
+        "text": "ActiveHardware Inventory",
         "type": "heading",
         "customized": false
       },
       {
-        "id": "heading-155",
-        "text": "Where technology meetsperformance",
+        "id": "heading-77",
+        "text": "The {brand}Lab Paradigm",
         "type": "heading",
         "customized": false
       },
       {
-        "id": "heading-156",
-        "text": "Quantum-Grid™",
+        "id": "heading-78",
+        "text": "Anatomical Support. Responsive Energy.",
         "type": "heading",
         "customized": false
       },
       {
-        "id": "heading-157",
-        "text": "Thermo-Knit Matrix",
+        "id": "heading-79",
+        "text": "TechnicalIntel Logs",
         "type": "heading",
         "customized": false
       },
       {
-        "id": "heading-158",
-        "text": "Carbon-Fiber Plate",
+        "id": "heading-80",
+        "text": "Lab Coordinates",
         "type": "heading",
         "customized": false
       },
       {
-        "id": "heading-159",
-        "text": "CommunityPerformance",
+        "id": "heading-81",
+        "text": "Main Server Facility",
         "type": "heading",
         "customized": false
       },
       {
-        "id": "heading-160",
-        "text": "The Propulsion System",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-161",
-        "text": "Quantum-Grid™",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-162",
-        "text": "Lifetime Guarantee",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-163",
-        "text": "Complimentary Shipping",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-164",
-        "text": "30-Day Performance Trial",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-165",
-        "text": "FrequentlyAsked",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-166",
-        "text": "Ready topropelyour performance?",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-167",
-        "text": "Connect withus",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-168",
-        "text": "Main Research Facility",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-169",
+        "id": "heading-82",
         "text": "Uplink Protocol",
         "type": "heading",
         "customized": false
       },
       {
-        "id": "heading-170",
-        "text": "Lab Hours",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-171",
-        "text": "Send a Message",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-172",
-        "text": "KINETIK▲",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-173",
-        "text": "Shop",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-174",
-        "text": "Support",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-175",
-        "text": "Stay Updated",
-        "type": "heading",
-        "customized": false
-      },
-      {
-        "id": "heading-176",
+        "id": "heading-83",
         "text": "Write a Review",
         "type": "heading",
         "customized": false
       },
       {
-        "id": "paragraph-177",
-        "text": "Kinetic impact absorption grids combined with hyper-breathable matrix knit weaves. Forged for multi-directional velocity and structural speed performance. The most advanced propulsion system ever created.",
+        "id": "paragraph-84",
+        "text": "Kinetic impact absorption grids combined with hyper-breathable matrix knit weaves. Forged for multi-directional velocity and structural speed performance.",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "paragraph-178",
-        "text": "For two years, our biomechanical engineers worked alongside Olympic athletes to deconstruct the physics of human movement. The result is a footwear system that doesn't just support — it amplifies.",
+        "id": "paragraph-85",
+        "text": "We approach footwear production through a technical engineering framework. Our team completely strips down traditional shoe structures, removing unnecessary weight to deliver unmatched energy return matrix components.",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "paragraph-179",
-        "text": "Every curve, every material, every millimeter of the Quantum-Grid™ midsole is calibrated to convert kinetic energy into forward propulsion. This isn't a shoe. It's a performance multiplier.",
+        "id": "paragraph-86",
+        "text": "Every single arc line calculation, dual-density responsive compound foam assembly, and carbon-fiber torsion plate configuration is subjected to high-stress laboratory simulations. We build gear designed to excel under real-world performance demands.",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "paragraph-180",
-        "text": "Proprietary geometric hollow cells that convert impact into forward propulsion with 94% energy return efficiency.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-181",
-        "text": "Hyper-breathable 3D-knitted upper that adapts to foot temperature while maintaining structural integrity.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-182",
-        "text": "Lightweight torsion plate that provides explosive toe-off and stabilizes each stride.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-183",
-        "text": "High-density adaptive knit system equipped with mechanical carbon energy-return plates.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-184",
-        "text": "Proprietary propulsion technology with 94% energy return.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-185",
-        "text": "Built to last. If it ever fails, we'll replace it.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-186",
-        "text": "Global delivery with full tracking and insurance.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-187",
-        "text": "Experience the difference. Return if not satisfied.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-188",
-        "text": "\"The propulsion system is revolutionary. I've never experienced energy return like this before. My times have improved significantly.\"",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-189",
-        "text": "\"I've been training in these for 6 months and they still feel brand new. The energy return is incredible. Worth every penny.\"",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-190",
-        "text": "\"Finally a performance shoe that delivers on its promises. The Quantum-Grid technology is a game changer for my training.\"",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-191",
-        "text": "Our proprietary Quantum-Grid™ features structural geometric hollow cells that deform on vertical impact, converting kinetic downward pressure directly into forward propulsion force energy with 94% efficiency.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-192",
-        "text": "All models run true to size according to international performance specifications. For wider foot profiles, we recommend ordering a half-size larger for optimal comfort.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-193",
-        "text": "The standard line maximizes airflow and ventilation while featuring a hydrophobic water-repellent coating that handles sudden weather changes or light rain conditions effortlessly.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-194",
-        "text": "We offer a 30-day performance trial. If the system doesn't meet your expectations, return it in original condition for a full refund. No questions asked.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-195",
-        "text": "Join thousands of athletes who've experienced the KINETIK difference. The Propulsion System is engineered to be the last performance shoe you'll ever need.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-196",
+        "id": "paragraph-87",
         "text": "Sector 7-A, Terminal Block 88Silicon Innovation Core, CA",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "paragraph-197",
-        "text": "protocols@kinetiklab.io",
+        "id": "paragraph-88",
+        "text": "protocols@{brand}lab.io",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "paragraph-198",
-        "text": "Mon-Fri: 9AM - 6PM PST",
+        "id": "paragraph-89",
+        "text": "© 2026{brand} OS. Structural performance hardware. All node rights reserved.",
         "type": "paragraph",
         "customized": false
       },
       {
-        "id": "paragraph-199",
-        "text": "Structural performance hardware. Engineered for the future of movement.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-200",
-        "text": "Subscribe for exclusive drops, early access, and special offers.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "paragraph-201",
-        "text": "No spam. Unsubscribe anytime.",
-        "type": "paragraph",
-        "customized": false
-      },
-      {
-        "id": "button-202",
-        "text": "Apply",
+        "id": "button-90",
+        "text": "Verify",
         "type": "button",
         "customized": false
       },
       {
-        "id": "button-203",
+        "id": "button-91",
         "text": "Execute Dispatch Protocol",
         "type": "button",
         "customized": false
       },
       {
-        "id": "button-204",
+        "id": "button-92",
         "text": "View Bag",
         "type": "button",
         "customized": false
       },
       {
-        "id": "button-205",
+        "id": "button-93",
         "text": "Secure Checkout",
         "type": "button",
         "customized": false
       },
       {
-        "id": "add-to-cart-btn",
-        "text": "Add to Manifest— $0.00",
+        "id": "button-94",
+        "text": "How does the proprietary Quantum-Grid midsole function?",
         "type": "button",
         "customized": false
       },
       {
-        "id": "buy-now-btn",
-        "text": "Secure Now— $0.00",
+        "id": "button-95",
+        "text": "What sizing framework does {brand} utilize?",
         "type": "button",
         "customized": false
       },
       {
-        "id": "button-208",
-        "text": "Write a Review",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "button-209",
-        "text": "How does the Quantum-Grid™ midsole function?",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "button-210",
-        "text": "What sizing does KINETIK use?",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "button-211",
+        "id": "button-96",
         "text": "Are the technical knit components waterproof?",
         "type": "button",
         "customized": false
       },
       {
-        "id": "button-212",
-        "text": "What is the return policy?",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "button-213",
+        "id": "button-97",
         "text": "Deploy Link Signal",
         "type": "button",
         "customized": false
       },
       {
-        "id": "button-214",
+        "id": "button-98",
         "text": "Submit Review",
         "type": "button",
         "customized": false
       },
       {
-        "id": "button-215",
+        "id": "button-99",
         "text": "Cancel",
         "type": "button",
         "customized": false
       },
       {
-        "id": "button-216",
-        "text": "Add to Manifest —$0.00",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "button-217",
-        "text": "Secure Now —$0.00",
-        "type": "button",
-        "customized": false
-      },
-      {
-        "id": "link-218",
-        "text": "KINETIK▲LAB",
+        "id": "link-100",
+        "text": "{brand}//LAB",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-219",
-        "text": "The Vision",
+        "id": "link-101",
+        "text": "Catalog",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-220",
-        "text": "Community",
+        "id": "link-102",
+        "text": "The Lab",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-221",
-        "text": "The System",
+        "id": "link-103",
+        "text": "Intel",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-222",
-        "text": "Reviews",
+        "id": "link-104",
+        "text": "Base Station",
         "type": "link",
         "customized": false
       },
       {
-        "id": "link-223",
-        "text": "Contact",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-224",
-        "text": "The Vision",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-225",
-        "text": "Community",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-226",
-        "text": "The System",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-227",
-        "text": "Reviews",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-228",
-        "text": "Contact",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-229",
-        "text": "Explore The System",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-230",
-        "text": "Read Reviews",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-231",
-        "text": "Secure Your System",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-232",
-        "text": "The System",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-233",
-        "text": "Community",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-234",
-        "text": "Reviews",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-235",
-        "text": "Guarantee",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-236",
-        "text": "FAQ",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-237",
-        "text": "Contact Us",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-238",
-        "text": "Shipping Policy",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-239",
-        "text": "Returns",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-240",
-        "text": "Size Guide",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-241",
-        "text": "Privacy Policy",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-242",
-        "text": "Terms of Service",
-        "type": "link",
-        "customized": false
-      },
-      {
-        "id": "link-243",
-        "text": "Cookie Policy",
+        "id": "link-105",
+        "text": "Explore Hardware",
         "type": "link",
         "customized": false
       },
       {
         "id": "page-title",
-        "text": "KINETIK // The Propulsion System — Technical Footwear",
+        "text": "{brand}",
         "type": "title",
         "customized": false
       }
@@ -1471,49 +643,49 @@
   "global_texts": [
     {
       "id": "1",
-      "text": "KINETIK",
+      "text": "{brand}//LAB",
       "type": "text",
       "customized": false
     },
     {
       "id": "2",
-      "text": "▲",
+      "text": "{brand}",
       "type": "text",
       "customized": false
     },
     {
       "id": "3",
-      "text": "LAB",
+      "text": "//",
       "type": "text",
       "customized": false
     },
     {
       "id": "4",
-      "text": "The Vision",
-      "type": "link",
+      "text": "LAB",
+      "type": "text",
       "customized": false
     },
     {
       "id": "5",
-      "text": "Community",
+      "text": "Catalog",
       "type": "link",
       "customized": false
     },
     {
       "id": "6",
-      "text": "The System",
+      "text": "The Lab",
       "type": "link",
       "customized": false
     },
     {
       "id": "7",
-      "text": "Reviews",
+      "text": "Intel",
       "type": "link",
       "customized": false
     },
     {
       "id": "8",
-      "text": "Contact",
+      "text": "Base Station",
       "type": "link",
       "customized": false
     },
@@ -1531,19 +703,19 @@
     },
     {
       "id": "12",
-      "text": "Apply",
+      "text": "Verify",
       "type": "button",
       "customized": false
     },
     {
       "id": "13",
-      "text": "Subtotal",
+      "text": "Subtotal Manifest",
       "type": "text",
       "customized": false
     },
     {
       "id": "14",
-      "text": "System Discount",
+      "text": "System Discount Applied (20%)",
       "type": "text",
       "customized": false
     },
@@ -1572,1370 +744,542 @@
       "customized": false
     },
     {
-      "id": "800",
+      "id": "19",
       "text": "Drop Matrix 4.26",
       "type": "text",
       "customized": false
     },
     {
-      "id": "801",
-      "text": "The future of propulsion",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "802",
+      "id": "20",
       "text": "Footwear",
       "type": "text",
       "customized": false
     },
     {
-      "id": "803",
+      "id": "21",
       "text": "Engineering",
       "type": "text",
       "customized": false
     },
     {
-      "id": "804",
+      "id": "22",
       "text": "Evolved.",
       "type": "text",
       "customized": false
     },
     {
-      "id": "805",
-      "text": "Kinetic impact absorption grids combined with hyper-breathable matrix knit weaves. Forged for multi-directional velocity and structural speed performance. The most advanced propulsion system ever created.",
+      "id": "23",
+      "text": "Kinetic impact absorption grids combined with hyper-breathable matrix knit weaves. Forged for multi-directional velocity and structural speed performance.",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "806",
-      "text": "12",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "807",
-      "text": "Tech Innovations",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "808",
-      "text": "4.9",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "809",
-      "text": "Star Rating",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "810",
-      "text": "247",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "811",
-      "text": "Verified Reviews",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "812",
-      "text": "Explore The System",
+      "id": "24",
+      "text": "Explore Hardware",
       "type": "link",
       "customized": false
     },
     {
-      "id": "813",
-      "text": "Read Reviews",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "814",
-      "text": "Quantum-Grid™",
+      "id": "25",
+      "text": "Active",
       "type": "text",
       "customized": false
     },
     {
-      "id": "815",
-      "text": "Proprietary propulsion technology",
+      "id": "26",
+      "text": "Hardware Inventory",
       "type": "text",
       "customized": false
     },
     {
-      "id": "816",
-      "text": "Chapter One",
+      "id": "100",
+      "text": "Velo-Knit Matrix Alpha",
       "type": "text",
       "customized": false
     },
     {
-      "id": "817",
-      "text": "The science of",
+      "id": "101",
+      "text": "Volt Orange Grid",
       "type": "text",
       "customized": false
     },
     {
-      "id": "818",
-      "text": "movement",
+      "id": "102",
+      "text": "$160.00",
       "type": "text",
       "customized": false
     },
     {
-      "id": "819",
-      "text": "\"We don't build shoes. We engineer propulsion systems.\"— KINETIK Lab",
+      "id": "103",
+      "text": "Apex Carbon Torsion Trainer",
       "type": "text",
       "customized": false
     },
     {
-      "id": "820",
-      "text": "— KINETIK Lab",
+      "id": "104",
+      "text": "Phantom Charcoal Stone",
       "type": "text",
       "customized": false
     },
     {
-      "id": "821",
-      "text": "For two years, our biomechanical engineers worked alongside Olympic athletes to deconstruct the physics of human movement. The result is a footwear system that doesn't just support — it amplifies.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "822",
-      "text": "Every curve, every material, every millimeter of the Quantum-Grid™ midsole is calibrated to convert kinetic energy into forward propulsion. This isn't a shoe. It's a performance multiplier.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "823",
-      "text": "Quantum-Grid™ midsole",
+      "id": "105",
+      "text": "$185.00",
       "type": "text",
       "customized": false
     },
     {
-      "id": "824",
-      "text": "Hyper-breathable matrix knit",
+      "id": "106",
+      "text": "Strata Element Trail Runner",
       "type": "text",
       "customized": false
     },
     {
-      "id": "825",
-      "text": "Carbon-fiber torsion plate",
+      "id": "107",
+      "text": "Alpine Dusk Earth",
       "type": "text",
       "customized": false
     },
     {
-      "id": "826",
-      "text": "12 months of biomechanical research in our propulsion lab",
+      "id": "108",
+      "text": "$190.00",
       "type": "text",
       "customized": false
     },
     {
-      "id": "827",
-      "text": "The Kinetik Paradigm",
+      "id": "109",
+      "text": "Neon Flux Hyper-Light Aero",
       "type": "text",
       "customized": false
     },
     {
-      "id": "828",
-      "text": "Where technology meetsperformance",
+      "id": "110",
+      "text": "Chroma Coral Laser",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "111",
+      "text": "$155.00",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "27",
+      "text": "The {brand}",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "28",
+      "text": "Lab Paradigm",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "29",
+      "text": "Anatomical Support. Responsive Energy.",
       "type": "heading",
       "customized": false
     },
     {
-      "id": "829",
-      "text": "Quantum-Grid™",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "830",
-      "text": "Proprietary geometric hollow cells that convert impact into forward propulsion with 94% energy return efficiency.",
+      "id": "30",
+      "text": "We approach footwear production through a technical engineering framework. Our team completely strips down traditional shoe structures, removing unnecessary weight to deliver unmatched energy return matrix components.",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "831",
-      "text": "Thermo-Knit Matrix",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "832",
-      "text": "Hyper-breathable 3D-knitted upper that adapts to foot temperature while maintaining structural integrity.",
+      "id": "31",
+      "text": "Every single arc line calculation, dual-density responsive compound foam assembly, and carbon-fiber torsion plate configuration is subjected to high-stress laboratory simulations. We build gear designed to excel under real-world performance demands.",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "833",
-      "text": "Carbon-Fiber Plate",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "834",
-      "text": "Lightweight torsion plate that provides explosive toe-off and stabilizes each stride.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "835",
-      "text": "Real athletes, real results",
+      "id": "32",
+      "text": "Technical",
       "type": "text",
       "customized": false
     },
     {
-      "id": "836",
-      "text": "Community",
+      "id": "33",
+      "text": "Intel Logs",
       "type": "text",
       "customized": false
     },
     {
-      "id": "837",
-      "text": "Performance",
+      "id": "34",
+      "text": "How does the proprietary Quantum-Grid midsole function?",
       "type": "text",
       "customized": false
     },
     {
-      "id": "838",
-      "text": "PR on my 10K",
+      "id": "35",
+      "text": "Our unique Quantum-Grid setup features structural geometric hollow cells that deform on vertical impact. This smoothly converts kinetic downward pressure directly into forward propulsion force energy.",
       "type": "text",
       "customized": false
     },
     {
-      "id": "839",
-      "text": "Game changer",
+      "id": "36",
+      "text": "What sizing framework does {brand} utilize?",
       "type": "text",
       "customized": false
     },
     {
-      "id": "840",
-      "text": "Unreal energy return",
+      "id": "37",
+      "text": "All model variations run true to size according to standard international performance specifications. If you have wider foot profiles, we recommend ordering a half-size larger for optimal structural comfort.",
       "type": "text",
       "customized": false
     },
     {
-      "id": "841",
-      "text": "Perfect for race day",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "842",
-      "text": "My go-to trainers",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "843",
-      "text": "Next level",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "844",
-      "text": "Worth every penny",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "845",
-      "text": "Built for speed",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "846",
-      "text": "Best Seller",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "847",
-      "text": "The Propulsion System",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "848",
-      "text": "(247 reviews)",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "849",
-      "text": "$0.00",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "850",
-      "text": "$0.00",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "851",
-      "text": "Save $0.00",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "852",
-      "text": "High-density adaptive knit system equipped with mechanical carbon energy-return plates.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "853",
-      "text": "Choose Your Pack:",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "854",
-      "text": "Total Price:",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "855",
-      "text": "Packs:",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "856",
-      "text": "Add to Manifest— $0.00",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "857",
-      "text": "Secure Now— $0.00",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "858",
-      "text": "Complimentary Shipping",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "859",
-      "text": "Lifetime Guarantee",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "860",
-      "text": "Secure Routing",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "861",
-      "text": "30-Day Performance Trial",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "862",
-      "text": "Quantum-Grid™",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "863",
-      "text": "Proprietary propulsion technology with 94% energy return.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "864",
-      "text": "Lifetime Guarantee",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "865",
-      "text": "Built to last. If it ever fails, we'll replace it.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "866",
-      "text": "Complimentary Shipping",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "867",
-      "text": "Global delivery with full tracking and insurance.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "868",
-      "text": "30-Day Performance Trial",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "869",
-      "text": "Experience the difference. Return if not satisfied.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "870",
-      "text": "4.9",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "871",
-      "text": "(247 verified reviews)",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "872",
-      "text": "Write a Review",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "873",
-      "text": "Technical Intel",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "874",
-      "text": "FrequentlyAsked",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "875",
-      "text": "How does the Quantum-Grid™ midsole function?",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "876",
-      "text": "Our proprietary Quantum-Grid™ features structural geometric hollow cells that deform on vertical impact, converting kinetic downward pressure directly into forward propulsion force energy with 94% efficiency.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "877",
-      "text": "What sizing does KINETIK use?",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "878",
-      "text": "All models run true to size according to international performance specifications. For wider foot profiles, we recommend ordering a half-size larger for optimal comfort.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "879",
+      "id": "38",
       "text": "Are the technical knit components waterproof?",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "880",
-      "text": "The standard line maximizes airflow and ventilation while featuring a hydrophobic water-repellent coating that handles sudden weather changes or light rain conditions effortlessly.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "881",
-      "text": "What is the return policy?",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "882",
-      "text": "We offer a 30-day performance trial. If the system doesn't meet your expectations, return it in original condition for a full refund. No questions asked.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "883",
-      "text": "Ready to",
       "type": "text",
       "customized": false
     },
     {
-      "id": "884",
-      "text": "propel",
+      "id": "39",
+      "text": "The standard line maximizes airflow and ventilation. However, they are treated with a light, hydrophobic water-repellent coating that easily handles sudden weather changes or light rain conditions.",
       "type": "text",
       "customized": false
     },
     {
-      "id": "885",
-      "text": "your performance?",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "886",
-      "text": "Join thousands of athletes who've experienced the KINETIK difference. The Propulsion System is engineered to be the last performance shoe you'll ever need.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "887",
-      "text": "Secure Your System",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "888",
-      "text": "The Lab",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "889",
-      "text": "Connect withus",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "890",
+      "id": "40",
       "text": "Lab Coordinates",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "891",
-      "text": "Main Research Facility",
       "type": "heading",
       "customized": false
     },
     {
-      "id": "892",
+      "id": "41",
+      "text": "Main Server Facility",
+      "type": "heading",
+      "customized": false
+    },
+    {
+      "id": "42",
       "text": "Sector 7-A, Terminal Block 88Silicon Innovation Core, CA",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "893",
+      "id": "43",
       "text": "Uplink Protocol",
       "type": "heading",
       "customized": false
     },
     {
-      "id": "894",
-      "text": "protocols@kinetiklab.io",
+      "id": "44",
+      "text": "protocols@{brand}lab.io",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "895",
-      "text": "Lab Hours",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "896",
-      "text": "Mon-Fri: 9AM - 6PM PST",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "897",
-      "text": "Send a Message",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "898",
+      "id": "45",
       "text": "Operator Identity",
       "type": "text",
       "customized": false
     },
     {
-      "id": "900",
+      "id": "47",
       "text": "Routing Email",
       "type": "text",
       "customized": false
     },
     {
-      "id": "902",
-      "text": "Transmission Payload",
+      "id": "49",
+      "text": "Transmission Payload Data",
       "type": "text",
       "customized": false
     },
     {
-      "id": "904",
+      "id": "51",
       "text": "Deploy Link Signal",
       "type": "button",
       "customized": false
     },
     {
-      "id": "905",
-      "text": "KINETIK▲",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "906",
-      "text": "▲",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "907",
-      "text": "Structural performance hardware. Engineered for the future of movement.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "908",
-      "text": "Shop",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "909",
-      "text": "The System",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "910",
-      "text": "Community",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "911",
-      "text": "Reviews",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "912",
-      "text": "Guarantee",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "913",
-      "text": "Support",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "914",
-      "text": "FAQ",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "915",
-      "text": "Contact Us",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "916",
-      "text": "Shipping Policy",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "917",
-      "text": "Returns",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "918",
-      "text": "Size Guide",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "919",
-      "text": "Stay Updated",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "920",
-      "text": "Subscribe for exclusive drops, early access, and special offers.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "923",
-      "text": "No spam. Unsubscribe anytime.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "924",
-      "text": "© 2026 KINETIK. All rights reserved.",
-      "type": "text",
-      "customized": false
-    },
-    {
-      "id": "925",
-      "text": "Privacy Policy",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "926",
-      "text": "Terms of Service",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "927",
-      "text": "Cookie Policy",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "928",
+      "id": "200",
       "text": "Write a Review",
       "type": "heading",
       "customized": false
     },
     {
-      "id": "929",
+      "id": "201",
       "text": "Your Name",
       "type": "text",
       "customized": false
     },
     {
-      "id": "930",
+      "id": "203",
       "text": "Rating",
       "type": "text",
       "customized": false
     },
     {
-      "id": "931",
+      "id": "204",
+      "text": "★",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "205",
+      "text": "★",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "206",
+      "text": "★",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "207",
+      "text": "★",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "208",
+      "text": "★",
+      "type": "text",
+      "customized": false
+    },
+    {
+      "id": "209",
       "text": "Review Title",
       "type": "text",
       "customized": false
     },
     {
-      "id": "932",
+      "id": "211",
       "text": "Your Review",
       "type": "text",
       "customized": false
     },
     {
-      "id": "933",
+      "id": "213",
       "text": "Submit Review",
       "type": "button",
       "customized": false
     },
     {
-      "id": "934",
+      "id": "214",
       "text": "Cancel",
       "type": "button",
       "customized": false
     },
     {
-      "id": "935",
-      "text": "The Propulsion System",
-      "type": "text",
+      "id": "52",
+      "text": "© 2026{brand} OS. Structural performance hardware. All node rights reserved.",
+      "type": "paragraph",
       "customized": false
     },
     {
-      "id": "936",
-      "text": "Add to Manifest —$0.00",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "937",
-      "text": "Secure Now —$0.00",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "heading-151",
+      "id": "heading-73",
       "text": "Saved Hardware",
       "type": "heading",
       "customized": false
     },
     {
-      "id": "heading-152",
+      "id": "heading-74",
       "text": "Manifest Bag",
       "type": "heading",
       "customized": false
     },
     {
-      "id": "heading-153",
+      "id": "heading-75",
       "text": "FootwearEngineeringEvolved.",
       "type": "heading",
       "customized": false
     },
     {
-      "id": "heading-154",
-      "text": "The science ofmovement",
+      "id": "heading-76",
+      "text": "ActiveHardware Inventory",
       "type": "heading",
       "customized": false
     },
     {
-      "id": "heading-155",
-      "text": "Where technology meetsperformance",
+      "id": "heading-77",
+      "text": "The {brand}Lab Paradigm",
       "type": "heading",
       "customized": false
     },
     {
-      "id": "heading-156",
-      "text": "Quantum-Grid™",
+      "id": "heading-78",
+      "text": "Anatomical Support. Responsive Energy.",
       "type": "heading",
       "customized": false
     },
     {
-      "id": "heading-157",
-      "text": "Thermo-Knit Matrix",
+      "id": "heading-79",
+      "text": "TechnicalIntel Logs",
       "type": "heading",
       "customized": false
     },
     {
-      "id": "heading-158",
-      "text": "Carbon-Fiber Plate",
+      "id": "heading-80",
+      "text": "Lab Coordinates",
       "type": "heading",
       "customized": false
     },
     {
-      "id": "heading-159",
-      "text": "CommunityPerformance",
+      "id": "heading-81",
+      "text": "Main Server Facility",
       "type": "heading",
       "customized": false
     },
     {
-      "id": "heading-160",
-      "text": "The Propulsion System",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-161",
-      "text": "Quantum-Grid™",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-162",
-      "text": "Lifetime Guarantee",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-163",
-      "text": "Complimentary Shipping",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-164",
-      "text": "30-Day Performance Trial",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-165",
-      "text": "FrequentlyAsked",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-166",
-      "text": "Ready topropelyour performance?",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-167",
-      "text": "Connect withus",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-168",
-      "text": "Main Research Facility",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-169",
+      "id": "heading-82",
       "text": "Uplink Protocol",
       "type": "heading",
       "customized": false
     },
     {
-      "id": "heading-170",
-      "text": "Lab Hours",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-171",
-      "text": "Send a Message",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-172",
-      "text": "KINETIK▲",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-173",
-      "text": "Shop",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-174",
-      "text": "Support",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-175",
-      "text": "Stay Updated",
-      "type": "heading",
-      "customized": false
-    },
-    {
-      "id": "heading-176",
+      "id": "heading-83",
       "text": "Write a Review",
       "type": "heading",
       "customized": false
     },
     {
-      "id": "paragraph-177",
-      "text": "Kinetic impact absorption grids combined with hyper-breathable matrix knit weaves. Forged for multi-directional velocity and structural speed performance. The most advanced propulsion system ever created.",
+      "id": "paragraph-84",
+      "text": "Kinetic impact absorption grids combined with hyper-breathable matrix knit weaves. Forged for multi-directional velocity and structural speed performance.",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "paragraph-178",
-      "text": "For two years, our biomechanical engineers worked alongside Olympic athletes to deconstruct the physics of human movement. The result is a footwear system that doesn't just support — it amplifies.",
+      "id": "paragraph-85",
+      "text": "We approach footwear production through a technical engineering framework. Our team completely strips down traditional shoe structures, removing unnecessary weight to deliver unmatched energy return matrix components.",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "paragraph-179",
-      "text": "Every curve, every material, every millimeter of the Quantum-Grid™ midsole is calibrated to convert kinetic energy into forward propulsion. This isn't a shoe. It's a performance multiplier.",
+      "id": "paragraph-86",
+      "text": "Every single arc line calculation, dual-density responsive compound foam assembly, and carbon-fiber torsion plate configuration is subjected to high-stress laboratory simulations. We build gear designed to excel under real-world performance demands.",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "paragraph-180",
-      "text": "Proprietary geometric hollow cells that convert impact into forward propulsion with 94% energy return efficiency.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-181",
-      "text": "Hyper-breathable 3D-knitted upper that adapts to foot temperature while maintaining structural integrity.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-182",
-      "text": "Lightweight torsion plate that provides explosive toe-off and stabilizes each stride.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-183",
-      "text": "High-density adaptive knit system equipped with mechanical carbon energy-return plates.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-184",
-      "text": "Proprietary propulsion technology with 94% energy return.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-185",
-      "text": "Built to last. If it ever fails, we'll replace it.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-186",
-      "text": "Global delivery with full tracking and insurance.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-187",
-      "text": "Experience the difference. Return if not satisfied.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-188",
-      "text": "\"The propulsion system is revolutionary. I've never experienced energy return like this before. My times have improved significantly.\"",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-189",
-      "text": "\"I've been training in these for 6 months and they still feel brand new. The energy return is incredible. Worth every penny.\"",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-190",
-      "text": "\"Finally a performance shoe that delivers on its promises. The Quantum-Grid technology is a game changer for my training.\"",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-191",
-      "text": "Our proprietary Quantum-Grid™ features structural geometric hollow cells that deform on vertical impact, converting kinetic downward pressure directly into forward propulsion force energy with 94% efficiency.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-192",
-      "text": "All models run true to size according to international performance specifications. For wider foot profiles, we recommend ordering a half-size larger for optimal comfort.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-193",
-      "text": "The standard line maximizes airflow and ventilation while featuring a hydrophobic water-repellent coating that handles sudden weather changes or light rain conditions effortlessly.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-194",
-      "text": "We offer a 30-day performance trial. If the system doesn't meet your expectations, return it in original condition for a full refund. No questions asked.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-195",
-      "text": "Join thousands of athletes who've experienced the KINETIK difference. The Propulsion System is engineered to be the last performance shoe you'll ever need.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-196",
+      "id": "paragraph-87",
       "text": "Sector 7-A, Terminal Block 88Silicon Innovation Core, CA",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "paragraph-197",
-      "text": "protocols@kinetiklab.io",
+      "id": "paragraph-88",
+      "text": "protocols@{brand}lab.io",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "paragraph-198",
-      "text": "Mon-Fri: 9AM - 6PM PST",
+      "id": "paragraph-89",
+      "text": "© 2026{brand} OS. Structural performance hardware. All node rights reserved.",
       "type": "paragraph",
       "customized": false
     },
     {
-      "id": "paragraph-199",
-      "text": "Structural performance hardware. Engineered for the future of movement.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-200",
-      "text": "Subscribe for exclusive drops, early access, and special offers.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "paragraph-201",
-      "text": "No spam. Unsubscribe anytime.",
-      "type": "paragraph",
-      "customized": false
-    },
-    {
-      "id": "button-202",
-      "text": "Apply",
+      "id": "button-90",
+      "text": "Verify",
       "type": "button",
       "customized": false
     },
     {
-      "id": "button-203",
+      "id": "button-91",
       "text": "Execute Dispatch Protocol",
       "type": "button",
       "customized": false
     },
     {
-      "id": "button-204",
+      "id": "button-92",
       "text": "View Bag",
       "type": "button",
       "customized": false
     },
     {
-      "id": "button-205",
+      "id": "button-93",
       "text": "Secure Checkout",
       "type": "button",
       "customized": false
     },
     {
-      "id": "add-to-cart-btn",
-      "text": "Add to Manifest— $0.00",
+      "id": "button-94",
+      "text": "How does the proprietary Quantum-Grid midsole function?",
       "type": "button",
       "customized": false
     },
     {
-      "id": "buy-now-btn",
-      "text": "Secure Now— $0.00",
+      "id": "button-95",
+      "text": "What sizing framework does {brand} utilize?",
       "type": "button",
       "customized": false
     },
     {
-      "id": "button-208",
-      "text": "Write a Review",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "button-209",
-      "text": "How does the Quantum-Grid™ midsole function?",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "button-210",
-      "text": "What sizing does KINETIK use?",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "button-211",
+      "id": "button-96",
       "text": "Are the technical knit components waterproof?",
       "type": "button",
       "customized": false
     },
     {
-      "id": "button-212",
-      "text": "What is the return policy?",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "button-213",
+      "id": "button-97",
       "text": "Deploy Link Signal",
       "type": "button",
       "customized": false
     },
     {
-      "id": "button-214",
+      "id": "button-98",
       "text": "Submit Review",
       "type": "button",
       "customized": false
     },
     {
-      "id": "button-215",
+      "id": "button-99",
       "text": "Cancel",
       "type": "button",
       "customized": false
     },
     {
-      "id": "button-216",
-      "text": "Add to Manifest —$0.00",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "button-217",
-      "text": "Secure Now —$0.00",
-      "type": "button",
-      "customized": false
-    },
-    {
-      "id": "link-218",
-      "text": "KINETIK▲LAB",
+      "id": "link-100",
+      "text": "{brand}//LAB",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-219",
-      "text": "The Vision",
+      "id": "link-101",
+      "text": "Catalog",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-220",
-      "text": "Community",
+      "id": "link-102",
+      "text": "The Lab",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-221",
-      "text": "The System",
+      "id": "link-103",
+      "text": "Intel",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-222",
-      "text": "Reviews",
+      "id": "link-104",
+      "text": "Base Station",
       "type": "link",
       "customized": false
     },
     {
-      "id": "link-223",
-      "text": "Contact",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-224",
-      "text": "The Vision",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-225",
-      "text": "Community",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-226",
-      "text": "The System",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-227",
-      "text": "Reviews",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-228",
-      "text": "Contact",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-229",
-      "text": "Explore The System",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-230",
-      "text": "Read Reviews",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-231",
-      "text": "Secure Your System",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-232",
-      "text": "The System",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-233",
-      "text": "Community",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-234",
-      "text": "Reviews",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-235",
-      "text": "Guarantee",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-236",
-      "text": "FAQ",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-237",
-      "text": "Contact Us",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-238",
-      "text": "Shipping Policy",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-239",
-      "text": "Returns",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-240",
-      "text": "Size Guide",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-241",
-      "text": "Privacy Policy",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-242",
-      "text": "Terms of Service",
-      "type": "link",
-      "customized": false
-    },
-    {
-      "id": "link-243",
-      "text": "Cookie Policy",
+      "id": "link-105",
+      "text": "Explore Hardware",
       "type": "link",
       "customized": false
     },
     {
       "id": "page-title",
-      "text": "KINETIK // The Propulsion System — Technical Footwear",
+      "text": "{brand}",
       "type": "title",
       "customized": false
     }
   ],
   "metadata": {
-    "total_elements": 244,
+    "total_elements": 106,
     "pages_count": 1,
     "components_count": 0
   }

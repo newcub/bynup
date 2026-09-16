@@ -527,9 +527,66 @@
 <!-- Hero Section -->
 <section class="hero" id="section-12">
   <div class="hero-bg">
-    <img class="editable-image" data-image="1" src="{% if image_customizations.1 %}{{ image_customizations.1.image_url }}{% else %}https://images.pexels.com/photos/1443997/pexels-photo-1443997.jpeg?auto=compress&cs=tinysrgb&w=1600{% endif %}" 
-         alt="{% if image_customizations.1 %}{{ image_customizations.1.alt_text }}{% else %}Elegant model wearing fine gold necklace and earrings{% endif %}"
-         style="object-position: 30% 20%;">
+    {% with video=video_customizations.1 %}
+    {% if video %}
+        {# ===== VIDEO EXISTS - RENDER VIDEO ===== #}
+        <div class="editable-video" 
+             data-image="1" 
+             data-is-video="true"
+             style="position: relative; overflow: hidden; display: inline-block; max-width: 100%; border-radius: 8px; cursor: pointer;">
+            
+            <video 
+                src="{{ video.video_url }}" 
+                poster="{{ video.poster_url|default:'' }}"
+                {% if video.autoplay %}autoplay{% endif %}
+                {% if video.loop %}loop{% endif %}
+                {% if video.muted %}muted{% endif %}
+                {% if video.controls %}controls{% endif %}
+                style="width: 100%; height: 100%; display: block; object-fit: cover;"
+            >
+                Your browser does not support the video tag.
+            </video>
+            
+            {# ===== PLAY BUTTON OVERLAY ===== #}
+            {% if video.show_play_button %}
+            <div class="video-overlay" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 24px;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            ">
+                <i class="fas fa-play"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+        {# ===== NO VIDEO - RENDER IMAGE ===== #}
+        {% if image_customizations.1 %}
+            <img src="{{ image_customizations.1.image_url }}" 
+                 alt="{{ image_customizations.1.alt_text|default:'{% if image_customizations.1 %}{{ image_customizations.1.alt_text }}{% else %}Elegant model wearing fine gold necklace and earrings{% endif %}' }}" 
+                 class="editable-image" 
+                 data-image="1">
+        {% else %}
+            <img src="https://images.pexels.com/photos/6311675/pexels-photo-6311675.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                 alt="{% if image_customizations.1 %}{{ image_customizations.1.alt_text }}{% else %}Elegant model wearing fine gold necklace and earrings{% endif %}" 
+                 class="editable-image" 
+                 data-image="1">
+        {% endif %}
+    {% endif %}
+{% endwith %}
   </div>
   <div class="hero-overlay"></div>
   <div class="hero-content">

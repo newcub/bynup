@@ -5,953 +5,1032 @@
 
 {% block extra_css %}
 <style>
-    /* Management Layout */
-    .management-layout {
-        display: flex;
-        min-height: 100vh;
-    }
+:root {
+    --n-0: #ffffff;
+    --n-50: #fafafa;
+    --n-100: #f4f4f5;
+    --n-200: #e4e4e7;
+    --n-300: #d4d4d8;
+    --n-400: #a1a1aa;
+    --n-500: #71717a;
+    --n-600: #52525b;
+    --n-700: #3f3f46;
+    --n-800: #27272a;
+    --n-900: #18181b;
 
-    .management-content {
-        flex: 1;
-        padding: 1.5rem;
-        background: #F9F6F0;
-        min-height: 100vh;
-        overflow-y: auto;
-    }
+    --accent: var(--primary-color, #111827);
+    --accent-hover: #000000;
 
-    :root {
-        --primary: #2C3E50;
-        --secondary: #E8C07D;
-        --accent: #D4AF37;
-        --background: #F9F6F0;
-        --surface: #FFFFFF;
-        --text-primary: #2C3E50;
-        --text-secondary: #6B7A8A;
-        --border: #E5D9CC;
-        --success: #7A9E7E;
-        --success-light: #E8F0E9;
-        --error: #C44545;
-        --error-light: #F9E9E9;
-        --shadow-sm: 0 4px 20px rgba(44, 62, 80, 0.05);
-        --shadow-md: 0 8px 30px rgba(44, 62, 80, 0.08);
-        --shadow-lg: 0 20px 40px rgba(44, 62, 80, 0.12);
-    }
+    --success: #15803d;
+    --warning: #a16207;
+    --danger: #b91c1c;
 
-    body {
-        background: var(--background);
-        font-family: 'Inter', sans-serif;
-    }
+    --border: var(--n-200);
+    --border-strong: var(--n-300);
+    --text: var(--n-900);
+    --text-muted: var(--n-500);
+    --text-subtle: var(--n-400);
 
-    .policy-container {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
+    --radius-sm: 4px;
+    --radius: 6px;
+    --radius-lg: 10px;
+}
 
-    /* Toast Notifications */
-    .toast-container {
-        position: fixed;
-        top: 2rem;
-        right: 2rem;
-        z-index: 9999;
-        display: flex;
+.management-layout {
+    display: flex;
+    min-height: calc(100vh - 120px);
+    background: var(--n-50);
+}
+
+.management-content {
+    flex: 1;
+    padding: 2.5rem 2rem 4rem;
+    max-width: 1280px;
+    width: 100%;
+}
+
+/* ===== Context breadcrumb ===== */
+.catalog-context {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.context-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.15s;
+    font-weight: 500;
+}
+
+.context-back:hover { color: var(--text); }
+.context-back svg { transition: transform 0.15s; }
+.context-back:hover svg { transform: translateX(-2px); }
+.context-sep { color: var(--n-300); }
+.context-current { color: var(--text); font-weight: 500; }
+
+/* ===== Title row ===== */
+.catalog-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.catalog-title-block { min-width: 0; }
+
+.catalog-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    color: var(--text);
+    margin: 0 0 0.25rem 0;
+    line-height: 1.15;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.catalog-sub {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.catalog-actions {
+    display: flex;
+    gap: 0.375rem;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* ===== Status chip ===== */
+.status-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.1875rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    background: var(--n-100);
+    color: var(--n-700);
+    flex-shrink: 0;
+    line-height: 1.4;
+}
+
+.status-chip::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: currentColor;
+    flex-shrink: 0;
+}
+
+.status-chip.active {
+    background: #f0fdf4;
+    color: var(--success);
+}
+
+/* ===== Compliance chips ===== */
+.compliance-row {
+    display: flex;
+    gap: 0.375rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.compliance-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.625rem;
+    border-radius: 4px;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    line-height: 1.4;
+    transition: border-color 0.15s, color 0.15s;
+}
+
+.compliance-chip svg {
+    flex-shrink: 0;
+}
+
+.compliance-chip.active {
+    background: #f0fdf4;
+    border-color: #bbf7d0;
+    color: var(--success);
+}
+
+/* ===== Buttons ===== */
+.btn {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    border-radius: var(--radius);
+    padding: 0.5rem 0.875rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    line-height: 1.25;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: inherit;
+}
+
+.btn-ghost {
+    background: var(--n-0);
+    border-color: var(--border);
+    color: var(--n-700);
+}
+
+.btn-ghost:hover {
+    background: var(--n-50);
+    border-color: var(--border-strong);
+    color: var(--text);
+}
+
+.btn-accent {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+}
+
+.btn-accent:hover {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+    color: white;
+}
+
+.btn-danger-ghost {
+    background: transparent;
+    border-color: var(--border);
+    color: var(--n-700);
+}
+
+.btn-danger-ghost:hover {
+    background: #fef2f2;
+    border-color: var(--danger);
+    color: var(--danger);
+}
+
+/* ===== Panel ===== */
+.panel {
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.panel-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.875rem 1.125rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.panel-title {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0;
+    letter-spacing: -0.005em;
+}
+
+.panel-sub {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    margin: 0.125rem 0 0 0;
+}
+
+/* ===== Tabs ===== */
+.tabs-bar {
+    display: flex;
+    gap: 0;
+    padding: 0 1.125rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--n-0);
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.tabs-bar::-webkit-scrollbar { display: none; }
+
+.tab-btn {
+    padding: 0.75rem 0.875rem;
+    background: transparent;
+    border: none;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    font-family: inherit;
+    line-height: 1.4;
+}
+
+.tab-btn:hover {
+    color: var(--text);
+}
+
+.tab-btn.active {
+    color: var(--text);
+    border-bottom-color: var(--text);
+    font-weight: 600;
+}
+
+/* ===== Tab content ===== */
+.policy-body {
+    padding: 1.125rem;
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+/* ===== Fields ===== */
+.field {
+    margin-bottom: 1rem;
+}
+
+.field:last-child { margin-bottom: 0; }
+
+.field-label {
+    display: block;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--n-700);
+    margin-bottom: 0.375rem;
+}
+
+.field-help {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    margin-top: 0.375rem;
+    line-height: 1.5;
+}
+
+.form-control {
+    width: 100%;
+    font-size: 0.8125rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.5rem 0.75rem;
+    background: var(--n-0);
+    color: var(--text);
+    font-family: inherit;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    line-height: 1.5;
+}
+
+.form-control:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+    outline: none;
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* ===== Rich toolbar ===== */
+.rich-toolbar {
+    display: flex;
+    gap: 0.25rem;
+    padding: 0.375rem;
+    background: var(--n-50);
+    border: 1px solid var(--border);
+    border-bottom: none;
+    border-radius: var(--radius) var(--radius) 0 0;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.rich-toolbar + .form-control {
+    border-radius: 0 0 var(--radius) var(--radius);
+    border-top: none;
+}
+
+.toolbar-btn {
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    color: var(--n-600);
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    font-family: inherit;
+    font-weight: 600;
+    padding: 0;
+}
+
+.toolbar-btn:hover {
+    background: var(--n-0);
+    border-color: var(--border);
+    color: var(--text);
+}
+
+/* ===== Checkbox grid ===== */
+.checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.5rem;
+}
+
+.check-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.75rem 0.875rem;
+    background: var(--n-0);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background 0.1s, border-color 0.1s;
+}
+
+.check-card:hover {
+    background: var(--n-50);
+    border-color: var(--border-strong);
+}
+
+.check-card input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    accent-color: var(--n-900);
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.check-card-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.check-card-title {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.3;
+    margin: 0;
+}
+
+/* ===== Toggle switch ===== */
+.toggle-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1.125rem;
+    border-top: 1px solid var(--border);
+}
+
+.toggle {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 22px;
+    flex-shrink: 0;
+}
+
+.toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background: var(--n-300);
+    border-radius: 100px;
+    transition: background 0.2s;
+}
+
+.toggle-slider::before {
+    content: '';
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    left: 3px;
+    top: 3px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.2s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.toggle input:checked + .toggle-slider {
+    background: var(--accent);
+}
+
+.toggle input:checked + .toggle-slider::before {
+    transform: translateX(18px);
+}
+
+.toggle input:focus + .toggle-slider {
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+.toggle-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.toggle-title {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.3;
+    margin: 0 0 0.125rem 0;
+}
+
+.toggle-desc {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* ===== Sticky footer ===== */
+.form-footer {
+    position: sticky;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1.125rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    margin-top: 1rem;
+    flex-wrap: wrap;
+    z-index: 10;
+}
+
+.form-footer-msg {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+}
+
+.form-footer-actions {
+    display: flex;
+    gap: 0.375rem;
+    align-items: center;
+}
+
+/* ===== Auto-save status ===== */
+.auto-save-status {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--n-900);
+    color: white;
+    padding: 0.625rem 0.875rem;
+    border-radius: var(--radius);
+    font-size: 0.75rem;
+    font-weight: 500;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transform: translateY(150%);
+    transition: transform 0.25s ease;
+    z-index: 9998;
+    max-width: 320px;
+    pointer-events: none;
+}
+
+.auto-save-status.show {
+    transform: translateY(0);
+}
+
+.auto-save-status .save-spinner {
+    width: 12px;
+    height: 12px;
+    border: 1.5px solid rgba(255,255,255,0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    flex-shrink: 0;
+}
+
+.auto-save-status.saved .save-spinner {
+    display: none;
+}
+
+.auto-save-status.saved::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--success);
+    flex-shrink: 0;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.auto-save-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    min-width: 0;
+}
+
+.auto-save-text strong {
+    font-weight: 500;
+    font-size: 0.75rem;
+    color: white;
+}
+
+.auto-save-text small {
+    font-size: 0.6875rem;
+    color: rgba(255,255,255,0.6);
+    font-variant-numeric: tabular-nums;
+}
+
+/* ===== Toast ===== */
+.toast-stack {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    pointer-events: none;
+}
+
+.toast {
+    background: var(--n-900);
+    color: white;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    max-width: 360px;
+    pointer-events: auto;
+    animation: toastIn 0.2s ease;
+    line-height: 1.5;
+}
+
+.toast.error { background: var(--danger); }
+
+@keyframes toastIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+    .management-content { padding: 1.5rem 1rem 3rem; }
+
+    .catalog-title-row {
         flex-direction: column;
+        align-items: stretch;
         gap: 1rem;
     }
 
-    .toast {
-        min-width: 320px;
-        padding: 1rem 1.5rem;
-        background: var(--surface);
-        border-radius: 12px;
-        box-shadow: var(--shadow-lg);
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        transform: translateX(120%);
-        animation: slideIn 0.3s ease forwards;
-        border-left: 4px solid var(--success);
-        border: 1px solid var(--border);
-    }
-
-    @keyframes slideIn {
-        to { transform: translateX(0); }
-    }
-
-    /* Elegant Header */
-    .elegant-header {
-        text-align: center;
-        margin-bottom: 3rem;
-        position: relative;
-    }
-
-    .elegant-header::after {
-        content: '';
-        position: absolute;
-        bottom: -1rem;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 60px;
-        height: 2px;
-        background: linear-gradient(90deg, transparent, var(--secondary), transparent);
-    }
-
-    .elegant-header h1 {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 2.5rem;
-        color: var(--primary);
-        margin-bottom: 0.5rem;
-    }
-
-    .elegant-header p {
-        color: var(--text-secondary);
-        font-size: 1rem;
-    }
-
-    .store-badge {
-        display: inline-block;
-        background: var(--surface);
-        padding: 0.5rem 2rem;
-        border-radius: 50px;
-        font-size: 0.9rem;
-        color: var(--text-secondary);
-        box-shadow: var(--shadow-sm);
-        border: 1px solid var(--border);
-        margin-top: 1rem;
-    }
-
-    .store-badge i {
-        color: var(--secondary);
-        margin-right: 0.5rem;
-    }
-
-    .store-badge a {
-        text-decoration: none;
-        color: inherit;
-    }
-
-    /* Main Card */
-    .privacy-card {
-        background: var(--surface);
-        border-radius: 30px;
-        box-shadow: var(--shadow-lg);
-        overflow: hidden;
-        border: 1px solid var(--border);
-    }
-
-    .privacy-card-header {
-        padding: 1.5rem 2rem;
-        background: var(--background);
-        border-bottom: 1px solid var(--border);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 1rem;
-    }
-
-    .privacy-card-header h2 {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 1.5rem;
-        color: var(--primary);
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-
-    .privacy-card-header h2 i {
-        color: var(--secondary);
-    }
-
-    .status-badge {
-        padding: 0.4rem 1.2rem;
-        border-radius: 50px;
-        font-size: 0.85rem;
-        background: var(--surface);
-        border: 1px solid var(--border);
-        color: var(--text-secondary);
-    }
-
-    .status-badge.active {
-        background: var(--success-light);
-        color: var(--success);
-        border-color: var(--success);
-    }
-
-    /* Compliance Badges */
-    .compliance-badges {
-        display: flex;
-        gap: 1rem;
-        margin-top: 1rem;
-        flex-wrap: wrap;
-    }
-
-    .compliance-badge {
-        padding: 0.5rem 1.2rem;
-        border-radius: 50px;
-        font-size: 0.85rem;
-        font-weight: 500;
-        background: var(--background);
-        border: 1px solid var(--border);
-        color: var(--text-secondary);
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-
-    .compliance-badge.active {
-        background: var(--success-light);
-        color: var(--success);
-        border-color: var(--success);
-    }
-
-    .compliance-badge i {
-        font-size: 1rem;
-    }
-
-    /* Tabs */
-    .tabs-container {
-        padding: 0 2rem;
-        background: var(--surface);
-        border-bottom: 1px solid var(--border);
-    }
-
-    .tabs {
-        display: flex;
-        gap: 0.5rem;
-        overflow-x: auto;
-        padding: 0.5rem 0;
-        scrollbar-width: none;
-    }
-
-    .tabs::-webkit-scrollbar {
-        display: none;
-    }
-
-    .tab-btn {
-        padding: 0.8rem 1.5rem;
-        background: transparent;
-        border: none;
-        border-radius: 8px 8px 0 0;
-        font-size: 0.95rem;
-        font-weight: 500;
-        color: var(--text-secondary);
-        cursor: pointer;
-        transition: all 0.2s ease;
-        white-space: nowrap;
-        border-bottom: 2px solid transparent;
-    }
-
-    .tab-btn:hover {
-        color: var(--primary);
-        background: var(--background);
-    }
-
-    .tab-btn.active {
-        color: var(--secondary);
-        border-bottom-color: var(--secondary);
-        background: var(--background);
-    }
-
-    /* Form Sections */
-    .privacy-form {
-        padding: 2rem;
-    }
-
-    .tab-pane {
-        display: none;
-    }
-
-    .tab-pane.active {
-        display: block;
-        animation: fadeIn 0.3s ease;
-    }
-
-    @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-    }
-
-    .form-section {
-        margin-bottom: 2rem;
-        padding: 1.5rem;
-        background: var(--background);
-        border-radius: 16px;
-        border: 1px solid var(--border);
-    }
-
-    .section-title {
-        display: flex;
-        align-items: center;
-        gap: 0.8rem;
-        margin-bottom: 1.5rem;
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 1.2rem;
-        color: var(--primary);
-        padding-bottom: 0.5rem;
-        border-bottom: 1px solid var(--border);
-    }
-
-    .section-title i {
-        color: var(--secondary);
-        font-size: 1.1rem;
-    }
-
-    .form-group {
-        margin-bottom: 1.5rem;
-    }
-
-    .form-label {
-        display: block;
-        margin-bottom: 0.5rem;
-        font-weight: 500;
-        color: var(--text-primary);
-        font-size: 0.9rem;
-    }
+    .catalog-actions { justify-content: flex-start; flex-wrap: wrap; }
 
-    .form-control {
-        width: 100%;
-        padding: 0.8rem 1rem;
-        border: 2px solid var(--border);
-        border-radius: 12px;
-        font-size: 0.95rem;
-        transition: all 0.2s ease;
-        background: var(--surface);
-        font-family: 'Inter', sans-serif;
+    .form-footer {
+        flex-direction: column;
+        align-items: stretch;
     }
-
-    .form-control:focus {
-        outline: none;
-        border-color: var(--secondary);
-        box-shadow: 0 0 0 4px rgba(232, 192, 125, 0.1);
-    }
-
-    textarea.form-control {
-        min-height: 120px;
-        resize: vertical;
-        line-height: 1.6;
-    }
-
-    /* Rich Text Toolbar */
-    .rich-toolbar {
-        background: var(--surface);
-        border: 2px solid var(--border);
-        border-bottom: none;
-        border-radius: 12px 12px 0 0;
-        padding: 0.5rem;
-        display: flex;
-        gap: 0.3rem;
-        flex-wrap: wrap;
-    }
-
-    .toolbar-btn {
-        padding: 0.4rem 0.8rem;
-        background: var(--background);
-        border: 1px solid var(--border);
-        border-radius: 6px;
-        color: var(--text-primary);
-        font-size: 0.85rem;
-        cursor: pointer;
-        transition: all 0.2s ease;
-    }
-
-    .toolbar-btn:hover {
-        background: var(--secondary);
-        color: var(--surface);
-        border-color: var(--secondary);
-    }
-
-    /* Checkbox Grid */
-    .checkbox-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1rem;
-        margin-top: 1rem;
-    }
-
-    .checkbox-item {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.5rem;
-        background: var(--surface);
-        border-radius: 8px;
-        border: 1px solid var(--border);
-    }
-
-    .checkbox-item input[type="checkbox"] {
-        width: 18px;
-        height: 18px;
-        cursor: pointer;
-    }
-
-    .checkbox-item label {
-        font-size: 0.9rem;
-        color: var(--text-primary);
-        cursor: pointer;
-    }
-
-    /* Toggle Switch */
-    .toggle-switch {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        padding: 1rem 0;
-    }
-
-    .toggle-switch-label {
-        display: flex;
-        align-items: center;
-        gap: 0.8rem;
-        cursor: pointer;
-    }
-
-    .toggle-switch input[type="checkbox"] {
-        width: 48px;
-        height: 24px;
-        appearance: none;
-        background: var(--border);
-        border-radius: 12px;
-        position: relative;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-
-    .toggle-switch input[type="checkbox"]:checked {
-        background: var(--secondary);
-    }
-
-    .toggle-switch input[type="checkbox"]::before {
-        content: '';
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        background: var(--surface);
-        border-radius: 50%;
-        top: 2px;
-        left: 2px;
-        transition: all 0.3s ease;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    .toggle-switch input[type="checkbox"]:checked::before {
-        left: 26px;
-    }
-
-    .toggle-text {
-        font-size: 0.95rem;
-        color: var(--text-primary);
-    }
-
-    .toggle-text small {
-        color: var(--text-secondary);
-        font-size: 0.8rem;
-        display: block;
-        margin-top: 0.2rem;
+    .form-footer-actions {
+        justify-content: stretch;
     }
-
-    /* Form Actions */
-    .form-actions {
-        display: flex;
-        gap: 1rem;
-        justify-content: flex-end;
-        margin-top: 2rem;
-        padding-top: 2rem;
-        border-top: 1px solid var(--border);
-    }
-
-    .btn {
-        padding: 0.8rem 2rem;
-        border-radius: 50px;
-        font-weight: 500;
-        font-size: 0.95rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        border: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-family: 'Inter', sans-serif;
-    }
-
-    .btn-primary {
-        background: var(--primary);
-        color: var(--surface);
-        box-shadow: 0 4px 12px rgba(44, 62, 80, 0.2);
-    }
-
-    .btn-primary:hover {
-        background: #1A2A38;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 16px rgba(44, 62, 80, 0.3);
-    }
-
-    .btn-secondary {
-        background: var(--surface);
-        color: var(--text-primary);
-        border: 2px solid var(--border);
-    }
-
-    .btn-secondary:hover {
-        border-color: var(--secondary);
-        color: var(--secondary);
-    }
-
-    .btn-danger {
-        background: var(--surface);
-        color: var(--error);
-        border: 2px solid var(--error-light);
-    }
-
-    .btn-danger:hover {
-        background: var(--error);
-        color: var(--surface);
-    }
-
-    /* Auto-save Indicator */
-    .auto-save-status {
-        position: fixed;
-        bottom: 2rem;
-        right: 2rem;
-        background: var(--surface);
-        padding: 0.75rem 1.5rem;
-        border-radius: 50px;
-        box-shadow: var(--shadow-md);
-        display: flex;
-        align-items: center;
-        gap: 0.8rem;
-        border: 1px solid var(--border);
-        transform: translateY(150%);
-        transition: transform 0.3s ease;
-        z-index: 9998;
+    .form-footer-actions .btn {
+        flex: 1;
+        justify-content: center;
     }
+}
 
-    .auto-save-status.show {
-        transform: translateY(0);
-    }
-
-    .auto-save-status.saving {
-        border-left: 4px solid var(--secondary);
-    }
-
-    .auto-save-status.saved {
-        border-left: 4px solid var(--success);
-    }
-
-    .save-spinner {
-        width: 20px;
-        height: 20px;
-        border: 2px solid var(--border);
-        border-top-color: var(--secondary);
-        border-radius: 50%;
-        animation: spin 0.8s linear infinite;
-    }
-
-    @keyframes spin {
-        to { transform: rotate(360deg); }
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-        .management-layout {
-            flex-direction: column;
-        }
-        
-        .management-content {
-            width: 100%;
-            padding: 1rem;
-        }
-        
-        .policy-container {
-            padding: 0;
-        }
-        
-        .privacy-card-header {
-            flex-direction: column;
-            text-align: center;
-        }
-
-        .tabs {
-            justify-content: flex-start;
-        }
-
-        .form-actions {
-            flex-direction: column;
-        }
-
-        .btn {
-            width: 100%;
-            justify-content: center;
-        }
-
-        .checkbox-grid {
-            grid-template-columns: 1fr;
-        }
-
-        .toast-container {
-            left: 1rem;
-            right: 1rem;
-        }
-
-        .toast {
-            min-width: auto;
-        }
-        
-        .auto-save-status {
-            bottom: 1rem;
-            right: 1rem;
-            left: 1rem;
-            padding: 0.75rem 1rem;
-        }
-    }
+@media (max-width: 640px) {
+    .catalog-title { font-size: 1.375rem; }
+    .auto-save-status { left: 1rem; right: 1rem; max-width: none; }
+}
 </style>
 {% endblock %}
 
 {% block content %}
-<!-- Toast Container -->
-<div class="toast-container" id="toastContainer"></div>
 
-<!-- Auto-save Status -->
+<div class="toast-stack" id="toastStack"></div>
+
+<!-- Auto-save status (floating) -->
 <div class="auto-save-status" id="autoSaveStatus">
-    <div class="save-spinner" id="saveSpinner"></div>
-    <div>
-        <div id="saveStatusText">Saving changes...</div>
-        <small id="saveStatusDetail" style="color: var(--text-secondary);"></small>
+    <div class="save-spinner"></div>
+    <div class="auto-save-text">
+        <strong id="saveStatusText">Saving changes…</strong>
+        <small id="saveStatusDetail"></small>
     </div>
 </div>
 
-<div class="container-fluid py-4">
-    <!-- Management Layout with Sidebar -->
-    <div class="management-layout">
-        <!-- Include Sidebar Snippet with active_menu='privacy' -->
-        {% include 'builder/includes/sidebar.html' with active_menu='privacy' %}
-        
-        <!-- Main Content -->
-        <div class="management-content">
-            <div class="policy-container">
-                <!-- Elegant Header -->
-                <div class="elegant-header">
-                    <h1>Privacy Policy</h1>
-                    <p>Tell customers how you handle their data</p>
-                    <div class="store-badge">
-                        <a href="{% url 'manage_products' subdomain=page.subdomain %}">
-                            <i class="fas fa-store-alt"></i>
-                            {{ page.brand_name }}
-                        </a>
-                    </div>
-                </div>
+<div class="management-layout">
+    {% include 'builder/includes/sidebar.html' with active_menu='privacy' %}
 
-                <!-- Main Card -->
-                <div class="privacy-card">
-                    <div class="privacy-card-header">
-                        <h2>
-                            <i class="fas fa-shield-alt"></i>
-                            Privacy Policy Editor
-                        </h2>
-                        <div class="status-badge {% if privacy and privacy.is_active %}active{% endif %}" id="statusBadge">
-                            <i class="fas {% if privacy and privacy.is_active %}fa-check-circle{% else %}fa-clock{% endif %}"></i>
-                            <span id="statusText">{% if privacy and privacy.is_active %}Active{% else %}Draft{% endif %}</span>
-                        </div>
-                    </div>
+    <div class="management-content">
 
-                    <!-- Compliance Badges -->
-                    <div style="padding: 0 2rem;">
-                        <div class="compliance-badges">
-                            <div class="compliance-badge {% if privacy and privacy.gdpr_compliant %}active{% endif %}">
-                                <i class="fab fa-european-union"></i>
-                                GDPR
-                            </div>
-                            <div class="compliance-badge {% if privacy and privacy.ccpa_compliant %}active{% endif %}">
-                                <i class="fas fa-flag-usa"></i>
-                                CCPA
-                            </div>
-                        </div>
-                    </div>
+        <!-- Context -->
+        <div class="catalog-context">
+            <a href="{% url 'dashboard' %}" class="context-back">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                <span>Dashboard</span>
+            </a>
+            <span class="context-sep">/</span>
+            <a href="{% url 'manage_products' subdomain=page.subdomain %}" class="context-back">
+                <span>{{ page.brand_name }}</span>
+            </a>
+            <span class="context-sep">/</span>
+            <span class="context-current">Privacy policy</span>
+        </div>
 
-                    <!-- Tabs Navigation -->
-                    <div class="tabs-container">
-                        <div class="tabs">
-                            <button class="tab-btn active" data-tab="full">Full Policy</button>
-                            <button class="tab-btn" data-tab="intro">Introduction</button>
-                            <button class="tab-btn" data-tab="collection">Information Collection</button>
-                            <button class="tab-btn" data-tab="usage">How We Use</button>
-                            <button class="tab-btn" data-tab="cookies">Cookies</button>
-                            <button class="tab-btn" data-tab="thirdparty">Third Party</button>
-                            <button class="tab-btn" data-tab="security">Security</button>
-                            <button class="tab-btn" data-tab="rights">Your Rights</button>
-                            <button class="tab-btn" data-tab="children">Children</button>
-                            <button class="tab-btn" data-tab="international">International</button>
-                            <button class="tab-btn" data-tab="changes">Policy Changes</button>
-                            <button class="tab-btn" data-tab="contact">Contact</button>
-                        </div>
-                    </div>
-
-                    <form method="post" class="privacy-form" id="privacyForm" data-subdomain="{{ page.subdomain }}">
-                        {% csrf_token %}
-                        
-                        <!-- Full Policy Tab -->
-                        <div class="tab-pane active" id="tab-full">
-                            <div class="form-section">
-                                <div class="section-title">
-                                    <i class="fas fa-file-contract"></i>
-                                    <span>Complete Privacy Policy</span>
-                                </div>
-                                
-                                <!-- Rich Text Toolbar -->
-                                <div class="rich-toolbar">
-                                    <button type="button" class="toolbar-btn" onclick="insertFormat('full_content', 'bold')"><i class="fas fa-bold"></i></button>
-                                    <button type="button" class="toolbar-btn" onclick="insertFormat('full_content', 'italic')"><i class="fas fa-italic"></i></button>
-                                    <button type="button" class="toolbar-btn" onclick="insertFormat('full_content', 'underline')"><i class="fas fa-underline"></i></button>
-                                    <button type="button" class="toolbar-btn" onclick="insertFormat('full_content', 'h2')">H2</button>
-                                    <button type="button" class="toolbar-btn" onclick="insertFormat('full_content', 'h3')">H3</button>
-                                    <button type="button" class="toolbar-btn" onclick="insertFormat('full_content', 'link')"><i class="fas fa-link"></i></button>
-                                    <button type="button" class="toolbar-btn" onclick="insertFormat('full_content', 'ul')"><i class="fas fa-list-ul"></i></button>
-                                    <button type="button" class="toolbar-btn" onclick="insertFormat('full_content', 'ol')"><i class="fas fa-list-ol"></i></button>
-                                </div>
-                                
-                                <textarea class="form-control" name="content" id="full_content" placeholder="Enter your complete privacy policy here..." rows="15">{{ privacy.content|default:'' }}</textarea>
-                                <small class="input-hint"><i class="fas fa-info-circle"></i> You can write HTML or plain text. This will override individual sections if filled.</small>
-                            </div>
-                        </div>
-
-                        <!-- Introduction Tab -->
-                        <div class="tab-pane" id="tab-intro">
-                            <div class="form-section">
-                                <div class="section-title">
-                                    <i class="fas fa-hand-peace"></i>
-                                    <span>Introduction</span>
-                                </div>
-                                <textarea class="form-control" name="introduction" rows="8" placeholder="Welcome message and overview of your privacy practices...">{{ privacy.introduction|default:'' }}</textarea>
-                            </div>
-                        </div>
-
-                        <!-- Information Collection Tab -->
-                        <div class="tab-pane" id="tab-collection">
-                            <div class="form-section">
-                                <div class="section-title">
-                                    <i class="fas fa-database"></i>
-                                    <span>Information We Collect</span>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label class="form-label">Personal Information</label>
-                                    <textarea class="form-control" name="information_collected" rows="6" placeholder="What personal information do you collect (name, email, address, etc.)...">{{ privacy.information_collected|default:'' }}</textarea>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label class="form-label">Automatically Collected Information</label>
-                                    <textarea class="form-control" name="automatic_info" rows="4" placeholder="IP addresses, browser type, device info, etc...">{{ privacy.automatic_info|default:'' }}</textarea>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- How We Use Tab -->
-                        <div class="tab-pane" id="tab-usage">
-                            <div class="form-section">
-                                <div class="section-title">
-                                    <i class="fas fa-gear"></i>
-                                    <span>How We Use Your Information</span>
-                                </div>
-                                <textarea class="form-control" name="how_we_use" rows="8" placeholder="Processing orders, improving service, marketing, etc...">{{ privacy.how_we_use|default:'' }}</textarea>
-                            </div>
-                        </div>
-
-                        <!-- Cookies Tab -->
-                        <div class="tab-pane" id="tab-cookies">
-                            <div class="form-section">
-                                <div class="section-title">
-                                    <i class="fas fa-cookie-bite"></i>
-                                    <span>Cookie Policy</span>
-                                </div>
-                                <textarea class="form-control" name="cookies" rows="8" placeholder="What cookies you use, why, and how users can control them...">{{ privacy.cookies|default:'' }}</textarea>
-                            </div>
-                        </div>
-
-                        <!-- Third Party Tab -->
-                        <div class="tab-pane" id="tab-thirdparty">
-                            <div class="form-section">
-                                <div class="section-title">
-                                    <i class="fas fa-share-nodes"></i>
-                                    <span>Third-Party Disclosure</span>
-                                </div>
-                                <textarea class="form-control" name="third_party" rows="6" placeholder="Do you share data with third parties? Payment processors, analytics, etc...">{{ privacy.third_party|default:'' }}</textarea>
-                            </div>
-                        </div>
-
-                        <!-- Security Tab -->
-                        <div class="tab-pane" id="tab-security">
-                            <div class="form-section">
-                                <div class="section-title">
-                                    <i class="fas fa-lock"></i>
-                                    <span>Data Security</span>
-                                </div>
-                                <textarea class="form-control" name="data_security" rows="6" placeholder="How you protect user data (encryption, security measures, etc.)...">{{ privacy.data_security|default:'' }}</textarea>
-                            </div>
-                        </div>
-
-                        <!-- Your Rights Tab -->
-                        <div class="tab-pane" id="tab-rights">
-                            <div class="form-section">
-                                <div class="section-title">
-                                    <i class="fas fa-scale-balanced"></i>
-                                    <span>Your Privacy Rights</span>
-                                </div>
-                                <textarea class="form-control" name="your_rights" rows="8" placeholder="Access, correction, deletion, opt-out rights, etc...">{{ privacy.your_rights|default:'' }}</textarea>
-                            </div>
-                        </div>
-
-                        <!-- Children Tab -->
-                        <div class="tab-pane" id="tab-children">
-                            <div class="form-section">
-                                <div class="section-title">
-                                    <i class="fas fa-child"></i>
-                                    <span>Children's Privacy</span>
-                                </div>
-                                <textarea class="form-control" name="children_privacy" rows="6" placeholder="COPPA compliance, age restrictions, etc...">{{ privacy.children_privacy|default:'' }}</textarea>
-                            </div>
-                        </div>
-
-                        <!-- International Tab -->
-                        <div class="tab-pane" id="tab-international">
-                            <div class="form-section">
-                                <div class="section-title">
-                                    <i class="fas fa-globe"></i>
-                                    <span>International Data Transfers</span>
-                                </div>
-                                <textarea class="form-control" name="international_transfers" rows="6" placeholder="If you transfer data across borders, how you handle it...">{{ privacy.international_transfers|default:'' }}</textarea>
-                            </div>
-                        </div>
-
-                        <!-- Policy Changes Tab -->
-                        <div class="tab-pane" id="tab-changes">
-                            <div class="form-section">
-                                <div class="section-title">
-                                    <i class="fas fa-clock-rotate-left"></i>
-                                    <span>Changes to This Policy</span>
-                                </div>
-                                <textarea class="form-control" name="policy_changes" rows="4" placeholder="How you notify users of policy updates...">{{ privacy.policy_changes|default:'' }}</textarea>
-                            </div>
-                        </div>
-
-                        <!-- Contact Tab -->
-                        <div class="tab-pane" id="tab-contact">
-                            <div class="form-section">
-                                <div class="section-title">
-                                    <i class="fas fa-envelope"></i>
-                                    <span>Contact Information</span>
-                                </div>
-                                <textarea class="form-control" name="contact_info" rows="5" placeholder="Email, address, phone for privacy questions...">{{ privacy.contact_info|default:'' }}</textarea>
-                            </div>
-                        </div>
-
-                        <!-- Compliance and Status Section -->
-                        <div class="form-section">
-                            <div class="section-title">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Compliance & Status</span>
-                            </div>
-                            
-                            <div class="checkbox-grid">
-                                <div class="checkbox-item">
-                                    <input type="checkbox" name="gdpr_compliant" id="gdpr_compliant" {% if privacy and privacy.gdpr_compliant %}checked{% endif %}>
-                                    <label for="gdpr_compliant">GDPR Compliant (EU)</label>
-                                </div>
-                                <div class="checkbox-item">
-                                    <input type="checkbox" name="ccpa_compliant" id="ccpa_compliant" {% if privacy and privacy.ccpa_compliant %}checked{% endif %}>
-                                    <label for="ccpa_compliant">CCPA Compliant (California)</label>
-                                </div>
-                            </div>
-                            
-                            <div class="toggle-switch">
-                                <label class="toggle-switch-label">
-                                    <input type="checkbox" name="is_active" id="isActiveToggle" {% if privacy and privacy.is_active %}checked{% endif %}>
-                                    <span class="toggle-text">
-                                        Make privacy policy active
-                                        <small>When active, this policy will be visible to customers</small>
-                                    </span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- Form Actions -->
-                        <div class="form-actions">
-                            <button type="button" class="btn btn-secondary" onclick="window.history.back()">
-                                <i class="fas fa-times"></i> Cancel
-                            </button>
-                            <button type="submit" class="btn btn-primary" id="saveButton">
-                                <i class="fas fa-save"></i> Save Privacy Policy
-                            </button>
-                            {% if privacy %}
-                            <button type="button" class="btn btn-danger" onclick="deletePrivacy()">
-                                <i class="fas fa-trash"></i> Delete
-                            </button>
-                            {% endif %}
-                        </div>
-                    </form>
-                </div>
+        <!-- Title -->
+        <div class="catalog-title-row">
+            <div class="catalog-title-block">
+                <h1 class="catalog-title">
+                    Privacy policy
+                    <span class="status-chip {% if privacy and privacy.is_active %}active{% endif %}" id="statusBadge">
+                        <span id="statusText">{% if privacy and privacy.is_active %}Active{% else %}Draft{% endif %}</span>
+                    </span>
+                </h1>
+                <p class="catalog-sub">Tell customers how you handle their data</p>
+            </div>
+            <div class="catalog-actions">
+                <button type="button" class="btn btn-ghost" onclick="window.history.back()">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    <span>Back</span>
+                </button>
             </div>
         </div>
+
+        <!-- Compliance badges -->
+        <div class="compliance-row">
+            <div class="compliance-chip {% if privacy and privacy.gdpr_compliant %}active{% endif %}" id="gdprBadge">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 2v20M2 12h20"/>
+                </svg>
+                <span>GDPR</span>
+            </div>
+            <div class="compliance-chip {% if privacy and privacy.ccpa_compliant %}active{% endif %}" id="ccpaBadge">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2 3 7v6c0 5 3.5 9 9 9s9-4 9-9V7z"/>
+                </svg>
+                <span>CCPA</span>
+            </div>
+        </div>
+
+        <!-- Policy editor -->
+        <form method="post" id="privacyForm" data-subdomain="{{ page.subdomain }}">
+            {% csrf_token %}
+
+            <div class="panel">
+                <div class="panel-head">
+                    <div>
+                        <h2 class="panel-title">Privacy policy editor</h2>
+                        <p class="panel-sub">Fill in the sections you want to use</p>
+                    </div>
+                </div>
+
+                <!-- Tabs -->
+                <div class="tabs-bar">
+                    <button type="button" class="tab-btn active" data-tab="full">Full policy</button>
+                    <button type="button" class="tab-btn" data-tab="intro">Introduction</button>
+                    <button type="button" class="tab-btn" data-tab="collection">Collection</button>
+                    <button type="button" class="tab-btn" data-tab="usage">Usage</button>
+                    <button type="button" class="tab-btn" data-tab="cookies">Cookies</button>
+                    <button type="button" class="tab-btn" data-tab="thirdparty">Third party</button>
+                    <button type="button" class="tab-btn" data-tab="security">Security</button>
+                    <button type="button" class="tab-btn" data-tab="rights">Your rights</button>
+                    <button type="button" class="tab-btn" data-tab="children">Children</button>
+                    <button type="button" class="tab-btn" data-tab="international">International</button>
+                    <button type="button" class="tab-btn" data-tab="changes">Changes</button>
+                    <button type="button" class="tab-btn" data-tab="contact">Contact</button>
+                </div>
+
+                <!-- Body -->
+                <div class="policy-body">
+
+                    <!-- Full policy -->
+                    <div class="tab-pane active" id="tab-full">
+                        <div class="field">
+                            <label class="field-label" for="full_content">Complete privacy policy</label>
+
+                            <div class="rich-toolbar">
+                                <button type="button" class="toolbar-btn" onclick="insertFormat('full_content', 'bold')" title="Bold"><i class="fas fa-bold"></i></button>
+                                <button type="button" class="toolbar-btn" onclick="insertFormat('full_content', 'italic')" title="Italic"><i class="fas fa-italic"></i></button>
+                                <button type="button" class="toolbar-btn" onclick="insertFormat('full_content', 'underline')" title="Underline"><i class="fas fa-underline"></i></button>
+                                <button type="button" class="toolbar-btn" onclick="insertFormat('full_content', 'h2')" title="Heading 2">H2</button>
+                                <button type="button" class="toolbar-btn" onclick="insertFormat('full_content', 'h3')" title="Heading 3">H3</button>
+                                <button type="button" class="toolbar-btn" onclick="insertFormat('full_content', 'link')" title="Link"><i class="fas fa-link"></i></button>
+                                <button type="button" class="toolbar-btn" onclick="insertFormat('full_content', 'ul')" title="Bulleted list"><i class="fas fa-list-ul"></i></button>
+                                <button type="button" class="toolbar-btn" onclick="insertFormat('full_content', 'ol')" title="Numbered list"><i class="fas fa-list-ol"></i></button>
+                            </div>
+
+                            <textarea class="form-control" name="content" id="full_content" rows="14" placeholder="Enter your complete privacy policy here…">{{ privacy.content|default:'' }}</textarea>
+                            <div class="field-help">
+                                Write HTML or plain text. If filled, this overrides the individual sections below.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Introduction -->
+                    <div class="tab-pane" id="tab-intro">
+                        <div class="field">
+                            <label class="field-label" for="introduction">Introduction</label>
+                            <textarea class="form-control" name="introduction" id="introduction" rows="8" placeholder="Welcome message and overview of your privacy practices…">{{ privacy.introduction|default:'' }}</textarea>
+                        </div>
+                    </div>
+
+                    <!-- Collection -->
+                    <div class="tab-pane" id="tab-collection">
+                        <div class="field">
+                            <label class="field-label" for="information_collected">Personal information</label>
+                            <textarea class="form-control" name="information_collected" id="information_collected" rows="6" placeholder="What personal information do you collect — name, email, address, etc.…">{{ privacy.information_collected|default:'' }}</textarea>
+                        </div>
+
+                        <div class="field">
+                            <label class="field-label" for="automatic_info">Automatically collected information</label>
+                            <textarea class="form-control" name="automatic_info" id="automatic_info" rows="4" placeholder="IP addresses, browser type, device info, etc.…">{{ privacy.automatic_info|default:'' }}</textarea>
+                        </div>
+                    </div>
+
+                    <!-- Usage -->
+                    <div class="tab-pane" id="tab-usage">
+                        <div class="field">
+                            <label class="field-label" for="how_we_use">How we use your information</label>
+                            <textarea class="form-control" name="how_we_use" id="how_we_use" rows="8" placeholder="Processing orders, improving service, marketing, etc.…">{{ privacy.how_we_use|default:'' }}</textarea>
+                        </div>
+                    </div>
+
+                    <!-- Cookies -->
+                    <div class="tab-pane" id="tab-cookies">
+                        <div class="field">
+                            <label class="field-label" for="cookies">Cookie policy</label>
+                            <textarea class="form-control" name="cookies" id="cookies" rows="8" placeholder="What cookies you use, why, and how users can control them…">{{ privacy.cookies|default:'' }}</textarea>
+                        </div>
+                    </div>
+
+                    <!-- Third party -->
+                    <div class="tab-pane" id="tab-thirdparty">
+                        <div class="field">
+                            <label class="field-label" for="third_party">Third-party disclosure</label>
+                            <textarea class="form-control" name="third_party" id="third_party" rows="6" placeholder="Do you share data with third parties? Payment processors, analytics, etc.…">{{ privacy.third_party|default:'' }}</textarea>
+                        </div>
+                    </div>
+
+                    <!-- Security -->
+                    <div class="tab-pane" id="tab-security">
+                        <div class="field">
+                            <label class="field-label" for="data_security">Data security</label>
+                            <textarea class="form-control" name="data_security" id="data_security" rows="6" placeholder="How you protect user data — encryption, security measures, etc.…">{{ privacy.data_security|default:'' }}</textarea>
+                        </div>
+                    </div>
+
+                    <!-- Rights -->
+                    <div class="tab-pane" id="tab-rights">
+                        <div class="field">
+                            <label class="field-label" for="your_rights">Your privacy rights</label>
+                            <textarea class="form-control" name="your_rights" id="your_rights" rows="8" placeholder="Access, correction, deletion, opt-out rights, etc.…">{{ privacy.your_rights|default:'' }}</textarea>
+                        </div>
+                    </div>
+
+                    <!-- Children -->
+                    <div class="tab-pane" id="tab-children">
+                        <div class="field">
+                            <label class="field-label" for="children_privacy">Children's privacy</label>
+                            <textarea class="form-control" name="children_privacy" id="children_privacy" rows="6" placeholder="COPPA compliance, age restrictions, etc.…">{{ privacy.children_privacy|default:'' }}</textarea>
+                        </div>
+                    </div>
+
+                    <!-- International -->
+                    <div class="tab-pane" id="tab-international">
+                        <div class="field">
+                            <label class="field-label" for="international_transfers">International data transfers</label>
+                            <textarea class="form-control" name="international_transfers" id="international_transfers" rows="6" placeholder="If you transfer data across borders, how you handle it…">{{ privacy.international_transfers|default:'' }}</textarea>
+                        </div>
+                    </div>
+
+                    <!-- Changes -->
+                    <div class="tab-pane" id="tab-changes">
+                        <div class="field">
+                            <label class="field-label" for="policy_changes">Changes to this policy</label>
+                            <textarea class="form-control" name="policy_changes" id="policy_changes" rows="4" placeholder="How you notify users of policy updates…">{{ privacy.policy_changes|default:'' }}</textarea>
+                        </div>
+                    </div>
+
+                    <!-- Contact -->
+                    <div class="tab-pane" id="tab-contact">
+                        <div class="field">
+                            <label class="field-label" for="contact_info">Contact information</label>
+                            <textarea class="form-control" name="contact_info" id="contact_info" rows="5" placeholder="Email, address, phone for privacy questions…">{{ privacy.contact_info|default:'' }}</textarea>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Compliance -->
+                <div class="panel-head" style="border-top: 1px solid var(--border); border-bottom: none;">
+                    <div>
+                        <h2 class="panel-title">Compliance</h2>
+                        <p class="panel-sub">Which regulations this policy covers</p>
+                    </div>
+                </div>
+
+                <div class="policy-body" style="padding-top: 0;">
+                    <div class="checkbox-grid">
+                        <label class="check-card" for="gdpr_compliant">
+                            <input type="checkbox" name="gdpr_compliant" id="gdpr_compliant"
+                                   {% if privacy and privacy.gdpr_compliant %}checked{% endif %}>
+                            <div class="check-card-body">
+                                <p class="check-card-title">GDPR compliant (EU)</p>
+                            </div>
+                        </label>
+
+                        <label class="check-card" for="ccpa_compliant">
+                            <input type="checkbox" name="ccpa_compliant" id="ccpa_compliant"
+                                   {% if privacy and privacy.ccpa_compliant %}checked{% endif %}>
+                            <div class="check-card-body">
+                                <p class="check-card-title">CCPA compliant (California)</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Activation -->
+                <div class="toggle-row">
+                    <label class="toggle">
+                        <input type="checkbox" name="is_active" id="isActiveToggle"
+                               {% if privacy and privacy.is_active %}checked{% endif %}>
+                        <span class="toggle-slider"></span>
+                    </label>
+                    <div class="toggle-body">
+                        <p class="toggle-title">Make privacy policy active</p>
+                        <p class="toggle-desc">When active, this policy is visible to your customers.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Sticky footer -->
+            <div class="form-footer">
+                <span class="form-footer-msg">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 16v-4M12 8h.01"/>
+                    </svg>
+                    Changes save automatically
+                </span>
+                <div class="form-footer-actions">
+                    <button type="button" class="btn btn-ghost" onclick="window.history.back()">
+                        <span>Cancel</span>
+                    </button>
+                    {% if privacy %}
+                    <button type="button" class="btn btn-danger-ghost" onclick="deletePrivacy()">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/>
+                        </svg>
+                        <span>Delete</span>
+                    </button>
+                    {% endif %}
+                    <button type="submit" class="btn btn-accent" id="saveButton">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 6 9 17l-5-5"/>
+                        </svg>
+                        <span>Save policy</span>
+                    </button>
+                </div>
+            </div>
+
+        </form>
+
     </div>
 </div>
 
 <script>
-// Toast Notification System
-class Toast {
-    constructor() {
-        this.container = document.getElementById('toastContainer');
-    }
+/* ============ Toast ============ */
+function toast(message, type = 'info', duration = 4000) {
+    const stack = document.getElementById('toastStack');
+    if (!stack) return;
 
-    show(message, type = 'success', duration = 5000) {
-        const toast = document.createElement('div');
-        toast.className = `toast ${type}`;
-        
-        const icons = {
-            success: 'fa-check-circle',
-            error: 'fa-exclamation-circle',
-            info: 'fa-info-circle'
-        };
-
-        toast.innerHTML = `
-            <div class="toast-icon" style="color: var(--${type === 'success' ? 'success' : type === 'error' ? 'error' : 'secondary'})">
-                <i class="fas ${icons[type]}"></i>
-            </div>
-            <div class="toast-content">
-                <div class="toast-title">${type.charAt(0).toUpperCase() + type.slice(1)}</div>
-                <div class="toast-message">${message}</div>
-            </div>
-            <div class="toast-close" onclick="this.parentElement.remove()">
-                <i class="fas fa-times"></i>
-            </div>
-        `;
-
-        this.container.appendChild(toast);
-
-        setTimeout(() => {
-            if (toast.parentElement) {
-                toast.remove();
-            }
-        }, duration);
-    }
+    const el = document.createElement('div');
+    el.className = `toast ${type}`;
+    const icon = type === 'error'
+        ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>'
+        : '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+    el.innerHTML = `${icon}<span>${message}</span>`;
+    stack.appendChild(el);
+    setTimeout(() => {
+        el.style.transition = 'opacity 0.2s, transform 0.2s';
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(-8px)';
+        setTimeout(() => el.remove(), 200);
+    }, duration);
 }
 
-const toast = new Toast();
-
-// Tab switching
+/* ============ Tab switching ============ */
 document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', function() {
-        // Remove active class from all tabs and panes
+    btn.addEventListener('click', function () {
         document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
         document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
-        
-        // Add active class to clicked tab
+
         this.classList.add('active');
-        
-        // Show corresponding pane
         const tabId = this.dataset.tab;
-        document.getElementById(`tab-${tabId}`).classList.add('active');
+        const pane = document.getElementById('tab-' + tabId);
+        if (pane) pane.classList.add('active');
     });
 });
 
-// Auto-save functionality
+/* ============ Auto-save manager ============ */
 class AutoSaveManager {
     constructor(form, subdomain) {
         this.form = form;
@@ -959,17 +1038,15 @@ class AutoSaveManager {
         this.saveTimeout = null;
         this.lastSavedData = this.getFormData();
         this.isSaving = false;
-        
+
         this.statusIndicator = document.getElementById('autoSaveStatus');
         this.saveStatusText = document.getElementById('saveStatusText');
         this.saveStatusDetail = document.getElementById('saveStatusDetail');
-        this.spinner = document.getElementById('saveSpinner');
-        
+
         this.init();
     }
 
     init() {
-        // Auto-save on input changes
         this.form.querySelectorAll('textarea, input[type="text"], input[type="checkbox"]').forEach(input => {
             input.addEventListener('input', () => this.scheduleSave());
             if (input.type === 'checkbox') {
@@ -977,7 +1054,6 @@ class AutoSaveManager {
             }
         });
 
-        // Handle form submission
         this.form.addEventListener('submit', (e) => {
             e.preventDefault();
             this.saveImmediately(true);
@@ -987,7 +1063,7 @@ class AutoSaveManager {
     getFormData() {
         const formData = new FormData(this.form);
         const data = {};
-        for (let [key, value] of formData.entries()) {
+        for (const [key, value] of formData.entries()) {
             data[key] = value;
         }
         return data;
@@ -999,11 +1075,10 @@ class AutoSaveManager {
     }
 
     showSaving() {
-        this.statusIndicator.classList.add('show', 'saving');
+        this.statusIndicator.classList.add('show');
         this.statusIndicator.classList.remove('saved');
-        this.saveStatusText.textContent = 'Saving changes...';
+        this.saveStatusText.textContent = 'Saving changes…';
         this.saveStatusDetail.textContent = 'Just a moment';
-        this.spinner.style.display = 'block';
     }
 
     showSaved() {
@@ -1011,40 +1086,31 @@ class AutoSaveManager {
         this.statusIndicator.classList.add('saved');
         this.saveStatusText.textContent = 'All changes saved';
         this.saveStatusDetail.textContent = new Date().toLocaleTimeString();
-        this.spinner.style.display = 'none';
-        
+
         setTimeout(() => {
             this.statusIndicator.classList.remove('show');
         }, 3000);
     }
 
     showError(error) {
-        this.statusIndicator.classList.remove('saving', 'saved');
+        this.statusIndicator.classList.remove('saved');
         this.saveStatusText.textContent = 'Save failed';
-        this.saveStatusDetail.textContent = 'Trying again...';
-        this.spinner.style.display = 'none';
-        
-        toast.show(error, 'error');
-        
+        this.saveStatusDetail.textContent = 'Try again';
+
+        toast(error, 'error');
+
         setTimeout(() => {
             this.statusIndicator.classList.remove('show');
         }, 5000);
     }
 
     scheduleSave() {
-        if (this.saveTimeout) {
-            clearTimeout(this.saveTimeout);
-        }
-        
-        this.saveTimeout = setTimeout(() => {
-            this.save();
-        }, 2000);
+        if (this.saveTimeout) clearTimeout(this.saveTimeout);
+        this.saveTimeout = setTimeout(() => this.save(), 2000);
     }
 
     async save(showToast = true) {
-        if (this.isSaving || !this.hasChanges()) {
-            return;
-        }
+        if (this.isSaving || !this.hasChanges()) return;
 
         this.isSaving = true;
         this.showSaving();
@@ -1066,41 +1132,37 @@ class AutoSaveManager {
             if (response.ok && result.success) {
                 this.lastSavedData = this.getFormData();
                 this.showSaved();
-                
+
                 // Update status badge
                 const badge = document.getElementById('statusBadge');
                 const statusText = document.getElementById('statusText');
                 const isActive = document.getElementById('isActiveToggle').checked;
-                
+
                 if (isActive) {
                     badge.classList.add('active');
                     statusText.textContent = 'Active';
-                    badge.querySelector('i').className = 'fas fa-check-circle';
                 } else {
                     badge.classList.remove('active');
                     statusText.textContent = 'Draft';
-                    badge.querySelector('i').className = 'fas fa-clock';
                 }
-                
+
                 // Update compliance badges
-                const gdprBadge = document.querySelector('.compliance-badge:first-child');
-                const ccpaBadge = document.querySelector('.compliance-badge:last-child');
-                
+                const gdprBadge = document.getElementById('gdprBadge');
+                const ccpaBadge = document.getElementById('ccpaBadge');
+
                 if (document.getElementById('gdpr_compliant').checked) {
                     gdprBadge.classList.add('active');
                 } else {
                     gdprBadge.classList.remove('active');
                 }
-                
+
                 if (document.getElementById('ccpa_compliant').checked) {
                     ccpaBadge.classList.add('active');
                 } else {
                     ccpaBadge.classList.remove('active');
                 }
-                
-                if (showToast) {
-                    toast.show('Privacy policy saved successfully', 'success');
-                }
+
+                if (showToast) toast('Privacy policy saved', 'success');
             } else {
                 throw new Error(result.error || 'Failed to save');
             }
@@ -1113,24 +1175,22 @@ class AutoSaveManager {
     }
 
     async saveImmediately(showToast = true) {
-        if (this.saveTimeout) {
-            clearTimeout(this.saveTimeout);
-        }
+        if (this.saveTimeout) clearTimeout(this.saveTimeout);
         await this.save(showToast);
     }
 }
 
-// Rich text formatting
+/* ============ Rich text formatting ============ */
 function insertFormat(textareaId, format) {
     const textarea = document.getElementById(textareaId);
     if (!textarea) return;
-    
+
     const start = textarea.selectionStart;
     const end = textarea.selectionEnd;
     const selectedText = textarea.value.substring(start, end);
     let formattedText = '';
-    
-    switch(format) {
+
+    switch (format) {
         case 'bold':
             formattedText = `<strong>${selectedText}</strong>`;
             break;
@@ -1146,7 +1206,7 @@ function insertFormat(textareaId, format) {
         case 'h3':
             formattedText = `\n<h3>${selectedText}</h3>\n`;
             break;
-        case 'link':
+        case 'link': {
             const url = prompt('Enter URL:', 'https://');
             if (url) {
                 formattedText = `<a href="${url}">${selectedText}</a>`;
@@ -1154,46 +1214,50 @@ function insertFormat(textareaId, format) {
                 return;
             }
             break;
-        case 'ul':
+        }
+        case 'ul': {
             const lines = selectedText.split('\n').filter(l => l.trim());
             formattedText = '\n<ul>\n' + lines.map(l => `  <li>${l}</li>`).join('\n') + '\n</ul>\n';
             break;
-        case 'ol':
+        }
+        case 'ol': {
             const items = selectedText.split('\n').filter(l => l.trim());
             formattedText = '\n<ol>\n' + items.map(l => `  <li>${l}</li>`).join('\n') + '\n</ol>\n';
             break;
+        }
         default:
             return;
     }
-    
+
     textarea.value = textarea.value.substring(0, start) + formattedText + textarea.value.substring(end);
     textarea.dispatchEvent(new Event('input'));
 }
 
-// Delete privacy policy
+/* ============ Delete privacy policy ============ */
 function deletePrivacy() {
-    if (confirm('Are you sure you want to delete this privacy policy? This action cannot be undone.')) {
-        fetch(window.location.href, {
-            method: 'DELETE',
-            headers: {
-                'X-CSRFToken': '{{ csrf_token }}'
-            }
-        }).then(response => {
-            if (response.ok) {
-                toast.show('Privacy policy deleted successfully', 'success');
-                setTimeout(() => {
-                    window.location.href = "{% url 'dashboard' %}";
-                }, 1500);
-            }
-        });
-    }
+    if (!confirm('Are you sure you want to delete this privacy policy? This action cannot be undone.')) return;
+
+    fetch(window.location.href, {
+        method: 'DELETE',
+        headers: {
+            'X-CSRFToken': '{{ csrf_token }}'
+        }
+    }).then(response => {
+        if (response.ok) {
+            toast('Privacy policy deleted', 'success');
+            setTimeout(() => {
+                window.location.href = "{% url 'dashboard' %}";
+            }, 1500);
+        }
+    });
 }
 
-// Initialize auto-save
+/* ============ Init ============ */
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('privacyForm');
     const subdomain = form.dataset.subdomain;
     window.autoSaveManager = new AutoSaveManager(form, subdomain);
 });
 </script>
+
 {% endblock %}

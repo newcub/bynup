@@ -1,0 +1,129 @@
+{% extends 'builder/base.html' %}
+{% load static %}
+
+{% block title %}{% block admin_title %}Domain Admin{% endblock %} — bynUp Admin{% endblock %}
+
+{% block extra_css %}
+<style>
+.admin-shell {
+    background: #f8fafc;
+    min-height: calc(100vh - 60px);
+    padding: 2rem 1rem;
+}
+.admin-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+.admin-header {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e1e5eb;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+}
+.admin-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 1.5rem;
+    background: white;
+    padding: 8px;
+    border-radius: 10px;
+    border: 1px solid #e1e5eb;
+    width: fit-content;
+}
+.admin-tab {
+    padding: 8px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #6c757d;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.15s;
+}
+.admin-tab:hover {
+    background: #f1f5f9;
+    color: #4361ee;
+}
+.admin-tab.active {
+    background: #4361ee;
+    color: white;
+}
+.admin-tab .badge {
+    margin-left: 6px;
+    font-size: 0.7em;
+}
+.status-badge {
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+.status-pending_review { background: #fef3c7; color: #92400e; }
+.status-approved { background: #dbeafe; color: #1e40af; }
+.status-purchasing { background: #dbeafe; color: #1e40af; }
+.status-purchased { background: #dbeafe; color: #1e40af; }
+.status-configuring_dns { background: #e0e7ff; color: #3730a3; }
+.status-active { background: #d1fae5; color: #065f46; }
+.status-failed { background: #fee2e2; color: #991b1b; }
+.status-rejected { background: #fee2e2; color: #991b1b; }
+.status-cancelled { background: #e5e7eb; color: #374151; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="admin-shell">
+    <div class="admin-container">
+
+        <div class="admin-header">
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+                <div>
+                    <h2 class="fw-bold mb-1">
+                        <i class="fas fa-globe text-primary me-2"></i>
+                        Domain Fulfillment
+                    </h2>
+                    <p class="text-muted mb-0 small">
+                        Internal dashboard — staff only
+                    </p>
+                </div>
+                <div class="text-end small text-muted">
+                    <div>{{ request.user.username }} <span class="badge bg-primary">Staff</span></div>
+                    <div>{{ "now"|date:"M j, Y H:i" }}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="admin-tabs">
+            <a href="{% url 'admin_domain_queue' %}"
+               class="admin-tab {% block tab_queue %}{% endblock %}">
+                <i class="fas fa-inbox me-1"></i>Queue
+                {% if pending_count_badge %}
+                <span class="badge bg-danger">{{ pending_count_badge }}</span>
+                {% endif %}
+            </a>
+            <a href="{% url 'admin_domain_in_progress' %}"
+               class="admin-tab {% block tab_in_progress %}{% endblock %}">
+                <i class="fas fa-spinner me-1"></i>In Progress
+            </a>
+            <a href="{% url 'admin_domain_history' %}"
+               class="admin-tab {% block tab_history %}{% endblock %}">
+                <i class="fas fa-history me-1"></i>History
+            </a>
+        </div>
+
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        {% block admin_content %}{% endblock %}
+
+    </div>
+</div>
+{% endblock %}

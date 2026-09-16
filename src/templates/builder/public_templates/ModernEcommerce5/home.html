@@ -1080,7 +1080,66 @@
     <section class="story-section" id="section-813">
         <div class="container">
             <div class="story-image-wrapper" id="section-814">
-                <img src="{% if image_customizations.100 %}{{ image_customizations.100.image_url }}{% else %}https://images.pexels.com/photos/1571459/pexels-photo-1571459.jpeg?auto=compress&cs=tinysrgb&w=1200{% endif %}" alt="{{ image_customizations.100.alt_text|default:'Product feature' }}" class="editable-image" data-image="100">
+                {% with video=video_customizations.100 %}
+    {% if video %}
+        {# ===== VIDEO EXISTS - RENDER VIDEO ===== #}
+        <div class="editable-video" 
+             data-image="100" 
+             data-is-video="true"
+             style="position: relative; overflow: hidden; display: inline-block; max-width: 100%; border-radius: 8px; cursor: pointer;">
+            
+            <video 
+                src="{{ video.video_url }}" 
+                poster="{{ video.poster_url|default:'' }}"
+                {% if video.autoplay %}autoplay{% endif %}
+                {% if video.loop %}loop{% endif %}
+                {% if video.muted %}muted{% endif %}
+                {% if video.controls %}controls{% endif %}
+                style="width: 100%; height: 100%; display: block; object-fit: cover;"
+            >
+                Your browser does not support the video tag.
+            </video>
+            
+            {# ===== PLAY BUTTON OVERLAY ===== #}
+            {% if video.show_play_button %}
+            <div class="video-overlay" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 24px;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            ">
+                <i class="fas fa-play"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+        {# ===== NO VIDEO - RENDER IMAGE ===== #}
+        {% if image_customizations.100 %}
+            <img src="{{ image_customizations.100.image_url }}" 
+                 alt="{{ image_customizations.100.alt_text|default:'{{ image_customizations.100.alt_text|default:' }}" 
+                 class="editable-image" 
+                 data-image="100">
+        {% else %}
+            <img src="https://images.pexels.com/photos/6311675/pexels-photo-6311675.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                 alt="{{ image_customizations.100.alt_text|default:" 
+                 class="editable-image" 
+                 data-image="100">
+        {% endif %}
+    {% endif %}
+{% endwith %}
                 <span class="image-badge" id="section-815">{{ text_contents.808|default:"Signature Design" }}</span>
             </div>
             <div class="story-content" id="section-816">
@@ -1111,7 +1170,66 @@
     <section class="story-section alt-bg" id="section-824">
         <div class="container reverse">
             <div class="story-image-wrapper" id="section-825">
-                <img src="{% if image_customizations.101 %}{{ image_customizations.101.image_url }}{% else %}https://images.pexels.com/photos/2103509/pexels-photo-2103509.jpeg?auto=compress&cs=tinysrgb&w=1200{% endif %}" alt="{{ image_customizations.101.alt_text|default:'Product detail' }}" class="editable-image" data-image="101">
+                {% with video=video_customizations.101 %}
+    {% if video %}
+        {# ===== VIDEO EXISTS - RENDER VIDEO ===== #}
+        <div class="editable-video" 
+             data-image="101" 
+             data-is-video="true"
+             style="position: relative; overflow: hidden; display: inline-block; max-width: 100%; border-radius: 8px; cursor: pointer;">
+            
+            <video 
+                src="{{ video.video_url }}" 
+                poster="{{ video.poster_url|default:'' }}"
+                {% if video.autoplay %}autoplay{% endif %}
+                {% if video.loop %}loop{% endif %}
+                {% if video.muted %}muted{% endif %}
+                {% if video.controls %}controls{% endif %}
+                style="width: 100%; height: 100%; display: block; object-fit: cover;"
+            >
+                Your browser does not support the video tag.
+            </video>
+            
+            {# ===== PLAY BUTTON OVERLAY ===== #}
+            {% if video.show_play_button %}
+            <div class="video-overlay" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 24px;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            ">
+                <i class="fas fa-play"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+        {# ===== NO VIDEO - RENDER IMAGE ===== #}
+        {% if image_customizations.101 %}
+            <img src="{{ image_customizations.101.image_url }}" 
+                 alt="{{ image_customizations.101.alt_text|default:'{{ image_customizations.101.alt_text|default:' }}" 
+                 class="editable-image" 
+                 data-image="101">
+        {% else %}
+            <img src="https://images.pexels.com/photos/6311675/pexels-photo-6311675.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                 alt="{{ image_customizations.101.alt_text|default:" 
+                 class="editable-image" 
+                 data-image="101">
+        {% endif %}
+    {% endif %}
+{% endwith %}
                 <span class="image-badge" id="section-826">{{ text_contents.816|default:"Precision Crafted" }}</span>
             </div>
             <div class="story-content" id="section-827">
@@ -1142,7 +1260,66 @@
     <section class="story-section" id="section-835">
         <div class="container">
             <div class="story-image-wrapper" id="section-836">
-                <img src="{% if image_customizations.102 %}{{ image_customizations.102.image_url }}{% else %}https://images.pexels.com/photos/5882287/pexels-photo-5882287.jpeg?auto=compress&cs=tinysrgb&w=1200{% endif %}" alt="{{ image_customizations.102.alt_text|default:'Materials' }}" class="editable-image" data-image="102">
+                {% with video=video_customizations.102 %}
+    {% if video %}
+        {# ===== VIDEO EXISTS - RENDER VIDEO ===== #}
+        <div class="editable-video" 
+             data-image="102" 
+             data-is-video="true"
+             style="position: relative; overflow: hidden; display: inline-block; max-width: 100%; border-radius: 8px; cursor: pointer;">
+            
+            <video 
+                src="{{ video.video_url }}" 
+                poster="{{ video.poster_url|default:'' }}"
+                {% if video.autoplay %}autoplay{% endif %}
+                {% if video.loop %}loop{% endif %}
+                {% if video.muted %}muted{% endif %}
+                {% if video.controls %}controls{% endif %}
+                style="width: 100%; height: 100%; display: block; object-fit: cover;"
+            >
+                Your browser does not support the video tag.
+            </video>
+            
+            {# ===== PLAY BUTTON OVERLAY ===== #}
+            {% if video.show_play_button %}
+            <div class="video-overlay" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 24px;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            ">
+                <i class="fas fa-play"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+        {# ===== NO VIDEO - RENDER IMAGE ===== #}
+        {% if image_customizations.102 %}
+            <img src="{{ image_customizations.102.image_url }}" 
+                 alt="{{ image_customizations.102.alt_text|default:'{{ image_customizations.102.alt_text|default:' }}" 
+                 class="editable-image" 
+                 data-image="102">
+        {% else %}
+            <img src="https://images.pexels.com/photos/6311675/pexels-photo-6311675.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                 alt="{{ image_customizations.102.alt_text|default:" 
+                 class="editable-image" 
+                 data-image="102">
+        {% endif %}
+    {% endif %}
+{% endwith %}
                 <span class="image-badge" id="section-837">{{ text_contents.824|default:"Premium Materials" }}</span>
             </div>
             <div class="story-content" id="section-838">
@@ -1173,7 +1350,66 @@
     <section class="story-section alt-bg" id="section-846">
         <div class="container reverse">
             <div class="story-image-wrapper" id="section-847">
-                <img src="{% if image_customizations.103 %}{{ image_customizations.103.image_url }}{% else %}https://images.pexels.com/photos/1746830/pexels-photo-1746830.jpeg?auto=compress&cs=tinysrgb&w=1200{% endif %}" alt="{{ image_customizations.103.alt_text|default:'Lifestyle' }}" class="editable-image" data-image="103">
+                {% with video=video_customizations.103 %}
+    {% if video %}
+        {# ===== VIDEO EXISTS - RENDER VIDEO ===== #}
+        <div class="editable-video" 
+             data-image="103" 
+             data-is-video="true"
+             style="position: relative; overflow: hidden; display: inline-block; max-width: 100%; border-radius: 8px; cursor: pointer;">
+            
+            <video 
+                src="{{ video.video_url }}" 
+                poster="{{ video.poster_url|default:'' }}"
+                {% if video.autoplay %}autoplay{% endif %}
+                {% if video.loop %}loop{% endif %}
+                {% if video.muted %}muted{% endif %}
+                {% if video.controls %}controls{% endif %}
+                style="width: 100%; height: 100%; display: block; object-fit: cover;"
+            >
+                Your browser does not support the video tag.
+            </video>
+            
+            {# ===== PLAY BUTTON OVERLAY ===== #}
+            {% if video.show_play_button %}
+            <div class="video-overlay" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 24px;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            ">
+                <i class="fas fa-play"></i>
+            </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+        {# ===== NO VIDEO - RENDER IMAGE ===== #}
+        {% if image_customizations.103 %}
+            <img src="{{ image_customizations.103.image_url }}" 
+                 alt="{{ image_customizations.103.alt_text|default:'{{ image_customizations.103.alt_text|default:' }}" 
+                 class="editable-image" 
+                 data-image="103">
+        {% else %}
+            <img src="https://images.pexels.com/photos/6311675/pexels-photo-6311675.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                 alt="{{ image_customizations.103.alt_text|default:" 
+                 class="editable-image" 
+                 data-image="103">
+        {% endif %}
+    {% endif %}
+{% endwith %}
                 <span class="image-badge" id="section-848">{{ text_contents.832|default:"Everyday Elegance" }}</span>
             </div>
             <div class="story-content" id="section-849">

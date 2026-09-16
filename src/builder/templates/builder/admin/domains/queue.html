@@ -1,0 +1,133 @@
+{% extends 'builder/admin/domains/base.html' %}
+
+{% block admin_title %}Queue{% endblock %}
+{% block tab_queue %}active{% endblock %}
+
+{% block admin_content %}
+
+{% if not pending %}
+<div class="card border-0 shadow-sm" style="border-radius: 12px;">
+    <div class="card-body text-center py-5">
+        <i class="fas fa-check-circle fa-3x text-success mb-3"></i>
+        <h5>All caught up!</h5>
+        <p class="text-muted mb-0">No pending domain requests.</p>
+    </div>
+</div>
+{% else %}
+
+<div class="mb-3">
+    <strong>{{ pending_count }}</strong> request{{ pending_count|pluralize }} waiting for review
+</div>
+
+{% for item in pending %}
+{% with req=item.request summary=item.user_plan %}
+<div class="card border-0 shadow-sm mb-3" style="border-radius: 12px;">
+    <div class="card-body">
+        <div class="row align-items-start g-3">
+
+            <div class="col-lg-5">
+                <h5 class="fw-bold mb-1">
+                    <i class="fas fa-globe text-primary me-2"></i>
+                    {{ req.domain_name }}
+                </h5>
+                <div class="text-muted small mb-2">
+                    Requested {{ req.created_at|timesince }} ago
+                </div>
+                <div>
+                    {% if req.is_free_tier %}
+                    <span class="badge bg-success">Free on plan</span>
+                    {% else %}
+                    <span class="badge bg-warning text-dark">Paid</span>
+                    {% endif %}
+                    <span class="badge bg-secondary">
+                        {{ req.tld }}
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="small">
+                    <div class="fw-semibold mb-1">
+                        <i class="fas fa-user me-1 text-muted"></i>
+                        {{ req.user.username }}
+                    </div>
+                    <div class="text-muted mb-1">{{ req.user.email }}</div>
+                    <div class="text-muted mb-1">
+                        <i class="fas fa-store me-1"></i>
+                        {% if req.page %}
+                            {{ req.page.brand_name }}
+                            <span class="text-muted">({{ req.page.subdomain }})</span>
+                        {% else %}
+                            <em>no page linked</em>
+                        {% endif %}
+                    </div>
+                    <div class="text-muted">
+                        Plan: <strong>{{ summary.limit }} domain{{ summary.limit|pluralize }}</strong>
+                        &middot;
+                        Used: {{ summary.total_used }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="d-grid gap-2">
+                    <a href="https://www.namecheap.com/domains/registration/results/?domain={{ req.domain_name }}"
+                       target="_blank" rel="noopener"
+                       class="btn btn-outline-secondary btn-sm">
+                        <i class="fas fa-external-link-alt me-1"></i>
+                        Check on Namecheap
+                    </a>
+                    <form method="post" action="{% url 'admin_domain_action' req.id %}"
+                          onsubmit="return confirm('Approve {{ req.domain_name }}?');">
+                        {% csrf_token %}
+                        <input type="hidden" name="action" value="approve">
+                        <input type="hidden" name="return_to" value="{% url 'admin_domain_queue' %}">
+                        <button class="btn btn-primary btn-sm w-100">
+                            <i class="fas fa-check me-1"></i>Approve
+                        </button>
+                    </form>
+                    <button type="button" class="btn btn-outline-danger btn-sm"
+                            data-bs-toggle="modal" data-bs-target="#rejectModal{{ req.id }}">
+                        <i class="fas fa-times me-1"></i>Reject
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Reject modal -->
+<div class="modal fade" id="rejectModal{{ req.id }}" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post" action="{% url 'admin_domain_action' req.id %}">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="reject">
+                <input type="hidden" name="return_to" value="{% url 'admin_domain_queue' %}">
+                <div class="modal-header">
+                    <h5 class="modal-title">Reject {{ req.domain_name }}?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-muted small">
+                        The user will receive an email explaining the rejection.
+                    </p>
+                    <label class="form-label">Reason (optional)</label>
+                    <textarea name="admin_notes" class="form-control" rows="3"
+                              placeholder="e.g., Trademark conflict, premium pricing, already claimed…"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Reject Request</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endwith %}
+{% endfor %}
+
+{% endif %}
+
+{% endblock %}

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-  <title>NORTH/01 — Signature Hoodie</title>
+  <title>{brand} — Signature Hoodie</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet" />
   <style>
@@ -11,16 +11,16 @@
        CSS VARIABLES
     ------------------------------------------------ */
     :root {
-      --color-bg: #f8f6f2;
-      --color-surface: #ffffff;
-      --color-text-primary: #1e1e1e;
-      --color-text-secondary: #3a3a3a;
-      --color-border-subtle: #e2ded9;
-      --color-brand-dark: #1a1a1a;
-      --color-brand-stone: #c6bdb2;
-      --color-accent: #b45f3a;
-      --color-accent-hover: #9e4e2e;
-      --color-accent-soft: #f0e3db;
+      --background: #f8f6f2;
+      --heading: #ffffff;
+      --text: #1e1e1e;
+      --secondary: #3a3a3a;
+      --accent: #e2ded9;
+      --border: #1a1a1a;
+      --success: #c6bdb2;
+      --warning: #b45f3a;
+      --primary: #9e4e2e;
+      --error: #f0e3db;
       --color-white: #ffffff;
       --color-success: #2d7a4b;
       --color-error: #c0392b;
@@ -43,17 +43,17 @@
     ------------------------------------------------ */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-    body {
+    header,main,footer {
       font-family: var(--font-body);
-      background-color: var(--color-bg);
-      color: var(--color-text-primary);
+      background-color: var(--background);
+      color: var(--text);
       line-height: 1.5;
       overflow-x: hidden;
     }
     img { max-width: 100%; display: block; height: auto; }
     a { text-decoration: none; color: inherit; }
     button { cursor: pointer; border: none; background: none; font: inherit; color: inherit; }
-    :focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+    :focus-visible { outline: 2px solid var(--warning); outline-offset: 2px; }
 
     .container { max-width: 1280px; margin: 0 auto; padding: 0 var(--space-md); }
     .section-padding { padding: var(--space-xl) 0; }
@@ -66,7 +66,7 @@
       font-size: 0.75rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--color-text-secondary);
+      color: var(--secondary);
       margin-bottom: var(--space-xs);
       font-weight: 500;
     }
@@ -86,25 +86,25 @@
     .body-large {
       font-size: 1.2rem;
       line-height: 1.6;
-      color: var(--color-text-secondary);
+      color: var(--secondary);
     }
     .body-small {
       font-size: 0.9rem;
-      color: var(--color-text-secondary);
+      color: var(--secondary);
     }
 
     /* ----------------------------------------------
        NAVIGATION
     ------------------------------------------------ */
     .site-header {
-      position: fixed;
+      /* position: fixed;
       top: 0;
       left: 0;
-      right: 0;
+      right: 0; */
       z-index: 1000;
       background: rgba(248, 246, 242, 0.92);
       backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--color-border-subtle);
+      border-bottom: 1px solid var(--accent);
     }
     .navbar {
       display: flex;
@@ -120,7 +120,7 @@
       font-size: 1.2rem;
       letter-spacing: 0.04em;
       font-weight: 400;
-      color: var(--color-brand-dark);
+      color: var(--border);
     }
     .nav-links-desktop {
       display: none;
@@ -130,10 +130,10 @@
     .nav-links-desktop a {
       font-size: 0.85rem;
       font-weight: 500;
-      color: var(--color-text-secondary);
+      color: var(--secondary);
       transition: color 0.2s;
     }
-    .nav-links-desktop a:hover { color: var(--color-brand-dark); }
+    .nav-links-desktop a:hover { color: var(--border); }
 
     .nav-actions {
       display: flex;
@@ -143,16 +143,16 @@
     .nav-actions .cart-icon-btn {
       font-size: 1.2rem;
       padding: 0.3rem 0.5rem;
-      color: var(--color-text-secondary);
+      color: var(--secondary);
       transition: color 0.2s;
       position: relative;
     }
-    .nav-actions .cart-icon-btn:hover { color: var(--color-brand-dark); }
+    .nav-actions .cart-icon-btn:hover { color: var(--border); }
     .nav-actions .cart-badge {
       position: absolute;
       top: -4px;
       right: -4px;
-      background: var(--color-brand-dark);
+      background: var(--border);
       color: var(--color-white);
       border-radius: 50%;
       font-size: 0.6rem;
@@ -165,7 +165,7 @@
       padding: 0 4px;
     }
     .nav-actions .primary-action-small {
-      background: var(--color-brand-dark);
+      background: var(--border);
       color: var(--color-white);
       padding: 0.5rem 1.2rem;
       border-radius: var(--radius-full);
@@ -177,7 +177,7 @@
       align-items: center;
       gap: 6px;
     }
-    .nav-actions .primary-action-small:hover { background: var(--color-accent); }
+    .nav-actions .primary-action-small:hover { background: var(--warning); }
 
     .hamburger {
       display: flex;
@@ -189,7 +189,7 @@
       display: block;
       width: 22px;
       height: 2px;
-      background: var(--color-brand-dark);
+      background: var(--border);
       transition: all 0.25s ease;
     }
 
@@ -214,7 +214,7 @@
       width: 300px;
       max-width: 80vw;
       height: 100vh;
-      background: var(--color-surface);
+      background: var(--heading);
       z-index: 1200;
       padding: var(--space-md);
       box-shadow: -8px 0 30px rgba(0,0,0,0.05);
@@ -228,12 +228,12 @@
       justify-content: space-between;
       align-items: center;
       padding-bottom: var(--space-md);
-      border-bottom: 1px solid var(--color-border-subtle);
+      border-bottom: 1px solid var(--accent);
     }
     .mobile-nav-close {
       font-size: 1.4rem;
       padding: 0.2rem 0.6rem;
-      color: var(--color-text-secondary);
+      color: var(--secondary);
     }
     .mobile-nav-links {
       display: flex;
@@ -246,13 +246,13 @@
       font-size: 1.1rem;
       font-weight: 500;
       padding: 0.5rem 0;
-      border-bottom: 1px solid var(--color-border-subtle);
-      color: var(--color-text-primary);
+      border-bottom: 1px solid var(--accent);
+      color: var(--text);
     }
     .mobile-nav-actions {
       margin-top: auto;
       padding-top: var(--space-md);
-      border-top: 1px solid var(--color-border-subtle);
+      border-top: 1px solid var(--accent);
       display: flex;
       flex-direction: column;
       gap: var(--space-sm);
@@ -266,7 +266,7 @@
       font-weight: 500;
     }
     .mobile-nav-actions .mobile-cart-row .cart-badge-mobile {
-      background: var(--color-brand-dark);
+      background: var(--border);
       color: var(--color-white);
       border-radius: 50%;
       padding: 0 8px;
@@ -278,7 +278,7 @@
       justify-content: center;
     }
     .mobile-nav-actions .primary-action-full {
-      background: var(--color-brand-dark);
+      background: var(--border);
       color: var(--color-white);
       padding: 0.9rem;
       text-align: center;
@@ -300,6 +300,7 @@
       align-items: center;
       position: relative;
       overflow: hidden;
+      margin-top: -95px;
     }
     .hero-grid {
       display: grid;
@@ -307,13 +308,14 @@
       gap: var(--space-md);
       width: 100%;
       padding: var(--space-md) 0;
+      
     }
 
     .hero-video-wrapper {
       position: relative;
       border-radius: var(--radius-md);
       overflow: hidden;
-      background: var(--color-brand-dark);
+      background: var(--border);
       aspect-ratio: 16/9;
       width: 100%;
     }
@@ -375,7 +377,7 @@
       align-items: center;
       gap: var(--space-xs);
       font-size: 0.95rem;
-      color: var(--color-text-secondary);
+      color: var(--secondary);
     }
     .hero-rating i { color: #d4a04a; letter-spacing: 2px; }
 
@@ -387,7 +389,7 @@
       margin-top: var(--space-xs);
     }
     .primary-action {
-      background: var(--color-brand-dark);
+      background: var(--border);
       color: var(--color-white);
       padding: 0.9rem 2.4rem;
       border-radius: var(--radius-full);
@@ -400,14 +402,14 @@
       gap: 8px;
     }
     .primary-action:hover {
-      background: var(--color-accent);
+      background: var(--warning);
       transform: translateY(-2px);
     }
     .secondary-action {
-      color: var(--color-text-secondary);
+      color: var(--secondary);
       font-weight: 500;
       padding: 0.7rem 1.2rem;
-      border: 1px solid var(--color-border-subtle);
+      border: 1px solid var(--accent);
       border-radius: var(--radius-full);
       transition: border 0.2s, color 0.2s;
       display: inline-flex;
@@ -415,8 +417,8 @@
       gap: 8px;
     }
     .secondary-action:hover {
-      border-color: var(--color-brand-dark);
-      color: var(--color-brand-dark);
+      border-color: var(--border);
+      color: var(--border);
     }
 
     .hero-reassurance {
@@ -424,7 +426,7 @@
       gap: var(--space-md);
       flex-wrap: wrap;
       font-size: 0.85rem;
-      color: var(--color-text-secondary);
+      color: var(--secondary);
       margin-top: var(--space-xs);
     }
     .hero-reassurance span { display: flex; align-items: center; gap: 6px; }
@@ -434,9 +436,9 @@
     ------------------------------------------------ */
     #product-selection {
       padding: var(--space-xl) 0;
-      background: var(--color-surface);
-      border-top: 1px solid var(--color-border-subtle);
-      border-bottom: 1px solid var(--color-border-subtle);
+      background: var(--heading);
+      border-top: 1px solid var(--accent);
+      border-bottom: 1px solid var(--accent);
     }
     .selection-grid {
       display: grid;
@@ -449,7 +451,7 @@
       position: relative;
       overflow: hidden;
       border-radius: var(--radius-md);
-      background: var(--color-brand-stone);
+      background: var(--success);
     }
     .product-gallery #mainProductImage {
       width: 100%;
@@ -477,7 +479,7 @@
       transition: border 0.2s;
       flex-shrink: 0;
     }
-    .thumbnail-strip img.active { border-color: var(--color-brand-dark); }
+    .thumbnail-strip img.active { border-color: var(--border); }
 
     .selection-content {
       display: flex;
@@ -495,14 +497,14 @@
     .selection-content .product-price {
       font-family: var(--font-display);
       font-size: 2rem;
-      color: var(--color-brand-dark);
+      color: var(--border);
     }
 
     .product-purchase-card {
-      background: var(--color-bg);
+      background: var(--background);
       padding: var(--space-md);
       border-radius: var(--radius-md);
-      border: 1px solid var(--color-border-subtle);
+      border: 1px solid var(--accent);
       margin-top: var(--space-xs);
     }
 
@@ -519,7 +521,7 @@
       letter-spacing: 0.08em;
       font-weight: 600;
       margin-bottom: 4px;
-      color: var(--color-text-secondary);
+      color: var(--secondary);
     }
     .size-selector {
       display: flex;
@@ -528,19 +530,19 @@
     }
     .size-selector button {
       padding: 0.4rem 0.9rem;
-      border: 1px solid var(--color-border-subtle);
+      border: 1px solid var(--accent);
       border-radius: var(--radius-full);
       font-size: 0.8rem;
       font-weight: 500;
       transition: all 0.2s;
-      background: var(--color-surface);
+      background: var(--heading);
     }
     .size-selector button.active {
-      background: var(--color-brand-dark);
+      background: var(--border);
       color: var(--color-white);
-      border-color: var(--color-brand-dark);
+      border-color: var(--border);
     }
-    .size-selector button:hover { border-color: var(--color-brand-dark); }
+    .size-selector button:hover { border-color: var(--border); }
 
     .color-swatches {
       display: flex;
@@ -554,8 +556,8 @@
       transition: border 0.2s, transform 0.15s;
     }
     .color-swatches button.active {
-      border-color: var(--color-brand-dark);
-      box-shadow: 0 0 0 1px var(--color-white), 0 0 0 3px var(--color-brand-dark);
+      border-color: var(--border);
+      box-shadow: 0 0 0 1px var(--color-white), 0 0 0 3px var(--border);
       transform: scale(1.05);
     }
     .color-swatches button:hover { transform: scale(1.08); }
@@ -571,23 +573,23 @@
     }
     .bundle-selector button {
       padding: 0.4rem 1rem;
-      border: 1px solid var(--color-border-subtle);
+      border: 1px solid var(--accent);
       border-radius: var(--radius-full);
       font-size: 0.8rem;
       font-weight: 500;
-      background: var(--color-surface);
+      background: var(--heading);
       transition: all 0.2s;
     }
     .bundle-selector button.active {
-      background: var(--color-brand-dark);
+      background: var(--border);
       color: var(--color-white);
-      border-color: var(--color-brand-dark);
+      border-color: var(--border);
     }
     .bundle-selector button .save {
-      color: var(--color-accent);
+      color: var(--warning);
       font-weight: 600;
     }
-    .bundle-selector button.active .save { color: var(--color-accent-soft); }
+    .bundle-selector button.active .save { color: var(--error); }
 
     .action-row {
       display: flex;
@@ -598,7 +600,7 @@
     .quantity-selector {
       display: flex;
       align-items: center;
-      border: 1px solid var(--color-border-subtle);
+      border: 1px solid var(--accent);
       border-radius: var(--radius-full);
       overflow: hidden;
     }
@@ -608,7 +610,7 @@
       background: transparent;
       transition: background 0.2s;
     }
-    .quantity-selector button:hover { background: var(--color-border-subtle); }
+    .quantity-selector button:hover { background: var(--accent); }
     .quantity-selector span {
       padding: 0.4rem 1rem;
       min-width: 40px;
@@ -617,7 +619,7 @@
     }
 
     .btn-add-to-cart {
-      background: var(--color-brand-dark);
+      background: var(--border);
       color: var(--color-white);
       padding: 0.7rem 1.8rem;
       border-radius: var(--radius-full);
@@ -629,10 +631,10 @@
       gap: 8px;
       flex: 1;
     }
-    .btn-add-to-cart:hover { background: var(--color-accent); transform: scale(1.01); }
+    .btn-add-to-cart:hover { background: var(--warning); transform: scale(1.01); }
 
     .btn-buy-now {
-      background: var(--color-accent);
+      background: var(--warning);
       color: var(--color-white);
       padding: 0.7rem 1.8rem;
       border-radius: var(--radius-full);
@@ -644,18 +646,18 @@
       gap: 8px;
       flex: 1;
     }
-    .btn-buy-now:hover { background: var(--color-accent-hover); transform: scale(1.01); }
+    .btn-buy-now:hover { background: var(--primary); transform: scale(1.01); }
 
     .size-guide-link {
       font-size: 0.7rem;
       text-decoration: underline;
-      color: var(--color-text-secondary);
+      color: var(--secondary);
       margin-top: 4px;
       cursor: pointer;
       background: none;
       border: none;
     }
-    .size-guide-link:hover { color: var(--color-brand-dark); }
+    .size-guide-link:hover { color: var(--border); }
 
     /* ----------------------------------------------
        TRUST BAR
@@ -664,8 +666,8 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: var(--space-sm);
-      border-top: 1px solid var(--color-border-subtle);
-      border-bottom: 1px solid var(--color-border-subtle);
+      border-top: 1px solid var(--accent);
+      border-bottom: 1px solid var(--accent);
       padding: var(--space-md) 0;
     }
     .trust-item {
@@ -675,9 +677,9 @@
       text-align: center;
       gap: 4px;
     }
-    .trust-item i { font-size: 1.4rem; color: var(--color-brand-stone); }
+    .trust-item i { font-size: 1.4rem; color: var(--success); }
     .trust-item strong { font-size: 0.9rem; font-weight: 600; }
-    .trust-item span { font-size: 0.8rem; color: var(--color-text-secondary); }
+    .trust-item span { font-size: 0.8rem; color: var(--secondary); }
 
     /* ----------------------------------------------
        STORY
@@ -707,16 +709,16 @@
     }
     .comparison-item {
       padding: var(--space-sm);
-      background: var(--color-surface);
+      background: var(--heading);
       border-radius: var(--radius-sm);
-      border-left: 3px solid var(--color-border-subtle);
+      border-left: 3px solid var(--accent);
     }
-    .comparison-item.positive { border-left-color: var(--color-brand-dark); }
+    .comparison-item.positive { border-left-color: var(--border); }
     .comparison-item h4 { font-weight: 600; font-size: 0.9rem; }
     .comparison-item ul {
       list-style: none;
       font-size: 0.85rem;
-      color: var(--color-text-secondary);
+      color: var(--secondary);
     }
     .comparison-item ul li { padding: 2px 0; }
 
@@ -727,7 +729,7 @@
       position: relative;
       border-radius: var(--radius-md);
       overflow: hidden;
-      background: var(--color-brand-stone);
+      background: var(--success);
     }
     .anatomy-wrap img { width: 100%; display: block; }
     .hotspot {
@@ -742,14 +744,14 @@
       justify-content: center;
       font-size: 0.7rem;
       font-weight: 700;
-      color: var(--color-brand-dark);
+      color: var(--border);
       cursor: pointer;
       transform: translate(-50%, -50%);
       transition: transform 0.2s, background 0.2s;
     }
     .hotspot:hover {
       transform: translate(-50%, -50%) scale(1.15);
-      background: var(--color-accent);
+      background: var(--warning);
       color: white;
     }
 
@@ -764,7 +766,7 @@
     .gallery-grid .gallery-item {
       border-radius: var(--radius-sm);
       overflow: hidden;
-      background: var(--color-brand-stone);
+      background: var(--success);
       cursor: pointer;
       transition: transform 0.3s ease;
     }
@@ -788,10 +790,10 @@
       margin-top: var(--space-md);
     }
     .ugc-card {
-      background: var(--color-surface);
+      background: var(--heading);
       border-radius: var(--radius-sm);
       overflow: hidden;
-      border: 1px solid var(--color-border-subtle);
+      border: 1px solid var(--accent);
       position: relative;
       aspect-ratio: 9 / 16;
     }
@@ -847,17 +849,17 @@
       margin-top: var(--space-md);
     }
     .review-card {
-      background: var(--color-surface);
+      background: var(--heading);
       padding: var(--space-md);
       border-radius: var(--radius-md);
-      border: 1px solid var(--color-border-subtle);
+      border: 1px solid var(--accent);
     }
     .review-card .stars { color: #d4a04a; letter-spacing: 2px; }
     .review-card .review-meta {
       display: flex;
       justify-content: space-between;
       font-size: 0.8rem;
-      color: var(--color-text-secondary);
+      color: var(--secondary);
       margin-top: 6px;
     }
 
@@ -865,7 +867,7 @@
        FAQ
     ------------------------------------------------ */
     .faq-item {
-      border-bottom: 1px solid var(--color-border-subtle);
+      border-bottom: 1px solid var(--accent);
       padding: var(--space-sm) 0;
     }
     .faq-question {
@@ -882,7 +884,7 @@
       overflow: hidden;
       transition: max-height 0.4s ease, padding 0.3s ease;
       padding: 0;
-      color: var(--color-text-secondary);
+      color: var(--secondary);
       font-size: 0.95rem;
     }
     .faq-answer.open {
@@ -894,7 +896,7 @@
        FINAL CTA
     ------------------------------------------------ */
     .final-cta {
-      background: var(--color-brand-dark);
+      background: var(--border);
       color: var(--color-white);
       padding: var(--space-xl) var(--space-md);
       text-align: center;
@@ -904,19 +906,19 @@
     .final-cta .heading-lg { color: var(--color-white); }
     .final-cta .primary-action {
       background: var(--color-white);
-      color: var(--color-brand-dark);
+      color: var(--border);
       margin-top: var(--space-sm);
       display: inline-flex;
     }
-    .final-cta .primary-action:hover { background: var(--color-accent-soft); }
+    .final-cta .primary-action:hover { background: var(--error); }
 
     /* ----------------------------------------------
        CONTACT FORM (below footer)
     ------------------------------------------------ */
     .contact-section {
-      background: var(--color-surface);
+      background: var(--heading);
       padding: var(--space-xl) 0;
-      border-top: 1px solid var(--color-border-subtle);
+      border-top: 1px solid var(--accent);
     }
     .contact-grid {
       display: grid;
@@ -933,18 +935,18 @@
       align-items: center;
       gap: var(--space-sm);
       font-size: 0.95rem;
-      color: var(--color-text-secondary);
+      color: var(--secondary);
     }
     .contact-info .contact-detail i {
       width: 24px;
-      color: var(--color-brand-dark);
+      color: var(--border);
       font-size: 1.1rem;
     }
     .contact-form-wrapper {
-      background: var(--color-bg);
+      background: var(--background);
       padding: var(--space-md);
       border-radius: var(--radius-md);
-      border: 1px solid var(--color-border-subtle);
+      border: 1px solid var(--accent);
     }
     .contact-form-wrapper .form-group {
       margin-bottom: var(--space-sm);
@@ -956,23 +958,23 @@
       letter-spacing: 0.04em;
       text-transform: uppercase;
       margin-bottom: 4px;
-      color: var(--color-text-secondary);
+      color: var(--secondary);
     }
     .contact-form-wrapper input,
     .contact-form-wrapper textarea {
       width: 100%;
       padding: 0.8rem 1rem;
-      border: 1px solid var(--color-border-subtle);
+      border: 1px solid var(--accent);
       border-radius: var(--radius-sm);
       font-family: var(--font-body);
       font-size: 0.95rem;
-      background: var(--color-surface);
+      background: var(--heading);
       transition: border 0.2s, box-shadow 0.2s;
     }
     .contact-form-wrapper input:focus,
     .contact-form-wrapper textarea:focus {
       outline: none;
-      border-color: var(--color-brand-dark);
+      border-color: var(--border);
       box-shadow: 0 0 0 3px rgba(26,26,26,0.08);
     }
     .contact-form-wrapper textarea {
@@ -985,7 +987,7 @@
       gap: var(--space-sm);
     }
     .contact-form-wrapper .submit-action {
-      background: var(--color-brand-dark);
+      background: var(--border);
       color: var(--color-white);
       padding: 0.8rem 2.4rem;
       border-radius: var(--radius-full);
@@ -999,7 +1001,7 @@
       gap: 8px;
     }
     .contact-form-wrapper .submit-action:hover {
-      background: var(--color-accent);
+      background: var(--warning);
       transform: translateY(-2px);
     }
     .contact-form-wrapper .form-success {
@@ -1034,7 +1036,7 @@
     ------------------------------------------------ */
     .site-footer {
       padding: var(--space-lg) 0 var(--space-md);
-      border-top: 1px solid var(--color-border-subtle);
+      border-top: 1px solid var(--accent);
     }
     .footer-grid {
       display: grid;
@@ -1049,11 +1051,11 @@
     .footer-col a {
       display: block;
       font-size: 0.85rem;
-      color: var(--color-text-secondary);
+      color: var(--secondary);
       padding: 3px 0;
       transition: color 0.2s;
     }
-    .footer-col a:hover { color: var(--color-brand-dark); }
+    .footer-col a:hover { color: var(--border); }
 
     /* ----------------------------------------------
        STICKY PURCHASE BAR
@@ -1063,8 +1065,8 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: var(--color-surface);
-      border-top: 1px solid var(--color-border-subtle);
+      background: var(--heading);
+      border-top: 1px solid var(--accent);
       padding: 0.6rem var(--space-md);
       display: flex;
       align-items: center;
@@ -1087,7 +1089,7 @@
       gap: var(--space-xs);
     }
     .sticky-purchase .sticky-btn-cart {
-      background: var(--color-brand-dark);
+      background: var(--border);
       color: var(--color-white);
       padding: 0.5rem 1.2rem;
       border-radius: var(--radius-full);
@@ -1098,7 +1100,7 @@
       gap: 6px;
     }
     .sticky-purchase .sticky-btn-buy {
-      background: var(--color-accent);
+      background: var(--warning);
       color: var(--color-white);
       padding: 0.5rem 1.2rem;
       border-radius: var(--radius-full);
@@ -1137,7 +1139,7 @@
       position: relative;
       width: 100%;
       max-width: 900px;
-      background: var(--color-brand-dark);
+      background: var(--border);
       border-radius: var(--radius-md);
       overflow: hidden;
       aspect-ratio: 16/9;
@@ -1228,7 +1230,7 @@
       width: 380px;
       max-width: 90vw;
       height: 100%;
-      background: var(--color-surface);
+      background: var(--heading);
       z-index: 1600;
       padding: var(--space-md);
       box-shadow: -8px 0 40px rgba(0,0,0,0.06);
@@ -1241,7 +1243,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid var(--color-border-subtle);
+      border-bottom: 1px solid var(--accent);
       padding-bottom: var(--space-sm);
     }
     .cart-drawer-items {
@@ -1252,18 +1254,18 @@
     .cart-empty-state {
       text-align: center;
       padding: var(--space-lg) 0;
-      color: var(--color-text-secondary);
+      color: var(--secondary);
     }
     .cart-empty-state i {
       font-size: 2.4rem;
-      color: var(--color-border-subtle);
+      color: var(--accent);
       margin-bottom: var(--space-sm);
     }
     .cart-item {
       display: flex;
       gap: var(--space-sm);
       padding: var(--space-sm) 0;
-      border-bottom: 1px solid var(--color-border-subtle);
+      border-bottom: 1px solid var(--accent);
     }
     .cart-item img {
       width: 60px;
@@ -1273,10 +1275,10 @@
     }
     .cart-item-details { flex: 1; }
     .cart-item-details h4 { font-weight: 600; font-size: 0.95rem; }
-    .cart-item-details p { font-size: 0.8rem; color: var(--color-text-secondary); }
-    .cart-item-remove { color: var(--color-text-secondary); align-self: center; }
+    .cart-item-details p { font-size: 0.8rem; color: var(--secondary); }
+    .cart-item-remove { color: var(--secondary); align-self: center; }
     .cart-drawer-footer {
-      border-top: 1px solid var(--color-border-subtle);
+      border-top: 1px solid var(--accent);
       padding-top: var(--space-sm);
     }
     .cart-total-row {
@@ -1287,7 +1289,7 @@
     }
     .checkout-action {
       width: 100%;
-      background: var(--color-brand-dark);
+      background: var(--border);
       color: white;
       padding: 0.9rem;
       border-radius: var(--radius-full);
@@ -1305,7 +1307,7 @@
       bottom: 80px;
       left: 50%;
       transform: translateX(-50%) translateY(20px);
-      background: var(--color-brand-dark);
+      background: var(--border);
       color: white;
       padding: 0.8rem 1.8rem;
       border-radius: var(--radius-full);
@@ -1402,7 +1404,7 @@
       <div class="cart-total-row"><span>Shipping</span><span>Free</span></div>
       <div class="cart-total-row"><span>Total</span><span id="cartTotal">$89.00</span></div>
       <button class="checkout-action">Checkout Securely <i class="fas fa-arrow-right"></i></button>
-      <div style="display:flex; gap:10px; justify-content:center; margin-top:8px; font-size:1.2rem; color:var(--color-text-secondary);">
+      <div style="display:flex; gap:10px; justify-content:center; margin-top:8px; font-size:1.2rem; color:var(--secondary);">
         <i class="fab fa-apple-pay"></i> <i class="fab fa-google-pay"></i> <i class="fas fa-credit-card"></i>
       </div>
     </div>
@@ -1412,7 +1414,7 @@
   <div id="mobileNavOverlay" class="mobile-nav-overlay"></div>
   <div id="mobileNavDrawer" class="mobile-nav-drawer">
     <div class="mobile-nav-header">
-      <span class="logo editable-text editable-section no-drop-zone" data-section="1" data-text="1">NORTH/01</span>
+      <span class="logo editable-text editable-section no-drop-zone" data-section="1" data-text="1">{brand}</span>
       <button class="mobile-nav-close" id="closeMobileNav">&times;</button>
     </div>
     <div class="mobile-nav-links">
@@ -1435,7 +1437,7 @@
   <!-- Header -->
   <header class="site-header editable-section" data-section="9">
     <div class="navbar editable-section no-drop-zone" data-section="10">
-      <a href="#hero" class="logo editable-text editable-section no-drop-zone" data-section="11" data-text="9">NORTH/01</a>
+      <a href="#hero" class="logo editable-text editable-section no-drop-zone" data-section="11" data-text="9">{brand}</a>
       <nav class="nav-links-desktop">
         <a href="#hero" class="editable-text editable-section no-drop-zone" data-section="12" data-text="10">Home</a>
         <a href="#product-selection" class="editable-text editable-section no-drop-zone" data-section="13" data-text="11">Shop</a>
@@ -1457,11 +1459,12 @@
     </div>
   </header>
 
-  <!-- HERO SECTION -->
+ <main>
+   <!-- HERO SECTION -->
   <section id="hero" class="editable-section" data-section="19">
     <div class="container hero-grid">
       <div class="hero-video-wrapper editable-section no-drop-zone" id="heroVideoTrigger" data-section="20">
-        <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800&h=600&fit=crop&crop=center&auto=format" alt="NORTH/01 brand film" class="editable-image" data-image="1" style="width:100%; height:100%; object-fit:cover;" />
+        <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800&h=600&fit=crop&crop=center&auto=format" alt="{brand} brand film" class="editable-image" data-image="1" style="width:100%; height:100%; object-fit:cover;" />
         <div class="play-overlay">
           <i class="fas fa-play-circle editable-icon" data-icon="101" data-default-class="fas fa-play-circle"></i>
         </div>
@@ -1469,7 +1472,7 @@
       </div>
 
       <div class="hero-content">
-        <span class="eyebrow editable-text editable-section no-drop-zone" data-section="22" data-text="18"><i class="fas fa-tag" style="margin-right:6px;"></i> NORTH/01 — SIGNATURE SERIES</span>
+        <span class="eyebrow editable-text editable-section no-drop-zone" data-section="22" data-text="18"><i class="fas fa-tag" style="margin-right:6px;"></i> {brand} — SIGNATURE SERIES</span>
         <h1 class="heading-xl editable-text editable-section no-drop-zone" data-section="23" data-text="19">MADE FOR THE EVERYDAY.</h1>
         <p class="body-large editable-text editable-section no-drop-zone" data-section="24" data-text="20">A heavyweight essential engineered for comfort, structure and everyday movement.</p>
         <div class="hero-rating">
@@ -1504,7 +1507,7 @@
     <div class="container">
       <div class="selection-grid">
         <div class="product-gallery editable-section no-drop-zone" data-section="35">
-          <img id="mainProductImage" src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800&h=800&fit=crop&crop=center&auto=format" alt="NORTH/01 Signature Hoodie" class="editable-image" data-image="2" loading="lazy" />
+          <img id="mainProductImage" src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800&h=800&fit=crop&crop=center&auto=format" alt="{brand} Signature Hoodie" class="editable-image" data-image="2" loading="lazy" />
           <div class="thumbnail-strip" id="thumbnailStrip">
             <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=100&h=100&fit=crop&crop=center&auto=format" data-main="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800&h=800&fit=crop&crop=center&auto=format" class="active" alt="Front" />
             <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=100&h=100&fit=crop&crop=center&auto=format" data-main="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=800&h=800&fit=crop&crop=center&auto=format" alt="Back" />
@@ -1516,7 +1519,7 @@
 
         <div class="selection-content">
           <span class="eyebrow editable-text editable-section no-drop-zone" data-section="36" data-text="29">The Signature</span>
-          <h2 class="product-title editable-text editable-section no-drop-zone" data-section="37" data-text="30">NORTH/01 Signature Hoodie</h2>
+          <h2 class="product-title editable-text editable-section no-drop-zone" data-section="37" data-text="30">{brand} Signature Hoodie</h2>
           <span class="product-price editable-text editable-section no-drop-zone" id="displayPrice" data-section="38" data-text="31">$89</span>
 
           <div class="product-purchase-card editable-section no-drop-zone" data-section="39">
@@ -1572,12 +1575,12 @@
           <img src="https://images.unsplash.com/photo-1607345366928-199ea26cfe3e?w=600&h=600&fit=crop&crop=center&auto=format" alt="Hoodie craftsmanship" class="editable-image" data-image="3" loading="lazy" />
         </div>
         <div class="text-wrap">
-          <span class="eyebrow editable-text editable-section no-drop-zone" data-section="58" data-text="49">Why NORTH/01</span>
+          <span class="eyebrow editable-text editable-section no-drop-zone" data-section="58" data-text="49">Why {brand}</span>
           <h2 class="heading-lg editable-text editable-section no-drop-zone" data-section="59" data-text="50">Most hoodies are either comfortable <em>or</em> well-structured. We wanted both.</h2>
           <p class="body-large editable-text editable-section no-drop-zone" data-section="60" data-text="51">We believe everyday clothing shouldn't feel ordinary. The Signature Hoodie is built with a structured heavyweight fabric, refined oversized fit, and reinforced construction—designed to outlast the moment.</p>
           <div class="comparison-grid">
             <div class="comparison-item editable-text editable-section no-drop-zone" data-section="61" data-text="52"><h4>Ordinary Hoodie</h4><ul><li>✕ Loses shape</li><li>✕ Lightweight fabric</li><li>✕ Generic fit</li></ul></div>
-            <div class="comparison-item positive editable-text editable-section no-drop-zone" data-section="62" data-text="53"><h4>NORTH/01</h4><ul><li>✓ Structured heavyweight</li><li>✓ Refined oversized fit</li><li>✓ Reinforced construction</li></ul></div>
+            <div class="comparison-item positive editable-text editable-section no-drop-zone" data-section="62" data-text="53"><h4>{brand}</h4><ul><li>✓ Structured heavyweight</li><li>✓ Refined oversized fit</li><li>✓ Reinforced construction</li></ul></div>
           </div>
           <a href="#product-selection" class="primary-action editable-text editable-section no-drop-zone" data-section="63" data-text="54" style="align-self:flex-start; margin-top:var(--space-xs);"><i class="fas fa-bolt"></i> Shop Now</a>
         </div>
@@ -1600,7 +1603,7 @@
         <div class="hotspot editable-text editable-section no-drop-zone" data-section="73" data-text="62" style="top:65%; left:25%;" title="Kangaroo pocket">6</div>
         <div class="hotspot editable-text editable-section no-drop-zone" data-section="74" data-text="63" style="top:22%; left:88%;" title="Embroidered branding">7</div>
       </div>
-      <div style="display:flex; flex-wrap:wrap; gap:var(--space-xs); justify-content:center; margin-top:var(--space-sm); font-size:0.8rem; color:var(--color-text-secondary);" class="editable-text editable-section no-drop-zone" data-section="75" data-text="64">
+      <div style="display:flex; flex-wrap:wrap; gap:var(--space-xs); justify-content:center; margin-top:var(--space-sm); font-size:0.8rem; color:var(--secondary);" class="editable-text editable-section no-drop-zone" data-section="75" data-text="64">
         <span>① Heavyweight fabric</span> <span>② Reinforced seams</span> <span>③ Structured hood</span>
         <span>④ Drawstrings</span> <span>⑤ Ribbed cuffs</span> <span>⑥ Pocket</span> <span>⑦ Embroidered logo</span>
       </div>
@@ -1628,7 +1631,7 @@
     <div class="container">
       <span class="eyebrow editable-text editable-section no-drop-zone" data-section="80" data-text="67" style="display:block; text-align:center;">Worn your way</span>
       <h2 class="heading-lg editable-text editable-section no-drop-zone" data-section="81" data-text="68" style="text-align:center; margin-bottom:var(--space-sm);">Real people, real hoodie.</h2>
-      <p style="text-align:center; color:var(--color-text-secondary); margin-bottom:var(--space-md);" class="editable-text editable-section no-drop-zone" data-section="82" data-text="69">Unboxing • Lifestyle • Reviews</p>
+      <p style="text-align:center; color:var(--secondary); margin-bottom:var(--space-md);" class="editable-text editable-section no-drop-zone" data-section="82" data-text="69">Unboxing • Lifestyle • Reviews</p>
       <div class="ugc-grid">
         <div class="ugc-card editable-section no-drop-zone" data-section="83">
           <video muted loop playsinline poster="https://images.unsplash.com/photo-1618354691551-44de113f0164?w=400&h=600&fit=crop&crop=center&auto=format">
@@ -1665,7 +1668,7 @@
         <div>
           <span class="eyebrow editable-text editable-section no-drop-zone" data-section="90" data-text="73">Reviews</span>
           <h2 class="heading-lg editable-text editable-section no-drop-zone" data-section="91" data-text="74">4.9 / 5 <span style="font-size:1rem; color:#d4a04a;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span></h2>
-          <p style="color:var(--color-text-secondary);" class="editable-text editable-section no-drop-zone" data-section="92" data-text="75">2,400+ verified reviews</p>
+          <p style="color:var(--secondary);" class="editable-text editable-section no-drop-zone" data-section="92" data-text="75">2,400+ verified reviews</p>
         </div>
         <button class="secondary-action editable-text editable-section no-drop-zone" id="writeReviewBtn" data-section="93" data-text="76"><i class="fas fa-pen" style="margin-right:6px;"></i> Write a Review</button>
       </div>
@@ -1724,7 +1727,7 @@
             <i class="fas fa-map-marker-alt"></i>
             <span>New York, NY</span>
           </div>
-          <div style="display:flex; gap:var(--space-sm); margin-top:var(--space-xs); font-size:1.4rem; color:var(--color-text-secondary);">
+          <div style="display:flex; gap:var(--space-sm); margin-top:var(--space-xs); font-size:1.4rem; color:var(--secondary);">
             <a href="#" aria-label="Instagram" class="editable-icon" data-icon="102"><i class="fab fa-instagram"></i></a>
             <a href="#" aria-label="TikTok" class="editable-icon" data-icon="103"><i class="fab fa-tiktok"></i></a>
             <a href="#" aria-label="X" class="editable-icon" data-icon="104"><i class="fab fa-x-twitter"></i></a>
@@ -1766,26 +1769,27 @@
     </div>
   </section>
 
+ </main>
   <!-- FOOTER -->
   <footer class="site-footer editable-section" data-section="140">
     <div class="container">
       <div class="footer-grid">
-        <div class="footer-col"><h4 class="editable-text editable-section no-drop-zone" data-section="141" data-text="112">NORTH/01</h4><p style="font-size:0.85rem; color:var(--color-text-secondary);" class="editable-text editable-section no-drop-zone" data-section="142" data-text="113">Built for the city. Designed to outlast the moment.</p></div>
+        <div class="footer-col"><h4 class="editable-text editable-section no-drop-zone" data-section="141" data-text="112">{brand}</h4><p style="font-size:0.85rem; color:var(--secondary);" class="editable-text editable-section no-drop-zone" data-section="142" data-text="113">Built for the city. Designed to outlast the moment.</p></div>
         <div class="footer-col"><h4 class="editable-text editable-section no-drop-zone" data-section="143" data-text="114">Navigate</h4><a href="#hero" class="editable-text editable-section no-drop-zone" data-section="144" data-text="115">Home</a><a href="#product-selection" class="editable-text editable-section no-drop-zone" data-section="145" data-text="116">Shop</a><a href="#story" class="editable-text editable-section no-drop-zone" data-section="146" data-text="117">Story</a><a href="#details" class="editable-text editable-section no-drop-zone" data-section="147" data-text="118">Details</a><a href="#reviews" class="editable-text editable-section no-drop-zone" data-section="148" data-text="119">Reviews</a><a href="#faq" class="editable-text editable-section no-drop-zone" data-section="149" data-text="120">FAQ</a></div>
         <div class="footer-col"><h4 class="editable-text editable-section no-drop-zone" data-section="150" data-text="121">Customer Care</h4><a href="#contact" class="editable-text editable-section no-drop-zone" data-section="151" data-text="122">Contact</a><a href="#" class="editable-text editable-section no-drop-zone" data-section="152" data-text="123">Shipping</a><a href="#" class="editable-text editable-section no-drop-zone" data-section="153" data-text="124">Returns</a><a href="#" class="editable-text editable-section no-drop-zone" data-section="154" data-text="125">Size Guide</a></div>
         <div class="footer-col"><h4 class="editable-text editable-section no-drop-zone" data-section="155" data-text="126">Connect</h4><a href="#" class="editable-text editable-section no-drop-zone" data-section="156" data-text="127"><i class="fab fa-instagram" style="margin-right:6px;"></i> Instagram</a><a href="#" class="editable-text editable-section no-drop-zone" data-section="157" data-text="128"><i class="fab fa-tiktok" style="margin-right:6px;"></i> TikTok</a><a href="#" class="editable-text editable-section no-drop-zone" data-section="158" data-text="129"><i class="fab fa-x-twitter" style="margin-right:6px;"></i> X</a></div>
       </div>
-      <div style="text-align:center; margin-top:var(--space-lg); font-size:0.8rem; color:var(--color-text-secondary); border-top:1px solid var(--color-border-subtle); padding-top:var(--space-md);" class="editable-text editable-section no-drop-zone" data-section="159" data-text="130">&copy; 2025 NORTH/01. All rights reserved. Privacy &bull; Terms</div>
+      <div style="text-align:center; margin-top:var(--space-lg); font-size:0.8rem; color:var(--secondary); border-top:1px solid var(--accent); padding-top:var(--space-md);" class="editable-text editable-section no-drop-zone" data-section="159" data-text="130">&copy; 2025 {brand}. All rights reserved. Privacy &bull; Terms</div>
     </div>
   </footer>
 
   <!-- STICKY BAR -->
   <div id="stickyBar" class="sticky-purchase">
     <div class="sticky-info">
-      <strong class="editable-text editable-section no-drop-zone" data-section="160" data-text="131">NORTH/01 Signature Hoodie</strong>
-      <span style="color:var(--color-text-secondary);" id="stickyPrice" class="editable-text editable-section no-drop-zone" data-section="161" data-text="132">$89</span>
+      <strong class="editable-text editable-section no-drop-zone" data-section="160" data-text="131">{brand} Signature Hoodie</strong>
+      <span style="color:var(--secondary);" id="stickyPrice" class="editable-text editable-section no-drop-zone" data-section="161" data-text="132">$89</span>
       <span id="stickySize" class="editable-text editable-section no-drop-zone" data-section="162" data-text="133">M</span>
-      <span id="stickyColor" style="display:inline-block; width:16px; height:16px; border-radius:50%; background:#1e1e1e; border:1px solid var(--color-border-subtle);"></span>
+      <span id="stickyColor" style="display:inline-block; width:16px; height:16px; border-radius:50%; background:#1e1e1e; border:1px solid var(--accent);"></span>
     </div>
     <div class="sticky-actions">
       <button id="stickyAddToCart" class="sticky-btn-cart editable-text editable-section no-drop-zone" data-section="163" data-text="134"><i class="fas fa-shopping-bag"></i> Add</button>
@@ -1879,7 +1883,7 @@
               <div class="cart-item">
                 <img src="${item.image || 'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=100&h=100&fit=crop&crop=center&auto=format'}" alt="hoodie">
                 <div class="cart-item-details">
-                  <h4>NORTH/01 Signature Hoodie</h4>
+                  <h4>{brand} Signature Hoodie</h4>
                   <p>${item.size} · ${item.color}</p>
                   <p>$${itemTotal.toFixed(2)}</p>
                 </div>
